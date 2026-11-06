@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>zhol console</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <nav class="global-nav" id="global-nav">
+    <a href="#tonight" data-route="tonight">Tonight</a>
+    <a href="#review" data-route="review">Review</a>
+    <a href="#loads" data-route="loads">Loads</a>
+    <a href="#alerts" data-route="alerts">Alerts</a>
+    <a href="#pilot" data-route="pilot">Pilot</a>
+    <a href="#savings" data-route="savings">Savings</a>
+    <a href="/docs" target="_blank" rel="noopener">API</a>
+  </nav>
+  <header class="local-nav">
+    <div class="inner">
+      <span class="title">zhol</span>
+      <div class="actions">
+        <span class="meta" id="meta"></span>
+        <select id="scenario" aria-label="Demo scenario" class="pill pill-outline" style="padding:5px 12px">
+          <option value="brenner">Demo: Brenner</option>
+          <option value="sicily">Demo: Sicily</option>
+        </select>
+        <button class="pill pill-outline" id="btn-demo">Load demo</button>
+        <button class="pill pill-blue" id="btn-run">Run evening check</button>
+      </div>
+    </div>
+  </header>
+  <main id="view"></main>
+  <footer><div class="wrap"><span>zhol · AI agents watch the road, your dispatcher gets a WhatsApp.</span>
+    <span id="health"></span></div></footer>
+  <div class="toast" id="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

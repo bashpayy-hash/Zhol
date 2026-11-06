@@ -1,0 +1,4 @@
+id,description,cargo,origin,destination,lane_id,departure,deliver_by,weight_t,low_noise,driver_phone
+VR-312,ricambi auto,general,Verona,München,VR-MUC-BRENNER,2026-11-12T05:00,2026-11-12T16:00,40,false,
+MI-516,bobine acciaio,general,Milano,Lyon,MIL-LYO-FREJUS,2026-11-12T07:30,,40,false,
+VT-120,pomodori,perishable,Vittoria,Milano,VIT-MIL,2026-11-12T21:00,2026-11-14T06:00,40,false,

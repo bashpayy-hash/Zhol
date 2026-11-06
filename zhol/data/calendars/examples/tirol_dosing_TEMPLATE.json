@@ -1,0 +1,18 @@
+{
+  "source": {
+    "name": "Land Tirol - Lkw-Dosierung Kufstein-Nord (Dosierkalender)",
+    "url": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+    "note": "EXAMPLE DATES - replace with the dates from the official PDF before use"
+  },
+  "kind": "dosing",
+  "title": "AT: Lkw-Blockabfertigung Kufstein-Nord (Dosierkalender)",
+  "summary": "Planned block clearance for southbound trucks entering Tyrol at Kufstein-Nord.",
+  "timezone": "Europe/Vienna",
+  "scope": {"chokepoints": ["kufstein"], "direction": "southbound"},
+  "applies": {"min_weight_t": 7.5},
+  "severity": "dosing",
+  "expected_delay_min": 120,
+  "days": [
+    {"date": "2099-01-01", "start": "05:00", "end": "11:00"}
+  ]
+}

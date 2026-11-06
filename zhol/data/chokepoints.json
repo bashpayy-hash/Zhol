@@ -1,0 +1,339 @@
+{
+ "_note": "Strategic points where restrictions concentrate. Coordinates are approximate (WGS84). 'crossing_minutes' = fixed extra time to pass (ferry, tunnel queue). 'toll_eur' = approximate one-way special toll / ferry fare for a 40 t truck (configurable).",
+ "brenner": {
+  "name": "Brenner Pass (A22/A13)",
+  "country": "AT",
+  "lat": 47.0024,
+  "lon": 11.5056,
+  "roads": [
+   "A22",
+   "A13",
+   "E45"
+  ],
+  "kind": "pass",
+  "aliases": [
+   "brennero",
+   "brenner",
+   "brennerpass",
+   "passo del brennero"
+  ],
+  "toll_eur": 70
+ },
+ "luegbruecke": {
+  "name": "Luegbrücke (A13 Brenner motorway)",
+  "country": "AT",
+  "lat": 47.0563,
+  "lon": 11.4746,
+  "roads": [
+   "A13"
+  ],
+  "kind": "bridge",
+  "aliases": [
+   "luegbrücke",
+   "luegbruecke",
+   "lueg bridge",
+   "ponte lueg",
+   "gries am brenner"
+  ],
+  "toll_eur": 0
+ },
+ "kufstein": {
+  "name": "Kufstein-Nord (A12/A93 DE-AT border)",
+  "country": "AT",
+  "lat": 47.6071,
+  "lon": 12.1767,
+  "roads": [
+   "A12",
+   "A93",
+   "E45"
+  ],
+  "kind": "border",
+  "aliases": [
+   "kufstein",
+   "kufstein-nord",
+   "blockabfertigung",
+   "dosierung",
+   "dosaggio"
+  ]
+ },
+ "inntal_a12": {
+  "name": "Inntal motorway A12 (Tyrol)",
+  "country": "AT",
+  "lat": 47.3333,
+  "lon": 11.7333,
+  "roads": [
+   "A12"
+  ],
+  "kind": "corridor",
+  "aliases": [
+   "inntal",
+   "a12",
+   "inntalautobahn",
+   "unterinntal"
+  ]
+ },
+ "tarvisio": {
+  "name": "Tarvisio / Arnoldstein (IT-AT border, A23/A2)",
+  "country": "IT",
+  "lat": 46.5053,
+  "lon": 13.5786,
+  "roads": [
+   "A23",
+   "A2",
+   "E55"
+  ],
+  "kind": "border",
+  "aliases": [
+   "tarvisio",
+   "arnoldstein",
+   "coccau",
+   "thörl-maglern"
+  ]
+ },
+ "tauern": {
+  "name": "Tauern tunnel (A10)",
+  "country": "AT",
+  "lat": 47.126,
+  "lon": 13.457,
+  "roads": [
+   "A10",
+   "E55"
+  ],
+  "kind": "tunnel",
+  "aliases": [
+   "tauern",
+   "tauerntunnel",
+   "tauernautobahn",
+   "katschberg"
+  ],
+  "toll_eur": 60
+ },
+ "gotthard": {
+  "name": "Gotthard road tunnel (A2)",
+  "country": "CH",
+  "lat": 46.588,
+  "lon": 8.598,
+  "roads": [
+   "A2",
+   "E35"
+  ],
+  "kind": "tunnel",
+  "aliases": [
+   "gotthard",
+   "gottardo",
+   "san gottardo",
+   "göschenen",
+   "airolo"
+  ]
+ },
+ "san_bernardino": {
+  "name": "San Bernardino tunnel (A13 CH)",
+  "country": "CH",
+  "lat": 46.496,
+  "lon": 9.174,
+  "roads": [
+   "A13",
+   "E43"
+  ],
+  "kind": "tunnel",
+  "aliases": [
+   "san bernardino",
+   "sanbernardino",
+   "misox",
+   "mesolcina"
+  ]
+ },
+ "chiasso": {
+  "name": "Chiasso / Brogeda (IT-CH border, A9/A2)",
+  "country": "CH",
+  "lat": 45.832,
+  "lon": 9.031,
+  "roads": [
+   "A9",
+   "A2",
+   "E35"
+  ],
+  "kind": "border",
+  "aliases": [
+   "chiasso",
+   "brogeda",
+   "ponte chiasso",
+   "como"
+  ],
+  "crossing_minutes": 45,
+  "note": "Swiss customs: EU-CH transit needs NCTS/T1 formalities; typical truck clearance time (approximate)"
+ },
+ "basel": {
+  "name": "Basel / Weil am Rhein (CH-DE border)",
+  "country": "CH",
+  "lat": 47.585,
+  "lon": 7.615,
+  "roads": [
+   "A2",
+   "A5",
+   "E35"
+  ],
+  "kind": "border",
+  "aliases": [
+   "basel",
+   "basilea",
+   "weil am rhein",
+   "bâle"
+  ],
+  "crossing_minutes": 45,
+  "note": "Swiss customs: EU-CH transit needs NCTS/T1 formalities; typical truck clearance time (approximate)"
+ },
+ "st_margrethen": {
+  "name": "St. Margrethen / Lustenau (CH-AT border)",
+  "country": "CH",
+  "lat": 47.452,
+  "lon": 9.64,
+  "roads": [
+   "A1",
+   "A14"
+  ],
+  "kind": "border",
+  "aliases": [
+   "st. margrethen",
+   "st margrethen",
+   "lustenau",
+   "au"
+  ],
+  "crossing_minutes": 30,
+  "note": "Swiss customs: EU-CH transit needs NCTS/T1 formalities; typical truck clearance time (approximate)"
+ },
+ "frejus": {
+  "name": "Fréjus road tunnel (A32/A43)",
+  "country": "FR",
+  "lat": 45.136,
+  "lon": 6.697,
+  "roads": [
+   "A32",
+   "A43",
+   "E70"
+  ],
+  "kind": "tunnel",
+  "aliases": [
+   "frejus",
+   "fréjus",
+   "traforo del frejus",
+   "modane",
+   "bardonecchia",
+   "t4"
+  ],
+  "toll_eur": 320
+ },
+ "montblanc": {
+  "name": "Mont Blanc tunnel",
+  "country": "FR",
+  "lat": 45.853,
+  "lon": 6.888,
+  "roads": [
+   "A5",
+   "N205",
+   "E25"
+  ],
+  "kind": "tunnel",
+  "aliases": [
+   "mont blanc",
+   "monte bianco",
+   "mont-blanc",
+   "traforo del monte bianco",
+   "courmayeur",
+   "chamonix"
+  ],
+  "toll_eur": 320
+ },
+ "ventimiglia": {
+  "name": "Ventimiglia / Menton (IT-FR border, A10/A8)",
+  "country": "IT",
+  "lat": 43.79,
+  "lon": 7.53,
+  "roads": [
+   "A10",
+   "A8",
+   "E80"
+  ],
+  "kind": "border",
+  "aliases": [
+   "ventimiglia",
+   "vintimille",
+   "menton",
+   "ponte san luigi",
+   "griffen"
+  ]
+ },
+ "fernetti": {
+  "name": "Fernetti / Fernetiči (IT-SI border)",
+  "country": "IT",
+  "lat": 45.703,
+  "lon": 13.824,
+  "roads": [
+   "RA13",
+   "A3 SI"
+  ],
+  "kind": "border",
+  "aliases": [
+   "fernetti",
+   "fernetiči",
+   "trieste",
+   "villa opicina"
+  ]
+ },
+ "karawanken": {
+  "name": "Karawanken tunnel (A11/A2 SI)",
+  "country": "AT",
+  "lat": 46.45,
+  "lon": 14.02,
+  "roads": [
+   "A11",
+   "A2 SI",
+   "E61"
+  ],
+  "kind": "tunnel",
+  "aliases": [
+   "karawanken",
+   "karavanke",
+   "caravanche"
+  ]
+ },
+ "messina_strait": {
+  "name": "Strait of Messina ferry (Messina - Villa San Giovanni)",
+  "country": "IT",
+  "lat": 38.23,
+  "lon": 15.6,
+  "roads": [
+   "A2",
+   "A18",
+   "A20",
+   "SS18"
+  ],
+  "kind": "ferry",
+  "crossing_minutes": 60,
+  "aliases": [
+   "stretto di messina",
+   "messina",
+   "villa san giovanni",
+   "traghetti",
+   "caronte"
+  ],
+  "toll_eur": 180
+ },
+ "goerlitz": {
+  "name": "Görlitz / Zgorzelec (DE-PL border, A4)",
+  "country": "DE",
+  "lat": 51.145,
+  "lon": 15.03,
+  "roads": [
+   "A4",
+   "E40"
+  ],
+  "kind": "border",
+  "aliases": [
+   "görlitz",
+   "goerlitz",
+   "zgorzelec",
+   "jędrzychowice"
+  ]
+ }
+}

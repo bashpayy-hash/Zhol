@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic DATEX II 2.3 SituationPublication used in tests (structure as published by NAPs). -->
+<d2LogicalModel xmlns="http://datex2.eu/schema/2/2_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" modelBaseVersion="2">
+  <exchange><supplierIdentification><country>it</country><nationalIdentifier>TEST</nationalIdentifier></supplierIdentification></exchange>
+  <payloadPublication xsi:type="SituationPublication" lang="it">
+    <publicationTime>2026-11-11T16:00:00+01:00</publicationTime>
+    <situation id="SIT-1">
+      <situationRecord xsi:type="RoadOrCarriagewayOrLaneManagement" id="REC-FREJUS" version="1">
+        <situationRecordCreationTime>2026-11-11T15:50:00+01:00</situationRecordCreationTime>
+        <validity><validityStatus>definedByValidityTimeSpec</validityStatus>
+          <validityTimeSpecification><overallStartTime>2026-11-12T10:00:00+01:00</overallStartTime><overallEndTime>2026-11-12T15:00:00+01:00</overallEndTime></validityTimeSpecification></validity>
+        <generalPublicComment><comment><values><value lang="it">Traforo del Frejus chiuso ai mezzi pesanti per esercitazione</value></values></comment></generalPublicComment>
+        <groupOfLocations xsi:type="Point"><pointByCoordinates><pointCoordinates><latitude>45.137</latitude><longitude>6.698</longitude></pointCoordinates></pointByCoordinates></groupOfLocations>
+        <forVehiclesWithCharacteristicsOf><vehicleType>lorry</vehicleType><grossWeightCharacteristic><comparisonOperator>greaterThan</comparisonOperator><grossVehicleWeight>3.5</grossVehicleWeight></grossWeightCharacteristic></forVehiclesWithCharacteristicsOf>
+        <roadOrCarriagewayOrLaneManagementType>roadClosed</roadOrCarriagewayOrLaneManagementType>
+      </situationRecord>
+    </situation>
+    <situation id="SIT-2">
+      <situationRecord xsi:type="DisturbanceActivity" id="REC-BLOCK" version="1">
+        <validity><validityStatus>definedByValidityTimeSpec</validityStatus>
+          <validityTimeSpecification><overallStartTime>2026-11-12T06:00:00+01:00</overallStartTime></validityTimeSpecification></validity>
+        <generalPublicComment><comment><values><value lang="it">Presidio di autotrasportatori sulla A22 al Brennero</value></values></comment></generalPublicComment>
+        <groupOfLocations xsi:type="Point"><pointByCoordinates><pointCoordinates><latitude>47.003</latitude><longitude>11.506</longitude></pointCoordinates></pointByCoordinates></groupOfLocations>
+        <disturbanceActivityType>blockade</disturbanceActivityType>
+      </situationRecord>
+    </situation>
+    <situation id="SIT-3">
+      <situationRecord xsi:type="Accident" id="REC-INFO" version="1">
+        <validity><validityStatus>active</validityStatus></validity>
+        <accidentType>collision</accidentType>
+      </situationRecord>
+    </situation>
+  </payloadPublication>
+</d2LogicalModel>
