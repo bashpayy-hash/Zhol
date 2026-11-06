@@ -147,16 +147,18 @@ Rules:
 ## E. Follow-ups
 
 **Day 3, IT:**
-> Buongiorno {Nome}, mi permetto di riscriverle. Venerdì {data} è previsto {evento reale: dosaggio a Kufstein / chiusura Luegbrücke / sciopero};
-> se mi manda i carichi di quel giorno, le dico gratis quali sarebbero toccati. Le va?
+> Buongiorno {Nome}, mi permetto di riscriverle. Mercoledì {18 novembre} c'è il dosaggio dei camion a Kufstein in direzione Italia, dalle 5:00
+> (calendario ufficiale del Land Tirolo; prossime date: 18 e 25 novembre, 9 dicembre).
+> Se mi manda i carichi di quel giorno, le dico gratis quali sarebbero toccati e cosa conviene fare. Le va?
 
 **Day 8, last message, IT:**
 > Ultimo messaggio, promesso 🙂 Se in futuro un blocco vi fa perdere una giornata, mi scriva: le mostriamo cosa avrebbe visto *zhol* la sera prima.
 > Buon lavoro!
 
 **EN:**
-> Day 3: Good morning {Name}, a quick follow-up. On Friday {date} there is {real event: Kufstein dosing / Luegbrücke closure / strike};
-> if you send me that day's loads, I'll tell you for free which ones would be hit. Interested?
+> Day 3: Good morning {Name}, a quick follow-up. On Wednesday {18 November} trucks are dosed at Kufstein towards Italy from 05:00
+> (official Land Tirol calendar; next dates: 18 and 25 November, 9 December). If you send me that day's loads, I'll tell you for free
+> which ones would be hit and what to do. Interested?
 > Day 8: Last message, promised. If a block ever costs you a day, write to me and we'll show you what *zhol* would have seen the evening before.
 
 ---

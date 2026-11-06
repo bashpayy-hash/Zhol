@@ -88,8 +88,8 @@ def _brenner(store: Store) -> None:
         store.upsert_load(ld)
     store.upsert_event(Event(
         id="demo-kufstein-dosing", kind="dosing",
-        title="AT: Lkw-Blockabfertigung Kufstein-Nord (Richtung Brenner)",
-        summary="Unplanned block clearance at Kufstein-Nord for southbound trucks, 05:00-11:00, ~250 trucks/hour.",
+        title="AT: Lkw-Dosierung Kufstein-Nord außerplanmäßig (Richtung Innsbruck)",
+        summary="Unplanned truck dosing at Kufstein-Nord for southbound trucks from 05:00 (demo day outside the official calendar).",
         scope=EventScope(chokepoints=["kufstein"], direction="southbound"),
         windows=[Window(start=_dt(2026, 11, 12, 5, 0, VIE), end=_dt(2026, 11, 12, 11, 0, VIE))],
         applies=Applicability(min_weight_t=7.5), severity="dosing", expected_delay_min=150,

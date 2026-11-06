@@ -58,3 +58,29 @@ def test_france_eve_of_holiday_and_switzerland_sunday():
     ch = windows("CH", date(2026, 11, 8), days=0, kind="calendar_ban")
     assert any(s.strftime("%a %H:%M") == "Sun 00:00" and e.strftime("%a %H:%M") == "Mon 00:00" for s, e, _ in ch)
     assert ch[0][2].applies.min_weight_t == 3.5
+
+
+def test_luegbruecke_ban_is_directional_and_encoded_from_wko():
+    from zhol import catalog
+    from zhol.engine import event_touches_waypoint
+    evs = [e for e in generate_ban_events(date(2026, 10, 2), days=0, countries=["AT"])
+           if "Luegbrücke Richtung Italien" in e.title and e.windows[0].start.day == 2]
+    assert evs and evs[0].scope.direction == "southbound"
+    w = evs[0].windows[0]
+    assert (w.start.hour, w.end.hour) == (7, 22)
+    south = next(x for x in catalog.lane("MUC-VR-BRENNER").waypoints if x.chokepoint == "luegbruecke")
+    north = next(x for x in catalog.lane("VR-MUC-BRENNER").waypoints if x.chokepoint == "luegbruecke")
+    assert event_touches_waypoint(evs[0], south) and not event_touches_waypoint(evs[0], north)
+
+
+def test_a12_summer_night_ban_starts_at_23_on_sundays():
+    sun = windows("AT", date(2026, 7, 12), days=0, kind="night_ban", roads=["A12"])
+    assert any(s.strftime("%a %H:%M") == "Sun 23:00" for s, _, _ in sun)
+
+
+def test_official_tirol_dosing_calendar_is_loaded():
+    from zhol.ingest.feeds import load_all_calendars
+    evs = load_all_calendars()
+    days = {e.windows[0].start.date() for e in evs}
+    assert len(evs) == 41 and date(2026, 11, 11) in days and date(2027, 3, 15) in days
+    assert all(e.status == "approved" and e.scope.direction == "southbound" for e in evs)

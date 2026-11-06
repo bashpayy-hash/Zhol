@@ -19,7 +19,7 @@
 
 | Input | Value | Source |
 |---|---|---|
-| Italian hauliers with 6–20 / 21–50 / 51–100 vehicles | 19,237 / 5,485 / 1,538 = **26,260** | Albo Nazionale Autotrasporto, 31 Mar 2025, via Rivista Tir / Shipping Italy (21 Jun 2025) |
+| Italian hauliers with 6–20 / 21–50 / 51–100 vehicles | 19,237 / 5,485 / 1,538 = **26,260** (of 98,277 active firms; 1 vehicle: 21,816; 2–5: 31,725; > 100: 998) | Albo Nazionale Autotrasporto, 31 Mar 2025, via Rivista Tir / Shipping Italy (21 Jun 2025), **checked on the source page** |
 | Average fleet in that band (bracket mid-points 13 / 35.5 / 75.5) | **≈ 21 vehicles** | our calculation |
 | Share of those firms with weekly international lanes | **1 in 5** (sensitivity 10–30%) | **assumption** — to validate in interviews; Italian hauliers' international work is ~11% of their tonne-km (ISTAT 2024), concentrated in larger fleets |
 | Italian freight forwarders (Fedespedi members) | ~1,600 firms | Fedespedi, Dec 2024 |
@@ -87,7 +87,7 @@ It is reachable with founder-led sales plus two association partnerships (doc 05
 
 | Driver | Evidence |
 |---|---|
-| Restrictions are growing and becoming less predictable | Kufstein 2025: **57 dosing days, 21 of them outside the published calendar** (Land Tirol; ADAC). 2026: 30 planned, plus 15 unplanned by August |
+| Restrictions are growing and becoming less predictable | Kufstein 2025: **57 dosing days, 21 of them outside the published calendar** (Land Tirol; ADAC). 2026: 30 planned, plus 15 unplanned by August; 11 more planned for Q1 2027 (Land Tirol, checked 6 Nov 2026) |
 | The Brenner bottleneck lasts until 2030–31 | Luegbrücke rebuild: single lane each way since 1 Jan 2025; completion end-2030 (ADAC: 2031) |
 | Real money at stake | Brenner restrictions cost Italy **€544 M a year** (Uniontrasporti; €463 M of it freight, the rest passengers). Southern blockades in Oct 2026: **> €400 M in 8 days** |
 | The law puts a price on waiting | Art. 6-bis D.Lgs. 286/2005 as amended by DL 73/2025 → L. 105/2025: **€100 per hour** beyond 90 minutes of waiting |

@@ -1,0 +1,79 @@
+{
+ "kind": "dosing",
+ "title": "AT: Lkw-Dosierung Kufstein-Nord Richtung Innsbruck (Dosierkalender Land Tirol)",
+ "summary": "Planned truck dosing at the Kufstein/Kiefersfelden crossing for southbound traffic from 05:00. No fixed trucks-per-hour figure; stopped as soon as it is no longer needed. End time 11:00 is our working assumption.",
+ "timezone": "Europe/Vienna",
+ "scope": {
+  "chokepoints": [
+   "kufstein"
+  ],
+  "direction": "southbound"
+ },
+ "applies": {
+  "min_weight_t": 7.5
+ },
+ "severity": "dosing",
+ "expected_delay_min": 120,
+ "source": {
+  "name": "Land Tirol - Dosierkalender (official PDF)",
+  "url": "https://www.tirol.gv.at/fileadmin/themen/verkehr/verkehrsrecht/downloads/2026/Dosierkalender_Q1_2027.pdf",
+  "note": "Dates copied from the official PDF on 2026-11-06. Unplanned extra days (15 in 2026 as of Aug) arrive as separate events."
+ },
+ "days": [
+  {
+   "date": "2027-01-07",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-01-11",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-01-18",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-01-25",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-02-01",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-02-08",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-02-15",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-02-22",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-03-01",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-03-08",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2027-03-15",
+   "start": "05:00",
+   "end": "11:00"
+  }
+ ]
+}

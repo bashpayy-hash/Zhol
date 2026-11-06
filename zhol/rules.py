@@ -101,7 +101,8 @@ def generate_ban_events(start: date, days: int = 3, countries: list[str] | None 
             for rule in spec["rules"]:
                 if not _in_season(rule, d) or not _day_matches(rule["days"], cc, d):
                     continue
-                key = (rule.get("kind", "calendar_ban"), tuple(rule.get("roads", [])), bool(rule.get("exempt_low_noise")))
+                key = (rule.get("kind", "calendar_ban"), tuple(rule.get("roads", [])), bool(rule.get("exempt_low_noise")),
+                       rule.get("direction", "both"))
                 ws, we = _window_for(d, rule["start"], rule["end"], tz)
                 title = rule["title"]
                 hn = holiday_name(cc, d)
@@ -110,12 +111,13 @@ def generate_ban_events(start: date, days: int = 3, countries: list[str] | None 
                 groups.setdefault(key, []).append((ws, we, title))
             for extra in spec.get("extra_dates", []):
                 if extra["date"] == d.isoformat():
-                    key = ("calendar_ban", tuple(extra.get("roads", [])), False)
+                    key = (extra.get("kind", "calendar_ban"), tuple(extra.get("roads", [])), False,
+                           extra.get("direction", "both"))
                     ws, we = _window_for(d, extra["start"], extra["end"], tz)
                     groups.setdefault(key, []).append((ws, we, extra.get("title", "Divieto straordinario")))
-        for (kind, roads, low_noise), wins in groups.items():
+        for (kind, roads, low_noise, direction), wins in groups.items():
             for ws, we, titles in _merge(wins):
-                digest = hashlib.sha1(f"{cc}|{kind}|{roads}|{ws.isoformat()}".encode()).hexdigest()[:10]
+                digest = hashlib.sha1(f"{cc}|{kind}|{roads}|{direction}|{ws.isoformat()}".encode()).hexdigest()[:10]
                 out.append(Event(
                     id=f"rule-{cc}-{digest}",
                     kind=kind,
@@ -123,7 +125,7 @@ def generate_ban_events(start: date, days: int = 3, countries: list[str] | None 
                     summary=(f"{spec['country_name']}: trucks > {spec['min_weight_t']:g} t may not drive "
                              f"{ws.strftime('%a %d %b %H:%M')} - {we.strftime('%a %d %b %H:%M')}"
                              + (f" on {', '.join(roads)}" if roads else "") + "."),
-                    scope=EventScope(countries=[cc], roads=list(roads)),
+                    scope=EventScope(countries=[cc], roads=list(roads), direction=direction),
                     windows=[Window(start=ws, end=we)],
                     applies=Applicability(
                         min_weight_t=float(spec["min_weight_t"]),

@@ -1,0 +1,174 @@
+{
+ "kind": "dosing",
+ "title": "AT: Lkw-Dosierung Kufstein-Nord Richtung Innsbruck (Dosierkalender Land Tirol)",
+ "summary": "Planned truck dosing at the Kufstein/Kiefersfelden crossing for southbound traffic from 05:00. No fixed trucks-per-hour figure; stopped as soon as it is no longer needed. End time 11:00 is our working assumption.",
+ "timezone": "Europe/Vienna",
+ "scope": {
+  "chokepoints": [
+   "kufstein"
+  ],
+  "direction": "southbound"
+ },
+ "applies": {
+  "min_weight_t": 7.5
+ },
+ "severity": "dosing",
+ "expected_delay_min": 120,
+ "source": {
+  "name": "Land Tirol - Dosierkalender (official PDF)",
+  "url": "https://www.tirol.gv.at/fileadmin/themen/verkehr/verkehrsrecht/downloads/2025/Dosierkalender_f%C3%BCr_das_Jahr_2026.pdf",
+  "note": "Dates copied from the official PDF on 2026-11-06. Unplanned extra days (15 in 2026 as of Aug) arrive as separate events."
+ },
+ "days": [
+  {
+   "date": "2026-01-07",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-02-02",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-02-09",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-02-16",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-02-23",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-03-02",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-03-09",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-03-16",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-05-15",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-05-26",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-05-27",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-05-28",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-06-01",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-06-05",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-06-08",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-07-06",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-07-13",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-07-20",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-07-27",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-09-07",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-09-14",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-09-21",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-09-28",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-10-05",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-10-27",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-11-04",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-11-11",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-11-18",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-11-25",
+   "start": "05:00",
+   "end": "11:00"
+  },
+  {
+   "date": "2026-12-09",
+   "start": "05:00",
+   "end": "11:00"
+  }
+ ]
+}

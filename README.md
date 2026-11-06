@@ -31,7 +31,7 @@
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m pytest -q                 # 28 тестов
+python -m pytest -q                 # 31 тест
 python -m zhol demo sicily          # кейс из деки: забастовка на Сицилии, 18 окт 2026
 python -m zhol demo brenner         # Бреннер: дозирование в Куфштайне, ночной запрет A12, закрытие Фрежюса
 python -m zhol serve                # веб-консоль на http://127.0.0.1:8000
@@ -64,7 +64,7 @@ API-документация: `http://127.0.0.1:8000/docs`. Настройки (
 ```
 zhol/            код: models, rules, engine, composer, pipeline, api, ingest/, channels/, data/
 web/             консоль (HTML/CSS/JS без сборки, токены из design/variables.css)
-tests/           28 тестов + фикстура DATEX II
+tests/           31 тест + фикстура DATEX II
 docs/            ответы на фидбэк: рынок, конкуренты, бизнес-модель, архитектура, GTM, план валидации
 outreach/        письма и скрипты по-итальянски + трекер лидов
 design/          дизайн-система (DESIGN.md, tokens.json, variables.css, theme.css)
@@ -81,7 +81,7 @@ design/          дизайн-система (DESIGN.md, tokens.json, variables.
    - бесплатная регистрация на CCISS (DATEX II Италии);
    - запрос доступа к ASFINAG / mobilitydata.gv.at;
    - вбить календарь дозирования Тироля по шаблону `zhol/data/calendars/examples/`.
-4. **Сверить источники**: итальянский декрет 2026 (Allegato A) и тарифы WhatsApp для Италии сверить с первоисточником. Цифры собраны из вторичных источников 6 ноября 2026; где мы не уверены, это помечено.
+4. **Источники**: ключевые факты сверены с первоисточниками — лог в [docs/07-source-verification.md](docs/07-source-verification.md). С вашего ноутбука осталось скачать: итальянский декрет (сайт MIT не открывается из облака) и календарь Luegbrücke от ASFINAG (блокирует облачные IP). В декабре внести декрет MIT на 2027 год.
 5. **Начать аутрич**: [outreach/README.md](outreach/README.md).
 
 ## Честно о данных

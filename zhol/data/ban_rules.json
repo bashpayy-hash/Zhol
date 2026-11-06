@@ -1,145 +1,1506 @@
 {
-  "_note": "Deterministic truck driving bans. A person checks each country block against the official source once a year (field 'verified'). Day selectors: monday..sunday, daily, holiday, eve_of_holiday, sunday_or_holiday. Times are local; end '24:00' = midnight; end < start = crosses midnight. Optional filters: 'months', 'date_from'/'date_to' (MM-DD), 'years', 'except_years'. 'extra_dates' encode decree-specific days.",
-  "IT": {
-    "country_name": "Italia",
-    "timezone": "Europe/Rome",
-    "min_weight_t": 7.5,
-    "exempt_cargo": ["perishable", "live_animals", "pharma"],
-    "inbound_start_delay_h": 4,
-    "outbound_end_advance_h": 2,
-    "source": {"name": "DM MIT n. 325 del 12/12/2025 (GU n. 302 del 31/12/2025) - calendario divieti mezzi pesanti 2026", "url": "https://www.mit.gov.it/normativa/decreto-ministeriale-n-325-del-12-dicembre-2025"},
-    "verified": "2026 dates encoded from secondary copies of DM 325/2025 (Volvo Trucks IT, Confcommercio Vicenza, FERCAM). Re-check against Allegato A before the pilot. 07-04 and 05-30 09-14 windows unconfirmed, not encoded.",
-    "notes": [
-      "Perishables are exempt only with the green panel with a black 'd' (50x40 cm) and documentation.",
-      "Vehicles arriving from abroad with documentation: ban starts 4h later. Vehicles going abroad: ban ends 2h earlier.",
-      "Sicily/Sardinia ferry connections have dedicated derogations (sources conflict) - handled as a manual note.",
-      "ADR classes 1 and 7 have a separate summer ban (23 May - 6 Sep), not modelled."
-    ],
-    "rules": [
-      {"id": "IT-SUN-OCT-MAY", "days": "sunday", "months": [1, 2, 3, 4, 5, 10, 11, 12], "start": "09:00", "end": "22:00", "title": "Divieto domenicale mezzi pesanti >7,5t"},
-      {"id": "IT-SUN-JUN-SEP", "days": "sunday", "months": [6, 7, 8, 9], "start": "07:00", "end": "22:00", "title": "Divieto domenicale estivo mezzi pesanti >7,5t"},
-      {"id": "IT-HOL-GENERIC", "days": "holiday", "except_years": [2026], "start": "09:00", "end": "22:00", "title": "Divieto festivo mezzi pesanti >7,5t (regola generica, verificare decreto)"}
-    ],
-    "extra_dates": [
-      {"date": "2026-01-01", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Capodanno"},
-      {"date": "2026-01-06", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Epifania"},
-      {"date": "2026-04-03", "start": "14:00", "end": "22:00", "title": "Divieto - Venerdì Santo"},
-      {"date": "2026-04-04", "start": "09:00", "end": "16:00", "title": "Divieto - Sabato Santo"},
-      {"date": "2026-04-06", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Pasquetta"},
-      {"date": "2026-04-25", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Liberazione"},
-      {"date": "2026-05-01", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Festa del Lavoro"},
-      {"date": "2026-06-02", "start": "07:00", "end": "22:00", "title": "Divieto festivo - Festa della Repubblica"},
-      {"date": "2026-07-04", "start": "08:00", "end": "16:00", "title": "Divieto estivo sabato"},
-      {"date": "2026-07-11", "start": "08:00", "end": "16:00", "title": "Divieto estivo sabato"},
-      {"date": "2026-07-18", "start": "08:00", "end": "16:00", "title": "Divieto estivo sabato"},
-      {"date": "2026-07-24", "start": "16:00", "end": "22:00", "title": "Divieto estivo venerdì"},
-      {"date": "2026-07-25", "start": "08:00", "end": "16:00", "title": "Divieto estivo sabato"},
-      {"date": "2026-07-31", "start": "16:00", "end": "22:00", "title": "Divieto estivo venerdì"},
-      {"date": "2026-08-01", "start": "08:00", "end": "22:00", "title": "Divieto estivo sabato (esodo)"},
-      {"date": "2026-08-07", "start": "16:00", "end": "22:00", "title": "Divieto estivo venerdì"},
-      {"date": "2026-08-08", "start": "08:00", "end": "22:00", "title": "Divieto estivo sabato (esodo)"},
-      {"date": "2026-08-14", "start": "16:00", "end": "22:00", "title": "Divieto estivo venerdì"},
-      {"date": "2026-08-15", "start": "07:00", "end": "22:00", "title": "Divieto festivo - Ferragosto"},
-      {"date": "2026-08-22", "start": "08:00", "end": "16:00", "title": "Divieto estivo sabato"},
-      {"date": "2026-08-29", "start": "08:00", "end": "16:00", "title": "Divieto estivo sabato"},
-      {"date": "2026-12-08", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Immacolata"},
-      {"date": "2026-12-25", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Natale"},
-      {"date": "2026-12-26", "start": "09:00", "end": "22:00", "title": "Divieto festivo - Santo Stefano"}
-    ]
+ "_note": "Deterministic truck driving bans. A person checks each country block against the official source once a year (field 'verified'). Day selectors: monday..sunday, daily, holiday, eve_of_holiday, sunday_or_holiday. Times are local; end '24:00' = midnight; end < start = crosses midnight. Optional filters: 'months', 'date_from'/'date_to' (MM-DD), 'years', 'except_years'. 'extra_dates' encode decree-specific days.",
+ "IT": {
+  "country_name": "Italia",
+  "timezone": "Europe/Rome",
+  "min_weight_t": 7.5,
+  "exempt_cargo": [
+   "perishable",
+   "live_animals",
+   "pharma"
+  ],
+  "inbound_start_delay_h": 4,
+  "outbound_end_advance_h": 2,
+  "source": {
+   "name": "DM MIT n. 325 del 12/12/2025 (GU n. 302 del 31/12/2025) - calendario divieti mezzi pesanti 2026",
+   "url": "https://www.mit.gov.it/normativa/decreto-ministeriale-n-325-del-12-dicembre-2025"
   },
-  "AT": {
-    "country_name": "Österreich",
-    "timezone": "Europe/Vienna",
-    "min_weight_t": 7.5,
-    "exempt_cargo": ["perishable", "live_animals"],
-    "source": {"name": "§42 StVO (Wochenend-/Feiertagsfahrverbot), Nachtfahrverbot; Tiroler Verordnungen A12 - Übersicht WKO", "url": "https://www.wko.at/transport/lkw-fahrverbote-oesterreich-ueberblick"},
-    "verified": "Weekend/holiday windows confirmed (WKO). Low-noise exemption for the general night ban and A12 Euro-class exemptions to re-check in RIS.",
-    "notes": [
-      "Applies to lorries >7.5t and lorries with trailer where either part >3.5t.",
-      "A12 sectoral driving ban (listed goods) not modelled yet - goods list to encode from the Tyrol ordinance.",
-      "Luegbrücke (A13): single lane per direction since 1 Jan 2025, extra southbound bans per ASFINAG Fahrkalender - ingested as events."
+  "verified": "2026 dates encoded from secondary copies of DM 325/2025 (Volvo Trucks IT, Confcommercio Vicenza, FERCAM). Re-check against Allegato A before the pilot. 07-04 and 05-30 09-14 windows unconfirmed, not encoded.",
+  "notes": [
+   "Perishables are exempt only with the green panel with a black 'd' (50x40 cm) and documentation.",
+   "Vehicles arriving from abroad with documentation: ban starts 4h later. Vehicles going abroad: ban ends 2h earlier.",
+   "Sicily/Sardinia ferry connections have dedicated derogations (sources conflict) - handled as a manual note.",
+   "ADR classes 1 and 7 have a separate summer ban (23 May - 6 Sep), not modelled."
+  ],
+  "rules": [
+   {
+    "id": "IT-SUN-OCT-MAY",
+    "days": "sunday",
+    "months": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     10,
+     11,
+     12
     ],
-    "rules": [
-      {"id": "AT-SAT", "days": "saturday", "start": "15:00", "end": "24:00", "title": "Wochenendfahrverbot Lkw >7,5t (Samstag)"},
-      {"id": "AT-SUN-HOL", "days": "sunday_or_holiday", "start": "00:00", "end": "22:00", "title": "Sonn- und Feiertagsfahrverbot Lkw >7,5t"},
-      {"id": "AT-NIGHT", "kind": "night_ban", "days": "daily", "start": "22:00", "end": "05:00", "exempt_low_noise": true, "title": "Nachtfahrverbot Lkw >7,5t (lärmarme Lkw ausgenommen)"},
-      {"id": "AT-A12-NIGHT-WINTER-WD", "kind": "night_ban", "days": "not_sunday_or_holiday", "months": [1, 2, 3, 4, 11, 12], "start": "20:00", "end": "05:00", "roads": ["A12"], "title": "A12 Inntal Nachtfahrverbot (Winter, Mo-Sa ab 20:00)"},
-      {"id": "AT-A12-NIGHT-WINTER-SUN", "kind": "night_ban", "days": "sunday_or_holiday", "months": [1, 2, 3, 4, 11, 12], "start": "23:00", "end": "05:00", "roads": ["A12"], "title": "A12 Inntal Nachtfahrverbot (Winter, So/Feiertag ab 23:00)"},
-      {"id": "AT-A12-NIGHT-SUMMER", "kind": "night_ban", "days": "daily", "months": [5, 6, 7, 8, 9, 10], "start": "22:00", "end": "05:00", "roads": ["A12"], "title": "A12 Inntal Nachtfahrverbot (Sommer)"},
-      {"id": "AT-SUMMER-SAT-2026", "days": "saturday", "years": [2026], "date_from": "07-04", "date_to": "09-05", "start": "08:00", "end": "15:00", "roads": ["A12", "A13", "A10", "A9", "A2", "A14"], "title": "Sommer-Wochenendfahrverbot (ausgewählte Strecken)"}
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto domenicale mezzi pesanti >7,5t"
+   },
+   {
+    "id": "IT-SUN-JUN-SEP",
+    "days": "sunday",
+    "months": [
+     6,
+     7,
+     8,
+     9
     ],
-    "extra_dates": []
+    "start": "07:00",
+    "end": "22:00",
+    "title": "Divieto domenicale estivo mezzi pesanti >7,5t"
+   },
+   {
+    "id": "IT-HOL-GENERIC",
+    "days": "holiday",
+    "except_years": [
+     2026
+    ],
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo mezzi pesanti >7,5t (regola generica, verificare decreto)"
+   }
+  ],
+  "extra_dates": [
+   {
+    "date": "2026-01-01",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Capodanno"
+   },
+   {
+    "date": "2026-01-06",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Epifania"
+   },
+   {
+    "date": "2026-04-03",
+    "start": "14:00",
+    "end": "22:00",
+    "title": "Divieto - Venerdì Santo"
+   },
+   {
+    "date": "2026-04-04",
+    "start": "09:00",
+    "end": "16:00",
+    "title": "Divieto - Sabato Santo"
+   },
+   {
+    "date": "2026-04-06",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Pasquetta"
+   },
+   {
+    "date": "2026-04-25",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Liberazione"
+   },
+   {
+    "date": "2026-05-01",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Festa del Lavoro"
+   },
+   {
+    "date": "2026-06-02",
+    "start": "07:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Festa della Repubblica"
+   },
+   {
+    "date": "2026-07-04",
+    "start": "08:00",
+    "end": "16:00",
+    "title": "Divieto estivo sabato"
+   },
+   {
+    "date": "2026-07-11",
+    "start": "08:00",
+    "end": "16:00",
+    "title": "Divieto estivo sabato"
+   },
+   {
+    "date": "2026-07-18",
+    "start": "08:00",
+    "end": "16:00",
+    "title": "Divieto estivo sabato"
+   },
+   {
+    "date": "2026-07-24",
+    "start": "16:00",
+    "end": "22:00",
+    "title": "Divieto estivo venerdì"
+   },
+   {
+    "date": "2026-07-25",
+    "start": "08:00",
+    "end": "16:00",
+    "title": "Divieto estivo sabato"
+   },
+   {
+    "date": "2026-07-31",
+    "start": "16:00",
+    "end": "22:00",
+    "title": "Divieto estivo venerdì"
+   },
+   {
+    "date": "2026-08-01",
+    "start": "08:00",
+    "end": "22:00",
+    "title": "Divieto estivo sabato (esodo)"
+   },
+   {
+    "date": "2026-08-07",
+    "start": "16:00",
+    "end": "22:00",
+    "title": "Divieto estivo venerdì"
+   },
+   {
+    "date": "2026-08-08",
+    "start": "08:00",
+    "end": "22:00",
+    "title": "Divieto estivo sabato (esodo)"
+   },
+   {
+    "date": "2026-08-14",
+    "start": "16:00",
+    "end": "22:00",
+    "title": "Divieto estivo venerdì"
+   },
+   {
+    "date": "2026-08-15",
+    "start": "07:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Ferragosto"
+   },
+   {
+    "date": "2026-08-22",
+    "start": "08:00",
+    "end": "16:00",
+    "title": "Divieto estivo sabato"
+   },
+   {
+    "date": "2026-08-29",
+    "start": "08:00",
+    "end": "16:00",
+    "title": "Divieto estivo sabato"
+   },
+   {
+    "date": "2026-12-08",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Immacolata"
+   },
+   {
+    "date": "2026-12-25",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Natale"
+   },
+   {
+    "date": "2026-12-26",
+    "start": "09:00",
+    "end": "22:00",
+    "title": "Divieto festivo - Santo Stefano"
+   }
+  ]
+ },
+ "AT": {
+  "country_name": "Österreich",
+  "timezone": "Europe/Vienna",
+  "min_weight_t": 7.5,
+  "exempt_cargo": [
+   "perishable",
+   "live_animals"
+  ],
+  "source": {
+   "name": "WKO - Lkw-Fahrverbote in Österreich (Stand 10.08.2026); §42 StVO; LGBl. 64/2010 idF 141/2021 (A12 Nacht); BGBl. II 338/2025, 70/2026, 77/2026, 190/2026",
+   "url": "https://www.wko.at/transport/lkw-fahrverbote-oesterreich-ueberblick"
   },
-  "DE": {
-    "country_name": "Deutschland",
-    "timezone": "Europe/Berlin",
-    "min_weight_t": 7.5,
-    "exempt_cargo": ["perishable", "live_animals"],
-    "source": {"name": "StVO §30 Abs. 3 + Ferienreiseverordnung (BGL Infoblatt 2026)", "url": "https://www.gesetze-im-internet.de/stvo_2013/__30.html"},
-    "verified": "Windows confirmed (StVO, FerReiseV). Länder holidays not modelled.",
-    "rules": [
-      {"id": "DE-SUN-HOL", "days": "sunday_or_holiday", "start": "00:00", "end": "22:00", "title": "Sonn- und Feiertagsfahrverbot Lkw >7,5t"},
-      {"id": "DE-SUMMER-SAT", "days": "saturday", "date_from": "07-01", "date_to": "08-31", "start": "07:00", "end": "20:00", "roads": ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A45", "A61", "A67", "A81", "A92", "A93", "A96", "A99"], "title": "Ferienreiseverordnung (Samstage Juli/August)"}
+  "verified": "Checked against WKO pages (Stand 10.08.2026) on 2026-11-06: night ban 22-5 with L-plate exemption; weekend Sat 15 - Sun 22, holidays 0-22; A12 night ban by season; 2026 Luegbrücke, A13, A12/A13, A10 and A4 calendars encoded with direction.",
+  "notes": [
+   "Weekend/holiday ban also applies to lorries with trailer where the lorry or trailer exceeds 3.5 t.",
+   "Fresh food (fruit/veg, dairy, meat, fish, eggs, bakery...) is exempt from the weekend ban with consignment note; empty return trips for their packaging too.",
+   "A12 night ban (km 6.35 Langkampfen - km 90 Zirl): Euro VI exempt only when loading/unloading in the core zone; transit is not exempt.",
+   "A12 sectoral ban (listed goods, km 6.35-72) not modelled yet.",
+   "Directional calendars apply when the destination is reached via the named section (e.g. towards Italy over the Brenner)."
+  ],
+  "rules": [
+   {
+    "id": "AT-SAT",
+    "days": "saturday",
+    "start": "15:00",
+    "end": "24:00",
+    "title": "Wochenendfahrverbot Lkw >7,5t (Samstag)"
+   },
+   {
+    "id": "AT-SUN-HOL",
+    "days": "sunday_or_holiday",
+    "start": "00:00",
+    "end": "22:00",
+    "title": "Sonn- und Feiertagsfahrverbot Lkw >7,5t"
+   },
+   {
+    "id": "AT-NIGHT",
+    "kind": "night_ban",
+    "days": "daily",
+    "start": "22:00",
+    "end": "05:00",
+    "exempt_low_noise": true,
+    "title": "Nachtfahrverbot Lkw >7,5t (lärmarme Lkw ausgenommen)"
+   },
+   {
+    "id": "AT-A12-NIGHT-WINTER-WD",
+    "kind": "night_ban",
+    "days": "not_sunday_or_holiday",
+    "months": [
+     1,
+     2,
+     3,
+     4,
+     11,
+     12
     ],
-    "extra_dates": []
+    "start": "20:00",
+    "end": "05:00",
+    "roads": [
+     "A12"
+    ],
+    "title": "A12 Inntal Nachtfahrverbot (Winter, Mo-Sa ab 20:00)"
+   },
+   {
+    "id": "AT-A12-NIGHT-WINTER-SUN",
+    "kind": "night_ban",
+    "days": "sunday_or_holiday",
+    "months": [
+     1,
+     2,
+     3,
+     4,
+     11,
+     12
+    ],
+    "start": "23:00",
+    "end": "05:00",
+    "roads": [
+     "A12"
+    ],
+    "title": "A12 Inntal Nachtfahrverbot (Winter, So/Feiertag ab 23:00)"
+   },
+   {
+    "id": "AT-A12-NIGHT-SUMMER",
+    "kind": "night_ban",
+    "days": "not_sunday_or_holiday",
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "start": "22:00",
+    "end": "05:00",
+    "roads": [
+     "A12"
+    ],
+    "title": "A12 Inntal Nachtfahrverbot (Mai-Okt, werktags 22-5)"
+   },
+   {
+    "id": "AT-A12-NIGHT-SUMMER-SUN",
+    "kind": "night_ban",
+    "days": "sunday_or_holiday",
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "start": "23:00",
+    "end": "05:00",
+    "roads": [
+     "A12"
+    ],
+    "title": "A12 Inntal Nachtfahrverbot (Mai-Okt, So/Feiertag 23-5)"
+   }
+  ],
+  "extra_dates": [
+   {
+    "date": "2026-01-10",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-01-17",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-01-24",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-01-31",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-02-07",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-02-14",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-02-21",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-02-28",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-03-07",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-03-14",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-03-28",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-05-23",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-05-30",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-06-06",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-06-27",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-07-04",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-07-11",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-07-18",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-07-25",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-08-01",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-08-08",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-08-15",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-08-22",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-08-29",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-09-05",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-09-12",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-09-19",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-09-26",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-10-03",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien (Samstag)"
+   },
+   {
+    "date": "2026-04-02",
+    "start": "07:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien"
+   },
+   {
+    "date": "2026-04-03",
+    "start": "07:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien"
+   },
+   {
+    "date": "2026-05-13",
+    "start": "07:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien"
+   },
+   {
+    "date": "2026-05-22",
+    "start": "07:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien"
+   },
+   {
+    "date": "2026-06-03",
+    "start": "07:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien"
+   },
+   {
+    "date": "2026-10-02",
+    "start": "07:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13",
+     "A14"
+    ],
+    "direction": "southbound",
+    "title": "Lkw-Fahrverbot Luegbrücke Richtung Italien"
+   },
+   {
+    "date": "2026-01-10",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-01-17",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-01-24",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-01-31",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-02-07",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-02-14",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-02-21",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-02-28",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-03-07",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-03-14",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-04-04",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-07-04",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-07-11",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-07-18",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-07-25",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-08-01",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-08-08",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-08-15",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-08-22",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-08-29",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck (Samstag)"
+   },
+   {
+    "date": "2026-04-10",
+    "start": "07:00",
+    "end": "22:00",
+    "roads": [
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Lkw-Fahrverbot A13 Richtung Innsbruck"
+   },
+   {
+    "date": "2026-04-04",
+    "start": "11:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13"
+    ],
+    "direction": "southbound",
+    "title": "Fahrverbotskalender A12/A13 (Ziel Italien)"
+   },
+   {
+    "date": "2026-04-25",
+    "start": "11:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13"
+    ],
+    "direction": "southbound",
+    "title": "Fahrverbotskalender A12/A13 (Ziel Italien)"
+   },
+   {
+    "date": "2026-06-02",
+    "start": "09:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13"
+    ],
+    "direction": "southbound",
+    "title": "Fahrverbotskalender A12/A13 (Ziel Italien)"
+   },
+   {
+    "date": "2026-04-03",
+    "start": "00:00",
+    "end": "22:00",
+    "roads": [
+     "A12",
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Fahrverbotskalender A12/A13 (Ziel Deutschland)"
+   },
+   {
+    "date": "2026-10-03",
+    "start": "00:00",
+    "end": "15:00",
+    "roads": [
+     "A12",
+     "A13"
+    ],
+    "direction": "northbound",
+    "title": "Fahrverbotskalender A12/A13 (Ziel Deutschland)"
+   },
+   {
+    "date": "2026-07-11",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-07-18",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-07-25",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-08-01",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-08-08",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-08-22",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-08-29",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-09-05",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "southbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Villach"
+   },
+   {
+    "date": "2026-07-18",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-07-25",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-08-01",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-08-08",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-08-22",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-08-29",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-09-05",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-09-12",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-09-19",
+    "start": "07:00",
+    "end": "15:00",
+    "roads": [
+     "A10"
+    ],
+    "direction": "northbound",
+    "title": "A10 Tauern Sommer-Fahrverbot Richtung Salzburg"
+   },
+   {
+    "date": "2026-07-04",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-07-11",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-07-18",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-07-25",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-08-01",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-08-08",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-08-15",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-08-22",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-08-29",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   },
+   {
+    "date": "2026-09-05",
+    "start": "08:00",
+    "end": "15:00",
+    "roads": [
+     "A4"
+    ],
+    "direction": "both",
+    "title": "A4 Ost Sommer-Fahrverbot (Samstag)"
+   }
+  ]
+ },
+ "DE": {
+  "country_name": "Deutschland",
+  "timezone": "Europe/Berlin",
+  "min_weight_t": 7.5,
+  "exempt_cargo": [
+   "perishable",
+   "live_animals"
+  ],
+  "source": {
+   "name": "StVO §30 Abs. 3 + Ferienreiseverordnung (BGL Infoblatt 2026)",
+   "url": "https://www.gesetze-im-internet.de/stvo_2013/__30.html"
   },
-  "CH": {
-    "country_name": "Schweiz",
-    "timezone": "Europe/Zurich",
-    "min_weight_t": 3.5,
-    "exempt_cargo": [],
-    "source": {"name": "SVG Art. 2 Abs. 2, VRV Art. 91-92 - Nacht- und Sonntagsfahrverbot", "url": "https://www.fedlex.admin.ch/eli/cc/1962/1364_1409_1420/de"},
-    "verified": "Windows confirmed. Perishables need a permit (Art. 92) - not exempt by default. Cantonal holidays not modelled.",
-    "rules": [
-      {"id": "CH-NIGHT", "kind": "night_ban", "days": "daily", "start": "22:00", "end": "05:00", "title": "Nachtfahrverbot >3,5t"},
-      {"id": "CH-SUN-HOL", "days": "sunday_or_holiday", "start": "00:00", "end": "24:00", "title": "Sonn- und Feiertagsfahrverbot >3,5t"}
+  "verified": "Windows confirmed (StVO, FerReiseV). Länder holidays not modelled.",
+  "rules": [
+   {
+    "id": "DE-SUN-HOL",
+    "days": "sunday_or_holiday",
+    "start": "00:00",
+    "end": "22:00",
+    "title": "Sonn- und Feiertagsfahrverbot Lkw >7,5t"
+   },
+   {
+    "id": "DE-SUMMER-SAT",
+    "days": "saturday",
+    "date_from": "07-01",
+    "date_to": "08-31",
+    "start": "07:00",
+    "end": "20:00",
+    "roads": [
+     "A1",
+     "A2",
+     "A3",
+     "A4",
+     "A5",
+     "A6",
+     "A7",
+     "A8",
+     "A9",
+     "A10",
+     "A45",
+     "A61",
+     "A67",
+     "A81",
+     "A92",
+     "A93",
+     "A96",
+     "A99"
     ],
-    "extra_dates": []
+    "title": "Ferienreiseverordnung (Samstage Juli/August)"
+   }
+  ],
+  "extra_dates": []
+ },
+ "CH": {
+  "country_name": "Schweiz",
+  "timezone": "Europe/Zurich",
+  "min_weight_t": 3.5,
+  "exempt_cargo": [],
+  "source": {
+   "name": "SVG Art. 2 Abs. 2, VRV Art. 91-92 - Nacht- und Sonntagsfahrverbot",
+   "url": "https://www.fedlex.admin.ch/eli/cc/1962/1364_1409_1420/de"
   },
-  "FR": {
-    "country_name": "France",
-    "timezone": "Europe/Paris",
-    "min_weight_t": 7.5,
-    "exempt_cargo": ["perishable", "live_animals"],
-    "source": {"name": "Arrêté du 16 avril 2021 + arrêté du 26 décembre 2025 (calendrier 2026, Bison Futé)", "url": "https://www.bison-fute.gouv.fr/brochure-poids-lourds.html"},
-    "verified": "Weekly and holiday windows confirmed; 2026 summer Saturdays from the Bison Futé brochure. Exemption details to re-check in the arrêté annex.",
-    "rules": [
-      {"id": "FR-SAT-NIGHT", "days": "saturday", "start": "22:00", "end": "24:00", "title": "Interdiction PL >7,5t (samedi 22h)"},
-      {"id": "FR-SUN", "days": "sunday", "start": "00:00", "end": "22:00", "title": "Interdiction PL >7,5t (dimanche)"},
-      {"id": "FR-EVE-HOL", "days": "eve_of_holiday", "start": "22:00", "end": "24:00", "title": "Interdiction PL >7,5t (veille de jour férié)"},
-      {"id": "FR-HOL", "days": "holiday", "start": "00:00", "end": "22:00", "title": "Interdiction PL >7,5t (jour férié)"}
-    ],
-    "extra_dates": [
-      {"date": "2026-07-11", "start": "07:00", "end": "19:00", "title": "Samedi rouge estival"},
-      {"date": "2026-07-18", "start": "07:00", "end": "19:00", "title": "Samedi rouge estival"},
-      {"date": "2026-07-25", "start": "07:00", "end": "19:00", "title": "Samedi rouge estival"},
-      {"date": "2026-08-01", "start": "07:00", "end": "19:00", "title": "Samedi rouge estival"},
-      {"date": "2026-08-08", "start": "07:00", "end": "19:00", "title": "Samedi rouge estival"}
-    ]
+  "verified": "Windows confirmed. Perishables need a permit (Art. 92) - not exempt by default. Cantonal holidays not modelled.",
+  "rules": [
+   {
+    "id": "CH-NIGHT",
+    "kind": "night_ban",
+    "days": "daily",
+    "start": "22:00",
+    "end": "05:00",
+    "title": "Nachtfahrverbot >3,5t"
+   },
+   {
+    "id": "CH-SUN-HOL",
+    "days": "sunday_or_holiday",
+    "start": "00:00",
+    "end": "24:00",
+    "title": "Sonn- und Feiertagsfahrverbot >3,5t"
+   }
+  ],
+  "extra_dates": []
+ },
+ "FR": {
+  "country_name": "France",
+  "timezone": "Europe/Paris",
+  "min_weight_t": 7.5,
+  "exempt_cargo": [
+   "perishable",
+   "live_animals"
+  ],
+  "source": {
+   "name": "Arrêté du 16 avril 2021 + arrêté du 26 décembre 2025 (calendrier 2026, Bison Futé)",
+   "url": "https://www.bison-fute.gouv.fr/brochure-poids-lourds.html"
   },
-  "SI": {
-    "country_name": "Slovenija",
-    "timezone": "Europe/Ljubljana",
-    "min_weight_t": 7.5,
-    "exempt_cargo": ["perishable", "live_animals"],
-    "source": {"name": "Uredba o omejitvah prometa tovornih vozil (promet.si)", "url": "https://www.promet.si/"},
-    "verified": "draft - not yet checked against the official text",
-    "rules": [
-      {"id": "SI-SUN-HOL", "days": "sunday_or_holiday", "start": "08:00", "end": "22:00", "title": "Omejitev prometa tovornih vozil >7,5t"}
-    ],
-    "extra_dates": []
+  "verified": "Weekly and holiday windows confirmed; 2026 summer Saturdays from the Bison Futé brochure. Exemption details to re-check in the arrêté annex.",
+  "rules": [
+   {
+    "id": "FR-SAT-NIGHT",
+    "days": "saturday",
+    "start": "22:00",
+    "end": "24:00",
+    "title": "Interdiction PL >7,5t (samedi 22h)"
+   },
+   {
+    "id": "FR-SUN",
+    "days": "sunday",
+    "start": "00:00",
+    "end": "22:00",
+    "title": "Interdiction PL >7,5t (dimanche)"
+   },
+   {
+    "id": "FR-EVE-HOL",
+    "days": "eve_of_holiday",
+    "start": "22:00",
+    "end": "24:00",
+    "title": "Interdiction PL >7,5t (veille de jour férié)"
+   },
+   {
+    "id": "FR-HOL",
+    "days": "holiday",
+    "start": "00:00",
+    "end": "22:00",
+    "title": "Interdiction PL >7,5t (jour férié)"
+   }
+  ],
+  "extra_dates": [
+   {
+    "date": "2026-07-11",
+    "start": "07:00",
+    "end": "19:00",
+    "title": "Samedi rouge estival"
+   },
+   {
+    "date": "2026-07-18",
+    "start": "07:00",
+    "end": "19:00",
+    "title": "Samedi rouge estival"
+   },
+   {
+    "date": "2026-07-25",
+    "start": "07:00",
+    "end": "19:00",
+    "title": "Samedi rouge estival"
+   },
+   {
+    "date": "2026-08-01",
+    "start": "07:00",
+    "end": "19:00",
+    "title": "Samedi rouge estival"
+   },
+   {
+    "date": "2026-08-08",
+    "start": "07:00",
+    "end": "19:00",
+    "title": "Samedi rouge estival"
+   }
+  ]
+ },
+ "SI": {
+  "country_name": "Slovenija",
+  "timezone": "Europe/Ljubljana",
+  "min_weight_t": 7.5,
+  "exempt_cargo": [
+   "perishable",
+   "live_animals"
+  ],
+  "source": {
+   "name": "Uredba o omejitvah prometa tovornih vozil (promet.si)",
+   "url": "https://www.promet.si/"
   },
-  "PL": {
-    "country_name": "Polska",
-    "timezone": "Europe/Warsaw",
-    "min_weight_t": 12.0,
-    "exempt_cargo": ["perishable", "live_animals"],
-    "source": {"name": "Rozporządzenie w sprawie ograniczeń ruchu pojazdów >12t (gov.pl)", "url": "https://www.gov.pl/"},
-    "verified": "draft - not yet checked; summer weekend bans not modelled",
-    "rules": [
-      {"id": "PL-EVE-HOL", "days": "eve_of_holiday", "start": "18:00", "end": "22:00", "title": "Zakaz ruchu >12t (dzień przed świętem)"},
-      {"id": "PL-HOL", "days": "holiday", "start": "08:00", "end": "22:00", "title": "Zakaz ruchu >12t (święto)"}
-    ],
-    "extra_dates": []
-  }
+  "verified": "draft - not yet checked against the official text",
+  "rules": [
+   {
+    "id": "SI-SUN-HOL",
+    "days": "sunday_or_holiday",
+    "start": "08:00",
+    "end": "22:00",
+    "title": "Omejitev prometa tovornih vozil >7,5t"
+   }
+  ],
+  "extra_dates": []
+ },
+ "PL": {
+  "country_name": "Polska",
+  "timezone": "Europe/Warsaw",
+  "min_weight_t": 12.0,
+  "exempt_cargo": [
+   "perishable",
+   "live_animals"
+  ],
+  "source": {
+   "name": "Rozporządzenie w sprawie ograniczeń ruchu pojazdów >12t (gov.pl)",
+   "url": "https://www.gov.pl/"
+  },
+  "verified": "draft - not yet checked; summer weekend bans not modelled",
+  "rules": [
+   {
+    "id": "PL-EVE-HOL",
+    "days": "eve_of_holiday",
+    "start": "18:00",
+    "end": "22:00",
+    "title": "Zakaz ruchu >12t (dzień przed świętem)"
+   },
+   {
+    "id": "PL-HOL",
+    "days": "holiday",
+    "start": "08:00",
+    "end": "22:00",
+    "title": "Zakaz ruchu >12t (święto)"
+   }
+  ],
+  "extra_dates": []
+ }
 }

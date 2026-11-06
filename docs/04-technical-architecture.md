@@ -49,19 +49,19 @@ Code map:
 | Evening run, reply loop | `zhol/pipeline.py` |
 | Savings model, savings ledger | `zhol/savings.py` |
 | API + web console + webhook | `zhol/api.py`, `web/` |
-| Tests (28) | `tests/` |
+| Tests (31) | `tests/` |
 
 ## 4.3 Data sources
 
 | Source | Content | Format / access | How zhol uses it | Status |
 |---|---|---|---|---|
 | MIT decree (DM 325 of 12/12/2025, GU 302 of 31/12/2025) | Italian truck-ban calendar 2026: 80 ban days, times, modifiers (+4 h inbound, −2 h outbound), "d" exemption for perishables | PDF | Encoded in `ban_rules.json` | ✔ 2026 encoded from secondary copies; re-check Allegato A |
-| §42 StVO, Tyrol ordinances (WKO overview) | Austria: Saturday 15–24, Sunday/holiday 0–22, night 22–05, A12 winter night ban from 20:00 | Law text | `ban_rules.json` | ✔ |
+| §42 StVO, Tyrol ordinances (WKO overview, Stand 10.08.2026) | Austria: Saturday 15–24, Sunday/holiday 0–22, night 22–05 (L-plate exempt), A12 night ban by season, 2026 Luegbrücke / A13 / A10 calendars with direction | Law text | `ban_rules.json` | ✔ checked at source |
 | StVO §30, Ferienreiseverordnung | Germany: Sunday/holiday 0–22; Saturdays Jul–Aug 7–20 on listed motorways | Law text | `ban_rules.json` | ✔ |
 | SVG / VRV Art. 91 | Switzerland: night 22–05, Sunday 0–24, > 3.5 t | Law text | `ban_rules.json` | ✔ |
 | Arrêté 16 Apr 2021, 2026 calendar (Bison Futé) | France: Sat 22 → Sun 22, eve of holiday, summer Saturdays | Law text, PDF | `ban_rules.json` | ✔ |
-| Land Tirol *Dosierkalender* | Kufstein-Nord dosing days (30 planned in 2026) | PDF, per half-year | Hand-encoded JSON, `zhol/data/calendars/` | template ready |
-| ASFINAG Luegbrücke *Fahrkalender* | Single-lane days, extra southbound truck bans | PDF | Hand-encoded JSON | template ready |
+| Land Tirol *Dosierkalender* | Kufstein-Nord dosing days (30 planned in 2026, 11 in Q1 2027) | PDF, per quarter/year | Hand-encoded JSON, `zhol/data/calendars/` | ✔ 41 official dates encoded |
+| ASFINAG Luegbrücke *Fahrkalender* | Single-lane / two-lane days | PDF (ASFINAG blocks cloud IPs: download from a laptop) | Hand-encoded JSON | template ready; truck bans already encoded from WKO |
 | CCISS (IT NAP) | Events, closures, DATEX II 2.3 | XML after free registration | `parse_datex2` | parser ✔, registration to do |
 | mobilitydata.gv.at / ASFINAG (AT) | Planned + unplanned events | DATEX II | `parse_datex2` | parser ✔, access to request |
 | Mobilithek (DE) | Autobahn GmbH roadworks | DATEX II v2, client certificate | `parse_datex2` | to do |
