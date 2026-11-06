@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>zhol TEF Answers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: white gallery canvas, full-width #f5f5f7 bands for evidence, 28px shadowless cards, blue reserved for links and compact pills.
+   Single light theme by design (the team's design system is light-only). */
+:root {
+  --gallery-white: #ffffff;
+  --studio-mist: #f5f5f7;
+  --paper-frost: #fafafc;
+  --hairline: #d6d6d6;
+  --control-gray: #e6e6e8;
+  --ink: #1d1d1f;
+  --slate: #707070;
+  --steel: #86868b;
+  --link-blue: #0066cc;
+  --pill-blue: #0071e3;
+  --status-orange: #b64400;
+  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+  --radius-card: 28px;
+  --radius-pill: 9999px;
+  --radius-input: 980px;
+  --section-gap: 90px;
+  --card-pad: 28px;
+  --gap: 20px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--gallery-white); color: var(--ink);
+  font-family: var(--font-text); font-size: 17px; line-height: 1.47; letter-spacing: -0.374px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--pill-blue); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.band { padding-block: var(--section-gap); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.band.mist { background: var(--studio-mist); }
+.wrap { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+.kicker { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1; letter-spacing: 0.231px; }
+.eyebrow { font-size: 12px; line-height: 16px; letter-spacing: 0.02em; text-transform: uppercase; font-weight: 600; color: var(--slate); }
+.status { font-size: 12px; line-height: 16px; letter-spacing: -0.12px; font-weight: 600; color: var(--status-orange); }
+.muted { color: var(--slate); }
+.small { font-size: 14px; line-height: 1.43; letter-spacing: -0.224px; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* local navigation */
+.localnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--hairline);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--gallery-white); }
+.localnav .inner { max-width: 1040px; margin: 0 auto; min-height: 52px; display: flex; align-items: center; gap: 16px; }
+.localnav .brand { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: 0.228px; }
+.localnav nav { display: flex; gap: 22px; overflow-x: auto; margin-left: auto; scrollbar-width: none; }
+.localnav nav a { color: var(--ink); font-size: 12px; letter-spacing: -0.12px; white-space: nowrap; padding: 8px 0; }
+.pill { display: inline-flex; align-items: center; border-radius: var(--radius-pill); font-size: 12px; line-height: 16px;
+  letter-spacing: -0.12px; padding: 6px 14px; border: 1px solid transparent; white-space: nowrap; font-family: var(--font-text); cursor: pointer; }
+.pill.blue { background: var(--pill-blue); color: var(--gallery-white); }
+.pill.blue:hover { text-decoration: none; background: #0077ed; }
+.pill.outline { border-color: var(--steel); color: var(--ink); background: transparent; }
+
+/* hero */
+.hero { text-align: center; padding-block: 72px 56px; }
+.hero h1 { font-size: clamp(40px, 7.6vw, 80px); line-height: 1.05; letter-spacing: -0.015em; max-width: 900px; margin: 18px auto 0; }
+.hero .lead { font-size: 21px; line-height: 1.38; letter-spacing: 0.012em; max-width: 680px; margin: 22px auto 0; }
+.hero .cta { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin-top: 26px; font-size: 17px; }
+.stage { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: var(--gap); align-items: start; }
+.message { background: var(--gallery-white); border-radius: var(--radius-card); padding: var(--card-pad); white-space: pre-wrap;
+  font-size: 16px; line-height: 1.42; letter-spacing: -0.2px; overflow-wrap: anywhere; min-width: 0; }
+.message b { font-weight: 600; }
+.message .meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 14px; white-space: normal; }
+
+/* section heads */
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.head h2 { font-size: clamp(30px, 4.4vw, 40px); line-height: 1.1; letter-spacing: 0; }
+.head p { max-width: 560px; }
+.intro { font-size: 21px; line-height: 1.38; letter-spacing: 0.012em; max-width: 760px; }
+
+/* cards */
+.grid { display: grid; gap: var(--gap); }
+.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card { background: var(--gallery-white); border-radius: var(--radius-card); padding: var(--card-pad); min-width: 0;
+  display: flex; flex-direction: column; gap: 10px; }
+.band:not(.mist) .card { background: var(--studio-mist); }
+.card h3 { font-size: 24px; line-height: 1.17; }
+.big { font-family: var(--font-display); font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+
+/* feedback list */
+.qa { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr) auto; gap: 8px 28px; align-items: baseline;
+  padding: 20px 0; border-top: 1px solid var(--hairline); }
+.qa:last-child { border-bottom: 1px solid var(--hairline); }
+.qa .q { font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.21; }
+.qa .go { font-size: 14px; white-space: nowrap; }
+
+/* market nesting, drawn to area scale */
+.nest { position: relative; width: 100%; max-width: 460px; aspect-ratio: 1 / 1; background: var(--gallery-white); border-radius: var(--radius-card); }
+.nest .box { position: absolute; left: 0; bottom: 0; border-radius: 22px; }
+.nest .sam { width: 28.4%; height: 28.4%; background: var(--control-gray); border-radius: 14px; }
+.nest .som { width: 5.8%; height: 5.8%; background: var(--ink); border-radius: 4px; }
+.nest .lbl { position: absolute; font-size: 14px; line-height: 1.3; letter-spacing: -0.224px; }
+.rows { display: flex; flex-direction: column; }
+.row { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; gap: 16px; padding: 16px 0; border-top: 1px solid var(--hairline); align-items: baseline; }
+.row:last-child { border-bottom: 1px solid var(--hairline); }
+.row .k { font-family: var(--font-display); font-weight: 600; font-size: 19px; }
+.row .v { font-family: var(--font-display); font-weight: 600; font-size: 24px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* tables */
+.tablewrap { overflow-x: auto; background: var(--gallery-white); border-radius: var(--radius-card); padding: 8px var(--card-pad) 16px; }
+.band:not(.mist) .tablewrap { background: var(--studio-mist); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.43; letter-spacing: -0.224px; min-width: 620px; }
+th { text-align: left; font-weight: 600; color: var(--slate); padding: 14px 10px 10px; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
+td { padding: 12px 10px; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.total td { font-weight: 600; }
+
+/* calculator */
+.calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field label { font-size: 14px; line-height: 1.29; color: var(--slate); letter-spacing: -0.224px; }
+.field input { width: 100%; border: 1px solid var(--steel); border-radius: var(--radius-input); padding: 9px 18px; font: inherit;
+  font-size: 15px; background: var(--gallery-white); color: var(--ink); font-variant-numeric: tabular-nums; }
+.out .line { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--hairline); font-size: 15px; }
+.out .line b { font-weight: 600; }
+.out .line span:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* bars drawn to scale */
+.bars { display: flex; flex-direction: column; gap: 12px; }
+.bar { display: grid; grid-template-columns: 120px minmax(0, 1fr) 90px; gap: 14px; align-items: center; font-size: 14px; }
+.bar .track { height: 12px; background: var(--control-gray); border-radius: 6px; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--ink); border-radius: 6px; }
+.bar .val { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* pipeline */
+.pipe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
+.pipe .card .step { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--slate); }
+
+/* positioning map */
+.map { position: relative; background: var(--gallery-white); border-radius: var(--radius-card); aspect-ratio: 4 / 3; max-width: 100%; }
+.band:not(.mist) .map { background: var(--studio-mist); }
+.map .ax { position: absolute; background: var(--hairline); }
+.map .ax.h { left: 6%; right: 6%; top: 50%; height: 1px; }
+.map .ax.v { top: 8%; bottom: 8%; left: 50%; width: 1px; }
+.map .t { position: absolute; font-size: 12px; line-height: 1.3; color: var(--slate); letter-spacing: -0.12px; }
+.map .dot { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: 13px; line-height: 1.25; text-align: center; max-width: 34%; }
+.map .dot i { width: 10px; height: 10px; border-radius: 50%; background: var(--steel); display: block; }
+.map .dot.us i { width: 14px; height: 14px; background: var(--pill-blue); }
+.map .dot.us { font-weight: 600; }
+
+ul.clean { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+ul.clean li { padding-left: 18px; position: relative; }
+ul.clean li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--steel); }
+footer.band { padding-block: 48px; background: var(--studio-mist); color: var(--slate); font-size: 12px; line-height: 1.5; letter-spacing: -0.12px; }
+footer .wrap { gap: 14px; }
+
+@media (max-width: 860px) {
+  .stage, .calc, .g2 { grid-template-columns: minmax(0, 1fr); }
+  .g3, .g4, .pipe { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .qa { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  :root { --section-gap: 64px; --card-pad: 22px; }
+  .g3, .g4, .pipe, .fields { grid-template-columns: minmax(0, 1fr); }
+  .localnav .brand { display: none; }
+  .localnav nav { margin-left: 0; }
+  .row { grid-template-columns: 70px minmax(0, 1fr); }
+  .row .v { grid-column: 2; }
+  .bar { grid-template-columns: 84px minmax(0, 1fr) 64px; }
+  .map .dot { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 60px; }
+</style>
+
+<div class="localnav">
+  <div class="inner">
+    <span class="brand">zhol</span>
+    <nav aria-label="Sections">
+      <a href="#feedback">Feedback</a><a href="#market">Market</a><a href="#savings">Savings</a><a href="#model">Model</a>
+      <a href="#gtm">Go-to-market</a><a href="#tech">Technology</a><a href="#competition">Competition</a><a href="#next">Next</a>
+    </nav>
+  </div>
+</div>
+
+<section class="band hero">
+  <div class="wrap" style="gap:0">
+    <div class="kicker">zhol · TEF Ignition 2026</div>
+    <h1>Which of tomorrow’s loads will a restriction hit?</h1>
+    <p class="lead">Every evening zhol checks each of tomorrow’s truck loads against bans, dosing days, closures, strikes and protests along the route, and sends the traffic office one WhatsApp message with options. Here is how we answer each point of the jury’s feedback.</p>
+    <div class="cta"><a href="#feedback">See the answers ›</a><a href="#savings">Estimate the savings ›</a></div>
+  </div>
+</section>
+
+<section class="band mist" aria-label="Product">
+  <div class="wrap">
+    <div class="stage">
+      <div class="message" aria-label="Example WhatsApp message produced by the MVP"><div class="meta"><span class="eyebrow">WhatsApp · Sun 18 Oct, 18:30</span><span class="status">Produced by the MVP</span></div><b>zhol</b> · carichi di lunedì 19 ott
+2 dei tuoi 3 carichi possono partire, 1 ha un problema sul percorso.
+
+<b>VT-118</b> · pomodori, Vittoria → Milano: Fermo dell'autotrasporto in Sicilia, presidi sulle principali arterie, esente (deperibile) → parti come previsto
+
+<b>VT-204</b> · peperoni, Vittoria → Verona: stesso fermo, esente (deperibile) → parti come previsto
+
+<b>CT-077</b> · scatolame, Catania → München: fermo a Catania lun 19 ott 06:00 (perdi 47h10) → trattieni fino a mer 21 ott 05:00
+
+Rispondi <b>1</b> per confermare con gli autisti · <b>2</b> per i dettagli · <b>0</b> se l'avviso è sbagliato</div>
+      <div class="card" style="gap:16px">
+        <span class="eyebrow">What the message does</span>
+        <h3>Two loads go tonight, one waits. Nobody had to read six websites.</h3>
+        <p class="small muted">The Sicily stoppage of 16–20 October 2026, replayed by the MVP. Pickets let fresh produce through, so the tomatoes and peppers leave. The tinned goods would lose 47 hours, so zhol holds them until the stoppage ends. The loads are invented; the event is real.</p>
+        <p class="small">Every event keeps its source and is approved by a person before it can reach a dispatcher. Delays under 45 minutes are logged but never sent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="feedback">
+  <div class="wrap">
+    <div class="head"><h2>What the jury asked</h2><p class="muted small">Every number below has a source in the project documents.</p></div>
+    <div>
+      <div class="qa"><div class="q">TAM, SAM, SOM</div><div>TAM ≈ €230 M a year in Europe. SAM ≈ €18.6 M in Italy (about 6,050 traffic offices). SOM ≈ €0.77 M ARR in year 3 with 250 offices.</div><a class="go" href="#market">Market ›</a></div>
+      <div class="qa"><div class="q">Pricing as a share of money saved</div><div>A 20-truck office saves about €1,740 a month. The standard price, €12 per truck, is 14% of that. A performance plan charges €49 plus 15% of verified savings, capped.</div><a class="go" href="#savings">Savings ›</a></div>
+      <div class="qa"><div class="q">A clear business model</div><div>B2B subscription for traffic offices, free 4-week pilot with a savings ledger. Costs are shared across customers on the same roads, so gross margin reaches about 90% at 100 offices.</div><a class="go" href="#model">Model ›</a></div>
+      <div class="qa"><div class="q">A clear go-to-market</div><div>Hauliers with 6–100 trucks and Brenner lanes in Lombardy, Veneto, Emilia-Romagna and Piemonte. Founder-led Italian sales first, then associations and software partners.</div><a class="go" href="#gtm">Go-to-market ›</a></div>
+      <div class="qa"><div class="q">More technical detail</div><div>A working MVP: ban rules for 7 countries, DATEX II feeds, Claude extraction with human review, trip simulation under EU driving rules, options with costs, WhatsApp delivery. 28 automated tests.</div><a class="go" href="#tech">Technology ›</a></div>
+      <div class="qa"><div class="q">Market before technology</div><div>Seven hypotheses, each with a test and a kill criterion. Nothing new gets automated until the interviews and a concierge pilot confirm it.</div><a class="go" href="#next">Next ›</a></div>
+      <div class="qa"><div class="q">Competitors, now and future</div><div>Telematics, freight exchanges, navigation, visibility, risk platforms and AI freight agents each cover part of the job. None checks tomorrow’s specific loads the evening before. The biggest future threat is a TMS adding it.</div><a class="go" href="#competition">Competition ›</a></div>
+      <div class="qa"><div class="q">Is there room for us?</div><div>Yes, for a focused wedge with a two-to-three-year window. The market is fragmented, unplanned disruption is growing, and incumbents are paid by shippers or priced for enterprises.</div><a class="go" href="#competition">Why ›</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band mist" id="market">
+  <div class="wrap">
+    <div class="head"><h2>Market</h2><p class="muted small">Bottom-up from the Italian register of hauliers, cross-checked top-down.</p></div>
+    <div class="grid g2" style="align-items:center">
+      <div class="nest" role="img" aria-label="Nested squares with area proportional to TAM 230 million, SAM 18.6 million and SOM 0.77 million euros">
+        <span class="lbl" style="right:24px;top:22px;text-align:right"><b>TAM €230 M</b><br><span class="muted">Europe</span></span>
+        <div class="box sam"></div>
+        <span class="lbl" style="left:31%;bottom:18%"><b>SAM €18.6 M</b><br><span class="muted">Italy</span></span>
+        <div class="box som"></div>
+        <span class="lbl" style="left:8%;bottom:1.5%"><b>SOM €0.77 M</b></span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="k">TAM</span><span class="small">6.2 M trucks in the EU × 24.6% international work × €144 per truck per year. A second count of about 78,000 traffic offices gives €235 M.</span><span class="v">€230 M</span></div>
+        <div class="row"><span class="k">SAM</span><span class="small">26,260 Italian hauliers with 6–100 vehicles × 1 in 5 with weekly lanes abroad, plus about 800 forwarders. That is 6,050 offices × €3,080 a year.</span><span class="v">€18.6 M</span></div>
+        <div class="row"><span class="k">SOM</span><span class="small">250 paying offices by the end of year 3, about 3.6% of the serviceable offices.</span><span class="v">€0.77 M</span></div>
+      </div>
+    </div>
+    <p class="small muted">Square areas are drawn to scale. Sources: Albo Nazionale Autotrasporto (Q1 2025), ACEA 2026, Eurostat 2024, CLECAT, Fedespedi. The 1-in-5 share is our assumption and the first thing the interviews test. For scale, the European TMS market is €1.4 bn (Berg Insight 2025).</p>
+    <div class="grid g4">
+      <div class="card"><span class="big">21 / 57</span><span class="small">Kufstein dosing days in 2025 that came outside the published calendar</span></div>
+      <div class="card"><span class="big">€544 M</span><span class="small">a year that Brenner restrictions cost Italy (Uniontrasporti); about €463 M of it is freight</span></div>
+      <div class="card"><span class="big">€100</span><span class="small">per hour of waiting beyond 90 minutes, set by Italian law (L. 105/2025)</span></div>
+      <div class="card"><span class="big">2030</span><span class="small">until the Luegbrücke on the Brenner motorway runs on two lanes again</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="savings">
+  <div class="wrap">
+    <div class="head"><h2>What one evening message is worth</h2><p class="muted small">Change any number. Published calendar bans are free to look up, so they never count as savings.</p></div>
+    <div class="calc">
+      <form class="card fields" id="calc" onsubmit="return false" aria-label="Savings inputs">
+        <div class="field"><label for="trucks">Trucks</label><input id="trucks" type="number" min="1" step="1" value="20"></div>
+        <div class="field"><label for="share">Trucks on international lanes, %</label><input id="share" type="number" min="0" max="100" step="5" value="50"></div>
+        <div class="field"><label for="legs">One-way trips per truck per month</label><input id="legs" type="number" min="0" step="1" value="20"></div>
+        <div class="field"><label for="hit">Trips hit by an unplanned disruption, %</label><input id="hit" type="number" min="0" max="100" step="0.5" value="4"></div>
+        <div class="field"><label for="act">Hits an option can avoid, %</label><input id="act" type="number" min="0" max="100" step="5" value="50"></div>
+        <div class="field"><label for="hours">Hours saved per avoided hit</label><input id="hours" type="number" min="0" step="0.5" value="3"></div>
+        <div class="field"><label for="hour">Cost of a truck-hour, €</label><input id="hour" type="number" min="0" step="5" value="100"></div>
+        <div class="field"><label for="disp">Dispatcher minutes a day checking</label><input id="disp" type="number" min="0" step="5" value="30"></div>
+        <div class="field"><label for="big">Blockade or strike days a year</label><input id="big" type="number" min="0" step="1" value="4"></div>
+        <div class="field"><label for="price">Price per truck per month, €</label><input id="price" type="number" min="0" step="1" value="12"></div>
+      </form>
+      <div class="card out" aria-live="polite">
+        <span class="eyebrow">Estimated saving</span>
+        <span class="big" id="o-total">€1,742</span>
+        <span class="small muted" id="o-year">per month, €20,900 a year</span>
+        <div style="margin-top:8px">
+          <div class="line"><span id="o-waits-l">Avoided waits</span><span id="o-waits">€1,200</span></div>
+          <div class="line"><span>Dispatcher time</span><span id="o-disp">€275</span></div>
+          <div class="line"><span>Blockade and strike days</span><span id="o-big">€267</span></div>
+          <div class="line"><b>Standard subscription</b><span><b id="o-sub">€240</b> <span class="muted" id="o-share">· 14% of savings</span></span></div>
+          <div class="line"><span>Performance plan: €49 + 15% of verified savings, capped</span><span id="o-perf">€269</span></div>
+          <div class="line"><span>Pays for itself in</span><span id="o-pay">4 days</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Plan</th><th>Price</th><th>For whom</th></tr></thead>
+        <tbody>
+          <tr><td>Pilot</td><td>Free for 4 weeks, with a weekly savings ledger</td><td>Every new office</td></tr>
+          <tr><td>Standard</td><td>€12 per truck per month, minimum €99</td><td>The default</td></tr>
+          <tr><td>Performance</td><td>€49 + 15% of verified savings, capped at €25 per truck</td><td>Owners who want to pay for results</td></tr>
+          <tr><td>Founding customer</td><td>€8 per truck for 12 months</td><td>The first 10 offices, in exchange for a case study</td></tr>
+          <tr><td>API and white-label</td><td>€3–5 per truck per month, wholesale</td><td>TMS, telematics, freight exchanges, associations (later)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted">Why not only a percentage: every invoice would become a negotiation about what the office would have known anyway, and a quiet month would bill nothing. A verified saving counts only alerts the dispatcher confirmed, only for events outside a published calendar, priced with the cost model the customer agreed to.</p>
+  </div>
+</section>
+
+<section class="band mist" id="model">
+  <div class="wrap">
+    <div class="head"><h2>Business model</h2><p class="muted small">Most costs are shared: every customer watches the same roads.</p></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Monthly cost to serve</th><th class="n">10 offices</th><th class="n">100 offices</th></tr></thead>
+        <tbody>
+          <tr><td>AI reading of about 300 notices a day</td><td class="n">€160</td><td class="n">€160</td></tr>
+          <tr><td>Human review, about one hour a day</td><td class="n">€1,000</td><td class="n">€1,500</td></tr>
+          <tr><td>WhatsApp messages</td><td class="n">€8</td><td class="n">€75</td></tr>
+          <tr><td>Hosting, monitoring, routing APIs</td><td class="n">€60</td><td class="n">€250</td></tr>
+          <tr class="total"><td>Total</td><td class="n">€1,230</td><td class="n">€1,985</td></tr>
+          <tr><td>Revenue at €257 per office</td><td class="n">€2,570</td><td class="n">€25,700</td></tr>
+          <tr class="total"><td>Gross margin</td><td class="n">52%</td><td class="n">92%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <span class="eyebrow">ARR at the end of each year</span>
+        <div class="bars" role="img" aria-label="ARR 46 thousand in 2027, 246 thousand in 2028, 770 thousand in 2029">
+          <div class="bar"><span>2027 · 15</span><span class="track"><span class="fill" style="width:6%;display:block"></span></span><span class="val">€46 k</span></div>
+          <div class="bar"><span>2028 · 80</span><span class="track"><span class="fill" style="width:32%;display:block"></span></span><span class="val">€246 k</span></div>
+          <div class="bar"><span>2029 · 250</span><span class="track"><span class="fill" style="width:100%;display:block"></span></span><span class="val">€770 k</span></div>
+        </div>
+        <p class="small muted">Label shows year · paying offices. Bars are drawn to scale.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Unit economics to validate in the pilots</span>
+        <ul class="clean small">
+          <li>Average office: 21 trucks, €257 a month</li>
+          <li>Acquisition cost €400–800, paid back in 2–4 months</li>
+          <li>Assumed churn 2.5% a month, lifetime value about €9,000</li>
+          <li>Lifetime value to acquisition cost above 10</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="gtm">
+  <div class="wrap">
+    <div class="head"><h2>Go-to-market</h2><p class="muted small">Start where restrictions hurt most and buyers are a day trip from Milan.</p></div>
+    <div class="grid g3">
+      <div class="card"><span class="eyebrow">Who pays</span><h3>Owners of hauliers with 6–100 trucks</h3><p class="small">Weekly lanes to Germany, Austria, Switzerland, France or Poland, mostly over the Brenner. The dispatcher who plans tomorrow is the daily user.</p></div>
+      <div class="card"><span class="eyebrow">Where first</span><h3>Lombardy, Veneto, Emilia-Romagna, Piemonte</h3><p class="small">Then the South–North long-haul segment hit by blockades and ferries, then Austrian, German and Slovenian hauliers on Italian lanes.</p></div>
+      <div class="card"><span class="eyebrow">How</span><h3>Founder-led, in Italian</h3><p class="small">A short WhatsApp or call, a 30-minute visit to review one recent disruption with the dispatcher, then a free pilot with a written success criterion.</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <span class="eyebrow">First 10 weeks</span>
+        <div class="bars" role="img" aria-label="Funnel: 200 contacts, 40 conversations, 12 interviews, 4 pilots, 2 paying offices">
+          <div class="bar"><span>Contacts</span><span class="track"><span class="fill" style="width:100%;display:block"></span></span><span class="val">200</span></div>
+          <div class="bar"><span>Conversations</span><span class="track"><span class="fill" style="width:20%;display:block"></span></span><span class="val">40</span></div>
+          <div class="bar"><span>Interviews</span><span class="track"><span class="fill" style="width:6%;display:block"></span></span><span class="val">12</span></div>
+          <div class="bar"><span>Pilots</span><span class="track"><span class="fill" style="width:2%;display:block"></span></span><span class="val">4</span></div>
+          <div class="bar"><span>Paying</span><span class="track"><span class="fill" style="width:1%;display:block"></span></span><span class="val">2</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Channels</span>
+        <ul class="clean small">
+          <li><b>Direct</b>: lists from the national register of hauliers, Google Maps, LinkedIn and trade-fair exhibitors</li>
+          <li><b>Associations</b>: FAI Conftrasporto, CNA Fita, Confartigianato Trasporti, Fedespedi. A free member webinar on the Brenner in 2027</li>
+          <li><b>A free weekly “Brenner and Alpine bulletin”</b> on WhatsApp and LinkedIn, in Italian</li>
+          <li><b>Software partners</b>: Italian TMS vendors and telematics resellers, 20% referral</li>
+          <li><b>TEF and Bocconi</b>: introductions for the first pilots</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band mist" id="tech">
+  <div class="wrap">
+    <div class="head"><h2>Technology</h2><p class="muted small">Code where the rules are known. AI only where the text is unstructured. A person approves every event.</p></div>
+    <div class="pipe">
+      <div class="card"><span class="step">Watch</span><h3>Read every source</h3><p class="small">National ban calendars as code, DATEX II feeds from the EU national access points, Tyrol and ASFINAG calendars, news, union releases.</p></div>
+      <div class="card"><span class="step">Verify</span><h3>One format, one reviewer</h3><p class="small">Claude turns text into a structured event with a verbatim quote. A person approves it. Review time is measured.</p></div>
+      <div class="card"><span class="step">Match</span><h3>Drive each load</h3><p class="small">ETA at every pass, tunnel, border and city, with EU driving-time rules, ferries, Swiss customs and exemptions.</p></div>
+      <div class="card"><span class="step">Alert</span><h3>One message, with options</h3><p class="small">Leave earlier, leave later, change pass or hold, each with a cost. WhatsApp template outside the 24-hour window.</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <span class="eyebrow">What the MVP already does</span>
+        <ul class="clean small">
+          <li>Truck-ban rules for Italy, Austria, Germany, Switzerland, France, Slovenia and Poland, including the Italian 2026 decree: bans start 4 hours later for trucks arriving from abroad and end 2 hours earlier for trucks leaving</li>
+          <li>19 corridors and 18 chokepoints: Brenner, Luegbrücke, Kufstein, A12, Tarvisio, Tauern, Gotthard, San Bernardino, Fréjus, Mont Blanc, Messina strait</li>
+          <li>Austrian night ban with the low-noise truck exemption; A12 winter night ban from 20:00</li>
+          <li>Claude extraction under a strict JSON schema, with a rule-based fallback in Italian, German, French and English</li>
+          <li>WhatsApp Cloud API with signed webhooks; replies 1, 2 and 0 update loads and metrics</li>
+          <li>Pilot metrics: precision, missed problems, review time and the savings ledger</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Example from the Brenner demo</span>
+        <h3>Milano → München, leaving Thursday at 13:30</h3>
+        <p class="small">The truck reaches the A12 Inntal at 21:39. The winter night ban, from 20:00 Monday to Saturday, stops it until 05:00: 7 h 46 lost.</p>
+        <p class="small">zhol suggests leaving at 11:00. The truck arrives at 21:10 the same day, saving an estimated €734.</p>
+        <span class="status">At risk · 3 of 6 loads flagged that evening</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="competition">
+  <div class="wrap">
+    <div class="head"><h2>Competition</h2><p class="muted small">Each piece exists somewhere. The combination does not.</p></div>
+    <div class="grid g2" style="align-items:start">
+      <div class="map" role="img" aria-label="Positioning map. Horizontal axis from static calendars to live unplanned events. Vertical axis from fleet level to a decision per load. zhol sits top right.">
+        <div class="ax h"></div><div class="ax v"></div>
+        <span class="t" style="left:6%;top:calc(50% + 6px)">Static calendars</span>
+        <span class="t" style="right:6%;top:calc(50% + 6px);text-align:right">Live, unplanned events</span>
+        <span class="t" style="left:calc(50% + 8px);top:7%">Decision per load, tomorrow</span>
+        <span class="t" style="left:calc(50% + 8px);bottom:7%">Fleet or supplier, right now</span>
+        <div class="dot us" style="left:76%;top:22%"><i></i>zhol</div>
+        <div class="dot" style="left:28%;top:28%"><i></i>TMS, could add it</div>
+        <div class="dot" style="left:24%;top:72%"><i></i>Ban apps, navigation</div>
+        <div class="dot" style="left:74%;top:66%"><i></i>Telematics, visibility</div>
+        <div class="dot" style="left:84%;top:84%"><i></i>Risk platforms</div>
+      </div>
+      <div class="tablewrap">
+        <table style="min-width:520px">
+          <thead><tr><th>Category</th><th>Price today</th><th>What they miss</th></tr></thead>
+          <tbody>
+            <tr><td>Telematics (Webfleet, Samsara, Geotab)</td><td class="num">€10–35 per truck</td><td>Look at now, not tomorrow’s plan</td></tr>
+            <tr><td>Freight exchanges (TIMOCOM, Trans.eu)</td><td class="num">€120–200 per seat</td><td>Free static ban calendars only</td></tr>
+            <tr><td>Navigation (Sygic, PTV Map&amp;Guide)</td><td class="num">€5–49 per user</td><td>One route on request; no strikes</td></tr>
+            <tr><td>Visibility (Shippeo, project44)</td><td>Paid by shippers</td><td>React once the truck is late</td></tr>
+            <tr><td>Risk platforms (Everstream, Dataminr)</td><td class="num">$20 k+ a year</td><td>Suppliers, not roads; enterprise prices</td></tr>
+            <tr><td>AI freight agents (HappyRobot, FleetWorks)</td><td>Usage-based</td><td>Paperwork, not road restrictions</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Solutions that may appear</th><th>Likelihood</th><th>Our response</th></tr></thead>
+        <tbody>
+          <tr><td>TMS and telematics add agents that warn about planned loads (Qargo, Trimble, Geotab Ace, Samsara Agent Studio)</td><td><span class="status">High</span></td><td>Win the offices without a TMS. Sell our verified event layer to them as an API</td></tr>
+          <tr><td>Map providers expose restrictions to AI agents (TomTom, HERE, Google)</td><td>Medium-high</td><td>Use them as inputs. Local, unplanned, multilingual events stay our job</td></tr>
+          <tr><td>EU open road data under Regulation 2022/670</td><td>Certain</td><td>Lowers our data cost. Matching, verification and workflow stay ours</td></tr>
+          <tr><td>General AI assistants and WhatsApp business agents</td><td>Medium</td><td>They have no load plan, no verified sources and no accountability</td></tr>
+          <tr><td>Freight exchanges add alerts</td><td>Medium</td><td>Partner and supply the alert engine</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="eyebrow">Why there is room</span><p class="small">98,277 registered hauliers. Only 5% of Italian logistics SMEs use business-intelligence tools, against 48% of large firms. They plan in Excel and WhatsApp.</p></div>
+      <div class="card"><span class="eyebrow">What we must earn</span><p class="small">A verified history of European road disruptions and their effect on real loads, an explainable matching engine, and trust through hauliers’ associations.</p></div>
+      <div class="card"><span class="eyebrow">Our weak side</span><p class="small">Calendars are free elsewhere, and offices must share their plan. We count only unplanned events as value, and accept the plan as the Excel they already have.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band mist" id="next">
+  <div class="wrap">
+    <div class="head"><h2>Market first, then technology</h2><p class="muted small">Targets for Workshop 2 on 13 November.</p></div>
+    <div class="grid g3">
+      <div class="card"><span class="big">8</span><span class="small">interviews with traffic offices: the last disruption, what it cost, what they pay for software today, and four price questions</span></div>
+      <div class="card"><span class="big">2</span><span class="small">offices share last month’s loads, which zhol replays to show what it would have flagged</span></div>
+      <div class="card"><span class="big">2</span><span class="small">live tests on real restriction days, each with the dispatcher’s verdict on the message</span></div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Hypothesis</th><th>Confirmed if</th><th>Otherwise</th></tr></thead>
+        <tbody>
+          <tr><td>Offices re-plan loads because of restrictions every week</td><td>6 of 8 report 2 or more re-plans a month</td><td>Move to the South–North blockade segment</td></tr>
+          <tr><td>They can put a cost on it</td><td>Median €300 or more per incident</td><td>Sell time savings at a lower price</td></tr>
+          <tr><td>The owner will pay</td><td>Median acceptable price of €8 per truck or more</td><td>Sell through partners and associations</td></tr>
+          <tr><td>Offices share tomorrow’s loads every day</td><td>2 offices share history; 80% of pilot days on time</td><td>Build the Excel and TMS import first</td></tr>
+          <tr><td>Matching is precise enough</td><td>Precision 80% or more, at most 1 missed problem a month</td><td>Narrow to official sources and fewer corridors</td></tr>
+          <tr><td>Review cost stays small</td><td>Median 90 seconds per event</td><td>Automate trusted sources before adding customers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="band">
+  <div class="wrap">
+    <p><b style="color:var(--ink)">zhol</b> · Alikhan, Inkara and Tomiris, Bocconi University · TEF Ignition 2026</p>
+    <p>Sources: Albo Nazionale Autotrasporto via Rivista Tir and Shipping Italy (Jun 2025); ISTAT (Feb 2026); ACEA (Jan 2026); Eurostat; KU Leuven for ETF (Apr 2025); CLECAT; Fedespedi; Berg Insight (Aug 2025); Politecnico di Milano Osservatorio Contract Logistics (Oct 2026); Land Tirol Dosierkalender 2026; ADAC; Uniontrasporti via AGI (May 2026); DL 73/2025 and L. 105/2025; DM MIT 325/2025; vendor price pages and third-party estimates for competitor prices. Figures collected on 6 November 2026; check the primary page before quoting one.</p>
+    <p>Code, documents and outreach templates: <a href="https://github.com/bashpayy-hash/Zhol/tree/claude/bold-franklin-t1lyqx">github.com/bashpayy-hash/Zhol</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const ids = ["trucks", "share", "legs", "hit", "act", "hours", "hour", "disp", "big", "price"];
+  const eur = x => "€" + Math.round(x).toLocaleString("en-US");
+  function num(id) { const v = parseFloat(document.getElementById(id).value); return isFinite(v) && v >= 0 ? v : 0; }
+  function calc() {
+    const trucks = num("trucks"), share = num("share") / 100, legs = num("legs"), hit = num("hit") / 100, act = num("act") / 100;
+    const hours = num("hours"), hour = num("hour"), disp = num("disp"), big = num("big"), price = num("price");
+    // same formulas as zhol/savings.py
+    const legsMonth = trucks * share * legs;
+    const avoided = legsMonth * hit * act;
+    const waits = avoided * hours * hour;
+    const dispatcher = disp / 60 * 25 * 22;
+    const blockades = big * 1 * 800 / 12;
+    const total = waits + dispatcher + blockades;
+    const sub = Math.max(99, trucks * price);
+    const perf = Math.min(49 + 0.15 * (waits + blockades), 25 * trucks);
+    document.getElementById("o-total").textContent = eur(total);
+    document.getElementById("o-year").textContent = "per month, " + eur(total * 12) + " a year";
+    document.getElementById("o-waits-l").textContent = "Avoided waits (" + (Math.round(avoided * 10) / 10) + " a month)";
+    document.getElementById("o-waits").textContent = eur(waits);
+    document.getElementById("o-disp").textContent = eur(dispatcher);
+    document.getElementById("o-big").textContent = eur(blockades);
+    document.getElementById("o-sub").textContent = eur(sub);
+    document.getElementById("o-share").textContent = total > 0 ? "· " + Math.round(sub / total * 100) + "% of savings" : "";
+    document.getElementById("o-perf").textContent = eur(perf);
+    document.getElementById("o-pay").textContent = total > 0 ? (Math.round(sub / (total / 30) * 10) / 10) + " days" : "n/a";
+  }
+  ids.forEach(id => document.getElementById(id).addEventListener("input", calc));
+  calc();
+})();
+</script>
+
+</body>
+</html>

@@ -20,6 +20,8 @@
 | Есть ли место на рынке? | [docs/01-market.md §1.5](docs/01-market.md) и [docs/02-competitors.md §2.5](docs/02-competitors.md) |
 | **Всё на одной странице + что менять в деке + ответы на вопросы жюри** | **[docs/00-answers-to-tef-feedback.md](docs/00-answers-to-tef-feedback.md)** |
 
+Всё это одной страницей в вашем дизайне (с живым калькулятором экономии): [docs/site/tef-answers.html](docs/site/tef-answers.html) — откройте файл в браузере.
+
 Письма людям из отрасли (по-итальянски, с переводом): [outreach/](outreach/README.md).
 
 ---
