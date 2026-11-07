@@ -1,0 +1,20 @@
+# Rebuild the website twice a day so the beta data (next dosing day, bulletin, 14-day grid)
+# always starts from today. Needs the repository secret NETLIFY_BUILD_HOOK
+# (Netlify: Project configuration > Build & deploy > Build hooks > Add build hook).
+# Scheduled workflows only run from the default branch.
+name: refresh-site
+on:
+  schedule:
+    - cron: "15 4 * * *"    # 05:15 / 06:15 in Rome
+    - cron: "45 14 * * *"   # 15:45 / 16:45 in Rome, before the evening check
+  workflow_dispatch:
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the Netlify build hook
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "NETLIFY_BUILD_HOOK is not set: skipping"; exit 0; fi
+          curl -fsS -X POST -d '{}' "$HOOK"

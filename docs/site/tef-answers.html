@@ -13,22 +13,24 @@
 /* Layout: white gallery canvas, full-width #f5f5f7 bands for evidence, 28px shadowless cards, blue reserved for links and compact pills.
    Single light theme by design (the team's design system is light-only). */
 :root {
-  --gallery-white: #ffffff;
-  --studio-mist: #f5f5f7;
-  --paper-frost: #fafafc;
-  --hairline: #d6d6d6;
-  --control-gray: #e6e6e8;
-  --ink: #1d1d1f;
-  --slate: #707070;
-  --steel: #86868b;
-  --link-blue: #0066cc;
-  --pill-blue: #0071e3;
-  --status-orange: #b64400;
-  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-text: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
-  --radius-card: 28px;
-  --radius-pill: 9999px;
-  --radius-input: 980px;
+  /* palette of the zhol TEF decks: paper, ink, brick red, sage */
+  --paper: #f6f3ea;
+  --gallery-white: #fbf9f3;
+  --studio-mist: #d2decc;
+  --paper-frost: #f1ece0;
+  --hairline: #d8d0c1;
+  --control-gray: #ecd2c8;
+  --ink: #352b28;
+  --slate: #857b73;
+  --steel: #a99e93;
+  --link-blue: #a2311e;
+  --pill-blue: #b8392a;
+  --status-orange: #a2311e;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --radius-card: 6px;
+  --radius-pill: 7px;
+  --radius-input: 6px;
   --section-gap: 90px;
   --card-pad: 28px;
   --gap: 20px;
@@ -36,7 +38,8 @@
 }
 * { box-sizing: border-box; }
 body {
-  margin: 0; background: var(--gallery-white); color: var(--ink);
+  margin: 0; background-color: var(--paper); color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .28 0 0 0 .11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   font-family: var(--font-text); font-size: 17px; line-height: 1.47; letter-spacing: -0.374px;
   -webkit-font-smoothing: antialiased;
 }
@@ -56,10 +59,10 @@ p { margin: 0; }
 .num { font-variant-numeric: tabular-nums; }
 
 /* local navigation */
-.localnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,0.94);
+.localnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(246,243,234,0.94);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--hairline);
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--gallery-white); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
 .localnav .inner { max-width: 1040px; margin: 0 auto; min-height: 52px; display: flex; align-items: center; gap: 16px; }
 .localnav .brand { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: 0.228px; }
 .localnav nav { display: flex; gap: 22px; overflow-x: auto; margin-left: auto; scrollbar-width: none; }
@@ -94,7 +97,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .card { background: var(--gallery-white); border-radius: var(--radius-card); padding: var(--card-pad); min-width: 0;
   display: flex; flex-direction: column; gap: 10px; }
-.band:not(.mist) .card { background: var(--studio-mist); }
+.band:not(.mist) .card { background: var(--gallery-white); border: 1px solid #e2dbcc; }
 .card h3 { font-size: 24px; line-height: 1.17; }
 .big { font-family: var(--font-display); font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: 0; font-variant-numeric: tabular-nums; }
 
@@ -119,7 +122,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* tables */
 .tablewrap { overflow-x: auto; background: var(--gallery-white); border-radius: var(--radius-card); padding: 8px var(--card-pad) 16px; }
-.band:not(.mist) .tablewrap { background: var(--studio-mist); }
+.band:not(.mist) .tablewrap { background: var(--gallery-white); border: 1px solid #e2dbcc; }
 table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.43; letter-spacing: -0.224px; min-width: 620px; }
 th { text-align: left; font-weight: 600; color: var(--slate); padding: 14px 10px 10px; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
 td { padding: 12px 10px; border-bottom: 1px solid var(--hairline); vertical-align: top; }
@@ -151,7 +154,7 @@ tr.total td { font-weight: 600; }
 
 /* positioning map */
 .map { position: relative; background: var(--gallery-white); border-radius: var(--radius-card); aspect-ratio: 4 / 3; max-width: 100%; }
-.band:not(.mist) .map { background: var(--studio-mist); }
+.band:not(.mist) .map { background: var(--gallery-white); border: 1px solid #e2dbcc; }
 .map .ax { position: absolute; background: var(--hairline); }
 .map .ax.h { left: 6%; right: 6%; top: 50%; height: 1px; }
 .map .ax.v { top: 8%; bottom: 8%; left: 50%; width: 1px; }

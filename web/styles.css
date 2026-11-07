@@ -3,8 +3,8 @@
 @import url("tokens.css");
 
 :root {
-  --font-text: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --page-max: 1080px;
 }
 
@@ -12,7 +12,8 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--color-gallery-white);
+  background-color: var(--color-gallery-white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .36 0 0 0 0 .28 0 0 0 .11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   color: var(--color-ink);
   font-family: var(--font-text);
   font-size: var(--text-body);
@@ -37,7 +38,7 @@ button, input, select, textarea { font: inherit; letter-spacing: inherit; color:
 
 /* ---------- product local navigation */
 .local-nav {
-  position: sticky; top: 0; z-index: 10; background: rgba(255, 255, 255, 0.92);
+  position: sticky; top: 0; z-index: 10; background: rgba(246, 243, 234, 0.94);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-hairline-silver);
 }
@@ -66,10 +67,10 @@ button, input, select, textarea { font: inherit; letter-spacing: inherit; color:
 /* ---------- layout */
 .section { padding: var(--section-gap) var(--spacing-16); }
 .section.tight { padding-top: var(--spacing-48); padding-bottom: var(--spacing-48); }
-.section.mist { background: var(--color-studio-mist); }
+.section.mist { background: #d2decc; }
 .wrap { max-width: var(--page-max); margin: 0 auto; }
 .hero { text-align: center; padding-top: var(--spacing-64); padding-bottom: var(--spacing-64); }
-.kicker { font-family: var(--font-display); font-size: var(--text-product-kicker); font-weight: var(--font-weight-semibold);
+.kicker { color: var(--color-apple-blue); text-transform: uppercase; font-family: var(--font-display); font-size: var(--text-product-kicker); font-weight: var(--font-weight-semibold);
   letter-spacing: var(--tracking-product-kicker); line-height: var(--leading-product-kicker); margin-bottom: var(--spacing-12); }
 .hero h1 { font-size: clamp(40px, 7.4vw, var(--text-hero-display)); line-height: var(--leading-hero-display);
   letter-spacing: -0.015em; max-width: 920px; margin: 0 auto; }
@@ -85,7 +86,7 @@ button, input, select, textarea { font: inherit; letter-spacing: inherit; color:
 /* ---------- cards (white, 28px, no shadow, no border) */
 .grid { display: grid; gap: var(--element-gap); grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 .grid.two { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
-.card { background: var(--color-gallery-white); border-radius: var(--radius-cards); padding: var(--card-padding); }
+.card { background: var(--color-studio-mist); border: 1px solid #e2dbcc; border-radius: var(--radius-cards); padding: var(--card-padding); }
 .section:not(.mist) .card { background: var(--color-studio-mist); }
 .card h3 { font-size: 24px; line-height: 1.17; margin: 4px 0 var(--spacing-12); }
 .card .id { font-family: var(--font-display); font-weight: var(--font-weight-semibold); font-size: var(--text-body-small); }
