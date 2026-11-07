@@ -338,8 +338,8 @@ def build_outlook(today: date, horizon: int = 60, fetch: bool = True) -> dict:
         "horizon_days": horizon, "reader": mode, "articles_read": len(articles), "signals": len(signals),
         "sources_ok": ok, "sources_total": len(status), "sources": status,
         "focus": focus_window(today), "items": items,
-        "lanes": [{"id": lid, "name": ln.name.replace(" -> ", " → "),
-                   "name_it": lane_it(ln.name).replace(" -> ", " → ")} for lid, ln in sorted(catalog.lanes().items(),
+        "lanes": [{"id": lid, "name": ln.name.replace(" -> ", " – "),
+                   "name_it": lane_it(ln.name).replace(" -> ", " – ")} for lid, ln in sorted(catalog.lanes().items(),
                                                                                         key=lambda x: x[1].name)],
         "method": {"stage_prior": model.STAGE_PRIOR,
                    "multipliers": {k: {"x": v[0], "label": v[1], "label_it": model.MULTIPLIERS_IT.get(k, v[1])}

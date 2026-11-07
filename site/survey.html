@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=sv4">
+<link rel="stylesheet" href="/assets/zhol.css?v=vz1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/survey">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/sondaggio">
 </head>
@@ -47,7 +47,8 @@
           <input type="hidden" name="rid" value="">
           <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
 
-          <fieldset class="q" data-img="truck"><legend><span class="n">1 of 6</span>How many trucks does your company run?</legend>
+          <fieldset class="q" data-img="truck"><legend><span class="n">Question 1 of 6</span>How many trucks does your company run?</legend>
+            <p class="sv-why">To compare offices of a similar size.</p>
             <div class="opts tall">
               <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
               <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
@@ -56,7 +57,8 @@
               <label><input type="radio" name="fleet" value="100+"><span>Over 100</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="route"><legend><span class="n">2 of 6</span>How many times a week do your trucks go abroad?</legend>
+          <fieldset class="q" data-img="route"><legend><span class="n">Question 2 of 6</span>How many times a week do your trucks go abroad?</legend>
+            <p class="sv-why">zhol is for offices that cross the Brenner, Switzerland and France.</p>
             <div class="opts tall">
               <label><input type="radio" name="trips_abroad" value="0" required><span>Never</span></label>
               <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5 times</span></label>
@@ -64,7 +66,8 @@
               <label><input type="radio" name="trips_abroad" value="20+"><span>Over 20 times</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="watch"><legend><span class="n">3 of 6</span>How long do you spend each day checking bans, queues and strikes?</legend>
+          <fieldset class="q" data-img="watch"><legend><span class="n">Question 3 of 6</span>How long do you spend each day checking bans, queues and strikes?</legend>
+            <p class="sv-why">This is the time zhol wants to give back to you.</p>
             <div class="opts tall">
               <label><input type="radio" name="minutes" value="<10" required><span>Under 10 minutes</span></label>
               <label><input type="radio" name="minutes" value="10-20"><span>10–20 minutes</span></label>
@@ -72,7 +75,8 @@
               <label><input type="radio" name="minutes" value="40+"><span>Over 40 minutes</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">4 of 6</span>The last time a ban, a queue or a strike stopped one of your trucks, what did it cost you?</legend>
+          <fieldset class="q" data-img="coin"><legend><span class="n">Question 4 of 6</span>The last time a ban, a queue or a strike stopped one of your trucks, what did it cost you?</legend>
+            <p class="sv-why">It tells us what an alert that arrives in time is worth.</p>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Under €100</span></label>
               <label><input type="radio" name="last_cost" value="100-300"><span>€100–300</span></label>
@@ -81,14 +85,16 @@
               <label><input type="radio" name="last_cost" value="unknown"><span>Don’t know</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">5 of 6</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s trucks will hit a problem and what to do?</legend>
+          <fieldset class="q" data-img="phone"><legend><span class="n">Question 5 of 6</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s trucks will hit a problem and what to do?</legend>
+            <p class="sv-why">This is exactly what we are building.</p>
             <div class="opts tall">
               <label><input type="radio" name="would_use" value="yes" required><span>Yes, a lot</span></label>
               <label><input type="radio" name="would_use" value="maybe"><span>Maybe</span></label>
               <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="thinking"><legend><span class="n">6 of 6</span>What price feels fair, per truck per month?</legend>
+          <fieldset class="q" data-img="thinking"><legend><span class="n">Question 6 of 6</span>What price feels fair, per truck per month?</legend>
+            <p class="sv-why">To set a fair price before asking for a single euro.</p>
             <div class="opts tall">
               <label><input type="radio" name="price" value="0" required><span>Nothing, I wouldn’t pay</span></label>
               <label><input type="radio" name="price" value="<5"><span>Up to €5</span></label>
@@ -139,6 +145,6 @@
   <span>Alikhan · Inkara · Tomiris · Bocconi University · TEF Ignition 2026</span>
   <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/outlook">Radar</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a></span>
 </div></footer>
-<script src="/assets/survey.js?v=sv4" defer></script>
+<script src="/assets/survey.js?v=vz1" defer></script>
 </body>
 </html>

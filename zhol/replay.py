@@ -228,7 +228,7 @@ def replay(loads: list[Load], extra: list[Event] | None = None, costs: CostModel
         cost = max(0.0, a.baseline_cost_eur - base.baseline_cost_eur - idle_h * costs.truck_hour_eur)
         unplanned = any(h.event_id in hist_ids for h in real)
         rows.append({
-            "ref": ld.id, "departure": ld.departure.isoformat(), "lane": catalog.lane(ld.lane_id).name.replace(" -> ", " → "),
+            "ref": ld.id, "departure": ld.departure.isoformat(), "lane": catalog.lane(ld.lane_id).name.replace(" -> ", " – "),
             "cargo": ld.cargo, "status": a.status,
             "events": sorted({h.event_title.split(": ", 1)[-1] for h in real}),
             "exempt": sorted({h.event_title.split(": ", 1)[-1] for h in exempt}),
@@ -291,20 +291,20 @@ def render_html(result: dict, company: str, skipped: list[dict] | None = None, e
     if skipped:
         skipped_html = ("<h2>Viaggi non analizzati</h2><p class='muted'>Tratte che zhol non copre ancora o righe senza data leggibile. "
                         "Ce le segnalate? Le aggiungiamo.</p><ul>" +
-                        "".join(f"<li>riga {x['line']} {e(x['ref'])}: {e(x['origin'])} → {e(x['destination'])} ({e(x['why'])})</li>"
+                        "".join(f"<li>riga {x['line']} {e(x['ref'])}: {e(x['origin'])} – {e(x['destination'])} ({e(x['why'])})</li>"
                                 for x in skipped[:30]) + "</ul>")
     banner = ("<p class='example'>Esempio con carichi inventati, per mostrare il formato. Gli eventi sono reali e citati.</p>"
               if example else "")
     return f"""<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>zhol · Analisi del mese passato · {e(company)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root{{--paper:#f6f3ea;--card:#fbf9f3;--line:#e2dbcc;--ink:#352b28;--ink2:#554b45;--muted:#675e57;--red:#a2311e;--sage:#d2decc;--sageink:#2f5f45}}
 *{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink2);font:15px/1.5 Inter,system-ui,sans-serif}}
 .wrap{{max-width:1080px;margin:0 auto;padding:40px 24px 60px}}h1,h2{{color:var(--ink);letter-spacing:-.02em}}h1{{font-size:34px;line-height:1.1;margin:6px 0 10px}}
-h2{{font-size:20px;margin:34px 0 12px}}.kicker{{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--red)}}
-.logo{{font:italic 600 28px 'Source Serif 4',serif;color:var(--ink)}}.muted{{color:var(--muted)}}.example{{background:#f4ddd4;border-radius:6px;padding:10px 14px;color:var(--ink)}}
+h2{{font-size:20px;margin:34px 0 12px}}.kicker{{font-size:13px;font-weight:600;color:var(--red)}}
+.logo{{font:700 28px Inter,system-ui,sans-serif;letter-spacing:-.03em;color:var(--ink)}}.muted{{color:var(--muted)}}.example{{background:#f4ddd4;border-radius:6px;padding:10px 14px;color:var(--ink)}}
 .cards{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}}.card{{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px}}
 .card b{{display:block;font-size:28px;color:var(--red);letter-spacing:-.02em}}.card.save b{{color:var(--sageink)}}
 .tw{{overflow-x:auto}}table{{width:100%;min-width:760px;border-collapse:collapse;font-size:13.5px}}th{{text-align:left;color:var(--sageink);border-bottom:1.5px solid var(--ink);padding:8px 8px 6px 0}}

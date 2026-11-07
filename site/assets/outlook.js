@@ -18,7 +18,7 @@
   const STAGE_IT = { tension: "tensione", threat: "minaccia", announced: "annunciato", confirmed: "confermato", ongoing: "in corso", revoked: "revocato" };
   const band = b => IT ? (BAND_IT[b] || b) : b;
   const stage = s => IT ? (STAGE_IT[s] || s) : s;
-  const arrow = x => x ? x.replace(" -> ", " → ") : x;
+  const arrow = x => x ? x.replace(" -> ", " – ") : x;   // routes with a dash: no arrows on the site (VISION.md)
   const laneName = im => arrow((IT && im.lane_it) || im.lane);
   const viaName = im => arrow((IT && im.plan.via_it) || im.plan.via);
   const planName = im => (IT && im.plan.it) || im.plan.en;
@@ -71,7 +71,7 @@
     const im = it.impact, box = el("details", "rd-plan");
     if (!openedOne && it.group !== "official") { box.open = true; openedOne = true; }
     const sum = el("summary");
-    sum.append(el("span", null, T("Keep the plan ", "Senza cambiare ") + eur(im.e_keep)), el("span", null, T("→ with zhol ", "→ con zhol ") + eur(Math.min(im.e_now, im.e_alert))),
+    sum.append(el("span", null, T("Keep the plan ", "Senza cambiare ") + eur(im.e_keep)), el("span", null, T("With zhol ", "Con zhol ") + eur(Math.min(im.e_now, im.e_alert))),
       el("b", "save", saves(it) + eur(im.saving)), el("span", "more", T("Plan and who to tell", "Piano e chi avvisare")));
     box.append(sum);
     const inner = el("div", "inner"); box.append(inner);

@@ -58,14 +58,14 @@ def _clean(s: str) -> str:
 
 def load_line(a: Assessment, load: Load, lang: str = "it") -> str:
     desc = f" · {load.description}" if load.description else ""
-    head = f"*{load.id}*{desc}, {load.origin} → {load.destination}"
+    head = f"*{load.id}*{desc}, {load.origin} – {load.destination}"
     best = a.options[0]
     real = [h for h in a.hits if not h.exempt]
     if a.status == "exempt":
         ex = a.hits[0]
         why = "esente" if lang == "it" else "exempt"
         act = "parti come previsto" if lang == "it" else "leave as planned"
-        return f"{head}: {ex.event_title.split(': ', 1)[-1]} - {why} ({CARGO_IT.get(load.cargo, load.cargo) if lang == 'it' else load.cargo}) → {act}"
+        return f"{head}: {ex.event_title.split(': ', 1)[-1]} - {why} ({CARGO_IT.get(load.cargo, load.cargo) if lang == 'it' else load.cargo}): {act}"
     if not real:
         return f"{head}: " + ("nessun problema" if lang == "it" else "clear")
     h = max(real, key=lambda x: x.wait_min)
@@ -83,8 +83,8 @@ def load_line(a: Assessment, load: Load, lang: str = "it") -> str:
         action = (f"trattieni fino a {_fmt_dt(best.departure, lang)}" if lang == "it"
                   else f"hold until {_fmt_dt(best.departure, lang)}")
     lost_lbl = "perdi" if lang == "it" else "lose"
-    return f"{head}: {title} a {where} ({lost_lbl} {lost}) → {action}" if lang == "it" else \
-        f"{head}: {title} at {where} ({lost_lbl} {lost}) → {action}"
+    return f"{head}: {title} a {where} ({lost_lbl} {lost}): {action}" if lang == "it" else \
+        f"{head}: {title} at {where} ({lost_lbl} {lost}): {action}"
 
 
 def compose_alert(company: Company, items: list[tuple[Assessment, Load]], when_label: str) -> dict:
@@ -153,7 +153,7 @@ def compose_alert(company: Company, items: list[tuple[Assessment, Load]], when_l
 def details_message(items: Iterable[tuple[Assessment, Load]], lang: str = "it") -> str:
     out = []
     for a, ld in items:
-        out.append(f"*{ld.id}* {ld.origin} → {ld.destination}")
+        out.append(f"*{ld.id}* {ld.origin} – {ld.destination}")
         for h in a.hits:
             tag = ("esente: " + (h.exempt_reason or "")) if h.exempt else _hours(h.wait_min)
             out.append(f"  • {h.event_title} - {h.waypoint} {_fmt_dt(h.eta, lang)} [{tag}]")

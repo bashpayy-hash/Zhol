@@ -33,7 +33,7 @@
     }).join("");
     return `<article class="card load">
       <div class="row"><span class="id">${esc(l.id)} · ${esc(l.description)}</span><span class="status ${code}">${label}</span></div>
-      <h3>${esc(l.origin)} → ${esc(l.destination)}</h3>
+      <h3>${esc(l.origin)} – ${esc(l.destination)}</h3>
       <p class="small muted">${T("Departs", "Partenza")} ${dt(l.departure)} · ${esc(l.lane.split(" via ")[1] ? "via " + l.lane.split(" via ")[1] : "")}</p>
       <p class="small">${why}</p>
       ${l.saving > 0 ? `<p class="small"><b style="color:var(--red)">${eur(l.saving)}</b> ${T("saved with the first option", "risparmiati con la prima opzione")}</p>` : ""}
@@ -113,7 +113,7 @@
   getJSON("/data/bulletin.json").then(d => {
     const items = d.items;
     $("bull").innerHTML = items.length ? items.map(i => `<div class="bull" style="border-color:#5b463a">
-      <span class="d" style="color:var(--on-dark)">${day(i.start)} ${hm(i.start)} → ${hm(i.end)}${day(i.end) !== day(i.start) ? " " + day(i.end) : ""}</span>
+      <span class="d" style="color:var(--on-dark)">${day(i.start)} ${hm(i.start)}–${hm(i.end)}${day(i.end) !== day(i.start) ? " " + day(i.end) : ""}</span>
       <span class="cc">${esc(i.country)}</span>
       <span>${esc(i.title)}${i.roads && i.roads.length ? ` <span style="color:#a89a8c">· ${esc(i.roads.join(", "))}</span>` : ""}${i.direction && i.direction !== "both" ? ` <span style="color:#a89a8c">· ${esc(i.direction)}</span>` : ""}${i.url ? ` <a href="${esc(i.url)}" rel="noopener" target="_blank">${T("source", "fonte")}</a>` : ""}</span>
     </div>`).join("") : `<p>${T("No bans or dosing days in the next two weeks.", "Nessun divieto né giorno di dosaggio nelle prossime due settimane.")}</p>`;
