@@ -11,6 +11,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=1">
 <link rel="stylesheet" href="/assets/zhol.css?v=q1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/outlook">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/outlook">
@@ -34,7 +35,9 @@
         <select id="rd-route"><option value="">All routes</option></select></label>
       <p class="small muted" id="rd-status">Loading the latest radar…</p>
     </div>
-    <img class="art" src="/assets/img/q/radar.webp?v=2" alt="Illustration: a folded map of the Alps with a route over a pass and a small barometer whose needle points to a red mark" width="1100" height="822">
+    <div class="media scene-frame">
+      <video data-scene="/assets/img/scenes/pass" muted loop playsinline preload="none" poster="/assets/img/scenes/pass-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, our plush mascot, watching a snowy Alpine pass through binoculars from a lookout hut, a barometer and a radio on the sill"></video>
+    </div>
   </div>
 </section>
 
@@ -174,6 +177,7 @@
   <span>Alikhan, Inkara, Tomiris · Bocconi University · TEF Ignition 2026</span>
   <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
+<script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/outlook.js?v=vz1" defer></script>
 </body>
 </html>

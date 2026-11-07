@@ -18,6 +18,13 @@
    "video_job": "ad717f0f-23fc-4ceb-b0c7-d026b734b362",
    "still": "gpt_image_2_5 flare high 2k 4:3; Zholdas with a clipboard checking parcels on a pallet at a warehouse loading dock, late afternoon",
    "video": "kling4_0 image-to-video 1080p 5 s, start_image = end_image = still; small tick on the clipboard, looks up, dust motes drift"
+  },
+  "pass": {
+   "where": "radar hero (/outlook and /it/outlook)",
+   "still_job": "7add844d-76cf-4f63-9413-a4c4f142a32d",
+   "video_job": "5aa8ac0f-b67a-4424-9ad6-a8877bc2b6a2",
+   "still": "gpt_image_2_5 flare high 2k 4:3; Zholdas with brass binoculars at the window of a wooden lookout hut above a snowy Alpine pass, trucks queueing on the road below, barometer, radio, map and mug on the sill",
+   "video": "kling4_0 image-to-video 1080p 5 s, start_image = end_image = still; he lowers the binoculars and raises them, snow falls, clouds drift, trucks creep forward"
   }
  },
  "files": {
@@ -60,6 +67,26 @@
   "dock-poster.webp": {
    "kb": 69,
    "sha256": "437e3e87ee549c4d2cfbdb61ccf19dd5019da79f8f0ce6bf3828cde10168917f"
+  },
+  "pass-1280.mp4": {
+   "kb": 629,
+   "sha256": "f71f6d3013f009d84ecc28b9ffbe2c5c67964c947cf7a4249154189f5fe77471"
+  },
+  "pass-1280.webm": {
+   "kb": 263,
+   "sha256": "29f6b6bdea0e31159b2e43aabce722df5f7b081d5f28d8711059f5f15351254a"
+  },
+  "pass-720.mp4": {
+   "kb": 183,
+   "sha256": "fd7a1b2d924b95c6c6a9ff3c008162e05c0b7e31ff09f28a70152e8baaa1e2d0"
+  },
+  "pass-720.webm": {
+   "kb": 116,
+   "sha256": "040c069fbac017c7b0b85f1b4a5acd782e6cbbfcaa5a8295913dd3d22130296d"
+  },
+  "pass-poster.webp": {
+   "kb": 126,
+   "sha256": "a9eed6911236e11c0882e34b3770325e95cf49212fd8ca65af4ba512cf773d27"
   }
  }
 }
