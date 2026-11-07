@@ -1,0 +1,132 @@
+{
+  "what": "Vespi pose set v2 (25 Oct 2026): exact prompts as sent to Higgsfield, and the original full-resolution files (WebP q92, lossless alpha) in ../originals/poses-v2/",
+  "settings": {
+    "tool": "Higgsfield generate_image",
+    "model": "gpt_image_2_5",
+    "variant (model param)": "flare",
+    "quality": "high",
+    "resolution": "1k",
+    "aspect_ratio": "5:4 (1120x896)",
+    "background": "transparent",
+    "remove_bg": false
+  },
+  "references": [
+    {
+      "higgsfield_image_job": "ab833075-dfc7-4e28-824c-7e299aad556c",
+      "file": "../originals/references/ref-1-welcome-ab833075.webp",
+      "what": "waving over a paper ledge (pose v1 'welcome')"
+    },
+    {
+      "higgsfield_image_job": "a448f972-9035-4be6-b0ca-1f0f7800f1a5",
+      "file": "../originals/references/ref-2-a448f972.webp",
+      "what": "full figure front, the main identity sheet"
+    },
+    {
+      "higgsfield_image_job": "0f6d7ac4-4e85-4761-9765-753f578eec1e",
+      "file": "../originals/references/ref-3-0f6d7ac4.webp",
+      "what": "full figure front, slightly smoother fabric"
+    }
+  ],
+  "reference_use": "Pass all three as medias with role 'image' (type image_job) in the same Higgsfield account, or upload these reference files as references in another account.",
+  "identity_template": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, {face}, olive-green felt cape collar with one red button. {pose} Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, {extra}no other characters.",
+  "poses": [
+    {
+      "name": "stage-start",
+      "job": "1b03686f-e183-4d79-a55b-7efbcfc05482",
+      "face": "quiet smile",
+      "pose": "Full figure standing, wearing a small canvas backpack, holding an open folded paper map with both hands, excited to start a journey.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Full figure standing, wearing a small canvas backpack, holding an open folded paper map with both hands, excited to start a journey. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "stage-education",
+      "job": "80d18d26-dea4-4bb1-86fa-4f12ea5d1cc2",
+      "face": "quiet smile",
+      "pose": "Half-body, a small leather school satchel on one shoulder, holding a rolled school diploma tied with a red ribbon, proud gentle smile.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body, a small leather school satchel on one shoulder, holding a rolled school diploma tied with a red ribbon, proud gentle smile. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "stage-docs",
+      "job": "a45dbfc0-222a-45aa-a49d-8b408b3e2b88",
+      "face": "quiet smile",
+      "pose": "Half-body, wearing small round wire reading glasses, hugging a cream paper document folder closed with a red wax seal, focused and calm.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body, wearing small round wire reading glasses, hugging a cream paper document folder closed with a red wax seal, focused and calm. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "stage-apply",
+      "job": "62676c2b-9d94-4ba1-af0d-cc8c3f62c704",
+      "face": "quiet smile",
+      "pose": "Half-body, a tiny black felt graduation cap sitting on top of the red helmet, holding up a cream envelope with a red wax seal as if a university letter just arrived, delighted.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body, a tiny black felt graduation cap sitting on top of the red helmet, holding up a cream envelope with a red wax seal as if a university letter just arrived, delighted. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "stage-dsu",
+      "job": "8e588a76-5058-45b1-9a72-914ccc1f98f4",
+      "face": "quiet smile",
+      "pose": "Half-body sitting behind a table edge, carefully dropping one coin into a small glass jar half full of coins, pleased and patient.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body sitting behind a table edge, carefully dropping one coin into a small glass jar half full of coins, pleased and patient. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "stage-visa",
+      "job": "99db2833-97d7-429e-9579-f4267a6d12d6",
+      "face": "quiet smile",
+      "pose": "Full figure standing next to a small cream travel suitcase with tan leather straps, holding a small dark red passport booklet, confident and ready to travel.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Full figure standing next to a small cream travel suitcase with tan leather straps, holding a small dark red passport booklet, confident and ready to travel. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "stage-arrival",
+      "job": "011751f5-b8b3-474c-af6b-d4db0ff1e101",
+      "face": "quiet smile",
+      "pose": "Half-body, a thin knitted scarf with red and cream stripes around the neck, happily holding up a ring of old brass keys to a new home.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body, a thin knitted scarf with red and cream stripes around the neck, happily holding up a ring of old brass keys to a new home. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "celebrate",
+      "job": "4f3d29d3-14ea-436b-83e4-ecb01e234818",
+      "face": "open happy smile",
+      "pose": "Full figure jumping with both arms raised high in joy, feet slightly off the ground, celebrating a finished step.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, open happy smile, olive-green felt cape collar with one red button. Full figure jumping with both arms raised high in joy, feet slightly off the ground, celebrating a finished step. Soft daylight studio light, soft shadow below, isolated on a transparent background. No confetti, no text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "stamp",
+      "job": "156fb0ba-3135-427d-ac5c-6cc046c62aaf",
+      "face": "quiet smile",
+      "pose": "Half-body behind a table edge, pressing a small wooden rubber stamp onto a cream paper card, leaving a round red ink mark, satisfied.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body behind a table edge, pressing a small wooden rubber stamp onto a cream paper card, leaving a round red ink mark, satisfied. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "thinking",
+      "job": "2e388024-1838-4ec3-9429-b5f0fedaba9f",
+      "face": "",
+      "pose": "Half-body, one hand resting on the chin, eyes looking up and to the side, thoughtful and curious.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, olive-green felt cape collar with one red button. Half-body, one hand resting on the chin, eyes looking up and to the side, thoughtful and curious. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no question marks, no other characters."
+    },
+    {
+      "name": "encourage",
+      "job": "4d1ab540-17b4-441b-a35a-43fc12c22195",
+      "face": "friendly smile",
+      "pose": "Full figure mid-step walking to the right, one arm pointing forward to the right, encouraging someone to follow to the next step.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, friendly smile, olive-green felt cape collar with one red button. Full figure mid-step walking to the right, one arm pointing forward to the right, encouraging someone to follow to the next step. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "oops",
+      "job": "1333c08d-51b9-417c-b937-b326e6b7354a",
+      "face": "small sheepish apologetic smile",
+      "pose": "Full figure, one hand scratching the side of the helmet, a single dropped cream sheet of paper on the floor beside, kind and apologetic, not sad.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, small sheepish apologetic smile, olive-green felt cape collar with one red button. Full figure, one hand scratching the side of the helmet, a single dropped cream sheet of paper on the floor beside, kind and apologetic, not sad. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "reading",
+      "job": "9397d197-5ca1-457a-87bc-bcdfce3059b9",
+      "face": "quiet smile",
+      "pose": "Full figure sitting cross-legged on the floor reading an open small guidebook held in both hands, curious.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Full figure sitting cross-legged on the floor reading an open small guidebook held in both hands, curious. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    },
+    {
+      "name": "first-plan",
+      "job": "19679a7e-dce0-4154-a040-d2b039a0cd74",
+      "face": "quiet smile",
+      "pose": "Half-body, holding a blank cream index card in one hand and a short pencil in the other, ready to write the very first plan.",
+      "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body, holding a blank cream index card in one hand and a short pencil in the other, ready to write the very first plan. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no other characters."
+    }
+  ]
+}
