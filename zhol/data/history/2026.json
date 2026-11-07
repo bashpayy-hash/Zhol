@@ -1,0 +1,42 @@
+{
+  "_note": "Disruptions outside the published calendars that really happened, for replays of past months. Only events with a source; hours as reported. Add new ones as they are verified.",
+  "events": [
+    {
+      "id": "hist-2026-10-lueg-night",
+      "kind": "closure",
+      "title": "AT: Luegbrücke resurfacing, transit ban for trucks >3.5 t on A12/A13 at night",
+      "summary": "Divieto notturno 21:00-05:00 per i mezzi oltre 3,5 t diretti oltre il ponte Lueg, 12-15 e 19-22 ottobre 2026.",
+      "scope": {"chokepoints": ["luegbruecke"]},
+      "windows": [
+        {"start": "2026-10-12T21:00:00+02:00", "end": "2026-10-13T05:00:00+02:00"},
+        {"start": "2026-10-13T21:00:00+02:00", "end": "2026-10-14T05:00:00+02:00"},
+        {"start": "2026-10-14T21:00:00+02:00", "end": "2026-10-15T05:00:00+02:00"},
+        {"start": "2026-10-15T21:00:00+02:00", "end": "2026-10-16T05:00:00+02:00"},
+        {"start": "2026-10-19T21:00:00+02:00", "end": "2026-10-20T05:00:00+02:00"},
+        {"start": "2026-10-20T21:00:00+02:00", "end": "2026-10-21T05:00:00+02:00"},
+        {"start": "2026-10-21T21:00:00+02:00", "end": "2026-10-22T05:00:00+02:00"},
+        {"start": "2026-10-22T21:00:00+02:00", "end": "2026-10-23T05:00:00+02:00"}
+      ],
+      "applies": {"min_weight_t": 3.5},
+      "severity": "full_stop",
+      "source": {"name": "ÖAMTC, Luegbrücke: Fahrbahnsanierungen ab 12. Oktober", "url": "https://www.oeamtc.at/news/tirol/luegbruecke-fahrbahnsanierungen-ab-12-oktober-18778740/print"},
+      "confidence": 0.9,
+      "status": "approved",
+      "origin": "manual"
+    },
+    {
+      "id": "hist-2026-10-sicily-stoppage",
+      "kind": "strike",
+      "title": "IT: Fermo dell'autotrasporto in Sicilia, presidi sulle principali arterie",
+      "summary": "Fermo di cinque giorni, 16-20 ottobre 2026; corsia preferenziale per i deperibili.",
+      "scope": {"regions": ["IT-Sicilia"]},
+      "windows": [{"start": "2026-10-16T00:00:00+02:00", "end": "2026-10-21T00:00:00+02:00"}],
+      "applies": {"min_weight_t": 3.5, "exempt_cargo": ["perishable", "live_animals"]},
+      "severity": "full_stop",
+      "source": {"name": "Il Post, 21 Oct 2026; Coldiretti; Confcommercio Sicilia", "url": "https://www.ilpost.it/"},
+      "confidence": 0.85,
+      "status": "approved",
+      "origin": "manual"
+    }
+  ]
+}

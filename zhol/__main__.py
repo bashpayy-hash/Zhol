@@ -6,6 +6,7 @@
   bans <YYYY-MM-DD> [--days 3]       list national truck bans
   extract "<text>"                   extract an event from a notice (Claude if configured, else heuristics)
   savings [--trucks 20]              savings / pricing estimate
+  replay FILE [--company NAME] [--out report.html]   what zhol would have flagged on a past month of loads
 """
 from __future__ import annotations
 
@@ -24,6 +25,8 @@ def main(argv: list[str] | None = None) -> int:
     b = sub.add_parser("bans"); b.add_argument("date"); b.add_argument("--days", type=int, default=3)
     e = sub.add_parser("extract"); e.add_argument("text"); e.add_argument("--source", default="cli")
     v = sub.add_parser("savings"); v.add_argument("--trucks", type=int, default=20)
+    rp = sub.add_parser("replay"); rp.add_argument("file"); rp.add_argument("--company", default="Ufficio traffico")
+    rp.add_argument("--out", default="report.html"); rp.add_argument("--csv"); rp.add_argument("--example", action="store_true")
     a = p.parse_args(argv)
 
     from .config import settings
@@ -46,6 +49,17 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "savings":
         from .savings import SavingsInputs, estimate
         print(json.dumps(estimate(SavingsInputs(trucks=a.trucks)).model_dump(), indent=2))
+        return 0
+
+    if a.cmd == "replay":
+        from pathlib import Path
+        from .replay import parse_loads, read_rows, render_html, replay, write_csv
+        parsed = parse_loads(read_rows(Path(a.file)), a.company)
+        res = replay(parsed.loads)
+        Path(a.out).write_text(render_html(res, a.company, parsed.skipped, example=a.example), encoding="utf-8")
+        if a.csv:
+            write_csv(res, Path(a.csv))
+        print(json.dumps(res["summary"] | {"skipped": len(parsed.skipped), "report": a.out}, indent=2, ensure_ascii=False))
         return 0
 
     from .store import Store

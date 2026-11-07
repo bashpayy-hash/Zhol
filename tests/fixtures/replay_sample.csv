@@ -1,0 +1,25 @@
+Rif;Data;Ora;Origine;Destinazione;Valico;Merce;Deperibile;Peso;Consegna entro
+A101;01/10/2026;07:00;Milano;Monaco di Baviera;Brennero;macchinari;no;40;
+A102;02/10/2026;18:00;Milano;Monaco di Baviera;Brennero;macchinari;no;40;
+A103;03/10/2026;10:00;Milano;Monaco di Baviera;Brennero;ricambi auto;no;38;
+B201;05/10/2026;04:00;Monaco di Baviera;Verona;Brennero;imballaggi;no;30;
+B202;07/10/2026;05:00;Monaco di Baviera;Verona;Brennero;imballaggi;no;30;
+C301;08/10/2026;08:00;Milano;Lione;Frejus;bobine acciaio;no;40;
+C302;09/10/2026;21:00;Milano;Lione;Monte Bianco;bobine acciaio;no;40;
+A104;12/10/2026;17:00;Milano;Monaco di Baviera;Brennero;macchinari;no;40;
+A105;13/10/2026;16:30;Verona;Monaco di Baviera;Brennero;piastrelle;no;40;
+A106;14/10/2026;08:00;Milano;Monaco di Baviera;Brennero;macchinari;no;40;
+D401;15/10/2026;06:00;Vittoria;Milano;;pomodori;si;26;
+D402;16/10/2026;06:00;Vittoria;Milano;;pomodori;si;26;
+D403;16/10/2026;08:00;Vittoria;Verona;;scatolame;no;40;
+D404;17/10/2026;05:00;Catania;Monaco di Baviera;;scatolame;no;40;
+A107;19/10/2026;18:00;Milano;Monaco di Baviera;Brennero;ricambi auto;no;38;
+A108;20/10/2026;12:00;Milano;Stoccarda;Brennero;macchinari;no;40;
+E501;21/10/2026;09:00;Padova;Vienna;Tarvisio;mobili;no;30;
+E502;22/10/2026;20:00;Padova;Vienna;Tarvisio;mobili;no;30;
+A109;23/10/2026;07:00;Milano;Monaco di Baviera;Brennero;macchinari;no;40;
+A110;25/10/2026;20:00;Milano;Monaco di Baviera;Brennero;macchinari;no;40;
+B203;27/10/2026;03:30;Monaco di Baviera;Verona;Brennero;imballaggi;no;30;
+C303;28/10/2026;06:00;Milano;Lione;Frejus;bobine acciaio;no;40;
+A111;29/10/2026;06:00;Milano;Varsavia;Brennero;elettrodomestici;no;36;
+D405;30/10/2026;06:00;Vittoria;Milano;;agrumi;si;26;

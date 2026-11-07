@@ -55,4 +55,7 @@ Net saving for the customer = verified saving − price. Margin for us = price �
 
 ## 10.6 After validation: the financial plan
 
+Version 1 with labelled assumptions and a sensitivity table: `docs/13-financial-plan.md` (generator `scripts/finplan.py`). Version 2 replaces the assumptions with interview and pilot numbers.
+
+
 Once 10.1–10.5 have numbers, we rebuild `docs/03-business-model.md` as a monthly plan for 36 months: offices by month from the measured conversion, price from the interviews, review cost from the measured seconds per event, break-even month, and the funding needed to reach it. Until then every figure in the plan is labelled as an assumption.

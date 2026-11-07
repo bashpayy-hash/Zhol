@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-label="zhol 36-month plan: monthly revenue against costs, and cash">
+<style>text{font:12px Inter,Arial,sans-serif;fill:#675e57}</style>
+<line x1="56" x2="884" y1="321.7" y2="321.7" stroke="#d8d0c1" stroke-width="0.8"/>
+<text x="50" y="325.7" text-anchor="end">€-125k</text>
+<line x1="56" x2="884" y1="281.8" y2="281.8" stroke="#d8d0c1" stroke-width="0.8"/>
+<text x="50" y="285.8" text-anchor="end">€-100k</text>
+<line x1="56" x2="884" y1="242.0" y2="242.0" stroke="#d8d0c1" stroke-width="0.8"/>
+<text x="50" y="246.0" text-anchor="end">€-75k</text>
+<line x1="56" x2="884" y1="202.1" y2="202.1" stroke="#d8d0c1" stroke-width="0.8"/>
+<text x="50" y="206.1" text-anchor="end">€-50k</text>
+<line x1="56" x2="884" y1="162.3" y2="162.3" stroke="#d8d0c1" stroke-width="0.8"/>
+<text x="50" y="166.3" text-anchor="end">€-25k</text>
+<line x1="56" x2="884" y1="122.4" y2="122.4" stroke="#352b28" stroke-width="1.2"/>
+<text x="50" y="126.4" text-anchor="end">€0k</text>
+<line x1="56" x2="884" y1="82.6" y2="82.6" stroke="#d8d0c1" stroke-width="0.8"/>
+<text x="50" y="86.6" text-anchor="end">€25k</text>
+<line x1="56" x2="884" y1="42.7" y2="42.7" stroke="#d8d0c1" stroke-width="0.8"/>
+<text x="50" y="46.7" text-anchor="end">€50k</text>
+<rect x="57.0" y="114.8" width="10.5" height="7.6" fill="#c4d2bd"/>
+<rect x="67.5" y="122.0" width="10.5" height="0.4" fill="#a2311e"/>
+<text x="56.0" y="342">2027</text>
+<rect x="80.0" y="118.7" width="10.5" height="3.7" fill="#c4d2bd"/>
+<rect x="90.5" y="121.7" width="10.5" height="0.7" fill="#a2311e"/>
+<rect x="103.0" y="118.7" width="10.5" height="3.7" fill="#c4d2bd"/>
+<rect x="113.5" y="121.3" width="10.5" height="1.1" fill="#a2311e"/>
+<rect x="126.0" y="118.7" width="10.5" height="3.7" fill="#c4d2bd"/>
+<rect x="136.5" y="121.0" width="10.5" height="1.4" fill="#a2311e"/>
+<rect x="149.0" y="118.7" width="10.5" height="3.7" fill="#c4d2bd"/>
+<rect x="159.5" y="120.7" width="10.5" height="1.7" fill="#a2311e"/>
+<rect x="172.0" y="118.6" width="10.5" height="3.8" fill="#c4d2bd"/>
+<rect x="182.5" y="120.4" width="10.5" height="2.1" fill="#a2311e"/>
+<rect x="195.0" y="113.8" width="10.5" height="8.6" fill="#c4d2bd"/>
+<rect x="205.5" y="120.0" width="10.5" height="2.4" fill="#a2311e"/>
+<rect x="218.0" y="113.8" width="10.5" height="8.6" fill="#c4d2bd"/>
+<rect x="228.5" y="119.7" width="10.5" height="2.8" fill="#a2311e"/>
+<rect x="241.0" y="113.8" width="10.5" height="8.6" fill="#c4d2bd"/>
+<rect x="251.5" y="119.2" width="10.5" height="3.2" fill="#a2311e"/>
+<rect x="264.0" y="113.8" width="10.5" height="8.6" fill="#c4d2bd"/>
+<rect x="274.5" y="118.7" width="10.5" height="3.7" fill="#a2311e"/>
+<rect x="287.0" y="113.8" width="10.5" height="8.7" fill="#c4d2bd"/>
+<rect x="297.5" y="118.3" width="10.5" height="4.2" fill="#a2311e"/>
+<rect x="310.0" y="113.7" width="10.5" height="8.7" fill="#c4d2bd"/>
+<rect x="320.5" y="117.8" width="10.5" height="4.6" fill="#a2311e"/>
+<rect x="333.0" y="95.6" width="10.5" height="26.8" fill="#c4d2bd"/>
+<rect x="343.5" y="115.1" width="10.5" height="7.3" fill="#a2311e"/>
+<text x="332.0" y="342">2028</text>
+<rect x="356.0" y="95.5" width="10.5" height="26.9" fill="#c4d2bd"/>
+<rect x="366.5" y="112.5" width="10.5" height="9.9" fill="#a2311e"/>
+<rect x="379.0" y="95.4" width="10.5" height="27.0" fill="#c4d2bd"/>
+<rect x="389.5" y="109.9" width="10.5" height="12.5" fill="#a2311e"/>
+<rect x="402.0" y="95.3" width="10.5" height="27.1" fill="#c4d2bd"/>
+<rect x="412.5" y="107.4" width="10.5" height="15.0" fill="#a2311e"/>
+<rect x="425.0" y="95.2" width="10.5" height="27.2" fill="#c4d2bd"/>
+<rect x="435.5" y="105.0" width="10.5" height="17.5" fill="#a2311e"/>
+<rect x="448.0" y="95.1" width="10.5" height="27.3" fill="#c4d2bd"/>
+<rect x="458.5" y="102.6" width="10.5" height="19.8" fill="#a2311e"/>
+<rect x="471.0" y="89.9" width="10.5" height="32.5" fill="#c4d2bd"/>
+<rect x="481.5" y="100.2" width="10.5" height="22.2" fill="#a2311e"/>
+<rect x="494.0" y="89.8" width="10.5" height="32.6" fill="#c4d2bd"/>
+<rect x="504.5" y="98.0" width="10.5" height="24.4" fill="#a2311e"/>
+<rect x="517.0" y="89.7" width="10.5" height="32.7" fill="#c4d2bd"/>
+<rect x="527.5" y="95.8" width="10.5" height="26.6" fill="#a2311e"/>
+<rect x="540.0" y="89.6" width="10.5" height="32.8" fill="#c4d2bd"/>
+<rect x="550.5" y="93.6" width="10.5" height="28.8" fill="#a2311e"/>
+<rect x="563.0" y="89.5" width="10.5" height="32.9" fill="#c4d2bd"/>
+<rect x="573.5" y="91.6" width="10.5" height="30.8" fill="#a2311e"/>
+<rect x="586.0" y="89.5" width="10.5" height="33.0" fill="#c4d2bd"/>
+<rect x="596.5" y="89.6" width="10.5" height="32.8" fill="#a2311e"/>
+<rect x="609.0" y="65.0" width="10.5" height="57.5" fill="#c4d2bd"/>
+<rect x="619.5" y="83.0" width="10.5" height="39.4" fill="#a2311e"/>
+<text x="608.0" y="342">2029</text>
+<rect x="632.0" y="64.7" width="10.5" height="57.7" fill="#c4d2bd"/>
+<rect x="642.5" y="76.5" width="10.5" height="45.9" fill="#a2311e"/>
+<rect x="655.0" y="64.4" width="10.5" height="58.0" fill="#c4d2bd"/>
+<rect x="665.5" y="70.2" width="10.5" height="52.2" fill="#a2311e"/>
+<rect x="678.0" y="59.7" width="10.5" height="62.7" fill="#c4d2bd"/>
+<rect x="688.5" y="64.0" width="10.5" height="58.4" fill="#a2311e"/>
+<rect x="701.0" y="59.4" width="10.5" height="63.0" fill="#c4d2bd"/>
+<rect x="711.5" y="58.0" width="10.5" height="64.4" fill="#a2311e"/>
+<rect x="724.0" y="59.1" width="10.5" height="63.3" fill="#c4d2bd"/>
+<rect x="734.5" y="52.2" width="10.5" height="70.2" fill="#a2311e"/>
+<rect x="747.0" y="58.9" width="10.5" height="63.5" fill="#c4d2bd"/>
+<rect x="757.5" y="46.5" width="10.5" height="75.9" fill="#a2311e"/>
+<rect x="770.0" y="58.6" width="10.5" height="63.8" fill="#c4d2bd"/>
+<rect x="780.5" y="40.9" width="10.5" height="81.5" fill="#a2311e"/>
+<rect x="793.0" y="58.4" width="10.5" height="64.0" fill="#c4d2bd"/>
+<rect x="803.5" y="35.5" width="10.5" height="86.9" fill="#a2311e"/>
+<rect x="816.0" y="58.2" width="10.5" height="64.2" fill="#c4d2bd"/>
+<rect x="826.5" y="30.2" width="10.5" height="92.2" fill="#a2311e"/>
+<rect x="839.0" y="57.9" width="10.5" height="64.5" fill="#c4d2bd"/>
+<rect x="849.5" y="25.0" width="10.5" height="97.4" fill="#a2311e"/>
+<rect x="862.0" y="57.7" width="10.5" height="64.7" fill="#c4d2bd"/>
+<rect x="872.5" y="20.0" width="10.5" height="102.4" fill="#a2311e"/>
+<polyline points="67.5,126.5 90.5,129.5 113.5,132.1 136.5,134.4 159.5,136.4 182.5,138.1 205.5,144.3 228.5,150.2 251.5,155.5 274.5,160.5 297.5,165.0 320.5,169.0 343.5,188.5 366.5,205.5 389.5,219.9 412.5,232.0 435.5,241.8 458.5,249.2 481.5,259.6 504.5,267.7 527.5,273.8 550.5,277.8 573.5,279.8 596.5,280.0 619.5,298.0 642.5,309.8 665.5,315.6 688.5,320.0 711.5,318.6 734.5,311.7 757.5,299.3 780.5,281.5 803.5,258.6 826.5,230.6 849.5,197.7 872.5,160.0" fill="none" stroke="#352b28" stroke-width="2"/>
+<line x1="711.5" x2="711.5" y1="20" y2="320" stroke="#2f5f45" stroke-dasharray="4 4"/>
+<text x="717.5" y="32" style="fill:#2f5f45;font-weight:600">break-even 2029-05</text>
+<rect x="56" y="348" width="12" height="8" fill="#a2311e"/><text x="72" y="356">revenue</text>
+<rect x="146" y="348" width="12" height="8" fill="#c4d2bd"/><text x="162" y="356">costs</text>
+<rect x="236" y="348" width="12" height="8" fill="#352b28"/><text x="252" y="356">cash without new funding</text>
+</svg>

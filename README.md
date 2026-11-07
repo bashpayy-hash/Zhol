@@ -49,6 +49,8 @@
 
 Радар — что ожидается на дорогах в ближайшие 8 недель (забастовки, блокады, праздничные запреты, дозирование, снег на перевалах) и с каким шансом, с формулой: [zhol-beta.netlify.app/outlook](https://zhol-beta.netlify.app/outlook), описание — [docs/11-radar.md](docs/11-radar.md). Сколько стоит каждое событие, какой план выбрать и кому писать (модель «стоимость/потеря» и ценность информации) — [docs/12-cost-and-decision-model.md](docs/12-cost-and-decision-model.md).
 
+Разбор прошлого месяца для офиса: офис присылает Excel по шаблону [outreach/modello_carichi.xlsx](outreach/modello_carichi.xlsx), команда запускает `python -m zhol replay файл.xlsx --company "Название" --out отчёт.html` и через два дня отправляет отчёт на итальянском ([пример](https://zhol-beta.netlify.app/replay-example)). Финплан на 36 месяцев с чувствительностью — [docs/13-financial-plan.md](docs/13-financial-plan.md), генератор `python scripts/finplan.py`.
+
 Второй фидбек TEF (ценность против текущего процесса, кто платит, USP, реальный сегмент, операционная реализуемость, финплан): что измеряем и пороги успеха — [docs/10-feedback-round-2.md](docs/10-feedback-round-2.md). Кому писать на интервью и что писать — [outreach/07-interview-requests.md](outreach/07-interview-requests.md), скрипт v2 — [outreach/03-interview-script.md](outreach/03-interview-script.md), журнал — [outreach/interview_log.csv](outreach/interview_log.csv).
 
 ---

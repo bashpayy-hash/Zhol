@@ -353,6 +353,7 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
   transition: text-decoration-color var(--dur) var(--ease); }
 .more-rows:hover { text-decoration-color: currentColor; }
 .slide.sage .more-rows { color: var(--sage-ink); }
+.slide.dark .more-rows { color: var(--red-on-dark); }
 .rd-route select { font-weight: 500; }
 .rd-tools { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; align-items: center; }
 .rd-week { font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sage-ink); margin: 26px 0 10px; }
