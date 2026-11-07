@@ -44,6 +44,37 @@
   </div>
 </section>
 
+<section class="slide dark" id="money" hidden>
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">What the next eight weeks cost, and what zhol saves</span>
+      <h2 class="title">Every event priced on a real trip, with the plan that saves the most</h2>
+    </div>
+    <div class="split center">
+      <div class="stack" style="gap:16px">
+        <label class="field" style="max-width:380px"><span class="small" style="color:var(--on-dark-2)">Your trucks that would run into each event</span>
+          <input id="m-trucks" type="number" min="1" max="200" step="1" value="1"></label>
+        <div class="money">
+          <p class="kicker">Outside the calendars: strikes, closures, weather</p>
+          <div class="money-stats">
+            <div><span class="lbl">Keep the plans</span><span class="mid" id="m-keep">€0</span></div>
+            <div><span class="lbl">With zhol</span><span class="mid" id="m-zhol">€0</span></div>
+            <div><span class="lbl">Saved by zhol</span><span class="mid save" id="m-save">€0</span></div>
+          </div>
+          <p class="kicker" style="margin-top:14px">In the official calendars: holiday bans, Kufstein dosing</p>
+          <div class="money-stats">
+            <div><span class="lbl">At stake</span><span class="mid" id="c-keep">€0</span></div>
+            <div><span class="lbl">With a plan</span><span class="mid" id="c-plan">€0</span></div>
+            <div><span class="lbl">Not counted as saving</span><span class="small" style="color:var(--on-dark-2)">anyone can look these up for free</span></div>
+          </div>
+        </div>
+        <p class="small" style="color:var(--on-dark-2)" id="m-note"></p>
+      </div>
+      <div class="vs" id="vs"></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide sage" id="radar">
   <div class="wrap stack">
     <div class="qhead">
@@ -101,6 +132,29 @@
           <tbody id="m-mult"></tbody>
         </table></div>
         <p class="small muted">Laws in force count as 99% (97% while Italy’s 2027 decree is not published); the official Tyrol dosing calendar as 95%. These numbers are starting assumptions: every item is checked after its date, and the scale is corrected until 30% items happen about 30% of the time.</p>
+      </div>
+    </div>
+    <div class="qhead" style="margin-top:20px">
+      <span class="kicker">How the cost and the plan are calculated</span>
+      <h2 class="title">Chance × what it costs, against what it costs to act</h2>
+    </div>
+    <div class="split">
+      <div class="stack" style="gap:18px">
+        <div class="formula">
+          <p><b>L</b> = what the event costs a truck if the plan stays as it is</p>
+          <p><b>C</b> = what the best alternative costs if it happens; <b>C₀</b> if it does not</p>
+          <p>keep the plan: <b>p × L</b> · change now: <b>p × C + (1 − p) × C₀</b></p>
+          <p>decide on the evening alert: <b>p × C</b></p>
+          <p>change now only if <b>p &gt; C₀ ÷ (L − C + C₀)</b></p>
+        </div>
+        <p class="small">This is the cost–loss model of decision theory, used to decide whether to act on a forecast (Thompson 1962; Murphy 1977), together with the value of information (Howard 1966): knowing the evening before whether the event happens lets you pay for the alternative only when it is needed.</p>
+      </div>
+      <div class="stack" style="gap:18px">
+        <div class="card">
+          <span class="kicker">Where the euros come from</span>
+          <p class="small">For each dated event the radar builds one real trip through the place, timed to arrive just after it starts, and runs zhol’s engine twice, without and with the event: EU driving-time rules, tolls by country, <b>€100 per truck-hour</b> of waiting (the Italian legal rate, art. 6-bis D.Lgs. 286/2005), <b>€1.18 per km</b>, late delivery at €60 an hour (€150 for fresh food), waiting at your own depot at 40% of the road rate, €40 to change a plan.</p>
+          <p class="small">A truck drives at most about 10 hours a day, so a long wait counts at most 10 lost hours per 24. Weather: about 3 hours of chains and queues on a snowy day. Night closures without published hours: 22:00–06:00. All of these are starting assumptions, written in the code and corrected with pilot data.</p>
+        </div>
       </div>
     </div>
     <div class="card">

@@ -17,6 +17,7 @@ from .. import catalog
 from ..ingest.feeds import load_all_calendars
 from ..rules import generate_ban_events
 from . import model
+from .impact import attach
 from .signals import STAGE_ORDER, Signal, read_signals
 
 TZ = ZoneInfo("Europe/Rome")
@@ -109,7 +110,8 @@ def official_items(today: date, horizon: int) -> list[dict]:
                 items.append(_item(
                     id=_id("dosing", d.isoformat()), group="official", kind="dosing",
                     title="Truck dosing at Kufstein, southbound", where="Kufstein-Nord, A12/A93 (DE–AT)",
-                    countries=["AT"], start=d.isoformat(), end=d.isoformat(), p=model.CERTAIN["official_calendar"],
+                    countries=["AT"], places=["kufstein"], start=d.isoformat(), end=d.isoformat(),
+                    p=model.CERTAIN["official_calendar"],
                     basis="official calendar",
                     detail=f"From {w.start.astimezone(ZoneInfo('Europe/Vienna')):%H:%M}. Land Tirol may stop it early "
                            "if traffic is light, hence 95%.",
@@ -150,7 +152,7 @@ def weather_items(weather: dict, today: date, threshold: float = 0.2) -> list[di
                      f" on {d:%a %d %b}, {lead} days ahead."
             items.append(_item(
                 id=_id("wx", cid, run[0][0].isoformat()), group="forecast", kind="weather", title=title,
-                where=w["name"], countries=[catalog.chokepoints()[cid]["country"]],
+                where=w["name"], countries=[catalog.chokepoints()[cid]["country"]], places=[cid], snow_cm=round(snow),
                 start=run[0][0].isoformat(), end=run[-1][0].isoformat(), p=ch["p"], basis="forecast", detail=detail,
                 factors=[{"label": f"forecast alone: {ch['p_forecast']:.0%}", "x": None},
                          {"label": f"weight {ch['weight']} for {lead} days ahead, rest from the season's {ch['season']:.0%}",
@@ -272,6 +274,7 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
             id=_id("news", latest.title), group="news", kind=latest.kind if latest.kind in kinds else kinds[0],
             title=latest.summary or latest.title, headline=latest.title, where=", ".join(where_bits) or "Europe",
             countries=sorted({k for s in c for k in s.countries}), start=start, end=end or start,
+            places=sorted({k for s in c for k in s.chokepoints}), regions=sorted({r for s in c for r in s.regions}),
             p=est.p, basis="news", stage=stage, prior=est.prior, factors=est.factors,
             detail=f"{len(c)} article{'s' if len(c) > 1 else ''} from {len(outlets)} outlet{'s' if len(outlets) > 1 else ''}.",
             sources=[{"outlet": s.outlet, "url": s.url, "title": s.title, "published": s.published}
@@ -304,6 +307,7 @@ def build_outlook(today: date, horizon: int = 60, fetch: bool = True) -> dict:
     items = official_items(today, horizon) + weather_items(weather, today) + news_items(signals, today)
     end = (today + timedelta(days=horizon)).isoformat()
     items = [i for i in items if not i.get("start") or i["start"] <= end]
+    attach(items)
     ok = sum(1 for v in status.values() if v == "ok")
     return {
         "built_at": datetime.now(TZ).isoformat(timespec="minutes"), "today": today.isoformat(),

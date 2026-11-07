@@ -40,7 +40,74 @@
     ch.append(el("span", "rd-p", pct(it.p)), el("span", "small", it.band));
     const bar = el("div", "rd-bar"); const fill = el("i"); fill.style.width = pct(it.p); bar.append(fill); ch.append(bar);
     r.append(when, body, ch);
+    if (it.impact) r.append(plan(it));
     return r;
+  }
+
+  const eur = x => "€" + Math.round(x).toLocaleString("en-GB");
+
+  function plan(it) {
+    const im = it.impact, box = el("div", "rd-plan");
+    const max = Math.max(im.e_keep, im.e_now, im.e_alert, 1);
+    const costs = el("div", "rd-costs");
+    [["Keep the plan", im.e_keep, "keep"], ["Change it now", im.e_now, "now"], ["Decide on zhol's evening alert", im.e_alert, "alert"]]
+      .forEach(([label, v, k]) => {
+        const line = el("div", "rd-cost " + k); const b = el("div", "rd-cbar"); const f = el("i"); f.style.width = Math.max(2, v / max * 100) + "%"; b.append(f);
+        line.append(el("span", null, label), b, el("b", null, eur(v)));
+        costs.append(line);
+      });
+    box.append(el("p", "kicker", "Expected cost per truck through " + im.at), costs);
+    const p1 = el("p", "small");
+    p1.append(el("b", null, "Best plan: "), document.createTextNode(im.plan.en + (im.plan.via ? " · " + im.plan.via : "") + " · "),
+      el("b", "save", (it.group === "official" ? "avoids " : "saves ") + eur(im.saving) + " per truck"));
+    if (it.group === "official") p1.append(document.createTextNode(" (in a published calendar: not counted as a zhol saving)"));
+    box.append(p1);
+    box.append(el("p", "small muted", "If it happens and nothing changes: " + im.wait_h + " h waiting, " + eur(im.loss) +
+      ". Change the plan now only if the chance is above " + Math.round(im.threshold * 100) + "%" + (im.act_now ? ": it is, so act now." : ": it is not, so wait for the evening alert.") +
+      (im.note ? " " + im.note : "") + " Trip used: " + im.lane + "."));
+    if (im.contacts && im.contacts.length) {
+      const d = el("details", "rd-contacts"); d.append(el("summary", null, "Who to contact, with the message ready (" + im.contacts.length + ")"));
+      im.contacts.forEach(c => {
+        const row = el("div", "rd-contact");
+        row.append(el("b", null, c.who), el("span", "small muted", " · " + c.why));
+        const q = el("p", "small serif", "“" + c.msg + "”");
+        const btn = el("button", "btn ghost rd-copy", "Copy");
+        btn.type = "button";
+        btn.addEventListener("click", () => { (navigator.clipboard ? navigator.clipboard.writeText(c.msg) : Promise.reject()).then(() => { btn.textContent = "Copied"; setTimeout(() => btn.textContent = "Copy", 1500); }).catch(() => {}); });
+        row.append(q, btn); d.append(row);
+      });
+      box.append(d);
+    }
+    return box;
+  }
+
+  function days(it) { if (!it.start) return 1; const a = new Date(it.start), b = new Date(it.end || it.start); return Math.min(5, Math.round((b - a) / 864e5) + 1); }
+
+  function renderMoney() {
+    const priced = data.items.filter(i => i.impact);
+    if (!priced.length) return;
+    $("money").hidden = false;
+    const calc = () => {
+      const n = Math.max(1, parseInt($("m-trucks").value, 10) || 1);
+      const sum = (list, f) => list.reduce((a, i) => a + f(i.impact) * n * days(i), 0);
+      const unplanned = priced.filter(i => i.group !== "official"), calendar = priced.filter(i => i.group === "official");
+      const keep = sum(unplanned, x => x.e_keep), zh = sum(unplanned, x => Math.min(x.e_now, x.e_alert));
+      $("m-keep").textContent = eur(keep); $("m-zhol").textContent = eur(zh); $("m-save").textContent = eur(keep - zh);
+      $("c-keep").textContent = eur(sum(calendar, x => x.e_keep)); $("c-plan").textContent = eur(sum(calendar, x => Math.min(x.e_now, x.e_alert)));
+      $("m-note").textContent = unplanned.length + " events outside the calendars and " + calendar.length + " calendar events priced on real trips, for each truck that would run into them (once per day the event lasts, at most five days). Undated tensions are not priced.";
+    };
+    $("m-trucks").addEventListener("input", calc); calc();
+    const pool = priced.filter(i => i.group !== "official").length ? priced.filter(i => i.group !== "official") : priced;
+    const top = pool.slice().sort((a, b) => b.impact.saving * b.p - a.impact.saving * a.p)[0], im = top.impact;
+    const vs = $("vs"); vs.textContent = "";
+    const g = el("div", "vs-col"); g.append(el("span", "kicker", "Google Maps, the evening before"), el("h3", null, im.lane.replace(" -> ", " → ")),
+      el("p", "small", "A route and today's traffic. Nothing about what is planned for " + fmt(top.start) + ", what it would cost, or what to tell anyone."));
+    const z = el("div", "vs-col us"); z.append(el("span", "kicker", "zhol, the evening before"), el("h3", null, top.title),
+      el("p", "small", Math.round(top.p * 100) + "% chance · " + eur(im.loss) + " if nothing changes"),
+      el("p", "small", "Plan: " + im.plan.en + (im.plan.via ? " · " + im.plan.via : "")),
+      el("p", "small", "Messages ready for: " + im.contacts.map(c => c.who.toLowerCase()).join(", ")),
+      el("p", "save-big", (top.group === "official" ? "avoids " : "saves ") + eur(im.saving) + " per truck"));
+    vs.append(g, z);
   }
 
   function weekKey(s) {
@@ -104,6 +171,6 @@
     $("rd-status").textContent = "Updated " + built + " · " + d.items.length + " items, " + news + " from the news · " +
       d.articles_read + " articles read by " + (d.reader === "claude" ? "Claude" : d.reader === "heuristic" ? "the keyword reader" : "no reader") +
       " · " + d.sources_ok + " of " + d.sources_total + " sources answered";
-    renderFocus(); renderMethod(); render();
+    renderFocus(); renderMethod(); renderMoney(); render();
   }).catch(() => { $("rd-status").textContent = "The radar could not be loaded. Try again in a minute."; });
 })();

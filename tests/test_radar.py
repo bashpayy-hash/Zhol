@@ -89,3 +89,30 @@ def test_accidents_and_undated_announcements():
     s = heuristic_signal(item("Grève des routiers annoncée en France", "Le Monde", "fr"), TODAY)
     it = news_items([s], TODAY)[0]
     assert it["stage"] == "threat" and it["p"] < 0.5
+
+
+def test_impact_christmas_ban_prices_the_wait_and_finds_the_plan():
+    from zhol.radar.impact import impact
+    it = next(i for i in official_items(TODAY, 60) if i["start"] == "2026-12-25")
+    im = impact(it)
+    assert im["loss"] > 3000 and im["plan"]["code"] == "depart_earlier"
+    assert im["e_keep"] == round(it["p"] * im["loss"])
+    assert im["saving"] > 0.8 * im["e_keep"]
+    assert any(c["who"] == "Driver" for c in im["contacts"])
+
+
+def test_cost_loss_threshold_and_value_of_information():
+    from zhol.radar.impact import impact
+    s = heuristic_signal(item("Tunnel du Mont-Blanc : fermetures de nuit les 17, 18 et 19 novembre", "Le Dauphiné", "fr"), TODAY)
+    it = news_items([s], TODAY)[0]
+    im = impact(it)
+    p, L, C, C0 = it["p"], im["loss"], im["c_hit"], im["c_free"]
+    assert abs(im["threshold"] - C0 / (L - C + C0)) < 0.001
+    assert im["e_alert"] <= im["e_now"] <= im["e_keep"] + 1      # knowing the evening before is never worse
+    assert im["act_now"] == (p > im["threshold"])
+
+
+def test_no_impact_without_a_date():
+    from zhol.radar.impact import impact
+    s = heuristic_signal(item("Autotrasportatori siciliani minacciano nuovi blocchi", "La Sicilia"), TODAY)
+    assert impact(news_items([s], TODAY)[0]) is None

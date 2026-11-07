@@ -370,6 +370,35 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
 .formula { border-left: 3px solid var(--red); padding: 4px 0 4px 20px; display: flex; flex-direction: column; gap: 6px; }
 .formula p { font-family: var(--font-serif); font-size: 19px; color: var(--ink); }
 
+.rd-plan { grid-column: 1 / -1; border-top: 1px dashed #b9c9b2; padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.rd-costs { display: grid; gap: 6px; max-width: 620px; }
+.rd-cost { display: grid; grid-template-columns: 210px minmax(0, 1fr) 80px; gap: 10px; align-items: center; font-size: 13.5px; }
+.rd-cost b { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); }
+.rd-cbar { height: 8px; background: rgba(53, 43, 40, 0.08); border-radius: var(--r-s); overflow: hidden; }
+.rd-cbar i { display: block; height: 100%; background: #a99e93; }
+.rd-cost.keep .rd-cbar i { background: var(--red); }
+.rd-cost.alert .rd-cbar i { background: var(--sage-ink); }
+.rd-plan .save { color: var(--sage-ink); }
+.rd-contacts summary { color: var(--sage-ink); }
+.rd-contact { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: start; padding: 10px 0; border-top: 1px solid #c4d2bd; }
+.rd-contact > b, .rd-contact > span { grid-column: 1; }
+.rd-contact p { grid-column: 1; color: var(--ink); }
+.rd-copy { grid-column: 2; grid-row: 1 / span 3; padding: 6px 12px; font-size: 13px; }
+.vs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.vs-col { border: 1px solid #5b463a; border-radius: var(--r); padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+.vs-col h3 { font-size: 17px; }
+.vs-col.us { background: var(--on-dark); color: var(--ink-2); border-color: var(--on-dark); }
+.vs-col.us h3, .vs-col.us b { color: var(--ink); }
+.vs-col.us .kicker { color: var(--red); }
+.money { display: flex; flex-direction: column; gap: 8px; }
+.money-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.money-stats > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.money-stats .lbl { font-size: 13px; color: var(--on-dark-2); }
+.money-stats .mid { font-size: clamp(24px, 2.6vw, 32px); color: var(--on-dark); overflow-wrap: anywhere; }
+.money-stats .mid.save { color: #9fd0a9; }
+.save-big { font-size: 22px; font-weight: 650; color: var(--sage-ink); letter-spacing: -0.02em; }
+.slide.dark .field input { background: #fbf9f3; }
+
 @media (max-width: 920px) {
   .split, .split.wide-left, .calc, .g2 { grid-template-columns: minmax(0, 1fr); }
   .g3, .g4, .g5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -393,6 +422,9 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
   .rd-row { grid-template-columns: minmax(0, 1fr) 84px; }
   .rd-when { grid-column: 1 / -1; flex-direction: row; gap: 10px; align-items: baseline; }
   .rd-p { font-size: 24px; }
+  .rd-cost { grid-template-columns: minmax(0, 1fr) 70px; }
+  .rd-cost .rd-cbar { grid-column: 1 / -1; grid-row: 2; }
+  .vs { grid-template-columns: minmax(0, 1fr); }
   .rows > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .tri .row { grid-template-columns: 64px minmax(0, 1fr); }
   .tri .v { grid-column: 2; }
