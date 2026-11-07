@@ -12,26 +12,34 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=zd1">
-<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/survey">
-<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/sondaggio">
+<link rel="stylesheet" href="/assets/zhol.css?v=q1">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/q/en">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/q">
+<link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
-  <nav class="tabs" aria-label="Sezioni">
-    <a href="/it/">TEF<span class="m-hide"> risposte</span></a><a href="/it/story">Storia</a><a href="/it/outlook">Radar</a><a href="/it/audience">Clienti</a><a href="/it/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/survey" lang="en" hreflang="en">EN</a>
-  </nav>
+<header class="top q-top"><div class="wrap">
+  <span class="logo"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></span>
+  <a class="lang-pill" href="/q/en" lang="en" hreflang="en">EN</a>
 </div></header>
 
 <main>
-<section class="slide sv">
-  <div class="wrap">
-    <div class="sv-head">
+<section class="slide sv-intro" id="sv-intro">
+  <div class="wrap sv-intro-grid">
+    <div class="sv-intro-text">
       <span class="sv-label">Ricerca Bocconi per gli uffici traffico</span>
       <h1 class="title sv-title">Sei domande. Un minuto.</h1>
       <p class="lead">Quanto vi costano divieti, code al Brennero e scioperi? Si risponde con un tocco, è anonimo e non vendiamo nulla.</p>
+      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Inizia</a><span class="small muted">Anonimo · nessuna vendita</span></div>
     </div>
+    <div class="sv-scene" aria-hidden="true">
+      <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
+    </div>
+  </div>
+</section>
+
+<section class="slide sv" id="sv-steps">
+  <div class="wrap">
 
     <div class="sv-stage">
       <div class="sv-mascot" aria-hidden="true"><img id="sv-img" src="/assets/img/mascot/truck-560.webp?v=zd1" srcset="/assets/img/mascot/truck-280.webp?v=zd1 280w, /assets/img/mascot/truck-560.webp?v=zd1 560w" sizes="(max-width: 760px) 170px, 300px" alt="" width="560" height="448"></div>
@@ -143,8 +151,8 @@
 <footer class="site"><div class="wrap">
   <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
   <span>Alikhan · Inkara · Tomiris · Università Bocconi · TEF Ignition 2026</span>
-  <span><a href="/it/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/outlook">Radar</a> · <a href="/it/audience">Clienti</a> · <a href="/it/beta">Beta</a></span>
 </div></footer>
-<script src="/assets/survey.js?v=zd1" defer></script>
+<script src="/assets/scene.js?v=q1" defer></script>
+<script src="/assets/survey.js?v=q1" defer></script>
 </body>
 </html>

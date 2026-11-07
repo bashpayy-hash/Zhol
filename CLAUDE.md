@@ -11,7 +11,8 @@
 дальнобойщика с кремовой передней частью, шалфейный светоотражающий жилет с кремовыми полосами и
 латунной молнией, песочные ботинки. Шлема и всего итальянского нет. Новые позы — в Higgsfield с двумя
 эталонами из design/mascot/ (ID, промпт и настройки — site/assets/img/mascot/manifest.json), предметы и
-места — из мира перевозок. Позы: site/assets/img/mascot/.
+места — из мира перевозок. Позы: site/assets/img/mascot/. Живые сцены: site/assets/img/scenes/,
+петлю из клипа Higgsfield собирает scripts/scene_loop.py (кадры и ID — в DESIGN.md).
 
 ## brand/ — справочник, а не требования
 brand/PRINCIPLES.md и brand/MASCOT.md — опыт прошлого проекта (IITALY): как работали с владельцем,

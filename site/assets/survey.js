@@ -34,6 +34,20 @@
     const i = new Image(); i.sizes = img.sizes; i.srcset = srcset(n);
   });
 
+  // the /q page opens on a welcome scene; the questions come after one tap
+  const intro = $("sv-intro"), stepsBox = $("sv-steps"), startBtn = $("sv-start");
+  if (intro && stepsBox && startBtn) {
+    stepsBox.hidden = true;
+    startBtn.addEventListener("click", e => {
+      e.preventDefault();
+      intro.hidden = true;
+      stepsBox.hidden = false;
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+      const first = steps[at].querySelector("input");
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+
   let at = 0;
   form.classList.add("stepping");
   form.noValidate = true;

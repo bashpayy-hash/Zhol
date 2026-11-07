@@ -1,4 +1,4 @@
-/* Browser check of the six-question survey (brand/PRINCIPLES.md §10: scenarios recorded in the repo).
+/* Browser check of the six-question survey at /q and /q/en (brand/PRINCIPLES.md §10: scenarios recorded in the repo).
    Serve the site, then run:
      (cd site && python3 -m http.server 8765) &
      node tests/browser/survey_flow.js [base-url] [screenshot-dir]
@@ -17,7 +17,7 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
 
 (async () => {
   const browser = await chromium.launch();
-  for (const [lang, path] of [["it", "/it/sondaggio.html"], ["en", "/survey.html"]]) {
+  for (const [lang, path] of [["it", "/q/"], ["en", "/q/en/"]]) {
     for (const [w, h] of [[390, 844], [1440, 900]]) {
       const tag = `${lang}-${w}`;
       const page = await browser.newPage({ viewport: { width: w, height: h } });
@@ -34,6 +34,11 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       const pose = () => page.evaluate(() => document.getElementById("sv-img").getAttribute("src"));
       const pick = async (name, value) => { await page.click(`input[name="${name}"][value="${value}"] + span`); await page.waitForTimeout(650); };
 
+      await shot("intro");
+      check(await page.isVisible("#sv-intro") && !(await page.isVisible("#survey")), `${tag}: opens on the welcome scene`);
+      check(!(await page.$(".tabs")), `${tag}: no site menu on the standalone survey`);
+      await page.click("#sv-start"); await page.waitForTimeout(600);
+      check(!(await page.isVisible("#sv-intro")) && await page.isVisible("#survey"), `${tag}: Start shows the questions`);
       await shot("step1");
       for (let i = 0; i < ANSWERS.length; i++) {
         check((await visibleStep()) === i, `${tag}: step ${i + 1} visible`);

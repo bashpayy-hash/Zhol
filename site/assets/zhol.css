@@ -523,3 +523,27 @@ details[open] > summary::before { content: "\2212"; }
 .mascot-scene { justify-self: center; width: 100%; max-width: 420px; }
 .mascot-scene img { width: 100%; height: auto; aspect-ratio: 5 / 4; display: block; }
 @media (max-width: 920px) { .mascot-scene { max-width: 240px; justify-self: start; } }
+
+/* standalone survey (/q): logo and language only, a welcome scene, then one question card (VISION.md 2.3) */
+.q-top .wrap { align-items: center; min-height: 60px; }
+.lang-pill { display: inline-flex; align-items: center; min-height: 36px; padding: 4px 14px; border: 1px solid var(--rule); border-radius: var(--r-pill); color: var(--ink); font-size: 13px; font-weight: 600; text-decoration: none; transition: border-color var(--dur) var(--ease-color); }
+.lang-pill:hover { border-color: var(--ink); text-decoration: none; }
+.slide.sv-intro { padding-block: 48px 64px; }
+.sv-intro-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+.sv-intro-text { display: flex; flex-direction: column; gap: 18px; }
+.sv-intro-text .actions { margin-top: 6px; }
+.sv-scene { margin: 0; border-radius: 28px; overflow: hidden; background: #e9e2d4; aspect-ratio: 4 / 3; }
+.sv-scene video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.slide.sv#sv-steps { padding-top: 40px; }
+#sv-steps .sv-stage { margin-top: 0; max-width: 1040px; background: var(--card); border: 1px solid var(--card-line); border-radius: 28px; padding: 40px; }
+@media (max-width: 920px) {
+  .sv-intro-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .sv-intro-grid .sv-scene { order: -1; }
+  .slide.sv-intro { padding-block: 20px 40px; }
+  #sv-steps .sv-stage { padding: 24px 20px; border-radius: 24px; }
+}
+
+/* living scene in the home hero: Zholdas planning a route, framed like a photo */
+.hero .scene-frame { border-radius: 28px; overflow: hidden; background: #2b2a33; aspect-ratio: 4 / 3; }
+.hero .scene-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sv-intro .sv-title { font-size: clamp(36px, 4.2vw, 56px); }

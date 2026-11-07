@@ -17,7 +17,7 @@ from urllib.parse import quote_plus
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outreach"
-SURVEY = "https://zhol-beta.netlify.app/it/sondaggio"
+SURVEY = "https://zhol-beta.netlify.app/q"
 
 COUNTRIES = [  # (pattern in the English lead notes, Italian name)
     (r"\bGerman|\bDE\b", "Germania"), (r"\bAustria", "Austria"), (r"\bSwitzerland|\bSwiss|\bCH\b", "Svizzera"),

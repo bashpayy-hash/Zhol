@@ -5,7 +5,7 @@
 > (script v2: `outreach/03-interview-script.md`), pilots into the savings ledger.
 
 **Three sources, one set of thresholds.** Interviews give depth (8, script v2). A six-question, one-minute survey gives breadth
-(target 30 answers from the beachhead, `/it/sondaggio`, distribution in `outreach/10-survey.md`): it measures four of the
+(target 30 answers from the beachhead, `/q`, distribution in `outreach/10-survey.md`): it measures four of the
 thresholds below (minutes a day, cost of the last incident, a fair price, interest in the evening alert), and
 `scripts/survey_summary.py` writes them to `docs/14-survey-results.md`. Re-plans, decision time, who signs and the package
 stay with the interviews. Pilots give verified numbers. A threshold counts as met only when the interviews do not

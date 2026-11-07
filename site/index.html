@@ -12,10 +12,10 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=zd1">
+<link rel="stylesheet" href="/assets/zhol.css?v=q1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/">
-<link rel="preload" as="image" href="/assets/img/q/hero-poster.webp?v=2">
+<link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -38,10 +38,8 @@
         <p class="lead">zhol tells a haulier’s traffic office the evening before which of tomorrow’s loads a ban, a dosing day, a closure or a blockade will hit, and what to do. One WhatsApp message. Every number below has a source; what we still assume is marked.</p>
         <div class="actions"><a class="btn" href="#market">Start with the market</a><a class="btn ghost" href="/beta">Try the beta</a></div>
       </div>
-      <div class="media">
-        <video class="art mask" id="hero-video" autoplay muted loop playsinline poster="/assets/img/q/hero-poster.webp?v=2" width="960" height="720" aria-label="Illustration: a folded map of the Alps with a route from Milan over the Brenner, a warning triangle on the pass, a truck, and a phone showing one message">
-          <source src="/assets/img/q/hero-loop.mp4?v=2" type="video/mp4">
-        </video>
+      <div class="media scene-frame">
+        <video id="hero-video" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" poster="/assets/img/scenes/desk-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, our plush mascot in a trucker cap and a safety vest, drawing tomorrow's route over the Alps on a paper map at a traffic office desk in the evening"></video>
       </div>
     </div>
 
@@ -310,7 +308,7 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
           <div><span class="big">2</span><p class="small">live tests on real restriction days, with the dispatcher’s verdict</p></div>
         </div>
         <p class="small muted">Targets for Workshop 2, 13 November 2026.</p>
-        <p class="small"><b>Breadth as well as depth:</b> six questions, one minute, one tap per answer: time spent checking, cost of the last incident, a fair price, and whether they would use the evening alert. It feeds four of the thresholds above, so the eight interviews are not the only numbers. Target: 30 answers from offices with lanes abroad. <a href="/survey">Open the survey</a></p>
+        <p class="small"><b>Breadth as well as depth:</b> six questions, one minute, one tap per answer: time spent checking, cost of the last incident, a fair price, and whether they would use the evening alert. It feeds four of the thresholds above, so the eight interviews are not the only numbers. Target: 30 answers from offices with lanes abroad. <a href="/q/en">Open the survey</a></p>
         <p class="small"><b>What an office gets back in two days:</b> its past month run through zhol, every trip it would have flagged, the hours and euros, and a column for the dispatcher to mark each flag right or wrong. <a href="/replay-example">See the example report</a></p>
       </div>
       <img class="art" src="/assets/img/q/q6-notebook.webp?v=2" alt="Illustration: an interview notebook with three red ticks lying on a folded map with a route and a small truck" width="1100" height="822" loading="lazy">
@@ -448,6 +446,7 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
   <span>Alikhan, Inkara, Tomiris · Bocconi University · TEF Ignition 2026</span>
   <span><a href="/story">Story</a> · <a href="/outlook">Radar</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
+<script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
 </body>
 </html>

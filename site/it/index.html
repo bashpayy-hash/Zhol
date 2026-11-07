@@ -12,10 +12,10 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=zd1">
+<link rel="stylesheet" href="/assets/zhol.css?v=q1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/">
-<link rel="preload" as="image" href="/assets/img/q/hero-poster.webp?v=2">
+<link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -38,10 +38,8 @@
         <p class="lead">zhol dice all’ufficio traffico di un autotrasportatore, la sera prima, quali carichi di domani saranno colpiti da un divieto, un giorno di dosaggio, una chiusura o un blocco, e cosa fare. Un solo messaggio WhatsApp. Ogni numero qui sotto ha una fonte; ciò che è ancora un’ipotesi è indicato come tale.</p>
         <div class="actions"><a class="btn" href="#market">Inizia dal mercato</a><a class="btn ghost" href="/it/beta">Prova la beta</a></div>
       </div>
-      <div class="media">
-        <video class="art mask" id="hero-video" autoplay muted loop playsinline poster="/assets/img/q/hero-poster.webp?v=2" width="960" height="720" aria-label="Illustrazione: una carta delle Alpi piegata con un percorso da Milano oltre il Brennero, un triangolo di pericolo sul valico, un camion e un telefono con un messaggio">
-          <source src="/assets/img/q/hero-loop.mp4?v=2" type="video/mp4">
-        </video>
+      <div class="media scene-frame">
+        <video id="hero-video" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" poster="/assets/img/scenes/desk-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, la nostra mascotte di peluche con cappellino da camionista e gilet ad alta visibilità, traccia il percorso di domani sulle Alpi su una carta, alla scrivania di un ufficio traffico la sera"></video>
       </div>
     </div>
 
@@ -310,7 +308,7 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
           <div><span class="big">2</span><p class="small">test dal vivo in giornate con restrizioni reali, con il giudizio del traffichista</p></div>
         </div>
         <p class="small muted">Obiettivi per il Workshop 2, 13 novembre 2026.</p>
-        <p class="small"><b>Ampiezza oltre alla profondità:</b> sei domande, un minuto, un tocco per risposta: tempo speso a controllare, costo dell’ultimo imprevisto, prezzo giusto e interesse per l’avviso serale. Alimenta quattro delle soglie qui sopra, così le otto interviste non sono gli unici numeri. Obiettivo: 30 risposte da uffici con linee estere. <a href="/it/sondaggio">Apri il sondaggio</a></p>
+        <p class="small"><b>Ampiezza oltre alla profondità:</b> sei domande, un minuto, un tocco per risposta: tempo speso a controllare, costo dell’ultimo imprevisto, prezzo giusto e interesse per l’avviso serale. Alimenta quattro delle soglie qui sopra, così le otto interviste non sono gli unici numeri. Obiettivo: 30 risposte da uffici con linee estere. <a href="/q">Apri il sondaggio</a></p>
         <p class="small"><b>Cosa riceve un ufficio in due giorni:</b> il suo ultimo mese ripassato con zhol, ogni viaggio che avrebbe segnalato, le ore e gli euro, e una colonna in cui il traffichista segna ogni segnalazione come giusta o sbagliata. <a href="/replay-example">Guarda il report di esempio</a></p>
       </div>
       <img class="art" src="/assets/img/q/q6-notebook.webp?v=2" alt="Illustrazione: un quaderno di interviste con tre spunte rosse, appoggiato su una carta piegata con un percorso e un piccolo camion" width="1100" height="822" loading="lazy">
@@ -448,6 +446,7 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
   <span>Alikhan, Inkara, Tomiris · Università Bocconi · TEF Ignition 2026</span>
   <span><a href="/it/story">Storia</a> · <a href="/it/outlook">Radar</a> · <a href="/it/audience">Clienti</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
+<script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
 </body>
 </html>

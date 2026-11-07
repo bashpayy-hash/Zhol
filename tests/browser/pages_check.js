@@ -7,8 +7,8 @@ const { chromium } = require("playwright");
 
 const BASE = process.argv[2] || "http://localhost:8765";
 const OUT = process.argv[3] || require("os").tmpdir();
-const PAGES = ["/", "/story", "/outlook", "/audience", "/beta", "/survey", "/replay-example", "/404", "/thank-you", "/it/404", "/it/thank-you",
-               "/it/", "/it/story", "/it/outlook", "/it/audience", "/it/beta", "/it/sondaggio"];
+const PAGES = ["/", "/story", "/outlook", "/audience", "/beta", "/q/en/", "/replay-example", "/404", "/thank-you", "/it/404", "/it/thank-you",
+               "/it/", "/it/story", "/it/outlook", "/it/audience", "/it/beta", "/q/"];
 let failed = 0;
 const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); } };
 

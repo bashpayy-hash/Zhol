@@ -1,0 +1,65 @@
+{
+ "what": "Living scenes with Zholdas (zhol mascot): a still made with GPT Image 2.5 from the two identity references, animated with Kling 4.0 (same first and last frame), looped by scripts/scene_loop.py",
+ "references": [
+  "2a20bb83-5d2d-4aa3-be59-3efd48133274",
+  "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
+ ],
+ "scenes": {
+  "desk": {
+   "where": "home hero (/ and /it/)",
+   "still_job": "3566e4ab-4ebe-47d7-83ff-f57ba2f86c63",
+   "video_job": "26f5f715-d17e-4023-b19e-055782e16460",
+   "still": "gpt_image_2_5 flare high 2k 4:3; Zholdas drawing a route with a red pencil on a paper map of the Alps at a traffic office desk at dusk",
+   "video": "kling4_0 image-to-video 1080p 5 s, start_image = end_image = still; locked-off camera, small pencil stroke, lamp steady, motorway lights twinkle"
+  },
+  "dock": {
+   "where": "survey welcome screen (/q, /q/en)",
+   "still_job": "3b62dc9f-4601-4b9e-9a8a-ec8c897682ce",
+   "video_job": "ad717f0f-23fc-4ceb-b0c7-d026b734b362",
+   "still": "gpt_image_2_5 flare high 2k 4:3; Zholdas with a clipboard checking parcels on a pallet at a warehouse loading dock, late afternoon",
+   "video": "kling4_0 image-to-video 1080p 5 s, start_image = end_image = still; small tick on the clipboard, looks up, dust motes drift"
+  }
+ },
+ "files": {
+  "desk-1280.mp4": {
+   "kb": 497,
+   "sha256": "ac307f886fa25ae0d237ab46c09a3de701b25c5c17869f92626f932ebf060e06"
+  },
+  "desk-1280.webm": {
+   "kb": 188,
+   "sha256": "197f4b05e5b0ed7998f166beca255e6e50b3b571f084feae22678357c6c42ff6"
+  },
+  "desk-720.mp4": {
+   "kb": 148,
+   "sha256": "34958e3a52b1d624dd4ce4cea0320e766adfe0e41a34ec32542363c015218aec"
+  },
+  "desk-720.webm": {
+   "kb": 86,
+   "sha256": "0f9278c33495ada104c294b9a987c0fe3efeccae7de63c3bb864ec27572fa9cb"
+  },
+  "desk-poster.webp": {
+   "kb": 99,
+   "sha256": "0898ac1e09b0889ad87a8725732c044dcb8b96cb78ccaa1f03f55a1161240609"
+  },
+  "dock-1280.mp4": {
+   "kb": 403,
+   "sha256": "ebb8a7df4f023752c2ffe39fc82406e3ca63044396976a4092398df53e1fcaa5"
+  },
+  "dock-1280.webm": {
+   "kb": 146,
+   "sha256": "e56fdef4793b840ab1c440a40cb9f31e98026745c560d165b1c6ff83ace9d1c7"
+  },
+  "dock-720.mp4": {
+   "kb": 110,
+   "sha256": "b0f6d80921dcef32f76b6c30a4e776c7bd5da3b56386f940103fedb504fecbf2"
+  },
+  "dock-720.webm": {
+   "kb": 63,
+   "sha256": "85e292a2786cb58f8d76b6277a45b948a887e34f33ce8f5f22a6fc776376725d"
+  },
+  "dock-poster.webp": {
+   "kb": 69,
+   "sha256": "437e3e87ee549c4d2cfbdb61ccf19dd5019da79f8f0ce6bf3828cde10168917f"
+  }
+ }
+}

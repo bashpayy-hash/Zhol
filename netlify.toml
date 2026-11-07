@@ -33,3 +33,21 @@
   from = "/it/*"
   to = "/it/404.html"
   status = 404
+
+# the survey moved to a short standalone link (/q, /q/en); old links keep working, with their ?src=
+[[redirects]]
+  from = "/it/sondaggio"
+  to = "/q"
+  status = 301
+[[redirects]]
+  from = "/it/sondaggio.html"
+  to = "/q"
+  status = 301
+[[redirects]]
+  from = "/survey"
+  to = "/q/en"
+  status = 301
+[[redirects]]
+  from = "/survey.html"
+  to = "/q/en"
+  status = 301
