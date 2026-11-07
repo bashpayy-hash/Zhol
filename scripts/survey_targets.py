@@ -66,9 +66,10 @@ def company_message(name: str, city: str, cs: list[str], link: str, known_abroad
     where = f"da {city} " if city else ""
     line = (f"Ci risulta che {where}lavorate verso {join_it(cs[:4])}: proprio le linee dove questi imprevisti pesano di più."
             if cs else f"Ci risulta che {where}avete linee estere: proprio dove questi imprevisti pesano di più." if known_abroad else "")
+    who = "agli uffici traffico con linee estere" if known_abroad else "a chi organizza i trasporti su strada"
     return (f"Buongiorno,\n"
-            f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli uffici traffico con linee estere "
-            f"divieti, code, chiusure e scioperi. {line}\n\n"
+            f"siamo tre studenti della Bocconi e stiamo misurando quanto costano {who} "
+            f"divieti, code, chiusure e scioperi.{(' ' + line) if line else ''}\n\n"
             f"Vi chiederemmo un minuto per un sondaggio anonimo di sei domande, da girare a chi in ufficio decide i viaggi:\n{link}\n\n"
             f"Non vendiamo nulla. Chi risponde riceve i risultati e, se vuole, l'analisi gratuita di un mese passato: "
             f"quali viaggi sarebbero stati toccati e quanto è costato.\n\n"
@@ -173,7 +174,7 @@ def broad(existing: list[dict]) -> list[dict]:
         email = next(iter(re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", ch)), "")
         site = next(iter(re.findall(r"https?://[^\s;,)]+", ch)), "")
         city = clean_city(r.get("city") or "")
-        where = site or ("" if email else ch)
+        where = site or ("" if email else ("сайт не найден: нажмите «Найти контакты»" if ch.startswith("[CHECK]") or not ch else ch))
         base = {"name": name, "city": city or (r.get("region") or "").strip(), "to": email, "where": where,
                 "search": google(name + " " + city + " contatti"), "fit": ""}
         if kind == "company":
