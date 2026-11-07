@@ -44,6 +44,12 @@
     }).catch(() => {});
   }
 
+  // ---- looping illustrations: respect reduced motion
+  const rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  const still = () => document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); });
+  if (rm && rm.matches) still();
+  if (rm && rm.addEventListener) rm.addEventListener("change", e => { if (e.matches) still(); });
+
   // ---- highlight the tab of the section in view
   const tabs = [...document.querySelectorAll('.tabs a[href^="#"]')];
   if (tabs.length && "IntersectionObserver" in window) {

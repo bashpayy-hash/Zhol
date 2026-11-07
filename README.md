@@ -39,13 +39,15 @@
 | Есть ли место на рынке? | [docs/01-market.md §1.5](docs/01-market.md) и [docs/02-competitors.md §2.5](docs/02-competitors.md) |
 | **Всё на одной странице + что менять в деке + ответы на вопросы жюри** | **[docs/00-answers-to-tef-feedback.md](docs/00-answers-to-tef-feedback.md)** |
 
-Всё это одной страницей в вашем дизайне (с живым калькулятором экономии): [docs/site/tef-answers.html](docs/site/tef-answers.html) — откройте файл в браузере.
+Всё это одной страницей в стиле деки, с иллюстрациями и живым калькулятором экономии: [zhol-beta.netlify.app](https://zhol-beta.netlify.app) — главная начинается с восьми вопросов жюри. История проблемы (Сицилия, Куфштайн) — [/story](https://zhol-beta.netlify.app/story).
 
 Письма людям из отрасли (по-итальянски, с переводом): [outreach/](outreach/README.md).
 
 Кто публично высказывался о проблеме (ассоциации, чиновники, аналитики, перевозчики, журналисты) и кому писать первым: [docs/08-people-and-voices.md](docs/08-people-and-voices.md).
 
 Кто наша аудитория (сегменты, размеры, персоны, каналы, события 2027): [docs/09-audience.md](docs/09-audience.md) и страница [zhol-beta.netlify.app/audience](https://zhol-beta.netlify.app/audience).
+
+Второй фидбек TEF (ценность против текущего процесса, кто платит, USP, реальный сегмент, операционная реализуемость, финплан): что измеряем и пороги успеха — [docs/10-feedback-round-2.md](docs/10-feedback-round-2.md). Кому писать на интервью и что писать — [outreach/07-interview-requests.md](outreach/07-interview-requests.md), скрипт v2 — [outreach/03-interview-script.md](outreach/03-interview-script.md), журнал — [outreach/interview_log.csv](outreach/interview_log.csv).
 
 ---
 
