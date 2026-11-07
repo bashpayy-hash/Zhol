@@ -14,6 +14,7 @@
 | [06-first-15-drafts.md](06-first-15-drafts.md) | **Готовые персональные письма первым 15 людям** из ресерча (ассоциации Трентино–Альто-Адидже, Assotir, ANITA, Сицилия, Uniontrasporti, журналисты): у каждого ссылка на его собственное публичное высказывание |
 | [leads_beachhead.csv](leads_beachhead.csv) + [leads_beachhead.md](leads_beachhead.md) | 92 компании-цели в стартовых провинциях (публичные данные: город, направления, сайт, зацепка для первого сообщения; fit 1–3). В .md: топ-15, крупные группы как каналы, пробелы и что проверить перед отправкой |
 | [07-interview-requests.md](07-interview-requests.md) | **Просьбы об интервью** (не продажа): владельцу, начальнику отдела перевозок, экспедитору, местной ассоциации, LinkedIn, звонок, напоминания; план недели до 13 ноября |
+| [09-bocconi-first.md](09-bocconi-first.md) | **Первый вход через Bocconi:** письма со студенческой почты профессорам Baccelli, Stabilini, Bettucci (EN + IT) |
 | [08-monday-drafts.md](08-monday-drafts.md) | **Готовые персональные письма на понедельник** первым 10 людям из компаний (IT, для Günther DE) |
 | [interview_targets_companies.csv](interview_targets_companies.csv) + [.md](interview_targets_companies.md) | 50 человек в 37 компаниях: владельцы и отдел перевозок, с источником и каналом |
 | [interview_log.csv](interview_log.csv) | Журнал интервью: одна строка на разговор, все цифры для второго фидбека TEF |
