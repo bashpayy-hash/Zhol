@@ -74,3 +74,11 @@ def test_weather_items_merge_days():
         "snowfall_sum": [0, 14, 18, 0], "wind_gusts_10m_max": [30, 60, 70, 20]}}}
     items = weather_items(wx, TODAY)
     assert len(items) == 1 and items[0]["start"] == "2026-11-09" and items[0]["end"] == "2026-11-10"
+
+
+def test_noise_is_filtered():
+    assert heuristic_signal(item("Independent truck drivers' strike paralyzes largest port in Chile", "WSWS", "en"), TODAY) is None
+    s = heuristic_signal(item("Tunnel du Mont-Blanc : fermetures de nuit les 17, 18 et 19 novembre", "Le Dauphiné", "fr"), TODAY)
+    assert s.stage == "announced" and s.chokepoints == ["montblanc"] and s.start == "2026-11-17"
+    old = [heuristic_signal(item("Autotrasporto, blocchi e proteste in corso da anni", "Uomini e Trasporti", days_ago=0), TODAY)]
+    assert news_items(old, TODAY) == []          # ongoing, but no place and no date: background, not an event

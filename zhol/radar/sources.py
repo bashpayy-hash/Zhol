@@ -100,7 +100,9 @@ def fetch_news(http: httpx.Client, today: date) -> tuple[list[dict], dict]:
             r.raise_for_status()
             for it in parse_feed(r.content):
                 title, outlet = _clean_title(it["title"])
-                items.append({**it, "title": title, "outlet": outlet or "Google News", "lang": lang, "via": "news"})
+                # the Google News description only repeats the headline and the publisher's name
+                items.append({**it, "text": "", "title": title, "outlet": outlet or "Google News", "lang": lang,
+                              "via": "news"})
             status[key] = "ok"
         except Exception as exc:  # network, HTTP or XML error: skip this source
             status[key] = f"failed: {type(exc).__name__}"

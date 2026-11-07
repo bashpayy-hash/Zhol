@@ -13,7 +13,7 @@ from dataclasses import asdict, dataclass, field
 from datetime import date, datetime, timedelta, timezone
 
 from .. import catalog
-from ..ingest.extractor import KIND_WORDS, REGIONS, _find_dates, llm_available
+from ..ingest.extractor import KIND_WORDS, MONTH_RE, MONTHS, REGIONS, _find_dates, llm_available
 
 log = logging.getLogger("zhol.radar")
 
@@ -36,7 +36,9 @@ STAGE_RE = [
     ("ongoing", r"in corso|da stamattina|stanno bloccando|bloccat[ie] (da|dai)|presidi(o)? attiv|da oggi|"
                 r"läuft|seit heute|en cours|ongoing|under way|continua(no)? (il|la|i) (fermo|blocc|presid|protest)"),
     ("confirmed", r"confermat|resta confermat|bestätigt|maintenu|confirm"),
-    ("announced", r"proclamat|indett|annunciat|dichiarat|ha proclamato|fermo (nazionale )?(dal|dei|degli|il|di)|"
+    ("announced", r"chiusur[ae] (programmat|nottur)|chiuso (dal|dalle|il|nei|nelle|per)|resterà chius|sarà chius|"
+                  r"fermetures? (de nuit|programm)|sera fermé|fermé (du|les|le|de nuit)|gesperrt (von|ab|am|bis)|"
+                  r"wird gesperrt|will be closed|scheduled closure|proclamat|indett|annunciat|dichiarat|ha proclamato|fermo (nazionale )?(dal|dei|degli|il|di)|"
                   r"sciopero (il|dal|di|del|nazionale)|giornata di sciopero|angekündigt|ausgerufen|annonc|"
                   r"appel(le)? à|préavis|call(ed|s)? (a |for a )?strike|announce|scheduled"),
     ("threat", r"minacci|pronti a|potrebbe|potrebbero|valutano|ultimatum|se non|rischio (di )?(fermo|blocc|sciopero)|"
@@ -63,6 +65,10 @@ COUNTRY_WORDS = {
     "BE": r"belgi", "NL": r"olanda|paesi bassi|netherlands|niederlande|pays-bas",
 }
 LANG_COUNTRY = {"it": "IT", "fr": "FR", "de": "AT", "en": None}
+NON_EUROPE = re.compile(r"\b(chile|cile|argentin|brasil|brazil|usa|stati uniti|united states|états-unis|canada|"
+                        r"messico|mexico|mexique|india|inde|cina|china|chine|australia|sud ?africa|south africa|"
+                        r"nigeria|per[uù]|colombia|corea|korea|giappone|japan|japon|turchia|turkey|israele|israel|"
+                        r"iran|pakistan|bangladesh|kenya|marocco|morocco)", re.I)
 
 
 @dataclass
@@ -114,6 +120,23 @@ def _where(text: str, lang: str) -> tuple[list[str], list[str], list[str]]:
     return sorted(countries), regions, chokes
 
 
+LIST_DATES = re.compile(rf"((?:\b\d{{1,2}}\.?\s*,\s*)+\d{{1,2}}\.?\s*(?:et|e|und|and)\s+\d{{1,2}})\.?\s+({MONTH_RE})", re.I)
+
+
+def _dates(text: str, today: date) -> list[date]:
+    """Dates in the text, including lists such as '17, 18 et 19 novembre'."""
+    found = set(_find_dates(text, today))
+    for m in LIST_DATES.finditer(text.lower()):
+        mon = MONTHS[m.group(2)]
+        for d in re.findall(r"\d{1,2}", m.group(1)):
+            try:
+                x = date(today.year, mon, int(d))
+            except ValueError:
+                continue
+            found.add(x if x >= today - timedelta(days=60) else date(today.year + 1, mon, int(d)))
+    return sorted(d for d in found if today - timedelta(days=45) <= d <= today + timedelta(days=150))
+
+
 def heuristic_signal(item: dict, today: date) -> Signal | None:
     text = f"{item.get('title', '')}. {item.get('text', '')}"
     if not (FREIGHT.search(text) and DISRUPTION.search(text)):
@@ -122,7 +145,9 @@ def heuristic_signal(item: dict, today: date) -> Signal | None:
     if kind is None:
         return None
     countries, regions, chokes = _where(text, item.get("lang", "it"))
-    dates = [d for d in _find_dates(text, today) if today - timedelta(days=45) <= d <= today + timedelta(days=150)]
+    if not countries or (NON_EUROPE.search(text) and not (regions or chokes)):
+        return None     # not on a European corridor
+    dates = _dates(text, today)
     pub = item.get("published")
     return Signal(
         title=item["title"][:200], url=item.get("url"), outlet=item.get("outlet") or "?",

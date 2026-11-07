@@ -227,8 +227,21 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
         start, end = (starts[0] if starts else None), (ends[-1] if ends else None)
         if end and date.fromisoformat(end) < today:
             continue
+        pubs = [p for p in (_pub(s) for s in c) if p]
+        fresh = bool(pubs) and (now - max(pubs)).days <= 3
+        if stage == "ongoing" and not (start or fresh):
+            continue            # an old report of something that already happened
         if stage == "ongoing" and not start:
             start = end = today.isoformat()
+        if not start and stage == "tension":
+            continue            # commentary without an action or a date
+        if not any(s.countries for s in c):
+            continue
+        specific = any(s.regions or s.chokepoints for s in c)
+        if stage == "ongoing" and not specific:
+            stage = "tension"   # "blockades again" with no place named: background, not an event
+            if not start or start == today.isoformat():
+                continue
         outlets = {s.outlet for s in c}
         ev = []
         if start:
@@ -243,7 +256,6 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
             ev.append("official_source")
         if any(s.talks for s in c):
             ev.append("talks")
-        pubs = [p for p in (_pub(s) for s in c) if p]
         if pubs and (now - max(pubs)).days > 10:
             ev.append("stale")
         est = model.estimate(stage, ev)
