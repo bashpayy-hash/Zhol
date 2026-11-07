@@ -51,7 +51,7 @@
 
 Разбор прошлого месяца для офиса: офис присылает Excel по шаблону [outreach/modello_carichi.xlsx](outreach/modello_carichi.xlsx), команда запускает `python -m zhol replay файл.xlsx --company "Название" --out отчёт.html` и через два дня отправляет отчёт на итальянском ([пример](https://zhol-beta.netlify.app/replay-example)). Финплан на 36 месяцев с чувствительностью — [docs/13-financial-plan.md](docs/13-financial-plan.md), генератор `python scripts/finplan.py`.
 
-Второй фидбек TEF (ценность против текущего процесса, кто платит, USP, реальный сегмент, операционная реализуемость, финплан): что измеряем и пороги успеха — [docs/10-feedback-round-2.md](docs/10-feedback-round-2.md). Кому писать на интервью и что писать — [outreach/07-interview-requests.md](outreach/07-interview-requests.md), скрипт v2 — [outreach/03-interview-script.md](outreach/03-interview-script.md), журнал — [outreach/interview_log.csv](outreach/interview_log.csv).
+Второй фидбек TEF (ценность против текущего процесса, кто платит, USP, реальный сегмент, операционная реализуемость, финплан): что измеряем и пороги успеха — [docs/10-feedback-round-2.md](docs/10-feedback-round-2.md). Кому писать на интервью и что писать — [outreach/07-interview-requests.md](outreach/07-interview-requests.md), скрипт v2 — [outreach/03-interview-script.md](outreach/03-interview-script.md), журнал — [outreach/interview_log.csv](outreach/interview_log.csv). Опрос для офисов на 3 минуты (сайт `/it/sondaggio`), как его рассылать и считать — [outreach/10-survey.md](outreach/10-survey.md).
 
 ---
 

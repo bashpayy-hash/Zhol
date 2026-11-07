@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Survey for traffic offices</title>
+<meta name="description" content="Three minutes for haulier traffic offices with lanes abroad: what truck bans, Kufstein dosing, closures and strikes cost, and how you handle them today. Nothing to buy; anonymous results shared with everyone who answers.">
+<meta property="og:title" content="What do bans, dosing, closures and strikes cost you? · 3 minutes">
+<meta property="og:description" content="A survey for traffic offices with lanes abroad. Anonymous results shared with everyone who answers.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=sv1">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/survey">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/sondaggio">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="zhol home"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sections">
+    <a href="/">TEF<span class="m-hide"> answers</span></a><a href="/story">Story</a><a href="/outlook">Radar</a><a href="/audience">Audience</a><a href="/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/it/sondaggio" lang="it" hreflang="it">IT</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="slide sv-hero">
+  <div class="wrap stack" style="gap:18px">
+    <span class="kicker">Survey for traffic offices · 3 minutes</span>
+    <h1 class="title sv-title">What do truck bans, dosing, closures and strikes cost you?</h1>
+    <p class="lead">We are three Bocconi students measuring how haulier traffic offices with lanes abroad deal with disruptions on the road. We are not selling anything. Six questions are required, the rest only if you like; no personal data needed.</p>
+  </div>
+</section>
+
+<section class="slide sv-body">
+  <div class="wrap split wide-left" style="align-items:start">
+    <div>
+      <form class="survey" id="survey" name="survey" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="survey">
+        <input type="hidden" name="lang" value="en">
+        <input type="hidden" name="src" value="">
+        <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
+
+        <span class="kicker sv-sec">About you</span>
+        <fieldset class="q"><legend><span class="n">1</span>Your role</legend>
+          <div class="opts">
+            <label><input type="radio" name="role" value="owner" required><span>Owner</span></label>
+            <label><input type="radio" name="role" value="traffic_manager"><span>Traffic manager</span></label>
+            <label><input type="radio" name="role" value="dispatcher"><span>Dispatcher</span></label>
+            <label><input type="radio" name="role" value="forwarder"><span>Forwarder</span></label>
+            <label><input type="radio" name="role" value="other"><span>Other</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend><span class="n">2</span>How many heavy trucks does the company run?</legend>
+          <div class="opts">
+            <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
+            <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
+            <label><input type="radio" name="fleet" value="21-50"><span>21–50</span></label>
+            <label><input type="radio" name="fleet" value="51-100"><span>51–100</span></label>
+            <label><input type="radio" name="fleet" value="100+"><span>Over 100</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend><span class="n">3</span>Trips abroad a week</legend>
+          <div class="opts">
+            <label><input type="radio" name="trips_abroad" value="0" required><span>None</span></label>
+            <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5</span></label>
+            <label><input type="radio" name="trips_abroad" value="6-20"><span>6–20</span></label>
+            <label><input type="radio" name="trips_abroad" value="21-50"><span>21–50</span></label>
+            <label><input type="radio" name="trips_abroad" value="50+"><span>Over 50</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend><span class="n">4</span>Which corridors? <span class="opt-tag">pick any</span></legend>
+          <div class="opts">
+            <label><input type="checkbox" name="routes" value="brenner"><span>Brenner</span></label>
+            <label><input type="checkbox" name="routes" value="tarvisio"><span>Tarvisio and Tauern</span></label>
+            <label><input type="checkbox" name="routes" value="switzerland"><span>Switzerland</span></label>
+            <label><input type="checkbox" name="routes" value="france"><span>France (Fréjus, Mont Blanc, Ventimiglia)</span></label>
+            <label><input type="checkbox" name="routes" value="east"><span>Slovenia and Eastern Europe</span></label>
+            <label><input type="checkbox" name="routes" value="messina"><span>Strait of Messina</span></label>
+          </div>
+        </fieldset>
+
+        <span class="kicker sv-sec">How you work today</span>
+        <fieldset class="q"><legend><span class="n">5</span>How long does the office spend each day checking ban calendars, websites, news and WhatsApp groups?</legend>
+          <div class="opts">
+            <label><input type="radio" name="minutes" value="<10" required><span>Under 10 minutes</span></label>
+            <label><input type="radio" name="minutes" value="10-20"><span>10–20</span></label>
+            <label><input type="radio" name="minutes" value="20-40"><span>20–40</span></label>
+            <label><input type="radio" name="minutes" value="40-60"><span>40–60</span></label>
+            <label><input type="radio" name="minutes" value="60+"><span>Over an hour</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend><span class="n">6</span>Out of 100 trips abroad, how many do you re-plan because of a ban, dosing, a closure or a strike?</legend>
+          <div class="opts">
+            <label><input type="radio" name="replans" value="0" required><span>None</span></label>
+            <label><input type="radio" name="replans" value="1"><span>1</span></label>
+            <label><input type="radio" name="replans" value="2-4"><span>2–4</span></label>
+            <label><input type="radio" name="replans" value="5-10"><span>5–10</span></label>
+            <label><input type="radio" name="replans" value="10+"><span>Over 10</span></label>
+            <label><input type="radio" name="replans" value="unknown"><span>Don’t know</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend><span class="n">7</span>When do you decide which loads leave tomorrow, and through which pass?</legend>
+          <div class="opts">
+            <label><input type="radio" name="decide" value="<14" required><span>Before 14:00</span></label>
+            <label><input type="radio" name="decide" value="14-16"><span>14–16</span></label>
+            <label><input type="radio" name="decide" value="16-18"><span>16–18</span></label>
+            <label><input type="radio" name="decide" value="18-21"><span>18–21</span></label>
+            <label><input type="radio" name="decide" value="21+"><span>After 21:00</span></label>
+            <label><input type="radio" name="decide" value="morning"><span>The morning of departure</span></label>
+          </div>
+        </fieldset>
+        <div class="q">
+          <label class="ql" for="sv-cost"><span class="n">8</span>The last disruption of this kind: roughly what did it cost you?</label>
+          <p class="hint">Hours of a truck standing still, late deliveries, penalties, an extra driver. An estimate is fine.</p>
+          <div class="fields sv-fields">
+            <div class="field"><label for="sv-cost">Euros, roughly</label><input id="sv-cost" name="last_cost" type="number" min="0" step="10" inputmode="numeric" placeholder="e.g. 400"></div>
+            <div class="field"><label for="sv-what">What happened, in one line</label><input id="sv-what" name="last_what" maxlength="300" placeholder="e.g. Kufstein dosing, 5 hours in the queue"></div>
+          </div>
+        </div>
+        <fieldset class="q"><legend><span class="n">9</span>How do you find out today? <span class="opt-tag">pick any</span></legend>
+          <div class="opts">
+            <label><input type="checkbox" name="tools" value="official"><span>Official sites and calendars</span></label>
+            <label><input type="checkbox" name="tools" value="groups"><span>WhatsApp or Telegram groups</span></label>
+            <label><input type="checkbox" name="tools" value="drivers"><span>Drivers tell us</span></label>
+            <label><input type="checkbox" name="tools" value="association"><span>Hauliers’ association</span></label>
+            <label><input type="checkbox" name="tools" value="tms"><span>TMS or telematics</span></label>
+            <label><input type="checkbox" name="tools" value="exchange"><span>Freight exchanges (TIMOCOM, Trans.eu)</span></label>
+            <label><input type="checkbox" name="tools" value="nothing"><span>Nothing in particular</span></label>
+          </div>
+        </fieldset>
+
+        <span class="kicker sv-sec">Value and price</span>
+        <fieldset class="q"><legend><span class="n">10</span>One WhatsApp message the evening before, telling you which of tomorrow’s loads will be hit and what to do: how useful would it be?</legend>
+          <div class="opts scale">
+            <label><input type="radio" name="usefulness" value="1"><span>1</span></label>
+            <label><input type="radio" name="usefulness" value="2"><span>2</span></label>
+            <label><input type="radio" name="usefulness" value="3"><span>3</span></label>
+            <label><input type="radio" name="usefulness" value="4"><span>4</span></label>
+            <label><input type="radio" name="usefulness" value="5"><span>5</span></label>
+          </div>
+          <p class="hint scale-ends"><span>1 · not at all</span><span>5 · very</span></p>
+        </fieldset>
+        <div class="q">
+          <p class="ql"><span class="n">11</span>For a service like this, in euros per truck per month, what price would be…</p>
+          <div class="fields sv-price">
+            <div class="field"><label for="vw1">so low you would not trust it</label><input id="vw1" name="vw_too_cheap" type="number" min="0" step="1" inputmode="numeric"></div>
+            <div class="field"><label for="vw2">a good deal</label><input id="vw2" name="vw_bargain" type="number" min="0" step="1" inputmode="numeric"></div>
+            <div class="field"><label for="vw3">expensive, but you would consider it</label><input id="vw3" name="vw_expensive" type="number" min="0" step="1" inputmode="numeric"></div>
+            <div class="field"><label for="vw4">too expensive</label><input id="vw4" name="vw_too_expensive" type="number" min="0" step="1" inputmode="numeric"></div>
+          </div>
+        </div>
+        <fieldset class="q"><legend><span class="n">12</span>Who would approve spending €100–200 a month?</legend>
+          <div class="opts">
+            <label><input type="radio" name="approver" value="me"><span>Me, on my own</span></label>
+            <label><input type="radio" name="approver" value="owner"><span>The owner</span></label>
+            <label><input type="radio" name="approver" value="admin"><span>Accounts or purchasing, with a process</span></label>
+            <label><input type="radio" name="approver" value="unknown"><span>Not sure</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend><span class="n">13</span>Which package would you choose?</legend>
+          <div class="opts stacked">
+            <label><input type="radio" name="package" value="A"><span><b>A</b> · the evening alert, at a fixed price per truck</span></label>
+            <label><input type="radio" name="package" value="B"><span><b>B</b> · the alert, options with their costs, and a waiting log for claims to customers</span></label>
+            <label><input type="radio" name="package" value="C"><span><b>C</b> · pay only for each shipment we flag</span></label>
+          </div>
+        </fieldset>
+
+        <span class="kicker sv-sec">If you want to go further · optional</span>
+        <fieldset class="q"><legend><span class="n">14</span>What would you like? <span class="opt-tag">pick any</span></legend>
+          <div class="opts">
+            <label><input type="checkbox" name="followup" value="results"><span>The survey results</span></label>
+            <label><input type="checkbox" name="followup" value="interview"><span>A 20-minute interview</span></label>
+            <label><input type="checkbox" name="followup" value="analysis"><span>A free analysis of one of your past months</span></label>
+            <label><input type="checkbox" name="followup" value="pilot"><span>A free four-week pilot</span></label>
+          </div>
+          <div class="fields sv-fields">
+            <div class="field"><label for="sv-name">Name</label><input id="sv-name" name="name" autocomplete="name"></div>
+            <div class="field"><label for="sv-company">Company</label><input id="sv-company" name="company" autocomplete="organization"></div>
+            <div class="field" style="grid-column:1/-1"><label for="sv-contact">Work email or phone</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          </div>
+          <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> You may use these details only for what I chose above.</label>
+        </fieldset>
+
+        <p class="sv-error" id="sv-error" role="alert" hidden></p>
+        <div class="actions sv-send"><button class="btn" type="submit">Send my answers</button><span class="small muted">Without contact details, the answers are anonymous.</span></div>
+        <p class="small muted sv-privacy">A project by three Bocconi students for TEF Ignition 2026. We publish aggregate figures only. Contact details, if you leave them, are used only for what you chose, and deleted when the project ends, or sooner if you ask in reply to any of our messages. Answers are stored on Netlify.</p>
+      </form>
+
+      <div class="card sv-done" id="sv-done" hidden tabindex="-1">
+        <span class="kicker green">Received</span>
+        <h2 class="title" style="font-size:clamp(26px,3vw,34px)">Thank you, your answers are in.</h2>
+        <p>If you left contact details, we will write within two working days. Everyone who asked gets the anonymous results as soon as the survey closes.</p>
+        <p class="small">Know another traffic office with lanes abroad? Every extra answer makes the numbers stronger.</p>
+        <div class="actions"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Forward on WhatsApp</a><button class="btn ghost" type="button" id="sv-copy">Copy the link</button></div>
+      </div>
+    </div>
+
+    <aside class="sv-aside">
+      <div class="card">
+        <span class="kicker">What you get</span>
+        <ul class="sv-list">
+          <li>The anonymous results: how much time and money offices like yours lose.</li>
+          <li>If you like, a free analysis of one of your past months: which trips bans, dosing and closures would have hit.</li>
+          <li>No sales calls: we write only if you ask for it in question 14.</li>
+        </ul>
+        <p class="foot-note">Alikhan, Inkara and Tomiris · Bocconi University · <a href="/">about us ›</a></p>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan · Inkara · Tomiris · Bocconi University · TEF Ignition 2026</span>
+  <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/outlook">Radar</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a></span>
+</div></footer>
+<script src="/assets/survey.js?v=sv1" defer></script>
+</body>
+</html>

@@ -8,3 +8,6 @@ data/*.db
 .pytest_cache/
 node_modules/
 .netlify
+
+# survey exports from Netlify hold names and contacts: keep them out of git
+outreach/private/
