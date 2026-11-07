@@ -168,7 +168,7 @@
           </tbody>
         </table></div>
       </div>
-      <figure class="print"><img src="/assets/img/q/q3-model.webp" alt="Illustration: many small trucks from different depots on one mountain road, all lit by a single red lantern at the top of the pass" width="1200" height="896" loading="lazy"></figure>
+      <figure class="print"><img src="/assets/img/q/q3-shared-pass.webp" alt="Illustration: one red signal lantern on an Alpine pass lights three different trucks climbing three roads towards it" width="1200" height="896" loading="lazy"></figure>
     </div>
     <div class="grid g4">
       <div class="card year"><span class="kicker">ARR, end of 2027</span><span class="mid">€46k</span><div class="bar"><div class="track"><div class="fill" style="width:6%"></div></div></div><p class="small">15 offices</p></div>
@@ -193,11 +193,11 @@
           <div><b>Who pays</b><span>Owners of hauliers with 6–100 trucks and weekly lanes to DE, AT, CH, FR or PL, mostly over the Brenner. The dispatcher who plans tomorrow is the daily user.</span></div>
           <div><b>Where first</b><span>Lombardy, Veneto, Emilia-Romagna, Piemonte and Trentino-Alto Adige: about 2,350 offices. Then the South–North long haul hit by blockades, then Austrian, German and Slovenian hauliers on Italian lanes.</span></div>
           <div><b>How</b><span>Founder-led, in Italian. A short WhatsApp or call, a 30-minute visit to review one recent disruption, then a free pilot with a written success criterion.</span></div>
-          <div><b>Already done</b><span>92 named companies in the starting provinces, from public sources, and the first 15 personal messages drafted in Italian.</span></div>
+          <div><b>Already done</b><span>92 companies in the starting provinces and 87 named people to interview (owners, traffic managers, forwarders, associations), from public sources. Personal first messages drafted in Italian.</span></div>
         </div>
         <a href="/audience">Who exactly, and where to find them ›</a>
       </div>
-      <img class="art" src="/assets/img/q/q4-gtm.webp" alt="Illustration: a map of northern Italy with a red pin at Milan and dotted lines to small warehouses with trucks across the Po valley and the Alpine foothills" width="1200" height="896" loading="lazy">
+      <img class="art" src="/assets/img/q/q4-day-trip.webp" alt="Illustration: a road atlas of northern Italy with a red pencil loop from Milan to Verona and Bolzano, a visit list with three ticks, a train ticket and an espresso" width="1200" height="896" loading="lazy">
     </div>
     <div class="grid g2">
       <div class="card">
@@ -240,15 +240,24 @@
       </div>
     </div>
     <div class="split">
-      <figure class="card" style="padding:16px"><img src="/assets/corridors.svg" alt="Map of the 19 corridors and 18 chokepoints zhol watches" width="900" height="1189" style="width:100%;height:auto;max-height:560px;object-fit:contain"><figcaption>The 19 corridors and 18 chokepoints in the prototype, drawn from the coordinates in its data.</figcaption></figure>
-      <div class="stack" style="gap:20px">
-        <div class="card">
-          <span class="kicker">Example from the demo</span>
-          <h3>Milano → München, leaving Thursday at 13:30</h3>
-          <p class="small">The truck reaches the A12 Inntal at 21:39. The winter night ban, from 20:00 Monday to Saturday, stops it until 05:00: 7 h 46 lost.</p>
-          <p class="small">zhol suggests leaving at 11:00. The truck clears the Inntal before the ban; estimated saving €734.</p>
+      <div class="stack" style="gap:10px">
+        <div class="wa" aria-label="WhatsApp alert produced by the zhol prototype">
+          <div class="head"><img src="/assets/img/chat-icon.png" alt="" width="120" height="106"><b>zhol · WhatsApp</b><span class="when">Wed 11 Nov, 18:00</span></div>
+          <div class="box"><span class="hl">3 dei tuoi 6 carichi di domani hanno un problema sul percorso.</span>
+
+<b>MUC-118 · imballaggi, München → Verona:</b> dosaggio a Kufstein gio 07:24 (perdi 2h55) → nessuna alternativa migliore, avvisa il cliente
+
+<b>MI-515 · bobine acciaio, Milano → Lyon:</b> Fréjus chiuso ai mezzi pesanti 10:00–15:00 (perdi 3h47) → anticipa la partenza alle 06:00
+
+<b>MI-402 · macchinari, Milano → München:</b> divieto notturno A12 Inntal dalle 20:00 (perdi 7h46) → anticipa la partenza alle 11:00
+
+Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
+          <span class="reply">Rispondi 1: conferma con gli autisti</span>
         </div>
-        <div class="rows">
+        <p class="small muted">What the prototype sends for Thursday 12 November, in Italian as the dispatcher reads it. Real ban rules and calendars; the Kufstein and Fréjus events and the loads are demo data.</p>
+      </div>
+      <div class="stack" style="gap:20px">
+                <div class="rows">
           <div><b>Rules engine</b><span>Python. Italian, Austrian, German, Swiss, French, Slovenian and Polish bans with holidays, directions and exemptions.</span></div>
           <div><b>Data</b><span>DATEX II parser for national access points, official calendars as files with their source and date.</span></div>
           <div><b>AI</b><span>Claude extracts events from notices and news; every field must quote the source, or the event goes back to a person.</span></div>
@@ -352,7 +361,7 @@
       <h2 class="title">Yes, for a focused wedge, with a window of two to three years</h2>
     </div>
     <div class="split center">
-      <figure class="print"><img src="/assets/img/q/q8-room.webp" alt="Illustration: a map of Europe crowded with small trucks and a few large warehouses at the edges, with an open area around the Alps outlined in red and a small red flag in it" width="1200" height="896" loading="lazy"></figure>
+      <figure class="print"><img src="/assets/img/q/q8-wedge.webp" alt="Illustration: a small red wedge holds a heavy door open; through the gap, a sunlit Alpine pass and a single road" width="1200" height="896" loading="lazy"></figure>
       <div class="rows">
         <div><b>Why there is room</b><span>98,277 registered hauliers, and the top 1.1% hold only a third of the fleet. Offices plan in Excel and WhatsApp; enterprise tools are priced for others.</span></div>
         <div><b>Why now</b><span>Unplanned disruption is growing: 21 of 57 Kufstein dosing days in 2025 came outside the calendar, the Luegbrücke runs on one lane each way until 2030, and southern blockades cost €400M+ in eight days in October 2026.</span></div>

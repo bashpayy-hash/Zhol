@@ -1,80 +1,102 @@
-# 9. Первый вход через Bocconi: письма со студенческой почты (Outlook)
+# 9. Первый вход через Bocconi: короткие письма по пунктам (Outlook, студенческая почта)
 
-Отправить в субботу, 7 ноября: ответы ожидаем в понедельник, встречи — 10–12 ноября, до Workshop 2 (13 ноября).
+Отправить сегодня, в субботу 7 ноября. Ответы ждём в понедельник, встречи — 10–12 ноября, до Workshop 2 (13 ноября).
 
-**Как найти адрес:** в Outlook студенческого аккаунта начните вводить имя преподавателя в поле «Кому»: адресная книга Bocconi подставит адрес. Адреса не угадываем.
-
-**Язык:** профессорам пишем по-английски (это нормально для студентов Bocconi). Итальянская версия ниже, если хотите.
-
-**Что просим:** 20 минут и одно-два знакомства с перевозчиками или экспедиторами. Про цены и кто платит спрашиваем уже у компаний, скрипт — `03-interview-script.md`.
+- **Адрес:** в Outlook начните вводить имя в поле «Кому», адресную книгу Bocconi подставит сама. Адреса не угадываем.
+- **Язык:** профессорам — по-английски. Итальянская версия письма Baccelli ниже.
+- **Формат:** одна зацепка, пять пунктов, одна просьба. Длиннее не пишем.
 
 ---
 
-## 1. Oliviero Baccelli — транспортная экономика, GREEN Bocconi; бывший директор магистратуры по транспорту и логистике (MEMIT)
+## zhol в пяти пунктах (вставлять в любое письмо)
 
-Публично выступал о грузоперевозках и Бреннере. Первый адресат.
+- **Problem:** small hauliers learn about bans, Kufstein dosing days, closures and strikes when the truck is already in the queue.
+- **Product:** the evening before, one WhatsApp message tells the traffic office which of tomorrow's loads will be hit and what each option costs.
+- **Status:** working prototype (ban rules for 7 countries, official Tyrol calendar, AI reading of notices with human review); 87 people at hauliers, forwarders and associations identified for interviews.
+- **What the jury wants:** hard numbers: time and money lost per office today, who pays, how much.
+- **Next:** 8 interviews by 13 November, then 4-week pilots measured against the office's current process.
 
-**Subject:** Bocconi students (TEF Ignition): 20 minutes on what a Brenner delay costs a haulier?
+---
+
+## 1. Oliviero Baccelli — транспортная экономика (GREEN Bocconi)
+
+**Зацепка — его собственные слова.** 30 мая 2026 года он говорил RSI о Бреннере:
+- это главный путь грузов по дороге, больше 2,4 млн грузовиков в год;
+- цель ограничений понятна, но они искажают рынок, потому что ограничивают время, типы грузов и дороги.
+
+Ровно эту часть проблемы мы и решаем. *Перед отправкой откройте статью и сверьте формулировку:* [RSI, 30.05.2026](https://www.rsi.ch/info/mondo/Brennero-riapre-l%E2%80%99autostrada-ma-il-nodo-merci-resta-irrisolto--3782281.html).
+
+**Subject:** Your point on the Brenner restrictions: 20 minutes for three Bocconi students?
 
 > Dear Professor Baccelli,
 >
-> We are Alikhan, Inkara and Tomiris, Bocconi students in the TEF Ignition programme. We are building zhol: it tells the traffic office of a small haulier, the evening before, which of tomorrow's loads a truck ban, a Kufstein dosing day, a closure or a strike will hit, and what each option costs.
+> In May you told RSI that the Brenner restrictions have a fair goal but distorting effects, because they limit timing, goods and roads. We are three Bocconi students (TEF Ignition 2026) working on exactly that cost for small hauliers:
 >
-> The jury asked us to prove the value with numbers: how much time and money an office loses today, who decides to pay, and how much. Before Workshop 2 on 13 November we want to interview eight traffic offices.
+> - **Problem:** traffic offices learn about bans, Kufstein dosing days and closures when the truck is already in the queue.
+> - **Product:** the evening before, one WhatsApp message tells them which of tomorrow's loads will be hit and what each option costs.
+> - **Status:** working prototype; interviews with 8 offices by 13 November.
+> - **Our question:** how would you measure the cost of a delay per truck credibly?
+> - **Our ask:** 20 minutes next week and, if you see fit, one or two hauliers or forwarders we could interview.
 >
-> Could we have 20 minutes with you next week? Two things would help us most: your view on how to measure the cost of a delay per truck credibly, and, if you think it appropriate, an introduction to one or two hauliers or forwarders who might talk to us.
->
-> What we have so far: https://zhol-beta.netlify.app
+> Overview: https://zhol-beta.netlify.app
 >
 > Thank you,
 > Alikhan, Inkara and Tomiris
 
-**IT (если писать по-итальянски):**
+**IT:**
 > Gentile Professor Baccelli,
-> siamo Alikhan, Inkara e Tomiris, studenti Bocconi nel programma TEF Ignition. Stiamo sviluppando zhol: la sera prima dice all'ufficio traffico di un piccolo autotrasportatore quali carichi di domani saranno fermati da divieti, dosaggi a Kufstein, chiusure o scioperi, e quanto costa ogni alternativa.
-> La giuria ci chiede di dimostrare il valore con dei numeri: quanto tempo e denaro perde oggi un ufficio, chi decide di pagare e quanto. Prima del 13 novembre vorremmo intervistare otto uffici traffico.
-> Potremmo avere 20 minuti con lei la prossima settimana? Ci aiuterebbe il suo parere su come misurare in modo credibile il costo di un ritardo per camion e, se lo ritiene opportuno, il contatto di una o due aziende disposte a parlarci.
-> Il nostro lavoro finora: https://zhol-beta.netlify.app
+>
+> a maggio ha detto alla RSI che i divieti sul Brennero hanno un obiettivo comprensibile ma effetti distorsivi, perché vincolano orari, merci e strade. Siamo tre studenti Bocconi (TEF Ignition 2026) e lavoriamo proprio su quel costo per i piccoli autotrasportatori:
+>
+> - **Problema:** gli uffici traffico scoprono divieti, dosaggi a Kufstein e chiusure quando il camion è già in coda.
+> - **Prodotto:** la sera prima, un messaggio WhatsApp dice quali carichi di domani saranno toccati e quanto costa ogni alternativa.
+> - **Stato:** prototipo funzionante; 8 interviste con uffici traffico entro il 13 novembre.
+> - **Domanda:** come misurerebbe in modo credibile il costo di un ritardo per camion?
+> - **Richiesta:** 20 minuti la prossima settimana e, se lo ritiene opportuno, il contatto di una o due aziende da intervistare.
+>
+> https://zhol-beta.netlify.app
 > Grazie, Alikhan, Inkara e Tomiris
 
-## 2. Giuseppe Stabilini — SDA Bocconi, закупки и снабжение; преподавал в MEMIT
+## 2. Giuseppe Stabilini — SDA Bocconi; преподавал в магистратуре по транспорту (MEMIT)
 
-Выпускники MEMIT работают в транспорте и логистике: это самые тёплые контакты в компаниях.
+Публичных высказываний о Бреннере не нашли. Пишем по делу: нам нужны его выпускники в логистике.
 
-**Subject:** Bocconi students (TEF Ignition): MEMIT alumni in road freight?
+**Subject:** MEMIT alumni in road freight: three names for a Bocconi student project?
 
 > Dear Professor Stabilini,
 >
-> We are three Bocconi students in TEF Ignition, building a tool that warns the traffic offices of small hauliers, the evening before, which of tomorrow's loads a ban, a closure or a strike will hit. This week we need to interview traffic managers and owners of hauliers and forwarders in northern Italy.
+> - **Who:** three Bocconi students, TEF Ignition 2026.
+> - **What:** a tool that tells the traffic offices of small hauliers, the evening before, which of tomorrow's loads a ban, a closure or a strike will hit.
+> - **Need:** this week we must interview traffic managers and owners of hauliers and forwarders in northern Italy.
+> - **Ask:** could you suggest two or three MEMIT alumni at a haulier or forwarder who might give us 20 minutes? Names alone already help.
 >
-> Since you taught in the MEMIT master, could you suggest two or three alumni who work at a haulier or a forwarder and might give us 20 minutes? A short reply with names is already a great help.
->
-> Our work so far: https://zhol-beta.netlify.app
+> https://zhol-beta.netlify.app
 >
 > Thank you,
 > Alikhan, Inkara and Tomiris
 
-## 3. Marco Bettucci — SDA Bocconi, Operations & Supply Chain (проектирование логистических сетей)
+## 3. Marco Bettucci — SDA Bocconi, Operations & Supply Chain
 
-Просим 15 минут на метод измерения пилота и, если уместно, контакты слушателей executive-программ из логистических компаний.
+Тоже без публичной зацепки. Просим проверить метод измерения пилота.
 
-**Subject:** Bocconi students (TEF Ignition): 15 minutes on how to measure a logistics pilot?
+**Subject:** 15 minutes to check how we measure a logistics pilot?
 
 > Dear Professor Bettucci,
 >
-> We are three Bocconi students in TEF Ignition. Our tool warns the traffic offices of small hauliers, the evening before, which of tomorrow's loads a ban, a closure or a strike will hit, and what each option costs. Next month we plan four-week pilots with the first offices, and we want the result to be measured against the office's current process, not against our own assumptions.
+> - **Who:** three Bocconi students, TEF Ignition 2026.
+> - **What:** evening-before alerts for the traffic offices of small hauliers: which of tomorrow's loads a ban, a closure or a strike will hit, and what each option costs.
+> - **Next month:** 4-week pilots, measured against the office's current process: minutes a day, re-plans per 100 trips, verified savings, our review time per event.
+> - **Ask:** 15 minutes to check these measures and thresholds; and, if you know logistics managers from executive programmes, an introduction.
 >
-> Could we have 15 minutes with you next week to check our measures (minutes a day, re-plans per 100 trips, verified savings, review time) and our thresholds? If you know logistics managers from executive programmes who might talk to us, an introduction would help a lot.
->
-> Our plan: https://zhol-beta.netlify.app
+> https://zhol-beta.netlify.app
 >
 > Thank you,
 > Alikhan, Inkara and Tomiris
 
-## 4. Организаторам TEF: просьба о тёплых знакомствах
-
-Текст уже есть в `02-associations-and-partners.md`, раздел C. Коротко: просим 2–3 знакомства с экспедиторами или перевозчиками в Ломбардии и Венето и одного логистического эксперта для обратной связи.
-
 ---
 
-**После ответа:** назначить время (лучше вживую в Bocconi), задать вопросы, попросить имена и сразу написать этим людям по шаблонам 1–3 из `07-interview-requests.md`, упомянув, кто нас направил («ci ha suggerito di scriverle il Prof. …»). Каждое касание отмечаем в `leads_tracker.csv`.
+**После ответа:**
+1. Назначаем встречу, лучше вживую в Bocconi.
+2. Просим имена.
+3. Тем, кого назвали, пишем в тот же день по шаблонам из `07-interview-requests.md`. В первой строке указываем, кто нас направил: *«Ci ha suggerito di scriverle il Prof. …»*.
+4. Каждое касание отмечаем в `leads_tracker.csv`.
