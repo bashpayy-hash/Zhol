@@ -82,3 +82,10 @@ def test_noise_is_filtered():
     assert s.stage == "announced" and s.chokepoints == ["montblanc"] and s.start == "2026-11-17"
     old = [heuristic_signal(item("Autotrasporto, blocchi e proteste in corso da anni", "Uomini e Trasporti", days_ago=0), TODAY)]
     assert news_items(old, TODAY) == []          # ongoing, but no place and no date: background, not an event
+
+
+def test_accidents_and_undated_announcements():
+    assert heuristic_signal(item("Incidente sull'A22, autostrada chiusa per ore verso il Brennero", "Il Gazzettino"), TODAY) is None
+    s = heuristic_signal(item("Grève des routiers annoncée en France", "Le Monde", "fr"), TODAY)
+    it = news_items([s], TODAY)[0]
+    assert it["stage"] == "threat" and it["p"] < 0.5

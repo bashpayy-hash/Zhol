@@ -235,6 +235,8 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
             start = end = today.isoformat()
         if not start and stage == "tension":
             continue            # commentary without an action or a date
+        if not start and stage in ("announced", "confirmed"):
+            stage = "threat"    # we do not know when: treat it as a threat until dates appear
         if not any(s.countries for s in c):
             continue
         specific = any(s.regions or s.chokepoints for s in c)

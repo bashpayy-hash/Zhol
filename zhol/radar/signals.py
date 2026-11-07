@@ -36,7 +36,7 @@ STAGE_RE = [
     ("ongoing", r"in corso|da stamattina|stanno bloccando|bloccat[ie] (da|dai)|presidi(o)? attiv|da oggi|"
                 r"läuft|seit heute|en cours|ongoing|under way|continua(no)? (il|la|i) (fermo|blocc|presid|protest)"),
     ("confirmed", r"confermat|resta confermat|bestätigt|maintenu|confirm"),
-    ("announced", r"chiusur[ae] (programmat|nottur)|chiuso (dal|dalle|il|nei|nelle|per)|resterà chius|sarà chius|"
+    ("announced", r"chiusur[ae] (programmat|nottur)|chiuso (dal|dalle|il|nei|nelle)|resterà chius|sarà chius|"
                   r"fermetures? (de nuit|programm)|sera fermé|fermé (du|les|le|de nuit)|gesperrt (von|ab|am|bis)|"
                   r"wird gesperrt|will be closed|scheduled closure|proclamat|indett|annunciat|dichiarat|ha proclamato|fermo (nazionale )?(dal|dei|degli|il|di)|"
                   r"sciopero (il|dal|di|del|nazionale)|giornata di sciopero|angekündigt|ausgerufen|annonc|"
@@ -65,6 +65,7 @@ COUNTRY_WORDS = {
     "BE": r"belgi", "NL": r"olanda|paesi bassi|netherlands|niederlande|pays-bas",
 }
 LANG_COUNTRY = {"it": "IT", "fr": "FR", "de": "AT", "en": None}
+ACCIDENT = re.compile(r"incident|scontro|tamponament|ribaltat|accident|unfall|crash|collision|carambol", re.I)
 NON_EUROPE = re.compile(r"\b(chile|cile|argentin|brasil|brazil|usa|stati uniti|united states|états-unis|canada|"
                         r"messico|mexico|mexique|india|inde|cina|china|chine|australia|sud ?africa|south africa|"
                         r"nigeria|per[uù]|colombia|corea|korea|giappone|japan|japon|turchia|turkey|israele|israel|"
@@ -144,6 +145,8 @@ def heuristic_signal(item: dict, today: date) -> Signal | None:
     kind = _kind(text)
     if kind is None:
         return None
+    if ACCIDENT.search(text) and not any(d > today for d in _dates(text, today)):
+        return None     # accidents are cleared by the time they are reported
     countries, regions, chokes = _where(text, item.get("lang", "it"))
     if not countries or (NON_EUROPE.search(text) and not (regions or chokes)):
         return None     # not on a European corridor
