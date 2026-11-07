@@ -27,7 +27,7 @@ function createZholForm() {
   // hauliers would have to sign in. Open it to everyone; on a personal Gmail this call is not needed.
   try { form.setRequireLogin(false); } catch (e) { /* personal account: already open */ }
 
-  // Zhol, the mascot, next to his truck (served by the site)
+  // Zholdas, the mascot, next to his truck (served by the site)
   try {
     var picture = UrlFetchApp.fetch('https://zhol-beta.netlify.app/assets/img/mascot/truck-form.jpg').getBlob();
     form.addImageItem().setImage(picture).setAlignment(FormApp.Alignment.CENTER).setWidth(300);

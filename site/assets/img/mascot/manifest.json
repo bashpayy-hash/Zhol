@@ -1,25 +1,33 @@
 {
- "what": "Zhol, the mascot of the zhol site (based on Vespi from brand/): every file, where it came from, and for new poses the Higgsfield job and exact prompt (brand/MASCOT.md §4).",
- "processing": "trimmed transparent margins, fitted bottom-aligned into a 560x448 (5:4) canvas so steps do not jump; WebP q80, alpha q90; 560 (2x) and 280 (1x)",
+ "what": "Zholdas (Жолдас, 'fellow traveller' in Kazakh), the mascot of zhol: a handmade plush toy in a trucker cap and a safety vest. Every file, its Higgsfield job and exact prompt.",
+ "identity": {
+  "references": {
+   "front": {
+    "higgsfield_image_job": "2a20bb83-5d2d-4aa3-be59-3efd48133274",
+    "file": "design/mascot/zholdas-reference-front.webp"
+   },
+   "hello": {
+    "higgsfield_image_job": "619e25b1-eeb6-4f66-831e-99b84ccde4b5",
+    "file": "design/mascot/zholdas-reference-hello.webp"
+   }
+  },
+  "keep_in_every_pose": "cream plush body, tiny black dot eyes, pink cheeks, mitten hands without fingers, brick-red felt trucker cap with a cream front panel, sage-green safety vest with two cream reflective stripes and a brass zipper, sand suede boots; no helmet, no text or logos",
+  "settings": {
+   "model": "gpt_image_2_5",
+   "variant": "flare",
+   "quality": "high",
+   "resolution": "1k",
+   "aspect_ratio": "5:4",
+   "background": "transparent",
+   "medias": "both references as image_references"
+  }
+ },
+ "processing": "trimmed transparent margins, fitted bottom-aligned into a 560x448 (5:4) canvas; WebP q80, alpha q90; 560 (2x) and 280 (1x)",
  "poses": [
   {
    "name": "truck",
-   "source": "new",
-   "higgsfield_image_job": "18bc8279-7718-4be9-8523-78028e05d38b",
-   "settings": {
-    "model": "gpt_image_2_5",
-    "variant": "flare",
-    "quality": "high",
-    "resolution": "1k",
-    "aspect_ratio": "5:4",
-    "background": "transparent"
-   },
-   "references": [
-    "ab833075-dfc7-4e28-824c-7e299aad556c",
-    "a448f972-9035-4be6-b0ca-1f0f7800f1a5",
-    "0f6d7ac4-4e85-4761-9765-753f578eec1e"
-   ],
-   "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet proud smile, olive-green felt cape collar with one red button. Full figure standing next to a small toy European truck with a plain cream box trailer, the truck about as tall as Vespi, one mitten hand resting on the truck cab, calm and proud. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no license plates, no other characters.",
+   "higgsfield_image_job": "d344436d-fce6-4bd5-b378-ba4ca25d4534",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, quiet proud smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure standing next to a small toy European truck with a plain cream box trailer, the truck about as tall as him, one mitten hand resting on the cab, calm and proud. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
    "files": [
     {
      "file": "site/assets/img/mascot/truck-560.webp",
@@ -27,8 +35,8 @@
       560,
       448
      ],
-     "kb": 31.8,
-     "sha256": "7c69ed04e9bb81d4dd34f36926719538bdf99f5a320c1cf318af851af689b503"
+     "kb": 32.3,
+     "sha256": "54e6c25a79c20944df55bcbca9848826fa83ae9f9929b14447889d179643a3dd"
     },
     {
      "file": "site/assets/img/mascot/truck-280.webp",
@@ -36,93 +44,15 @@
       280,
       224
      ],
-     "kb": 14.1,
-     "sha256": "64ec33c488d50cf6a3b682c657849a7cf489339e7487c90f2acb6c67cb92aad8"
-    }
-   ]
-  },
-  {
-   "name": "watch",
-   "source": "new",
-   "higgsfield_image_job": "a279b58f-c6ff-492b-8937-858721eb34a4",
-   "settings": {
-    "model": "gpt_image_2_5",
-    "variant": "flare",
-    "quality": "high",
-    "resolution": "1k",
-    "aspect_ratio": "5:4",
-    "background": "transparent"
-   },
-   "references": [
-    "ab833075-dfc7-4e28-824c-7e299aad556c",
-    "a448f972-9035-4be6-b0ca-1f0f7800f1a5",
-    "0f6d7ac4-4e85-4761-9765-753f578eec1e"
-   ],
-   "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, small thoughtful smile with thin slightly raised eyebrows, olive-green felt cape collar with one red button. Half-body, holding a round brass pocket watch with both mitten hands and looking down at it, keeping an eye on the time. The watch face shows only plain tick marks and two hands. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no numbers, no logos, no other characters.",
-   "files": [
-    {
-     "file": "site/assets/img/mascot/watch-560.webp",
-     "size": [
-      560,
-      448
-     ],
-     "kb": 26.7,
-     "sha256": "0e88827aaa0fe7f6ef776c05b10666c592722a084c6fb2f990817c5bafe4637d"
-    },
-    {
-     "file": "site/assets/img/mascot/watch-280.webp",
-     "size": [
-      280,
-      224
-     ],
-     "kb": 10.5,
-     "sha256": "4a481c564bf2b9a0eaba96f4283d93a47141f65cf98422be71cebc4db59058a4"
-    }
-   ]
-  },
-  {
-   "name": "phone",
-   "source": "new",
-   "higgsfield_image_job": "fa373a70-53e7-4aad-a7a5-345c1be06f9e",
-   "settings": {
-    "model": "gpt_image_2_5",
-    "variant": "flare",
-    "quality": "high",
-    "resolution": "1k",
-    "aspect_ratio": "5:4",
-    "background": "transparent"
-   },
-   "references": [
-    "ab833075-dfc7-4e28-824c-7e299aad556c",
-    "a448f972-9035-4be6-b0ca-1f0f7800f1a5",
-    "0f6d7ac4-4e85-4761-9765-753f578eec1e"
-   ],
-   "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body, holding a small smartphone toward the viewer with both mitten hands; the screen shows one plain message bubble and one small red dot, helpful and calm, as if bringing good news in the evening. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no app icons, no other characters.",
-   "files": [
-    {
-     "file": "site/assets/img/mascot/phone-560.webp",
-     "size": [
-      560,
-      448
-     ],
-     "kb": 24.6,
-     "sha256": "3180492116cb049cb7167a7cac51248c9ac86c42fd747dff5ad5800d4647e2ff"
-    },
-    {
-     "file": "site/assets/img/mascot/phone-280.webp",
-     "size": [
-      280,
-      224
-     ],
-     "kb": 10.1,
-     "sha256": "ed504d4da3c259f72425ab78b851c86cab7ab5e02d6091ae64aa2604e689310f"
+     "kb": 12.7,
+     "sha256": "55871992b19f9c0a2e6a1f9c2e139472c81f8f3c74687eac0f9b995160bc2d61"
     }
    ]
   },
   {
    "name": "route",
-   "source": "brand/mascot/web-ready",
-   "from": "brand/mascot/web-ready/poses-v1/route-640.webp",
+   "higgsfield_image_job": "18201174-42a8-45f4-bf06-a920c2020df9",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, curious small smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure sitting, holding open a folded paper road map with both mitten hands, one thin dark route line on it, looking at the map. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
    "files": [
     {
      "file": "site/assets/img/mascot/route-560.webp",
@@ -130,8 +60,8 @@
       560,
       448
      ],
-     "kb": 23.3,
-     "sha256": "9f3baa872cdc9eafb56cc97c8a8fa9189938dd90be90de9809e43db7d61fda7c"
+     "kb": 26.8,
+     "sha256": "5d5fe39c8102e95648f5f53f3c78da138dae63e679f45f80a892f9d826b44b89"
     },
     {
      "file": "site/assets/img/mascot/route-280.webp",
@@ -139,15 +69,40 @@
       280,
       224
      ],
-     "kb": 11.3,
-     "sha256": "91507cc9b64943cf1aec8e6fede2f08b80c4d4bd143655e877c1620aa306c596"
+     "kb": 10.0,
+     "sha256": "6524aeb571d13ffb0f79c5c8aa02415c64c4e0fdd785000148a48e94c16dae6a"
+    }
+   ]
+  },
+  {
+   "name": "watch",
+   "higgsfield_image_job": "1e951607-3c6b-4793-b59b-22ac866ca2d7",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, small thoughtful smile with thin slightly raised eyebrows, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Half-body, holding a round brass pocket watch with both mitten hands and looking down at it; the watch face shows only plain tick marks and two hands. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
+   "files": [
+    {
+     "file": "site/assets/img/mascot/watch-560.webp",
+     "size": [
+      560,
+      448
+     ],
+     "kb": 25.5,
+     "sha256": "1b9fe23ff97b616f49f468f9903bedca0bc8da505c00a9d727477f97164c592f"
+    },
+    {
+     "file": "site/assets/img/mascot/watch-280.webp",
+     "size": [
+      280,
+      224
+     ],
+     "kb": 9.3,
+     "sha256": "644d4c59c59b2ff29f00a7afea37349565ce1e188a58e8097b40fdedc346ed7d"
     }
    ]
   },
   {
    "name": "coin",
-   "source": "brand/mascot/web-ready",
-   "from": "brand/mascot/web-ready/poses-v2/stage-dsu-560.webp",
+   "higgsfield_image_job": "2dad3e64-7199-4fc4-b5ec-ec96fcbb6b53",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, focused small smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure standing beside a small glass jar with a few plain coins inside, dropping one plain coin into the jar. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
    "files": [
     {
      "file": "site/assets/img/mascot/coin-560.webp",
@@ -155,8 +110,8 @@
       560,
       448
      ],
-     "kb": 23.1,
-     "sha256": "54387935ac4c26c0808dcde464c979cd14a3ecd7db958ffd7832f7119e7548b2"
+     "kb": 28.7,
+     "sha256": "835b360b0f78ff1b99a266e627905f94b3e02cbd85d940157ec136a64a1deba5"
     },
     {
      "file": "site/assets/img/mascot/coin-280.webp",
@@ -164,15 +119,40 @@
       280,
       224
      ],
-     "kb": 10.5,
-     "sha256": "b68cb9835e223527312385f33375db759508ff0648f950163ca95aede34e9241"
+     "kb": 11.7,
+     "sha256": "5290064cd2a7045889d7c2940d6530410d6e10e2ee9367b3d90b361f8493759a"
+    }
+   ]
+  },
+  {
+   "name": "phone",
+   "higgsfield_image_job": "a04d7e06-4dfc-4e2d-aea2-0984e35f7788",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, quiet smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Half-body, holding a small smartphone toward the viewer with both mitten hands; the screen shows one plain message bubble and one small red dot, helpful and calm. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no app icons, no other characters.",
+   "files": [
+    {
+     "file": "site/assets/img/mascot/phone-560.webp",
+     "size": [
+      560,
+      448
+     ],
+     "kb": 23.4,
+     "sha256": "ef17ec08d95189720336c7516a242f426992cc032103f187e5cacad802ff111e"
+    },
+    {
+     "file": "site/assets/img/mascot/phone-280.webp",
+     "size": [
+      280,
+      224
+     ],
+     "kb": 9.3,
+     "sha256": "3473349e24d65b921a767731f81ec2845bab7cb1ea251ecfec8142730874416b"
     }
    ]
   },
   {
    "name": "thinking",
-   "source": "brand/mascot/web-ready",
-   "from": "brand/mascot/web-ready/poses-v2/thinking-560.webp",
+   "higgsfield_image_job": "18b612ae-fc5a-4735-bc3c-d14d0deadabb",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, thoughtful small smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Half-body, one mitten hand at his chin, head slightly tilted, thinking it over calmly. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
    "files": [
     {
      "file": "site/assets/img/mascot/thinking-560.webp",
@@ -180,8 +160,8 @@
       560,
       448
      ],
-     "kb": 19.2,
-     "sha256": "1849e6b2ace5f7652b4386ee8a0afabf307e7ce59740d29c99b1526fdc6341ab"
+     "kb": 26.7,
+     "sha256": "45a5a8d6bf52b6e2fe7b97674e08be25c775874684fbc6201dc0d25bbb146831"
     },
     {
      "file": "site/assets/img/mascot/thinking-280.webp",
@@ -189,15 +169,15 @@
       280,
       224
      ],
-     "kb": 9.0,
-     "sha256": "8970290739d9fa622c3116ca0e00d99729859f75822c7c2ad19f7b504b7ce0e0"
+     "kb": 9.1,
+     "sha256": "9432693fffc6ec30f370fd2f70dc3ccd3b33d52c068a7c15e5a8c929406ee366"
     }
    ]
   },
   {
    "name": "celebrate",
-   "source": "brand/mascot/web-ready",
-   "from": "brand/mascot/web-ready/poses-v2/celebrate-560.webp",
+   "higgsfield_image_job": "ec97edc5-4946-4826-a249-1a12dc7a7a08",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, happy open smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure jumping with both mitten hands up in joy, boots off the ground. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
    "files": [
     {
      "file": "site/assets/img/mascot/celebrate-560.webp",
@@ -205,8 +185,8 @@
       560,
       448
      ],
-     "kb": 20.7,
-     "sha256": "40a55cd075194205450271ee01b9b5a162ebae17b8a7303a741cd63a56ce81ca"
+     "kb": 24.1,
+     "sha256": "13abd6101169efee293c38e4320ea3daf0b6d303f7fb16df7bd2de6fb6c29a99"
     },
     {
      "file": "site/assets/img/mascot/celebrate-280.webp",
@@ -214,15 +194,15 @@
       280,
       224
      ],
-     "kb": 10.4,
-     "sha256": "cfbf707d9e7a5da86913327019d8848eb947f5405d09f568547309c8f543602d"
+     "kb": 9.7,
+     "sha256": "b57cb3956a1ac1d229171b32d8e98a88f730e9d66cf150d39b3e920f50571b01"
     }
    ]
   },
   {
    "name": "encourage",
-   "source": "brand/mascot/web-ready",
-   "from": "brand/mascot/web-ready/poses-v2/encourage-560.webp",
+   "higgsfield_image_job": "3813951c-a784-4b51-b0fa-c26b75149b65",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, warm smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure walking forward, pointing ahead with one mitten hand, inviting to the next step. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
    "files": [
     {
      "file": "site/assets/img/mascot/encourage-560.webp",
@@ -230,8 +210,8 @@
       560,
       448
      ],
-     "kb": 21.5,
-     "sha256": "ae990d652b79a1602c04d37f79ded9e5fad861cc733bc3e306aa71ddeab17dde"
+     "kb": 22.3,
+     "sha256": "8d5c7cbb7788d28fabb811f424283f8b9201f5b9f7c81ff1ad63cda5c3f91b03"
     },
     {
      "file": "site/assets/img/mascot/encourage-280.webp",
@@ -239,8 +219,58 @@
       280,
       224
      ],
-     "kb": 10.2,
-     "sha256": "337505f06759beacffb1d1ea272ecc4ab190c0a968ad02ad52d2d0f7c1e3e65f"
+     "kb": 9.1,
+     "sha256": "7fc5d353a1dc252af5f6309c9646466097c606986cc36903a6e2c4eb83831b00"
+    }
+   ]
+  },
+  {
+   "name": "lost",
+   "higgsfield_image_job": "ee3ef70c-090e-4504-af8b-4f7fc8666714",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, puzzled small smile with thin raised eyebrows, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure standing, holding an unfolded paper road map upside down in one mitten hand and scratching the side of his cap with the other, a little lost but calm. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
+   "files": [
+    {
+     "file": "site/assets/img/mascot/lost-560.webp",
+     "size": [
+      560,
+      448
+     ],
+     "kb": 22.5,
+     "sha256": "ab35454143754b9aede7b52bf35200907838d9df6bc191a672196d0a1cee6eef"
+    },
+    {
+     "file": "site/assets/img/mascot/lost-280.webp",
+     "size": [
+      280,
+      224
+     ],
+     "kb": 9.7,
+     "sha256": "d474bfb68622d6380c3146ac42bae44161d7e6df66b108f0666cf34b257ec2b2"
+    }
+   ]
+  },
+  {
+   "name": "delivered",
+   "higgsfield_image_job": "886eeb4d-3645-4610-adf9-4a951f36627e",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, proud gentle smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure standing, holding a small closed cardboard parcel tied with plain twine in both mitten hands, as if he has just delivered it. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no labels, no other characters.",
+   "files": [
+    {
+     "file": "site/assets/img/mascot/delivered-560.webp",
+     "size": [
+      560,
+      448
+     ],
+     "kb": 19.3,
+     "sha256": "e0e26026a4510b2b915c8f7476dd4e03264de71b7ec544b311c20ca8f88d166a"
+    },
+    {
+     "file": "site/assets/img/mascot/delivered-280.webp",
+     "size": [
+      280,
+      224
+     ],
+     "kb": 8.6,
+     "sha256": "a8bae6f27e8b03a7e99c1ceb153735c2646fe8e38bded517ca9edb8f6c07c7dc"
     }
    ]
   }

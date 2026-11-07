@@ -518,3 +518,8 @@ details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
 details > summary::before { content: "+"; display: inline-block; width: 1.1em; font-weight: 600; text-align: left; }
 details[open] > summary::before { content: "\2212"; }
+
+/* Zholdas, the mascot, on empty and closing pages (404, thank you) */
+.mascot-scene { justify-self: center; width: 100%; max-width: 420px; }
+.mascot-scene img { width: 100%; height: auto; aspect-ratio: 5 / 4; display: block; }
+@media (max-width: 920px) { .mascot-scene { max-width: 240px; justify-self: start; } }

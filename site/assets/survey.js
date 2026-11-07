@@ -11,9 +11,10 @@
   const img = $("sv-img"), road = $("sv-road"), live = $("sv-live"), back = $("sv-back"), next = $("sv-next"), send = $("sv-send");
   const follow = $("sv-follow"), done = $("sv-done");
   const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // Zhol mascot poses (drawn from the Vespi kit in brand/): 280 px for phones, 560 px for 2x screens; see assets/img/mascot/manifest.json
+  // Zholdas, the mascot: 280 px for phones, 560 px for 2x screens; see assets/img/mascot/manifest.json
   const base = "/assets/img/mascot/";
-  const srcset = name => base + name + "-280.webp 280w, " + base + name + "-560.webp 560w";
+  const V = "?v=zd1";   // bump when the poses change: /assets is cached for a day
+  const srcset = name => base + name + "-280.webp" + V + " 280w, " + base + name + "-560.webp" + V + " 560w";
 
   // a random id links the optional contact to the answers, nothing else does
   let rid = "";
@@ -41,7 +42,7 @@
   function setPose(name) {
     if (!img || pose === name) return;
     pose = name;
-    const put = () => { img.srcset = srcset(name); img.src = base + name + "-560.webp"; };
+    const put = () => { img.srcset = srcset(name); img.src = base + name + "-560.webp" + V; };
     if (reduced) { put(); return; }
     img.classList.add("swap");                       // fade and lift out, swap, then back in (opacity + transform only)
     setTimeout(() => { put(); img.classList.remove("swap"); }, 160);
