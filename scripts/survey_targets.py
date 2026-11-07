@@ -62,10 +62,10 @@ def google(q: str) -> str:
     return "https://www.google.com/search?q=" + quote_plus(q)
 
 
-def company_message(name: str, city: str, cs: list[str], link: str) -> str:
+def company_message(name: str, city: str, cs: list[str], link: str, known_abroad: bool = True) -> str:
     where = f"da {city} " if city else ""
     line = (f"Ci risulta che {where}lavorate verso {join_it(cs[:4])}: proprio le linee dove questi imprevisti pesano di più."
-            if cs else f"Ci risulta che {where}avete linee estere: proprio dove questi imprevisti pesano di più.")
+            if cs else f"Ci risulta che {where}avete linee estere: proprio dove questi imprevisti pesano di più." if known_abroad else "")
     return (f"Buongiorno,\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli uffici traffico con linee estere "
             f"divieti, code, chiusure e scioperi. {line}\n\n"
@@ -76,11 +76,11 @@ def company_message(name: str, city: str, cs: list[str], link: str) -> str:
             f"Se preferite non ricevere altri messaggi, basta rispondere «no».")
 
 
-def association_message(name: str, link: str) -> str:
+def association_message(name: str, link: str, members: str = "associati con linee estere") -> str:
     return (f"Gentile segreteria di {name},\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, "
             f"code, chiusure e scioperi, e come li gestiscono gli uffici traffico.\n\n"
-            f"Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio anonimo di sei domande, un minuto:\n{link}\n\n"
+            f"Vi chiederemmo di inoltrare ai vostri {members} questo sondaggio anonimo di sei domande, un minuto:\n{link}\n\n"
             f"Non vendiamo nulla. All'associazione mandiamo i risultati aggregati appena chiudiamo la raccolta, "
             f"e siamo disponibili a presentarli ai soci.\n\n"
             f"Grazie,\n{SIGN}")
@@ -131,7 +131,7 @@ def build() -> list[dict]:
         link = f"{SURVEY}?src=press-{slug(outlet)}"
         rows.append({"id": "p-" + slug(outlet), "type": "press", "name": outlet, "city": "", "to": email,
                      "where": note or "сайт издания → «Redazione» или «Contatti»", "search": google(outlet + " redazione contatti"),
-                     "subject": "Dati sul campo: quanto costano divieti e dosaggi agli uffici traffico (sondaggio Bocconi)",
+                     "subject": "Dati sul campo: quanto costano divieti, code e chiusure agli uffici traffico (sondaggio Bocconi)",
                      "message": press_message(outlet, link), "link": link})
     for r in csv.DictReader(open(OUT / "leads_beachhead.csv", encoding="utf-8")):
         name, city = clean_name(r["company"]), clean_city(r["city"])
@@ -143,9 +143,66 @@ def build() -> list[dict]:
                      "subject": "Un minuto: quanto vi costano divieti, code e scioperi? (ricerca Bocconi)",
                      "message": company_message(name, city, countries(r["lanes_abroad"]), link), "link": link,
                      "fit": r.get("fit", "")})
+    rows += broad(rows)
     ids = [r["id"] for r in rows]
     assert len(ids) == len(set(ids)), "duplicate ids"
     return rows
+
+
+def group_message(link: str) -> str:
+    return ("Buongiorno a tutti, con il permesso degli amministratori: siamo tre studenti della Bocconi e stiamo misurando "
+            "quanto costano a chi organizza i trasporti divieti, code, chiusure e scioperi.\n\n"
+            f"Sei domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde:\n{link}\n\n"
+            f"Grazie a chi ci dedica un minuto!\n{SIGN}")
+
+
+def broad(existing: list[dict]) -> list[dict]:
+    """Companies, associations, interporti, media and groups found outside the Bocconi circle
+    (outreach/survey_targets_broad.csv), without the ones already in the list."""
+    path = OUT / "survey_targets_broad.csv"
+    if not path.exists():
+        return []
+    taken = {r["name"].lower() for r in existing} | {r["id"] for r in existing}
+    out = []
+    for r in csv.DictReader(open(path, encoding="utf-8")):
+        kind = (r.get("type") or "").strip().lower()
+        name = clean_name(r.get("name") or "")
+        if not name or name.lower() in taken or kind == "event":
+            continue
+        ch = (r.get("channel") or "").strip()
+        email = next(iter(re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", ch)), "")
+        site = next(iter(re.findall(r"https?://[^\s;,)]+", ch)), "")
+        city = clean_city(r.get("city") or "")
+        where = site or ("" if email else ch)
+        base = {"name": name, "city": city or (r.get("region") or "").strip(), "to": email, "where": where,
+                "search": google(name + " " + city + " contatti"), "fit": ""}
+        if kind == "company":
+            link = f"{SURVEY}?src=co-broad"
+            row = base | {"id": "b-" + slug(name), "type": "company",
+                          "subject": "Un minuto: quanto vi costano divieti, code e scioperi? (ricerca Bocconi)",
+                          "message": company_message(name, city, [], link, known_abroad=False), "link": link}
+        elif kind in ("association", "interporto"):
+            link = f"{SURVEY}?src=assoc-{slug(name)}"
+            row = base | {"id": "ba-" + slug(name), "type": "association",
+                          "subject": "Sei domande, un minuto, per i vostri " + ("operatori" if kind == "interporto" else "associati") + " (ricerca Bocconi)",
+                          "message": association_message(name, link, "operatori" if kind == "interporto" else "associati"), "link": link}
+        elif kind == "media":
+            link = f"{SURVEY}?src=press-{slug(name)}"
+            row = base | {"id": "bp-" + slug(name), "type": "press",
+                          "subject": "Dati sul campo: quanto costano divieti, code e chiusure agli uffici traffico (sondaggio Bocconi)",
+                          "message": press_message(name, link), "link": link}
+        elif kind == "group":
+            link = f"{SURVEY}?src=group-{slug(name)}"
+            row = base | {"id": "bg-" + slug(name), "type": "group", "to": "", "where": site or ch,
+                          "subject": "сначала спросить разрешения у администратора группы",
+                          "message": group_message(link), "link": link}
+        else:
+            continue
+        if row["id"] in taken:
+            continue
+        taken |= {row["id"], name.lower()}
+        out.append(row)
+    return out
 
 
 def main() -> None:
