@@ -1,4 +1,6 @@
-# zhol: beachhead lead list (built 2026-11-07)
+# zhol: beachhead lead list (built 2026-11-07, corrected the same day)
+
+> Corrections after the people search: Bommartini's lanes are France and Switzerland in the trade press; Bergoli is in Travagliato (BS); Rosati belongs to Facchini Verdi (2025), Pesenti to Rhenus (2023), Transtir to Sogedim (2025); Günther has about 130 trucks. Named people for interviews: `interview_targets_companies.csv`.
 
 **Кратко для команды (RU):**
 1. Собрано 92 реальные компании (`leads_beachhead.csv`). 82 из них в приоритетных провинциях, 10 вторичные (Сицилия/Кампания + 2 соседние провинции).
@@ -57,12 +59,12 @@ By region: Veneto 28, Lombardia 24, Trentino-Alto Adige 18, Piemonte 8, Emilia-R
 | 2 | **Autotrasporti Trevisan** (Teolo/Montegrotto, PD) | States **weekly** routes to AT, DE, FR, ES, CZ and UK. Family firm, 50 years, ~1.6M km/yr. | Six countries' bans and strikes in one message |
 | 3 | **Camellini srl** (Sassuolo, MO) | >30 trucks. 3 weekly departures to the Paris region and 4 to Rhône-Alpes. A clean France lane. | French holiday bans, Fréjus/Mont-Blanc closures, blockades |
 | 4 | **Bodner Autotransporte** (San Candido, BZ) | 37 reefers, family-run, **daily** to southern Germany and Austria. | 8 Dec holiday ban in AT; Kufstein dosing |
-| 5 | **Autotrasporti Bommartini srl** (Soave, VR) | ~100 tractors (10 Volvo FH added May 2026). Transportonline lists AT, DE and FR. At the top of the size band. | Lueg works in October: A12/A13 transit banned 21:00–05:00 on 12–15 and 19–22 Oct (over now; use as a past example) |
+| 5 | **Autotrasporti Bommartini srl** (Soave, VR) | ~100 tractors (10 Volvo FH added May 2026). Transportonline lists AT, DE and FR. At the top of the size band. | Lanes to France and Switzerland per trade press: French holiday bans, Fréjus/Mont Blanc, Swiss night ban |
 | 6 | **Benaco Trans / Benacotrans** (Soiano del Lago, BS) | 16 reefers on **regular** runs to BE, FR, NL, DE and UK. | French weekend + German holiday bans |
 | 7 | **Detassis Autotrasporti** (Trento) | ~40 units (17 rigids, 20 artics, 3 road trains). International since 1998, FTL + groupage. ASTRE member. | Northbound legs hit first by Lueg/Kufstein |
 | 8 | **Prisma Logistics SpA** (Verona, Quadrante Europa) | Forwarder (~54 staff) built on DE/AT groupage by road and rail. | Which road legs to shift to rail tomorrow |
 | 9 | **Autotrasporti Cambianica srl** (San Paolo d'Argon, BG) | 45 tractors + 65 trailers, international to CH, FR, AT and others. | Swiss night ban + French holidays + Tyrol dosing |
-| 10 | **Corsi SpA** (Verona) | **Daily** reefer FTL to DE, AT, NL, BE and UK, plus daily groupage. >110 tractors, slightly above the size band. *A founding-family bereavement was reported in Oct 2026: time the outreach tactfully.* | Perishables exempt from the A22 decree but not from Kufstein dosing |
+| 10 | **Corsi SpA** (Verona) | **Daily** reefer FTL to DE, AT, NL, BE and UK, plus daily groupage. >110 tractors, slightly above the size band. *The founder died on 26 Sep 2026 (trade press): hold this outreach for now and keep it tactful.* | Perishables exempt from the A22 decree but not from Kufstein dosing |
 | 11 | **Spedizioni Visonà** (Montecchio Maggiore, VI) | Groupage **twice weekly** to AT, DE, CH and FR, plus dedicated loads to AT. 40+ years. | Departure-eve alert per groupage line |
 | 12 | **Gottardi Autotrasporti srl** (Trento) | FTL specialist with international strength in FR, AT, CH and DE. Since 1949. | Tyrol + Swiss + French calendars for one FTL fleet |
 | 13 | **Aimone Autotrasporti srl** (Torino) | >20 vehicles, FR, DE, Benelux, UK and ES for 50+ years. | Fréjus/Mont-Blanc + French weekend bans |
