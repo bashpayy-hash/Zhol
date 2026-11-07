@@ -68,7 +68,7 @@ def company_message(name: str, city: str, cs: list[str], link: str) -> str:
             if cs else f"Ci risulta che {where}avete linee estere: proprio dove questi imprevisti pesano di più.")
     return (f"Buongiorno,\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli uffici traffico con linee estere "
-            f"divieti, dosaggi a Kufstein, chiusure e scioperi. {line}\n\n"
+            f"divieti, code, chiusure e scioperi. {line}\n\n"
             f"Vi chiederemmo un minuto per un sondaggio anonimo di sei domande, da girare a chi in ufficio decide i viaggi:\n{link}\n\n"
             f"Non vendiamo nulla. Chi risponde riceve i risultati e, se vuole, l'analisi gratuita di un mese passato: "
             f"quali viaggi sarebbero stati toccati e quanto è costato.\n\n"
@@ -79,7 +79,7 @@ def company_message(name: str, city: str, cs: list[str], link: str) -> str:
 def association_message(name: str, link: str) -> str:
     return (f"Gentile segreteria di {name},\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, "
-            f"dosaggi a Kufstein, chiusure del Brennero e scioperi sulle linee estere, e come li gestiscono gli uffici traffico.\n\n"
+            f"code, chiusure e scioperi, e come li gestiscono gli uffici traffico.\n\n"
             f"Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio anonimo di sei domande, un minuto:\n{link}\n\n"
             f"Non vendiamo nulla. All'associazione mandiamo i risultati aggregati appena chiudiamo la raccolta, "
             f"e siamo disponibili a presentarli ai soci.\n\n"
@@ -89,7 +89,7 @@ def association_message(name: str, link: str) -> str:
 def press_message(outlet: str, link: str) -> str:
     return (f"Gentile redazione di {outlet},\n"
             f"siamo tre studenti della Bocconi. Stiamo raccogliendo dati sul campo su quanto costano agli uffici traffico "
-            f"con linee estere i divieti di circolazione, i giorni di dosaggio a Kufstein, le chiusure del Brennero e gli scioperi: "
+            f"con linee estere i divieti di circolazione, le code, le chiusure e gli scioperi: "
             f"minuti persi ogni giorno, viaggi da ripianificare, costo dell'ultimo imprevisto.\n\n"
             f"Sono sei domande, un minuto, in forma anonima: {link}\n\n"
             f"Se vi sembra utile per i vostri lettori, una breve segnalazione ci aiuterebbe molto. "

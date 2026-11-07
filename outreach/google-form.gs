@@ -14,7 +14,7 @@
 function createZholForm() {
   var form = FormApp.create('zhol · Sei domande per gli uffici traffico');
   form.setTitle('Sei domande. Un minuto.')
-    .setDescription('Quanto vi costano divieti, code al Brennero e scioperi? Ricerca di tre studenti Bocconi ' +
+    .setDescription('Quanto vi costano divieti, code, chiusure e scioperi sulle strade? Ricerca di tre studenti Bocconi ' +
       '(Alikhan, Inkara, Tomiris) per TEF Ignition 2026. Si risponde con un tocco, è anonimo e non vendiamo nulla. ' +
       'Pubblichiamo solo dati aggregati.')
     .setCollectEmail(false)

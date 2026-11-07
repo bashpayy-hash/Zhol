@@ -40,14 +40,14 @@
 **1. Ассоциации: переслать членам** (лучший канал: одно письмо — десятки офисов)
 
 > Gentile [Nome],
-> siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, dosaggi a Kufstein, chiusure e scioperi sulle linee estere.
+> siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, code, chiusure e scioperi.
 > Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio: sei domande, un minuto: [link]. Non vendiamo nulla e le risposte sono anonime, se non lasciano un contatto.
 > All'associazione mandiamo i risultati aggregati appena chiudiamo la raccolta.
 > Grazie, [Firma]
 
 **2. LinkedIn: пост каждого из команды**
 
-> Quanto tempo passa ogni giorno un ufficio traffico a controllare divieti, calendari del dosaggio a Kufstein, chiusure e scioperi? E quanto è costato l'ultimo imprevisto?
+> Quanto tempo passa ogni giorno un ufficio traffico a controllare divieti, code, chiusure e scioperi? E quanto è costato l'ultimo imprevisto?
 > Stiamo raccogliendo numeri veri, non stime da convegno: sei domande, un minuto, anonimo, per chi gestisce linee verso Germania, Austria, Svizzera e Francia. I risultati li condividiamo con chi risponde.
 > [link] · Se conoscete un responsabile traffico, inoltratelo: ci aiuta molto.
 
