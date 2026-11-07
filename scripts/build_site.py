@@ -114,6 +114,10 @@ def build_live(today: date) -> dict:
     }
 
 
+TITLE_IT = {"sicily": "Fermo dell'autotrasporto in Sicilia, 16-20 ottobre 2026 (esempio del Workshop 1)",
+            "brenner": "Corridoio del Brennero: dosaggio a Kufstein, divieto notturno A12, chiusura del Fréjus"}
+
+
 def build_scenarios() -> dict:
     out = {}
     for key, sc in SCENARIOS.items():
@@ -122,7 +126,8 @@ def build_scenarios() -> dict:
         run = run_evening(st, Settings(db_path=":memory:"), target=sc["target"], now=sc["now"], send=False)
         loads = {ld.id: ld for ld in st.loads()}
         alert = (st.alerts() or [None])[0]
-        out[key] = {"title": sc["title"], "target": sc["target"].isoformat(), "now": sc["now"].isoformat(),
+        out[key] = {"title": sc["title"], "title_it": TITLE_IT.get(key, sc["title"]),
+                    "target": sc["target"].isoformat(), "now": sc["now"].isoformat(),
                     "summary": {k: run[k] for k in ("assessed", "hit", "blocked", "exempt", "clear", "saving_eur")},
                     "loads": [ser_assessment(a, loads[a.load_id]) for a in sorted(st.assessments(run["run_id"]), key=lambda x: x.load_id)],
                     "message": alert.body if alert else None}
@@ -166,7 +171,7 @@ def build_grid(today: date, days: int) -> tuple[list, dict]:
                 best = a.options[0]
                 row.append({"s": a.status[0], "w": round(sum(x.wait_min for x in real)),
                             "t": short(top.event_title) if top else None, "p": top.waypoint if top else None,
-                            "e": top.eta.isoformat() if top else None, "o": best.title_en, "oc": best.code,
+                            "e": top.eta.isoformat() if top else None, "o": best.title_en, "oi": best.title_it, "oc": best.code,
                             "a": a.baseline.arrival.isoformat(), "ba": best.arrival.isoformat(), "v": round(a.saving_eur)})
             cells.append({"date": day.isoformat(), "slots": row})
         grids[lid] = {"lane": lid, "name": ln.name, "from": (today + timedelta(days=1)).isoformat(), "hours": list(range(0, 24, 2)),

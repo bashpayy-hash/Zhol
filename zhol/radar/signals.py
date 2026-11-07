@@ -90,6 +90,7 @@ class Signal:
     official: bool = False
     talks: bool = False
     summary: str | None = None
+    summary_it: str | None = None
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -182,9 +183,10 @@ BATCH_SCHEMA = {
             "official": {"type": "boolean"},
             "talks": {"type": "boolean"},
             "summary": {"type": "string"},
+            "summary_it": {"type": "string"},
         },
         "required": ["i", "relevant", "kind", "stage", "countries", "regions", "chokepoints", "start", "end",
-                     "organisation", "official", "talks", "summary"],
+                     "organisation", "official", "talks", "summary", "summary_it"],
         "additionalProperties": False,
     }}},
     "required": ["items"],
@@ -207,7 +209,7 @@ For each numbered item return:
 - organisation: a national association, union or farmers' organisation is behind it.
 - official: the information comes from an authority (ministry, prefecture, motorway operator, police).
 - talks: talks or a meeting with the government are scheduled.
-- summary: one short neutral sentence in English.
+- summary: one short neutral sentence in English; summary_it: the same sentence in Italian.
 Use only what the text says. Do not guess dates."""
 
 
@@ -257,6 +259,7 @@ def claude_signals(items: list[dict], today: date, model: str = "claude-opus-5-5
                 countries=[c.upper()[:2] for c in d["countries"]], regions=d["regions"],
                 chokepoints=[c for c in d["chokepoints"] if c in known], start=d["start"], end=d["end"],
                 organisation=d["organisation"], official=d["official"], talks=d["talks"], summary=d["summary"],
+                summary_it=d.get("summary_it"),
             ))
     return out
 

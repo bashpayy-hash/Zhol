@@ -17,7 +17,7 @@ from .. import catalog
 from ..ingest.feeds import load_all_calendars
 from ..rules import generate_ban_events
 from . import model
-from .impact import attach
+from .impact import attach, lane_it
 from .signals import STAGE_ORDER, Signal, read_signals
 
 TZ = ZoneInfo("Europe/Rome")
@@ -33,6 +33,12 @@ HOLIDAY_EN = {
     "epifania": "Epiphany", "heilige drei könige": "Epiphany",
     "immacolata": "Immaculate Conception", "mariä empfängnis": "Immaculate Conception",
 }
+HOLIDAY_IT = {"Christmas": "Natale", "St Stephen's Day": "Santo Stefano", "New Year": "Capodanno", "Epiphany": "Epifania",
+              "Immaculate Conception": "Immacolata", "Christmas Eve": "Vigilia di Natale", "Armistice Day": "Armistizio (FR)",
+              "Independence Day (PL)": "Festa dell'Indipendenza (PL)",
+              "Independence and Unity Day (SI)": "Festa dell'Indipendenza e dell'Unità (SI)"}
+COUNTRY_IT = {"IT": "Italia", "AT": "Austria", "DE": "Germania", "CH": "Svizzera", "FR": "Francia", "SI": "Slovenia",
+              "PL": "Polonia", "ES": "Spagna", "BE": "Belgio", "NL": "Paesi Bassi"}
 COUNTRY_NAME = {"IT": "Italy", "AT": "Austria", "DE": "Germany", "CH": "Switzerland", "FR": "France",
                 "SI": "Slovenia", "PL": "Poland", "ES": "Spain", "BE": "Belgium", "NL": "Netherlands"}
 GROUP = {"strike": "action", "blockade": "action", "protest": "action", "closure": "closure",
@@ -83,9 +89,14 @@ def official_items(today: date, horizon: int) -> list[dict]:
                 srcs[e.source.url] = e.source.name
             generic |= "generica" in e.title
         p = model.CERTAIN["law_generic" if generic else "law"]
+        names_it = sorted({HOLIDAY_IT.get(n, n) for n in names})
         items.append(_item(
             id=_id("ban", d.isoformat()), group="official", kind="ban",
             title=f"Holiday truck bans: {', '.join(sorted(names))}",
+            title_it=f"Divieti festivi per i mezzi pesanti: {', '.join(names_it)}",
+            where_it=", ".join(COUNTRY_IT.get(c, c) for c in sorted(countries)),
+            detail_it="Mezzi oltre 7,5 t, ora locale: " + "; ".join(f"{c} {'tutto il giorno' if h == 'all day' else h}" for c, h in sorted(hours.items()))
+                      + (". Il decreto italiano 2027 non è ancora uscito: regola generica." if generic else "."),
             where=", ".join(COUNTRY_NAME.get(c, c) for c in sorted(countries)), countries=sorted(countries),
             start=d.isoformat(), end=d.isoformat(), p=p, basis="law",
             detail="Trucks over 7.5 t, local time: " + "; ".join(f"{c} {h}" for c, h in sorted(hours.items()))
@@ -96,6 +107,7 @@ def official_items(today: date, horizon: int) -> list[dict]:
         e = evs[0]
         items.append(_item(
             id=_id("lueg", d.isoformat()), group="official", kind="ban", title="Luegbrücke truck ban (A13 Brenner)",
+            title_it="Divieto per i mezzi pesanti sul ponte Lueg (A13 Brennero)", where_it="Autostrada del Brennero, Austria",
             where="Brenner motorway, Austria", countries=["AT"], start=d.isoformat(), end=d.isoformat(),
             p=model.CERTAIN["law"], basis="law", detail=e.title.split(":", 1)[-1].strip(),
             sources=[{"outlet": e.source.name, "url": e.source.url, "title": e.source.name}] if e.source else [],
@@ -110,6 +122,9 @@ def official_items(today: date, horizon: int) -> list[dict]:
                 items.append(_item(
                     id=_id("dosing", d.isoformat()), group="official", kind="dosing",
                     title="Truck dosing at Kufstein, southbound", where="Kufstein-Nord, A12/A93 (DE–AT)",
+                    title_it="Dosaggio dei camion a Kufstein, verso sud",
+                    detail_it=f"Dalle {w.start.astimezone(ZoneInfo('Europe/Vienna')):%H:%M}. Il Tirolo può sospenderlo se il "
+                              "traffico è scarso, da qui il 95%.",
                     countries=["AT"], places=["kufstein"], start=d.isoformat(), end=d.isoformat(),
                     p=model.CERTAIN["official_calendar"],
                     basis="official calendar",
@@ -150,8 +165,12 @@ def weather_items(weather: dict, today: date, threshold: float = 0.2) -> list[di
             title = f"Strong wind on the {w['name'].split(' (')[0]}" if ferry else f"Snow at {w['name'].split(' (')[0]}"
             detail = (f"Gusts up to {gust:.0f} km/h" if ferry else f"Up to {snow:.0f} cm of snow, gusts {gust:.0f} km/h") + \
                      f" on {d:%a %d %b}, {lead} days ahead."
+            title_it = (f"Vento forte sul {w['name'].split(' (')[0]}" if ferry else f"Neve a {w['name'].split(' (')[0]}")
+            detail_it = (f"Raffiche fino a {gust:.0f} km/h" if ferry else f"Fino a {snow:.0f} cm di neve, raffiche {gust:.0f} km/h") + \
+                f", {lead} giorni prima."
             items.append(_item(
                 id=_id("wx", cid, run[0][0].isoformat()), group="forecast", kind="weather", title=title,
+                title_it=title_it, detail_it=detail_it,
                 where=w["name"], countries=[catalog.chokepoints()[cid]["country"]], places=[cid], snow_cm=round(snow),
                 start=run[0][0].isoformat(), end=run[-1][0].isoformat(), p=ch["p"], basis="forecast", detail=detail,
                 factors=[{"label": f"forecast alone: {ch['p_forecast']:.0%}", "x": None},
@@ -270,9 +289,14 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
         where_bits = ([catalog.chokepoints()[x]["name"] for x in {k for s in c for k in s.chokepoints}][:2]
                       or sorted({r for s in c for r in s.regions})[:2]
                       or [COUNTRY_NAME.get(x, x) for x in sorted({k for s in c for k in s.countries})][:3])
+        where_it = ([catalog.chokepoints()[x]["name"] for x in {k for s in c for k in s.chokepoints}][:2]
+                    or sorted({r for s in c for r in s.regions})[:2]
+                    or [COUNTRY_IT.get(x, x) for x in sorted({k for s in c for k in s.countries})][:3])
         items.append(_item(
             id=_id("news", latest.title), group="news", kind=latest.kind if latest.kind in kinds else kinds[0],
             title=latest.summary or latest.title, headline=latest.title, where=", ".join(where_bits) or "Europe",
+            title_it=latest.summary_it or latest.title, where_it=", ".join(where_it) or "Europa",
+            detail_it=f"{len(c)} articol{'i' if len(c) > 1 else 'o'} da {len(outlets)} testat{'e' if len(outlets) > 1 else 'a'}.",
             countries=sorted({k for s in c for k in s.countries}), start=start, end=end or start,
             places=sorted({k for s in c for k in s.chokepoints}), regions=sorted({r for s in c for r in s.regions}),
             p=est.p, basis="news", stage=stage, prior=est.prior, factors=est.factors,
@@ -290,7 +314,7 @@ def focus_window(today: date) -> dict | None:
     y = today.year if today.month >= 7 else today.year - 1
     start, end = date(y, 12, 19), date(y + 1, 1, 10)
     if start - timedelta(days=60) <= today <= end:
-        return {"label": "Christmas and New Year", "from": start.isoformat(), "to": end.isoformat()}
+        return {"label": "Christmas and New Year", "label_it": "Natale e Capodanno", "from": start.isoformat(), "to": end.isoformat()}
     return None
 
 
@@ -314,9 +338,11 @@ def build_outlook(today: date, horizon: int = 60, fetch: bool = True) -> dict:
         "horizon_days": horizon, "reader": mode, "articles_read": len(articles), "signals": len(signals),
         "sources_ok": ok, "sources_total": len(status), "sources": status,
         "focus": focus_window(today), "items": items,
-        "lanes": [{"id": lid, "name": ln.name.replace(" -> ", " → ")} for lid, ln in sorted(catalog.lanes().items(),
+        "lanes": [{"id": lid, "name": ln.name.replace(" -> ", " → "),
+                   "name_it": lane_it(ln.name).replace(" -> ", " → ")} for lid, ln in sorted(catalog.lanes().items(),
                                                                                         key=lambda x: x[1].name)],
         "method": {"stage_prior": model.STAGE_PRIOR,
-                   "multipliers": {k: {"x": v[0], "label": v[1]} for k, v in model.MULTIPLIERS.items()},
+                   "multipliers": {k: {"x": v[0], "label": v[1], "label_it": model.MULTIPLIERS_IT.get(k, v[1])}
+                                   for k, v in model.MULTIPLIERS.items()},
                    "certain": model.CERTAIN},
     }

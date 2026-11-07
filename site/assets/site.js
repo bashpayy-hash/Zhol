@@ -1,7 +1,10 @@
 /* zhol site: savings calculator (same formulas as zhol/savings.py), dosing days, tab highlight. */
 (function () {
+  const IT = document.documentElement.lang === "it";
+  const T = (en, it) => IT ? it : en;
   const $ = id => document.getElementById(id);
-  const eur = x => "€" + Math.round(x).toLocaleString("en-US");
+  const eur = x => "€" + (IT ? String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : Math.round(x).toLocaleString("en-US"));
+  const dec = x => String(x).replace(".", IT ? "," : ".");
 
   // ---- savings calculator
   if ($("calc")) {
@@ -17,14 +20,14 @@
       const sub = Math.max(99, trucks * num("price"));
       const perf = Math.min(49 + 0.15 * (waits + blockades), 25 * trucks);
       $("o-total").textContent = eur(total);
-      $("o-year").textContent = "per month, " + eur(total * 12) + " a year";
-      $("o-waits-l").textContent = "Avoided waits (" + (Math.round(avoided * 10) / 10) + " a month)";
+      $("o-year").textContent = T("per month, " + eur(total * 12) + " a year", "al mese, " + eur(total * 12) + " all'anno");
+      $("o-waits-l").textContent = T("Avoided waits (", "Attese evitate (") + dec(Math.round(avoided * 10) / 10) + T(" a month)", " al mese)");
       $("o-waits").textContent = eur(waits);
       $("o-disp").textContent = eur(dispatcher);
       $("o-big").textContent = eur(blockades);
-      $("o-sub").textContent = eur(sub) + (total > 0 ? " · " + Math.round(sub / total * 100) + "% of savings" : "");
+      $("o-sub").textContent = eur(sub) + (total > 0 ? " · " + Math.round(sub / total * 100) + T("% of savings", "% del risparmio") : "");
       $("o-perf").textContent = eur(perf);
-      $("o-pay").textContent = total > 0 ? (Math.round(sub / (total / 30) * 10) / 10) + " days" : "n/a";
+      $("o-pay").textContent = total > 0 ? dec(Math.round(sub / (total / 30) * 10) / 10) + T(" days", " giorni") : "n/d";
     };
     ids.forEach(id => $("c-" + id).addEventListener("input", calc));
     calc();
@@ -38,8 +41,8 @@
       if (!days.length) return;
       $("dosing-days").innerHTML = days.map(i => {
         const t = new Date(i.start);
-        const day = t.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Vienna" });
-        return `<div class="bull" style="grid-template-columns:minmax(0,1fr) auto"><span class="d">${day}</span><span class="small muted">from 05:00</span></div>`;
+        const day = t.toLocaleDateString(IT ? "it-IT" : "en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Vienna" });
+        return `<div class="bull" style="grid-template-columns:minmax(0,1fr) auto"><span class="d">${day}</span><span class="small muted">${T("from 05:00", "dalle 05:00")}</span></div>`;
       }).join("");
     }).catch(() => {});
   }
@@ -54,7 +57,7 @@
     btn.type = "button"; btn.className = "more-rows";
     const set = open => {
       extra.forEach(r => { r.hidden = !open; });
-      btn.textContent = open ? "Show fewer" : "Show all " + rows.length + " rows";
+      btn.textContent = open ? T("Show fewer", "Mostra meno") : T("Show all " + rows.length + " rows", "Mostra tutte le " + rows.length + " righe");
       btn.setAttribute("aria-expanded", String(open));
     };
     btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));

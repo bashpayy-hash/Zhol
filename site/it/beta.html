@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Beta</title>
+<meta name="description" content="Provate zhol su strade reali: i carichi di domani verificati sui divieti di circolazione ufficiali per i mezzi pesanti e sui calendari del dosaggio di sette paesi. Partecipate alla beta per gli uffici traffico.">
+<meta property="og:title" content="zhol · Beta">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=it1">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/beta">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/beta">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sezioni">
+    <a href="#evening">Stasera</a><a href="#when">Quando partire</a><a href="#bulletin">Bollettino</a><a href="#demos">Demo</a><a href="#join">Partecipa</a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="/it/">TEF<span class="m-hide"> risposte</span></a><a href="/it/story">Storia</a><a href="/it/outlook">Radar</a><a href="/it/audience">Clienti</a><a href="/it/beta" aria-current="page">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/beta" lang="en" hreflang="en">EN</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="slide">
+  <div class="wrap split">
+    <div class="stack">
+      <span class="kicker">Beta · per gli uffici traffico con tratte attraverso le Alpi</span>
+      <h1 class="title">I carichi di domani, verificati su regole reali</h1>
+      <p class="lead">Tutto ciò che vedete in questa pagina è calcolato dal motore di zhol a partire dai divieti di circolazione ufficiali per i mezzi pesanti di sette paesi e dal calendario ufficiale del dosaggio in Tirolo. I carichi sono di esempio; le regole sono reali.</p>
+      <p class="small muted" id="built">Dati calcolati dal motore a ogni aggiornamento del sito.</p>
+      <div class="actions"><a class="btn" href="#join">Partecipa alla beta</a><a href="#when">Verifica un corridoio ›</a></div>
+    </div>
+    <div class="illus"><img src="/assets/img/map-route.webp" alt="Illustrazione: una cartina ripiegata dell’Europa con un percorso, un triangolo di pericolo e un camion" width="1400" height="863"></div>
+  </div>
+</section>
+
+<section class="slide sage" id="evening">
+  <div class="wrap stack">
+    <span class="kicker green" id="ev-kicker">La sera prima</span>
+    <h2 class="title" id="ev-title">Una serata, regole reali</h2>
+    <p class="lead" id="ev-lead"></p>
+    <div class="split wide-left" style="align-items:start">
+      <div class="grid g2" id="ev-loads"><p class="small muted">Caricamento…</p></div>
+      <div class="stack" style="gap:12px">
+        <div class="wa" aria-label="Avviso WhatsApp generato dal motore di zhol">
+          <div class="head"><img src="/assets/img/chat-icon.png" alt="" width="120" height="106"><b>Avviso zhol · WhatsApp</b><span class="when" id="ev-when"></span></div>
+          <div class="box" id="ev-msg">…</div>
+          <span class="reply">Rispondi 1: conferma con gli autisti</span>
+        </div>
+        <p class="small muted" id="ev-template"></p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="foot"><span>Regole: WKO (Austria), DM MIT 325/2025 (Italia), StVO e Ferienreiseverordnung (Germania), VRV (Svizzera), Bison Futé (Francia), calendario del dosaggio del Land Tirolo</span></div></div>
+</section>
+
+<section class="slide" id="when">
+  <div class="wrap stack">
+    <h2 class="title">Quando deve partire il mio camion?</h2>
+    <p class="lead">Scegliete un corridoio. Ogni cella è un orario di partenza nei prossimi 14 giorni: quanto tempo perderebbe il camion per divieti e dosaggio con il piano attuale, e cosa suggerirebbe zhol. Cliccate su una cella per i dettagli.</p>
+    <div class="lanebar">
+      <div class="field"><label for="lane">Corridoio</label><select id="lane"></select></div>
+      <div class="legend" aria-hidden="true"><span><i style="background:#e3ebdd"></i>libero</span><span><i style="background:#f4ddd4"></i>meno di 2 h perse</span><span><i style="background:#e3a08f"></i>2–8 h</span><span><i style="background:#b8392a"></i>oltre 8 h o bloccato</span></div>
+    </div>
+    <div class="gridwrap"><table class="lanegrid" id="grid"></table></div>
+    <div class="card" id="cell"><p class="small muted">Cliccate su una cella per vedere cosa succede a un camion che parte a quell’ora.</p></div>
+  </div>
+  <div class="wrap"><div class="foot"><span>Velocità media 68 km/h, regole UE sui tempi di guida (Reg. 561/2006), camion da 40 t Euro VI, merce generica. Il traffico in tempo reale non è modellato: zhol pianifica la sera prima.</span></div></div>
+</section>
+
+<section class="slide dark" id="bulletin">
+  <div class="wrap stack">
+    <h2 class="title">Le prossime due settimane sulle strade europee dei mezzi pesanti</h2>
+    <p class="lead" style="color:var(--on-dark-2)">Divieti del fine settimana e festivi e giorni ufficiali di dosaggio per i mezzi oltre 7,5 t. I divieti notturni in Austria (22:00–05:00) e in Svizzera (22:00–05:00, oltre 3,5 t) valgono ogni notte e qui non sono ripetuti.</p>
+    <div id="bull"><p class="small">Caricamento…</p></div>
+  </div>
+  <div class="wrap"><div class="foot"><span>Condivisibile liberamente. Questa è la parte pubblica, quella dei calendari; zhol aggiunge la parte non pianificata e l’abbinamento con i vostri carichi.</span></div></div>
+</section>
+
+<section class="slide" id="demos">
+  <div class="wrap stack">
+    <h2 class="title">Due serate dimostrative</h2>
+    <div class="seg" role="tablist" aria-label="Scenari dimostrativi">
+      <button role="tab" aria-selected="true" data-sc="sicily" id="tab-sicily">Sicilia, 18 ottobre</button>
+      <button role="tab" aria-selected="false" data-sc="brenner" id="tab-brenner">Brennero, 11 novembre</button>
+    </div>
+    <p class="small muted" id="demo-note"></p>
+    <div class="split wide-left" style="align-items:start">
+      <div class="grid g2" id="demo-loads"></div>
+      <div class="wa"><div class="head"><img src="/assets/img/chat-icon.png" alt="" width="120" height="106"><b>Avviso zhol · WhatsApp</b><span class="when" id="demo-when"></span></div><div class="box" id="demo-msg"></div><span class="reply">Rispondi 1: conferma con gli autisti</span></div>
+    </div>
+  </div>
+  <div class="wrap"><div class="foot"><span>Gli eventi demo sono indicati come tali: il fermo dell’autotrasporto in Sicilia è reale, i carichi sono inventati; la serata del Brennero aggiunge eventi illustrativi alle regole reali.</span></div></div>
+</section>
+
+<section class="slide sage" id="join">
+  <div class="wrap split" style="align-items:start">
+    <div class="stack">
+      <span class="kicker green">Partecipa alla beta</span>
+      <h2 class="title">Quattro settimane di prova gratuita, con il resoconto settimanale dei risparmi</h2>
+      <p class="lead">Inviateci entro le 16:00 i carichi di domani, in Excel o CSV. Alle 17:30 e alle 20:00 controlliamo ogni carico: se uno è a rischio ricevete un solo messaggio WhatsApp con le opzioni.</p>
+      <p class="small">Ogni evento viene verificato da una persona prima dell’invio.</p>
+      <p class="small muted">Usiamo solo ciò che serve alla verifica: riferimento, tratta, orari, tipo di merce. Server nell’UE; dati cancellati 90 giorni dopo la consegna o su richiesta.</p>
+    </div>
+    <form class="card" name="beta-signup" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="beta-signup">
+      <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
+      <div class="fields">
+        <div class="field"><label for="f-company">Azienda</label><input id="f-company" name="company" required autocomplete="organization"></div>
+        <div class="field"><label for="f-name">Il vostro nome</label><input id="f-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="f-role">Ruolo</label><select id="f-role" name="role"><option value="Owner · Titolare">Titolare</option><option value="Traffic office · Ufficio traffico">Ufficio traffico</option><option value="Operations manager">Responsabile operativo</option><option value="Forwarder · Spedizioniere">Spedizioniere</option><option value="Other · Altro">Altro</option></select></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="f-wa">WhatsApp</label><input id="f-wa" name="whatsapp" type="tel" placeholder="+39 …" autocomplete="tel"></div>
+        <div class="field"><label for="f-trucks">Numero di mezzi</label><input id="f-trucks" name="trucks" type="number" min="1" step="1"></div>
+        <div class="field" style="grid-column:1/-1"><label for="f-lanes">Tratte e valichi principali</label><input id="f-lanes" name="lanes" placeholder="es. Verona–Monaco via Brennero, Milano–Lione via Fréjus"></div>
+        <div class="field" style="grid-column:1/-1"><label for="f-msg">L’ultimo blocco che vi è costato una giornata</label><textarea id="f-msg" name="last_disruption"></textarea></div>
+      </div>
+      <label class="check"><input type="checkbox" name="consent" value="yes" required> Acconsento che zhol conservi questi dati per contattarmi in merito alla beta.</label>
+      <div class="actions"><button class="btn" type="submit">Partecipa alla beta</button></div>
+    </form>
+  </div>
+</section>
+
+<section class="slide" id="feedback">
+  <div class="wrap split" style="align-items:start">
+    <div class="stack">
+      <span class="kicker">State provando la beta?</span>
+      <h2 class="title">Diteci cosa non andava</h2>
+      <p class="lead">Un avviso sbagliato costa fiducia, per questo li contiamo tutti. Diteci quale cella, carico o messaggio vi è sembrato sbagliato, o che cosa ci è sfuggito.</p>
+    </div>
+    <form class="card" name="beta-feedback" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="beta-feedback">
+      <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
+      <div class="fields">
+        <div class="field"><label for="b-what">Che cosa avete guardato?</label><select id="b-what" name="area"><option value="The evening message">L’avviso della sera prima</option><option value="When to leave (corridor grid)">Quando partire (griglia del corridoio)</option><option value="The bulletin">Il bollettino</option><option value="A demo evening">Una serata dimostrativa</option><option value="Something else">Altro</option></select></div>
+        <div class="field"><label for="b-verdict">Giudizio</label><select id="b-verdict" name="verdict"><option value="Useful">Utile</option><option value="Wrong alert">Avviso sbagliato</option><option value="Missed a problem">Problema non segnalato</option><option value="Unclear">Poco chiaro</option></select></div>
+        <div class="field" style="grid-column:1/-1"><label for="b-msg">Dettagli</label><textarea id="b-msg" name="details" required placeholder="es. Verona–Monaco, mer 18 nov, 06:00: il dosaggio a Kufstein non vale in direzione nord."></textarea></div>
+        <div class="field" style="grid-column:1/-1"><label for="b-email">Email (facoltativa, se volete una risposta)</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+      </div>
+      <div class="actions"><button class="btn" type="submit">Invia il feedback</button></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan · Inkara · Tomiris · Università Bocconi · TEF Ignition 2026</span>
+  <span><a href="/it/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/outlook">Radar</a> · <a href="/it/audience">Clienti</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/beta.js?v=it1" defer></script>
+</body>
+</html>

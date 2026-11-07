@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol radar · Cosa c’è in arrivo sulle strade delle merci in Europa</title>
+<meta name="description" content="Scioperi, blocchi stradali, proteste, divieti di circolazione festivi per i mezzi pesanti, dosaggio a Kufstein e neve ai valichi alpini nelle prossime otto settimane, ciascuno con la sua probabilità e le ragioni che la motivano.">
+<meta property="og:title" content="zhol radar · Cosa c’è in arrivo sulle strade delle merci in Europa">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=it1">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/outlook">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/outlook">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sezioni">
+    <a href="/it/">TEF<span class="m-hide"> risposte</span></a><a href="/it/story">Storia</a><a href="/it/outlook" aria-current="page">Radar</a><a href="/it/audience">Clienti</a><a href="/it/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/outlook" lang="en" hreflang="en">EN</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="slide hero">
+  <div class="wrap split center">
+    <div class="stack" style="gap:20px">
+      <span class="kicker">zhol radar · le prossime otto settimane</span>
+      <h1 class="title">Cosa c’è in arrivo sulle strade delle merci in Europa, e con quale probabilità</h1>
+      <p class="lead">Due volte al giorno il radar legge le notizie e la stampa di settore in quattro lingue, i calendari ufficiali dei divieti e del dosaggio e le previsioni meteo ai valichi alpini. Ogni voce riceve una probabilità, con le ragioni che la motivano.</p>
+      <label class="field rd-route"><span class="small">La vostra tratta: tutta la pagina mostra solo ciò che la riguarda</span>
+        <select id="rd-route"><option value="">Tutte le tratte</option></select></label>
+      <p class="small muted" id="rd-status">Caricamento dell’ultimo radar…</p>
+    </div>
+    <img class="art" src="/assets/img/q/radar.webp?v=2" alt="Illustrazione: una cartina ripiegata delle Alpi con una tratta che attraversa un valico e un piccolo barometro con l’ago che punta su un segno rosso" width="1100" height="822">
+  </div>
+</section>
+
+<section class="slide" id="focus" hidden style="padding-top:36px">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker" id="focus-kicker">Natale e Capodanno</span>
+      <h2 class="title" id="focus-title">Cosa riservano già le feste</h2>
+    </div>
+    <div class="grid g3" id="focus-cards"></div>
+  </div>
+</section>
+
+<section class="slide dark" id="money" hidden>
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">Quanto costano le prossime otto settimane, e quanto fa risparmiare zhol</span>
+      <h2 class="title">Ogni evento calcolato su un viaggio reale, con il piano che fa risparmiare di più</h2>
+    </div>
+    <div class="split center">
+      <div class="stack" style="gap:16px">
+        <label class="field" style="max-width:380px"><span class="small" style="color:var(--on-dark-2)">Quanti vostri mezzi incapperebbero in ciascun evento</span>
+          <input id="m-trucks" type="number" min="1" max="200" step="1" value="1"></label>
+        <div class="money">
+          <p class="kicker">Fuori dai calendari: scioperi, chiusure, meteo</p>
+          <div class="money-stats">
+            <div><span class="lbl">Mantenere i piani</span><span class="mid" id="m-keep">€0</span></div>
+            <div><span class="lbl">Con zhol</span><span class="mid" id="m-zhol">€0</span></div>
+            <div><span class="lbl">Risparmiato con zhol</span><span class="mid save" id="m-save">€0</span></div>
+          </div>
+          <p class="kicker" style="margin-top:14px">Nei calendari ufficiali: divieti festivi, dosaggio a Kufstein</p>
+          <div class="money-stats">
+            <div><span class="lbl">In gioco</span><span class="mid" id="c-keep">€0</span></div>
+            <div><span class="lbl">Con un piano</span><span class="mid" id="c-plan">€0</span></div>
+            <div><span class="lbl">Non contato come risparmio</span><span class="small" style="color:var(--on-dark-2)">chiunque può consultarli gratis</span></div>
+          </div>
+        </div>
+        <p class="small" style="color:var(--on-dark-2)" id="m-note"></p>
+      </div>
+      <div class="vs" id="vs"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sage" id="radar">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">Tutto ciò che è sul radar</span>
+      <h2 class="title">Per data, con la probabilità che accada</h2>
+    </div>
+    <div class="rd-tools">
+      <div class="seg" role="tablist" aria-label="Filtro">
+        <button role="tab" aria-selected="true" data-f="all">Tutti</button>
+        <button role="tab" aria-selected="false" data-f="news">Scioperi</button>
+        <button role="tab" aria-selected="false" data-f="forecast">Meteo</button>
+        <button role="tab" aria-selected="false" data-f="official">Divieti e dosaggio</button>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--red)"></i>80% e oltre: molto probabile</span>
+        <span><i style="background:#d98d7c"></i>50–80%: probabile</span>
+        <span><i style="background:#a99e93"></i>20–50%: possibile</span>
+      </div>
+    </div>
+    <div id="rd-list" aria-live="polite"></div>
+  </div>
+  <div class="wrap"><div class="foot"><span id="rd-foot">Fonti: ricerche su Google News in IT/FR/DE/EN, Shipping Italy, TrasportoEuropa, Uomini e Trasporti, trans.info, Open-Meteo, calendario del dosaggio del Land Tirolo, regole nazionali sui divieti di circolazione per i mezzi pesanti codificate in zhol.</span></div></div>
+</section>
+
+<section class="slide" id="method">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">Come si calcola la probabilità</span>
+      <h2 class="title">Una probabilità di partenza, in base a quanto la vicenda è avanzata, moltiplicata per gli indizi</h2>
+    </div>
+    <div class="split">
+      <div class="stack" style="gap:18px">
+        <div class="formula">
+          <p><b>odds</b> = prior ÷ (1 − prior)</p>
+          <p><b>odds</b> × m<sub>1</sub> × m<sub>2</sub> × … per ogni indizio</p>
+          <p><b>probabilità</b> = odds ÷ (1 + odds), al massimo 98% finché non è ufficiale</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Esempio pratico</span>
+          <p class="small">Un’associazione nazionale <b>proclama</b> un fermo dell’autotrasporto dal 14 al 18 dicembre (prior 70%, odds 2,33). Le date sono indicate (×2), ne parlano quattro testate (×1,5), l’associazione è nazionale (×1,5), è fissato un incontro al ministero (×0,6).</p>
+          <p class="small">odds = 2,33 × 2 × 1,5 × 1,5 × 0,6 = 6,3 → <b>probabilità 86%</b>. Se poi il fermo viene revocato, il prior scende al 4% e la voce esce dalle prime posizioni della lista.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Meteo ai valichi</span>
+          <p class="small">z = −3,2 + 0,32 × neve in cm + 0,045 × (raffiche oltre i 50 km/h); probabilità = 1 ÷ (1 + e<sup>−z</sup>). 5 cm di neve danno il 16%, 10 cm il 50%, 20 cm il 96%. Le previsioni perdono affidabilità con il passare dei giorni, quindi un giorno a 12 giorni di distanza pesa per un quarto e il resto è la frequenza di base della stagione. Traghetti sullo Stretto di Messina: conta solo il vento, 70 km/h danno il 27%, 90 km/h il 73%.</p>
+        </div>
+      </div>
+      <div class="stack" style="gap:18px">
+        <div class="tablewrap"><table class="t" style="min-width:360px">
+          <thead><tr><th>Stadio raggiunto</th><th class="n">Prior</th></tr></thead>
+          <tbody id="m-prior"></tbody>
+        </table></div>
+        <div class="tablewrap"><table class="t" style="min-width:360px">
+          <thead><tr><th>Indizio</th><th class="n">Odds ×</th></tr></thead>
+          <tbody id="m-mult"></tbody>
+        </table></div>
+        <p class="small muted">Le leggi in vigore contano come 99% (97% finché il decreto italiano per il 2027 non è pubblicato); il calendario ufficiale del dosaggio in Tirolo come 95%. Questi numeri sono ipotesi di partenza: ogni voce viene verificata dopo la sua data e la scala viene corretta finché le voci al 30% non si verificano circa il 30% delle volte.</p>
+      </div>
+    </div>
+    <div class="qhead" style="margin-top:20px">
+      <span class="kicker">Come si calcolano il costo e il piano</span>
+      <h2 class="title">Probabilità × quanto costa l’evento, contro quanto costa intervenire</h2>
+    </div>
+    <div class="split">
+      <div class="stack" style="gap:18px">
+        <div class="formula">
+          <p><b>L</b> = quanto costa l’evento a un mezzo se il piano resta com’è</p>
+          <p><b>C</b> = quanto costa la migliore alternativa se l’evento accade; <b>C₀</b> se non accade</p>
+          <p>mantenere il piano: <b>p × L</b> · cambiare ora: <b>p × C + (1 − p) × C₀</b></p>
+          <p>decidere con l’avviso la sera prima: <b>p × C</b></p>
+          <p>cambiare ora solo se <b>p &gt; C₀ ÷ (L − C + C₀)</b></p>
+        </div>
+        <p class="small">È il modello costo–perdita della teoria delle decisioni, usato per decidere se agire in base a una previsione (Thompson 1962; Murphy 1977), insieme al valore dell’informazione (Howard 1966): sapere la sera prima se l’evento accade permette di pagare l’alternativa solo quando serve.</p>
+      </div>
+      <div class="stack" style="gap:18px">
+        <div class="card">
+          <span class="kicker">Da dove vengono gli euro</span>
+          <p class="small">Per ogni evento con una data il radar costruisce un viaggio reale che passa da quel luogo, con arrivo previsto subito dopo l’inizio dell’evento, e fa girare due volte il motore di zhol, senza e con l’evento: regole UE sui tempi di guida, pedaggi per paese, <b>€100 per ora di attesa del mezzo</b> (la tariffa legale italiana, art. 6-bis D.Lgs. 286/2005), <b>€1,18 al km</b>, ritardo di consegna a €60 l’ora (€150 per i prodotti freschi), attesa nel vostro deposito al 40% della tariffa su strada, €40 per cambiare un piano.</p>
+          <p class="small">Un camion guida al massimo circa 10 ore al giorno, quindi un’attesa lunga conta al massimo 10 ore perse ogni 24. Meteo: circa 3 ore di catene e code in una giornata di neve. Chiusure notturne senza orari pubblicati: 22:00–06:00. Sono tutte ipotesi di partenza, scritte nel codice e corrette con i dati della prova gratuita.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="kicker">Cosa non legge ancora</span>
+      <p class="small">Instagram, Facebook e TikTok non si possono leggere in automatico senza un accesso ufficiale alle API, e X fa pagare la sua API. I canali Telegram pubblici si possono aggiungere quando sapremo quali canali di camionisti contano davvero. Se non è configurata una chiave AI, al posto di Claude lavora un lettore per parole chiave in quattro lingue, meno preciso.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan, Inkara, Tomiris · Università Bocconi · TEF Ignition 2026</span>
+  <span><a href="/it/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/audience">Clienti</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/outlook.js?v=it1" defer></script>
+</body>
+</html>

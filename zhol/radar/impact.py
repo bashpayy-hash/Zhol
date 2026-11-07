@@ -154,6 +154,19 @@ def _load(lane_id: str, departure: datetime, cargo: str = "general") -> Load:
                 departure=departure)
 
 
+WHO_IT = {"Driver": "Autista", "Customer or receiver": "Cliente o destinatario", "Sender or shipper": "Mittente",
+          "Your association": "La vostra associazione"}
+WHY_IT = {"new departure time": "nuovo orario di partenza", "earlier arrival, same day": "arrivo anticipato, stesso giorno",
+          "agree a new delivery slot": "concordare una nuova finestra di consegna", "move the pickup": "spostare il ritiro",
+          "rest at the depot instead of the queue": "sosta in deposito invece che in coda", "different pass": "valico diverso",
+          "same day, different route": "stesso giorno, altro percorso", "warn early about the delay": "avvisare in anticipo del ritardo",
+          "exemptions for perishables and the latest on the stoppage": "esenzioni per i deperibili e aggiornamenti sul fermo"}
+NOTE_IT = {
+    "Night hours assumed 22:00–06:00 until the operator's notice is read.": "Orario notturno ipotizzato 22:00-06:00 finché non leggiamo l'avviso del gestore.",
+    "Assumes trucks are stopped for the whole announced period.": "Ipotizza camion fermi per tutto il periodo annunciato.",
+}
+
+
 def _contacts(code: str, item: dict, load: Load, opt, base_arrival: datetime, place: str) -> list[dict]:
     when = date.fromisoformat(item["start"]).strftime("%d/%m")
     what = EVENT_IT.get(item["kind"], "un problema sul percorso")
@@ -196,6 +209,20 @@ def _contacts(code: str, item: dict, load: Load, opt, base_arrival: datetime, pl
 def _productive_hours(wait_h: float, per_day: float = 10.0) -> float:
     days, rest = divmod(wait_h, 24.0)
     return days * per_day + min(rest, per_day)
+
+
+LANE_WORDS_IT = [(" and ", " e "), ("München", "Monaco"), ("Wien", "Vienna"), ("Lyon", "Lione"),
+                 ("Marseille", "Marsiglia"), ("Warszawa", "Varsavia"), ("Stuttgart", "Stoccarda"),
+                 ("Brenner", "Brennero"), ("Gotthard", "Gottardo"), ("Mont Blanc", "Monte Bianco")]
+
+
+def lane_it(name: str | None) -> str | None:
+    """Lane names in Italian, for the Italian site."""
+    if not name:
+        return name
+    for en, it in LANE_WORDS_IT:
+        name = name.replace(en, it)
+    return name
 
 
 def impact(item: dict, costs: CostModel | None = None) -> dict | None:
@@ -245,15 +272,18 @@ def impact(item: dict, costs: CostModel | None = None) -> dict | None:
     lane_name = lane.name
     alt_lane = catalog.lane(best.lane_id).name if best.lane_id != lane_id else None
     return {
-        "lane": lane_name, "at": place, "departure": departure.isoformat(), "note": note,
+        "lane": lane_name, "lane_it": lane_it(lane_name), "at": place, "departure": departure.isoformat(), "note": note,
         "wait_h": round(wait_h, 1), "productive_h": round(_productive_hours(wait_h), 1),
         "loss": loss, "c_hit": c_hit, "c_free": c_free,
         "e_keep": round(e_keep), "e_now": round(e_now), "e_alert": round(e_alert),
         "threshold": round(threshold, 3), "act_now": p > threshold,
         "saving": round(e_keep - min(e_now, e_alert)),
-        "plan": {"code": best.code, "en": best.title_en, "it": best.title_it, "via": alt_lane,
+        "plan": {"code": best.code, "en": best.title_en, "it": best.title_it, "via": alt_lane, "via_it": lane_it(alt_lane),
                  "departure": best.departure.isoformat(), "arrival": best.arrival.isoformat()},
-        "contacts": _contacts(best.code, item, load, best, hit.baseline.arrival, place),
+        "contacts": [c | {"who_it": WHO_IT.get(c["who"], c["who"]), "why_it": WHY_IT.get(c["why"], c["why"])}
+                     for c in _contacts(best.code, item, load, best, hit.baseline.arrival, place)],
+        "note_it": NOTE_IT.get(note, f"Circa {SNOW_DELAY_MIN // 60} ore di catene, code o brevi chiusure nella giornata."
+                               if note.startswith("Assumes about") else note),
     }
 
 

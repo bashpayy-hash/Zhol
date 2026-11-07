@@ -41,6 +41,13 @@ MULTIPLIERS = {
     "recent_precedent": (1.3, "the same group acted in the last 90 days"),
 }
 
+MULTIPLIERS_IT = {
+    "date_named": "le date sono indicate", "outlets_3": "ne parlano 3 o più testate", "outlets_6": "ne parlano 6 o più testate",
+    "organisation": "dietro c'è un'associazione o un sindacato nazionale", "official_source": "lo riporta una fonte ufficiale",
+    "talks": "è previsto un incontro con il governo", "stale": "nessuna notizia nuova da 10 giorni",
+    "recent_precedent": "lo stesso gruppo ha agito negli ultimi 90 giorni",
+}
+
 CERTAIN = {"law": 0.99, "law_generic": 0.97, "official_calendar": 0.95}
 
 BANDS = [(0.80, "very likely"), (0.50, "likely"), (0.20, "possible"), (0.0, "unlikely")]
