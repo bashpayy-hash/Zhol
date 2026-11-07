@@ -217,7 +217,7 @@
     const news = d.items.filter(i => i.group === "news").length;
     $("rd-status").textContent = IT
       ? "Aggiornato " + built + " · " + d.items.length + " voci, " + news + " dalle notizie · " +
-        d.articles_read + " articoli letti da " + (d.reader === "claude" ? "Claude" : d.reader === "heuristic" ? "il lettore a parole chiave" : "nessun lettore") +
+        d.articles_read + " articoli letti " + (d.reader === "claude" ? "da Claude" : d.reader === "heuristic" ? "dal lettore a parole chiave" : "senza lettore") +
         " · " + d.sources_ok + " fonti su " + d.sources_total + " hanno risposto"
       : "Updated " + built + " · " + d.items.length + " items, " + news + " from the news · " +
         d.articles_read + " articles read by " + (d.reader === "claude" ? "Claude" : d.reader === "heuristic" ? "the keyword reader" : "no reader") +
