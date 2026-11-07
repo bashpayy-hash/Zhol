@@ -5,7 +5,10 @@
 - optionally feather the edges into transparency so the picture sits on the page paper;
 - export WebP at a sensible width.
 
-usage: python3 prep_illus.py SRC DST WIDTH [feather|frame]
+usage: python3 prep_illus.py SRC DST WIDTH [feather|frame|raw] [TARGET_HEX]
+
+TARGET_HEX is the colour the background is shifted to: f6f3ea (paper, default) or d2decc (sage).
+With "feather" on a dark image, the background is left as is and only the edges fade.
 """
 import sys
 import numpy as np
@@ -19,7 +22,8 @@ def smoothstep(e0, e1, x):
     return t * t * (3 - 2 * t)
 
 
-def main(src, dst, width, mode):
+def main(src, dst, width, mode, target=None):
+    paper = PAPER if not target else np.array([int(target[i:i + 2], 16) for i in (0, 2, 4)], dtype=np.float32)
     im = Image.open(src).convert("RGB")
     a = np.asarray(im).astype(np.float32)
     h, w, _ = a.shape
@@ -31,7 +35,8 @@ def main(src, dst, width, mode):
     lum = (0.2126 * a[..., 0] + 0.7152 * a[..., 1] + 0.0722 * a[..., 2]) / 255.0
     bg_lum = (0.2126 * bg[0] + 0.7152 * bg[1] + 0.0722 * bg[2]) / 255.0
     wgt = smoothstep(bg_lum - 0.28, bg_lum - 0.02, lum)[..., None]
-    out = a if mode == "raw" else np.clip(a + (PAPER - bg) * wgt, 0, 255)
+    dark_bg = bg_lum < 0.4
+    out = a if (mode == "raw" or dark_bg) else np.clip(a + (paper - bg) * wgt, 0, 255)
     img = Image.fromarray(out.astype(np.uint8))
     if mode == "feather":
         yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
@@ -47,4 +52,5 @@ def main(src, dst, width, mode):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4] if len(sys.argv) > 4 else "frame")
+    main(sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4] if len(sys.argv) > 4 else "frame",
+         sys.argv[5] if len(sys.argv) > 5 else None)

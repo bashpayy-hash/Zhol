@@ -4,17 +4,21 @@
 
 ## Стиль (вставлять в начало каждого промта)
 
-> Same illustration style as the reference image: mid-century screen-print editorial illustration, teal and sage halftone on aged cream paper, fine black ink lines, brick-red accents, visible paper grain.
+Эталон — иллюстрации из самой деки: слайд 4 (сложенная карта с маршрутом, `site/assets/img/map-route.webp`) и слайд 10 (карта на тёмном фоне, `map-cards-dark.webp`). Одна небольшая бумажная вещь посреди большого пустого поля.
+
+> Match the reference image exactly in style and scale: one small paper object in the centre of a large, empty, warm cream background (#f3eee4); elegant editorial spot illustration, mid-century screen print, teal and sage halftone, thin black ink lines, brick-red accents, soft shadow, visible paper grain.
+
+Для тёмного слайда вместо cream background: «lying on a dark espresso-brown textured surface (#382920), with lots of empty dark space around it».
 
 ## Что делает картинку сильной: лаконично и красиво
 
-1. **Минимализм.** 1–3 главных предмета, много воздуха, спокойный фон. Картинка читается за секунду.
+1. **Минимализм и элегантность.** Один предмет (обычно сложенная карта) занимает примерно половину кадра, вокруг пустое поле. 1–3 детали на нём: тонкая линия маршрута, красный треугольник, булавка, карандаш. Картинка читается за секунду.
 2. **Одна ясная идея.** Предметы выбраны под конкретный ответ:
    - клин держит дверь — место для маленького игрока;
    - один фонарь на перевале светит трём разным машинам — одна стоимость на всех;
    - атлас с маршрутом из Милана — продажи на расстоянии дневной поездки.
 3. **Один красный акцент** там, куда должен смотреть зритель.
-4. **В конце промта:** «Simple, calm composition with few elements and generous empty space. No readable text, no letters, no numbers.»
+4. **В конце промта:** «The object fills about half of the frame; everything else is empty cream. Minimal and elegant, no clutter. No readable text, no letters, no numbers.»
 
 ## Чего не делать
 
