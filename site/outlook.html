@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol radar · What is coming on Europe's freight roads</title>
+<meta name="description" content="Strikes, blockades, protests, holiday truck bans, Kufstein dosing and snow at the Alpine passes in the next eight weeks, each with a chance and the reasons behind it.">
+<meta property="og:title" content="zhol radar · What is coming on Europe's freight roads">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="zhol home"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sections">
+    <a href="/">TEF answers</a><a href="/story">Story</a><a href="/outlook" aria-current="page">Radar</a><a href="/audience">Audience</a><a href="/beta">Beta</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="slide hero">
+  <div class="wrap split center">
+    <div class="stack" style="gap:20px">
+      <span class="kicker">zhol radar · the next eight weeks</span>
+      <h1 class="title">What is coming on Europe’s freight roads, and how likely it is</h1>
+      <p class="lead">Twice a day the radar reads the news and the trade press in four languages, the official ban and dosing calendars, and the weather forecast at the Alpine passes. Every item gets a chance, with the reasons behind it.</p>
+      <p class="small muted" id="rd-status">Loading the latest radar…</p>
+    </div>
+    <img class="art" src="/assets/img/q/radar.webp" alt="Illustration: a folded map of the Alps with a route over a pass and a small barometer whose needle points to a red mark" width="1100" height="822">
+  </div>
+</section>
+
+<section class="slide" id="focus" hidden style="padding-top:36px">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker" id="focus-kicker">Christmas and New Year</span>
+      <h2 class="title" id="focus-title">What the holidays already hold</h2>
+    </div>
+    <div class="grid g4" id="focus-cards"></div>
+  </div>
+</section>
+
+<section class="slide sage" id="radar">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">Everything on the radar</span>
+      <h2 class="title">By date, with the chance it happens</h2>
+    </div>
+    <div class="rd-tools">
+      <div class="seg" role="tablist" aria-label="Filter">
+        <button role="tab" aria-selected="true" data-f="all">All</button>
+        <button role="tab" aria-selected="false" data-f="news">Strikes</button>
+        <button role="tab" aria-selected="false" data-f="forecast">Weather</button>
+        <button role="tab" aria-selected="false" data-f="official">Bans &amp; dosing</button>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--red)"></i>80% and up: very likely</span>
+        <span><i style="background:#d98d7c"></i>50–80%: likely</span>
+        <span><i style="background:#a99e93"></i>20–50%: possible</span>
+      </div>
+    </div>
+    <div id="rd-list" aria-live="polite"></div>
+  </div>
+  <div class="wrap"><div class="foot"><span id="rd-foot">Sources: Google News searches in IT/FR/DE/EN, Shipping Italy, TrasportoEuropa, Uomini e Trasporti, trans.info, Open-Meteo, Land Tirol dosing calendar, national truck-ban rules encoded in zhol.</span></div></div>
+</section>
+
+<section class="slide" id="method">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">How the chance is calculated</span>
+      <h2 class="title">A starting probability from how far things have gone, times the evidence</h2>
+    </div>
+    <div class="split">
+      <div class="stack" style="gap:18px">
+        <div class="formula">
+          <p><b>odds</b> = prior ÷ (1 − prior)</p>
+          <p><b>odds</b> × m<sub>1</sub> × m<sub>2</sub> × … for each piece of evidence</p>
+          <p><b>chance</b> = odds ÷ (1 + odds), at most 98% until it is official</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Worked example</span>
+          <p class="small">A national association <b>proclaims</b> a truck stoppage for 14–18 December (prior 70%, odds 2.33). Dates are named (×2), four outlets report it (×1.5), the association is national (×1.5), a meeting at the ministry is scheduled (×0.6).</p>
+          <p class="small">odds = 2.33 × 2 × 1.5 × 1.5 × 0.6 = 6.3 → <b>chance 86%</b>. If the stoppage is then called off, the prior drops to 4% and the item falls off the top of the list.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Weather at the passes</span>
+          <p class="small">z = −3.2 + 0.32 × snow in cm + 0.045 × (gusts above 50 km/h); chance = 1 ÷ (1 + e<sup>−z</sup>). 5 cm of snow gives 16%, 10 cm gives 50%, 20 cm gives 96%. Forecasts lose skill with time, so a day 12 days ahead counts for a quarter and the rest is the season’s base rate. Messina ferry: wind only, 70 km/h gives 27%, 90 km/h gives 73%.</p>
+        </div>
+      </div>
+      <div class="stack" style="gap:18px">
+        <div class="tablewrap"><table class="t" style="min-width:360px">
+          <thead><tr><th>Stage reached</th><th class="n">Prior</th></tr></thead>
+          <tbody id="m-prior"></tbody>
+        </table></div>
+        <div class="tablewrap"><table class="t" style="min-width:360px">
+          <thead><tr><th>Evidence</th><th class="n">Odds ×</th></tr></thead>
+          <tbody id="m-mult"></tbody>
+        </table></div>
+        <p class="small muted">Laws in force count as 99% (97% while Italy’s 2027 decree is not published); the official Tyrol dosing calendar as 95%. These numbers are starting assumptions: every item is checked after its date, and the scale is corrected until 30% items happen about 30% of the time.</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="kicker">What it does not read yet</span>
+      <p class="small">Instagram, Facebook and TikTok cannot be read automatically without official API access, and X charges for its API. Public Telegram channels can be added once we know which trucker channels matter. When no AI key is configured, a keyword reader in four languages replaces Claude and is less precise.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan, Inkara, Tomiris · Bocconi University · TEF Ignition 2026</span>
+  <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/outlook.js" defer></script>
+</body>
+</html>

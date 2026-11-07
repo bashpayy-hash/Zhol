@@ -7,6 +7,7 @@ Runs the real zhol engine at build time (Netlify runs this on every push):
   site/data/lanes.json     - corridor list
   site/data/grid/<lane>.json - every lane x 14 days x every 2 hours: status, delay, best option
   site/assets/corridors.svg - map of the corridors and chokepoints from catalog coordinates
+  site/data/outlook.json   - the radar: official bans and dosing, weather at the passes, news signals, each with a chance
 
 Usage: python scripts/build_site.py [--days 14] [--today YYYY-MM-DD]
 """
@@ -31,6 +32,7 @@ from zhol.engine import assess  # noqa: E402
 from zhol.ingest.feeds import load_all_calendars  # noqa: E402
 from zhol.models import Assessment, Company, CostModel, Load  # noqa: E402
 from zhol.pipeline import run_evening  # noqa: E402
+from zhol.radar.outlook import build_outlook  # noqa: E402
 from zhol.rules import generate_ban_events  # noqa: E402
 from zhol.store import Store  # noqa: E402
 
@@ -227,6 +229,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=14)
     ap.add_argument("--today")
+    ap.add_argument("--offline", action="store_true", help="skip news and weather (radar from official data only)")
     args = ap.parse_args()
     today = date.fromisoformat(args.today) if args.today else datetime.now(TZ).date()
     t0 = time.time()
@@ -245,6 +248,14 @@ def main() -> None:
     for lid, g in grids.items():
         (DATA / "grid" / f"{lid}.json").write_text(json.dumps(g, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (SITE / "assets" / "corridors.svg").write_text(build_map(), encoding="utf-8")
+    try:
+        outlook = build_outlook(today, horizon=60, fetch=not args.offline)
+    except Exception as exc:  # the radar must never break the site build
+        print(f"radar failed ({type(exc).__name__}: {exc}); building it from official data only")
+        outlook = build_outlook(today, horizon=60, fetch=False)
+    dump("outlook.json", outlook)
+    print(f"radar: {len(outlook['items'])} items, {outlook['articles_read']} articles, "
+          f"{outlook['sources_ok']}/{outlook['sources_total']} sources ok, reader={outlook['reader']}")
     print(f"site data built for {today} in {time.time() - t0:.0f}s")
 
 

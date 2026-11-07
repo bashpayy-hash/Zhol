@@ -47,6 +47,8 @@
 
 Кто наша аудитория (сегменты, размеры, персоны, каналы, события 2027): [docs/09-audience.md](docs/09-audience.md) и страница [zhol-beta.netlify.app/audience](https://zhol-beta.netlify.app/audience).
 
+Радар — что ожидается на дорогах в ближайшие 8 недель (забастовки, блокады, праздничные запреты, дозирование, снег на перевалах) и с каким шансом, с формулой: [zhol-beta.netlify.app/outlook](https://zhol-beta.netlify.app/outlook), описание — [docs/11-radar.md](docs/11-radar.md).
+
 Второй фидбек TEF (ценность против текущего процесса, кто платит, USP, реальный сегмент, операционная реализуемость, финплан): что измеряем и пороги успеха — [docs/10-feedback-round-2.md](docs/10-feedback-round-2.md). Кому писать на интервью и что писать — [outreach/07-interview-requests.md](outreach/07-interview-requests.md), скрипт v2 — [outreach/03-interview-script.md](outreach/03-interview-script.md), журнал — [outreach/interview_log.csv](outreach/interview_log.csv).
 
 ---
