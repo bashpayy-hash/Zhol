@@ -45,6 +45,8 @@
 
 Кто публично высказывался о проблеме (ассоциации, чиновники, аналитики, перевозчики, журналисты) и кому писать первым: [docs/08-people-and-voices.md](docs/08-people-and-voices.md).
 
+Кто наша аудитория (сегменты, размеры, персоны, каналы, события 2027): [docs/09-audience.md](docs/09-audience.md) и страница [zhol-beta.netlify.app/audience](https://zhol-beta.netlify.app/audience).
+
 ---
 
 ## Как запустить

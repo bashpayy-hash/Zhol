@@ -43,7 +43,7 @@ Weekly team rhythm:
 | 3 | **Free "Brenner & Alpine bulletin"** (lead magnet) | Weekly Italian WhatsApp channel and LinkedIn post: next week's bans, dosing days, strikes, Luegbrücke closures. Readers who want *their own loads* checked become leads | low | 10% |
 | 4 | **Partners** | Telematics resellers, Italian TMS vendors (e.g. 4Carrier, Zucchetti, Dylog), fuel-card companies with haulier communities: referral fee 20% of first year | rev share | 5% (grows in year 2) |
 | 5 | **TEF and Bocconi network** | TEF intros to forwarders in Lombardy/Veneto, a logistics reviewer, mentors (our TEF ask) | free | first 2–3 pilots |
-| 6 | **Events** | LetExpo (Verona), Transpotec Logitec (Milan), transport logistic (Munich). Check the 2027 dates before budgeting | €300–1,500 per event | brand + lists |
+| 6 | **Events** | LetExpo, Verona, 9–12 Mar 2027 (to confirm); transport logistic, Munich, 26–29 Apr 2027; Transpotec Logitec (Milan) returns in 2028 | €300–1,500 per event | brand + lists |
 
 ## 5.5 Sales process
 
