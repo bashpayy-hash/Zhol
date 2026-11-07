@@ -44,6 +44,23 @@
     }).catch(() => {});
   }
 
+  // ---- long tables: first rows visible, the rest behind "Show all" (all rows stay without JavaScript)
+  document.querySelectorAll("[data-collapse]").forEach(w => {
+    const n = parseInt(w.dataset.collapse, 10) || 3;
+    const rows = [...w.querySelectorAll("tbody tr")];
+    if (rows.length <= n + 1) return;
+    const extra = rows.slice(n);
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "more-rows";
+    const set = open => {
+      extra.forEach(r => { r.hidden = !open; });
+      btn.textContent = open ? "Show fewer" : "Show all " + rows.length + " rows";
+      btn.setAttribute("aria-expanded", String(open));
+    };
+    btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));
+    w.after(btn); set(false);
+  });
+
   // ---- looping illustrations: respect reduced motion
   const rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
   const still = () => document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); });

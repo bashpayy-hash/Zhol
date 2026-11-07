@@ -10,7 +10,10 @@
   const tone = p => p >= 0.8 ? "vl" : p >= 0.5 ? "l" : p >= 0.2 ? "po" : "un";
   const BASIS = { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals" };
 
-  let data = null, filter = "all";
+  let data = null, filter = "all", route = "";
+  const onRoute = i => !route || (i.lanes || []).includes(route);
+  const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                  set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
 
   function row(it) {
     const r = el("article", "rd-row " + tone(it.p));
@@ -90,10 +93,10 @@
 
   function days(it) { if (!it.start) return 1; const a = new Date(it.start), b = new Date(it.end || it.start); return Math.min(5, Math.round((b - a) / 864e5) + 1); }
 
+  let moneyReady = false;
   function renderMoney() {
-    const priced = data.items.filter(i => i.impact);
-    if (!priced.length) return;
-    $("money").hidden = false;
+    const priced = data.items.filter(i => i.impact && onRoute(i));
+    $("money").hidden = !data.items.some(i => i.impact);
     const calc = () => {
       const n = Math.max(1, parseInt($("m-trucks").value, 10) || 1);
       const sum = (list, f) => list.reduce((a, i) => a + f(i.impact) * n * days(i), 0);
@@ -103,12 +106,15 @@
       $("m-keep").textContent = none ? "—" : eur(keep); $("m-zhol").textContent = none ? "—" : eur(zh);
       $("m-save").textContent = none ? "—" : eur(keep - zh);
       $("c-keep").textContent = eur(sum(calendar, x => x.e_keep)); $("c-plan").textContent = eur(sum(calendar, x => Math.min(x.e_now, x.e_alert)));
-      $("m-note").textContent = (none ? "No dated events outside the calendars right now. " : "") + unplanned.length + " events outside the calendars and " + calendar.length + " calendar events priced on real trips, for each truck that would run into them (once per day the event lasts, at most five days). Undated tensions are not priced.";
+      $("m-note").textContent = (route ? "On your route only. " : "") + (none ? "No dated events outside the calendars right now. " : "") +
+        unplanned.length + " events outside the calendars and " + calendar.length + " calendar events priced on real trips, for each truck that would run into them (once per day the event lasts, at most five days). Undated tensions are not priced.";
     };
-    $("m-trucks").addEventListener("input", calc); calc();
+    if (!moneyReady) { $("m-trucks").addEventListener("input", () => renderMoney()); moneyReady = true; }
+    calc();
+    const vs = $("vs"); vs.textContent = "";
+    if (!priced.length) return;
     const pool = priced.filter(i => i.group !== "official").length ? priced.filter(i => i.group !== "official") : priced;
     const top = pool.slice().sort((a, b) => b.impact.saving * b.p - a.impact.saving * a.p)[0], im = top.impact;
-    const vs = $("vs"); vs.textContent = "";
     const g = el("div", "vs-col"); g.append(el("span", "kicker", "Google Maps, the evening before"), el("h3", null, im.lane.replace(" -> ", " → ")),
       el("p", "small", "A route and today's traffic. Nothing about what is planned for " + fmt(top.start) + ", what it would cost, or what to tell anyone."));
     const z = el("div", "vs-col us"); z.append(el("span", "kicker", "zhol, the evening before"), el("h3", null, top.title),
@@ -127,7 +133,7 @@
   function render() {
     openedOne = false;
     const list = $("rd-list"); list.textContent = "";
-    const items = data.items.filter(i => filter === "all" || i.group === filter);
+    const items = data.items.filter(i => (filter === "all" || i.group === filter) && onRoute(i));
     const dated = items.filter(i => i.start).sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p);
     const undated = items.filter(i => !i.start).sort((a, b) => b.p - a.p);
     let current = null, box = null;
@@ -144,14 +150,15 @@
       list.append(el("h3", "rd-week", "Tensions without a date yet"));
       const g = el("div", "rd-group"); undated.forEach(it => g.append(row(it))); list.append(g);
     }
-    if (!items.length) list.append(el("p", "small muted", "Nothing in this category in the next eight weeks."));
+    if (!items.length) list.append(el("p", "small muted", route ? "Nothing on this route in this category in the next eight weeks." : "Nothing in this category in the next eight weeks."));
   }
 
   function renderFocus() {
     const f = data.focus; if (!f) return;
-    const inside = data.items.filter(i => i.start && i.start >= f.from && i.start <= f.to).sort((a, b) => a.start.localeCompare(b.start));
+    const inside = data.items.filter(i => i.start && i.start >= f.from && i.start <= f.to && onRoute(i)).sort((a, b) => a.start.localeCompare(b.start));
+    $("focus").hidden = !inside.length;
+    $("focus-cards").textContent = "";
     if (!inside.length) return;
-    $("focus").hidden = false;
     $("focus-kicker").textContent = f.label + " · " + fmt(f.from, { day: "numeric", month: "short" }) + " – " + fmt(f.to, { day: "numeric", month: "short" });
     const cards = $("focus-cards");
     inside.slice(0, 9).forEach(it => {
@@ -183,6 +190,11 @@
     $("rd-status").textContent = "Updated " + built + " · " + d.items.length + " items, " + news + " from the news · " +
       d.articles_read + " articles read by " + (d.reader === "claude" ? "Claude" : d.reader === "heuristic" ? "the keyword reader" : "no reader") +
       " · " + d.sources_ok + " of " + d.sources_total + " sources answered";
+    const sel = $("rd-route");
+    (d.lanes || []).forEach(l => { const o = el("option", null, l.name); o.value = l.id; sel.append(o); });
+    const saved = store.get("zhol-route");
+    if (saved && (d.lanes || []).some(l => l.id === saved)) { sel.value = saved; route = saved; }
+    sel.addEventListener("change", () => { route = sel.value; store.set("zhol-route", route); renderFocus(); renderMoney(); render(); });
     renderFocus(); renderMethod(); renderMoney(); render();
   }).catch(() => { $("rd-status").textContent = "The radar could not be loaded. Try again in a minute."; });
 })();

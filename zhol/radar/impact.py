@@ -31,7 +31,7 @@ from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
 from .. import catalog
-from ..engine import _free_flow_arrival, _option, assess, simulate
+from ..engine import _free_flow_arrival, _option, assess, event_touches_waypoint, simulate
 from ..ingest.feeds import load_all_calendars
 from ..models import CostModel, Event, EventScope, Load, Source, Window
 from ..rules import generate_ban_events
@@ -257,9 +257,29 @@ def impact(item: dict, costs: CostModel | None = None) -> dict | None:
     }
 
 
+def lanes_for(item: dict) -> list[str]:
+    """Every corridor the item touches, with direction (Kufstein dosing southbound does not touch northbound lanes)."""
+    events = _events_for(item)[0] if item.get("start") else []
+    out = []
+    for lid, lane in catalog.lanes().items():
+        if events:
+            hit = any(event_touches_waypoint(e, wp) for e in events for wp in lane.waypoints)
+        else:
+            places, regions, countries = set(item.get("places", [])), set(item.get("regions", [])), set(item.get("countries", []))
+            hit = any(wp.chokepoint in places or (wp.region and wp.region in regions) for wp in lane.waypoints) or \
+                (not places and not regions and any(wp.country in countries for wp in lane.waypoints))
+        if hit:
+            out.append(lid)
+    return out
+
+
 def attach(items: list[dict]) -> None:
     costs = CostModel()
     for it in items:
+        try:
+            it["lanes"] = lanes_for(it)
+        except Exception:
+            it["lanes"] = []
         try:
             it["impact"] = impact(it, costs)
         except Exception as exc:  # one bad scenario must not stop the radar

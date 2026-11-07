@@ -1,6 +1,6 @@
 """Prepare generated illustrations for the site.
 
-- shift the light paper tones of each image to the site paper colour (#f6f3ea),
+- shift the light paper tones of each image to the site paper colour (#f1ede3, the rendered paper),
   weighting by luminance so teal, ink and red stay as generated;
 - optionally feather the edges into transparency so the picture sits on the page paper;
 - export WebP at a sensible width.
@@ -14,7 +14,7 @@ import sys
 import numpy as np
 from PIL import Image
 
-PAPER = np.array([246, 243, 234], dtype=np.float32)
+PAPER = np.array([241, 237, 227], dtype=np.float32)   # the paper as rendered, with its grain
 
 
 def smoothstep(e0, e1, x):

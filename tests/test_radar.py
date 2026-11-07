@@ -116,3 +116,13 @@ def test_no_impact_without_a_date():
     from zhol.radar.impact import impact
     s = heuristic_signal(item("Autotrasportatori siciliani minacciano nuovi blocchi", "La Sicilia"), TODAY)
     assert impact(news_items([s], TODAY)[0]) is None
+
+
+def test_lanes_for_respects_direction_and_country():
+    from zhol.radar.impact import lanes_for
+    items = official_items(TODAY, 60)
+    dosing = next(i for i in items if i["kind"] == "dosing")
+    lanes = lanes_for(dosing)
+    assert "MUC-VR-BRENNER" in lanes and "MIL-MUC-BRENNER" not in lanes     # dosing is southbound only
+    xmas = next(i for i in items if i["start"] == "2026-12-25")
+    assert {"MIL-MUC-BRENNER", "MIL-LYO-FREJUS"} <= set(lanes_for(xmas))
