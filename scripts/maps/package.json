@@ -1,0 +1,11 @@
+{
+  "name": "zhol-maps",
+  "private": true,
+  "type": "module",
+  "description": "Generates the halftone map illustrations for the website (output committed under site/assets/img).",
+  "devDependencies": {
+    "d3-geo": "3.1.1",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  }
+}
