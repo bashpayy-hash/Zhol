@@ -67,3 +67,41 @@
 ---
 
 **Не писать пока:** Corsi (основатель умер 26 сентября 2026; вернуться позже и тактично). **Сначала позвонить на общий номер:** D.G.F. Trans — 11 ноября в Польше праздничный запрет для грузовиков, хорошая зацепка, но владелец не подтверждён.
+
+---
+
+## Второй круг: кто сведёт с интервьюируемыми быстрее всего
+
+Люди и источники — в `interview_targets_network.csv`, сводка и события — в `interview_targets_network.md`. Роли с пометкой [CHECK] сверить перед отправкой.
+
+### 11. Oliviero Baccelli, Università Bocconi: письмо через университетскую почту (самый тёплый вход)
+
+> Gentile Professor Baccelli,
+> siamo tre studenti della Bocconi (Alikhan, Inkara, Tomiris) e, nell'ambito del programma TEF Ignition, stiamo studiando come gli uffici traffico degli autotrasportatori del Nord gestiscono divieti, dosaggi a Kufstein, chiusure del Brennero e scioperi.
+> Ci servono 8 interviste entro il 13 novembre. Le chiederemmo 20 minuti per un suo parere sul metodo e, se lo ritiene opportuno, il contatto di due aziende disposte a parlarci.
+
+### 12. Pietro Vavassori, presidente ALSEA (Milano): письмо через секретариат ALSEA
+
+> Gentile Presidente Vavassori,
+> siamo tre studenti della Bocconi e stiamo facendo una ricerca su quanto costano a spedizionieri e autotrasportatori lombardi divieti, dosaggi a Kufstein, chiusure e scioperi sulle linee per Germania, Austria e Svizzera.
+> Ci aiuterebbe molto parlare con 3–5 associati con un reparto stradale, anche inoltrando questo messaggio. Condivideremo con ALSEA i risultati anonimi. Potremmo anche sentire il reparto stradale di Italsempione per 20 minuti?
+
+### 13. Emmanuele Florio, FAI Milano-Monza-Lodi: собрать 3–5 членов
+
+Шаблон 4 из `07-interview-requests.md`, с первой фразой: *«Vi scriviamo perché FAI Milano-Monza-Lodi riunisce proprio le imprese con cui vorremmo parlare, a pochi chilometri dalla Bocconi.»*
+
+### 14. Fabrizio Dallari, LIUC: интервью и интро
+
+Тот же текст, что для Baccelli, со словами *«conosciamo i suoi lavori sulla logistica»* вместо первой фразы о Bocconi.
+
+### 15. Claudio Carrano, Infogestweb / Golia360 (Verona): разговор с поставщиком ПО
+
+> Buongiorno Claudio, studenti Bocconi. Stiamo studiando come i piccoli autotrasportatori pianificano intorno a divieti e chiusure all'estero. Ci interessa il punto di vista di chi fa il gestionale: cosa vi chiedono i clienti su questo, e come arrivano oggi i dati dei viaggi di domani. 20 minuti?
+
+## События этой недели (сверить даты и регистрацию)
+
+| Когда | Что | Где | Зачем идти |
+|---|---|---|---|
+| Пн 9 ноября, 12:00 | Вебинар Confartigianato Verona по DL 193/2026 | онлайн | слушать, о чём спрашивают перевозчики; написать Paolo Brandellero после вебинара |
+| Вт 10 ноября | Connected Logistics Showcase | Милан | живые разговоры с экспедиторами и поставщиками ПО |
+| Чт 12 ноября | Конференция Osservatorio Contract Logistics, Politecnico di Milano | Superstudio Maxi, Милан | логистические менеджеры, экспедиторы; лучший шанс на 2–3 интервью вживую |
