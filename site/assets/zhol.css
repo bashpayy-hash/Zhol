@@ -459,17 +459,23 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
 .sv-title { font-size: clamp(36px, 5.4vw, 64px); }
 .sv-stage { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 40px; align-items: start; margin-top: 34px; max-width: 980px; }
 .sv-mascot { position: sticky; top: 96px; }
-.sv-mascot img { width: 100%; height: auto; display: block; transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
-.sv-mascot img.swap { opacity: 0; transform: translateY(6px); }
+/* owner motion system (brand/PRINCIPLES.md §6): one curve, 320 ms for things that move in, opacity and transform only */
+.sv-mascot img { width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: contain; display: block; transition: opacity 320ms cubic-bezier(.22,1,.36,1), transform 320ms cubic-bezier(.22,1,.36,1); }
+.sv-mascot img.swap { opacity: 0; transform: translateY(10px); }
+.sv-label { font-size: 14px; font-weight: 600; color: var(--red); }
+.sv-label.ok { color: var(--sage-ink); }
+.sv-link { background: none; border: 0; padding: 10px 4px; min-height: 44px; font: inherit; font-size: 15px; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.sv-link:hover { color: var(--ink); }
+.sv-link:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; border-radius: 3px; }
 .sv-panel { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 .sv-road { height: 4px; background: repeating-linear-gradient(90deg, var(--rule) 0 14px, transparent 14px 22px); border-radius: 2px; position: relative; }
-.sv-road i { display: block; height: 100%; width: 0; background: var(--red); border-radius: 2px; transition: width 300ms var(--ease); }
+.sv-road i { display: block; height: 100%; width: 100%; background: var(--red); border-radius: 2px; transform: scaleX(0); transform-origin: left center; transition: transform 520ms cubic-bezier(.22,1,.36,1); }
 .survey fieldset.q { border: 0; margin: 0; padding: 0 0 26px; min-width: 0; }
 .survey:not(.stepping) fieldset.q + fieldset.q { border-top: 1px solid var(--rule); padding-top: 22px; }
 .survey .q legend, .sv-q-title { float: left; width: 100%; padding: 0; margin: 0 0 18px; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; font-weight: 650; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
 .survey .q legend + * { clear: both; }
 .sv-q-title { float: none; }
-.survey .q .n { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+.survey .q .n { display: block; font-size: 14px; font-weight: 600; color: var(--red); margin-bottom: 8px; }
 .opts { display: flex; flex-wrap: wrap; gap: 8px; }
 .opts label { position: relative; cursor: pointer; }
 .opts input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
@@ -492,7 +498,7 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
 @media (max-width: 760px) {
   .slide.sv { padding-top: 32px; }
   .sv-stage { grid-template-columns: minmax(0, 1fr); gap: 4px; margin-top: 18px; }
-  .sv-mascot { position: static; width: 150px; justify-self: start; margin-bottom: -6px; }
+  .sv-mascot { position: static; width: 170px; justify-self: start; margin-bottom: 2px; }
   .survey .q legend, .sv-q-title { font-size: 22px; margin-bottom: 14px; }
   .opts.tall span { font-size: 17px; min-height: 54px; }
 }

@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=sv2">
+<link rel="stylesheet" href="/assets/zhol.css?v=sv3">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/survey">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/sondaggio">
 </head>
@@ -28,13 +28,13 @@
 <section class="slide sv">
   <div class="wrap">
     <div class="sv-head">
-      <span class="kicker">Bocconi research for traffic offices</span>
+      <span class="sv-label">Bocconi research for traffic offices</span>
       <h1 class="title sv-title">Six questions. One minute.</h1>
       <p class="lead">What do truck bans, Brenner queues and strikes cost you? One tap per answer, anonymous, and we sell nothing.</p>
     </div>
 
     <div class="sv-stage">
-      <div class="sv-mascot" aria-hidden="true"><img id="sv-img" src="/assets/img/mascot/m1-truck.webp" alt="" width="480" height="480"></div>
+      <div class="sv-mascot" aria-hidden="true"><img id="sv-img" src="/assets/img/vespi/truck-560.webp" srcset="/assets/img/vespi/truck-280.webp 280w, /assets/img/vespi/truck-560.webp 560w" sizes="(max-width: 760px) 170px, 300px" alt="" width="560" height="448"></div>
 
       <div class="sv-panel">
         <div class="sv-road" aria-hidden="true"><i id="sv-road"></i></div>
@@ -47,7 +47,7 @@
           <input type="hidden" name="rid" value="">
           <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
 
-          <fieldset class="q" data-img="m1-truck"><legend><span class="n">1 of 6</span>How many trucks does your company run?</legend>
+          <fieldset class="q" data-img="truck"><legend><span class="n">1 of 6</span>How many trucks does your company run?</legend>
             <div class="opts tall">
               <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
               <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
@@ -56,7 +56,7 @@
               <label><input type="radio" name="fleet" value="100+"><span>Over 100</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="m2-map"><legend><span class="n">2 of 6</span>How many times a week do your trucks go abroad?</legend>
+          <fieldset class="q" data-img="route"><legend><span class="n">2 of 6</span>How many times a week do your trucks go abroad?</legend>
             <div class="opts tall">
               <label><input type="radio" name="trips_abroad" value="0" required><span>Never</span></label>
               <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5 times</span></label>
@@ -64,7 +64,7 @@
               <label><input type="radio" name="trips_abroad" value="20+"><span>Over 20 times</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="m3-watch"><legend><span class="n">3 of 6</span>How long do you spend each day checking bans, queues and strikes?</legend>
+          <fieldset class="q" data-img="watch"><legend><span class="n">3 of 6</span>How long do you spend each day checking bans, queues and strikes?</legend>
             <div class="opts tall">
               <label><input type="radio" name="minutes" value="<10" required><span>Under 10 minutes</span></label>
               <label><input type="radio" name="minutes" value="10-20"><span>10–20 minutes</span></label>
@@ -72,7 +72,7 @@
               <label><input type="radio" name="minutes" value="40+"><span>Over 40 minutes</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="m4-coin"><legend><span class="n">4 of 6</span>The last time a ban, a queue or a strike stopped one of your trucks, what did it cost you?</legend>
+          <fieldset class="q" data-img="coin"><legend><span class="n">4 of 6</span>The last time a ban, a queue or a strike stopped one of your trucks, what did it cost you?</legend>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Under €100</span></label>
               <label><input type="radio" name="last_cost" value="100-300"><span>€100–300</span></label>
@@ -81,14 +81,14 @@
               <label><input type="radio" name="last_cost" value="unknown"><span>Don’t know</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="m5-phone"><legend><span class="n">5 of 6</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s trucks will hit a problem and what to do?</legend>
+          <fieldset class="q" data-img="phone"><legend><span class="n">5 of 6</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s trucks will hit a problem and what to do?</legend>
             <div class="opts tall">
               <label><input type="radio" name="would_use" value="yes" required><span>Yes, a lot</span></label>
               <label><input type="radio" name="would_use" value="maybe"><span>Maybe</span></label>
               <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="m6-tag"><legend><span class="n">6 of 6</span>What price feels fair, per truck per month?</legend>
+          <fieldset class="q" data-img="thinking"><legend><span class="n">6 of 6</span>What price feels fair, per truck per month?</legend>
             <div class="opts tall">
               <label><input type="radio" name="price" value="0" required><span>Nothing, I wouldn’t pay</span></label>
               <label><input type="radio" name="price" value="<5"><span>Up to €5</span></label>
@@ -99,7 +99,7 @@
           </fieldset>
 
           <p class="sv-error" id="sv-error" role="alert" hidden></p>
-          <div class="sv-nav"><button class="btn ghost" type="button" id="sv-back" hidden>‹ Back</button><button class="btn ghost" type="button" id="sv-next" hidden>Next ›</button><button class="btn" type="submit" id="sv-send">Send my answers</button></div>
+          <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Back</button><button class="btn" type="button" id="sv-next" hidden>Next</button><button class="btn" type="submit" id="sv-send">Send my answers</button></div>
         </form>
 
         <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
@@ -107,7 +107,7 @@
           <input type="hidden" name="lang" value="en">
           <input type="hidden" name="rid" value="">
           <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
-          <span class="kicker green">Done, thank you!</span>
+          <span class="sv-label ok">Done, thank you!</span>
           <h2 class="sv-q-title">Would you like something back? Optional.</h2>
           <div class="opts tall multi">
             <label><input type="checkbox" name="followup" value="results"><span>The survey results</span></label>
@@ -117,14 +117,14 @@
           <div class="field sv-contact"><label for="sv-contact">Work email or phone</label><input id="sv-contact" name="contact" autocomplete="email"></div>
           <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> You may use this contact only for what I chose.</label>
           <p class="sv-error" id="sv-error2" role="alert" hidden></p>
-          <div class="sv-nav"><button class="btn" type="submit">Send</button><button class="btn ghost" type="button" id="sv-skip">No, thanks</button></div>
+          <div class="sv-nav"><button class="btn" type="submit">Send</button><button class="sv-link" type="button" id="sv-skip">No, thanks</button></div>
         </form>
 
         <div class="sv-done" id="sv-done" hidden tabindex="-1">
-          <span class="kicker green">Received</span>
+          <span class="sv-label ok">Received</span>
           <h2 class="sv-q-title">Thank you! That helps a lot.</h2>
           <p>Know another traffic office? Every extra answer makes the numbers stronger.</p>
-          <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Forward on WhatsApp</a><button class="btn ghost" type="button" id="sv-copy">Copy the link</button></div>
+          <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Forward on WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copy the link</button></div>
         </div>
       </div>
     </div>
@@ -139,6 +139,6 @@
   <span>Alikhan · Inkara · Tomiris · Bocconi University · TEF Ignition 2026</span>
   <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/outlook">Radar</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a></span>
 </div></footer>
-<script src="/assets/survey.js?v=sv2" defer></script>
+<script src="/assets/survey.js?v=sv3" defer></script>
 </body>
 </html>

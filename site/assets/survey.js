@@ -11,7 +11,9 @@
   const img = $("sv-img"), road = $("sv-road"), live = $("sv-live"), back = $("sv-back"), next = $("sv-next"), send = $("sv-send");
   const follow = $("sv-follow"), done = $("sv-done");
   const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const pic = name => "/assets/img/mascot/" + name + ".webp";
+  // Vespi poses (brand/MASCOT.md): 280 px for phones, 560 px for 2x screens; see assets/img/vespi/manifest.json
+  const base = "/assets/img/vespi/";
+  const srcset = name => base + name + "-280.webp 280w, " + base + name + "-560.webp 560w";
 
   // a random id links the optional contact to the answers, nothing else does
   let rid = "";
@@ -27,17 +29,22 @@
   } catch (e) { /* no channel */ }
 
   // preload the poses so the mascot never flashes empty
-  ["m1-truck", "m2-map", "m3-watch", "m4-coin", "m5-phone", "m6-tag", "m7-cheer", "m0-hello"].forEach(n => { const i = new Image(); i.src = pic(n); });
+  ["truck", "route", "watch", "coin", "phone", "thinking", "celebrate", "encourage"].forEach(n => {
+    const i = new Image(); i.sizes = img.sizes; i.srcset = srcset(n);
+  });
 
   let at = 0;
   form.classList.add("stepping");
   form.noValidate = true;
 
+  let pose = "truck";
   function setPose(name) {
-    if (!img || img.getAttribute("src") === pic(name)) return;
-    if (reduced) { img.src = pic(name); return; }
-    img.classList.add("swap");
-    setTimeout(() => { img.src = pic(name); img.classList.remove("swap"); }, 140);
+    if (!img || pose === name) return;
+    pose = name;
+    const put = () => { img.srcset = srcset(name); img.src = base + name + "-560.webp"; };
+    if (reduced) { put(); return; }
+    img.classList.add("swap");                       // fade and lift out, swap, then back in (opacity + transform only)
+    setTimeout(() => { put(); img.classList.remove("swap"); }, 160);
   }
 
   function show(i, focus) {
@@ -47,7 +54,7 @@
     back.hidden = at === 0;
     next.hidden = !(answered && !last);      // after going back, move on without changing the answer
     send.hidden = !(answered && last);
-    road.style.width = (at / steps.length * 100) + "%";
+    road.style.transform = "scaleX(" + (at / steps.length) + ")";
     setPose(steps[at].dataset.img);
     live.textContent = T("Question " + (at + 1) + " of " + steps.length, "Domanda " + (at + 1) + " di " + steps.length);
     if (focus) {
@@ -94,11 +101,11 @@
     if (sending) return;
     sending = true;
     send.disabled = true;
-    road.style.width = "100%";
+    road.style.transform = "scaleX(1)";
     post(form).then(() => {
       form.hidden = true;
       follow.hidden = false;
-      setPose("m7-cheer");
+      setPose("celebrate");
       live.textContent = T("Answers sent. Thank you.", "Risposte inviate. Grazie.");
       const h = follow.querySelector(".sv-q-title"); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
     }).catch(() => { form.noValidate = false; HTMLFormElement.prototype.submit.call(form); });
@@ -125,7 +132,7 @@
   function finish() {
     follow.hidden = true;
     done.hidden = false;
-    setPose("m0-hello");
+    setPose("encourage");
     done.focus({ preventScroll: true });
   }
 
