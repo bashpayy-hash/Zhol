@@ -69,7 +69,7 @@ def company_message(name: str, city: str, cs: list[str], link: str) -> str:
     return (f"Buongiorno,\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli uffici traffico con linee estere "
             f"divieti, dosaggi a Kufstein, chiusure e scioperi. {line}\n\n"
-            f"Vi chiederemmo 3 minuti per un sondaggio anonimo, da girare a chi in ufficio decide i viaggi:\n{link}\n\n"
+            f"Vi chiederemmo un minuto per un sondaggio anonimo di sei domande, da girare a chi in ufficio decide i viaggi:\n{link}\n\n"
             f"Non vendiamo nulla. Chi risponde riceve i risultati e, se vuole, l'analisi gratuita di un mese passato: "
             f"quali viaggi sarebbero stati toccati e quanto è costato.\n\n"
             f"Grazie,\n{SIGN}\n"
@@ -80,7 +80,7 @@ def association_message(name: str, link: str) -> str:
     return (f"Gentile segreteria di {name},\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, "
             f"dosaggi a Kufstein, chiusure del Brennero e scioperi sulle linee estere, e come li gestiscono gli uffici traffico.\n\n"
-            f"Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio di 3 minuti, anonimo:\n{link}\n\n"
+            f"Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio anonimo di sei domande, un minuto:\n{link}\n\n"
             f"Non vendiamo nulla. All'associazione mandiamo i risultati aggregati appena chiudiamo la raccolta, "
             f"e siamo disponibili a presentarli ai soci.\n\n"
             f"Grazie,\n{SIGN}")
@@ -91,7 +91,7 @@ def press_message(outlet: str, link: str) -> str:
             f"siamo tre studenti della Bocconi. Stiamo raccogliendo dati sul campo su quanto costano agli uffici traffico "
             f"con linee estere i divieti di circolazione, i giorni di dosaggio a Kufstein, le chiusure del Brennero e gli scioperi: "
             f"minuti persi ogni giorno, viaggi da ripianificare, costo dell'ultimo imprevisto.\n\n"
-            f"Il sondaggio richiede 3 minuti ed è anonimo: {link}\n\n"
+            f"Sono sei domande, un minuto, in forma anonima: {link}\n\n"
             f"Se vi sembra utile per i vostri lettori, una breve segnalazione ci aiuterebbe molto. "
             f"Condivideremo con voi i risultati aggregati, in esclusiva se lo desiderate.\n\n"
             f"Grazie,\n{SIGN}")
@@ -116,7 +116,7 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": clean_city(r["city"]),
                      "to": email, "where": site.rstrip(").,;") if site else ("" if email else "сайт ассоциации → «Contatti», спросить отдел автотранспорта"),
                      "search": google(org + " contatti"),
-                     "subject": "Sondaggio di 3 minuti per i vostri associati con linee estere (ricerca Bocconi)",
+                     "subject": "Sei domande, un minuto, per i vostri associati con linee estere (ricerca Bocconi)",
                      "message": association_message(org, link), "link": link})
     for org in NATIONAL_ASSOCIATIONS:
         if org in seen:
@@ -125,7 +125,7 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": "nazionale", "to": "",
                      "where": "сайт ассоциации → «Contatti», спросить отдел автотранспорта",
                      "search": google(org + " contatti sede nazionale"),
-                     "subject": "Sondaggio di 3 minuti per i vostri associati con linee estere (ricerca Bocconi)",
+                     "subject": "Sei domande, un minuto, per i vostri associati con linee estere (ricerca Bocconi)",
                      "message": association_message(org, link), "link": link})
     for outlet, email, note in PRESS:
         link = f"{SURVEY}?src=press-{slug(outlet)}"
@@ -140,7 +140,7 @@ def build() -> list[dict]:
         link = f"{SURVEY}?src=" + ("co-form" if form or site else "co-email")
         rows.append({"id": "c-" + slug(name), "type": "company", "name": name, "city": city, "to": "",
                      "where": form or site or "", "search": google(name + " " + city + " contatti"),
-                     "subject": "3 minuti: quanto vi costano divieti e dosaggi? (ricerca Bocconi)",
+                     "subject": "Un minuto: quanto vi costano divieti, code e scioperi? (ricerca Bocconi)",
                      "message": company_message(name, city, countries(r["lanes_abroad"]), link), "link": link,
                      "fit": r.get("fit", "")})
     ids = [r["id"] for r in rows]

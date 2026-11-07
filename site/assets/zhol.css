@@ -451,22 +451,25 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
   .hero { padding-top: 32px; }
 }
 
-/* survey */
+/* survey: one question per screen, the mascot beside it */
 [hidden] { display: none !important; }   /* .card and other flex boxes must still hide */
-.slide.sv-hero { padding-block: 64px 8px; }
-.sv-title { font-size: clamp(36px, 5vw, 60px); max-width: 900px; }
-.slide.sv-body { padding-top: 28px; }
-.survey { display: flex; flex-direction: column; }
-.sv-sec { display: block; margin: 34px 0 2px; }
-.sv-sec:first-of-type { margin-top: 0; }
-.survey .q { border: 0; margin: 0; padding: 20px 0 22px; border-top: 1px solid var(--rule); min-width: 0; scroll-margin-top: 90px; }
-.survey .q legend, .survey .q .ql { float: left; width: 100%; padding: 0; margin: 0 0 12px; font-size: 17px; line-height: 1.35; font-weight: 600; color: var(--ink); }
-.survey .q legend + *, .survey .q .ql + * { clear: both; }
-.survey .q .n { display: inline-block; min-width: 26px; color: var(--red); font-variant-numeric: tabular-nums; }
-.survey .opt-tag { font-weight: 400; font-size: 13px; color: var(--muted); margin-left: 6px; }
-.survey .hint { font-size: 13.5px; color: var(--muted); margin: -4px 0 12px; }
-.survey .q.missing { border-top-color: var(--red); }
-.survey .q.missing legend, .survey .q.missing .ql { color: var(--red); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.slide.sv { padding-block: 48px 40px; }
+.sv-head { display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+.sv-title { font-size: clamp(36px, 5.4vw, 64px); }
+.sv-stage { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 40px; align-items: start; margin-top: 34px; max-width: 980px; }
+.sv-mascot { position: sticky; top: 96px; }
+.sv-mascot img { width: 100%; height: auto; display: block; transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.sv-mascot img.swap { opacity: 0; transform: translateY(6px); }
+.sv-panel { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.sv-road { height: 4px; background: repeating-linear-gradient(90deg, var(--rule) 0 14px, transparent 14px 22px); border-radius: 2px; position: relative; }
+.sv-road i { display: block; height: 100%; width: 0; background: var(--red); border-radius: 2px; transition: width 300ms var(--ease); }
+.survey fieldset.q { border: 0; margin: 0; padding: 0 0 26px; min-width: 0; }
+.survey:not(.stepping) fieldset.q + fieldset.q { border-top: 1px solid var(--rule); padding-top: 22px; }
+.survey .q legend, .sv-q-title { float: left; width: 100%; padding: 0; margin: 0 0 18px; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; font-weight: 650; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.survey .q legend + * { clear: both; }
+.sv-q-title { float: none; }
+.survey .q .n { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
 .opts { display: flex; flex-wrap: wrap; gap: 8px; }
 .opts label { position: relative; cursor: pointer; }
 .opts input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
@@ -474,27 +477,23 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
   background: var(--card); color: var(--ink-2); font-size: 15px; line-height: 1.3; transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease); }
 .opts label:hover span { border-color: var(--ink-2); }
 .opts input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.opts input:checked + span b { color: var(--paper); }
 .opts input:focus-visible + span { outline: 2px solid var(--red); outline-offset: 2px; }
-.opts.scale span { min-width: 52px; justify-content: center; font-variant-numeric: tabular-nums; }
-.opts.stacked { flex-direction: column; align-items: stretch; }
-.opts.stacked span { border-radius: var(--r); width: 100%; }
-.survey .scale-ends { display: flex; justify-content: space-between; max-width: 316px; margin: 8px 0 0; }
-.sv-fields { margin-top: 2px; }
-.sv-price { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.survey .check { margin-top: 14px; }
-.sv-error { margin: 18px 0 0; padding: 10px 14px; border-left: 3px solid var(--red); background: var(--card); color: var(--red); font-size: 15px; }
-.sv-send { margin-top: 22px; }
-.sv-privacy { margin-top: 14px; max-width: 640px; }
-.sv-done { gap: 14px; outline: none; }
-.sv-aside { position: sticky; top: 90px; }
-.sv-list { margin: 4px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.45; }
-@media (max-width: 920px) {
-  .sv-aside { position: static; }
-  .sv-price { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.opts.tall { display: grid; gap: 10px; max-width: 520px; }
+.opts.tall span { width: 100%; min-height: 56px; padding: 12px 20px; border-radius: var(--r); font-size: 18px; color: var(--ink); }
+.opts.tall.multi span { font-size: 16px; min-height: 50px; }
+.sv-nav { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.survey.stepping .sv-nav { min-height: 48px; }
+.sv-error { margin: 0; padding: 10px 14px; border-left: 3px solid var(--red); background: var(--card); color: var(--red); font-size: 15px; max-width: 520px; }
+.sv-follow { display: flex; flex-direction: column; gap: 16px; }
+.sv-contact { max-width: 520px; }
+.sv-done { display: flex; flex-direction: column; gap: 14px; outline: none; max-width: 560px; }
+.sv-done p { margin: 0; font-size: 17px; color: var(--ink-2); }
+.sv-privacy { margin-top: 40px; max-width: 720px; }
+@media (max-width: 760px) {
+  .slide.sv { padding-top: 32px; }
+  .sv-stage { grid-template-columns: minmax(0, 1fr); gap: 4px; margin-top: 18px; }
+  .sv-mascot { position: static; width: 150px; justify-self: start; margin-bottom: -6px; }
+  .survey .q legend, .sv-q-title { font-size: 22px; margin-bottom: 14px; }
+  .opts.tall span { font-size: 17px; min-height: 54px; }
 }
-@media (max-width: 560px) {
-  .slide.sv-hero { padding-top: 40px; }
-  .survey .q legend, .survey .q .ql { font-size: 16px; }
-  .opts span { font-size: 14.5px; padding: 8px 14px; }
-}
+@media (prefers-reduced-motion: reduce) { .sv-mascot img, .sv-road i { transition: none; } }
