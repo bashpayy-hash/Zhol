@@ -3,7 +3,7 @@
      (cd site && python3 -m http.server 8765) &
      node tests/browser/survey_flow.js [base-url] [screenshot-dir]
    It answers all six steps on a phone (390x844) and a desktop (1440x900), in Italian and English,
-   checks that each step shows its own Vespi pose, that Back and Next work, that the answers and the
+   checks that each step shows its own mascot pose, that Back and Next work, that the answers and the
    optional contact go out as two posts linked by the same random id, that nothing scrolls sideways,
    and saves a screenshot of every state. Posts are intercepted: nothing reaches Netlify. */
 const { chromium } = require("playwright");

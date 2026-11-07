@@ -11,8 +11,8 @@
   const img = $("sv-img"), road = $("sv-road"), live = $("sv-live"), back = $("sv-back"), next = $("sv-next"), send = $("sv-send");
   const follow = $("sv-follow"), done = $("sv-done");
   const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // Vespi poses (brand/MASCOT.md): 280 px for phones, 560 px for 2x screens; see assets/img/vespi/manifest.json
-  const base = "/assets/img/vespi/";
+  // Zhol mascot poses (drawn from the Vespi kit in brand/): 280 px for phones, 560 px for 2x screens; see assets/img/mascot/manifest.json
+  const base = "/assets/img/mascot/";
   const srcset = name => base + name + "-280.webp 280w, " + base + name + "-560.webp 560w";
 
   // a random id links the optional contact to the answers, nothing else does

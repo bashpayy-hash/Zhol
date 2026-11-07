@@ -1,5 +1,5 @@
 {
- "what": "Vespi on the zhol site: every file, where it came from, and for new poses the Higgsfield job and exact prompt (brand/MASCOT.md §4).",
+ "what": "Zhol, the mascot of the zhol site (based on Vespi from brand/): every file, where it came from, and for new poses the Higgsfield job and exact prompt (brand/MASCOT.md §4).",
  "processing": "trimmed transparent margins, fitted bottom-aligned into a 560x448 (5:4) canvas so steps do not jump; WebP q80, alpha q90; 560 (2x) and 280 (1x)",
  "poses": [
   {
@@ -22,7 +22,7 @@
    "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet proud smile, olive-green felt cape collar with one red button. Full figure standing next to a small toy European truck with a plain cream box trailer, the truck about as tall as Vespi, one mitten hand resting on the truck cab, calm and proud. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no license plates, no other characters.",
    "files": [
     {
-     "file": "site/assets/img/vespi/truck-560.webp",
+     "file": "site/assets/img/mascot/truck-560.webp",
      "size": [
       560,
       448
@@ -31,7 +31,7 @@
      "sha256": "7c69ed04e9bb81d4dd34f36926719538bdf99f5a320c1cf318af851af689b503"
     },
     {
-     "file": "site/assets/img/vespi/truck-280.webp",
+     "file": "site/assets/img/mascot/truck-280.webp",
      "size": [
       280,
       224
@@ -61,7 +61,7 @@
    "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, small thoughtful smile with thin slightly raised eyebrows, olive-green felt cape collar with one red button. Half-body, holding a round brass pocket watch with both mitten hands and looking down at it, keeping an eye on the time. The watch face shows only plain tick marks and two hands. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no numbers, no logos, no other characters.",
    "files": [
     {
-     "file": "site/assets/img/vespi/watch-560.webp",
+     "file": "site/assets/img/mascot/watch-560.webp",
      "size": [
       560,
       448
@@ -70,7 +70,7 @@
      "sha256": "0e88827aaa0fe7f6ef776c05b10666c592722a084c6fb2f990817c5bafe4637d"
     },
     {
-     "file": "site/assets/img/vespi/watch-280.webp",
+     "file": "site/assets/img/mascot/watch-280.webp",
      "size": [
       280,
       224
@@ -100,7 +100,7 @@
    "prompt": "The exact same handmade toy character as in the reference images (Vespi): almost smooth cream cotton body with fine fibers and a few loose seam threads, glossy satin red helmet with a cream center stripe and a small olive side button, tiny embroidered black dot eyes, small pink cheeks, quiet smile, olive-green felt cape collar with one red button. Half-body, holding a small smartphone toward the viewer with both mitten hands; the screen shows one plain message bubble and one small red dot, helpful and calm, as if bringing good news in the evening. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos, no app icons, no other characters.",
    "files": [
     {
-     "file": "site/assets/img/vespi/phone-560.webp",
+     "file": "site/assets/img/mascot/phone-560.webp",
      "size": [
       560,
       448
@@ -109,7 +109,7 @@
      "sha256": "3180492116cb049cb7167a7cac51248c9ac86c42fd747dff5ad5800d4647e2ff"
     },
     {
-     "file": "site/assets/img/vespi/phone-280.webp",
+     "file": "site/assets/img/mascot/phone-280.webp",
      "size": [
       280,
       224
@@ -125,7 +125,7 @@
    "from": "brand/mascot/web-ready/poses-v1/route-640.webp",
    "files": [
     {
-     "file": "site/assets/img/vespi/route-560.webp",
+     "file": "site/assets/img/mascot/route-560.webp",
      "size": [
       560,
       448
@@ -134,7 +134,7 @@
      "sha256": "9f3baa872cdc9eafb56cc97c8a8fa9189938dd90be90de9809e43db7d61fda7c"
     },
     {
-     "file": "site/assets/img/vespi/route-280.webp",
+     "file": "site/assets/img/mascot/route-280.webp",
      "size": [
       280,
       224
@@ -150,7 +150,7 @@
    "from": "brand/mascot/web-ready/poses-v2/stage-dsu-560.webp",
    "files": [
     {
-     "file": "site/assets/img/vespi/coin-560.webp",
+     "file": "site/assets/img/mascot/coin-560.webp",
      "size": [
       560,
       448
@@ -159,7 +159,7 @@
      "sha256": "54387935ac4c26c0808dcde464c979cd14a3ecd7db958ffd7832f7119e7548b2"
     },
     {
-     "file": "site/assets/img/vespi/coin-280.webp",
+     "file": "site/assets/img/mascot/coin-280.webp",
      "size": [
       280,
       224
@@ -175,7 +175,7 @@
    "from": "brand/mascot/web-ready/poses-v2/thinking-560.webp",
    "files": [
     {
-     "file": "site/assets/img/vespi/thinking-560.webp",
+     "file": "site/assets/img/mascot/thinking-560.webp",
      "size": [
       560,
       448
@@ -184,7 +184,7 @@
      "sha256": "1849e6b2ace5f7652b4386ee8a0afabf307e7ce59740d29c99b1526fdc6341ab"
     },
     {
-     "file": "site/assets/img/vespi/thinking-280.webp",
+     "file": "site/assets/img/mascot/thinking-280.webp",
      "size": [
       280,
       224
@@ -200,7 +200,7 @@
    "from": "brand/mascot/web-ready/poses-v2/celebrate-560.webp",
    "files": [
     {
-     "file": "site/assets/img/vespi/celebrate-560.webp",
+     "file": "site/assets/img/mascot/celebrate-560.webp",
      "size": [
       560,
       448
@@ -209,7 +209,7 @@
      "sha256": "40a55cd075194205450271ee01b9b5a162ebae17b8a7303a741cd63a56ce81ca"
     },
     {
-     "file": "site/assets/img/vespi/celebrate-280.webp",
+     "file": "site/assets/img/mascot/celebrate-280.webp",
      "size": [
       280,
       224
@@ -225,7 +225,7 @@
    "from": "brand/mascot/web-ready/poses-v2/encourage-560.webp",
    "files": [
     {
-     "file": "site/assets/img/vespi/encourage-560.webp",
+     "file": "site/assets/img/mascot/encourage-560.webp",
      "size": [
       560,
       448
@@ -234,7 +234,7 @@
      "sha256": "ae990d652b79a1602c04d37f79ded9e5fad861cc733bc3e306aa71ddeab17dde"
     },
     {
-     "file": "site/assets/img/vespi/encourage-280.webp",
+     "file": "site/assets/img/mascot/encourage-280.webp",
      "size": [
       280,
       224

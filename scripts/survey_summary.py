@@ -1,7 +1,8 @@
 """Summarise the six-question traffic-office survey against the thresholds in docs/10-feedback-round-2.md.
 
-Download both forms from Netlify (Forms -> survey and survey-followup -> Download CSV) into
-outreach/private/ (git-ignored: the follow-up export holds contacts) and run:
+Download the answers into outreach/private/ (git-ignored: exports hold contacts): the Google Form's sheet as CSV
+(File -> Download -> CSV), and/or the site forms from Netlify (Forms -> survey and survey-followup -> Download CSV).
+Then run:
 
     python scripts/survey_summary.py outreach/private/survey.csv outreach/private/survey-followup.csv \
         --out docs/14-survey-results.md
@@ -29,6 +30,47 @@ PRICE = [("0", "nothing"), ("<5", "up to €5"), ("5-10", "€5–10"), ("10-20"
 USE = [("yes", "yes, a lot"), ("maybe", "maybe"), ("no", "no")]
 FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis", "interview": "a 20-minute chat"}
 
+# The Google Form (outreach/google-form.gs) exports question titles as headers and choice labels as values.
+# Map them to the same codes as the site form, so both can be read together.
+GOOGLE_FORM = {
+    "Quanti camion ha la vostra azienda?": ("fleet", {
+        "1–5": "1-5", "6–20": "6-20", "21–50": "21-50", "51–100": "51-100", "Più di 100": "100+"}),
+    "Quante volte a settimana i vostri camion vanno all’estero?": ("trips_abroad", {
+        "Mai": "0", "1–5 volte": "1-5", "6–20 volte": "6-20", "Più di 20 volte": "20+"}),
+    "Quanto tempo passate ogni giorno a controllare divieti, code e scioperi?": ("minutes", {
+        "Meno di 10 minuti": "<10", "10–20 minuti": "10-20", "20–40 minuti": "20-40", "Più di 40 minuti": "40+"}),
+    "L’ultima volta che un divieto, una coda o uno sciopero ha fermato un vostro camion, quanto vi è costato?": ("last_cost", {
+        "Meno di 100 €": "<100", "100–300 €": "100-300", "300–1.000 €": "300-1000", "Più di 1.000 €": "1000+", "Non lo so": "unknown"}),
+    "Vi servirebbe un WhatsApp la sera prima che vi dice quali camion di domani avranno un problema, e cosa fare?": ("would_use", {
+        "Sì, molto": "yes", "Forse": "maybe", "No": "no"}),
+    "Quale prezzo vi sembra giusto, al mese per ogni camion?": ("price", {
+        "Niente, non pagherei": "0", "Fino a 5 €": "<5", "5–10 €": "5-10", "10–20 €": "10-20", "Più di 20 €": "20+"}),
+    "Cosa vi interessa?": ("followup", {
+        "I risultati del sondaggio": "results", "L’analisi gratuita di un vostro mese passato": "analysis",
+        "Fare due chiacchiere, 20 minuti": "interview"}),
+    "Email o telefono aziendale": ("contact", None),
+    "Consenso": ("consent", None),
+}
+
+
+def _from_google(raw: dict) -> dict | None:
+    """One Google Form row as site-form fields, or None if this is not a Google Form export."""
+    titles = {(k or "").strip(): (v or "").strip() for k, v in raw.items()}
+    if not any(t in GOOGLE_FORM for t in titles):
+        return None
+    row = {"lang": "it", "src": "google-form"}
+    for title, value in titles.items():
+        if title not in GOOGLE_FORM:
+            continue
+        field, codes = GOOGLE_FORM[title]
+        if codes is None:
+            row[field] = value
+        elif field == "followup":   # checkbox answers come joined with ", "
+            row[field] = "; ".join(code for label, code in codes.items() if label in value)
+        else:
+            row[field] = codes.get(value, value)
+    return row
+
 
 def _norm(row: dict) -> dict:
     return {(k or "").strip().lower().replace(" ", "_"): (v or "").strip() for k, v in row.items()}
@@ -42,8 +84,15 @@ def read(paths: list[Path]) -> tuple[list[dict], list[dict]]:
             sample = f.read(4096)
             f.seek(0)
             dialect = csv.Sniffer().sniff(sample, delimiters=",;") if sample else csv.excel
-            for r in csv.DictReader(f, dialect=dialect):
-                r = _norm(r)
+            for raw in csv.DictReader(f, dialect=dialect):
+                g = _from_google(raw)
+                if g is not None:                    # a Google Form row holds the answers and the contact together
+                    if g.get("fleet") and g.get("minutes"):
+                        answers.append(g)
+                    if g.get("followup") or g.get("contact"):
+                        follow.append(g)
+                    continue
+                r = _norm(raw)
                 if r.get("fleet") and r.get("minutes"):
                     answers.append(r)
                 elif "followup" in r or "contact" in r:
