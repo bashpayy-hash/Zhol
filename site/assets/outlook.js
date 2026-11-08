@@ -30,6 +30,7 @@
 
   function row(it) {
     const r = el("article", "rd-row " + tone(it.p));
+    r.id = "rd-" + it.id;
     const when = el("div", "rd-when");
     when.append(el("b", null, range(it)), el("span", "small muted", BASIS[it.basis] || it.basis));
     const body = el("div", "rd-body");
@@ -229,6 +230,16 @@
     render();
   }));
 
+  // the map (map.js): same events, same route; "Plan and cost" jumps to the event in the list
+  const mapView = window.ZholMap && $("map") ? window.ZholMap($("map"), { show: id => {
+    if (filter !== "all") { filter = "all"; document.querySelectorAll(".rd-tools .seg button").forEach(x => x.setAttribute("aria-selected", String(x.dataset.f === "all"))); render(); }
+    const r = $("rd-" + id); if (!r) return;
+    r.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    r.classList.add("flash"); setTimeout(() => r.classList.remove("flash"), 1600);
+    const box = r.querySelector(".rd-plan"); if (box) box.open = true;
+  } }) : null;
+  const renderMap = () => { if (mapView) mapView.update(data.items.filter(onRoute), data.today); };
+
   fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)).then(d => {
     data = d;
     const built = new Date(d.built_at).toLocaleString(LOC, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -244,7 +255,7 @@
     (d.lanes || []).forEach(l => { const o = el("option", null, L(l, "name")); o.value = l.id; sel.append(o); });
     const saved = store.get("zhol-route");
     if (saved && (d.lanes || []).some(l => l.id === saved)) { sel.value = saved; route = saved; }
-    sel.addEventListener("change", () => { route = sel.value; store.set("zhol-route", route); renderFocus(); renderMoney(); render(); renderBrief(); });
-    renderFocus(); renderMethod(); renderMoney(); render(); renderBrief();
+    sel.addEventListener("change", () => { route = sel.value; store.set("zhol-route", route); renderFocus(); renderMoney(); render(); renderBrief(); renderMap(); });
+    renderFocus(); renderMethod(); renderMoney(); render(); renderBrief(); renderMap();
   }).catch(() => { $("rd-status").textContent = T("The radar could not be loaded. Try again in a minute.", "Non è stato possibile caricare il radar. Riprova tra un minuto."); });
 })();

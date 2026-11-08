@@ -1,0 +1,136 @@
+Metadata-Version: 2.4
+Name: zhol
+Version: 0.1.0
+Summary: Which of tomorrow's loads will a restriction hit? Evening-before disruption alerts for European road freight.
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.115
+Requires-Dist: uvicorn>=0.30
+Requires-Dist: pydantic>=2.7
+Requires-Dist: httpx>=0.27
+Requires-Dist: python-multipart>=0.0.9
+Requires-Dist: anthropic>=2.0
+Requires-Dist: tzdata>=2024.1
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+
+# zhol
+
+**Which of tomorrow's loads will a restriction hit?** — каждый вечер zhol проверяет завтрашние рейсы транспортной компании на все запреты, дозирование в Куфштайне, закрытия, забастовки и протесты по маршруту и присылает диспетчеру **одно сообщение в WhatsApp** с вариантами: выехать раньше, позже, сменить перевал или придержать груз. Если проблем нет — молчит.
+
+Команда: Alikhan · Inkara · Tomiris (Bocconi), TEF Ignition 2026.
+
+---
+
+## Сайт
+
+**https://zhol-beta.netlify.app** — сайт в стиле ваших питч-дек (бумага, кирпично-красный, шалфейные и тёмные слайды, ваш логотип и иллюстрации):
+
+| Страница | Что там |
+|---|---|
+| [/](https://zhol-beta.netlify.app/) | История из Workshop-деки: проблема → почему сейчас → блокады → Сицилия → решение → клиенты → команда, плюс калькулятор экономии |
+| [/answers](https://zhol-beta.netlify.app/answers) | Ответы на фидбэк жюри TEF: рынок, цена, модель, GTM, техника, конкуренты, план проверки |
+| [/audience](https://zhol-beta.netlify.app/audience) | Аудитория: размер рынка по реестру, три персоны (владелец, диспетчер, экспедитор), четыре сегмента, публичные высказывания людей из отрасли, каналы. Полутоновые карты стартовых провинций и сегментов, нарисованные по Natural Earth (`scripts/maps/`) |
+| [/beta](https://zhol-beta.netlify.app/beta) | Живая бета: вечер перед ближайшим официальным днём дозирования, сетка «когда выезжать» по 19 коридорам на 14 дней, бюллетень запретов, демо, формы «записаться в бету» и «отзыв тестировщика» |
+
+Данные беты считает настоящий движок zhol при каждой сборке на Netlify (`scripts/build_site.py`, настройки в `netlify.toml`).
+
+**Подключить GitHub к Netlify (1 минута, из браузера):** Netlify → проект `zhol-beta` → Project configuration → Build & deploy → *Link repository* → GitHub → `bashpayy-hash/Zhol`, ветка `claude/bold-franklin-t1lyqx` (или `main` после мержа). Настройки сборки подтянутся из `netlify.toml`. Дальше каждый push пересобирает сайт.
+
+**Обновление данных дважды в день:** в Netlify создать Build hook, добавить его в GitHub как секрет `NETLIFY_BUILD_HOOK`; workflow `.github/workflows/refresh-site.yml` будет дёргать его в 06:15 и 16:45 по Риму (работает из ветки по умолчанию).
+
+**Заявки из форм:** Netlify → zhol-beta → Forms. Уведомления на почту настраиваются там же (адрес должен быть участником команды Netlify).
+
+## Ответы на фидбэк TEF
+
+| Фидбэк | Где ответ |
+|---|---|
+| TAM / SAM / SOM | [docs/01-market.md](docs/01-market.md) — TAM ≈ €230 M, SAM ≈ €18,6 M (Италия), SOM ≈ €0,77 M ARR на 3-й год |
+| Pricing: % от сэкономленного? Оценка экономии | [docs/03-business-model.md](docs/03-business-model.md) — офис на 20 машин экономит ≈ €1 740/мес; цена €12/машину/мес (≈14% экономии) + план «15% от подтверждённой экономии» |
+| Понятная бизнес-модель | [docs/03-business-model.md](docs/03-business-model.md) — подписка, юнит-экономика, план на 3 года |
+| Понятный GTM | [docs/05-go-to-market.md](docs/05-go-to-market.md) — ICP, каналы, воронка, 90-дневный план |
+| Больше деталей по технике | [docs/04-technical-architecture.md](docs/04-technical-architecture.md) + рабочий код в этом репозитории |
+| Сначала рынок, потом техника | [docs/06-validation-plan.md](docs/06-validation-plan.md) — гипотезы, тесты, критерии остановки |
+| Конкуренты, включая будущие решения | [docs/02-competitors.md](docs/02-competitors.md) |
+| Есть ли место на рынке? | [docs/01-market.md §1.5](docs/01-market.md) и [docs/02-competitors.md §2.5](docs/02-competitors.md) |
+| **Всё на одной странице + что менять в деке + ответы на вопросы жюри** | **[docs/00-answers-to-tef-feedback.md](docs/00-answers-to-tef-feedback.md)** |
+
+Всё это одной страницей в стиле деки, с иллюстрациями и живым калькулятором экономии: [zhol-beta.netlify.app](https://zhol-beta.netlify.app) — главная начинается с восьми вопросов жюри. История проблемы (Сицилия, Куфштайн) — [/story](https://zhol-beta.netlify.app/story).
+
+Письма людям из отрасли (по-итальянски, с переводом): [outreach/](outreach/README.md).
+
+Кто публично высказывался о проблеме (ассоциации, чиновники, аналитики, перевозчики, журналисты) и кому писать первым: [docs/08-people-and-voices.md](docs/08-people-and-voices.md).
+
+Кто наша аудитория (сегменты, размеры, персоны, каналы, события 2027): [docs/09-audience.md](docs/09-audience.md) и страница [zhol-beta.netlify.app/audience](https://zhol-beta.netlify.app/audience).
+
+Радар — что ожидается на дорогах в ближайшие 8 недель (забастовки, блокады, праздничные запреты, дозирование, снег на перевалах) и с каким шансом, с формулой: [zhol-beta.netlify.app/outlook](https://zhol-beta.netlify.app/outlook), описание — [docs/11-radar.md](docs/11-radar.md). Сколько стоит каждое событие, какой план выбрать и кому писать (модель «стоимость/потеря» и ценность информации) — [docs/12-cost-and-decision-model.md](docs/12-cost-and-decision-model.md).
+
+Разбор прошлого месяца для офиса: офис присылает Excel по шаблону [outreach/modello_carichi.xlsx](outreach/modello_carichi.xlsx), команда запускает `python -m zhol replay файл.xlsx --company "Название" --out отчёт.html` и через два дня отправляет отчёт на итальянском ([пример](https://zhol-beta.netlify.app/replay-example)). Финплан на 36 месяцев с чувствительностью — [docs/13-financial-plan.md](docs/13-financial-plan.md), генератор `python scripts/finplan.py`.
+
+Второй фидбек TEF (ценность против текущего процесса, кто платит, USP, реальный сегмент, операционная реализуемость, финплан): что измеряем и пороги успеха — [docs/10-feedback-round-2.md](docs/10-feedback-round-2.md). Кому писать на интервью и что писать — [outreach/07-interview-requests.md](outreach/07-interview-requests.md), скрипт v2 — [outreach/03-interview-script.md](outreach/03-interview-script.md), журнал — [outreach/interview_log.csv](outreach/interview_log.csv). Опрос для офисов: 6 вопросов, минута (сайт `/q`), как его рассылать и считать — [outreach/10-survey.md](outreach/10-survey.md); проверка в браузере — `node tests/browser/survey_flow.js`. Правила владельца и маскот Веспи — [brand/](brand/README.md), решения — [DESIGN.md](DESIGN.md).
+
+---
+
+## Как запустить
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python -m pytest -q                 # 31 тест
+python -m zhol demo sicily          # кейс из деки: забастовка на Сицилии, 18 окт 2026
+python -m zhol demo brenner         # Бреннер: дозирование в Куфштайне, ночной запрет A12, закрытие Фрежюса
+python -m zhol serve                # веб-консоль на http://127.0.0.1:8000
+```
+
+Другие команды:
+- `python -m zhol bans 2026-11-07` — все национальные запреты на 3 дня;
+- `python -m zhol extract "<текст новости>"` — извлечь событие из текста;
+- `python -m zhol savings --trucks 20` — расчёт экономии и цены.
+
+API-документация: `http://127.0.0.1:8000/docs`. Настройки (ключ Claude, WhatsApp Cloud API, токен админа) — в [.env.example](.env.example). Без ключей всё работает: извлечение — на правилах, WhatsApp — в консольном режиме (сообщения никуда не уходят).
+
+## Что умеет MVP
+
+- **Правила запретов в 7 странах** (IT, AT, DE, CH, FR, SI, PL). Включая итальянский календарь 2026 (DM 325/2025) с поправками для международных рейсов (+4 ч на въезд, −2 ч на выезд), австрийский ночной запрет с исключением для малошумных машин и зимний ночной запрет на A12 с 20:00.
+- **19 коридоров и 18 узких мест**: Бреннер, Luegbrücke, Куфштайн, A12, Тарвизио, Тауэрн, Готтард, Сан-Бернардино, Фрежюс, Монблан, Вентимилья, паром через Мессинский пролив и другие.
+- **Симуляция рейса**: ETA в каждой точке, правила вождения ЕС 561/2006, паромы, швейцарская таможня, исключения (скоропорт, малошумные машины), направление движения.
+- **Варианты и стоимость**: выехать раньше / позже, сменить маршрут, придержать. Стоимость считается по модели компании: €100 за час простоя (закон), км, платные дороги, опоздание.
+- **Извлечение событий из текста**:
+  - Claude (`claude-opus-5-5`, строгая JSON-схема, проверка цитаты);
+  - запасной вариант на правилах (IT/DE/FR/EN);
+  - парсер DATEX II для национальных точек доступа ЕС.
+- **Ручная проверка**: каждое событие одобряет человек; время проверки измеряется.
+- **WhatsApp Cloud API**: шаблон вне 24-часового окна, полный текст внутри окна, ответы диспетчера `1` / `2` / `0`, проверка подписи вебхука.
+- **Метрики пилота и «журнал экономии»**: точность, ложные тревоги, пропуски, время проверки, подтверждённая экономия.
+- **Веб-консоль** в вашем дизайне ([design/](design/DESIGN.md)): Tonight, Review, Loads, Alerts, Pilot, Savings.
+
+## Структура
+
+```
+zhol/            код: models, rules, engine, composer, pipeline, api, ingest/, channels/, data/
+web/             консоль (HTML/CSS/JS без сборки, токены из design/variables.css)
+tests/           31 тест + фикстура DATEX II
+docs/            ответы на фидбэк: рынок, конкуренты, бизнес-модель, архитектура, GTM, план валидации
+outreach/        письма и скрипты по-итальянски + трекер лидов
+design/          дизайн-система (DESIGN.md, tokens.json, variables.css, theme.css)
+```
+
+## Что нужно сделать команде (то, что нельзя сделать из кода)
+
+1. **WhatsApp Business**:
+   - завести номер в Meta Business Manager;
+   - отправить шаблон `zhol_load_alert_v1` на одобрение (категория *utility*, текст в docs/04 §4.7);
+   - прописать `WHATSAPP_*` в `.env`.
+2. **Ключ Anthropic API**: `ANTHROPIC_API_KEY` в `.env`, чтобы новости разбирал Claude, а не правила.
+3. **Доступ к данным**:
+   - бесплатная регистрация на CCISS (DATEX II Италии);
+   - запрос доступа к ASFINAG / mobilitydata.gv.at;
+   - вбить календарь дозирования Тироля по шаблону `zhol/data/calendars/examples/`.
+4. **Источники**: ключевые факты сверены с первоисточниками — лог в [docs/07-source-verification.md](docs/07-source-verification.md). С вашего ноутбука осталось скачать: итальянский декрет (сайт MIT не открывается из облака) и календарь Luegbrücke от ASFINAG (блокирует облачные IP). В декабре внести декрет MIT на 2027 год.
+5. **Начать аутрич**: [outreach/README.md](outreach/README.md).
+
+## Честно о данных
+
+- Цифры рынка — с источниками в каждом документе.
+- Предположения (доля компаний с рейсами за границу, частота «непредвиденных» событий, сэкономленные часы) помечены как предположения. Их проверяют интервью и пилоты (docs/06).
+- События и грузы в демо выдуманы и подписаны как demo.

@@ -1,4 +1,4 @@
-/* Browser check of the six-question survey at /q and /q/en (brand/PRINCIPLES.md §10: scenarios recorded in the repo).
+/* Browser check of the six-question survey at /q (English) and /q/it (brand/PRINCIPLES.md §10: scenarios recorded in the repo).
    Serve the site, then run:
      (cd site && python3 -m http.server 8765) &
      node tests/browser/survey_flow.js [base-url] [screenshot-dir]
@@ -17,7 +17,7 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
 
 (async () => {
   const browser = await chromium.launch();
-  for (const [lang, path] of [["it", "/q/"], ["en", "/q/en/"]]) {
+  for (const [lang, path] of [["en", "/q/"], ["it", "/q/it/"]]) {
     for (const [w, h] of [[390, 844], [1440, 900]]) {
       const tag = `${lang}-${w}`;
       const page = await browser.newPage({ viewport: { width: w, height: h } });

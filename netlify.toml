@@ -28,22 +28,30 @@
   to = "/"
   status = 301
 
-# the survey moved to a short standalone link (/q, /q/en); old links keep working, with their ?src=
+# the survey is a short standalone link: /q in English (the default), /q/it in Italian; old links keep working, with their ?src=
+[[redirects]]
+  from = "/q/en"
+  to = "/q"
+  status = 301
+[[redirects]]
+  from = "/q/en/*"
+  to = "/q"
+  status = 301
 [[redirects]]
   from = "/it/sondaggio"
-  to = "/q"
+  to = "/q/it"
   status = 301
 [[redirects]]
   from = "/it/sondaggio.html"
-  to = "/q"
+  to = "/q/it"
   status = 301
 [[redirects]]
   from = "/survey"
-  to = "/q/en"
+  to = "/q"
   status = 301
 [[redirects]]
   from = "/survey.html"
-  to = "/q/en"
+  to = "/q"
   status = 301
 
 # Italian pages get the Italian "page not found"

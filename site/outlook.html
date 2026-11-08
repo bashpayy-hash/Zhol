@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=1">
-<link rel="stylesheet" href="/assets/zhol.css?v=b2">
+<link rel="stylesheet" href="/assets/zhol.css?v=m1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/outlook">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/outlook">
 </head>
@@ -38,6 +38,32 @@
     </div>
     <div class="media scene-frame">
       <video data-scene="/assets/img/scenes/pass" muted loop playsinline preload="none" poster="/assets/img/scenes/pass-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, our plush mascot, watching a snowy Alpine pass through binoculars from a lookout hut, a barometer and a radio on the sill"></video>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="map" hidden>
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">The map</span>
+      <h2 class="title">Where disruptions can hit, and how likely they are</h2>
+    </div>
+    <div class="map-grid">
+      <div class="map-col">
+        <div class="seg map-views" role="tablist" aria-label="Map view">
+          <button role="tab" type="button" aria-selected="true" data-v="europe">Europe</button>
+          <button role="tab" type="button" aria-selected="false" data-v="alps">Alps up close</button>
+        </div>
+        <div class="map-frame" role="group" aria-label="Map of Europe with the events on the radar"></div>
+        <div class="legend map-legend">
+          <span><i class="dot vl"></i>80% and up</span>
+          <span><i class="dot l"></i>50–80%</span>
+          <span><i class="dot po"></i>20–50%</span>
+          <span><i class="dot watch"></i>Crossing we watch, nothing expected</span>
+          <span><i class="area"></i>Whole country (a holiday ban)</span>
+        </div>
+      </div>
+      <div class="map-panel card" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -181,6 +207,7 @@
   <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
-<script src="/assets/outlook.js?v=b1" defer></script>
+<script src="/assets/map.js?v=m1" defer></script>
+<script src="/assets/outlook.js?v=m1" defer></script>
 </body>
 </html>

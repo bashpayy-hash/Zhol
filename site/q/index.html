@@ -1,36 +1,38 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>zhol · Sei domande per gli uffici traffico</title>
-<meta name="description" content="Sei domande, un minuto: quanto costano a chi organizza trasporti su strada, rotaia o traghetto divieti, code, chiusure e scioperi. Si risponde con un tocco, è anonimo, non vendiamo nulla.">
-<meta property="og:title" content="Sei domande, un minuto: quanto vi costano divieti, code e scioperi?">
-<meta property="og:description" content="Ricerca di tre studenti Bocconi per gli uffici traffico con linee estere. Anonimo, risultati condivisi con chi risponde.">
+<title>zhol · Six questions for traffic offices</title>
+<meta name="description" content="Six questions, one minute: what bans, queues, closures and strikes cost the people who plan transport by road, rail or ferry. One tap per answer, anonymous, nothing to buy.">
+<meta property="og:title" content="Six questions, one minute: what do bans, queues and strikes cost you?">
+<meta property="og:description" content="Research by three Bocconi students for traffic offices with lanes abroad. Anonymous; results shared with everyone who answers.">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=b2">
-<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/q/en">
-<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/q">
+<link rel="stylesheet" href="/assets/zhol.css?v=m1">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/q">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/q/it">
+<!-- links sent to Italian offices before English became the default carry an Italian campaign tag: send them on to /q/it -->
+<script>(function(){var s=new URLSearchParams(location.search).get("src")||"";if(/^(assoc|co|press|group)-/.test(s))location.replace("/q/it"+location.search)})()</script>
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
 </head>
 <body>
 <header class="top q-top"><div class="wrap">
   <span class="logo"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></span>
-  <a class="lang-pill" href="/q/en" lang="en" hreflang="en">EN</a>
+  <a class="lang-pill" href="/q/it" lang="it" hreflang="it">IT</a>
 </div></header>
 
 <main>
 <section class="slide sv-intro" id="sv-intro">
   <div class="wrap sv-intro-grid">
     <div class="sv-intro-text">
-      <span class="sv-label">Ricerca Bocconi per gli uffici traffico</span>
-      <h1 class="title sv-title">Sei domande. Un minuto.</h1>
-      <p class="lead">Quanto vi costano divieti, code, chiusure e scioperi, su strada, rotaia o traghetto? Si risponde con un tocco, è anonimo e non vendiamo nulla.</p>
-      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Inizia</a><span class="small muted">Anonimo · nessuna vendita</span></div>
+      <span class="sv-label">Bocconi research for traffic offices</span>
+      <h1 class="title sv-title">Six questions. One minute.</h1>
+      <p class="lead">What do bans, queues, closures and strikes cost you, by road, rail or ferry? One tap per answer, anonymous, and we sell nothing.</p>
+      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Start</a><span class="small muted">Anonymous · nothing to buy</span></div>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
@@ -48,109 +50,109 @@
         <div class="sv-road" aria-hidden="true"><i id="sv-road"></i></div>
         <p class="sr-only" id="sv-live" aria-live="polite"></p>
 
-        <form class="survey" id="survey" name="survey" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="survey" id="survey" name="survey" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="survey">
-          <input type="hidden" name="lang" value="it">
+          <input type="hidden" name="lang" value="en">
           <input type="hidden" name="src" value="">
           <input type="hidden" name="rid" value="">
-          <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
+          <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
 
-          <fieldset class="q" data-img="truck"><legend><span class="n">Domanda 1 di 6</span>Quanti mezzi gestite (camion, rimorchi, container, vagoni)?</legend>
-            <p class="sv-why">Per confrontare realtà di dimensioni simili.</p>
+          <fieldset class="q" data-img="truck"><legend><span class="n">Question 1 of 6</span>How many vehicles do you manage (trucks, trailers, containers, wagons)?</legend>
+            <p class="sv-why">To compare operations of a similar size.</p>
             <div class="opts tall">
               <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
               <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
               <label><input type="radio" name="fleet" value="21-50"><span>21–50</span></label>
               <label><input type="radio" name="fleet" value="51-100"><span>51–100</span></label>
-              <label><input type="radio" name="fleet" value="100+"><span>Più di 100</span></label>
+              <label><input type="radio" name="fleet" value="100+"><span>Over 100</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="route"><legend><span class="n">Domanda 2 di 6</span>Quante spedizioni a settimana vanno all’estero, su strada, rotaia o traghetto?</legend>
-            <p class="sv-why">Le spedizioni lunghe sono le più esposte a divieti, code e traghetti fermi.</p>
+          <fieldset class="q" data-img="route"><legend><span class="n">Question 2 of 6</span>How many shipments a week go abroad, by road, rail or ferry?</legend>
+            <p class="sv-why">Long shipments are the ones most exposed to bans, queues and ferries that do not sail.</p>
             <div class="opts tall">
-              <label><input type="radio" name="trips_abroad" value="0" required><span>Mai</span></label>
-              <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5 volte</span></label>
-              <label><input type="radio" name="trips_abroad" value="6-20"><span>6–20 volte</span></label>
-              <label><input type="radio" name="trips_abroad" value="20+"><span>Più di 20 volte</span></label>
+              <label><input type="radio" name="trips_abroad" value="0" required><span>Never</span></label>
+              <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5 times</span></label>
+              <label><input type="radio" name="trips_abroad" value="6-20"><span>6–20 times</span></label>
+              <label><input type="radio" name="trips_abroad" value="20+"><span>Over 20 times</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="watch"><legend><span class="n">Domanda 3 di 6</span>Quanto tempo passate ogni giorno a controllare divieti, code e scioperi?</legend>
-            <p class="sv-why">È il tempo che zhol vuole restituirvi.</p>
+          <fieldset class="q" data-img="watch"><legend><span class="n">Question 3 of 6</span>How long do you spend each day checking bans, queues and strikes?</legend>
+            <p class="sv-why">This is the time zhol wants to give back to you.</p>
             <div class="opts tall">
-              <label><input type="radio" name="minutes" value="<10" required><span>Meno di 10 minuti</span></label>
-              <label><input type="radio" name="minutes" value="10-20"><span>10–20 minuti</span></label>
-              <label><input type="radio" name="minutes" value="20-40"><span>20–40 minuti</span></label>
-              <label><input type="radio" name="minutes" value="40+"><span>Più di 40 minuti</span></label>
+              <label><input type="radio" name="minutes" value="<10" required><span>Under 10 minutes</span></label>
+              <label><input type="radio" name="minutes" value="10-20"><span>10–20 minutes</span></label>
+              <label><input type="radio" name="minutes" value="20-40"><span>20–40 minutes</span></label>
+              <label><input type="radio" name="minutes" value="40+"><span>Over 40 minutes</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">Domanda 4 di 6</span>L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?</legend>
-            <p class="sv-why">Ci dice quanto vale un avviso arrivato in tempo.</p>
+          <fieldset class="q" data-img="coin"><legend><span class="n">Question 4 of 6</span>The last time a ban, a queue or a strike stopped one of your shipments, what did it cost you?</legend>
+            <p class="sv-why">It tells us what an alert that arrives in time is worth.</p>
             <div class="opts tall">
-              <label><input type="radio" name="last_cost" value="<100" required><span>Meno di 100 €</span></label>
-              <label><input type="radio" name="last_cost" value="100-300"><span>100–300 €</span></label>
-              <label><input type="radio" name="last_cost" value="300-1000"><span>300–1.000 €</span></label>
-              <label><input type="radio" name="last_cost" value="1000+"><span>Più di 1.000 €</span></label>
-              <label><input type="radio" name="last_cost" value="unknown"><span>Non lo so</span></label>
+              <label><input type="radio" name="last_cost" value="<100" required><span>Under €100</span></label>
+              <label><input type="radio" name="last_cost" value="100-300"><span>€100–300</span></label>
+              <label><input type="radio" name="last_cost" value="300-1000"><span>€300–1,000</span></label>
+              <label><input type="radio" name="last_cost" value="1000+"><span>Over €1,000</span></label>
+              <label><input type="radio" name="last_cost" value="unknown"><span>Don’t know</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">Domanda 5 di 6</span>Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?</legend>
-            <p class="sv-why">È esattamente ciò che stiamo costruendo.</p>
+          <fieldset class="q" data-img="phone"><legend><span class="n">Question 5 of 6</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s shipments will hit a problem and what to do?</legend>
+            <p class="sv-why">This is exactly what we are building.</p>
             <div class="opts tall">
-              <label><input type="radio" name="would_use" value="yes" required><span>Sì, molto</span></label>
-              <label><input type="radio" name="would_use" value="maybe"><span>Forse</span></label>
+              <label><input type="radio" name="would_use" value="yes" required><span>Yes, a lot</span></label>
+              <label><input type="radio" name="would_use" value="maybe"><span>Maybe</span></label>
               <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="thinking"><legend><span class="n">Domanda 6 di 6</span>Quale prezzo vi sembra giusto, al mese per ogni mezzo?</legend>
-            <p class="sv-why">Per fissare un prezzo onesto prima di chiedere un euro.</p>
+          <fieldset class="q" data-img="thinking"><legend><span class="n">Question 6 of 6</span>What price feels fair, per vehicle per month?</legend>
+            <p class="sv-why">To set a fair price before asking for a single euro.</p>
             <div class="opts tall">
-              <label><input type="radio" name="price" value="0" required><span>Niente, non pagherei</span></label>
-              <label><input type="radio" name="price" value="<5"><span>Fino a 5 €</span></label>
-              <label><input type="radio" name="price" value="5-10"><span>5–10 €</span></label>
-              <label><input type="radio" name="price" value="10-20"><span>10–20 €</span></label>
-              <label><input type="radio" name="price" value="20+"><span>Più di 20 €</span></label>
+              <label><input type="radio" name="price" value="0" required><span>Nothing, I wouldn’t pay</span></label>
+              <label><input type="radio" name="price" value="<5"><span>Up to €5</span></label>
+              <label><input type="radio" name="price" value="5-10"><span>€5–10</span></label>
+              <label><input type="radio" name="price" value="10-20"><span>€10–20</span></label>
+              <label><input type="radio" name="price" value="20+"><span>Over €20</span></label>
             </div>
           </fieldset>
 
           <p class="sv-error" id="sv-error" role="alert" hidden></p>
-          <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Indietro</button><button class="btn" type="button" id="sv-next" hidden>Avanti</button><button class="btn" type="submit" id="sv-send">Invia le risposte</button></div>
+          <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Back</button><button class="btn" type="button" id="sv-next" hidden>Next</button><button class="btn" type="submit" id="sv-send">Send my answers</button></div>
         </form>
 
-        <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
           <input type="hidden" name="form-name" value="survey-followup">
-          <input type="hidden" name="lang" value="it">
+          <input type="hidden" name="lang" value="en">
           <input type="hidden" name="rid" value="">
-          <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
-          <span class="sv-label ok">Fatto, grazie!</span>
-          <h2 class="sv-q-title">Volete qualcosa in cambio? Facoltativo.</h2>
+          <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
+          <span class="sv-label ok">Done, thank you!</span>
+          <h2 class="sv-q-title">Would you like something back? Optional.</h2>
           <div class="opts tall multi">
-            <label><input type="checkbox" name="followup" value="results"><span>I risultati del sondaggio</span></label>
-            <label><input type="checkbox" name="followup" value="analysis"><span>L’analisi gratuita di un vostro mese passato</span></label>
-            <label><input type="checkbox" name="followup" value="interview"><span>Fare due chiacchiere, 20 minuti</span></label>
+            <label><input type="checkbox" name="followup" value="results"><span>The survey results</span></label>
+            <label><input type="checkbox" name="followup" value="analysis"><span>A free analysis of one of your past months</span></label>
+            <label><input type="checkbox" name="followup" value="interview"><span>A 20-minute chat</span></label>
           </div>
-          <div class="field sv-contact"><label for="sv-contact">Email o telefono aziendale</label><input id="sv-contact" name="contact" autocomplete="email"></div>
-          <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> Potete usare questo contatto solo per ciò che ho scelto.</label>
+          <div class="field sv-contact"><label for="sv-contact">Work email or phone</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> You may use this contact only for what I chose.</label>
           <p class="sv-error" id="sv-error2" role="alert" hidden></p>
-          <div class="sv-nav"><button class="btn" type="submit">Invia</button><button class="sv-link" type="button" id="sv-skip">No, grazie</button></div>
+          <div class="sv-nav"><button class="btn" type="submit">Send</button><button class="sv-link" type="button" id="sv-skip">No, thanks</button></div>
         </form>
 
         <div class="sv-done" id="sv-done" hidden tabindex="-1">
-          <span class="sv-label ok">Ricevuto</span>
-          <h2 class="sv-q-title">Grazie! Ci avete aiutato molto.</h2>
-          <p>Conoscete un altro ufficio traffico? Ogni risposta in più rende i numeri più solidi.</p>
-          <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Inoltra su WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copia il link</button></div>
+          <span class="sv-label ok">Received</span>
+          <h2 class="sv-q-title">Thank you! That helps a lot.</h2>
+          <p>Know another traffic office? Every extra answer makes the numbers stronger.</p>
+          <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Forward on WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copy the link</button></div>
         </div>
       </div>
     </div>
 
-    <p class="small muted sv-privacy">Un progetto di tre studenti Bocconi (Alikhan, Inkara, Tomiris) per TEF Ignition 2026. Le risposte sono anonime e pubblichiamo solo dati aggregati. Se lasciate un contatto lo colleghiamo alle vostre risposte, lo usiamo solo per ciò che avete scelto e lo cancelliamo a fine progetto, o prima se ce lo chiedete. Dati conservati su Netlify.</p>
+    <p class="small muted sv-privacy">A project by three Bocconi students (Alikhan, Inkara, Tomiris) for TEF Ignition 2026. Answers are anonymous and we publish aggregate figures only. If you leave a contact, we link it to your answers, use it only for what you chose, and delete it when the project ends, or sooner if you ask. Data stored on Netlify.</p>
   </div>
 </section>
 </main>
 
 <footer class="site"><div class="wrap">
   <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
-  <span>Alikhan · Inkara · Tomiris · Università Bocconi · TEF Ignition 2026</span>
+  <span>Alikhan · Inkara · Tomiris · Bocconi University · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/survey.js?v=q1" defer></script>
