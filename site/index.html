@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>zhol · The TEF jury’s eight questions, answered</title>
+<script>document.documentElement.classList.add("js")</script>
 <meta name="description" content="zhol tells a haulier’s traffic office the evening before which of tomorrow’s loads a ban, dosing day, closure or blockade will hit. Our answers to the TEF Ignition jury: market, pricing, business model, go-to-market, technology, evidence, competition and room in the market.">
 <meta property="og:title" content="zhol · The TEF jury’s eight questions, answered">
 <meta property="og:description" content="Market, pricing, business model, go-to-market, technology, evidence, competition and room in the market, each with sources.">
@@ -12,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=m1">
+<link rel="stylesheet" href="/assets/zhol.css?v=r1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -35,8 +36,8 @@
       <div class="stack" style="gap:22px">
         <span class="kicker">TEF Ignition 2026 · Bocconi University</span>
         <h1 class="title">The jury asked eight questions. Here are our answers.</h1>
-        <p class="lead">zhol tells whoever plans tomorrow’s shipments, by road, rail or ferry, the evening before which of them a ban, a dosing day, a closure, a strike or a ferry that does not sail will hit, and what to do. One WhatsApp message. Every number below has a source; what we still assume is marked.</p>
-        <div class="actions"><a class="btn" href="#market">Start with the market</a><a class="btn ghost" href="/beta">Try the beta</a></div>
+        <p class="lead">The evening before, zhol tells freight planners which of tomorrow’s shipments a ban, closure, strike or stopped ferry will hit, and what to do. One WhatsApp message.</p>
+        <div class="actions"><a class="btn" href="#answers">See the answers</a><a class="btn ghost" href="/beta">Try the beta</a></div>
       </div>
       <div class="media scene-frame">
         <video id="hero-video" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" poster="/assets/img/scenes/desk-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, our plush mascot in a trucker cap and a safety vest, drawing tomorrow's route over the Alps on a paper map at a traffic office desk in the evening"></video>
@@ -51,91 +52,131 @@
 <!-- 1 market -->
 <section class="slide" id="answers">
   <div class="wrap stack">
+    <p class="block-hint">Tap a question for its three numbers. Every number has a source; what we still assume is marked.</p>
     <div class="blocks">
-      <a class="block" id="market" href="/answers/market">
+      <article class="block" id="market">
         <span class="kicker">Question 1 · Market</span>
-        <h2>TAM SAM SOM calculation</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="market-more">TAM SAM SOM calculation<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>€230M</b> a year lost in Europe to bans, closures and queues</p>
+        <div class="block-more" id="market-more"><div>
         <ul class="brief">
-      <li><b>€230M</b> a year in Europe: what delays from bans, closures and queues cost freight planners</li>
-      <li><b>€18.6M</b> of it we can serve from Italy: 6,050 offices with weekly lanes abroad</li>
-      <li><b>€0.77M</b> a year by year 3: 250 paying offices, about 4% of them</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
-      <a class="block" id="pricing" href="/answers/pricing">
+          <li><b>€230M</b> a year in Europe: what delays from bans, closures and queues cost freight planners</li>
+          <li><b>€18.6M</b> of it we can serve from Italy: 6,050 offices with weekly lanes abroad</li>
+          <li><b>€0.77M</b> a year by year 3: 250 paying offices, about 4% of them</li>
+        </ul>
+        <a class="open" href="/answers/market">Open the full answer</a>
+        </div></div>
+      </article>
+      <article class="block" id="pricing">
         <span class="kicker">Question 2 · Pricing</span>
-        <h2>Pricing model: percentage of money saved to the company? Estimate savings</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="pricing-more">Pricing model: percentage of money saved to the company? Estimate savings<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>€12</b> per vehicle a month: 14% of what it saves</p>
+        <div class="block-more" id="pricing-more"><div>
         <ul class="brief">
-      <li><b>€1,740</b> a month: what an office with 20 vehicles saves, at the €100 hour Italian law sets</li>
-      <li><b>14%</b> of that saving is our price: €12 per vehicle a month, minimum €99</li>
-      <li><b>€8</b> per vehicle for the first 10 offices, 12 months, for a weekly 15 minutes of feedback</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
-      <a class="block" id="model" href="/answers/model">
+          <li><b>€1,740</b> a month: what an office with 20 vehicles saves, at the €100 hour Italian law sets</li>
+          <li><b>14%</b> of that saving is our price: €12 per vehicle a month, minimum €99</li>
+          <li><b>€8</b> per vehicle for the first 10 offices, 12 months, for a weekly 15 minutes of feedback</li>
+        </ul>
+        <a class="open" href="/answers/pricing">Open the full answer</a>
+        </div></div>
+      </article>
+      <article class="block" id="model">
         <span class="kicker">Question 3 · Model</span>
-        <h2>Clear business model</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="model-more">Clear business model<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>92%</b> gross margin at 100 offices</p>
+        <div class="block-more" id="model-more"><div>
         <ul class="brief">
-      <li><b>92%</b> gross margin at 100 offices: every office on the same roads shares one set of events</li>
-      <li><b>€155k</b> of funding to break even, in May 2029</li>
-      <li><b>€771k</b> a year of revenue in year 3, from €35k in year 1</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
-      <a class="block" id="gtm" href="/answers/gtm">
+          <li><b>92%</b> gross margin at 100 offices: every office on the same roads shares one set of events</li>
+          <li><b>€155k</b> of funding to break even, in May 2029</li>
+          <li><b>€771k</b> a year of revenue in year 3, from €35k in year 1</li>
+        </ul>
+        <a class="open" href="/answers/model">Open the full answer</a>
+        </div></div>
+      </article>
+      <article class="block" id="gtm">
         <span class="kicker">Question 4 · Go-to-market</span>
-        <h2>A clear GTM strategy</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="gtm-more">A clear GTM strategy<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>≈2,350</b> offices in the North, a day trip from Milan</p>
+        <div class="block-more" id="gtm-more"><div>
         <ul class="brief">
-      <li><b>≈2,350</b> offices in the North to start with: a day trip from Milan, sold in Italian</li>
-      <li><b>92</b> companies and <b>87</b> people already named from public sources</li>
-      <li><b>4</b> pilots of four weeks, measured against the office’s own process</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
-      <a class="block" id="tech" href="/answers/tech">
+          <li><b>≈2,350</b> offices in the North to start with: a day trip from Milan, sold in Italian</li>
+          <li><b>92</b> companies and <b>87</b> people already named from public sources</li>
+          <li><b>4</b> pilots of four weeks, measured against the office’s own process</li>
+        </ul>
+        <a class="open" href="/answers/gtm">Open the full answer</a>
+        </div></div>
+      </article>
+      <article class="block" id="tech">
         <span class="kicker">Question 5 · Tech</span>
-        <h2>More details on the technical part</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="tech-more">More details on the technical part<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>7</b> countries of ban rules already in code</p>
+        <div class="block-more" id="tech-more"><div>
         <ul class="brief">
-      <li><b>7</b> countries of ban rules in code, plus the official Tyrol dosing calendar</li>
-      <li><b>AI</b> reads notices and news; <b>one person</b> approves every event before it goes out</li>
-      <li><b>1</b> WhatsApp message per office per evening, with each option priced</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
-      <a class="block" id="evidence" href="/answers/evidence">
+          <li><b>7</b> countries of ban rules in code, plus the official Tyrol dosing calendar</li>
+          <li><b>AI</b> reads notices and news; <b>one person</b> approves every event before it goes out</li>
+          <li><b>1</b> WhatsApp message per office per evening, with each option priced</li>
+        </ul>
+        <a class="open" href="/answers/tech">Open the full answer</a>
+        </div></div>
+      </article>
+      <article class="block" id="evidence">
         <span class="kicker">Question 6 · Evidence</span>
-        <h2>Before you check market, then tech</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="evidence-more">Before you check market, then tech<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>8</b> interviews by 13 November, with stop criteria</p>
+        <div class="block-more" id="evidence-more"><div>
         <ul class="brief">
-      <li><b>8</b> interviews by 13 November, against seven hypotheses with stop criteria</li>
-      <li><b>2</b> offices share last month’s loads; we replay what zhol would have flagged</li>
-      <li><b>2</b> live tests on real restriction days, with the dispatcher’s verdict</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
-      <a class="block" id="competition" href="/answers/competition">
+          <li><b>8</b> interviews by 13 November, against seven hypotheses with stop criteria</li>
+          <li><b>2</b> offices share last month’s loads; we replay what zhol would have flagged</li>
+          <li><b>2</b> live tests on real restriction days, with the dispatcher’s verdict</li>
+        </ul>
+        <a class="open" href="/answers/evidence">Open the full answer</a>
+        </div></div>
+      </article>
+      <article class="block" id="competition">
         <span class="kicker">Question 7 · Competition</span>
-        <h2>Potential competitors analysis, different solutions that might arise in the future</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="competition-more">Potential competitors analysis, different solutions that might arise in the future<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>0</b> tools today warn the evening before about tomorrow’s loads</p>
+        <div class="block-more" id="competition-more"><div>
         <ul class="brief">
-      <li><b>6</b> categories of tools, each covering a piece: TMS, telematics, freight exchanges, visibility, risk platforms, associations</li>
-      <li><b>0</b> of them check tomorrow’s loads the evening before</li>
-      <li><b>€10–35</b> per vehicle a month is what telematics costs today; we add to it, we do not replace it</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
-      <a class="block" id="room" href="/answers/room">
+          <li><b>6</b> categories of tools, each covering a piece: TMS, telematics, freight exchanges, visibility, risk platforms, associations</li>
+          <li><b>0</b> of them check tomorrow’s loads the evening before</li>
+          <li><b>€10–35</b> per vehicle a month is what telematics costs today; we add to it, we do not replace it</li>
+        </ul>
+        <a class="open" href="/answers/competition">Open the full answer</a>
+        </div></div>
+      </article>
+      <article class="block" id="room">
         <span class="kicker">Question 8 · Room</span>
-        <h2>Is there enough space in the market for us?</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="room-more">Is there enough space in the market for us?<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>2–3</b> years of window for a focused wedge</p>
+        <div class="block-more" id="room-more"><div>
         <ul class="brief">
-      <li><b>2–3</b> years of window for a focused wedge in a fragmented market</li>
-      <li><b>What lasts:</b> the verified history of events and their effect on real loads</li>
-      <li><b>Who could follow:</b> a TMS can add alerts, but not verified, multilingual events across seven countries</li>
-    </ul>
-        <span class="open">Open the full answer</span>
-      </a>
+          <li><b>2–3</b> years of window for a focused wedge in a fragmented market</li>
+          <li><b>What lasts:</b> the verified history of events and their effect on real loads</li>
+          <li><b>Who could follow:</b> a TMS can add alerts, but not verified, multilingual events across seven countries</li>
+        </ul>
+        <a class="open" href="/answers/room">Open the full answer</a>
+        </div></div>
+      </article>
     </div>
   </div>
 </section>
 
+
+<!-- why software, and the shared watch (docs/15) -->
+<section class="slide sage" id="watch">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker green">Why not just have someone check?</span>
+      <h2 class="title">People check in office hours. Disruptions do not keep them.</h2>
+    </div>
+    <div class="grid g3 steps">
+      <div class="card"><span class="step-n">1</span><h3>Today: a person, now and then</h3><p class="small">Someone checks the news and the ban calendars between other work, in office hours. Strikes are called in the evening, closures start at 5 a.m., ferries stop at night.</p></div>
+      <div class="card"><span class="step-n">2</span><h3>zhol: every day, weekends too</h3><p class="small">The radar reads the news in four languages, the official calendars and the weather at the passes, and the evening message lands before the office closes.</p></div>
+      <div class="card"><span class="step-n">3</span><h3>Next: offices warn each other</h3><p class="small">A driver stuck at Kufstein at 4 a.m., a queue at the Messina ferries: one tap on WhatsApp, confirmed by a second report or a source, and every office with loads there knows. Anonymous. The more offices, the earlier everyone knows.</p><span class="tag">Idea we test in the pilots</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- the field, team -->
 <section class="slide teaser" id="story">
@@ -188,5 +229,6 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
+<script src="/assets/reveal.js?v=r1" defer></script>
 </body>
 </html>

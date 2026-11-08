@@ -69,6 +69,9 @@ It has to show more than that in avoided waits (doc 03).
    WhatsApp relationship are slow to build and slow to lose.
 4. **The savings ledger.** We measure, per customer, how much each alert saved. That supports outcome-based pricing,
    which incumbents with per-seat pricing can't easily copy.
+5. **The shared watch (concept).** Offices on zhol warn each other: a queue or a closure seen by one office's driver at night,
+   confirmed by a second report or a source, reaches every office with loads there. Each office that joins makes the warnings
+   earlier for the others on the same roads, a network effect a single-company tool cannot have. See [15-shared-watch](15-shared-watch.md).
 
 ## 2.6 Honest weaknesses
 

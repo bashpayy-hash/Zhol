@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>zhol · Le otto domande della giuria TEF e le nostre risposte</title>
+<script>document.documentElement.classList.add("js")</script>
 <meta name="description" content="zhol dice all’ufficio traffico di un autotrasportatore, la sera prima, quali carichi di domani saranno colpiti da un divieto, un giorno di dosaggio, una chiusura o un blocco. Le nostre risposte alla giuria di TEF Ignition: mercato, prezzi, modello di business, go-to-market, tecnologia, evidenze, concorrenza e spazio nel mercato.">
 <meta property="og:title" content="zhol · Le otto domande della giuria TEF e le nostre risposte">
 <meta property="og:description" content="Mercato, prezzi, modello di business, go-to-market, tecnologia, evidenze, concorrenza e spazio nel mercato, ciascuno con le sue fonti.">
@@ -12,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=m1">
+<link rel="stylesheet" href="/assets/zhol.css?v=r1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -35,8 +36,8 @@
       <div class="stack" style="gap:22px">
         <span class="kicker">TEF Ignition 2026 · Università Bocconi</span>
         <h1 class="title">La giuria ha fatto otto domande. Ecco le nostre risposte.</h1>
-        <p class="lead">zhol dice a chi pianifica le spedizioni di domani, su strada, rotaia o traghetto, la sera prima quali saranno colpite da un divieto, un giorno di dosaggio, una chiusura, uno sciopero o un traghetto fermo, e cosa fare. Un solo messaggio WhatsApp. Ogni numero qui sotto ha una fonte; ciò che è ancora un’ipotesi è indicato come tale.</p>
-        <div class="actions"><a class="btn" href="#market">Inizia dal mercato</a><a class="btn ghost" href="/it/beta">Prova la beta</a></div>
+        <p class="lead">La sera prima, zhol dice a chi pianifica le merci quali spedizioni di domani saranno colpite da un divieto, una chiusura, uno sciopero o un traghetto fermo, e cosa fare. Un solo messaggio WhatsApp.</p>
+        <div class="actions"><a class="btn" href="#answers">Vedi le risposte</a><a class="btn ghost" href="/it/beta">Prova la beta</a></div>
       </div>
       <div class="media scene-frame">
         <video id="hero-video" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" poster="/assets/img/scenes/desk-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, la nostra mascotte di peluche con cappellino da camionista e gilet ad alta visibilità, traccia il percorso di domani sulle Alpi su una carta, alla scrivania di un ufficio traffico la sera"></video>
@@ -51,91 +52,131 @@
 <!-- 1 market -->
 <section class="slide" id="answers">
   <div class="wrap stack">
+    <p class="block-hint">Toccate una domanda per vedere i suoi tre numeri. Ogni numero ha una fonte; ciò che è ancora un’ipotesi è indicato.</p>
     <div class="blocks">
-      <a class="block" id="market" href="/it/risposte/market">
+      <article class="block" id="market">
         <span class="kicker">Domanda 1 · Mercato</span>
-        <h2>Calcolo di TAM SAM SOM</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="market-more">Calcolo di TAM SAM SOM<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>€230 mln</b> l’anno persi in Europa tra divieti, chiusure e code</p>
+        <div class="block-more" id="market-more"><div>
         <ul class="brief">
-      <li><b>€230 mln</b> all’anno in Europa: quanto costano a chi pianifica le merci i ritardi da divieti, chiusure e code</li>
-      <li><b>€18,6 mln</b> servibili dall’Italia: 6.050 uffici con tratte settimanali all’estero</li>
-      <li><b>€0,77 mln</b> all’anno entro il terzo anno: 250 uffici paganti, circa il 4%</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
-      <a class="block" id="pricing" href="/it/risposte/pricing">
+          <li><b>€230 mln</b> all’anno in Europa: quanto costano a chi pianifica le merci i ritardi da divieti, chiusure e code</li>
+          <li><b>€18,6 mln</b> servibili dall’Italia: 6.050 uffici con tratte settimanali all’estero</li>
+          <li><b>€0,77 mln</b> all’anno entro il terzo anno: 250 uffici paganti, circa il 4%</li>
+        </ul>
+        <a class="open" href="/it/risposte/market">Apri la risposta completa</a>
+        </div></div>
+      </article>
+      <article class="block" id="pricing">
         <span class="kicker">Domanda 2 · Prezzi</span>
-        <h2>Modello di prezzo: una percentuale del denaro risparmiato dall’azienda? Stimate i risparmi</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="pricing-more">Modello di prezzo: una percentuale del denaro risparmiato dall’azienda? Stimate i risparmi<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>€12</b> a mezzo al mese: il 14% di quanto fa risparmiare</p>
+        <div class="block-more" id="pricing-more"><div>
         <ul class="brief">
-      <li><b>€1.740</b> al mese: quanto risparmia un ufficio con 20 mezzi, all’ora da €100 fissata dalla legge italiana</li>
-      <li><b>14%</b> di quel risparmio è il nostro prezzo: €12 per mezzo al mese, minimo €99</li>
-      <li><b>€8</b> per mezzo per i primi 10 uffici, 12 mesi, in cambio di 15 minuti di feedback a settimana</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
-      <a class="block" id="model" href="/it/risposte/model">
+          <li><b>€1.740</b> al mese: quanto risparmia un ufficio con 20 mezzi, all’ora da €100 fissata dalla legge italiana</li>
+          <li><b>14%</b> di quel risparmio è il nostro prezzo: €12 per mezzo al mese, minimo €99</li>
+          <li><b>€8</b> per mezzo per i primi 10 uffici, 12 mesi, in cambio di 15 minuti di feedback a settimana</li>
+        </ul>
+        <a class="open" href="/it/risposte/pricing">Apri la risposta completa</a>
+        </div></div>
+      </article>
+      <article class="block" id="model">
         <span class="kicker">Domanda 3 · Modello</span>
-        <h2>Modello di business chiaro</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="model-more">Modello di business chiaro<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>92%</b> di margine lordo con 100 uffici</p>
+        <div class="block-more" id="model-more"><div>
         <ul class="brief">
-      <li><b>92%</b> di margine lordo con 100 uffici: gli uffici sulle stesse strade condividono gli stessi eventi</li>
-      <li><b>€155 mila</b> di finanziamento per il pareggio, a maggio 2029</li>
-      <li><b>€771 mila</b> di ricavi nel terzo anno, da €35 mila nel primo</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
-      <a class="block" id="gtm" href="/it/risposte/gtm">
+          <li><b>92%</b> di margine lordo con 100 uffici: gli uffici sulle stesse strade condividono gli stessi eventi</li>
+          <li><b>€155 mila</b> di finanziamento per il pareggio, a maggio 2029</li>
+          <li><b>€771 mila</b> di ricavi nel terzo anno, da €35 mila nel primo</li>
+        </ul>
+        <a class="open" href="/it/risposte/model">Apri la risposta completa</a>
+        </div></div>
+      </article>
+      <article class="block" id="gtm">
         <span class="kicker">Domanda 4 · Go-to-market</span>
-        <h2>Una strategia GTM chiara</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="gtm-more">Una strategia GTM chiara<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>≈2.350</b> uffici al Nord, in giornata da Milano</p>
+        <div class="block-more" id="gtm-more"><div>
         <ul class="brief">
-      <li><b>≈2.350</b> uffici al Nord per cominciare: in giornata da Milano, vendita in italiano</li>
-      <li><b>92</b> aziende e <b>87</b> persone già individuate da fonti pubbliche</li>
-      <li><b>4</b> prove pilota di quattro settimane, misurate contro il processo attuale dell’ufficio</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
-      <a class="block" id="tech" href="/it/risposte/tech">
+          <li><b>≈2.350</b> uffici al Nord per cominciare: in giornata da Milano, vendita in italiano</li>
+          <li><b>92</b> aziende e <b>87</b> persone già individuate da fonti pubbliche</li>
+          <li><b>4</b> prove pilota di quattro settimane, misurate contro il processo attuale dell’ufficio</li>
+        </ul>
+        <a class="open" href="/it/risposte/gtm">Apri la risposta completa</a>
+        </div></div>
+      </article>
+      <article class="block" id="tech">
         <span class="kicker">Domanda 5 · Tecnologia</span>
-        <h2>Più dettagli sulla parte tecnica</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="tech-more">Più dettagli sulla parte tecnica<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>7</b> paesi con le regole dei divieti già nel codice</p>
+        <div class="block-more" id="tech-more"><div>
         <ul class="brief">
-      <li><b>7</b> paesi con le regole dei divieti nel codice, più il calendario ufficiale del dosaggio tirolese</li>
-      <li><b>L’AI</b> legge comunicati e notizie; <b>una persona</b> approva ogni evento prima dell’invio</li>
-      <li><b>1</b> messaggio WhatsApp per ufficio ogni sera, con il costo di ogni opzione</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
-      <a class="block" id="evidence" href="/it/risposte/evidence">
+          <li><b>7</b> paesi con le regole dei divieti nel codice, più il calendario ufficiale del dosaggio tirolese</li>
+          <li><b>L’AI</b> legge comunicati e notizie; <b>una persona</b> approva ogni evento prima dell’invio</li>
+          <li><b>1</b> messaggio WhatsApp per ufficio ogni sera, con il costo di ogni opzione</li>
+        </ul>
+        <a class="open" href="/it/risposte/tech">Apri la risposta completa</a>
+        </div></div>
+      </article>
+      <article class="block" id="evidence">
         <span class="kicker">Domanda 6 · Evidenze</span>
-        <h2>Prima verificate il mercato, poi la tecnologia</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="evidence-more">Prima verificate il mercato, poi la tecnologia<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>8</b> interviste entro il 13 novembre, con criteri di stop</p>
+        <div class="block-more" id="evidence-more"><div>
         <ul class="brief">
-      <li><b>8</b> interviste entro il 13 novembre, su sette ipotesi con criteri di stop</li>
-      <li><b>2</b> uffici condividono i carichi del mese scorso; ricostruiamo cosa avrebbe segnalato zhol</li>
-      <li><b>2</b> test dal vivo in giornate con restrizioni reali, con il giudizio del traffichista</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
-      <a class="block" id="competition" href="/it/risposte/competition">
+          <li><b>8</b> interviste entro il 13 novembre, su sette ipotesi con criteri di stop</li>
+          <li><b>2</b> uffici condividono i carichi del mese scorso; ricostruiamo cosa avrebbe segnalato zhol</li>
+          <li><b>2</b> test dal vivo in giornate con restrizioni reali, con il giudizio del traffichista</li>
+        </ul>
+        <a class="open" href="/it/risposte/evidence">Apri la risposta completa</a>
+        </div></div>
+      </article>
+      <article class="block" id="competition">
         <span class="kicker">Domanda 7 · Concorrenza</span>
-        <h2>Analisi dei potenziali concorrenti, soluzioni diverse che potrebbero nascere in futuro</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="competition-more">Analisi dei potenziali concorrenti, soluzioni diverse che potrebbero nascere in futuro<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>0</b> strumenti oggi avvisano la sera prima sui carichi di domani</p>
+        <div class="block-more" id="competition-more"><div>
         <ul class="brief">
-      <li><b>6</b> categorie di strumenti, ognuna copre un pezzo: TMS, telematica, borse carichi, visibilità, piattaforme di rischio, associazioni</li>
-      <li><b>0</b> di loro controlla la sera prima i carichi di domani</li>
-      <li><b>€10–35</b> per mezzo al mese costa oggi la telematica; noi ci aggiungiamo, non la sostituiamo</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
-      <a class="block" id="room" href="/it/risposte/room">
+          <li><b>6</b> categorie di strumenti, ognuna copre un pezzo: TMS, telematica, borse carichi, visibilità, piattaforme di rischio, associazioni</li>
+          <li><b>0</b> di loro controlla la sera prima i carichi di domani</li>
+          <li><b>€10–35</b> per mezzo al mese costa oggi la telematica; noi ci aggiungiamo, non la sostituiamo</li>
+        </ul>
+        <a class="open" href="/it/risposte/competition">Apri la risposta completa</a>
+        </div></div>
+      </article>
+      <article class="block" id="room">
         <span class="kicker">Domanda 8 · Spazio</span>
-        <h2>C’è abbastanza spazio nel mercato per noi?</h2>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="room-more">C’è abbastanza spazio nel mercato per noi?<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>2–3</b> anni di finestra per un ingresso mirato</p>
+        <div class="block-more" id="room-more"><div>
         <ul class="brief">
-      <li><b>2–3</b> anni di finestra per un ingresso mirato in un mercato frammentato</li>
-      <li><b>Cosa dura:</b> lo storico verificato degli eventi e del loro effetto sui carichi reali</li>
-      <li><b>Chi potrebbe seguire:</b> un TMS può aggiungere avvisi, non eventi verificati e multilingue in sette paesi</li>
-    </ul>
-        <span class="open">Apri la risposta completa</span>
-      </a>
+          <li><b>2–3</b> anni di finestra per un ingresso mirato in un mercato frammentato</li>
+          <li><b>Cosa dura:</b> lo storico verificato degli eventi e del loro effetto sui carichi reali</li>
+          <li><b>Chi potrebbe seguire:</b> un TMS può aggiungere avvisi, non eventi verificati e multilingue in sette paesi</li>
+        </ul>
+        <a class="open" href="/it/risposte/room">Apri la risposta completa</a>
+        </div></div>
+      </article>
     </div>
   </div>
 </section>
 
+
+<!-- perché un software, e la sorveglianza condivisa (docs/15) -->
+<section class="slide sage" id="watch">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker green">Perché non basta che qualcuno controlli?</span>
+      <h2 class="title">Le persone controllano in orario d’ufficio. I disagi no.</h2>
+    </div>
+    <div class="grid g3 steps">
+      <div class="card"><span class="step-n">1</span><h3>Oggi: una persona, ogni tanto</h3><p class="small">Qualcuno controlla notizie e calendari dei divieti tra un lavoro e l’altro, in orario d’ufficio. Gli scioperi si annunciano la sera, le chiusure partono alle 5, i traghetti si fermano di notte.</p></div>
+      <div class="card"><span class="step-n">2</span><h3>zhol: tutti i giorni, anche nel weekend</h3><p class="small">Il radar legge le notizie in quattro lingue, i calendari ufficiali e il meteo ai valichi, e il messaggio serale arriva prima che l’ufficio chiuda.</p></div>
+      <div class="card"><span class="step-n">3</span><h3>Poi: gli uffici si avvisano tra loro</h3><p class="small">Un autista fermo a Kufstein alle 4, una coda ai traghetti di Messina: un tocco su WhatsApp, confermato da una seconda segnalazione o da una fonte, e lo sa ogni ufficio con carichi lì. Anonimo. Più uffici, prima lo sanno tutti.</p><span class="tag">Idea che proviamo nei pilota</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- the field, team -->
 <section class="slide teaser" id="story">
@@ -188,5 +229,6 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
+<script src="/assets/reveal.js?v=r1" defer></script>
 </body>
 </html>

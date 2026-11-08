@@ -149,6 +149,20 @@
     done.hidden = false;
     setPose("encourage");
     done.focus({ preventScroll: true });
+    showMap();
+  }
+
+  // the last screen shows what the radar sees coming (assets/map.js), so the answer gets something back at once
+  function showMap() {
+    const box = $("sv-map");
+    if (!box || !window.ZholMap || box.dataset.on) return;
+    box.dataset.on = "1";
+    const map = window.ZholMap(box, { mini: true });
+    fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)).then(d => map.update(d.items, d.today)).then(c => {
+      if (!c || !c.events) { box.hidden = true; return; }
+      $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places on Europe’s roads in the next eight weeks, each with its chance.",
+                                      c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità.");
+    }).catch(() => { box.hidden = true; });
   }
 
   // forward to a colleague

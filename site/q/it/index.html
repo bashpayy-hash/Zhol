@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=m1">
+<link rel="stylesheet" href="/assets/zhol.css?v=r1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/q">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/q/it">
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
@@ -139,6 +139,11 @@
           <h2 class="sv-q-title">Grazie! Ci avete aiutato molto.</h2>
           <p>Conoscete un altro ufficio traffico? Ogni risposta in più rende i numeri più solidi.</p>
           <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Inoltra su WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copia il link</button></div>
+          <div class="sv-map" id="sv-map" hidden>
+            <p class="small"><b>Già che ci siete:</b> <span id="sv-map-cap">cosa vede zhol in arrivo sulle strade d’Europa nelle prossime otto settimane.</span></p>
+            <div class="map-frame" role="img" aria-label="Mappa d’Europa con gli eventi che zhol prevede nelle prossime otto settimane"></div>
+            <a class="small" href="/it/outlook#map">Apri la mappa completa, con la probabilità di ogni evento</a>
+          </div>
         </div>
       </div>
     </div>
@@ -153,6 +158,7 @@
   <span>Alikhan · Inkara · Tomiris · Università Bocconi · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
-<script src="/assets/survey.js?v=q1" defer></script>
+<script src="/assets/map.js?v=a1" defer></script>
+<script src="/assets/survey.js?v=q2" defer></script>
 </body>
 </html>
