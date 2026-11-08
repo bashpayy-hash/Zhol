@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=a3">
+<link rel="stylesheet" href="/assets/zhol.css?v=s1">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
@@ -108,7 +108,7 @@
       <p class="small">Ogni evento viene verificato da una persona prima dell’invio.</p>
       <p class="small muted">Usiamo solo ciò che serve alla verifica: riferimento, tratta, orari, tipo di merce. Server nell’UE; dati cancellati 90 giorni dopo la consegna o su richiesta.</p>
     </div>
-    <form class="card" name="beta-signup" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="card" data-steps name="beta-signup" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="beta-signup">
       <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
       <div class="fields">
@@ -134,7 +134,7 @@
       <h2 class="title">Diteci cosa non andava</h2>
       <p class="lead">Un avviso sbagliato costa fiducia, per questo li contiamo tutti. Diteci quale cella, carico o messaggio vi è sembrato sbagliato, o che cosa ci è sfuggito.</p>
     </div>
-    <form class="card" name="beta-feedback" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="card" data-steps name="beta-feedback" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="beta-feedback">
       <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
       <div class="fields">
@@ -156,5 +156,6 @@
 </div></footer>
 <script src="/assets/beta.js?v=a2" defer></script>
 <script src="/assets/reveal.js?v=r1" defer></script>
+<script src="/assets/steps.js?v=s1" defer></script>
 </body>
 </html>

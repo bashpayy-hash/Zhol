@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=a3">
+<link rel="stylesheet" href="/assets/zhol.css?v=s1">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
@@ -108,7 +108,7 @@
       <p class="small">Inviateci entro le 16:00 i carichi di domani (Excel o CSV). Alle 17:30 e alle 20:00 controlliamo ogni carico: se uno è a rischio ricevete un solo messaggio WhatsApp con le opzioni. Ogni evento è verificato da una persona.</p>
       <p class="small muted">We use only what the check needs: reference, route, times, cargo type. EU servers; data deleted 90 days after delivery or on request.</p>
     </div>
-    <form class="card" name="beta-signup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="card" data-steps name="beta-signup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="beta-signup">
       <p class="hidden-field"><label>Do not fill this in: <input name="bot-field"></label></p>
       <div class="fields">
@@ -134,7 +134,7 @@
       <h2 class="title">Tell us what was wrong</h2>
       <p class="lead">A wrong alert costs trust, so we count every one. Tell us which cell, load or message looked wrong, or what we missed.</p>
     </div>
-    <form class="card" name="beta-feedback" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="card" data-steps name="beta-feedback" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="beta-feedback">
       <p class="hidden-field"><label>Do not fill this in: <input name="bot-field"></label></p>
       <div class="fields">
@@ -156,5 +156,6 @@
 </div></footer>
 <script src="/assets/beta.js?v=a2" defer></script>
 <script src="/assets/reveal.js?v=r1" defer></script>
+<script src="/assets/steps.js?v=s1" defer></script>
 </body>
 </html>
