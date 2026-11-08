@@ -1,5 +1,5 @@
 /* zhol survey: one question per screen, a tap answers and moves on, the mascot changes with each step.
-   The answers are sent as soon as the sixth is given; contact details are a separate, optional form
+   The answers are sent as soon as the last one is given; contact details are a separate, optional form
    linked only by a random id. Without JavaScript every question shows and the form posts normally. */
 (function () {
   const form = document.getElementById("survey");
@@ -30,7 +30,7 @@
   } catch (e) { /* no channel */ }
 
   // preload the poses so the mascot never flashes empty
-  ["truck", "route", "watch", "coin", "phone", "thinking", "celebrate", "encourage"].forEach(n => {
+  ["truck", "route", "watch", "coin", "phone", "radio", "thinking", "celebrate", "encourage"].forEach(n => {
     const i = new Image(); i.sizes = img.sizes; i.srcset = srcset(n);
   });
 
@@ -158,17 +158,38 @@
     if (!box || !window.ZholMap || box.dataset.on) return;
     box.dataset.on = "1";
     const map = window.ZholMap(box, { mini: true });
-    fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)).then(d => map.update(d.items, d.today)).then(c => {
+    radar.then(d => map.update(d.items, d.today)).then(c => {
       if (!c || !c.events) { box.hidden = true; return; }
       $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places on Europe’s roads in the next eight weeks, each with its chance.",
                                       c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità.");
     }).catch(() => { box.hidden = true; });
   }
 
+  // the radar, read once: the intro shows what is on the roads now, the last screen the whole map
+  const radar = fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status));
+  (function showNow() {
+    const box = $("sv-now"), list = $("sv-now-list");
+    if (!box || !list) return;
+    radar.then(d => {
+      const next = d.items.filter(i => i.start && i.start >= d.today).sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p).slice(0, 3);
+      if (!next.length) return;
+      const day = s => new Date(s + "T12:00:00").toLocaleDateString(IT ? "it-IT" : "en-GB", { weekday: "short", day: "numeric", month: "short" });
+      next.forEach(it => {
+        const li = document.createElement("li"), t = document.createElement("span"), b = document.createElement("b"), p = document.createElement("span");
+        b.textContent = day(it.start);
+        t.append(b, document.createTextNode(" " + ((IT && it.title_it) || it.title)));
+        p.className = "sv-now-p"; p.textContent = Math.round(it.p * 100) + "%";
+        li.append(t, p); list.append(li);
+      });
+      box.hidden = false;
+      if (window.ZholMap) window.ZholMap(box, { mini: true }).update(d.items, d.today);
+    }).catch(() => {});
+  })();
+
   // forward to a colleague
   const link = location.origin + location.pathname + "?src=share";
-  const text = T("Six questions, one minute, for traffic offices with lanes abroad: what bans, queues and strikes really cost. ",
-                 "Sei domande, un minuto, per gli uffici traffico con linee estere: quanto costano davvero divieti, code e scioperi. ");
+  const text = T("Seven questions, one minute, for traffic offices with lanes abroad: what bans, queues and strikes really cost. ",
+                 "Sette domande, un minuto, per gli uffici traffico con linee estere: quanto costano davvero divieti, code e scioperi. ");
   $("sv-wa").href = "https://wa.me/?text=" + encodeURIComponent(text + link);
   const copy = $("sv-copy");
   copy.addEventListener("click", () => {

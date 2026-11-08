@@ -41,14 +41,14 @@
 
 > Gentile [Nome],
 > siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, code, chiusure e scioperi.
-> Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio: sei domande, un minuto: [link]. Non vendiamo nulla e le risposte sono anonime, se non lasciano un contatto.
+> Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio: sette domande, un minuto: [link]. Non vendiamo nulla e le risposte sono anonime, se non lasciano un contatto.
 > All'associazione mandiamo i risultati aggregati appena chiudiamo la raccolta.
 > Grazie, [Firma]
 
 **2. LinkedIn: пост каждого из команды**
 
 > Quanto tempo passa ogni giorno un ufficio traffico a controllare divieti, code, chiusure e scioperi? E quanto è costato l'ultimo imprevisto?
-> Stiamo raccogliendo numeri veri, non stime da convegno: sei domande, un minuto, anonimo, per chi gestisce linee verso Germania, Austria, Svizzera e Francia. I risultati li condividiamo con chi risponde.
+> Stiamo raccogliendo numeri veri, non stime da convegno: sette domande, un minuto, anonimo, per chi gestisce linee verso Germania, Austria, Svizzera e Francia. I risultati li condividiamo con chi risponde.
 > [link] · Se conoscete un responsabile traffico, inoltratelo: ci aiuta molto.
 
 **3. WhatsApp: переслать знакомому** (только тем, кто дал номер сам или через знакомых)

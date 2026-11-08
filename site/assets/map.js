@@ -285,7 +285,7 @@ window.ZholMap = function (root, opts) {
   }
 
   // ---- come in once, when the map is first on screen
-  let entered = false;
+  let entered = false, watching = false;
   function enter() {
     if (entered) return; entered = true;
     if (reduce) { root.classList.add("in"); return; }
@@ -311,9 +311,10 @@ window.ZholMap = function (root, opts) {
         spots = group();
         if (selected && !spots.some(s => s.key === selected)) selected = null;
         pinsDraw(); setWeek(week);
-        const first = root.hidden;
+        const wasHidden = root.hidden;
         root.hidden = false;
-        if (first) { watchEntry(); if (location.hash === "#map") root.scrollIntoView(); }   // the section was hidden when the browser looked for #map
+        if (!watching) { watching = true; watchEntry(); }                                   // come in once, the first time there is something to show
+        if (wasHidden && location.hash === "#map") root.scrollIntoView();                // the section was hidden when the browser looked for #map
         return { events: items.length, places: spots.length };
       });
     },

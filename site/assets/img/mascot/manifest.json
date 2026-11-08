@@ -150,6 +150,32 @@
    ]
   },
   {
+   "name": "radio",
+   "higgsfield_image_job": "162b0fcb-bdba-4c9e-aff2-5530bfd551fc",
+   "background_removed_job": "d8898daa-bf69-4001-96d8-d99136d73cd1",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, friendly open smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Full figure standing, holding a small felt CB radio handset (a chunky walkie-talkie with a short antenna and a coiled cord) up near his mouth with one mitten hand, talking into it, the other mitten hand raised in a small wave as if passing a warning to a friend down the road. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",
+   "files": [
+    {
+     "file": "site/assets/img/mascot/radio-560.webp",
+     "size": [
+      560,
+      448
+     ],
+     "kb": 22.0,
+     "sha256": "c537b79a17995af67c58a0ed03d301e25ec26955dec160729fca156f271b9e27"
+    },
+    {
+     "file": "site/assets/img/mascot/radio-280.webp",
+     "size": [
+      280,
+      224
+     ],
+     "kb": 8.1,
+     "sha256": "6d94617ccfcd93ec4eee5e5b3cce7cd98cf2c1a2ac9b8f95c5ea9aeee90da52f"
+    }
+   ]
+  },
+  {
    "name": "thinking",
    "higgsfield_image_job": "18b612ae-fc5a-4735-bc3c-d14d0deadabb",
    "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas): almost smooth cream cotton body with fine fibers and a few loose seam threads, rounded-square face, tiny embroidered black dot eyes, small pink cheeks, thoughtful small smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. Half-body, one mitten hand at his chin, head slightly tilted, thinking it over calmly. Soft daylight studio light, gentle contact shadow, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no other characters.",

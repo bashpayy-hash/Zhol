@@ -1,4 +1,4 @@
-"""Summarise the six-question traffic-office survey against the thresholds in docs/10-feedback-round-2.md.
+"""Summarise the seven-question traffic-office survey against the thresholds in docs/10-feedback-round-2.md.
 
 Download the answers into outreach/private/ (git-ignored: exports hold contacts): the Google Form's sheet as CSV
 (File -> Download -> CSV), and/or the site forms from Netlify (Forms -> survey and survey-followup -> Download CSV).
@@ -28,7 +28,9 @@ MINUTES = [("<10", "under 10 min"), ("10-20", "10–20 min"), ("20-40", "20–40
 COST = [("<100", "under €100"), ("100-300", "€100–300"), ("300-1000", "€300–1,000"), ("1000+", "over €1,000")]
 PRICE = [("0", "nothing"), ("<5", "up to €5"), ("5-10", "€5–10"), ("10-20", "€10–20"), ("20+", "over €20")]
 USE = [("yes", "yes, a lot"), ("maybe", "maybe"), ("no", "no")]
-FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis", "interview": "a 20-minute chat"}
+SHARE = [("yes", "yes, gladly"), ("anon", "yes, if anonymous"), ("receive", "only receive"), ("no", "no")]
+FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis", "interview": "a 20-minute chat",
+            "network": "a place in the shared network"}
 
 # The Google Form (outreach/google-form.gs) exports question titles as headers and choice labels as values.
 # Map them to the same codes as the site form, so both can be read together.
@@ -43,11 +45,13 @@ GOOGLE_FORM = {
         "Meno di 100 €": "<100", "100–300 €": "100-300", "300–1.000 €": "300-1000", "Più di 1.000 €": "1000+", "Non lo so": "unknown"}),
     "Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?": ("would_use", {
         "Sì, molto": "yes", "Forse": "maybe", "No": "no"}),
+    "Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?": ("share", {
+        "Sì, volentieri": "yes", "Sì, se resta anonimo": "anon", "Vorrei solo riceverle": "receive", "No": "no"}),
     "Quale prezzo vi sembra giusto, al mese per ogni mezzo?": ("price", {
         "Niente, non pagherei": "0", "Fino a 5 €": "<5", "5–10 €": "5-10", "10–20 €": "10-20", "Più di 20 €": "20+"}),
     "Cosa vi interessa?": ("followup", {
         "I risultati del sondaggio": "results", "L’analisi gratuita di un vostro mese passato": "analysis",
-        "Fare due chiacchiere, 20 minuti": "interview"}),
+        "Fare due chiacchiere, 20 minuti": "interview", "Un posto tra i primi uffici della rete condivisa": "network"}),
     "Email o telefono aziendale": ("contact", None),
     "Consenso": ("consent", None),
 }
@@ -135,13 +139,15 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
           "€5–10 or more (founding price €8)")
     v, n = share(core, "would_use", {"yes"})
     check("Would use the evening WhatsApp: “yes, a lot”", f"{v:.0%}" if v is not None else None, n, False, "–", judged=False)
+    v, n = share(core, "share", {"yes", "anon"})
+    check("Would share what their drivers see (shared watch, docs/15)", f"{v:.0%}" if v is not None else None, n, False, "–", judged=False)
 
     dist = lambda field, scale, rows: {label: sum(r.get(field) == k for r in rows) for k, label in scale}
     return {
         "n_all": len(answers), "n_core": len(core), "checks": checks,
         "fleet": dist("fleet", FLEET, answers), "trips": dist("trips_abroad", TRIPS, answers),
         "minutes": dist("minutes", MINUTES, core), "cost": dist("last_cost", COST + [("unknown", "don’t know")], core),
-        "use": dist("would_use", USE, core), "price": dist("price", PRICE, core),
+        "use": dist("would_use", USE, core), "share": dist("share", SHARE, core), "price": dist("price", PRICE, core),
         "followup": Counter(FOLLOWUP.get(t, t) for r in (follow or []) for t in multi(r.get("followup", ""))),
         "contacts": sum(1 for r in (follow or []) if r.get("contact")),
         "channels": Counter(r.get("src") or "direct" for r in answers),
@@ -158,6 +164,7 @@ def markdown(s: dict) -> str:
     out += [f"| {c['measure']} | {c['result']} | {c['n']} | {c['threshold']} | {c['status']} |" for c in s["checks"]]
     for title, key in (("Time spent checking, beachhead", "minutes"), ("Cost of the last incident, beachhead", "cost"),
                        ("Fair price per vehicle a month, beachhead", "price"), ("Would use the evening WhatsApp, beachhead", "use"),
+                       ("Would share what their drivers see, beachhead", "share"),
                        ("Fleet size, all answers", "fleet"), ("Trips abroad a week, all answers", "trips")):
         out += ["", f"## {title}", "", "| Answer | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in s[key].items()]
     if s["followup"] or s["contacts"]:

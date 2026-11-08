@@ -70,7 +70,7 @@ def company_message(name: str, city: str, cs: list[str], link: str, known_abroad
     return (f"Buongiorno,\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano {who} "
             f"divieti, code, chiusure e scioperi.{(' ' + line) if line else ''}\n\n"
-            f"Vi chiederemmo un minuto per un sondaggio anonimo di sei domande, da girare a chi in ufficio decide i viaggi:\n{link}\n\n"
+            f"Vi chiederemmo un minuto per un sondaggio anonimo di sette domande, da girare a chi in ufficio decide i viaggi:\n{link}\n\n"
             f"Non vendiamo nulla. Chi risponde riceve i risultati e, se vuole, l'analisi gratuita di un mese passato: "
             f"quali viaggi sarebbero stati toccati e quanto è costato.\n\n"
             f"Grazie,\n{SIGN}\n"
@@ -81,7 +81,7 @@ def association_message(name: str, link: str, members: str = "associati con line
     return (f"Gentile segreteria di {name},\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, "
             f"code, chiusure e scioperi, e come li gestiscono gli uffici traffico.\n\n"
-            f"Vi chiederemmo di inoltrare ai vostri {members} questo sondaggio anonimo di sei domande, un minuto:\n{link}\n\n"
+            f"Vi chiederemmo di inoltrare ai vostri {members} questo sondaggio anonimo di sette domande, un minuto:\n{link}\n\n"
             f"Non vendiamo nulla. All'associazione mandiamo i risultati aggregati appena chiudiamo la raccolta, "
             f"e siamo disponibili a presentarli ai soci.\n\n"
             f"Grazie,\n{SIGN}")
@@ -92,7 +92,7 @@ def press_message(outlet: str, link: str) -> str:
             f"siamo tre studenti della Bocconi. Stiamo raccogliendo dati sul campo su quanto costano agli uffici traffico "
             f"con linee estere i divieti di circolazione, le code, le chiusure e gli scioperi: "
             f"minuti persi ogni giorno, viaggi da ripianificare, costo dell'ultimo imprevisto.\n\n"
-            f"Sono sei domande, un minuto, in forma anonima: {link}\n\n"
+            f"Sono sette domande, un minuto, in forma anonima: {link}\n\n"
             f"Se vi sembra utile per i vostri lettori, una breve segnalazione ci aiuterebbe molto. "
             f"Condivideremo con voi i risultati aggregati, in esclusiva se lo desiderate.\n\n"
             f"Grazie,\n{SIGN}")
@@ -117,7 +117,7 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": clean_city(r["city"]),
                      "to": email, "where": site.rstrip(").,;") if site else ("" if email else "сайт ассоциации → «Contatti», спросить отдел автотранспорта"),
                      "search": google(org + " contatti"),
-                     "subject": "Sei domande, un minuto, per i vostri associati con linee estere (ricerca Bocconi)",
+                     "subject": "Sette domande, un minuto, per i vostri associati con linee estere (ricerca Bocconi)",
                      "message": association_message(org, link), "link": link})
     for org in NATIONAL_ASSOCIATIONS:
         if org in seen:
@@ -126,7 +126,7 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": "nazionale", "to": "",
                      "where": "сайт ассоциации → «Contatti», спросить отдел автотранспорта",
                      "search": google(org + " contatti sede nazionale"),
-                     "subject": "Sei domande, un minuto, per i vostri associati con linee estere (ricerca Bocconi)",
+                     "subject": "Sette domande, un minuto, per i vostri associati con linee estere (ricerca Bocconi)",
                      "message": association_message(org, link), "link": link})
     for outlet, email, note in PRESS:
         link = f"{SURVEY}?src=press-{slug(outlet)}"
@@ -153,7 +153,7 @@ def build() -> list[dict]:
 def group_message(link: str) -> str:
     return ("Buongiorno a tutti, con il permesso degli amministratori: siamo tre studenti della Bocconi e stiamo misurando "
             "quanto costano a chi organizza i trasporti divieti, code, chiusure e scioperi.\n\n"
-            f"Sei domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde:\n{link}\n\n"
+            f"Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde:\n{link}\n\n"
             f"Grazie a chi ci dedica un minuto!\n{SIGN}")
 
 
@@ -185,7 +185,7 @@ def broad(existing: list[dict]) -> list[dict]:
         elif kind in ("association", "interporto"):
             link = f"{SURVEY}?src=assoc-{slug(name)}"
             row = base | {"id": "ba-" + slug(name), "type": "association",
-                          "subject": "Sei domande, un minuto, per i vostri " + ("operatori" if kind == "interporto" else "associati") + " (ricerca Bocconi)",
+                          "subject": "Sette domande, un minuto, per i vostri " + ("operatori" if kind == "interporto" else "associati") + " (ricerca Bocconi)",
                           "message": association_message(name, link, "operatori" if kind == "interporto" else "associati"), "link": link}
         elif kind == "media":
             link = f"{SURVEY}?src=press-{slug(name)}"

@@ -6,7 +6,7 @@ spec = importlib.util.spec_from_file_location("survey_summary", Path(__file__).p
 ss = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ss)
 
-ANSWER_FIELDS = ["Created At", "fleet", "trips_abroad", "minutes", "last_cost", "would_use", "price", "lang", "src", "rid"]
+ANSWER_FIELDS = ["Created At", "fleet", "trips_abroad", "minutes", "last_cost", "would_use", "share", "price", "lang", "src", "rid"]
 FOLLOW_FIELDS = ["Created At", "rid", "followup", "contact", "consent", "lang"]
 
 
@@ -22,7 +22,7 @@ def _write(tmp_path, name, fields, rows):
 
 def _office(**kw):
     base = {"fleet": "21-50", "trips_abroad": "6-20", "minutes": "20-40", "last_cost": "300-1000",
-            "would_use": "yes", "price": "5-10", "lang": "it", "src": "assoc-fai"}
+            "would_use": "yes", "share": "yes", "price": "5-10", "lang": "it", "src": "assoc-fai"}
     return base | kw
 
 
@@ -76,10 +76,10 @@ def test_google_form_export_is_read_like_the_site_form(tmp_path):
     titles = list(ss.GOOGLE_FORM)
     rows = [["Informazioni cronologiche"] + titles]
     for _ in range(5):
-        rows.append(["07/11/2026 18:00:00", "21–50", "6–20 volte", "20–40 minuti", "300–1.000 €", "Sì, molto", "5–10 €",
-                     "I risultati del sondaggio, L’analisi gratuita di un vostro mese passato", "ufficio@example.com",
+        rows.append(["07/11/2026 18:00:00", "21–50", "6–20 volte", "20–40 minuti", "300–1.000 €", "Sì, molto", "Sì, se resta anonimo", "5–10 €",
+                     "I risultati del sondaggio, L’analisi gratuita di un vostro mese passato, Un posto tra i primi uffici della rete condivisa", "ufficio@example.com",
                      "Potete usare questo contatto solo per ciò che ho scelto."])
-    rows.append(["07/11/2026 18:05:00", "Più di 100", "Mai", "Meno di 10 minuti", "Non lo so", "No", "Niente, non pagherei", "", "", ""])
+    rows.append(["07/11/2026 18:05:00", "Più di 100", "Mai", "Meno di 10 minuti", "Non lo so", "No", "No", "Niente, non pagherei", "", "", ""])
     p = tmp_path / "google.csv"
     with open(p, "w", newline="", encoding="utf-8") as f:
         csv.writer(f).writerows(rows)
@@ -91,6 +91,9 @@ def test_google_form_export_is_read_like_the_site_form(tmp_path):
     assert c["Offices spending ≥ 20 min a day checking"]["result"] == "100%"
     assert c["Fair price per vehicle a month, median"]["result"] == "€5–10"
     assert s["followup"]["a free past-month analysis"] == 5 and s["channels"]["google-form"] == 6
+    assert s["followup"]["a place in the shared network"] == 5
+    assert c["Would share what their drivers see (shared watch, docs/15)"]["result"] == "100%"
+    assert s["share"]["yes, if anonymous"] == 5
     assert "example.com" not in ss.markdown(s)
 
 

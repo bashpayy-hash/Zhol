@@ -12,8 +12,8 @@
  * CSV of this form; tests/test_survey.py checks that they match.
  */
 function createZholForm() {
-  var form = FormApp.create('zhol · Sei domande per gli uffici traffico');
-  form.setTitle('Sei domande. Un minuto.')
+  var form = FormApp.create('zhol · Sette domande per gli uffici traffico');
+  form.setTitle('Sette domande. Un minuto.')
     .setDescription('Quanto vi costano divieti, code, chiusure e scioperi, su strada, rotaia o traghetto? Ricerca di tre studenti Bocconi ' +
       '(Alikhan, Inkara, Tomiris) per TEF Ignition 2026. Si risponde con un tocco, è anonimo e non vendiamo nulla. ' +
       'Pubblichiamo solo dati aggregati.')
@@ -46,6 +46,8 @@ function createZholForm() {
       ['Meno di 100 €', '100–300 €', '300–1.000 €', 'Più di 1.000 €', 'Non lo so']],
     ['Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?',
       ['Sì, molto', 'Forse', 'No']],
+    ['Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?',
+      ['Sì, volentieri', 'Sì, se resta anonimo', 'Vorrei solo riceverle', 'No']],
     ['Quale prezzo vi sembra giusto, al mese per ogni mezzo?',
       ['Niente, non pagherei', 'Fino a 5 €', '5–10 €', '10–20 €', 'Più di 20 €']]
   ];
@@ -53,13 +55,14 @@ function createZholForm() {
     form.addMultipleChoiceItem().setTitle(q[0]).setChoiceValues(q[1]).setRequired(true);
   });
 
-  // optional, on the same page so the six answers are never lost if someone stops here
+  // optional, on the same page so the seven answers are never lost if someone stops here
   form.addSectionHeaderItem()
     .setTitle('Facoltativo: volete qualcosa in cambio?')
     .setHelpText('Se lasciate un contatto lo usiamo solo per ciò che avete scelto e lo cancelliamo a fine progetto, ' +
       'o prima se ce lo chiedete.');
   form.addCheckboxItem().setTitle('Cosa vi interessa?')
-    .setChoiceValues(['I risultati del sondaggio', 'L’analisi gratuita di un vostro mese passato', 'Fare due chiacchiere, 20 minuti']);
+    .setChoiceValues(['I risultati del sondaggio', 'L’analisi gratuita di un vostro mese passato', 'Fare due chiacchiere, 20 minuti',
+      'Un posto tra i primi uffici della rete condivisa']);
   form.addTextItem().setTitle('Email o telefono aziendale');
   form.addCheckboxItem().setTitle('Consenso')
     .setChoiceValues(['Potete usare questo contatto solo per ciò che ho scelto.']);

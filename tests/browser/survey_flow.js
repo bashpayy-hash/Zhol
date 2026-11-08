@@ -1,8 +1,8 @@
-/* Browser check of the six-question survey at /q (English) and /q/it (brand/PRINCIPLES.md §10: scenarios recorded in the repo).
+/* Browser check of the seven-question survey at /q (English) and /q/it (brand/PRINCIPLES.md §10: scenarios recorded in the repo).
    Serve the site, then run:
      (cd site && python3 -m http.server 8765) &
      node tests/browser/survey_flow.js [base-url] [screenshot-dir]
-   It answers all six steps on a phone (390x844) and a desktop (1440x900), in Italian and English,
+   It answers all seven steps on a phone (390x844) and a desktop (1440x900), in Italian and English,
    checks that each step shows its own mascot pose, that Back and Next work, that the answers and the
    optional contact go out as two posts linked by the same random id, that nothing scrolls sideways,
    and saves a screenshot of every state. Posts are intercepted: nothing reaches Netlify. */
@@ -10,8 +10,8 @@ const { chromium } = require("playwright");
 
 const BASE = process.argv[2] || "http://localhost:8765";
 const OUT = process.argv[3] || require("os").tmpdir();
-const POSES = ["truck", "route", "watch", "coin", "phone", "thinking"];
-const ANSWERS = [["fleet", "21-50"], ["trips_abroad", "6-20"], ["minutes", "20-40"], ["last_cost", "300-1000"], ["would_use", "yes"], ["price", "5-10"]];
+const POSES = ["truck", "route", "watch", "coin", "phone", "radio", "thinking"];
+const ANSWERS = [["fleet", "21-50"], ["trips_abroad", "6-20"], ["minutes", "20-40"], ["last_cost", "300-1000"], ["would_use", "yes"], ["share", "anon"], ["price", "5-10"]];
 let failed = 0;
 const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); } };
 
@@ -53,7 +53,7 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
         await pick(...ANSWERS[i]);
         if (i === 3) await shot("after-step4");
       }
-      check(await page.isVisible("#sv-follow"), `${tag}: optional contact step after the sixth answer`);
+      check(await page.isVisible("#sv-follow"), `${tag}: optional contact step after the last answer`);
       check((await pose()).includes("celebrate"), `${tag}: celebrate pose after sending`);
       await shot("follow");
       await page.click('input[name="followup"][value="results"] + span');
@@ -71,7 +71,7 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       if (posts.length === 2) {
         const [a, f] = posts;
         check(a.get("form-name") === "survey" && f.get("form-name") === "survey-followup", `${tag}: form names`);
-        check(ANSWERS.every(([k, v]) => a.get(k) === v), `${tag}: all six answers sent`);
+        check(ANSWERS.every(([k, v]) => a.get(k) === v), `${tag}: all seven answers sent`);
         check(a.get("rid") && a.get("rid") === f.get("rid"), `${tag}: same random id links the two`);
         check(a.get("lang") === lang && a.get("src") === "check", `${tag}: lang and channel`);
         check(!a.get("contact"), `${tag}: no contact inside the answers`);

@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>zhol · Sei domande per gli uffici traffico</title>
-<meta name="description" content="Sei domande, un minuto: quanto costano a chi organizza trasporti su strada, rotaia o traghetto divieti, code, chiusure e scioperi. Si risponde con un tocco, è anonimo, non vendiamo nulla.">
-<meta property="og:title" content="Sei domande, un minuto: quanto vi costano divieti, code e scioperi?">
+<title>zhol · Sette domande per gli uffici traffico</title>
+<meta name="description" content="Sette domande, un minuto: quanto costano a chi organizza trasporti su strada, rotaia o traghetto divieti, code, chiusure e scioperi. Si risponde con un tocco, è anonimo, non vendiamo nulla.">
+<meta property="og:title" content="Sette domande, un minuto: quanto vi costano divieti, code e scioperi?">
 <meta property="og:description" content="Ricerca di tre studenti Bocconi per gli uffici traffico con linee estere. Anonimo, risultati condivisi con chi risponde.">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=a2">
+<link rel="stylesheet" href="/assets/zhol.css?v=a3">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/q">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/q/it">
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
@@ -28,9 +28,17 @@
   <div class="wrap sv-intro-grid">
     <div class="sv-intro-text">
       <span class="sv-label">Ricerca Bocconi per gli uffici traffico</span>
-      <h1 class="title sv-title">Sei domande. Un minuto.</h1>
+      <h1 class="title sv-title">Sette domande. Un minuto.</h1>
       <p class="lead">Quanto vi costano divieti, code, chiusure e scioperi, su strada, rotaia o traghetto? Si risponde con un tocco, è anonimo e non vendiamo nulla.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Inizia</a><span class="small muted">Anonimo · nessuna vendita</span></div>
+      <div class="sv-now" id="sv-now" hidden>
+        <p class="sv-now-head"><span class="sv-live-dot" aria-hidden="true"></span><b>Sulle strade d’Europa adesso</b></p>
+        <div class="sv-now-grid">
+          <div class="map-frame" role="img" aria-label="Mappa d’Europa con gli eventi che zhol prevede nelle prossime otto settimane"></div>
+          <ul class="sv-now-list" id="sv-now-list"></ul>
+        </div>
+        <p class="small muted">Ciò che zhol segue ogni giorno. Poi: uffici che si avvisano tra loro su ciò che vedono i loro autisti.</p>
+      </div>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
@@ -55,7 +63,7 @@
           <input type="hidden" name="rid" value="">
           <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
 
-          <fieldset class="q" data-img="truck"><legend><span class="n">Domanda 1 di 6</span>Quanti mezzi gestite (camion, rimorchi, container, vagoni)?</legend>
+          <fieldset class="q" data-img="truck"><legend><span class="n">Domanda 1 di 7</span>Quanti mezzi gestite (camion, rimorchi, container, vagoni)?</legend>
             <p class="sv-why">Per confrontare realtà di dimensioni simili.</p>
             <div class="opts tall">
               <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
@@ -65,7 +73,7 @@
               <label><input type="radio" name="fleet" value="100+"><span>Più di 100</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="route"><legend><span class="n">Domanda 2 di 6</span>Quante spedizioni a settimana vanno all’estero, su strada, rotaia o traghetto?</legend>
+          <fieldset class="q" data-img="route"><legend><span class="n">Domanda 2 di 7</span>Quante spedizioni a settimana vanno all’estero, su strada, rotaia o traghetto?</legend>
             <p class="sv-why">Le spedizioni lunghe sono le più esposte a divieti, code e traghetti fermi.</p>
             <div class="opts tall">
               <label><input type="radio" name="trips_abroad" value="0" required><span>Mai</span></label>
@@ -74,7 +82,7 @@
               <label><input type="radio" name="trips_abroad" value="20+"><span>Più di 20 volte</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="watch"><legend><span class="n">Domanda 3 di 6</span>Quanto tempo passate ogni giorno a controllare divieti, code e scioperi?</legend>
+          <fieldset class="q" data-img="watch"><legend><span class="n">Domanda 3 di 7</span>Quanto tempo passate ogni giorno a controllare divieti, code e scioperi?</legend>
             <p class="sv-why">È il tempo che zhol vuole restituirvi.</p>
             <div class="opts tall">
               <label><input type="radio" name="minutes" value="<10" required><span>Meno di 10 minuti</span></label>
@@ -83,7 +91,7 @@
               <label><input type="radio" name="minutes" value="40+"><span>Più di 40 minuti</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">Domanda 4 di 6</span>L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?</legend>
+          <fieldset class="q" data-img="coin"><legend><span class="n">Domanda 4 di 7</span>L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?</legend>
             <p class="sv-why">Ci dice quanto vale un avviso arrivato in tempo.</p>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Meno di 100 €</span></label>
@@ -93,7 +101,7 @@
               <label><input type="radio" name="last_cost" value="unknown"><span>Non lo so</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">Domanda 5 di 6</span>Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?</legend>
+          <fieldset class="q" data-img="phone"><legend><span class="n">Domanda 5 di 7</span>Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?</legend>
             <p class="sv-why">È esattamente ciò che stiamo costruendo.</p>
             <div class="opts tall">
               <label><input type="radio" name="would_use" value="yes" required><span>Sì, molto</span></label>
@@ -101,7 +109,16 @@
               <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="thinking"><legend><span class="n">Domanda 6 di 6</span>Quale prezzo vi sembra giusto, al mese per ogni mezzo?</legend>
+          <fieldset class="q" data-img="radio"><legend><span class="n">Domanda 6 di 7</span>Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?</legend>
+            <p class="sv-why">zhol può diventare una rete in cui gli uffici si avvisano tra loro, in forma anonima.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="share" value="yes" required><span>Sì, volentieri</span></label>
+              <label><input type="radio" name="share" value="anon"><span>Sì, se resta anonimo</span></label>
+              <label><input type="radio" name="share" value="receive"><span>Vorrei solo riceverle</span></label>
+              <label><input type="radio" name="share" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="thinking"><legend><span class="n">Domanda 7 di 7</span>Quale prezzo vi sembra giusto, al mese per ogni mezzo?</legend>
             <p class="sv-why">Per fissare un prezzo onesto prima di chiedere un euro.</p>
             <div class="opts tall">
               <label><input type="radio" name="price" value="0" required><span>Niente, non pagherei</span></label>
@@ -127,6 +144,7 @@
             <label><input type="checkbox" name="followup" value="results"><span>I risultati del sondaggio</span></label>
             <label><input type="checkbox" name="followup" value="analysis"><span>L’analisi gratuita di un vostro mese passato</span></label>
             <label><input type="checkbox" name="followup" value="interview"><span>Fare due chiacchiere, 20 minuti</span></label>
+            <label><input type="checkbox" name="followup" value="network"><span>Un posto tra i primi uffici della rete condivisa</span></label>
           </div>
           <div class="field sv-contact"><label for="sv-contact">Email o telefono aziendale</label><input id="sv-contact" name="contact" autocomplete="email"></div>
           <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> Potete usare questo contatto solo per ciò che ho scelto.</label>
@@ -158,7 +176,7 @@
   <span>Alikhan · Inkara · Tomiris · Università Bocconi · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
-<script src="/assets/map.js?v=a2" defer></script>
-<script src="/assets/survey.js?v=q2" defer></script>
+<script src="/assets/map.js?v=a3" defer></script>
+<script src="/assets/survey.js?v=q3" defer></script>
 </body>
 </html>
