@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Tech · Code where the rules are known, AI where the text is unstructured, a person in between</title>
+<meta name="description" content="Question 5: More details on the technical part. Code where the rules are known, AI where the text is unstructured, a person in between.">
+<meta property="og:title" content="zhol · Code where the rules are known, AI where the text is unstructured, a person in between">
+<meta property="og:description" content="Market, pricing, business model, go-to-market, technology, evidence, competition and room in the market, each with sources.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=b2">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/answers/tech">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/risposte/tech">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="zhol home"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sections">
+    <a href="/answers/market">Market</a><a href="/answers/pricing">Pricing</a><a href="/answers/model">Model</a><a href="/answers/gtm">Go-to-market</a><a href="/answers/tech" aria-current="page">Tech</a><a href="/answers/evidence">Evidence</a><a href="/answers/competition">Competition</a><a href="/answers/room">Room</a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="/story">Story</a><a href="/outlook">Radar</a><a href="/audience">Audience</a><a href="/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/it/risposte/tech" lang="it" hreflang="it">IT</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="slide answer sage" id="tech">
+  <div class="wrap stack">
+    <div class="qhead">
+      <div class="asked"><span class="kicker">Question 5</span><q>More details on the technical part</q></div>
+      <h2 class="title">Code where the rules are known, AI where the text is unstructured, a person in between</h2>
+    </div>
+    <ul class="brief">
+      <li><b>7</b> countries of ban rules in code, plus the official Tyrol dosing calendar</li>
+      <li><b>AI</b> reads notices and news; <b>one person</b> approves every event before it goes out</li>
+      <li><b>1</b> WhatsApp message per office per evening, with each option priced</li>
+    </ul>
+    <div>
+      <figure class="print"><img src="/assets/img/q/q5-tech.webp" alt="Illustration: four cards joined by one line: a notice under a magnifying glass, the notice stamped as approved, a truck on a mountain road with a clock, a phone showing one message" width="1800" height="771" loading="lazy"></figure>
+      <div class="strip-steps">
+        <div><h3><span>1</span>Watch</h3><p class="small">National truck bans for 7 countries as rules, the official Tyrol dosing calendar, EU traffic data feeds (DATEX II), news and union releases.</p></div>
+        <div><h3><span>2</span>Verify</h3><p class="small">Claude turns text into a structured event with a verbatim quote, checked against the source. A person approves it; review time is measured.</p></div>
+        <div><h3><span>3</span>Match</h3><p class="small">Each load is driven along its corridor: arrival at every pass, tunnel, border and city, EU driving-time rules, ferries, Swiss customs, exemptions.</p></div>
+        <div><h3><span>4</span>Alert</h3><p class="small">Leave earlier, leave later, change pass or hold, each with its cost. A WhatsApp template outside the 24-hour window; replies 1, 2, 0.</p></div>
+      </div>
+    </div>
+    <div class="split">
+      <div class="stack" style="gap:10px">
+        <div class="wa" aria-label="WhatsApp alert produced by the zhol prototype">
+          <div class="head"><img src="/assets/img/chat-icon.png" alt="" width="120" height="106"><b>zhol · WhatsApp</b><span class="when">Wed 11 Nov, 18:00</span></div>
+          <div class="box"><span class="hl">3 dei tuoi 6 carichi di domani hanno un problema sul percorso.</span>
+
+<b>MUC-118 · imballaggi, München – Verona:</b> dosaggio a Kufstein gio 07:24 (perdi 2h55): nessuna alternativa migliore, avvisa il cliente
+
+<b>MI-515 · bobine acciaio, Milano – Lyon:</b> Fréjus chiuso ai mezzi pesanti 10:00–15:00 (perdi 3h47): anticipa la partenza alle 06:00
+
+<b>MI-402 · macchinari, Milano – München:</b> divieto notturno A12 Inntal dalle 20:00 (perdi 7h46): anticipa la partenza alle 11:00
+
+Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
+          <span class="reply">Rispondi 1: conferma con gli autisti</span>
+        </div>
+        <p class="small muted">What the prototype sends for Thursday 12 November, in Italian as the dispatcher reads it. Real ban rules and calendars; the Kufstein and Fréjus events and the loads are demo data.</p>
+      </div>
+      <div class="stack" style="gap:20px">
+                <div class="rows">
+          <div><b>Rules engine</b><span>Python. Italian, Austrian, German, Swiss, French, Slovenian and Polish bans with holidays, directions and exemptions.</span></div>
+          <div><b>Data</b><span>DATEX II parser for national access points, official calendars as files with their source and date.</span></div>
+          <div><b>AI</b><span>Claude extracts events from notices and news; every field must quote the source, or the event goes back to a person.</span></div>
+          <div><b>Delivery</b><span>WhatsApp Cloud API with a signed webhook; the reply 1, 2 or 0 updates the load and the savings ledger.</span></div>
+          <div><b>Checks</b><span>31 automated tests. Sources verified at the official sites on 6 Nov 2026: WKO, Land Tirol, Bison Futé, Albo, Meta.</span></div>
+        </div>
+        <div class="actions"><a class="btn" href="/beta">Try it on real roads</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><div class="foot"><span>Code, tests and the source-verification log: github.com/bashpayy-hash/Zhol · architecture in docs/04-technical-architecture.md</span></div></div>
+</section>
+<section class="slide answer-nav"><div class="wrap"><div class="step-row"><a href="/answers/gtm" class="sv-link">Previous answer: Go-to-market</a><a href="/" class="btn ghost">All eight answers</a><a href="/answers/evidence" class="btn">Next answer: Evidence</a></div></div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan, Inkara, Tomiris · Bocconi University · TEF Ignition 2026</span>
+  <span><a href="/story">Story</a> · <a href="/outlook">Radar</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/scene.js?v=q1" defer></script>
+<script src="/assets/site.js?v=vz1" defer></script>
+</body>
+</html>

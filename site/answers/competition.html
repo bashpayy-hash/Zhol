@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Competition · Each piece exists somewhere. Nobody checks tomorrow’s loads the evening before</title>
+<meta name="description" content="Question 7: Potential competitors analysis, different solutions that might arise in the future. Each piece exists somewhere. Nobody checks tomorrow’s loads the evening before.">
+<meta property="og:title" content="zhol · Each piece exists somewhere. Nobody checks tomorrow’s loads the evening before">
+<meta property="og:description" content="Market, pricing, business model, go-to-market, technology, evidence, competition and room in the market, each with sources.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=b2">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/answers/competition">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/risposte/competition">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="zhol home"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sections">
+    <a href="/answers/market">Market</a><a href="/answers/pricing">Pricing</a><a href="/answers/model">Model</a><a href="/answers/gtm">Go-to-market</a><a href="/answers/tech">Tech</a><a href="/answers/evidence">Evidence</a><a href="/answers/competition" aria-current="page">Competition</a><a href="/answers/room">Room</a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="/story">Story</a><a href="/outlook">Radar</a><a href="/audience">Audience</a><a href="/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/it/risposte/competition" lang="it" hreflang="it">IT</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="slide answer sage" id="competition">
+  <div class="wrap stack">
+    <div class="qhead">
+      <div class="asked"><span class="kicker">Question 7</span><q>Potential competitors analysis, different solutions that might arise in the future</q></div>
+      <h2 class="title">Each piece exists somewhere. Nobody checks tomorrow’s loads the evening before</h2>
+    </div>
+    <ul class="brief">
+      <li><b>6</b> categories of tools, each covering a piece: TMS, telematics, freight exchanges, visibility, risk platforms, associations</li>
+      <li><b>0</b> of them check tomorrow’s loads the evening before</li>
+      <li><b>€10–35</b> per vehicle a month is what telematics costs today; we add to it, we do not replace it</li>
+    </ul>
+    <div class="split center">
+      <figure class="print"><img src="/assets/img/q/q7-missing.webp" alt="Illustration: a folded map with one square missing over an Alpine pass, outlined in red; the missing piece lies beside it with a message icon" width="1100" height="822" loading="lazy"></figure>
+      <div class="pmap" role="img" aria-label="Positioning map: horizontal axis from static calendars to live unplanned events; vertical axis from fleet level to a decision per load. zhol sits top right.">
+        <div class="ax h"></div><div class="ax v"></div>
+        <span class="t" style="left:5%;top:calc(50% + 6px)">Static calendars</span>
+        <span class="t" style="right:5%;top:calc(50% + 6px);text-align:right">Live, unplanned events</span>
+        <span class="t" style="left:calc(50% + 8px);top:6%">Decision per load, tomorrow</span>
+        <span class="t" style="left:calc(50% + 8px);bottom:6%">Fleet or supplier, right now</span>
+        <div class="dot us" style="left:76%;top:22%"><i></i>zhol</div>
+        <div class="dot" style="left:28%;top:28%"><i></i>TMS, could add it</div>
+        <div class="dot" style="left:24%;top:72%"><i></i>Ban apps, navigation</div>
+        <div class="dot" style="left:74%;top:66%"><i></i>Telematics, visibility</div>
+        <div class="dot" style="left:84%;top:85%"><i></i>Risk platforms</div>
+      </div>
+    </div>
+    <div class="tablewrap" data-collapse="3"><table class="t">
+      <thead><tr><th>Today</th><th>Price</th><th>What they miss</th></tr></thead>
+      <tbody>
+        <tr><td>Telematics (Webfleet, Samsara, Geotab)</td><td class="num">€10–35 per truck a month</td><td>They look at now, not at tomorrow’s plan</td></tr>
+        <tr><td>Freight exchanges (TIMOCOM, Trans.eu)</td><td class="num">€120–200 per seat a month</td><td>Free static ban calendars only</td></tr>
+        <tr><td>Navigation (Sygic, PTV Map&amp;Guide)</td><td class="num">€5–49 per user</td><td>One route on request; no strikes or blockades</td></tr>
+        <tr><td>Visibility (Shippeo, project44)</td><td>Paid by shippers</td><td>React once the truck is already late</td></tr>
+        <tr><td>Risk platforms (Everstream, Dataminr)</td><td>Enterprise contracts</td><td>Supplier risk, not road restrictions per load</td></tr>
+        <tr><td>AI freight agents (HappyRobot, FleetWorks)</td><td>Usage-based</td><td>Paperwork and calls, not road restrictions</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tablewrap" data-collapse="2"><table class="t">
+      <thead><tr><th>What may appear</th><th>Likelihood</th><th>Our response</th></tr></thead>
+      <tbody>
+        <tr><td>TMS and telematics add agents that warn about planned loads (Qargo, Trimble, Geotab, Samsara)</td><td><b style="color:var(--red)">High</b></td><td>Win the offices without a TMS; sell our verified event layer to them as an API</td></tr>
+        <tr><td>Map providers expose restrictions to AI agents (TomTom, HERE, Google)</td><td>Medium-high</td><td>Use them as inputs; local, unplanned, multilingual events stay our job</td></tr>
+        <tr><td>EU open road data under Regulation 2022/670</td><td>Certain</td><td>Lowers our data cost; matching, verification and workflow stay ours</td></tr>
+        <tr><td>General AI assistants and WhatsApp business agents</td><td>Medium</td><td>No load plan, no verified sources, no accountability for a wrong alert</td></tr>
+        <tr><td>Freight exchanges add alerts</td><td>Medium</td><td>Partner and supply the alert engine</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="wrap"><div class="foot"><span>Vendor price pages and third-party estimates, Nov 2026 · docs/02-competitors.md</span></div></div>
+</section>
+<section class="slide answer-nav"><div class="wrap"><div class="step-row"><a href="/answers/evidence" class="sv-link">Previous answer: Evidence</a><a href="/" class="btn ghost">All eight answers</a><a href="/answers/room" class="btn">Next answer: Room</a></div></div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan, Inkara, Tomiris · Bocconi University · TEF Ignition 2026</span>
+  <span><a href="/story">Story</a> · <a href="/outlook">Radar</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/scene.js?v=q1" defer></script>
+<script src="/assets/site.js?v=vz1" defer></script>
+</body>
+</html>

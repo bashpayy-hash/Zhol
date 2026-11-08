@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Pricing · An office with 20 vehicles saves about €1,740 a month. We charge 14% of it</title>
+<meta name="description" content="Question 2: Pricing model: percentage of money saved to the company? Estimate savings. An office with 20 vehicles saves about €1,740 a month. We charge 14% of it.">
+<meta property="og:title" content="zhol · An office with 20 vehicles saves about €1,740 a month. We charge 14% of it">
+<meta property="og:description" content="Market, pricing, business model, go-to-market, technology, evidence, competition and room in the market, each with sources.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=b2">
+<link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/answers/pricing">
+<link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/risposte/pricing">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="zhol home"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sections">
+    <a href="/answers/market">Market</a><a href="/answers/pricing" aria-current="page">Pricing</a><a href="/answers/model">Model</a><a href="/answers/gtm">Go-to-market</a><a href="/answers/tech">Tech</a><a href="/answers/evidence">Evidence</a><a href="/answers/competition">Competition</a><a href="/answers/room">Room</a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="/story">Story</a><a href="/outlook">Radar</a><a href="/audience">Audience</a><a href="/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/it/risposte/pricing" lang="it" hreflang="it">IT</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="slide answer" id="pricing">
+  <div class="wrap stack">
+    <div class="qhead">
+      <div class="asked"><span class="kicker">Question 2</span><q>Pricing model: percentage of money saved to the company? Estimate savings</q></div>
+      <h2 class="title">An office with 20 vehicles saves about €1,740 a month. We charge 14% of it</h2>
+    </div>
+    <ul class="brief">
+      <li><b>€1,740</b> a month: what an office with 20 vehicles saves, at the €100 hour Italian law sets</li>
+      <li><b>14%</b> of that saving is our price: €12 per vehicle a month, minimum €99</li>
+      <li><b>€8</b> per vehicle for the first 10 offices, 12 months, for a weekly 15 minutes of feedback</li>
+    </ul>
+    <div class="split center">
+      <div class="stack" style="gap:18px">
+        <p class="lead">The default is a subscription anchored at about 14% of the estimated saving. A pure share of savings is offered as an option.</p>
+        <div class="rows">
+          <div><b>Why not only a share</b><span>Every invoice would become a negotiation about what the office would have known anyway, and a quiet month would bill nothing.</span></div>
+          <div><b>A verified saving</b><span>Counts only alerts the dispatcher confirmed, only for events outside a published calendar, priced with the cost model the customer agreed to. The monthly statement lists every line with its source.</span></div>
+          <div><b>The €100 hour</b><span>Italian law sets €100 an hour for a truck kept waiting (art. 6-bis D.Lgs. 286/2005). We price an hour lost on the road at the same rate.</span></div>
+        </div>
+      </div>
+      <img class="art" src="/assets/img/q/q2-tag.webp?v=2" alt="Illustration: a folded map of the Alps with a route over a pass marked by a red triangle, a small truck and a blank price tag on a red string" width="1100" height="822" loading="lazy">
+    </div>
+    <div class="calc">
+      <form class="card" id="calc" onsubmit="return false" aria-label="Savings inputs">
+        <span class="kicker">Change any number</span>
+        <div class="fields">
+          <div class="field"><label for="c-trucks">Vehicles</label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
+          <div class="field"><label for="c-share">Trucks on international lanes, %</label><input id="c-share" type="number" min="0" max="100" step="5" value="50"></div>
+          <div class="field"><label for="c-legs">One-way trips per vehicle per month</label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
+          <div class="field"><label for="c-hit">Trips hit by an unplanned disruption, %</label><input id="c-hit" type="number" min="0" max="100" step="0.5" value="4"></div>
+          <div class="field"><label for="c-act">Hits an option can avoid, %</label><input id="c-act" type="number" min="0" max="100" step="5" value="50"></div>
+          <div class="field"><label for="c-hours">Hours saved per avoided hit</label><input id="c-hours" type="number" min="0" step="0.5" value="3"></div>
+          <div class="field"><label for="c-hour">Cost of a vehicle-hour, €</label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
+          <div class="field"><label for="c-disp">Dispatcher minutes a day checking sites</label><input id="c-disp" type="number" min="0" step="5" value="30"></div>
+          <div class="field"><label for="c-big">Blockade or strike days a year</label><input id="c-big" type="number" min="0" step="1" value="4"></div>
+          <div class="field"><label for="c-price">Price per vehicle per month, €</label><input id="c-price" type="number" min="0" step="1" value="12"></div>
+        </div>
+      </form>
+      <div class="card out" aria-live="polite">
+        <span class="kicker">Estimated saving</span>
+        <span class="big" id="o-total">€1,742</span>
+        <span class="small muted" id="o-year">per month, €20,900 a year</span>
+        <div>
+          <div class="line"><span id="o-waits-l">Avoided waits</span><span id="o-waits">€1,200</span></div>
+          <div class="line"><span>Dispatcher time</span><span id="o-disp">€275</span></div>
+          <div class="line"><span>Blockade and strike days</span><span id="o-big">€267</span></div>
+          <div class="line best"><span>Subscription</span><span id="o-sub">€240 · 14% of savings</span></div>
+          <div class="line"><span>Or: €49 + 15% of verified savings, capped</span><span id="o-perf">€269</span></div>
+          <div class="line"><span>Pays for itself in</span><span id="o-pay">4 days</span></div>
+        </div>
+        <p class="foot-note">Published calendar bans never count as savings: anyone can look them up for free.</p>
+      </div>
+    </div>
+    <div class="grid g5">
+      <div class="card plan"><span class="name">Pilot</span><span class="price">Free</span><p class="small">4 weeks, with a weekly savings ledger and a written success criterion</p></div>
+      <div class="card plan main"><span class="name">Standard</span><span class="price">€12</span><p class="small">per vehicle per month, minimum €99</p></div>
+      <div class="card plan"><span class="name">Performance</span><span class="price">€49 + 15%</span><p class="small">of verified savings, capped at €25 per vehicle</p></div>
+      <div class="card plan"><span class="name">Founding customer</span><span class="price">€8</span><p class="small">per vehicle for 12 months, first 10 offices, for a case study</p></div>
+      <div class="card plan"><span class="name">API, later</span><span class="price">€3–5</span><p class="small">per vehicle, wholesale, for TMS and telematics vendors</p></div>
+    </div>
+  </div>
+  <div class="wrap"><div class="foot"><span>€100 an hour: art. 6-bis D.Lgs. 286/2005 (DL 73/2025, L. 105/2025) · dispatcher cost from €28–34k gross salaries · same formulas as zhol/savings.py</span></div></div>
+</section>
+<section class="slide answer-nav"><div class="wrap"><div class="step-row"><a href="/answers/market" class="sv-link">Previous answer: Market</a><a href="/" class="btn ghost">All eight answers</a><a href="/answers/model" class="btn">Next answer: Model</a></div></div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan, Inkara, Tomiris · Bocconi University · TEF Ignition 2026</span>
+  <span><a href="/story">Story</a> · <a href="/outlook">Radar</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/scene.js?v=q1" defer></script>
+<script src="/assets/site.js?v=vz1" defer></script>
+</body>
+</html>
