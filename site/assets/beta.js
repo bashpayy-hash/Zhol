@@ -1,7 +1,7 @@
 /* zhol beta page: renders engine output built by scripts/build_site.py */
 (function () {
   const $ = id => document.getElementById(id);
-  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const esc = s => String(s ?? "").replace(/\s*->\s*/g, " – ").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const wa = s => esc(s).replace(/\*([^*\n]+)\*/g, "<b>$1</b>");
   const TZ = "Europe/Rome";
   const IT = document.documentElement.lang === "it";
@@ -86,7 +86,7 @@
   }
   function drawGrid(id) {
     getJSON(`/data/grid/${encodeURIComponent(id)}.json`).then(g => {
-      const head = `<tr><th></th>${g.hours.map(h => `<th>${String(h).padStart(2, "0")}</th>`).join("")}</tr>`;
+      const head = `<tr><th><span class="sr-only">${T("Day", "Giorno")}</span></th>${g.hours.map(h => `<th>${String(h).padStart(2, "0")}</th>`).join("")}</tr>`;
       const rows = g.days.map((d, di) => `<tr><th class="day">${fmt(d.date + "T12:00:00", { weekday: "short", day: "numeric", month: "short" })}</th>${d.slots.map((c, si) => {
         const [bg, fg] = colour(c);
         const label = c.s === "c" || c.s === "e" ? "" : c.s === "b" ? "×" : c.w >= 60 ? Math.round(c.w / 60) + "h" : c.w + "′";

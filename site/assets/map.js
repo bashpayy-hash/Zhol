@@ -52,15 +52,20 @@ window.ZholMap = function (root, opts) {
   const paths = {};
 
   // ---- view box: everything on the map is placed in map units and follows the box
+  // points move with transform, not left/top, so a zoom stays on the compositor (design audit, Nov 2026)
+  let fw = 0, fh = 0;
+  const measure = () => { fw = frame.clientWidth; fh = frame.clientHeight; };
   function setBox(b) {
     vb = b;
     svg.setAttribute("viewBox", b.join(" "));
+    if (!fw) measure();
     spots.concat(watchLabels).forEach(s => {
       const x = (s.x - b[0]) / b[2], y = (s.y - b[1]) / b[3];
-      s.btn.style.left = (x * 100) + "%"; s.btn.style.top = (y * 100) + "%";
+      s.btn.style.transform = `translate3d(${(x * fw).toFixed(1)}px, ${(y * fh).toFixed(1)}px, 0)` + (s.label ? " translate(8px, -50%)" : "");
       s.btn.hidden = x < -0.02 || x > 1.02 || y < -0.02 || y > 1.02;
     });
   }
+  if ("ResizeObserver" in window) new ResizeObserver(() => { measure(); if (vb) setBox(vb); }).observe(frame);
   const ease = t => 1 - Math.pow(1 - t, 4);   // close to --ease, cubic-bezier(.22,1,.36,1)
   let anim = 0;
   function fly(to, dur) {
@@ -160,7 +165,7 @@ window.ZholMap = function (root, opts) {
         if (taken.some(([x, y]) => Math.hypot(x - pl.x, y - pl.y) < 18)) return;
         taken.push([pl.x, pl.y]);
         const t = el("span", "map-wlbl", placeName(id, pl)); t.setAttribute("aria-hidden", "true");
-        watchLabels.push({ x: pl.x, y: pl.y, btn: t }); pins.append(t);
+        watchLabels.push({ x: pl.x, y: pl.y, btn: t, label: true }); pins.append(t);
       });
     }
     paint();
@@ -259,12 +264,13 @@ window.ZholMap = function (root, opts) {
       label.textContent = (k ? weekName(k) : T("All eight weeks", "Tutte le otto settimane")) + " · " + n(c, "event", "events", "evento", "eventi");
     }
   }
-  function stop() { clearInterval(timer); timer = 0; if (playBtn) { playBtn.textContent = T("Play the weeks", "Scorri le settimane"); playBtn.setAttribute("aria-pressed", "false"); } }
+  function stop() { clearInterval(timer); timer = 0; root.classList.remove("playing"); if (playBtn) { playBtn.textContent = T("Play the weeks", "Scorri le settimane"); playBtn.setAttribute("aria-pressed", "false"); } }
   function play() {
     if (timer) return stop();
     playBtn.textContent = T("Pause", "Pausa"); playBtn.setAttribute("aria-pressed", "true");
     let k = week && week < 8 ? week : 0;
     const tick = () => { k += 1; if (k > 8) { stop(); setWeek(0); return; } setWeek(k); };
+    root.classList.add("playing");
     tick(); timer = setInterval(tick, reduce ? 2400 : 1500);
   }
   if (timeBox) {
