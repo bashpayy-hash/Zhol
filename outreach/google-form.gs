@@ -29,7 +29,7 @@ function createZholForm() {
 
   // Zholdas, the mascot, next to his truck (served by the site)
   try {
-    var picture = UrlFetchApp.fetch('https://zhol-beta.netlify.app/assets/img/mascot/truck-form.jpg').getBlob();
+    var picture = UrlFetchApp.fetch('https://zhol.live/assets/img/mascot/truck-form.jpg').getBlob();
     form.addImageItem().setImage(picture).setAlignment(FormApp.Alignment.CENTER).setWidth(300);
   } catch (e) {
     Logger.log('Picture not added (the form works without it): ' + e);

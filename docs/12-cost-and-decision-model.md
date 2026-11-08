@@ -1,6 +1,6 @@
 # 12. Сколько стоит событие, какой план выбрать, кому писать
 
-Код: `zhol/radar/impact.py`, тесты: `tests/test_radar.py`. На сайте: [/outlook](https://zhol-beta.netlify.app/outlook), блок «What the next eight weeks cost».
+Код: `zhol/radar/impact.py`, тесты: `tests/test_radar.py`. На сайте: [/outlook](https://zhol.live/outlook), блок «What the next eight weeks cost».
 
 ## Идея в одной фразе
 

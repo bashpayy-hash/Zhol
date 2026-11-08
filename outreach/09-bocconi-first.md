@@ -38,7 +38,7 @@
 > - **Our question:** how would you measure the cost of a delay per truck credibly?
 > - **Our ask:** 20 minutes next week and, if you see fit, one or two hauliers or forwarders we could interview.
 >
-> Overview: https://zhol-beta.netlify.app
+> Overview: https://zhol.live
 >
 > Thank you,
 > Alikhan, Inkara and Tomiris
@@ -54,7 +54,7 @@
 > - **Domanda:** come misurerebbe in modo credibile il costo di un ritardo per camion?
 > - **Richiesta:** 20 minuti la prossima settimana e, se lo ritiene opportuno, il contatto di una o due aziende da intervistare.
 >
-> https://zhol-beta.netlify.app
+> https://zhol.live
 > Grazie, Alikhan, Inkara e Tomiris
 
 ## 2. Giuseppe Stabilini — SDA Bocconi; преподавал в магистратуре по транспорту (MEMIT)
@@ -70,7 +70,7 @@
 > - **Need:** this week we must interview traffic managers and owners of hauliers and forwarders in northern Italy.
 > - **Ask:** could you suggest two or three MEMIT alumni at a haulier or forwarder who might give us 20 minutes? Names alone already help.
 >
-> https://zhol-beta.netlify.app
+> https://zhol.live
 >
 > Thank you,
 > Alikhan, Inkara and Tomiris
@@ -88,7 +88,7 @@
 > - **Next month:** 4-week pilots, measured against the office's current process: minutes a day, re-plans per 100 trips, verified savings, our review time per event.
 > - **Ask:** 15 minutes to check these measures and thresholds; and, if you know logistics managers from executive programmes, an introduction.
 >
-> https://zhol-beta.netlify.app
+> https://zhol.live
 >
 > Thank you,
 > Alikhan, Inkara and Tomiris

@@ -1,6 +1,6 @@
 # 11. Радар: что ожидается на дорогах и с какой вероятностью
 
-Страница: [zhol-beta.netlify.app/outlook](https://zhol-beta.netlify.app/outlook). Код: `zhol/radar/`, тесты: `tests/test_radar.py`.
+Страница: [zhol.live/outlook](https://zhol.live/outlook). Код: `zhol/radar/`, тесты: `tests/test_radar.py`.
 
 ## Что делает
 

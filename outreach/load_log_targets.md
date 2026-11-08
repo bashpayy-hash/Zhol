@@ -2,7 +2,7 @@
 
 Дата ресерча: **7 ноября 2026**. Таблица: [`load_log_targets.csv`](load_log_targets.csv), **35 строк**.
 Что просим: один прошлый месяц рейсов (дата, время, откуда, куда) из реального офиса перевозчика или экспедитора.
-Взамен бесплатный разбор, как в примере: https://zhol-beta.netlify.app/replay-example (сайт: https://zhol-beta.netlify.app).
+Взамен бесплатный разбор, как в примере: https://zhol.live/replay-example (сайт: https://zhol.live).
 
 **Кого нет в таблице, потому что они уже есть в других файлах:** Baccelli, Stabilini и Bettucci (doc 09);
 Dallari, Vavassori, Schiavoni, Zini, Colombo, Marciani, Florio (`interview_targets_network.csv`);

@@ -7,9 +7,9 @@
 3. отметьте отправку в `leads_tracker.csv`;
 4. к пунктам 1, 7, 9, 13 сначала попросите тёплое интро у TEF (`02-associations-and-partners.md`, раздел C).
 
-Подпись везде: *Alikhan · zhol · Università Bocconi, Milano · zhol-beta.netlify.app*.
+Подпись везде: *Alikhan · zhol · Università Bocconi, Milano · zhol.live*.
 
-Даты дозирования в Куфштайне (официальный календарь Тироля): **18 и 25 ноября, 9 декабря 2026**. Обновляйте по `zhol-beta.netlify.app/beta#bulletin`.
+Даты дозирования в Куфштайне (официальный календарь Тироля): **18 и 25 ноября, 9 декабря 2026**. Обновляйте по `zhol.live/beta#bulletin`.
 
 ---
 

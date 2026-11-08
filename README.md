@@ -8,14 +8,14 @@
 
 ## Сайт
 
-**https://zhol-beta.netlify.app** — сайт в стиле ваших питч-дек (бумага, кирпично-красный, шалфейные и тёмные слайды, ваш логотип и иллюстрации):
+**https://zhol.live** — сайт в стиле ваших питч-дек (бумага, кирпично-красный, шалфейные и тёмные слайды, ваш логотип и иллюстрации):
 
 | Страница | Что там |
 |---|---|
-| [/](https://zhol-beta.netlify.app/) | История из Workshop-деки: проблема → почему сейчас → блокады → Сицилия → решение → клиенты → команда, плюс калькулятор экономии |
-| [/answers](https://zhol-beta.netlify.app/answers) | Ответы на фидбэк жюри TEF: рынок, цена, модель, GTM, техника, конкуренты, план проверки |
-| [/audience](https://zhol-beta.netlify.app/audience) | Аудитория: размер рынка по реестру, три персоны (владелец, диспетчер, экспедитор), четыре сегмента, публичные высказывания людей из отрасли, каналы. Полутоновые карты стартовых провинций и сегментов, нарисованные по Natural Earth (`scripts/maps/`) |
-| [/beta](https://zhol-beta.netlify.app/beta) | Живая бета: вечер перед ближайшим официальным днём дозирования, сетка «когда выезжать» по 19 коридорам на 14 дней, бюллетень запретов, демо, формы «записаться в бету» и «отзыв тестировщика» |
+| [/](https://zhol.live/) | История из Workshop-деки: проблема → почему сейчас → блокады → Сицилия → решение → клиенты → команда, плюс калькулятор экономии |
+| [/answers](https://zhol.live/answers) | Ответы на фидбэк жюри TEF: рынок, цена, модель, GTM, техника, конкуренты, план проверки |
+| [/audience](https://zhol.live/audience) | Аудитория: размер рынка по реестру, три персоны (владелец, диспетчер, экспедитор), четыре сегмента, публичные высказывания людей из отрасли, каналы. Полутоновые карты стартовых провинций и сегментов, нарисованные по Natural Earth (`scripts/maps/`) |
+| [/beta](https://zhol.live/beta) | Живая бета: вечер перед ближайшим официальным днём дозирования, сетка «когда выезжать» по 19 коридорам на 14 дней, бюллетень запретов, демо, формы «записаться в бету» и «отзыв тестировщика» |
 
 Данные беты считает настоящий движок zhol при каждой сборке на Netlify (`scripts/build_site.py`, настройки в `netlify.toml`).
 
@@ -39,17 +39,17 @@
 | Есть ли место на рынке? | [docs/01-market.md §1.5](docs/01-market.md) и [docs/02-competitors.md §2.5](docs/02-competitors.md) |
 | **Всё на одной странице + что менять в деке + ответы на вопросы жюри** | **[docs/00-answers-to-tef-feedback.md](docs/00-answers-to-tef-feedback.md)** |
 
-Всё это одной страницей в стиле деки, с иллюстрациями и живым калькулятором экономии: [zhol-beta.netlify.app](https://zhol-beta.netlify.app) — главная начинается с восьми вопросов жюри. История проблемы (Сицилия, Куфштайн) — [/story](https://zhol-beta.netlify.app/story).
+Всё это одной страницей в стиле деки, с иллюстрациями и живым калькулятором экономии: [zhol.live](https://zhol.live) — главная начинается с восьми вопросов жюри. История проблемы (Сицилия, Куфштайн) — [/story](https://zhol.live/story).
 
 Письма людям из отрасли (по-итальянски, с переводом): [outreach/](outreach/README.md).
 
 Кто публично высказывался о проблеме (ассоциации, чиновники, аналитики, перевозчики, журналисты) и кому писать первым: [docs/08-people-and-voices.md](docs/08-people-and-voices.md).
 
-Кто наша аудитория (сегменты, размеры, персоны, каналы, события 2027): [docs/09-audience.md](docs/09-audience.md) и страница [zhol-beta.netlify.app/audience](https://zhol-beta.netlify.app/audience).
+Кто наша аудитория (сегменты, размеры, персоны, каналы, события 2027): [docs/09-audience.md](docs/09-audience.md) и страница [zhol.live/audience](https://zhol.live/audience).
 
-Радар — что ожидается на дорогах в ближайшие 8 недель (забастовки, блокады, праздничные запреты, дозирование, снег на перевалах) и с каким шансом, с формулой: [zhol-beta.netlify.app/outlook](https://zhol-beta.netlify.app/outlook), описание — [docs/11-radar.md](docs/11-radar.md). Сколько стоит каждое событие, какой план выбрать и кому писать (модель «стоимость/потеря» и ценность информации) — [docs/12-cost-and-decision-model.md](docs/12-cost-and-decision-model.md).
+Радар — что ожидается на дорогах в ближайшие 8 недель (забастовки, блокады, праздничные запреты, дозирование, снег на перевалах) и с каким шансом, с формулой: [zhol.live/outlook](https://zhol.live/outlook), описание — [docs/11-radar.md](docs/11-radar.md). Сколько стоит каждое событие, какой план выбрать и кому писать (модель «стоимость/потеря» и ценность информации) — [docs/12-cost-and-decision-model.md](docs/12-cost-and-decision-model.md).
 
-Разбор прошлого месяца для офиса: офис присылает Excel по шаблону [outreach/modello_carichi.xlsx](outreach/modello_carichi.xlsx), команда запускает `python -m zhol replay файл.xlsx --company "Название" --out отчёт.html` и через два дня отправляет отчёт на итальянском ([пример](https://zhol-beta.netlify.app/replay-example)). Финплан на 36 месяцев с чувствительностью — [docs/13-financial-plan.md](docs/13-financial-plan.md), генератор `python scripts/finplan.py`.
+Разбор прошлого месяца для офиса: офис присылает Excel по шаблону [outreach/modello_carichi.xlsx](outreach/modello_carichi.xlsx), команда запускает `python -m zhol replay файл.xlsx --company "Название" --out отчёт.html` и через два дня отправляет отчёт на итальянском ([пример](https://zhol.live/replay-example)). Финплан на 36 месяцев с чувствительностью — [docs/13-financial-plan.md](docs/13-financial-plan.md), генератор `python scripts/finplan.py`.
 
 Второй фидбек TEF (ценность против текущего процесса, кто платит, USP, реальный сегмент, операционная реализуемость, финплан): что измеряем и пороги успеха — [docs/10-feedback-round-2.md](docs/10-feedback-round-2.md). Кому писать на интервью и что писать — [outreach/07-interview-requests.md](outreach/07-interview-requests.md), скрипт v2 — [outreach/03-interview-script.md](outreach/03-interview-script.md), журнал — [outreach/interview_log.csv](outreach/interview_log.csv). Опрос для офисов: 6 вопросов, минута (сайт `/q`), как его рассылать и считать — [outreach/10-survey.md](outreach/10-survey.md); проверка в браузере — `node tests/browser/survey_flow.js`. Правила владельца и маскот Веспи — [brand/](brand/README.md), решения — [DESIGN.md](DESIGN.md).
 
