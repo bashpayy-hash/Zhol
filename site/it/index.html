@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=q1">
+<link rel="stylesheet" href="/assets/zhol.css?v=b1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -35,7 +35,7 @@
       <div class="stack" style="gap:22px">
         <span class="kicker">TEF Ignition 2026 · Università Bocconi</span>
         <h1 class="title">La giuria ha fatto otto domande. Ecco le nostre risposte.</h1>
-        <p class="lead">zhol dice all’ufficio traffico di un autotrasportatore, la sera prima, quali carichi di domani saranno colpiti da un divieto, un giorno di dosaggio, una chiusura o un blocco, e cosa fare. Un solo messaggio WhatsApp. Ogni numero qui sotto ha una fonte; ciò che è ancora un’ipotesi è indicato come tale.</p>
+        <p class="lead">zhol dice a chi pianifica le spedizioni di domani, su strada, rotaia o traghetto, la sera prima quali saranno colpite da un divieto, un giorno di dosaggio, una chiusura, uno sciopero o un traghetto fermo, e cosa fare. Un solo messaggio WhatsApp. Ogni numero qui sotto ha una fonte; ciò che è ancora un’ipotesi è indicato come tale.</p>
         <div class="actions"><a class="btn" href="#market">Inizia dal mercato</a><a class="btn ghost" href="/it/beta">Prova la beta</a></div>
       </div>
       <div class="media scene-frame">
@@ -45,7 +45,7 @@
 
     <div class="qboard" aria-label="Le domande della giuria">
       <a class="qcard" href="#market"><span class="n">Domanda 1</span><span class="ask">TAM, SAM, SOM</span><span class="fig">€18,6 mln</span><span class="ans">servibili dall’Italia. €230 mln in Europa, €0,77 mln di ARR entro il terzo anno.</span><span class="go">Mercato</span></a>
-      <a class="qcard" href="#pricing"><span class="n">Domanda 2</span><span class="ask">Una percentuale del risparmio?</span><span class="fig">14%</span><span class="ans">di quanto risparmia un ufficio: €12 per camion al mese. Anche la sola quota sul risparmio è un’opzione.</span><span class="go">Prezzi</span></a>
+      <a class="qcard" href="#pricing"><span class="n">Domanda 2</span><span class="ask">Una percentuale del risparmio?</span><span class="fig">14%</span><span class="ans">di quanto risparmia un ufficio: €12 per mezzo al mese. Anche la sola quota sul risparmio è un’opzione.</span><span class="go">Prezzi</span></a>
       <a class="qcard" href="#model"><span class="n">Domanda 3</span><span class="ask">Un modello di business chiaro</span><span class="fig">92%</span><span class="ans">di margine lordo con 100 uffici: gli uffici sulle stesse strade si dividono i costi.</span><span class="go">Modello</span></a>
       <a class="qcard" href="#gtm"><span class="n">Domanda 4</span><span class="ask">Un go-to-market chiaro</span><span class="fig">≈2.350</span><span class="ans">uffici al Nord per cominciare, in giornata da Milano, con vendita in italiano.</span><span class="go">Go-to-market</span></a>
       <a class="qcard" href="#tech"><span class="n">Domanda 5</span><span class="ask">Più dettagli sulla parte tecnica</span><span class="fig">7 paesi</span><span class="ans">con le regole dei divieti nel codice, AI per i testi non strutturati, una persona approva ogni evento.</span><span class="go">Tecnologia</span></a>
@@ -64,6 +64,11 @@
       <div class="asked"><span class="kicker">Domanda 1</span><q>Calcolo di TAM SAM SOM</q></div>
       <h2 class="title">€230 mln in Europa, €18,6 mln servibili dall’Italia, €0,77 mln da conquistare entro il terzo anno</h2>
     </div>
+    <ul class="brief">
+      <li><b>€230 mln</b> all’anno in Europa: quanto costano a chi pianifica le merci i ritardi da divieti, chiusure e code</li>
+      <li><b>€18,6 mln</b> servibili dall’Italia: 6.050 uffici con tratte settimanali all’estero</li>
+      <li><b>€0,77 mln</b> all’anno entro il terzo anno: 250 uffici paganti, circa il 4%</li>
+    </ul>
     <div class="split center">
       <figure class="print"><img src="/assets/img/q/q1-maps.webp" alt="Illustrazione: tre carte una dentro l’altra, Europa, Italia e un piccolo ritaglio delle Alpi cerchiato in rosso" width="1100" height="822" loading="lazy"></figure>
       <div class="stack" style="gap:0">
@@ -75,12 +80,14 @@
         <p class="small muted" style="padding-top:14px;border-top:1px solid #b9c9b2">I quadrati rossi sono in scala per area. Verifica incrociata: il mercato europeo dei TMS vale €1,4 mld (Berg Insight, 2025); il nostro TAM ne è circa il 16%, come componente aggiuntiva accanto al TMS.</p>
       </div>
     </div>
-    <div class="grid g4">
+    <details class="backup"><summary>Da dove vengono i numeri</summary>
+<div class="grid g4">
       <div class="card"><span class="mid">98.277</span><p class="small">autotrasportatori italiani attivi iscritti all’Albo nazionale, 31 marzo 2025</p></div>
       <div class="card"><span class="mid">26.260</span><p class="small">con un parco da 6 a 100 veicoli: 19.237 + 5.485 + 1.538</p></div>
       <div class="card"><span class="mid">5%</span><p class="small">delle PMI italiane della logistica usa strumenti di business intelligence, contro il 48% delle grandi imprese</p></div>
       <div class="card"><span class="mid">1 su 5</span><p class="small">fa tratte settimanali all’estero. È una nostra ipotesi, la prima che le interviste verificano</p></div>
     </div>
+</details>
   </div>
   <div class="wrap"><div class="foot"><span>Albo Nazionale Autotrasporto tramite Shipping Italy (verificato alla fonte) · ACEA 2026 · Eurostat 2024 · CLECAT · Fedespedi · Politecnico di Milano, ottobre 2026 · Berg Insight · metodo in docs/01-market.md</span></div></div>
 </section>
@@ -90,8 +97,13 @@
   <div class="wrap stack">
     <div class="qhead">
       <div class="asked"><span class="kicker">Domanda 2</span><q>Modello di prezzo: una percentuale del denaro risparmiato dall’azienda? Stimate i risparmi</q></div>
-      <h2 class="title">Un ufficio con 20 camion risparmia circa €1.740 al mese. Ne chiediamo il 14%</h2>
+      <h2 class="title">Un ufficio con 20 mezzi risparmia circa €1.740 al mese. Ne chiediamo il 14%</h2>
     </div>
+    <ul class="brief">
+      <li><b>€1.740</b> al mese: quanto risparmia un ufficio con 20 mezzi, all’ora da €100 fissata dalla legge italiana</li>
+      <li><b>14%</b> di quel risparmio è il nostro prezzo: €12 per mezzo al mese, minimo €99</li>
+      <li><b>€8</b> per mezzo per i primi 10 uffici, 12 mesi, in cambio di 15 minuti di feedback a settimana</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:18px">
         <p class="lead">La formula base è un abbonamento fissato a circa il 14% del risparmio stimato. In alternativa offriamo una pura percentuale sul risparmio.</p>
@@ -107,16 +119,16 @@
       <form class="card" id="calc" onsubmit="return false" aria-label="Dati per il calcolo del risparmio">
         <span class="kicker">Modifica qualsiasi numero</span>
         <div class="fields">
-          <div class="field"><label for="c-trucks">Camion</label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
+          <div class="field"><label for="c-trucks">Mezzi</label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
           <div class="field"><label for="c-share">Camion su tratte internazionali, %</label><input id="c-share" type="number" min="0" max="100" step="5" value="50"></div>
-          <div class="field"><label for="c-legs">Viaggi di sola andata per camion al mese</label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
+          <div class="field"><label for="c-legs">Viaggi di sola andata per mezzo al mese</label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
           <div class="field"><label for="c-hit">Viaggi colpiti da un imprevisto, %</label><input id="c-hit" type="number" min="0" max="100" step="0.5" value="4"></div>
           <div class="field"><label for="c-act">Casi evitabili con un’alternativa, %</label><input id="c-act" type="number" min="0" max="100" step="5" value="50"></div>
           <div class="field"><label for="c-hours">Ore risparmiate per caso evitato</label><input id="c-hours" type="number" min="0" step="0.5" value="3"></div>
-          <div class="field"><label for="c-hour">Costo di un’ora di camion, €</label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
+          <div class="field"><label for="c-hour">Costo di un’ora di mezzo fermo, €</label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
           <div class="field"><label for="c-disp">Minuti al giorno del traffichista per controllare i siti</label><input id="c-disp" type="number" min="0" step="5" value="30"></div>
           <div class="field"><label for="c-big">Giorni di blocco o sciopero all’anno</label><input id="c-big" type="number" min="0" step="1" value="4"></div>
-          <div class="field"><label for="c-price">Prezzo per camion al mese, €</label><input id="c-price" type="number" min="0" step="1" value="12"></div>
+          <div class="field"><label for="c-price">Prezzo per mezzo al mese, €</label><input id="c-price" type="number" min="0" step="1" value="12"></div>
         </div>
       </form>
       <div class="card out" aria-live="polite">
@@ -136,10 +148,10 @@
     </div>
     <div class="grid g5">
       <div class="card plan"><span class="name">Prova pilota</span><span class="price">Gratis</span><p class="small">4 settimane, con un registro settimanale dei risparmi e un criterio di successo scritto</p></div>
-      <div class="card plan main"><span class="name">Standard</span><span class="price">€12</span><p class="small">per camion al mese, minimo €99</p></div>
-      <div class="card plan"><span class="name">Performance</span><span class="price">€49 + 15%</span><p class="small">del risparmio verificato, con un tetto di €25 per camion</p></div>
-      <div class="card plan"><span class="name">Cliente fondatore</span><span class="price">€8</span><p class="small">per camion per 12 mesi, per i primi 10 uffici, in cambio di un caso di studio</p></div>
-      <div class="card plan"><span class="name">API, in seguito</span><span class="price">€3–5</span><p class="small">per camion, all’ingrosso, per i fornitori di TMS e telematica</p></div>
+      <div class="card plan main"><span class="name">Standard</span><span class="price">€12</span><p class="small">per mezzo al mese, minimo €99</p></div>
+      <div class="card plan"><span class="name">Performance</span><span class="price">€49 + 15%</span><p class="small">del risparmio verificato, con un tetto di €25 per mezzo</p></div>
+      <div class="card plan"><span class="name">Cliente fondatore</span><span class="price">€8</span><p class="small">per mezzo per 12 mesi, per i primi 10 uffici, in cambio di un caso di studio</p></div>
+      <div class="card plan"><span class="name">API, in seguito</span><span class="price">€3–5</span><p class="small">per mezzo, all’ingrosso, per i fornitori di TMS e telematica</p></div>
     </div>
   </div>
   <div class="wrap"><div class="foot"><span>€100 all’ora: art. 6-bis D.Lgs. 286/2005 (DL 73/2025, L. 105/2025) · costo del traffichista da retribuzioni lorde di €28–34 mila · stesse formule di zhol/savings.py</span></div></div>
@@ -150,8 +162,13 @@
   <div class="wrap stack">
     <div class="qhead">
       <div class="asked"><span class="kicker">Domanda 3</span><q>Modello di business chiaro</q></div>
-      <h2 class="title">Un abbonamento per camion, su costi condivisi da tutti gli uffici che usano le stesse strade</h2>
+      <h2 class="title">Un abbonamento per mezzo, su costi condivisi da tutti gli uffici che usano le stesse strade</h2>
     </div>
+    <ul class="brief">
+      <li><b>92%</b> di margine lordo con 100 uffici: gli uffici sulle stesse strade condividono gli stessi eventi</li>
+      <li><b>€155 mila</b> di finanziamento per il pareggio, a maggio 2029</li>
+      <li><b>€771 mila</b> di ricavi nel terzo anno, da €35 mila nel primo</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:18px">
         <p class="lead" style="color:var(--on-dark-2)">Una chiusura del Brennero viene letta, verificata e codificata una volta sola, poi confrontata con i carichi di ogni ufficio che usa quel valico. Aggiungere il decimo ufficio non costa quasi nulla.</p>
@@ -170,12 +187,14 @@
       </div>
       <img class="art" src="/assets/img/q/q3-routes.webp" alt="Illustrazione: una carta delle Alpi piegata su una scrivania scura; quattro percorsi dai quattro bordi si incontrano su un valico segnato da un triangolo rosso" width="1100" height="822" loading="lazy">
     </div>
-    <div class="grid g4">
+    <details class="backup"><summary>Da dove vengono i numeri</summary>
+<div class="grid g4">
       <div class="card year"><span class="kicker">ARR, fine 2027</span><span class="mid">€35 mila</span><div class="bar"><div class="track"><div class="fill" style="width:4%"></div></div></div><p class="small">15 uffici, i primi 10 al prezzo per clienti fondatori</p></div>
       <div class="card year"><span class="kicker">ARR, fine 2028</span><span class="mid">€247 mila</span><div class="bar"><div class="track"><div class="fill" style="width:32%"></div></div></div><p class="small">80 uffici</p></div>
       <div class="card year"><span class="kicker">ARR, fine 2029</span><span class="mid">€771 mila</span><div class="bar"><div class="track"><div class="fill" style="width:100%"></div></div></div><p class="small">250 uffici</p></div>
       <div class="card"><span class="kicker">Un ufficio</span><p class="small">Paga €257 al mese e costa €11 da servire. Costo di acquisizione (CAC) €600, recuperato in 2,4 mesi. Valore nel ciclo di vita €9.827 con un abbandono (churn) del 2,5% al mese: 16,4× il costo di acquisizione.</p></div>
     </div>
+</details>
     <div class="stack" style="gap:20px;margin-top:8px">
       <span class="kicker">Il piano a 36 mesi</span>
       <figure class="print" style="padding:14px"><img src="/assets/finplan.svg?v=1" alt="Grafico: ricavi e costi mensili dal 2027 al 2029; la cassa senza nuovo finanziamento scende a meno 124 mila euro ad aprile 2029 e risale dopo il punto di pareggio di maggio 2029" width="900" height="360" loading="lazy" style="width:100%;height:auto"><figcaption>36 mesi, dati mensili. Rosso: ricavi; verde salvia: costi; linea: cassa senza nuovo finanziamento.</figcaption></figure>
@@ -191,7 +210,7 @@
       <div class="stack" style="gap:12px">
         <div class="tablewrap" data-collapse="3"><table class="t" style="min-width:420px">
           <thead><tr><th>Se un’ipotesi è sbagliata</th><th>Pareggio</th><th class="n">Finanziamento</th><th class="n">ARR 2029</th></tr></thead>
-          <tbody><tr><td>Scenario base</td><td>maggio 2029</td><td class='n'>€155.000</td><td class='n'>€771 mila</td></tr><tr><td>Prezzo −33% (€8 per camion)</td><td>novembre 2029</td><td class='n'>€325.000</td><td class='n'>€514 mila</td></tr><tr><td>Prezzo +25% (€15 per camion)</td><td>marzo 2029</td><td class='n'>€95.000</td><td class='n'>€964 mila</td></tr><tr><td>Abbandono (churn) 4% al mese</td><td>maggio 2029</td><td class='n'>€165.000</td><td class='n'>€771 mila</td></tr><tr><td>Abbandono (churn) 1,5% al mese</td><td>maggio 2029</td><td class='n'>€150.000</td><td class='n'>€771 mila</td></tr><tr><td>30% di uffici in meno</td><td>settembre 2029</td><td class='n'>€250.000</td><td class='n'>€540 mila</td></tr><tr><td>Costo di acquisizione €1.200</td><td>agosto 2029</td><td class='n'>€310.000</td><td class='n'>€771 mila</td></tr></tbody>
+          <tbody><tr><td>Scenario base</td><td>maggio 2029</td><td class='n'>€155.000</td><td class='n'>€771 mila</td></tr><tr><td>Prezzo −33% (€8 per mezzo)</td><td>novembre 2029</td><td class='n'>€325.000</td><td class='n'>€514 mila</td></tr><tr><td>Prezzo +25% (€15 per camion)</td><td>marzo 2029</td><td class='n'>€95.000</td><td class='n'>€964 mila</td></tr><tr><td>Abbandono (churn) 4% al mese</td><td>maggio 2029</td><td class='n'>€165.000</td><td class='n'>€771 mila</td></tr><tr><td>Abbandono (churn) 1,5% al mese</td><td>maggio 2029</td><td class='n'>€150.000</td><td class='n'>€771 mila</td></tr><tr><td>30% di uffici in meno</td><td>settembre 2029</td><td class='n'>€250.000</td><td class='n'>€540 mila</td></tr><tr><td>Costo di acquisizione €1.200</td><td>agosto 2029</td><td class='n'>€310.000</td><td class='n'>€771 mila</td></tr></tbody>
         </table></div>
         <p class="small" style="color:var(--on-dark-2)">Prezzo e costo di acquisizione sono ciò che sposta di più il piano: per questo le interviste testano prima quattro prezzi. Tutte le ipotesi, le tabelle mensili e il generatore: docs/13-financial-plan.md.</p>
       </div>
@@ -208,6 +227,11 @@
       <div class="asked"><span class="kicker">Domanda 4</span><q>Una strategia GTM chiara</q></div>
       <h2 class="title">Partire da dove le restrizioni pesano di più, in giornata da Milano</h2>
     </div>
+    <ul class="brief">
+      <li><b>≈2.350</b> uffici al Nord per cominciare: in giornata da Milano, vendita in italiano</li>
+      <li><b>92</b> aziende e <b>87</b> persone già individuate da fonti pubbliche</li>
+      <li><b>4</b> prove pilota di quattro settimane, misurate contro il processo attuale dell’ufficio</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:18px">
         <div class="rows">
@@ -251,6 +275,11 @@
       <div class="asked"><span class="kicker">Domanda 5</span><q>Più dettagli sulla parte tecnica</q></div>
       <h2 class="title">Codice dove le regole sono note, AI dove il testo non è strutturato, una persona nel mezzo</h2>
     </div>
+    <ul class="brief">
+      <li><b>7</b> paesi con le regole dei divieti nel codice, più il calendario ufficiale del dosaggio tirolese</li>
+      <li><b>L’AI</b> legge comunicati e notizie; <b>una persona</b> approva ogni evento prima dell’invio</li>
+      <li><b>1</b> messaggio WhatsApp per ufficio ogni sera, con il costo di ogni opzione</li>
+    </ul>
     <div>
       <figure class="print"><img src="/assets/img/q/q5-tech.webp" alt="Illustrazione: quattro schede unite da una linea: un comunicato sotto una lente d’ingrandimento, lo stesso comunicato timbrato come approvato, un camion su una strada di montagna con un orologio, un telefono con un messaggio" width="1800" height="771" loading="lazy"></figure>
       <div class="strip-steps">
@@ -299,6 +328,11 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <div class="asked"><span class="kicker">Domanda 6</span><q>Prima verificate il mercato, poi la tecnologia</q></div>
       <h2 class="title">Sette ipotesi, ognuna con un criterio di stop, verificate prima di sviluppare altro</h2>
     </div>
+    <ul class="brief">
+      <li><b>8</b> interviste entro il 13 novembre, su sette ipotesi con criteri di stop</li>
+      <li><b>2</b> uffici condividono i carichi del mese scorso; ricostruiamo cosa avrebbe segnalato zhol</li>
+      <li><b>2</b> test dal vivo in giornate con restrizioni reali, con il giudizio del traffichista</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:20px">
         <p class="lead">Il prototipo serve a dare ai traffichisti qualcosa su cui reagire. Non automatizziamo nulla di nuovo finché le interviste e una prova pilota supervisionata non lo confermano.</p>
@@ -318,7 +352,7 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <tbody>
         <tr><td>Gli uffici ripianificano carichi ogni settimana a causa delle restrizioni</td><td>6 su 8 riportano 2 o più ripianificazioni al mese</td><td>Passare al segmento Sud–Nord colpito dai blocchi</td></tr>
         <tr><td>Sanno dargli un costo</td><td>Mediana di €300 o più per episodio</td><td>Vendere il risparmio di tempo a un prezzo più basso</td></tr>
-        <tr><td>Il titolare è disposto a pagare</td><td>Prezzo accettabile mediano di €8 per camion o più</td><td>Vendere tramite partner e associazioni</td></tr>
+        <tr><td>Il titolare è disposto a pagare</td><td>Prezzo accettabile mediano di €8 per mezzo o più</td><td>Vendere tramite partner e associazioni</td></tr>
         <tr><td>Si decide la sera prima</td><td>La maggior parte delle ripianificazioni avviene tra le 16:00 e le 21:00</td><td>Spostare l’avviso al momento in cui decidono davvero</td></tr>
         <tr><td>Gli uffici condividono ogni giorno i carichi di domani</td><td>2 condividono lo storico; dati puntuali nell’80% dei giorni di prova</td><td>Sviluppare prima l’importazione da Excel e TMS</td></tr>
         <tr><td>L’abbinamento è abbastanza preciso</td><td>Precisione dell’80% o più; al massimo 1 problema mancato al mese</td><td>Limitarsi alle fonti ufficiali e a meno corridoi</td></tr>
@@ -336,6 +370,11 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <div class="asked"><span class="kicker">Domanda 7</span><q>Analisi dei potenziali concorrenti, soluzioni diverse che potrebbero nascere in futuro</q></div>
       <h2 class="title">Ogni pezzo esiste già da qualche parte. Nessuno controlla la sera prima i carichi di domani</h2>
     </div>
+    <ul class="brief">
+      <li><b>6</b> categorie di strumenti, ognuna copre un pezzo: TMS, telematica, borse carichi, visibilità, piattaforme di rischio, associazioni</li>
+      <li><b>0</b> di loro controlla la sera prima i carichi di domani</li>
+      <li><b>€10–35</b> per mezzo al mese costa oggi la telematica; noi ci aggiungiamo, non la sostituiamo</li>
+    </ul>
     <div class="split center">
       <figure class="print"><img src="/assets/img/q/q7-missing.webp" alt="Illustrazione: una carta piegata a cui manca un quadrato sopra un valico alpino, contornato di rosso; il pezzo mancante è lì accanto, con l’icona di un messaggio" width="1100" height="822" loading="lazy"></figure>
       <div class="pmap" role="img" aria-label="Mappa di posizionamento: asse orizzontale dai calendari statici agli eventi imprevisti in tempo reale; asse verticale dal livello di flotta alla decisione per singolo carico. zhol è in alto a destra.">
@@ -383,6 +422,11 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <div class="asked"><span class="kicker">Domanda 8</span><q>C’è abbastanza spazio nel mercato per noi?</q></div>
       <h2 class="title">Sì, per un ingresso mirato, con una finestra di due o tre anni</h2>
     </div>
+    <ul class="brief">
+      <li><b>2–3</b> anni di finestra per un ingresso mirato in un mercato frammentato</li>
+      <li><b>Cosa dura:</b> lo storico verificato degli eventi e del loro effetto sui carichi reali</li>
+      <li><b>Chi potrebbe seguire:</b> un TMS può aggiungere avvisi, non eventi verificati e multilingue in sette paesi</li>
+    </ul>
     <div class="split center">
       <img class="art" src="/assets/img/q/q8-flag.webp" alt="Illustrazione: una carta d’Europa piegata su una scrivania scura, con una piccola bandierina rossa nelle Alpi dentro un contorno tratteggiato" width="1100" height="822" loading="lazy">
       <div class="rows">

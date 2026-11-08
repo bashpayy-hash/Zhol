@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>zhol · Sei domande per gli uffici traffico</title>
-<meta name="description" content="Sei domande, un minuto: quanto costano a chi organizza i trasporti divieti, code, chiusure e scioperi. Si risponde con un tocco, è anonimo, non vendiamo nulla.">
+<meta name="description" content="Sei domande, un minuto: quanto costano a chi organizza trasporti su strada, rotaia o traghetto divieti, code, chiusure e scioperi. Si risponde con un tocco, è anonimo, non vendiamo nulla.">
 <meta property="og:title" content="Sei domande, un minuto: quanto vi costano divieti, code e scioperi?">
 <meta property="og:description" content="Ricerca di tre studenti Bocconi per gli uffici traffico con linee estere. Anonimo, risultati condivisi con chi risponde.">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=q1">
+<link rel="stylesheet" href="/assets/zhol.css?v=b1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/q/en">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/q">
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
@@ -29,7 +29,7 @@
     <div class="sv-intro-text">
       <span class="sv-label">Ricerca Bocconi per gli uffici traffico</span>
       <h1 class="title sv-title">Sei domande. Un minuto.</h1>
-      <p class="lead">Quanto vi costano divieti, code, chiusure e scioperi sulle strade? Si risponde con un tocco, è anonimo e non vendiamo nulla.</p>
+      <p class="lead">Quanto vi costano divieti, code, chiusure e scioperi, su strada, rotaia o traghetto? Si risponde con un tocco, è anonimo e non vendiamo nulla.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Inizia</a><span class="small muted">Anonimo · nessuna vendita</span></div>
     </div>
     <div class="sv-scene" aria-hidden="true">
@@ -55,8 +55,8 @@
           <input type="hidden" name="rid" value="">
           <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
 
-          <fieldset class="q" data-img="truck"><legend><span class="n">Domanda 1 di 6</span>Quanti camion ha la vostra azienda?</legend>
-            <p class="sv-why">Per confrontare uffici di dimensioni simili.</p>
+          <fieldset class="q" data-img="truck"><legend><span class="n">Domanda 1 di 6</span>Quanti mezzi gestite (camion, rimorchi, container, vagoni)?</legend>
+            <p class="sv-why">Per confrontare realtà di dimensioni simili.</p>
             <div class="opts tall">
               <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
               <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
@@ -65,8 +65,8 @@
               <label><input type="radio" name="fleet" value="100+"><span>Più di 100</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="route"><legend><span class="n">Domanda 2 di 6</span>Quante volte a settimana i vostri camion vanno all’estero?</legend>
-            <p class="sv-why">I viaggi lunghi sono i più esposti a divieti e code.</p>
+          <fieldset class="q" data-img="route"><legend><span class="n">Domanda 2 di 6</span>Quante spedizioni a settimana vanno all’estero, su strada, rotaia o traghetto?</legend>
+            <p class="sv-why">Le spedizioni lunghe sono le più esposte a divieti, code e traghetti fermi.</p>
             <div class="opts tall">
               <label><input type="radio" name="trips_abroad" value="0" required><span>Mai</span></label>
               <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5 volte</span></label>
@@ -83,7 +83,7 @@
               <label><input type="radio" name="minutes" value="40+"><span>Più di 40 minuti</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">Domanda 4 di 6</span>L’ultima volta che un divieto, una coda o uno sciopero ha fermato un vostro camion, quanto vi è costato?</legend>
+          <fieldset class="q" data-img="coin"><legend><span class="n">Domanda 4 di 6</span>L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?</legend>
             <p class="sv-why">Ci dice quanto vale un avviso arrivato in tempo.</p>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Meno di 100 €</span></label>
@@ -93,7 +93,7 @@
               <label><input type="radio" name="last_cost" value="unknown"><span>Non lo so</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">Domanda 5 di 6</span>Vi servirebbe un WhatsApp la sera prima che vi dice quali camion di domani avranno un problema, e cosa fare?</legend>
+          <fieldset class="q" data-img="phone"><legend><span class="n">Domanda 5 di 6</span>Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?</legend>
             <p class="sv-why">È esattamente ciò che stiamo costruendo.</p>
             <div class="opts tall">
               <label><input type="radio" name="would_use" value="yes" required><span>Sì, molto</span></label>
@@ -101,7 +101,7 @@
               <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="thinking"><legend><span class="n">Domanda 6 di 6</span>Quale prezzo vi sembra giusto, al mese per ogni camion?</legend>
+          <fieldset class="q" data-img="thinking"><legend><span class="n">Domanda 6 di 6</span>Quale prezzo vi sembra giusto, al mese per ogni mezzo?</legend>
             <p class="sv-why">Per fissare un prezzo onesto prima di chiedere un euro.</p>
             <div class="opts tall">
               <label><input type="radio" name="price" value="0" required><span>Niente, non pagherei</span></label>

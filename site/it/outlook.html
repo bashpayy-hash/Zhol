@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=1">
-<link rel="stylesheet" href="/assets/zhol.css?v=q1">
+<link rel="stylesheet" href="/assets/zhol.css?v=b1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/outlook">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/outlook">
 </head>
@@ -30,10 +30,11 @@
     <div class="stack" style="gap:20px">
       <span class="kicker">zhol radar · le prossime otto settimane</span>
       <h1 class="title">Cosa c’è in arrivo sulle strade delle merci in Europa, e con quale probabilità</h1>
-      <p class="lead">Due volte al giorno il radar legge le notizie e la stampa di settore in quattro lingue, i calendari ufficiali dei divieti e del dosaggio e le previsioni meteo ai valichi alpini. Ogni voce riceve una probabilità, con le ragioni che la motivano.</p>
+      <p class="lead">Due volte al giorno il radar legge le notizie e la stampa di settore in quattro lingue, i calendari ufficiali dei divieti e del dosaggio, il meteo ai valichi alpini e i traghetti dello Stretto di Messina. Ogni voce riceve una probabilità, con le ragioni che la motivano.</p>
       <label class="field rd-route"><span class="small">La vostra tratta: tutta la pagina mostra solo ciò che la riguarda</span>
         <select id="rd-route"><option value="">Tutte le tratte</option></select></label>
       <p class="small muted" id="rd-status">Caricamento dell’ultimo radar…</p>
+      <ul class="brief" id="rd-brief" hidden></ul>
     </div>
     <div class="media scene-frame">
       <video data-scene="/assets/img/scenes/pass" muted loop playsinline preload="none" poster="/assets/img/scenes/pass-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, la nostra mascotte di peluche, osserva con il binocolo un valico alpino innevato da una piccola vedetta, con un barometro e una radio sul davanzale"></video>
@@ -108,6 +109,7 @@
 
 <section class="slide" id="method">
   <div class="wrap stack">
+    <details class="backup"><summary>Come calcoliamo probabilità e costi</summary>
     <div class="qhead">
       <span class="kicker">Come si calcola la probabilità</span>
       <h2 class="title">Una probabilità di partenza, in base a quanto la vicenda è avanzata, moltiplicata per gli indizi</h2>
@@ -168,6 +170,7 @@
       <span class="kicker">Cosa non legge ancora</span>
       <p class="small">Instagram, Facebook e TikTok non si possono leggere in automatico senza un accesso ufficiale alle API, e X fa pagare la sua API. I canali Telegram pubblici si possono aggiungere quando sapremo quali canali di camionisti contano davvero. Se non è configurata una chiave AI, al posto di Claude lavora un lettore per parole chiave in quattro lingue, meno preciso.</p>
     </div>
+    </details>
   </div>
 </section>
 </main>
@@ -178,6 +181,6 @@
   <span><a href="/it/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/audience">Clienti</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
-<script src="/assets/outlook.js?v=vz1" defer></script>
+<script src="/assets/outlook.js?v=b1" defer></script>
 </body>
 </html>

@@ -43,7 +43,7 @@ def test_thresholds_on_the_beachhead_only(tmp_path):
     assert c["Offices spending ≥ 20 min a day checking"]["status"] == "met"
     cost = c["Cost of the last incident, median"]
     assert cost["n"] == 7 and cost["result"] == "€300–1,000" and cost["status"] == "met"   # "don't know" left out
-    assert c["Fair price per truck a month, median"]["result"] == "€5–10"
+    assert c["Fair price per vehicle a month, median"]["result"] == "€5–10"
     assert c["Would use the evening WhatsApp: “yes, a lot”"]["status"] == "for information"
     assert s["channels"]["assoc-fai"] == 10
 
@@ -89,7 +89,7 @@ def test_google_form_export_is_read_like_the_site_form(tmp_path):
     assert s["n_core"] == 5
     c = {x["measure"]: x for x in s["checks"]}
     assert c["Offices spending ≥ 20 min a day checking"]["result"] == "100%"
-    assert c["Fair price per truck a month, median"]["result"] == "€5–10"
+    assert c["Fair price per vehicle a month, median"]["result"] == "€5–10"
     assert s["followup"]["a free past-month analysis"] == 5 and s["channels"]["google-form"] == 6
     assert "example.com" not in ss.markdown(s)
 

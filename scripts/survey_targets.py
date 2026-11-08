@@ -66,7 +66,7 @@ def company_message(name: str, city: str, cs: list[str], link: str, known_abroad
     where = f"da {city} " if city else ""
     line = (f"Ci risulta che {where}lavorate verso {join_it(cs[:4])}: proprio le linee dove questi imprevisti pesano di più."
             if cs else f"Ci risulta che {where}avete linee estere: proprio dove questi imprevisti pesano di più." if known_abroad else "")
-    who = "agli uffici traffico con linee estere" if known_abroad else "a chi organizza i trasporti su strada"
+    who = "agli uffici traffico con linee estere" if known_abroad else "a chi organizza trasporti su strada, rotaia o traghetto"
     return (f"Buongiorno,\n"
             f"siamo tre studenti della Bocconi e stiamo misurando quanto costano {who} "
             f"divieti, code, chiusure e scioperi.{(' ' + line) if line else ''}\n\n"

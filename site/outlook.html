@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=1">
-<link rel="stylesheet" href="/assets/zhol.css?v=q1">
+<link rel="stylesheet" href="/assets/zhol.css?v=b1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/outlook">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/outlook">
 </head>
@@ -30,10 +30,11 @@
     <div class="stack" style="gap:20px">
       <span class="kicker">zhol radar · the next eight weeks</span>
       <h1 class="title">What is coming on Europe’s freight roads, and how likely it is</h1>
-      <p class="lead">Twice a day the radar reads the news and the trade press in four languages, the official ban and dosing calendars, and the weather forecast at the Alpine passes. Every item gets a chance, with the reasons behind it.</p>
+      <p class="lead">Twice a day the radar reads the news and the trade press in four languages, the official ban and dosing calendars, the weather at the Alpine passes and the Strait of Messina ferries. Every item gets a chance, with the reasons behind it.</p>
       <label class="field rd-route"><span class="small">Your route: the whole page shows only what touches it</span>
         <select id="rd-route"><option value="">All routes</option></select></label>
       <p class="small muted" id="rd-status">Loading the latest radar…</p>
+      <ul class="brief" id="rd-brief" hidden></ul>
     </div>
     <div class="media scene-frame">
       <video data-scene="/assets/img/scenes/pass" muted loop playsinline preload="none" poster="/assets/img/scenes/pass-poster.webp?v=1" width="1280" height="960" aria-label="Zholdas, our plush mascot, watching a snowy Alpine pass through binoculars from a lookout hut, a barometer and a radio on the sill"></video>
@@ -59,7 +60,7 @@
     </div>
     <div class="split center">
       <div class="stack" style="gap:16px">
-        <label class="field" style="max-width:380px"><span class="small" style="color:var(--on-dark-2)">Your trucks that would run into each event</span>
+        <label class="field" style="max-width:380px"><span class="small" style="color:var(--on-dark-2)">Your vehicles that would run into each event</span>
           <input id="m-trucks" type="number" min="1" max="200" step="1" value="1"></label>
         <div class="money">
           <p class="kicker">Outside the calendars: strikes, closures, weather</p>
@@ -108,6 +109,7 @@
 
 <section class="slide" id="method">
   <div class="wrap stack">
+    <details class="backup"><summary>How the chance and the cost are calculated</summary>
     <div class="qhead">
       <span class="kicker">How the chance is calculated</span>
       <h2 class="title">A starting probability from how far things have gone, times the evidence</h2>
@@ -168,6 +170,7 @@
       <span class="kicker">What it does not read yet</span>
       <p class="small">Instagram, Facebook and TikTok cannot be read automatically without official API access, and X charges for its API. Public Telegram channels can be added once we know which trucker channels matter. When no AI key is configured, a keyword reader in four languages replaces Claude and is less precise.</p>
     </div>
+    </details>
   </div>
 </section>
 </main>
@@ -178,6 +181,6 @@
   <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/audience">Audience</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
-<script src="/assets/outlook.js?v=vz1" defer></script>
+<script src="/assets/outlook.js?v=b1" defer></script>
 </body>
 </html>

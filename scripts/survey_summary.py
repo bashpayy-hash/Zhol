@@ -33,17 +33,17 @@ FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis", 
 # The Google Form (outreach/google-form.gs) exports question titles as headers and choice labels as values.
 # Map them to the same codes as the site form, so both can be read together.
 GOOGLE_FORM = {
-    "Quanti camion ha la vostra azienda?": ("fleet", {
+    "Quanti mezzi gestite (camion, rimorchi, container, vagoni)?": ("fleet", {
         "1–5": "1-5", "6–20": "6-20", "21–50": "21-50", "51–100": "51-100", "Più di 100": "100+"}),
-    "Quante volte a settimana i vostri camion vanno all’estero?": ("trips_abroad", {
+    "Quante spedizioni a settimana vanno all’estero, su strada, rotaia o traghetto?": ("trips_abroad", {
         "Mai": "0", "1–5 volte": "1-5", "6–20 volte": "6-20", "Più di 20 volte": "20+"}),
     "Quanto tempo passate ogni giorno a controllare divieti, code e scioperi?": ("minutes", {
         "Meno di 10 minuti": "<10", "10–20 minuti": "10-20", "20–40 minuti": "20-40", "Più di 40 minuti": "40+"}),
-    "L’ultima volta che un divieto, una coda o uno sciopero ha fermato un vostro camion, quanto vi è costato?": ("last_cost", {
+    "L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?": ("last_cost", {
         "Meno di 100 €": "<100", "100–300 €": "100-300", "300–1.000 €": "300-1000", "Più di 1.000 €": "1000+", "Non lo so": "unknown"}),
-    "Vi servirebbe un WhatsApp la sera prima che vi dice quali camion di domani avranno un problema, e cosa fare?": ("would_use", {
+    "Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?": ("would_use", {
         "Sì, molto": "yes", "Forse": "maybe", "No": "no"}),
-    "Quale prezzo vi sembra giusto, al mese per ogni camion?": ("price", {
+    "Quale prezzo vi sembra giusto, al mese per ogni mezzo?": ("price", {
         "Niente, non pagherei": "0", "Fino a 5 €": "<5", "5–10 €": "5-10", "10–20 €": "10-20", "Più di 20 €": "20+"}),
     "Cosa vi interessa?": ("followup", {
         "I risultati del sondaggio": "results", "L’analisi gratuita di un vostro mese passato": "analysis",
@@ -131,7 +131,7 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
     i, n = median_bucket([r.get("last_cost", "") for r in core], COST)
     check("Cost of the last incident, median", COST[i][1] if i is not None else None, n, i is not None and i >= 2, "≥ €300")
     i, n = median_bucket([r.get("price", "") for r in core], PRICE)
-    check("Fair price per truck a month, median", PRICE[i][1] if i is not None else None, n, i is not None and i >= 2,
+    check("Fair price per vehicle a month, median", PRICE[i][1] if i is not None else None, n, i is not None and i >= 2,
           "€5–10 or more (founding price €8)")
     v, n = share(core, "would_use", {"yes"})
     check("Would use the evening WhatsApp: “yes, a lot”", f"{v:.0%}" if v is not None else None, n, False, "–", judged=False)
@@ -151,13 +151,13 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
 
 def markdown(s: dict) -> str:
     out = ["# 14. Survey of traffic offices: results", "",
-           f"{s['n_all']} answers; {s['n_core']} in the beachhead (6–100 trucks, trips abroad every week). "
+           f"{s['n_all']} answers; {s['n_core']} in the beachhead (6–100 vehicles, shipments abroad every week). "
            "Thresholds are the ones fixed before collection in docs/10-feedback-round-2.md, applied to the beachhead only. "
            "Self-reported: the interviews and pilots confirm or correct these figures.", "",
            "| Measure | Result | Answers | Threshold | Status |", "|---|---|---|---|---|"]
     out += [f"| {c['measure']} | {c['result']} | {c['n']} | {c['threshold']} | {c['status']} |" for c in s["checks"]]
     for title, key in (("Time spent checking, beachhead", "minutes"), ("Cost of the last incident, beachhead", "cost"),
-                       ("Fair price per truck a month, beachhead", "price"), ("Would use the evening WhatsApp, beachhead", "use"),
+                       ("Fair price per vehicle a month, beachhead", "price"), ("Would use the evening WhatsApp, beachhead", "use"),
                        ("Fleet size, all answers", "fleet"), ("Trips abroad a week, all answers", "trips")):
         out += ["", f"## {title}", "", "| Answer | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in s[key].items()]
     if s["followup"] or s["contacts"]:

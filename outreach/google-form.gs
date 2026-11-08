@@ -14,7 +14,7 @@
 function createZholForm() {
   var form = FormApp.create('zhol · Sei domande per gli uffici traffico');
   form.setTitle('Sei domande. Un minuto.')
-    .setDescription('Quanto vi costano divieti, code, chiusure e scioperi sulle strade? Ricerca di tre studenti Bocconi ' +
+    .setDescription('Quanto vi costano divieti, code, chiusure e scioperi, su strada, rotaia o traghetto? Ricerca di tre studenti Bocconi ' +
       '(Alikhan, Inkara, Tomiris) per TEF Ignition 2026. Si risponde con un tocco, è anonimo e non vendiamo nulla. ' +
       'Pubblichiamo solo dati aggregati.')
     .setCollectEmail(false)
@@ -36,17 +36,17 @@ function createZholForm() {
   }
 
   var questions = [
-    ['Quanti camion ha la vostra azienda?',
+    ['Quanti mezzi gestite (camion, rimorchi, container, vagoni)?',
       ['1–5', '6–20', '21–50', '51–100', 'Più di 100']],
-    ['Quante volte a settimana i vostri camion vanno all’estero?',
+    ['Quante spedizioni a settimana vanno all’estero, su strada, rotaia o traghetto?',
       ['Mai', '1–5 volte', '6–20 volte', 'Più di 20 volte']],
     ['Quanto tempo passate ogni giorno a controllare divieti, code e scioperi?',
       ['Meno di 10 minuti', '10–20 minuti', '20–40 minuti', 'Più di 40 minuti']],
-    ['L’ultima volta che un divieto, una coda o uno sciopero ha fermato un vostro camion, quanto vi è costato?',
+    ['L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?',
       ['Meno di 100 €', '100–300 €', '300–1.000 €', 'Più di 1.000 €', 'Non lo so']],
-    ['Vi servirebbe un WhatsApp la sera prima che vi dice quali camion di domani avranno un problema, e cosa fare?',
+    ['Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?',
       ['Sì, molto', 'Forse', 'No']],
-    ['Quale prezzo vi sembra giusto, al mese per ogni camion?',
+    ['Quale prezzo vi sembra giusto, al mese per ogni mezzo?',
       ['Niente, non pagherei', 'Fino a 5 €', '5–10 €', '10–20 €', 'Più di 20 €']]
   ];
   questions.forEach(function (q) {

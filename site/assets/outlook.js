@@ -198,6 +198,24 @@
     });
   }
 
+  // the whole radar in four lines, before any list (VISION.md: numbers as bullets, backup behind)
+  function renderBrief() {
+    const box = $("rd-brief"); if (!box) return;
+    box.textContent = "";
+    const items = data.items.filter(onRoute);
+    const dated = items.filter(i => i.start && i.start >= data.today).sort((a, b) => a.start.localeCompare(b.start));
+    const next = dated[0];
+    const priced = items.filter(i => i.impact && i.group !== "official");
+    const top = priced.slice().sort((a, b) => b.impact.saving * b.p - a.impact.saving * a.p)[0];
+    const news = items.filter(i => i.group === "news").length, wx = items.filter(i => i.group === "forecast").length;
+    const li = (num, rest) => { const l = el("li"); l.append(el("b", null, num), document.createTextNode(" " + rest)); box.append(l); };
+    li(String(items.length), T("events in the next eight weeks" + (route ? " on your route" : ""), "eventi nelle prossime otto settimane" + (route ? " sulla vostra tratta" : "")));
+    if (next) li(fmt(next.start), T("is the next one: ", "è il prossimo: ") + L(next, "title") + " (" + pct(next.p) + ")");
+    if (top) li(eur(top.impact.saving), T("per vehicle is the biggest saving on the list: ", "per mezzo è il risparmio più grande in elenco: ") + L(top, "title"));
+    li(news + " + " + wx, T("items come from the news and the weather, the rest from official calendars", "voci vengono da notizie e meteo, il resto dai calendari ufficiali"));
+    box.hidden = !items.length;
+  }
+
   function renderMethod() {
     const m = data.method; if (!m) return;
     const pr = $("m-prior"), mu = $("m-mult");
@@ -226,7 +244,7 @@
     (d.lanes || []).forEach(l => { const o = el("option", null, L(l, "name")); o.value = l.id; sel.append(o); });
     const saved = store.get("zhol-route");
     if (saved && (d.lanes || []).some(l => l.id === saved)) { sel.value = saved; route = saved; }
-    sel.addEventListener("change", () => { route = sel.value; store.set("zhol-route", route); renderFocus(); renderMoney(); render(); });
-    renderFocus(); renderMethod(); renderMoney(); render();
+    sel.addEventListener("change", () => { route = sel.value; store.set("zhol-route", route); renderFocus(); renderMoney(); render(); renderBrief(); });
+    renderFocus(); renderMethod(); renderMoney(); render(); renderBrief();
   }).catch(() => { $("rd-status").textContent = T("The radar could not be loaded. Try again in a minute.", "Non è stato possibile caricare il radar. Riprova tra un minuto."); });
 })();

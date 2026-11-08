@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>zhol · Six questions for traffic offices</title>
-<meta name="description" content="Six questions, one minute: what truck bans, queues, closures and strikes cost the people who plan transport. One tap per answer, anonymous, nothing to buy.">
+<meta name="description" content="Six questions, one minute: what bans, queues, closures and strikes cost the people who plan transport by road, rail or ferry. One tap per answer, anonymous, nothing to buy.">
 <meta property="og:title" content="Six questions, one minute: what do bans, queues and strikes cost you?">
 <meta property="og:description" content="Research by three Bocconi students for traffic offices with lanes abroad. Anonymous; results shared with everyone who answers.">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=q1">
+<link rel="stylesheet" href="/assets/zhol.css?v=b1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/q/en">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/q">
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
@@ -29,7 +29,7 @@
     <div class="sv-intro-text">
       <span class="sv-label">Bocconi research for traffic offices</span>
       <h1 class="title sv-title">Six questions. One minute.</h1>
-      <p class="lead">What do truck bans, queues, closures and strikes cost you? One tap per answer, anonymous, and we sell nothing.</p>
+      <p class="lead">What do bans, queues, closures and strikes cost you, by road, rail or ferry? One tap per answer, anonymous, and we sell nothing.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Start</a><span class="small muted">Anonymous · nothing to buy</span></div>
     </div>
     <div class="sv-scene" aria-hidden="true">
@@ -55,8 +55,8 @@
           <input type="hidden" name="rid" value="">
           <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
 
-          <fieldset class="q" data-img="truck"><legend><span class="n">Question 1 of 6</span>How many trucks does your company run?</legend>
-            <p class="sv-why">To compare offices of a similar size.</p>
+          <fieldset class="q" data-img="truck"><legend><span class="n">Question 1 of 6</span>How many vehicles do you manage (trucks, trailers, containers, wagons)?</legend>
+            <p class="sv-why">To compare operations of a similar size.</p>
             <div class="opts tall">
               <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
               <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
@@ -65,8 +65,8 @@
               <label><input type="radio" name="fleet" value="100+"><span>Over 100</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="route"><legend><span class="n">Question 2 of 6</span>How many times a week do your trucks go abroad?</legend>
-            <p class="sv-why">Long trips are the ones most exposed to bans and queues.</p>
+          <fieldset class="q" data-img="route"><legend><span class="n">Question 2 of 6</span>How many shipments a week go abroad, by road, rail or ferry?</legend>
+            <p class="sv-why">Long shipments are the ones most exposed to bans, queues and ferries that do not sail.</p>
             <div class="opts tall">
               <label><input type="radio" name="trips_abroad" value="0" required><span>Never</span></label>
               <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5 times</span></label>
@@ -83,7 +83,7 @@
               <label><input type="radio" name="minutes" value="40+"><span>Over 40 minutes</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">Question 4 of 6</span>The last time a ban, a queue or a strike stopped one of your trucks, what did it cost you?</legend>
+          <fieldset class="q" data-img="coin"><legend><span class="n">Question 4 of 6</span>The last time a ban, a queue or a strike stopped one of your shipments, what did it cost you?</legend>
             <p class="sv-why">It tells us what an alert that arrives in time is worth.</p>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Under €100</span></label>
@@ -93,7 +93,7 @@
               <label><input type="radio" name="last_cost" value="unknown"><span>Don’t know</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">Question 5 of 6</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s trucks will hit a problem and what to do?</legend>
+          <fieldset class="q" data-img="phone"><legend><span class="n">Question 5 of 6</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s shipments will hit a problem and what to do?</legend>
             <p class="sv-why">This is exactly what we are building.</p>
             <div class="opts tall">
               <label><input type="radio" name="would_use" value="yes" required><span>Yes, a lot</span></label>
@@ -101,7 +101,7 @@
               <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="thinking"><legend><span class="n">Question 6 of 6</span>What price feels fair, per truck per month?</legend>
+          <fieldset class="q" data-img="thinking"><legend><span class="n">Question 6 of 6</span>What price feels fair, per vehicle per month?</legend>
             <p class="sv-why">To set a fair price before asking for a single euro.</p>
             <div class="opts tall">
               <label><input type="radio" name="price" value="0" required><span>Nothing, I wouldn’t pay</span></label>

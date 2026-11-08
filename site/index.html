@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=q1">
+<link rel="stylesheet" href="/assets/zhol.css?v=b1">
 <link rel="alternate" hreflang="en" href="https://zhol-beta.netlify.app/">
 <link rel="alternate" hreflang="it" href="https://zhol-beta.netlify.app/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -35,7 +35,7 @@
       <div class="stack" style="gap:22px">
         <span class="kicker">TEF Ignition 2026 · Bocconi University</span>
         <h1 class="title">The jury asked eight questions. Here are our answers.</h1>
-        <p class="lead">zhol tells a haulier’s traffic office the evening before which of tomorrow’s loads a ban, a dosing day, a closure or a blockade will hit, and what to do. One WhatsApp message. Every number below has a source; what we still assume is marked.</p>
+        <p class="lead">zhol tells whoever plans tomorrow’s shipments, by road, rail or ferry, the evening before which of them a ban, a dosing day, a closure, a strike or a ferry that does not sail will hit, and what to do. One WhatsApp message. Every number below has a source; what we still assume is marked.</p>
         <div class="actions"><a class="btn" href="#market">Start with the market</a><a class="btn ghost" href="/beta">Try the beta</a></div>
       </div>
       <div class="media scene-frame">
@@ -45,7 +45,7 @@
 
     <div class="qboard" aria-label="The jury's questions">
       <a class="qcard" href="#market"><span class="n">Question 1</span><span class="ask">TAM, SAM, SOM</span><span class="fig">€18.6M</span><span class="ans">to serve from Italy. €230M in Europe, €0.77M ARR by year 3.</span><span class="go">Market</span></a>
-      <a class="qcard" href="#pricing"><span class="n">Question 2</span><span class="ask">A percentage of the money saved?</span><span class="fig">14%</span><span class="ans">of what an office saves: €12 per truck a month. A pure share is an option.</span><span class="go">Pricing</span></a>
+      <a class="qcard" href="#pricing"><span class="n">Question 2</span><span class="ask">A percentage of the money saved?</span><span class="fig">14%</span><span class="ans">of what an office saves: €12 per vehicle a month. A pure share is an option.</span><span class="go">Pricing</span></a>
       <a class="qcard" href="#model"><span class="n">Question 3</span><span class="ask">A clear business model</span><span class="fig">92%</span><span class="ans">gross margin at 100 offices: offices on the same roads share the cost.</span><span class="go">Model</span></a>
       <a class="qcard" href="#gtm"><span class="n">Question 4</span><span class="ask">A clear go-to-market</span><span class="fig">≈2,350</span><span class="ans">offices in the North first, a day trip from Milan, sold in Italian.</span><span class="go">Go-to-market</span></a>
       <a class="qcard" href="#tech"><span class="n">Question 5</span><span class="ask">More on the technical part</span><span class="fig">7 countries</span><span class="ans">of ban rules in code, AI for unstructured text, a person approves each event.</span><span class="go">Technology</span></a>
@@ -64,6 +64,11 @@
       <div class="asked"><span class="kicker">Question 1</span><q>TAM SAM SOM calculation</q></div>
       <h2 class="title">€230M in Europe, €18.6M to serve from Italy, €0.77M to win by year 3</h2>
     </div>
+    <ul class="brief">
+      <li><b>€230M</b> a year in Europe: what delays from bans, closures and queues cost freight planners</li>
+      <li><b>€18.6M</b> of it we can serve from Italy: 6,050 offices with weekly lanes abroad</li>
+      <li><b>€0.77M</b> a year by year 3: 250 paying offices, about 4% of them</li>
+    </ul>
     <div class="split center">
       <figure class="print"><img src="/assets/img/q/q1-maps.webp" alt="Illustration: three nested paper maps, Europe, Italy and a small cut-out of the Alps circled in red" width="1100" height="822" loading="lazy"></figure>
       <div class="stack" style="gap:0">
@@ -75,12 +80,14 @@
         <p class="small muted" style="padding-top:14px;border-top:1px solid #b9c9b2">The red squares are drawn to scale by area. Cross-check: the European TMS market is €1.4bn (Berg Insight, 2025); our TAM is about 16% of it, as an add-on next to the TMS.</p>
       </div>
     </div>
-    <div class="grid g4">
+    <details class="backup"><summary>Where the numbers come from</summary>
+<div class="grid g4">
       <div class="card"><span class="mid">98,277</span><p class="small">active Italian hauliers on the national register, 31 March 2025</p></div>
       <div class="card"><span class="mid">26,260</span><p class="small">with 6 to 100 vehicles: 19,237 + 5,485 + 1,538</p></div>
       <div class="card"><span class="mid">5%</span><p class="small">of Italian logistics SMEs use business-intelligence tools, against 48% of large firms</p></div>
       <div class="card"><span class="mid">1 in 5</span><p class="small">run weekly lanes abroad. Our assumption, the first thing the interviews test</p></div>
     </div>
+</details>
   </div>
   <div class="wrap"><div class="foot"><span>Albo Nazionale Autotrasporto via Shipping Italy (checked at the source) · ACEA 2026 · Eurostat 2024 · CLECAT · Fedespedi · Politecnico di Milano, Oct 2026 · Berg Insight · method in docs/01-market.md</span></div></div>
 </section>
@@ -90,8 +97,13 @@
   <div class="wrap stack">
     <div class="qhead">
       <div class="asked"><span class="kicker">Question 2</span><q>Pricing model: percentage of money saved to the company? Estimate savings</q></div>
-      <h2 class="title">A 20-truck office saves about €1,740 a month. We charge 14% of it</h2>
+      <h2 class="title">An office with 20 vehicles saves about €1,740 a month. We charge 14% of it</h2>
     </div>
+    <ul class="brief">
+      <li><b>€1,740</b> a month: what an office with 20 vehicles saves, at the €100 hour Italian law sets</li>
+      <li><b>14%</b> of that saving is our price: €12 per vehicle a month, minimum €99</li>
+      <li><b>€8</b> per vehicle for the first 10 offices, 12 months, for a weekly 15 minutes of feedback</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:18px">
         <p class="lead">The default is a subscription anchored at about 14% of the estimated saving. A pure share of savings is offered as an option.</p>
@@ -107,16 +119,16 @@
       <form class="card" id="calc" onsubmit="return false" aria-label="Savings inputs">
         <span class="kicker">Change any number</span>
         <div class="fields">
-          <div class="field"><label for="c-trucks">Trucks</label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
+          <div class="field"><label for="c-trucks">Vehicles</label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
           <div class="field"><label for="c-share">Trucks on international lanes, %</label><input id="c-share" type="number" min="0" max="100" step="5" value="50"></div>
-          <div class="field"><label for="c-legs">One-way trips per truck per month</label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
+          <div class="field"><label for="c-legs">One-way trips per vehicle per month</label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
           <div class="field"><label for="c-hit">Trips hit by an unplanned disruption, %</label><input id="c-hit" type="number" min="0" max="100" step="0.5" value="4"></div>
           <div class="field"><label for="c-act">Hits an option can avoid, %</label><input id="c-act" type="number" min="0" max="100" step="5" value="50"></div>
           <div class="field"><label for="c-hours">Hours saved per avoided hit</label><input id="c-hours" type="number" min="0" step="0.5" value="3"></div>
-          <div class="field"><label for="c-hour">Cost of a truck-hour, €</label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
+          <div class="field"><label for="c-hour">Cost of a vehicle-hour, €</label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
           <div class="field"><label for="c-disp">Dispatcher minutes a day checking sites</label><input id="c-disp" type="number" min="0" step="5" value="30"></div>
           <div class="field"><label for="c-big">Blockade or strike days a year</label><input id="c-big" type="number" min="0" step="1" value="4"></div>
-          <div class="field"><label for="c-price">Price per truck per month, €</label><input id="c-price" type="number" min="0" step="1" value="12"></div>
+          <div class="field"><label for="c-price">Price per vehicle per month, €</label><input id="c-price" type="number" min="0" step="1" value="12"></div>
         </div>
       </form>
       <div class="card out" aria-live="polite">
@@ -136,10 +148,10 @@
     </div>
     <div class="grid g5">
       <div class="card plan"><span class="name">Pilot</span><span class="price">Free</span><p class="small">4 weeks, with a weekly savings ledger and a written success criterion</p></div>
-      <div class="card plan main"><span class="name">Standard</span><span class="price">€12</span><p class="small">per truck per month, minimum €99</p></div>
-      <div class="card plan"><span class="name">Performance</span><span class="price">€49 + 15%</span><p class="small">of verified savings, capped at €25 per truck</p></div>
-      <div class="card plan"><span class="name">Founding customer</span><span class="price">€8</span><p class="small">per truck for 12 months, first 10 offices, for a case study</p></div>
-      <div class="card plan"><span class="name">API, later</span><span class="price">€3–5</span><p class="small">per truck, wholesale, for TMS and telematics vendors</p></div>
+      <div class="card plan main"><span class="name">Standard</span><span class="price">€12</span><p class="small">per vehicle per month, minimum €99</p></div>
+      <div class="card plan"><span class="name">Performance</span><span class="price">€49 + 15%</span><p class="small">of verified savings, capped at €25 per vehicle</p></div>
+      <div class="card plan"><span class="name">Founding customer</span><span class="price">€8</span><p class="small">per vehicle for 12 months, first 10 offices, for a case study</p></div>
+      <div class="card plan"><span class="name">API, later</span><span class="price">€3–5</span><p class="small">per vehicle, wholesale, for TMS and telematics vendors</p></div>
     </div>
   </div>
   <div class="wrap"><div class="foot"><span>€100 an hour: art. 6-bis D.Lgs. 286/2005 (DL 73/2025, L. 105/2025) · dispatcher cost from €28–34k gross salaries · same formulas as zhol/savings.py</span></div></div>
@@ -150,8 +162,13 @@
   <div class="wrap stack">
     <div class="qhead">
       <div class="asked"><span class="kicker">Question 3</span><q>Clear business model</q></div>
-      <h2 class="title">A subscription per truck, on costs that every office on the same roads shares</h2>
+      <h2 class="title">A subscription per vehicle, on costs that every office on the same roads shares</h2>
     </div>
+    <ul class="brief">
+      <li><b>92%</b> gross margin at 100 offices: every office on the same roads shares one set of events</li>
+      <li><b>€155k</b> of funding to break even, in May 2029</li>
+      <li><b>€771k</b> a year of revenue in year 3, from €35k in year 1</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:18px">
         <p class="lead" style="color:var(--on-dark-2)">One Brenner closure is read, checked and encoded once, then matched against the loads of every office that uses that pass. The tenth office costs almost nothing to add.</p>
@@ -170,12 +187,14 @@
       </div>
       <img class="art" src="/assets/img/q/q3-routes.webp" alt="Illustration: a folded map of the Alps on a dark desk; four routes from four edges meet at one pass marked with a red triangle" width="1100" height="822" loading="lazy">
     </div>
-    <div class="grid g4">
+    <details class="backup"><summary>Where the numbers come from</summary>
+<div class="grid g4">
       <div class="card year"><span class="kicker">ARR, end of 2027</span><span class="mid">€35k</span><div class="bar"><div class="track"><div class="fill" style="width:4%"></div></div></div><p class="small">15 offices, the first 10 at the founding price</p></div>
       <div class="card year"><span class="kicker">ARR, end of 2028</span><span class="mid">€247k</span><div class="bar"><div class="track"><div class="fill" style="width:32%"></div></div></div><p class="small">80 offices</p></div>
       <div class="card year"><span class="kicker">ARR, end of 2029</span><span class="mid">€771k</span><div class="bar"><div class="track"><div class="fill" style="width:100%"></div></div></div><p class="small">250 offices</p></div>
       <div class="card"><span class="kicker">One office</span><p class="small">Pays €257 a month and costs €11 to serve. Acquisition €600, paid back in 2.4 months. Lifetime value €9,827 at 2.5% churn a month: 16.4× the acquisition cost.</p></div>
     </div>
+</details>
     <div class="stack" style="gap:20px;margin-top:8px">
       <span class="kicker">The 36-month plan</span>
       <figure class="print" style="padding:14px"><img src="/assets/finplan.svg?v=1" alt="Chart: monthly revenue against costs from 2027 to 2029, cash without new funding falling to minus 124 thousand euros in April 2029 and recovering after break-even in May 2029" width="900" height="360" loading="lazy" style="width:100%;height:auto"><figcaption>36 months, monthly. Red: revenue; sage: costs; line: cash without new funding.</figcaption></figure>
@@ -191,7 +210,7 @@
       <div class="stack" style="gap:12px">
         <div class="tablewrap" data-collapse="3"><table class="t" style="min-width:420px">
           <thead><tr><th>If an assumption is wrong</th><th>Break-even</th><th class="n">Funding</th><th class="n">ARR 2029</th></tr></thead>
-          <tbody><tr><td>Base case</td><td>2029-05</td><td class='n'>€155,000</td><td class='n'>€771k</td></tr><tr><td>Price −33% (€8 per truck)</td><td>2029-11</td><td class='n'>€325,000</td><td class='n'>€514k</td></tr><tr><td>Price +25% (€15 per truck)</td><td>2029-03</td><td class='n'>€95,000</td><td class='n'>€964k</td></tr><tr><td>Churn 4% a month</td><td>2029-05</td><td class='n'>€165,000</td><td class='n'>€771k</td></tr><tr><td>Churn 1.5% a month</td><td>2029-05</td><td class='n'>€150,000</td><td class='n'>€771k</td></tr><tr><td>30% fewer offices</td><td>2029-09</td><td class='n'>€250,000</td><td class='n'>€540k</td></tr><tr><td>Acquisition cost €1,200</td><td>2029-08</td><td class='n'>€310,000</td><td class='n'>€771k</td></tr></tbody>
+          <tbody><tr><td>Base case</td><td>2029-05</td><td class='n'>€155,000</td><td class='n'>€771k</td></tr><tr><td>Price −33% (€8 per vehicle)</td><td>2029-11</td><td class='n'>€325,000</td><td class='n'>€514k</td></tr><tr><td>Price +25% (€15 per truck)</td><td>2029-03</td><td class='n'>€95,000</td><td class='n'>€964k</td></tr><tr><td>Churn 4% a month</td><td>2029-05</td><td class='n'>€165,000</td><td class='n'>€771k</td></tr><tr><td>Churn 1.5% a month</td><td>2029-05</td><td class='n'>€150,000</td><td class='n'>€771k</td></tr><tr><td>30% fewer offices</td><td>2029-09</td><td class='n'>€250,000</td><td class='n'>€540k</td></tr><tr><td>Acquisition cost €1,200</td><td>2029-08</td><td class='n'>€310,000</td><td class='n'>€771k</td></tr></tbody>
         </table></div>
         <p class="small" style="color:var(--on-dark-2)">Price and acquisition cost move the plan most: that is why the interviews test four prices first. Every assumption, monthly table and the generator: docs/13-financial-plan.md.</p>
       </div>
@@ -208,6 +227,11 @@
       <div class="asked"><span class="kicker">Question 4</span><q>A clear GTM strategy</q></div>
       <h2 class="title">Start where restrictions hurt most, a day trip from Milan</h2>
     </div>
+    <ul class="brief">
+      <li><b>≈2,350</b> offices in the North to start with: a day trip from Milan, sold in Italian</li>
+      <li><b>92</b> companies and <b>87</b> people already named from public sources</li>
+      <li><b>4</b> pilots of four weeks, measured against the office’s own process</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:18px">
         <div class="rows">
@@ -251,6 +275,11 @@
       <div class="asked"><span class="kicker">Question 5</span><q>More details on the technical part</q></div>
       <h2 class="title">Code where the rules are known, AI where the text is unstructured, a person in between</h2>
     </div>
+    <ul class="brief">
+      <li><b>7</b> countries of ban rules in code, plus the official Tyrol dosing calendar</li>
+      <li><b>AI</b> reads notices and news; <b>one person</b> approves every event before it goes out</li>
+      <li><b>1</b> WhatsApp message per office per evening, with each option priced</li>
+    </ul>
     <div>
       <figure class="print"><img src="/assets/img/q/q5-tech.webp" alt="Illustration: four cards joined by one line: a notice under a magnifying glass, the notice stamped as approved, a truck on a mountain road with a clock, a phone showing one message" width="1800" height="771" loading="lazy"></figure>
       <div class="strip-steps">
@@ -299,6 +328,11 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <div class="asked"><span class="kicker">Question 6</span><q>Before you check market, then tech</q></div>
       <h2 class="title">Seven hypotheses, each with a stop criterion, tested before we build more</h2>
     </div>
+    <ul class="brief">
+      <li><b>8</b> interviews by 13 November, against seven hypotheses with stop criteria</li>
+      <li><b>2</b> offices share last month’s loads; we replay what zhol would have flagged</li>
+      <li><b>2</b> live tests on real restriction days, with the dispatcher’s verdict</li>
+    </ul>
     <div class="split center">
       <div class="stack" style="gap:20px">
         <p class="lead">The prototype exists so that dispatchers have something to react to. Nothing new is automated until the interviews and a supervised pilot confirm it.</p>
@@ -318,7 +352,7 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <tbody>
         <tr><td>Offices re-plan loads because of restrictions every week</td><td>6 of 8 report 2 or more re-plans a month</td><td>Move to the South–North blockade segment</td></tr>
         <tr><td>They can put a cost on it</td><td>Median €300 or more per incident</td><td>Sell time savings at a lower price</td></tr>
-        <tr><td>The owner will pay</td><td>Median acceptable price €8 per truck or more</td><td>Sell through partners and associations</td></tr>
+        <tr><td>The owner will pay</td><td>Median acceptable price €8 per vehicle or more</td><td>Sell through partners and associations</td></tr>
         <tr><td>The evening before is when they decide</td><td>Most re-plans happen between 16:00 and 21:00</td><td>Move the alert to the moment they do decide</td></tr>
         <tr><td>Offices share tomorrow’s loads every day</td><td>2 share history; 80% of pilot days on time</td><td>Build the Excel and TMS import first</td></tr>
         <tr><td>Matching is precise enough</td><td>Precision 80% or more; at most 1 missed problem a month</td><td>Narrow to official sources and fewer corridors</td></tr>
@@ -336,6 +370,11 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <div class="asked"><span class="kicker">Question 7</span><q>Potential competitors analysis, different solutions that might arise in the future</q></div>
       <h2 class="title">Each piece exists somewhere. Nobody checks tomorrow’s loads the evening before</h2>
     </div>
+    <ul class="brief">
+      <li><b>6</b> categories of tools, each covering a piece: TMS, telematics, freight exchanges, visibility, risk platforms, associations</li>
+      <li><b>0</b> of them check tomorrow’s loads the evening before</li>
+      <li><b>€10–35</b> per vehicle a month is what telematics costs today; we add to it, we do not replace it</li>
+    </ul>
     <div class="split center">
       <figure class="print"><img src="/assets/img/q/q7-missing.webp" alt="Illustration: a folded map with one square missing over an Alpine pass, outlined in red; the missing piece lies beside it with a message icon" width="1100" height="822" loading="lazy"></figure>
       <div class="pmap" role="img" aria-label="Positioning map: horizontal axis from static calendars to live unplanned events; vertical axis from fleet level to a decision per load. zhol sits top right.">
@@ -383,6 +422,11 @@ Risparmio stimato: €1.113 · fonti: ASFINAG, Land Tirol, WKO</div>
       <div class="asked"><span class="kicker">Question 8</span><q>Is there enough space in the market for us?</q></div>
       <h2 class="title">Yes, for a focused wedge, with a window of two to three years</h2>
     </div>
+    <ul class="brief">
+      <li><b>2–3</b> years of window for a focused wedge in a fragmented market</li>
+      <li><b>What lasts:</b> the verified history of events and their effect on real loads</li>
+      <li><b>Who could follow:</b> a TMS can add alerts, but not verified, multilingual events across seven countries</li>
+    </ul>
     <div class="split center">
       <img class="art" src="/assets/img/q/q8-flag.webp" alt="Illustration: a folded map of Europe on a dark desk with one small red flag in the Alps inside a dashed outline" width="1100" height="822" loading="lazy">
       <div class="rows">
