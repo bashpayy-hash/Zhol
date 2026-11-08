@@ -189,7 +189,7 @@ table.t td b { font-weight: 600; }
 /* illustration placements */
 .illus { position: relative; }
 .illus img { width: 100%; height: auto; }
-.illus.dark-edge img { border-radius: var(--r-card); -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 62%, transparent 100%); }
+.illus.dark-edge img { border-radius: var(--r-card); -webkit-mask-image: radial-gradient(ellipse 58% 56% at 50% 50%, #000 40%, transparent 100%); mask-image: radial-gradient(ellipse 58% 56% at 50% 50%, #000 40%, transparent 100%); }
 
 /* calculator */
 .calc { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 20px; }
@@ -891,3 +891,33 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 @media (prefers-reduced-motion: reduce) { dialog.sheet[open], dialog.sheet.closing, dialog.sheet::backdrop { animation: none; } }
 .sheet-dup { display: none !important; }
 .blocks.tiles-mode { align-items: stretch; }
+
+/* home: the text sits on the scene itself (hero-full) */
+.hero-full .split { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(76vh, 700px); border-radius: 28px; overflow: hidden; background: #1d1a22; }
+.hero-full .split > .media { position: absolute; inset: 0; z-index: -2; border-radius: 0; aspect-ratio: auto; background: #1d1a22; }
+.hero-full .split > .media video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: scaleX(-1); }
+.hero-full .split::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(22, 18, 26, .86) 0%, rgba(22, 18, 26, .7) 32%, rgba(22, 18, 26, .18) 58%, rgba(22, 18, 26, 0) 74%); }
+.hero-full .split > .stack { max-width: 620px; padding: 56px 56px 60px; }
+.hero-full .kicker { color: var(--red-on-dark); }
+.hero-full h1.title { color: #fff; font-size: clamp(38px, 4.6vw, 64px); }
+.hero-full .lead { color: rgba(255, 255, 255, .86); }
+.hero-full .btn.ghost { color: #fff; border-color: rgba(255, 255, 255, .7); background: transparent; }
+.hero-full .btn.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
+@media (max-width: 760px) {
+  .hero-full .split { align-items: flex-end; min-height: 86vh; border-radius: 22px; }
+  .hero-full .split > .media video { object-position: 30% 35%; }
+  .hero-full .split::before { background: linear-gradient(180deg, rgba(22, 18, 26, 0) 18%, rgba(22, 18, 26, .62) 46%, rgba(22, 18, 26, .9) 72%); }
+  .hero-full .split > .stack { padding: 24px 22px 26px; gap: 14px !important; }
+  .hero-full h1.title { font-size: 34px; }
+}
+/* illustrations on dark slides blend into the slide instead of ending in a hard textured edge */
+.slide.dark .art { -webkit-mask-image: radial-gradient(ellipse 58% 56% at 50% 50%, #000 42%, transparent 100%); mask-image: radial-gradient(ellipse 58% 56% at 50% 50%, #000 42%, transparent 100%); }
+/* tiles, calmer: one card style, a balanced grid, a line of substance when there is no number */
+.tiles, .blocks.tiles-mode { grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); }
+.tile { background: var(--card); border-color: var(--card-line); color: var(--ink-2); min-height: 200px; }
+.tile-line { margin-top: auto; padding-right: 40px; font-size: 14.5px; line-height: 1.45; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tile.wide, .blocks.tiles-mode .block.wide { background: var(--sage-card); border-color: #c4d2bd; }
+.tile.wide .tile-title { font-size: 24px; max-width: 30ch; }
+@media (max-width: 920px) { .tiles, .blocks.tiles-mode { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tile.wide, .blocks.tiles-mode .block.wide { grid-column: span 2 !important; } }
+@media (max-width: 560px) { .tile { min-height: 156px; } .tile.wide .tile-title { font-size: 18px; } .tile-line { font-size: 13px; -webkit-line-clamp: 3; padding-right: 30px; } }

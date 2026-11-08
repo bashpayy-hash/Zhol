@@ -95,11 +95,16 @@
       const k = text(s.querySelector(".kicker")) || text(s.querySelector(".qhead .small"));
       const t = text(s.querySelector("h2, h3"));
       const num = s.dataset.tileNum || text(s.querySelector(".big, .mid"));
-      const tile = el("button", "tile" + (s.classList.contains("dark") ? " dark" : s.classList.contains("sage") ? " sage" : ""));
+      const tile = el("button", "tile");
       tile.type = "button"; tile.setAttribute("aria-haspopup", "dialog");
       if (k) tile.append(el("span", "kicker", k));
       tile.append(el("span", "tile-title", t || k));
+      // the bottom of the tile: the section's number if it has one, else the first line of what it says
       if (num && num.length < 14) tile.append(el("span", "tile-num", num));
+      else {
+        const p = [...s.querySelectorAll(".lead, p")].map(text).find(x => x.length > 30 && x !== t);
+        if (p) tile.append(el("span", "tile-line", p.length > 120 ? p.slice(0, 117).replace(/\s+\S*$/, "") + "…" : p));
+      }
       tile.append(el("span", "tile-plus"));
       tile.addEventListener("click", () => { opener = tile; open(s, k, t || k, s.classList.contains("dark") ? "dark" : ""); });
       grid.append(tile);
@@ -115,6 +120,18 @@
       }).observe(s, { attributes: true, attributeFilter: ["hidden"] });
     });
   }
+
+  // the grid: as many columns as fit the count, and the first tile wider when the last row would be short
+  function balance(grid, items) {
+    const shown = items.filter(x => !x.hidden), n = shown.length;
+    const cols = n <= 4 ? Math.max(n, 1) : (n === 5 || n === 6 || n === 9) ? 3 : 4;
+    grid.style.setProperty("--cols", cols);
+    items.forEach(x => x.style.gridColumn = "");
+    const extra = n % cols ? cols - (n % cols) : 0;
+    if (extra && shown[0]) { shown[0].style.gridColumn = "span " + (extra + 1); shown[0].classList.add("wide"); }
+  }
+  document.querySelectorAll(".tiles").forEach(g => { const items = [...g.children]; balance(g, items); new MutationObserver(() => balance(g, items)).observe(g, { subtree: true, attributes: true, attributeFilter: ["hidden"] }); });
+  document.querySelectorAll(".blocks.tiles-mode").forEach(g => balance(g, [...g.querySelectorAll(":scope > .block")]));
 
   // other scripts can bring an element into view, opening its sheet first (the radar map's "Plan and cost")
   window.zholSheet = {
