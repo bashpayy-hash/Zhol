@@ -5,7 +5,7 @@ than a hundred cold emails. The ask is small and the same for everyone:
 - a name or a forward to one or two offices that would share one past month of trips (date, time, origin, destination);
 - in return, a free replay in two days: which trips zhol would have flagged, the hours and the euros.
 
-The survey link goes in only as a secondary ask.
+Every letter opens with who we are: selected among many teams for TEF Ignition 2026, with a €2,000 grant, and running a survey of traffic offices (with its own link).
 
 **Email addresses.** Only addresses found in a public source are given. For the others, open **Outlook → New
 email → To → type the surname** (the Bocconi address book), as you do for any professor. Do not guess
@@ -44,13 +44,16 @@ Links used in the letters:
 ## 1 · Oliviero Baccelli
 
 **To:** oliviero.baccelli@unibocconi.it
-**Subject:** Un mese di viaggi per un test sui divieti e sulle code (studenti Bocconi, TEF Ignition)
+**Subject:** Un mese di viaggi per un test sui divieti e sulle code (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professor Baccelli,
 
-sono [Nome], studente Bocconi. Con Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol. La sera prima, zhol dice
+sono [Nome], studente Bocconi. Con Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol. La sera prima, zhol dice
 a chi pianifica i trasporti quali spedizioni di domani colpirà un divieto, un giorno di dosaggio a Kufstein, una chiusura
 o uno sciopero, e cosa conviene fare.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-baccelli
 
 La domanda è da economia dei trasporti: per misurare quanto valgono questi avvisi
 ci servono viaggi veri. Tra gli ex allievi MEMIT o le aziende con cui lavora il CERTeT, c'è un ufficio traffico con linee
@@ -69,13 +72,16 @@ Grazie,
 ## 2 · Alberto Grando
 
 **To:** alberto.grando@sdabocconi.it
-**Subject:** Una richiesta piccola legata al SOSC Monitor (studenti Bocconi, TEF Ignition)
+**Subject:** Una richiesta piccola legata al SOSC Monitor (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professor Grando,
 
 sappiamo che il suo tempo è pochissimo, quindi vengo al punto. Sono [Nome], studente Bocconi; con Inkara e Tomiris
-partecipiamo a TEF Ignition 2026 con zhol, che la sera prima avvisa chi pianifica i trasporti su quali spedizioni di domani
+siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol, che la sera prima avvisa chi pianifica i trasporti su quali spedizioni di domani
 colpirà un divieto, un dosaggio a Kufstein, una chiusura o uno sciopero.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-grando
 
 Il SOSC Monitor raccoglie dati da una rete di aziende partner. Tra queste, c'è qualcuno con un ufficio traffico su linee
 estere che potrebbe condividere un mese passato di viaggi (data, ora, origine, destinazione)? Restituiamo in due giorni
@@ -91,13 +97,16 @@ Con gratitudine,
 ## 3 · Pietro De Giovanni
 
 **To:** (Bocconi address book: "De Giovanni")
-**Subject:** Dati di viaggio veri per misurare il costo delle interruzioni (studenti Bocconi, TEF Ignition)
+**Subject:** Dati di viaggio veri per misurare il costo delle interruzioni (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professor De Giovanni,
 
-sono [Nome], studente Bocconi. Con Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol: la sera prima diciamo a chi
+sono [Nome], studente Bocconi. Con Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol: la sera prima diciamo a chi
 pianifica i trasporti quali spedizioni di domani colpirà un divieto, un dosaggio, una chiusura o uno sciopero, e
 cosa fare.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-degiovanni
 
 Il nostro modello stima il costo atteso per camion (probabilità × attesa × costo orario) e lo confronta con il costo di
 cambiare piano: https://zhol-beta.netlify.app/outlook. Per validarlo ci servono viaggi veri. Tra le aziende del SOSC Monitor
@@ -114,12 +123,15 @@ Grazie,
 ## 4 · Vittoria Veronesi
 
 **To:** (Bocconi address book: "Veronesi")
-**Subject:** Una presentazione a un ufficio traffico, per un test gratuito (studenti Bocconi, TEF Ignition)
+**Subject:** Una presentazione a un ufficio traffico, per un test gratuito (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professoressa Veronesi,
 
-sono [Nome], studente Bocconi. Con Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol: la sera prima diciamo a chi
+sono [Nome], studente Bocconi. Con Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol: la sera prima diciamo a chi
 pianifica le consegne quali spedizioni di domani colpirà una chiusura, una coda, uno sciopero o un divieto, e cosa fare.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-veronesi
 
 Abbiamo visto che ha seguito da vicino Zeroquattro Logistica. Un operatore come quello, che distribuisce alimentari ogni
 giorno, è esattamente chi vogliamo ascoltare. Potrebbe metterci in contatto con chi pianifica i viaggi lì, o in un'azienda
@@ -136,20 +148,22 @@ Grazie,
 ## 5 · Francesco Gallmann
 
 **To:** (Bocconi address book: "Gallmann")
-**Subject:** Un responsabile distribuzione per un test di due giorni (studenti Bocconi, TEF Ignition)
+**Subject:** Un responsabile distribuzione per un test di due giorni (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professor Gallmann,
 
-sono [Nome], studente Bocconi; con Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol. La sera prima diciamo a chi
+sono [Nome], studente Bocconi; con Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol. La sera prima diciamo a chi
 pianifica i trasporti quali spedizioni di domani colpirà un divieto, un dosaggio a Kufstein, una chiusura o uno sciopero,
 e cosa fare.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-gallmann
 
 Nelle academy che cura conosce responsabili della distribuzione e della logistica che vivono questi imprevisti. Potrebbe
 presentarci uno o due di loro? Chiediamo un mese passato di viaggi (data, ora, origine, destinazione) e restituiamo in due
 giorni un'analisi gratuita: https://zhol-beta.netlify.app/replay-example
 
-Se preferisce, può anche girare loro questo sondaggio di sette domande, un minuto:
-https://zhol-beta.netlify.app/q/it?src=prof-gallmann
+Se preferisce, può anche girare loro il sondaggio qui sopra.
 
 Grazie,
 [Nome] · Università Bocconi · zhol (Alikhan, Inkara, Tomiris)
@@ -159,13 +173,16 @@ Grazie,
 ## 6 · Silvia Zamboni
 
 **To:** (the @sdabocconi.it address in her CV)
-**Subject:** Resilienza della supply chain sui viaggi di domani: un test con dati veri (studenti Bocconi)
+**Subject:** Resilienza della supply chain sui viaggi di domani: un test con dati veri (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professoressa Zamboni,
 
-sono [Nome], studente Bocconi; con Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol. È un pezzo molto concreto di
+sono [Nome], studente Bocconi; con Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol. È un pezzo molto concreto di
 resilienza: la sera prima diciamo a chi pianifica i trasporti quali spedizioni di domani colpirà un divieto, una chiusura,
 uno sciopero o un traghetto fermo, e quale alternativa conviene.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-zamboni
 
 Dai suoi progetti con le aziende, conosce un responsabile logistico disposto a condividere un mese passato di viaggi (data,
 ora, origine, destinazione)? Restituiamo in due giorni un'analisi gratuita, con ore ed euro:
@@ -182,20 +199,22 @@ Grazie,
 ## 7 · Iolanda D'Amato
 
 **To:** (Bocconi address book: "D'Amato")
-**Subject:** Dati di viaggio veri per un test sugli imprevisti in strada (studenti Bocconi, TEF Ignition)
+**Subject:** Dati di viaggio veri per un test sugli imprevisti in strada (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professoressa D'Amato,
 
-sono [Nome], studente Bocconi; con Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol. La sera prima diciamo a chi
+sono [Nome], studente Bocconi; con Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol. La sera prima diciamo a chi
 pianifica i trasporti quali spedizioni di domani colpirà un divieto, una chiusura, uno sciopero o un traghetto fermo, e
 cosa fare.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-damato
 
 Lavorando su logistica e operations di servizio, conosce un'azienda con un ufficio traffico disposta a condividere un mese
 passato di viaggi (data, ora, origine, destinazione)? In due giorni restituiamo un'analisi gratuita di ciò che avremmo
 segnalato: https://zhol-beta.netlify.app/replay-example
 
-Basta anche un nome, oppure girare loro il nostro sondaggio di un minuto:
-https://zhol-beta.netlify.app/q/it?src=prof-damato
+Basta anche un nome, oppure girare loro il sondaggio qui sopra.
 
 Grazie,
 [Nome] · Università Bocconi · zhol (Alikhan, Inkara, Tomiris)
@@ -205,13 +224,16 @@ Grazie,
 ## 8 · Marco Percoco
 
 **To:** (Bocconi address book: "Percoco")
-**Subject:** Un contatto tra i fellow di GREEN che lavorano con operatori di trasporto (studenti Bocconi)
+**Subject:** Un contatto tra i fellow di GREEN che lavorano con operatori di trasporto (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professor Percoco,
 
-sono [Nome], studente Bocconi; con Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol. La sera prima diciamo a chi
+sono [Nome], studente Bocconi; con Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol. La sera prima diciamo a chi
 pianifica i trasporti quali spedizioni di domani colpirà un divieto, una chiusura sul Brennero, uno sciopero o lo stop dei
 traghetti sullo Stretto, e cosa fare.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-percoco
 
 Ci serve misurarlo su viaggi veri. Tra i fellow di GREEN che lavorano con operatori di trasporto, a chi ci suggerirebbe di
 scrivere per trovare un ufficio traffico disposto a condividere un mese passato di viaggi? Restituiamo in due giorni
@@ -225,13 +247,16 @@ Grazie del tempo,
 ## 9 · Lanfranco Senn
 
 **To:** (Bocconi address book: "Senn")
-**Subject:** Dal sistema logistico lombardo a un test con dati veri (studenti Bocconi)
+**Subject:** Dal sistema logistico lombardo a un test con dati veri (team selezionato per TEF Ignition 2026, Bocconi)
 
 Gentile Professor Senn,
 
 sono [Nome], studente Bocconi. Abbiamo letto i suoi studi sul sistema logistico lombardo. Con
-Inkara e Tomiris partecipiamo a TEF Ignition 2026 con zhol: la sera prima diciamo a chi pianifica i trasporti quali
+Inkara e Tomiris siamo uno dei team selezionati, tra molte candidature, per TEF Ignition 2026 della Tech Europe Foundation, e abbiamo ricevuto un grant di 2.000 € per sviluppare zhol: la sera prima diciamo a chi pianifica i trasporti quali
 spedizioni di domani colpirà un divieto, un dosaggio a Kufstein, una chiusura o uno sciopero, e cosa fare.
+
+In questi giorni stiamo conducendo un sondaggio tra gli uffici traffico, sette domande in un minuto:
+https://zhol-beta.netlify.app/q/it?src=prof-senn
 
 Tra gli operatori logistici lombardi che conosce, c'è qualcuno a cui potremmo chiedere un mese passato di viaggi (data,
 ora, origine, destinazione)? Restituiamo in due giorni un'analisi gratuita, con ore ed euro:
