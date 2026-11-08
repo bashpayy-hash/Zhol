@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s1">
+<link rel="stylesheet" href="/assets/zhol.css?v=m3">
 <link rel="alternate" hreflang="en" href="https://zhol.live/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -24,8 +24,7 @@
   <nav class="tabs" aria-label="Sezioni">
     <a href="#market">Mercato</a><a href="#pricing">Prezzi</a><a href="#model">Modello</a><a href="#gtm">Go-to-market</a><a href="#tech">Tecnologia</a><a href="#evidence">Evidenze</a><a href="#competition">Concorrenza</a><a href="#room">Spazio</a>
     <span class="sep" aria-hidden="true"></span>
-    <a href="/it/story">Storia</a><a href="/it/outlook">Radar</a><a href="/it/audience">Clienti</a><a href="/it/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/" lang="en" hreflang="en">EN</a>
-  </nav>
+    <a href="/it/story">Storia</a><a href="/it/outlook">Radar</a><a href="/it/audience">Clienti</a><a href="/it/beta">Beta</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/" lang="en" hreflang="en">EN</a><a href="/it/" lang="it" hreflang="it" aria-current="true">IT</a></span>
 </div></header>
 
 <main>
@@ -163,62 +162,77 @@
 </section>
 
 
-<!-- perché un software, e la sorveglianza condivisa (docs/15) -->
-<section class="slide sage" id="watch">
+<!-- il radar, dal vivo -->
+<section class="slide sage" id="radar">
   <div class="wrap stack">
     <div class="qhead">
-      <span class="kicker green">Perché non basta che qualcuno controlli?</span>
-      <h2 class="title">Le persone controllano in orario d’ufficio. I disagi no.</h2>
+      <span class="kicker green">Il radar</span>
+      <h2 class="title">Cosa arriva sulle strade d’Europa, e con quale probabilità</h2>
     </div>
-    <div class="grid g3 steps">
+    <div class="now card" data-now hidden>
+      <div class="now-grid">
+        <div class="map-frame" role="img" aria-label="Mappa d’Europa con gli eventi che zhol prevede nelle prossime otto settimane"></div>
+        <ul class="now-list"></ul>
+      </div>
+      <div class="actions"><a class="btn" href="/it/outlook">Apri il radar</a><a class="btn ghost" href="/it/outlook#map">Guarda la mappa</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- tutto il resto, un blocco alla volta -->
+<section class="slide" id="more">
+  <div class="wrap stack">
+    <p class="block-hint">Altro, se vi interessa: toccate un blocco.</p>
+    <div class="blocks wide">
+      <article class="block" id="watch">
+        <span class="kicker">Perché non basta che qualcuno controlli?</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="watch-more">Le persone controllano in orario d’ufficio. I disagi no.<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>3</b> passi: una persona ogni tanto, zhol ogni giorno, poi gli uffici che si avvisano tra loro</p>
+        <div class="block-more" id="watch-more"><div>
+        <div class="grid g3 steps">
       <div class="card"><span class="step-n">1</span><h3>Oggi: una persona, ogni tanto</h3><p class="small">Qualcuno controlla notizie e calendari dei divieti tra un lavoro e l’altro, in orario d’ufficio. Gli scioperi si annunciano la sera, le chiusure partono alle 5, i traghetti si fermano di notte.</p></div>
       <div class="card"><span class="step-n">2</span><h3>zhol: tutti i giorni, anche nel weekend</h3><p class="small">Il radar legge le notizie in quattro lingue, i calendari ufficiali e il meteo ai valichi, e il messaggio serale arriva prima che l’ufficio chiuda.</p></div>
       <div class="card"><span class="step-n">3</span><h3>Poi: gli uffici si avvisano tra loro</h3><p class="small">Un autista fermo a Kufstein alle 4, una coda ai traghetti di Messina: un tocco su WhatsApp, confermato da una seconda segnalazione o da una fonte, e lo sa ogni ufficio con carichi lì. Anonimo. Più uffici, prima lo sanno tutti.</p><span class="tag">Idea che proviamo nei pilota</span></div>
     </div>
-  </div>
-</section>
-
-<!-- the field, team -->
-<section class="slide teaser" id="story">
-  <div class="wrap stack">
-    <div class="qhead">
-      <span class="kicker">Perché conta, dal campo</span>
-      <h2 class="title">Le restrizioni stradali costano ogni giorno al trasporto merci</h2>
-    </div>
-    <div class="grid g3">
+        </div></div>
+      </article>
+      <article class="block" id="story">
+        <span class="kicker">Perché conta, dal campo</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="story-more">Le restrizioni stradali costano ogni giorno al trasporto merci<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>€544 mln</b> l’anno: quanto costano all’Italia le restrizioni sul Brennero</p>
+        <div class="block-more" id="story-more"><div>
+        <div class="grid g3">
       <div class="card"><span class="big">€544 mln</span><p class="small">all’anno: quanto costano all’Italia le restrizioni del Tirolo al Brennero e i lavori sul Luegbrücke (Uniontrasporti; di cui €463 mln per le merci)</p></div>
       <div class="card"><span class="big">21 su 57</span><p class="small">giorni di dosaggio a Kufstein nel 2025 sono arrivati fuori dal calendario pubblicato (Land Tirol, ADAC)</p></div>
       <div class="card"><span class="big">€400 mln+</span><p class="small">persi in otto giorni di blocchi nel Sud Italia, ottobre 2026 (conteggio da stime regionali)</p></div>
     </div>
-    <a href="/it/story">Il fermo in Sicilia, la trappola di Kufstein e il messaggio che avrebbe aiutato</a>
-  </div>
-</section>
-
-<section class="slide" id="team" style="padding-top:24px">
-  <div class="wrap stack">
-    <div class="qhead">
-      <h2 class="title">Una squadra, dal Kazakistan, a Milano</h2>
-      <p class="lead">Alikhan, Inkara e Tomiris, amici dal primo anno in Bocconi. Ora a Milano, vicini agli uffici a cui ci rivolgiamo. <span lang="kk">Zhol</span> vuol dire strada.</p>
-    </div>
-    <div class="grid g3">
+        <a class="open" href="/it/story">Il fermo in Sicilia, la trappola di Kufstein e il messaggio che avrebbe aiutato</a>
+        </div></div>
+      </article>
+      <article class="block" id="team">
+        <span class="kicker">Il team</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="team-more">Una squadra, dal Kazakistan, a Milano<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line">Alikhan, Inkara e Tomiris · Università Bocconi</p>
+        <div class="block-more" id="team-more"><div>
+        <p class="lead">Alikhan, Inkara e Tomiris, amici dal primo anno in Bocconi. Ora a Milano, vicini agli uffici a cui ci rivolgiamo. <span lang="kk">Zhol</span> vuol dire strada.</p>
+        <div class="grid g3">
       <div class="card"><h3>Alikhan</h3><span class="kicker">Ascolto dei clienti</span><p class="small">Intervista traffichisti e titolari. Recluta i primi uffici.</p></div>
       <div class="card"><h3>Inkara</h3><span class="kicker">Flusso di lavoro e prototipo</span><p class="small">Abbina gli eventi ai carichi. Progetta revisione e conferma.</p></div>
       <div class="card"><h3>Tomiris</h3><span class="kicker">Prove pilota e misurazione</span><p class="small">Gestisce i casi supervisionati. Misura risultati, tempi e costi.</p></div>
     </div>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="wrap split center">
-    <div class="stack">
-      <span class="kicker">La beta è aperta</span>
-      <h2 class="title">Mandateci i carichi di domani. Stasera vi diciamo quali saranno colpiti da una restrizione.</h2>
-      <p class="lead" style="color:var(--on-dark-2)">Quattro settimane, gratis, per gli uffici traffico con tratte oltre le Alpi. Ogni avviso è controllato da una persona e cita la sua fonte.</p>
-      <div class="actions"><a class="btn" href="/it/beta#join">Partecipa alla beta</a><a class="btn ghost" href="/it/beta">Guardalo su strade vere</a></div>
+        </div></div>
+      </article>
+      <article class="block" id="beta">
+        <span class="kicker">La beta è aperta</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="beta-more">Mandateci i carichi di domani. Stasera vi diciamo quali saranno colpiti da una restrizione.<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>4</b> settimane, gratis, per gli uffici traffico con linee oltre le Alpi</p>
+        <div class="block-more" id="beta-more"><div>
+        <p>Quattro settimane, gratis, per gli uffici traffico con tratte oltre le Alpi. Ogni avviso è controllato da una persona e cita la sua fonte.</p>
+        <div class="actions"><a class="btn" href="/it/beta#join">Partecipa alla beta</a><a class="btn ghost" href="/it/beta">Guardalo su strade vere</a></div>
+        </div></div>
+      </article>
     </div>
-    <img class="art" src="/assets/img/q/cta-map.webp" alt="Illustrazione: una carta piegata su una scrivania scura con un percorso oltre le Alpi, tre schede di consegna e un telefono con un messaggio" width="1100" height="822" loading="lazy">
   </div>
-  <div class="wrap"><div class="foot"><span>Il primo passo con ogni ufficio: ripercorrere un imprevisto recente con il traffichista e il titolare, in 30 minuti.</span></div></div>
 </section>
 </main>
 
@@ -229,6 +243,9 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
-<script src="/assets/reveal.js?v=r1" defer></script>
+<script src="/assets/map.js?v=a3" defer></script>
+<script src="/assets/now.js?v=n1" defer></script>
+<script src="/assets/reveal.js?v=r2" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

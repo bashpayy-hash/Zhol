@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s1">
+<link rel="stylesheet" href="/assets/zhol.css?v=m3">
 <link rel="alternate" hreflang="en" href="https://zhol.live/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -24,8 +24,7 @@
   <nav class="tabs" aria-label="Sections">
     <a href="#market">Market</a><a href="#pricing">Pricing</a><a href="#model">Model</a><a href="#gtm">Go-to-market</a><a href="#tech">Tech</a><a href="#evidence">Evidence</a><a href="#competition">Competition</a><a href="#room">Room</a>
     <span class="sep" aria-hidden="true"></span>
-    <a href="/story">Story</a><a href="/outlook">Radar</a><a href="/audience">Audience</a><a href="/beta">Beta</a><span class="sep" aria-hidden="true"></span><a class="lang" href="/it/" lang="it" hreflang="it">IT</a>
-  </nav>
+    <a href="/story">Story</a><a href="/outlook">Radar</a><a href="/audience">Audience</a><a href="/beta">Beta</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/" lang="en" hreflang="en" aria-current="true">EN</a><a href="/it/" lang="it" hreflang="it">IT</a></span>
 </div></header>
 
 <main>
@@ -163,62 +162,77 @@
 </section>
 
 
-<!-- why software, and the shared watch (docs/15) -->
-<section class="slide sage" id="watch">
+<!-- the radar, live -->
+<section class="slide sage" id="radar">
   <div class="wrap stack">
     <div class="qhead">
-      <span class="kicker green">Why not just have someone check?</span>
-      <h2 class="title">People check in office hours. Disruptions do not keep them.</h2>
+      <span class="kicker green">The radar</span>
+      <h2 class="title">What is coming on Europe’s roads, and how likely</h2>
     </div>
-    <div class="grid g3 steps">
+    <div class="now card" data-now hidden>
+      <div class="now-grid">
+        <div class="map-frame" role="img" aria-label="Map of Europe with the events zhol expects in the next eight weeks"></div>
+        <ul class="now-list"></ul>
+      </div>
+      <div class="actions"><a class="btn" href="/outlook">Open the radar</a><a class="btn ghost" href="/outlook#map">See the map</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- everything else, one block at a time -->
+<section class="slide" id="more">
+  <div class="wrap stack">
+    <p class="block-hint">More, if you want it: tap a block.</p>
+    <div class="blocks wide">
+      <article class="block" id="watch">
+        <span class="kicker">Why not just have someone check?</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="watch-more">People check in office hours. Disruptions do not keep them.<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>3</b> steps: a person now and then, zhol every day, then offices warning each other</p>
+        <div class="block-more" id="watch-more"><div>
+        <div class="grid g3 steps">
       <div class="card"><span class="step-n">1</span><h3>Today: a person, now and then</h3><p class="small">Someone checks the news and the ban calendars between other work, in office hours. Strikes are called in the evening, closures start at 5 a.m., ferries stop at night.</p></div>
       <div class="card"><span class="step-n">2</span><h3>zhol: every day, weekends too</h3><p class="small">The radar reads the news in four languages, the official calendars and the weather at the passes, and the evening message lands before the office closes.</p></div>
       <div class="card"><span class="step-n">3</span><h3>Next: offices warn each other</h3><p class="small">A driver stuck at Kufstein at 4 a.m., a queue at the Messina ferries: one tap on WhatsApp, confirmed by a second report or a source, and every office with loads there knows. Anonymous. The more offices, the earlier everyone knows.</p><span class="tag">Idea we test in the pilots</span></div>
     </div>
-  </div>
-</section>
-
-<!-- the field, team -->
-<section class="slide teaser" id="story">
-  <div class="wrap stack">
-    <div class="qhead">
-      <span class="kicker">Why this matters, from the field</span>
-      <h2 class="title">Road restrictions cost freight money every day</h2>
-    </div>
-    <div class="grid g3">
+        </div></div>
+      </article>
+      <article class="block" id="story">
+        <span class="kicker">Why this matters, from the field</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="story-more">Road restrictions cost freight money every day<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>€544M</b> a year: what the Brenner restrictions cost Italy</p>
+        <div class="block-more" id="story-more"><div>
+        <div class="grid g3">
       <div class="card"><span class="big">€544M</span><p class="small">a year: what Tyrol’s Brenner restrictions and the Luegbrücke works cost Italy (Uniontrasporti; €463M of it freight)</p></div>
       <div class="card"><span class="big">21 of 57</span><p class="small">dosing days at Kufstein in 2025 came outside the published calendar (Land Tirol, ADAC)</p></div>
       <div class="card"><span class="big">€400M+</span><p class="small">lost in eight days of blockades in southern Italy, October 2026 (tally from regional estimates)</p></div>
     </div>
-    <a href="/story">The Sicily stoppage, the Kufstein trap and the message that would have helped</a>
-  </div>
-</section>
-
-<section class="slide" id="team" style="padding-top:24px">
-  <div class="wrap stack">
-    <div class="qhead">
-      <h2 class="title">One team, from Kazakhstan, in Milan</h2>
-      <p class="lead">Alikhan, Inkara and Tomiris, friends since our first year at Bocconi. Now in Milan, next to the offices we build for. <span lang="kk">Zhol</span> means road.</p>
-    </div>
-    <div class="grid g3">
+        <a class="open" href="/story">The Sicily stoppage, the Kufstein trap and the message that would have helped</a>
+        </div></div>
+      </article>
+      <article class="block" id="team">
+        <span class="kicker">The team</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="team-more">One team, from Kazakhstan, in Milan<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line">Alikhan, Inkara and Tomiris · Bocconi University</p>
+        <div class="block-more" id="team-more"><div>
+        <p class="lead">Alikhan, Inkara and Tomiris, friends since our first year at Bocconi. Now in Milan, next to the offices we build for. <span lang="kk">Zhol</span> means road.</p>
+        <div class="grid g3">
       <div class="card"><h3>Alikhan</h3><span class="kicker">Customer discovery</span><p class="small">Interviews dispatchers and owners. Recruits the first offices.</p></div>
       <div class="card"><h3>Inkara</h3><span class="kicker">Workflow and prototype</span><p class="small">Matches events to loads. Designs review and confirmation.</p></div>
       <div class="card"><h3>Tomiris</h3><span class="kicker">Pilots and measurement</span><p class="small">Runs supervised cases. Tracks outcomes, time and costs.</p></div>
     </div>
-  </div>
-</section>
-
-<section class="slide dark">
-  <div class="wrap split center">
-    <div class="stack">
-      <span class="kicker">The beta is open</span>
-      <h2 class="title">Send us tomorrow’s loads. We tell you tonight which ones a restriction will hit.</h2>
-      <p class="lead" style="color:var(--on-dark-2)">Four weeks, free, for traffic offices with lanes over the Alps. Every alert is checked by a person and cites its source.</p>
-      <div class="actions"><a class="btn" href="/beta#join">Join the beta</a><a class="btn ghost" href="/beta">See it on real roads</a></div>
+        </div></div>
+      </article>
+      <article class="block" id="beta">
+        <span class="kicker">The beta is open</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="beta-more">Send us tomorrow’s loads. We tell you tonight which ones a restriction will hit.<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line"><b>4</b> weeks, free, for traffic offices with lanes over the Alps</p>
+        <div class="block-more" id="beta-more"><div>
+        <p>Four weeks, free, for traffic offices with lanes over the Alps. Every alert is checked by a person and cites its source.</p>
+        <div class="actions"><a class="btn" href="/beta#join">Join the beta</a><a class="btn ghost" href="/beta">See it on real roads</a></div>
+        </div></div>
+      </article>
     </div>
-    <img class="art" src="/assets/img/q/cta-map.webp" alt="Illustration: a folded map on a dark desk with a route over the Alps, three delivery cards and a phone showing one message" width="1100" height="822" loading="lazy">
   </div>
-  <div class="wrap"><div class="foot"><span>First step with any office: review one recent disruption with a dispatcher and the owner, in 30 minutes.</span></div></div>
 </section>
 </main>
 
@@ -229,6 +243,9 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
-<script src="/assets/reveal.js?v=r1" defer></script>
+<script src="/assets/map.js?v=a3" defer></script>
+<script src="/assets/now.js?v=n1" defer></script>
+<script src="/assets/reveal.js?v=r2" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

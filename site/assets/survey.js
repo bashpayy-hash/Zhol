@@ -8,7 +8,7 @@
   const T = (en, it) => IT ? it : en;
   const $ = id => document.getElementById(id);
   const steps = [...form.querySelectorAll("fieldset.q")];
-  const img = $("sv-img"), road = $("sv-road"), live = $("sv-live"), back = $("sv-back"), next = $("sv-next"), send = $("sv-send");
+  const img = $("sv-img"), scene = img && img.closest(".sv-mascot"), road = $("sv-road"), live = $("sv-live"), back = $("sv-back"), next = $("sv-next"), send = $("sv-send");
   const follow = $("sv-follow"), done = $("sv-done");
   const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // Zholdas, the mascot: 280 px for phones, 560 px for 2x screens; see assets/img/mascot/manifest.json
@@ -70,6 +70,7 @@
     next.hidden = !(answered && !last);      // after going back, move on without changing the answer
     send.hidden = !(answered && last);
     road.style.transform = "scaleX(" + (at / steps.length) + ")";
+    if (scene) scene.style.setProperty("--p", (at / (steps.length - 1)).toFixed(3));   // the road runs on toward the mountains
     setPose(steps[at].dataset.img);
     live.textContent = T("Question " + (at + 1) + " of " + steps.length, "Domanda " + (at + 1) + " di " + steps.length);
     if (focus) {
@@ -117,6 +118,7 @@
     sending = true;
     send.disabled = true;
     road.style.transform = "scaleX(1)";
+    if (scene) scene.style.setProperty("--p", "1.15");
     post(form).then(() => {
       form.hidden = true;
       follow.hidden = false;

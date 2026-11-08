@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" preserveAspectRatio="xMidYMax slice">
+  <!-- zhol: the road Zholdas stands on, running to the Alps. Paper, sage and sand from zhol.css; no text. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f3ea"/>
+      <stop offset="1" stop-color="#e3ebdd"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7dcc5"/>
+      <stop offset="1" stop-color="#dccdb0"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cdbfa6"/>
+      <stop offset="1" stop-color="#bfae91"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="300" fill="url(#sky)"/>
+  <circle cx="392" cy="58" r="20" fill="#fbf9f3" opacity=".9"/>
+  <!-- far Alps -->
+  <path d="M0 150 L38 118 L62 132 L104 84 L140 122 L170 104 L214 62 L252 108 L282 92 L326 70 L366 112 L398 96 L440 120 L470 104 L500 122 L500 160 L0 160 Z" fill="#c9d4d0"/>
+  <path d="M94 96 L104 84 L116 98 L108 95 L101 101 Z M204 74 L214 62 L227 79 L218 75 L210 82 Z M316 82 L326 70 L338 84 L330 81 L322 87 Z" fill="#fbf9f3"/>
+  <!-- sage hills -->
+  <path d="M0 160 C60 140 110 150 160 146 C210 142 230 152 250 152 C280 152 320 138 380 142 C430 146 470 152 500 148 L500 190 L0 190 Z" fill="#b8c8ae"/>
+  <g fill="#9fb596">
+    <path d="M70 152 l6 -14 l6 14 Z M84 154 l5 -11 l5 11 Z M392 146 l6 -14 l6 14 Z M406 148 l5 -11 l5 11 Z M430 149 l4 -9 l4 9 Z"/>
+  </g>
+  <!-- the plain -->
+  <path d="M0 168 C120 160 180 166 250 164 C330 162 400 158 500 164 L500 300 L0 300 Z" fill="url(#ground)"/>
+  <!-- the road to the vanishing point -->
+  <path d="M243 160 L257 160 L380 300 L120 300 Z" fill="url(#road)"/>
+  <path d="M243 160 L247 160 L128 300 L120 300 Z M253 160 L257 160 L380 300 L372 300 Z" fill="#e9dfc9" opacity=".8"/>
+  <g fill="#fbf9f3" opacity=".95">
+    <path d="M249.4 166 L250.6 166 L250.9 172 L249.1 172 Z"/>
+    <path d="M249 180 L251 180 L251.6 190 L248.4 190 Z"/>
+    <path d="M248.3 202 L251.7 202 L252.6 218 L247.4 218 Z"/>
+    <path d="M247.2 236 L252.8 236 L254.2 262 L245.8 262 Z"/>
+    <path d="M245.6 284 L254.4 284 L255.4 300 L244.6 300 Z"/>
+  </g>
+  <!-- a truck far ahead, going the same way -->
+  <g transform="translate(244 154)">
+    <rect x="0" y="0" width="8" height="5" rx=".6" fill="#f3ede4"/>
+    <rect x="8" y="1.4" width="3" height="3.6" rx=".5" fill="#a2311e"/>
+    <rect x="0" y="5" width="11" height=".9" fill="#352b28" opacity=".35"/>
+  </g>
+</svg>
