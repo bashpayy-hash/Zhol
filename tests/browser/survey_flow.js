@@ -62,8 +62,9 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       await page.click('#sv-follow button[type="submit"]'); await page.waitForTimeout(500);
       check(await page.isVisible("#sv-done"), `${tag}: thank-you step`);
       check((await pose()).includes("encourage"), `${tag}: encourage pose on the thank-you step`);
+      const mapOk = await page.waitForSelector("#sv-map:not([hidden]) .map-pin", { timeout: 10000 }).then(() => true, () => false);
+      check(mapOk, `${tag}: the last screen shows the map with the radar's events`);
       await page.waitForTimeout(2600);                   // the small map comes in behind its sweep
-      check(await page.isVisible("#sv-map") && (await page.$$("#sv-map .map-pin")).length > 0, `${tag}: the last screen shows the map with the radar's events`);
       await shot("done");
 
       check(posts.length === 2, `${tag}: two posts (answers, contact)`);
