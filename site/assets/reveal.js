@@ -1,32 +1,12 @@
 /* zhol: let a page come in a little at a time (VISION.md: no wall of information).
-   1. Answer blocks open in place: the question and one number first, the three bullets on a tap.
-   2. Sections and cards rise in gently as they scroll into view, once.
+   Sections and cards rise in gently as they scroll into view, once. Blocks and tiles open in a sheet (sheets.js).
    Without JavaScript everything is simply open and visible. */
 (function () {
   const root = document.documentElement;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   root.classList.add("js");
 
-  // ---- answer blocks: one open at a time; the whole card is the target, the button is the control
-  const blocks = [...document.querySelectorAll(".block")];
-  const set = (b, open) => {
-    b.classList.toggle("open", open);
-    const btn = b.querySelector(".block-q"), more = b.querySelector(".block-more");
-    if (btn) btn.setAttribute("aria-expanded", String(open));
-    if (more) { if (open) more.removeAttribute("inert"); else more.setAttribute("inert", ""); }
-  };
-  blocks.forEach(b => {
-    set(b, false);
-    b.addEventListener("click", e => {
-      if (e.target.closest("a")) return;            // the "Open the full answer" link just goes
-      const open = !b.classList.contains("open");
-      blocks.forEach(x => x !== b && x.classList.contains("open") && set(x, false));
-      set(b, open);
-    });
-  });
-  // a link to #market (old links, the jury's notes) opens that block
-  const fromHash = () => { const b = location.hash && document.getElementById(location.hash.slice(1)); if (b && b.classList.contains("block")) { blocks.forEach(x => set(x, x === b)); } };
-  fromHash(); addEventListener("hashchange", fromHash);
+  // answer blocks open in a sheet now (assets/sheets.js)
 
   // ---- rise in on scroll
   if (reduce || !("IntersectionObserver" in window)) return;

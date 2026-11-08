@@ -819,3 +819,75 @@ form.stepped .field input, form.stepped .field textarea { font-size: 17px; }
   background: radial-gradient(closest-side, rgba(53, 43, 40, .28), transparent); z-index: -1; }
 .mascot-scene.scene-3d { padding-top: 4%; }
 @media (prefers-reduced-motion: reduce) { .scene-3d .scape img { transition: none; } }
+
+/* small tiles, details on a tap (assets/sheets.js) */
+.tiles-slide { padding-top: 40px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 14px; }
+.tile, .blocks.tiles-mode .block { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-height: 176px; padding: 22px 22px 58px; border: 1px solid var(--card-line); border-radius: var(--r-card); background: var(--card); color: var(--ink-2); font: inherit; text-align: left; cursor: pointer;
+  transition: transform var(--dur-card) var(--ease), box-shadow var(--dur-card) var(--ease), border-color var(--dur) var(--ease-color); }
+.tile.sage { background: var(--sage-card); border-color: #c4d2bd; }
+.tile.dark { background: var(--espresso); border-color: var(--espresso); color: var(--on-dark-2); }
+.tile.dark .kicker { color: var(--red-on-dark); } .tile.dark .tile-title { color: var(--on-dark); } .tile.dark .tile-num { color: var(--red-on-dark); }
+.tile-title { font-size: 19px; line-height: 1.25; font-weight: 650; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.tile-num { margin-top: auto; font-size: 30px; line-height: 1; font-weight: 650; letter-spacing: -0.03em; color: var(--red); font-variant-numeric: tabular-nums; }
+.tile-plus, .blocks.tiles-mode .block-q .pm { position: absolute; right: 16px; bottom: 16px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 20px; line-height: 1; transition: transform var(--dur-card) var(--ease); }
+.tile-plus::before, .blocks.tiles-mode .block-q .pm::before { content: "+"; }
+.tile.dark .tile-plus { background: var(--on-dark); color: var(--espresso); }
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover, .blocks.tiles-mode .block:hover { transform: translateY(-3px); box-shadow: 0 18px 32px -24px rgba(53, 43, 40, .55); }
+  .tile:hover .tile-plus, .blocks.tiles-mode .block:hover .pm { transform: rotate(90deg); }
+}
+.tile:active, .blocks.tiles-mode .block:active { transform: scale(.98); }
+.tile:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+/* the home page's blocks as tiles */
+.blocks.tiles-mode { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.blocks.tiles-mode .block { gap: 8px; }
+.blocks.tiles-mode .block h2 { font-size: 19px; line-height: 1.25; }
+.blocks.tiles-mode .block-q { min-height: 44px; cursor: pointer; }
+.blocks.tiles-mode .block-q .pm { display: grid; border: 0; }
+.blocks.tiles-mode .block-line { margin-top: auto; font-size: 15px; }
+.blocks.tiles-mode .block-more { display: none; }
+.blocks.tiles-mode .block.open { border-color: var(--card-line); }
+@media (max-width: 560px) {
+  .tiles, .blocks.tiles-mode { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .tile, .blocks.tiles-mode .block { min-height: 150px; padding: 16px 14px 50px; border-radius: 20px; }
+  .tile-title, .blocks.tiles-mode .block h2 { font-size: 15.5px; }
+  .tile .kicker, .blocks.tiles-mode .kicker { font-size: 12px; }
+  .tile-num { font-size: 22px; }
+  .blocks.tiles-mode .block-line { font-size: 13px; }
+  .blocks.tiles-mode .block-line b { font-size: 16px; }
+  .tile-plus, .blocks.tiles-mode .block-q .pm { width: 28px; height: 28px; right: 12px; bottom: 12px; font-size: 18px; }
+}
+/* the sheet */
+html.sheet-open { overflow: hidden; }
+dialog.sheet { width: min(980px, calc(100vw - 32px)); max-width: none; max-height: min(88vh, 1000px); margin: auto; padding: 0; border: 0; border-radius: 28px; background: var(--paper); color: var(--ink-2); overflow: hidden; display: none; flex-direction: column;
+  box-shadow: 0 40px 80px -30px rgba(30, 22, 18, .45); }
+dialog.sheet[open] { display: flex; animation: sheet-in 320ms var(--ease) both; }
+dialog.sheet.closing { animation: sheet-out 200ms cubic-bezier(.4, 0, .2, 1) both; }
+dialog.sheet::backdrop { background: rgba(30, 22, 18, .42); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); animation: sheet-fade 320ms var(--ease-color) both; }
+dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) reverse both; }
+@keyframes sheet-in { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes sheet-out { to { opacity: 0; transform: translateY(16px) scale(.98); } }
+@keyframes sheet-fade { from { opacity: 0; } to { opacity: 1; } }
+.sheet-bar { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 22px 24px 16px 28px; border-bottom: 1px solid var(--rule); background: var(--paper); }
+.sheet-head { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sheet-title { font-size: 22px; line-height: 1.2; font-weight: 650; letter-spacing: -0.02em; }
+.sheet-x { flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(53, 43, 40, .08); color: var(--ink); font: inherit; font-size: 24px; line-height: 1; cursor: pointer; transition: background-color var(--dur) var(--ease-color); }
+.sheet-x:hover { background: rgba(53, 43, 40, .16); }
+.sheet-body { overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.sheet-body > div { padding: 24px 28px 32px; display: flex; flex-direction: column; gap: 14px; }
+.sheet-body > section.slide { padding-block: 28px 36px; min-height: 0; }
+.sheet-body > section.slide > .wrap { padding-inline: 28px; max-width: none; }
+.sheet-body > section .qhead { display: none; }              /* the sheet's own header already says it */
+@media (max-width: 560px) {
+  dialog.sheet { width: 100vw; max-height: 92vh; margin: auto 0 0; border-radius: 24px 24px 0 0; }
+  @keyframes sheet-in { from { transform: translateY(100%); } to { transform: none; } }
+  @keyframes sheet-out { to { transform: translateY(100%); } }
+  .sheet-bar { padding: 16px 16px 12px 20px; }
+  .sheet-title { font-size: 18px; }
+  .sheet-body > div { padding: 18px 20px 28px; }
+  .sheet-body > section.slide > .wrap { padding-inline: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { dialog.sheet[open], dialog.sheet.closing, dialog.sheet::backdrop { animation: none; } }
+.sheet-dup { display: none !important; }
+.blocks.tiles-mode { align-items: stretch; }

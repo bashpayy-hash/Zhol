@@ -12,17 +12,14 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=m3">
+<link rel="stylesheet" href="/assets/zhol.css?v=t2">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
 <body>
 <header class="top"><div class="wrap">
   <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
-  <nav class="tabs" aria-label="Sezioni">
-    <a href="#evening">Stasera</a><a href="#when">Quando partire</a><a href="#bulletin">Bollettino</a><a href="#demos">Demo</a><a href="#join">Partecipa</a>
-    <span class="sep" aria-hidden="true"></span>
-    <a href="/it/">TEF<span class="m-hide"> risposte</span></a><a href="/it/story">Storia</a><a href="/it/outlook">Radar</a><a href="/it/audience">Clienti</a><a href="/it/beta" aria-current="page">Beta</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/beta" lang="en" hreflang="en">EN</a><a href="/it/beta" lang="it" hreflang="it" aria-current="true">IT</a></span>
+  <nav class="tabs" aria-label="Sezioni"><a href="/it/">Risposte</a><a href="/it/outlook">Radar</a><a href="/it/story">Storia</a><a href="/it/audience">Clienti</a><a href="/it/beta" aria-current="page">Beta</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/beta" lang="en" hreflang="en">EN</a><a href="/it/beta" lang="it" hreflang="it" aria-current="true">IT</a></span>
 </div></header>
 
 <main>
@@ -39,7 +36,7 @@
   </div>
 </section>
 
-<section class="slide sage" id="evening">
+<section data-tile class="slide sage" id="evening">
   <div class="wrap stack">
     <span class="kicker green" id="ev-kicker">La sera prima</span>
     <h2 class="title" id="ev-title">Una serata, regole reali</h2>
@@ -59,7 +56,7 @@
   <div class="wrap"><div class="foot"><span>Regole: WKO (Austria), DM MIT 325/2025 (Italia), StVO e Ferienreiseverordnung (Germania), VRV (Svizzera), Bison Futé (Francia), calendario del dosaggio del Land Tirolo</span></div></div>
 </section>
 
-<section class="slide" id="when">
+<section data-tile class="slide" id="when">
   <div class="wrap stack">
     <h2 class="title">Quando deve partire il mio camion?</h2>
     <p class="lead">Scegliete un corridoio. Ogni cella è un orario di partenza nei prossimi 14 giorni: quanto tempo perderebbe il camion per divieti e dosaggio con il piano attuale, e cosa suggerirebbe zhol. Cliccate su una cella per i dettagli.</p>
@@ -73,7 +70,7 @@
   <div class="wrap"><div class="foot"><span>Velocità media 68 km/h, regole UE sui tempi di guida (Reg. 561/2006), camion da 40 t Euro VI, merce generica. Il traffico in tempo reale non è modellato: zhol pianifica la sera prima.</span></div></div>
 </section>
 
-<section class="slide dark" id="bulletin">
+<section data-tile class="slide dark" id="bulletin">
   <div class="wrap stack">
     <h2 class="title">Le prossime due settimane sulle strade europee dei mezzi pesanti</h2>
     <p class="lead" style="color:var(--on-dark-2)">Divieti del fine settimana e festivi e giorni ufficiali di dosaggio per i mezzi oltre 7,5 t. I divieti notturni in Austria (22:00–05:00) e in Svizzera (22:00–05:00, oltre 3,5 t) valgono ogni notte e qui non sono ripetuti.</p>
@@ -82,7 +79,7 @@
   <div class="wrap"><div class="foot"><span>Condivisibile liberamente. Questa è la parte pubblica, quella dei calendari; zhol aggiunge la parte non pianificata e l’abbinamento con i vostri carichi.</span></div></div>
 </section>
 
-<section class="slide" id="demos">
+<section data-tile class="slide" id="demos">
   <div class="wrap stack">
     <h2 class="title">Due serate dimostrative</h2>
     <div class="seg" role="tablist" aria-label="Scenari dimostrativi">
@@ -126,7 +123,7 @@
   </div>
 </section>
 
-<section class="slide" id="feedback">
+<section data-tile class="slide" id="feedback">
   <div class="wrap split" style="align-items:start">
     <div class="stack">
       <span class="kicker">State provando la beta?</span>
@@ -154,8 +151,9 @@
   <span><a href="/it/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/outlook">Radar</a> · <a href="/it/audience">Clienti</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/beta.js?v=a2" defer></script>
-<script src="/assets/reveal.js?v=r1" defer></script>
+<script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/steps.js?v=s1" defer></script>
+<script src="/assets/sheets.js?v=t2" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

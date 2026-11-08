@@ -234,6 +234,7 @@
   const mapView = window.ZholMap && $("map") ? window.ZholMap($("map"), { show: id => {
     if (filter !== "all") { filter = "all"; document.querySelectorAll(".rd-tools .seg button").forEach(x => x.setAttribute("aria-selected", String(x.dataset.f === "all"))); render(); }
     const r = $("rd-" + id); if (!r) return;
+    if (window.zholSheet) window.zholSheet.reveal(r);              // the list lives in a tile: open it first
     r.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
     r.classList.add("flash"); setTimeout(() => r.classList.remove("flash"), 1600);
     const box = r.querySelector(".rd-plan"); if (box) box.open = true;
