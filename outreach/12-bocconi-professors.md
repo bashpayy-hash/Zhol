@@ -1,10 +1,11 @@
 # 12. Bocconi professors in logistics and transport: one letter each
 
 The ask is the survey, and nothing else for now (owner, 9 Nov 2026): we are collecting baseline data and concrete numbers,
-not offering an analysis. Each letter opens with the request, says who we are (a logistics project, one of 100 teams out of
-about 500 at TEF Ignition 2026, a €2,000 grant), what we build (a platform that brings carriers and traffic offices together,
-watches the roads at night while everyone sleeps, takes over part of the monitoring and the decisions, and lets offices
-exchange information), and asks each professor to answer or forward it to the people in their own network.
+not offering an analysis. The letters are written by `scripts/professor_letters.py` (edit them there, then run it and
+`scripts/survey_targets.py`). Pyramid order: a hook from the professor's own work and who I am (zhol, one of 100 projects
+out of about 500 at TEF Ignition 2026, a €2,000 grant), then zhol in two sentences, then the ask, with the survey link on
+its own line under a bold anchor, and a respectful request to forward it ("given your network among…"). Short subjects
+(under ten words), no colons in the letters, at most three bold anchors, the team is "my team and I" (owner, 9 Nov 2026).
 
 **Roles change.** Some of them have moved or retired (Senn is emeritus; Grando is busy with the strategic plan; De Giovanni came from Luiss). The letters mention their background in passing and ask about the people they have met *in their practice*, never assume a current role or partner network.
 
@@ -44,20 +45,22 @@ Links used in the letters:
 ## 1 · Oliviero Baccelli
 
 **To:** oliviero.baccelli@unibocconi.it
-**Subject:** From franco destino to tomorrow's trucks, a one-minute survey (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Dal «franco destino» a zhol, progetto Bocconi (TEF Ignition)
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor Baccelli,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+I read your remarks at the Confetra assembly on what “franco destino” costs Italy in freight, and your piece on Italy leading Europe in sea highways. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-We read your remarks at the Confetra assembly on what “franco destino” costs Italy in freight, and your piece on Italy leading Europe in sea highways. The ferries are part of what we watch too. Over the years, between the transport master's you direct and your work with operators, you will have met traffic managers who live with these disruptions. Would you forward the survey to one or two of them?
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-baccelli
+
+Given your network among traffic managers, built through the transport master's you direct and your work with operators, would you also consider forwarding it to one or two of them?
 
 Thank you,
 Alikhan Bashpay · Bocconi University · zhol
@@ -66,14 +69,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Gentile Professor Baccelli,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+ho letto il suo intervento all'assemblea Confetra su quanto il «franco destino» costi all'Italia nel trasporto merci, e il suo articolo sulle autostrade del mare. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Abbiamo letto il suo intervento all'assemblea Confetra su quanto il «franco destino» costi all'Italia nel trasporto merci, e il suo articolo sulle autostrade del mare. Anche i traghetti sono parte di ciò che seguiamo. Negli anni, tra il master in trasporti che dirige e il lavoro con gli operatori, avrà conosciuto responsabili traffico che vivono questi imprevisti. Potrebbe inoltrare il sondaggio a uno o due di loro?
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-baccelli
+
+Data la sua rete di contatti tra i responsabili traffico, costruita con il master in trasporti che dirige e il lavoro con gli operatori, potrebbe anche inoltrarlo a uno o due di loro?
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -83,38 +88,42 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 2 · Alberto Grando
 
 **To:** alberto.grando@sdabocconi.it
-**Subject:** A one-minute survey for the companies you have met through supply chain research (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Survey logistica (1 minuto), progetto Bocconi · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor Grando,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+I know your time is very limited, all the more with the University's strategic plan, so I will be brief. Your years of research on supply chain and the SOSC Monitor are close to the problem we study. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-We know your time is very limited, all the more with your role in the University's strategic plan. Over your years of research on supply chain and logistics, and through the network around the SOSC Monitor, you will have met companies that run traffic offices. Would you forward the survey to one or two of them?
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-grando
 
-With gratitude,
+Given the network of companies around the SOSC Monitor, would you also consider forwarding it to one or two logistics managers?
+
+Thank you,
 Alikhan Bashpay · Bocconi University · zhol
 
 — Versione italiana —
 
 Gentile Professor Grando,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+so che il suo tempo è pochissimo, tanto più con il piano strategico dell'Università, e sarò breve. I suoi anni di ricerca sulla supply chain e il SOSC Monitor sono vicini al problema che studiamo. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Sappiamo che il suo tempo è pochissimo, tanto più con il ruolo per il piano strategico dell'Università. Negli anni di ricerca su supply chain e logistica, e attraverso la rete del SOSC Monitor, avrà incontrato aziende con un ufficio traffico. Potrebbe inoltrare il sondaggio a una o due di loro?
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-grando
 
-Con gratitudine,
+Data la rete di aziende attorno al SOSC Monitor, potrebbe anche inoltrarlo a uno o due responsabili logistici?
+
+Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
 
 ---
@@ -122,20 +131,22 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 3 · Pietro De Giovanni
 
 **To:** (Bocconi address book: "De Giovanni")
-**Subject:** A one-minute survey on what road disruptions really cost (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Costo dei disagi su strada, survey di 1 minuto
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor De Giovanni,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+Your work on sustainable operations, from Luiss and ESSEC to SDA and the SOSC Monitor, is close to the problem we study. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-Your work on sustainable operations, from Luiss and ESSEC to SDA and the SOSC Monitor, has kept you close to the companies that move goods every day. If in your practice you know traffic or logistics managers, would you forward the survey to one or two of them? And if you have a moment, we would value your view on how we measure the cost of a disruption (probability × waiting time × hourly cost).
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-degiovanni
+
+Given your network among logistics and traffic managers, would you also consider forwarding it to one or two of them? If you have a moment, we would also value your view on how we measure the cost of a disruption (probability × waiting time × hourly cost).
 
 Thank you,
 Alikhan Bashpay · Bocconi University · zhol
@@ -144,14 +155,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Gentile Professor De Giovanni,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+il suo lavoro sulle operations sostenibili, dalla Luiss e dall'ESSEC fino all'SDA e al SOSC Monitor, è vicino al problema che studiamo. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Il suo lavoro sulle operations sostenibili, dalla Luiss e dall'ESSEC fino all'SDA e al SOSC Monitor, l'ha tenuta vicina alle aziende che muovono merci ogni giorno. Se nella sua esperienza conosce responsabili traffico o logistica, potrebbe inoltrare il sondaggio a uno o due di loro? E se ha un momento, ci farebbe piacere un suo parere su come misuriamo il costo di un'interruzione (probabilità × attesa × costo orario).
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-degiovanni
+
+Data la sua rete di contatti tra i responsabili logistici e traffico, potrebbe anche inoltrarlo a uno o due di loro? Se ha un momento, ci farebbe piacere anche un suo parere su come misuriamo il costo di un'interruzione (probabilità × attesa × costo orario).
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -161,20 +174,22 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 4 · Vittoria Veronesi
 
 **To:** (Bocconi address book: "Veronesi")
-**Subject:** A one-minute survey for the people who plan food deliveries (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Distribuzione e disagi su strada, survey di 1 minuto
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor Veronesi,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+Between MAFED, the Kering Supply Chain Academy and your time on the board of Zeroquattro Logistica, you have seen distribution from both sides. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-Between MAFED, the Kering Supply Chain Academy and your time on the board of Zeroquattro Logistica, you have seen distribution from both sides. If in your experience you know people who plan the trips, at Zeroquattro or at a similar food distributor, would you forward the survey to them?
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-veronesi
+
+Given your contacts among the people who plan trips, at Zeroquattro or at a similar food distributor, would you also consider forwarding it to them?
 
 Thank you,
 Alikhan Bashpay · Bocconi University · zhol
@@ -183,14 +198,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Gentile Professoressa Veronesi,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+tra il MAFED, la Kering Supply Chain Academy e il periodo nel consiglio di Zeroquattro Logistica, ha visto la distribuzione da entrambi i lati. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Tra il MAFED, la Kering Supply Chain Academy e il periodo nel consiglio di Zeroquattro Logistica, ha visto la distribuzione da entrambi i lati. Se nella sua esperienza conosce chi pianifica i viaggi, in Zeroquattro o in un distributore alimentare simile, potrebbe inoltrare loro il sondaggio?
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-veronesi
+
+Dati i suoi contatti tra chi pianifica i viaggi, in Zeroquattro o in un distributore alimentare simile, potrebbe anche inoltrarlo a loro?
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -200,20 +217,22 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 5 · Francesco Gallmann
 
 **To:** (Bocconi address book: "Gallmann")
-**Subject:** A one-minute survey for the logistics managers you have trained (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Survey logistica (1 minuto), progetto Bocconi · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor Gallmann,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+The supply chain and after-sales academies you designed for an automotive group, and the Lean study tours in Japan, brought together many logistics and distribution managers. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-In the supply chain and after-sales academies you designed for an automotive group, and on the Lean study tours in Japan, you will have met many logistics and distribution managers. If some of them run trips abroad, would you forward the survey to one or two of them?
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-gallmann
+
+Given your contacts among those managers, would you also consider forwarding it to one or two who run trips abroad?
 
 Thank you,
 Alikhan Bashpay · Bocconi University · zhol
@@ -222,14 +241,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Gentile Professor Gallmann,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+le academy di supply chain e post-vendita che ha progettato per un gruppo automotive, e i Lean study tour in Giappone, hanno riunito molti responsabili di logistica e distribuzione. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Nelle academy di supply chain e post-vendita che ha progettato per un gruppo automotive, e nei Lean study tour in Giappone, avrà conosciuto molti responsabili di logistica e distribuzione. Se qualcuno di loro gestisce viaggi all'estero, potrebbe inoltrare il sondaggio a uno o due?
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-gallmann
+
+Dati i suoi contatti tra quei responsabili, potrebbe anche inoltrarlo a uno o due che gestiscono viaggi all'estero?
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -239,20 +260,22 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 6 · Silvia Zamboni
 
 **To:** (the @sdabocconi.it address in her CV)
-**Subject:** Supply chain collaboration on the road, a one-minute survey (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Collaborazione tra uffici traffico, survey di 1 minuto (Bocconi)
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor Zamboni,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+Your PhD with the MIT-Zaragoza Logistics Center on supply chain collaboration is close to what we want to build, offices that share what they see, anonymously, before the trucks leave. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-Your PhD with the MIT-Zaragoza Logistics Center on supply chain collaboration is close to what we want to build. Offices that share what they see, anonymously, before the trucks leave. If in your projects with companies you have met logistics managers, would you forward the survey to one or two of them? We would also value your view on the idea itself.
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-zamboni
+
+Given your contacts among logistics managers from your projects with companies, would you also consider forwarding it to one or two of them? We would also value your view on the idea itself.
 
 Thank you,
 Alikhan Bashpay · Bocconi University · zhol
@@ -261,14 +284,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Gentile Professoressa Zamboni,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+il suo dottorato con il MIT-Zaragoza Logistics Center sulla collaborazione nella supply chain è vicino a ciò che vogliamo costruire, uffici che condividono ciò che vedono, in forma anonima, prima della partenza dei camion. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Il suo dottorato con il MIT-Zaragoza Logistics Center sulla collaborazione nella supply chain è vicino a ciò che vogliamo costruire. Uffici che condividono ciò che vedono, in forma anonima, prima della partenza dei camion. Se nei suoi progetti con le aziende ha conosciuto responsabili logistici, potrebbe inoltrare il sondaggio a uno o due di loro? Ci farebbe piacere anche un suo parere sull'idea.
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-zamboni
+
+Dati i suoi contatti tra i responsabili logistici conosciuti nei progetti con le aziende, potrebbe anche inoltrarlo a uno o due di loro? Ci farebbe piacere anche un suo parere sull'idea.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -278,20 +303,22 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 7 · Iolanda D'Amato
 
 **To:** (Bocconi address book: "D'Amato")
-**Subject:** A one-minute survey on how goods really move (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Come si muovono le merci, survey di 1 minuto
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor D'Amato,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+Your work on traceability and supply chain control in food & beverage and fashion looks at how goods actually move, and who moves them. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-Your work on traceability and supply chain control in food & beverage and fashion means you know how goods actually move, and who moves them. If in your experience you have met logistics or transport managers in those sectors, would you forward the survey to one or two of them?
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-damato
+
+Given your contacts among logistics and transport managers in those sectors, would you also consider forwarding it to one or two of them?
 
 Thank you,
 Alikhan Bashpay · Bocconi University · zhol
@@ -300,14 +327,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Gentile Professoressa D'Amato,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+il suo lavoro su tracciabilità e controllo della supply chain nel food & beverage e nella moda guarda a come si muovono davvero le merci, e a chi le muove. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Il suo lavoro su tracciabilità e controllo della supply chain nel food & beverage e nella moda la porta a conoscere come si muovono davvero le merci, e chi le muove. Se nella sua esperienza ha conosciuto responsabili logistici o dei trasporti in quei settori, potrebbe inoltrare il sondaggio a uno o due di loro?
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-damato
+
+Dati i suoi contatti tra i responsabili logistici e dei trasporti in quei settori, potrebbe anche inoltrarlo a uno o due di loro?
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -317,38 +346,42 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 8 · Marco Percoco
 
 **To:** (Bocconi address book: "Percoco")
-**Subject:** What road disruptions really cost, a one-minute survey (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Quanto costano i disagi su strada, progetto Bocconi
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor Percoco,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+Your work on evaluating transport policy, and GREEN, which you founded, are close to our question of what disruptions on the road really cost. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-Your work on evaluating transport policy, and the network you built as GREEN's founding director, are close to our question. What disruptions on the road really cost. If you know researchers or operators who work with carriers, who would you suggest we ask to share the survey? Even a name would help.
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-percoco
 
-Thank you for your time,
+Given your network of researchers and operators who work with carriers, who would you suggest we ask to share it? Even a name would help.
+
+Thank you,
 Alikhan Bashpay · Bocconi University · zhol
 
 — Versione italiana —
 
 Gentile Professor Percoco,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+il suo lavoro sulla valutazione delle politiche dei trasporti, e GREEN, che ha fondato, sono vicini alla nostra domanda su quanto costino davvero i disagi su strada. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Il suo lavoro sulla valutazione delle politiche dei trasporti, e la rete costruita come direttore fondatore di GREEN, sono vicini alla nostra domanda. Quanto costano davvero i disagi su strada. Se conosce ricercatori o operatori che lavorano con gli autotrasportatori, a chi ci suggerirebbe di chiedere di diffondere il sondaggio? Anche solo un nome ci aiuterebbe.
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-percoco
 
-Grazie del tempo,
+Data la sua rete di ricercatori e operatori che lavorano con gli autotrasportatori, a chi ci suggerirebbe di chiedere di diffonderlo? Anche solo un nome ci aiuterebbe.
+
+Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
 
 ---
@@ -356,20 +389,22 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 9 · Lanfranco Senn
 
 **To:** (Bocconi address book: "Senn")
-**Subject:** A one-minute survey for the people you trained in transport and logistics (one of 100 teams out of 500 at TEF Ignition 2026, Bocconi)
+**Subject:** Ai diplomati del suo master, survey di 1 minuto (Bocconi)
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
 Dear Professor Senn,
 
-I am writing to ask you to answer a short survey of seven questions. It takes a minute and it is anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
+You founded CERTeT and led the master in transport and logistics for 24 years, with some 680 graduates, many of whom now run logistics in Lombardy. My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.
 
-My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project my team and I are building, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together. It watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
+zhol watches roads, passes and ferries at night, when offices are closed, and connects carriers with traffic offices. Bans, closures, queues and strikes show up before the trucks leave, and offices can warn each other.
 
-Founding CERTeT and leading the master in transport and logistics for 24 years, with some 680 graduates, you trained a good part of the people who now run logistics in Lombardy. If any of them, or the operators you worked with over your career, plan trips abroad, would you forward the survey to one or two of them?
+Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
-For now we only ask for answers. We are collecting baseline data to understand the problem in depth and get concrete numbers.
+**Survey, 7 questions, 1 minute, anonymous**
 https://zhol.live/q/?src=prof-senn
+
+Given your network among those graduates and the operators you worked with over your career, would you also consider forwarding it to one or two who plan trips abroad?
 
 Kind regards,
 Alikhan Bashpay · Bocconi University · zhol
@@ -378,14 +413,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Gentile Professor Senn,
 
-le scrivo per chiederle di rispondere a un breve sondaggio di sette domande. Richiede un minuto ed è anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
+ha fondato il CERTeT e guidato per 24 anni il master in trasporti e logistica, con circa 680 diplomati, molti dei quali oggi gestiscono la logistica in Lombardia. Sono Alikhan Bashpay, studente Bocconi, e io e il mio team sviluppiamo zhol, uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation, con un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffici sono chiusi, e mette in contatto autotrasportatori e uffici traffico. Divieti, chiusure, code e scioperi si vedono prima che partano i camion, e gli uffici possono avvisarsi tra loro.
 
-Fondando il CERTeT e guidando per 24 anni il master in trasporti e logistica, con circa 680 diplomati, ha formato buona parte di chi oggi gestisce la logistica in Lombardia. Se qualcuno di loro, o degli operatori con cui ha lavorato negli anni, pianifica viaggi all'estero, potrebbe inoltrare il sondaggio a uno o due di loro?
+Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
-Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti.
+**Sondaggio, 7 domande, 1 minuto, anonimo**
 https://zhol.live/q/it/?src=prof-senn
+
+Data la sua rete tra quei diplomati e gli operatori con cui ha lavorato negli anni, potrebbe anche inoltrarlo a uno o due che pianificano viaggi all'estero?
 
 Con stima,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -397,5 +434,5 @@ Alikhan Bashpay · Università Bocconi · zhol
 > Dear Professor, may I follow up on the message below. Answering the one-minute survey, or forwarding it to one or two
 > traffic offices, would help us a great deal. Thank you again, Alikhan Bashpay
 >
-> Gentile Professore/Professoressa, mi permetto di riprendere il messaggio qui sotto. Rispondere al sondaggio di un minuto, o inoltrarlo a uno o due uffici
-> traffico, ci sarebbe utilissimo. Grazie ancora, Alikhan Bashpay
+> Gentile Professore/Professoressa, mi permetto di riprendere il messaggio qui sotto. Rispondere al sondaggio di un minuto,
+> o inoltrarlo a uno o due uffici traffico, ci sarebbe utilissimo. Grazie ancora, Alikhan Bashpay

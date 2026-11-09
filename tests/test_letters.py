@@ -31,3 +31,10 @@ def test_professor_letters_have_no_colons_and_no_team_names():
             continue                                       # To, Subject labels and headings are not letter text
         assert ":" not in _text(line), line
     assert "my team and I" in letters and "io e il mio team" in letters
+    for block in letters.split("\n---")[:9]:                  # one letter each: short subject, link on its own line, three bold anchors
+        subject = next(l for l in block.split("\n") if l.startswith("**Subject:**"))[len("**Subject:** "):]
+        assert len(subject.split()) <= 10, subject
+        body = block.split("**Subject:**", 1)[1]
+        assert body.count("**") // 2 <= 3, subject
+        assert any(l.startswith("https://zhol.live/q/") for l in body.split("\n")), subject
+        assert "you will have met" not in body and "avrà conosciuto" not in body
