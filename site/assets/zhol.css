@@ -1065,3 +1065,20 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 /* the survey: a question that receives focus (finger or mouse) shows no ring; answers keep theirs for the keyboard */
 .survey legend:focus { outline: none; }
 .map-frame .land.t-po, .map-frame .land.t-un { fill: #f4eee7; }   /* 20–50%: a warm tint, not a grey "switched off" block */
+
+/* weeks change softly (owner, 9 Nov 2026): points, colours and the list ease from one week to the next */
+.map-pin { transition: opacity 560ms var(--ease-color); }
+.map-pin i { transition: transform 560ms var(--ease), background-color 560ms var(--ease-color), box-shadow 560ms var(--ease-color); }
+.map-pin .n { transition: opacity 400ms var(--ease-color); }
+.map-frame .land { transition: fill 700ms var(--ease-color), opacity 700ms var(--ease-color); }
+.map-wlbl { z-index: 60; }
+.map-panel { transition: opacity 220ms var(--ease-color); }
+.map-panel.swap-out { opacity: .12; }
+.map-panel .map-places li, .map-panel .map-evs li { animation: map-li-soft 420ms var(--ease) both; }
+.map-panel li:nth-child(2) { animation-delay: 50ms; } .map-panel li:nth-child(3) { animation-delay: 100ms; }
+.map-panel li:nth-child(4) { animation-delay: 150ms; } .map-panel li:nth-child(n+5) { animation-delay: 200ms; }
+.map.playing .map-panel li { animation: map-li-soft 420ms var(--ease) both; }
+@keyframes map-li-soft { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+/* the list beside the map is at least as tall as the map, so changing weeks does not make the page jump */
+@media (min-width: 921px) { .map-grid > .map-panel { align-self: stretch; } .map-grid > .map-col { align-self: start; } }
+@media (prefers-reduced-motion: reduce) { .map-panel, .map-panel li { transition: none; animation: none !important; } }

@@ -223,7 +223,7 @@ window.ZholMap = function (root, opts) {
     Object.values(paths).flat().forEach(p => p.classList.remove("t-vl", "t-l", "t-po", "t-un"));
     let soonest = null;
     spots.forEach(s => { s.now = now(s); const d = s.now.next && s.now.next.start; if (d && d >= today && (!soonest || d < soonest)) soonest = d; });
-    spots.slice().sort((a, b) => a.now.top - b.now.top).forEach(s => {
+    spots.slice().sort((a, b) => a.now.top - b.now.top).forEach((s, rank) => {
       const on = s.now.list.length > 0, b = s.btn;
       b.classList.remove("vl", "l", "po", "un", "soon", "off");
       b.classList.add(on ? tone(s.now.top) : tone(Math.max(...s.list.map(i => i.p))));
@@ -237,9 +237,8 @@ window.ZholMap = function (root, opts) {
         b.setAttribute("aria-label", s.name + ": " + (on ? n(s.now.list.length, "event", "events", "evento", "eventi") + T(", up to ", ", fino al ") + pct(s.now.top) : T("nothing this week", "niente questa settimana")));
         b.tabIndex = on ? 0 : -1;
       }
-      pins.append(b);                                              // the most likely end up on top
+      b.style.zIndex = String(10 + rank);                          // the most likely on top, without moving the node
     });
-    watchLabels.forEach(w => pins.append(w.btn));
     if (vb && fw) declutter(vb);
   }
 
@@ -287,6 +286,13 @@ window.ZholMap = function (root, opts) {
     return li;
   }
 
+  let swapT = 0;
+  function swapPanel() {                       // a week change: the list fades out, is redrawn, fades back in
+    if (!panel || reduce || !panel.childNodes.length) return panelDraw();
+    panel.classList.add("swap-out");
+    clearTimeout(swapT);
+    swapT = setTimeout(() => { panelDraw(); panel.classList.remove("swap-out"); }, 180);
+  }
   function panelDraw() {
     if (!panel) return;
     panel.textContent = "";
@@ -345,7 +351,7 @@ window.ZholMap = function (root, opts) {
     week = k;
     if (range) range.value = String(k);
     root.classList.toggle("by-week", k > 0);
-    paint(); panelDraw();
+    paint(); swapPanel();
     if (label) {
       const c = items.filter(i => inWeek(i, k)).length;
       label.textContent = (k ? weekName(k) : T("All eight weeks", "Tutte le otto settimane")) + " · " + n(c, "event", "events", "evento", "eventi");
@@ -358,7 +364,7 @@ window.ZholMap = function (root, opts) {
     let k = week && week < 8 ? week : 0;
     const tick = () => { k += 1; if (k > 8) { stop(); setWeek(0); return; } setWeek(k); };
     root.classList.add("playing");
-    tick(); timer = setInterval(tick, reduce ? 2400 : 1500);
+    tick(); timer = setInterval(tick, reduce ? 2400 : 1900);
   }
   if (timeBox) {
     playBtn = el("button", "btn ghost map-play", T("Play the weeks", "Scorri le settimane")); playBtn.type = "button"; playBtn.setAttribute("aria-pressed", "false");
