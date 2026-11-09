@@ -115,7 +115,7 @@
     $("bull").innerHTML = items.length ? items.map(i => `<div class="bull" style="border-color:#5b463a">
       <span class="d" style="color:var(--on-dark)">${day(i.start)} ${hm(i.start)}–${hm(i.end)}${day(i.end) !== day(i.start) ? " " + day(i.end) : ""}</span>
       <span class="cc">${esc(i.country)}</span>
-      <span>${esc(i.title)}${i.roads && i.roads.length ? ` <span style="color:#a89a8c">· ${esc(i.roads.join(", "))}</span>` : ""}${i.direction && i.direction !== "both" ? ` <span style="color:#a89a8c">· ${esc(i.direction)}</span>` : ""}${i.url ? ` <a href="${esc(i.url)}" rel="noopener" target="_blank">${T("source", "fonte")}</a>` : ""}</span>
+      <span>${esc(i.title)}${i.roads && i.roads.length ? ` <span style="color:#a89a8c">· ${esc(i.roads.join(", "))}</span>` : ""}${i.direction && i.direction !== "both" ? ` <span style="color:#a89a8c">· ${esc(i.direction)}</span>` : ""}${/^https?:\/\//i.test(i.url || "") ? ` <a href="${esc(i.url)}" rel="noopener" target="_blank">${T("source", "fonte")}</a>` : ""}</span>
     </div>`).join("") : `<p>${T("No bans or dosing days in the next two weeks.", "Nessun divieto né giorno di dosaggio nelle prossime due settimane.")}</p>`;
   }).catch(() => {});
 
