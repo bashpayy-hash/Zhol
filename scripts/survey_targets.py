@@ -40,15 +40,16 @@ SIGN = "[Nome] · Università Bocconi · zhol (Alikhan, Inkara, Tomiris)"
 # The message, in the owner's order (DESIGN.md, 8 Nov 2026): who we are (TEF, grant, Bocconi), how big the problem
 # is (the most reliable figure), what it means for this company (its lanes, its region, a recent event with a
 # source), the network of offices, the automation, the survey. Every figure has a public source (SOURCES).
-HOOK = ("siamo Alikhan, Inkara e Tomiris, studenti della Bocconi. zhol, il nostro progetto, è tra i 100 selezionati su "
-        "circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €: aiutiamo chi organizza "
-        "i trasporti ad automatizzare con l'IA il controllo di divieti, chiusure, code e scioperi in Europa.")
+ASK_FIRST = "vi scriviamo per chiedervi un minuto per un breve sondaggio: sette domande, anonimo."
+HOOK = ("Siamo Alikhan, Inkara e Tomiris, studenti della Bocconi. zhol, il nostro progetto di logistica, è tra i 100 "
+        "selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €.")
+PLATFORM = ("Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche "
+            "di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code "
+            "e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.")
 SIZE = ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
         "2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
-NETWORK = ("Stiamo costruendo due cose: una rete in cui gli uffici traffico si avvisano a vicenda, in forma anonima, appena "
-           "vedono una coda o una chiusura;")
-AUTOMATION = "e un avviso automatico la sera prima su quali viaggi di domani saranno colpiti e cosa fare (primo mese gratuito)."
-ASK = "Ci aiutereste con un sondaggio di sette domande, un minuto, anonimo?"
+BASELINE = ("Per ora vi chiediamo solo di rispondere: stiamo raccogliendo i dati di partenza per capire a fondo il problema "
+            "e avere numeri concreti.")
 OPTOUT = "Se preferite non ricevere altri messaggi, basta rispondere «no»."
 
 SOURCES = {
@@ -149,32 +150,29 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
     route = f" verso {join_it(cs[:3])}" if cs else ""
     load = f" con {what}" if what else ""
     where = f" da {city}" if city and "[" not in city and city.lower() != "n/a" else ""
-    line = (f"Pensando {'ai' if trucks.startswith('i ') else 'a'} {trucks[2:] if trucks.startswith('i ') else trucks}{load}{where}{route}: {event}. Se la sera prima l'ufficio traffico avesse saputo "
-            f"quali viaggi sarebbero stati toccati, poteva {alt}.")
+    line = (f"Pensando {'ai' if trucks.startswith('i ') else 'a'} {trucks[2:] if trucks.startswith('i ') else trucks}{load}{where}{route}: {event}. "
+            f"Vorremmo capire quanto pesa davvero per voi.")
     return line, SOURCES[src]
 
 
 def company_message(name: str, line: str, link: str) -> str:
-    return (f"Buongiorno,\n{HOOK}\n\n{SIZE}\n\n{line}\n\n{NETWORK} {AUTOMATION}\n\n"
-            f"{ASK}\n{link}\n\nGrazie,\n{SIGN}\n{OPTOUT}")
+    return (f"Buongiorno,\n{ASK_FIRST}\n\n{HOOK} {PLATFORM}\n\n{SIZE} {line}\n\n{BASELINE}\n{link}\n\n"
+            f"Grazie,\n{SIGN}\n{OPTOUT}")
 
 
 def association_message(name: str, link: str, members: str = "associati con linee estere") -> str:
-    return (f"Gentile segreteria di {name},\n{HOOK}\n\n{SIZE}\n\n"
-            f"Per i vostri {members} proponiamo due cose: una rete in cui gli uffici traffico si avvisano a vicenda, in forma "
-            f"anonima, appena vedono una coda o una chiusura, e un avviso automatico la sera prima su quali viaggi di domani "
-            f"saranno colpiti. Il primo mese è gratuito.\n\n"
-            f"Ci aiutereste a inoltrare ai soci un sondaggio di sette domande, un minuto, anonimo?\n{link}\n\n"
-            f"All'associazione mandiamo i risultati aggregati e siamo disponibili a presentarli ai soci.\n\nGrazie,\n{SIGN}")
+    return (f"Gentile segreteria di {name},\nvi scriviamo per chiedervi di inoltrare ai vostri {members} un breve sondaggio: "
+            f"sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
+            f"Per ora chiediamo solo risposte: stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere "
+            f"numeri concreti. All'associazione mandiamo i risultati aggregati.\n{link}\n\nGrazie,\n{SIGN}")
 
 
 def press_message(outlet: str, link: str) -> str:
-    return (f"Gentile redazione di {outlet},\n{HOOK}\n\n{SIZE}\n\n"
-            f"Stiamo raccogliendo dati sul campo dagli uffici traffico: minuti persi ogni giorno, viaggi da ripianificare, "
-            f"costo dell'ultimo imprevisto, e quanti sarebbero pronti a condividere in una rete ciò che vedono i loro autisti.\n\n"
-            f"Il sondaggio è di sette domande, un minuto, anonimo: {link}\n"
-            f"Se vi sembra utile per i lettori, una breve segnalazione ci aiuterebbe molto; i risultati aggregati ve li "
-            f"mandiamo in esclusiva, se lo desiderate.\n\nGrazie,\n{SIGN}")
+    return (f"Gentile redazione di {outlet},\nvi scriviamo per chiedervi una breve segnalazione di un sondaggio per gli uffici "
+            f"traffico: sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
+            f"Stiamo raccogliendo i dati di partenza: minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto, "
+            f"e quanti uffici sarebbero pronti a scambiarsi informazioni. I risultati aggregati ve li mandiamo in esclusiva, "
+            f"se lo desiderate.\n{link}\n\nGrazie,\n{SIGN}")
 
 
 def build() -> list[dict]:
@@ -196,7 +194,7 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": clean_city(r["city"]),
                      "to": email, "where": site.rstrip(").,;") if site else ("" if email else "сайт ассоциации → «Contatti», спросить отдел автотранспорта"),
                      "search": google(org + " contatti"),
-                     "subject": "Per i vostri associati: una rete di avvisi tra uffici traffico e un sondaggio di un minuto (Bocconi, TEF Ignition)",
+                     "subject": "Un sondaggio di un minuto per i vostri associati: divieti, code e scioperi (Bocconi, TEF Ignition)",
                      "message": association_message(org, link), "link": link})
     for org in NATIONAL_ASSOCIATIONS:
         if org in seen:
@@ -205,7 +203,7 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": "nazionale", "to": "",
                      "where": "сайт ассоциации → «Contatti», спросить отдел автотранспорта",
                      "search": google(org + " contatti sede nazionale"),
-                     "subject": "Per i vostri associati: una rete di avvisi tra uffici traffico e un sondaggio di un minuto (Bocconi, TEF Ignition)",
+                     "subject": "Un sondaggio di un minuto per i vostri associati: divieti, code e scioperi (Bocconi, TEF Ignition)",
                      "message": association_message(org, link), "link": link})
     for outlet, email, note in PRESS:
         link = f"{SURVEY}?src=press-{slug(outlet)}"
@@ -222,7 +220,7 @@ def build() -> list[dict]:
         line, src = personal(name, city, r["region"], cs, r["crossings"], r["specialisation"], r["fleet_size"])
         rows.append({"id": "c-" + slug(name), "type": "company", "name": name, "city": city, "region": r["region"], "to": "",
                      "where": form or site or "", "search": google(name + " " + city + " contatti"),
-                     "subject": "Divieti, code e scioperi sulle vostre linee: un minuto per un sondaggio (Bocconi, TEF Ignition)",
+                     "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
                      "message": company_message(name, line, link), "link": link, "fit": r.get("fit", ""),
                      "why": line, "why_src": src})
     rows += broad(rows)
@@ -232,7 +230,8 @@ def build() -> list[dict]:
 
 
 def group_message(link: str) -> str:
-    return ("Buongiorno a tutti, con il permesso degli amministratori: " + HOOK + "\n\n" + SIZE + "\n\n"
+    return ("Buongiorno a tutti, con il permesso degli amministratori: vi chiediamo un minuto per un breve sondaggio. "
+            + HOOK + " " + PLATFORM + "\n\n" + SIZE + "\n\n"
             f"Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde:\n{link}\n\n"
             f"Grazie a chi ci dedica un minuto!\n{SIGN}")
 
@@ -262,7 +261,7 @@ def broad(existing: list[dict]) -> list[dict]:
             region = (r.get("region") or "").strip()
             line, src = personal(name, city, region, countries(r.get("notes") or ""), r.get("notes") or "", (r.get("segment") or "") + " " + (r.get("notes") or ""), r.get("notes") or "")
             row = base | {"id": "b-" + slug(name), "type": "company", "region": region,
-                          "subject": "Divieti, code e scioperi sui vostri viaggi: un minuto per un sondaggio (Bocconi, TEF Ignition)",
+                          "subject": "Un sondaggio di un minuto su divieti, code e scioperi sui vostri viaggi (Bocconi, TEF Ignition)",
                           "message": company_message(name, line, link), "link": link, "why": line, "why_src": src}
         elif kind in ("association", "interporto"):
             link = f"{SURVEY}?src=assoc-{slug(name)}"
