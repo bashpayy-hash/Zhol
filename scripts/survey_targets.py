@@ -288,8 +288,57 @@ def broad(existing: list[dict]) -> list[dict]:
     return out
 
 
+WHY_RU = {  # for the team, in the console: why this professor
+    "Oliviero Baccelli": "Грузовой транспорт — его область; выпускники MEMIT работают у перевозчиков и экспедиторов.",
+    "Alberto Grando": "SOSC Monitor держится на сети компаний-партнёров: попросить переслать одному-двум.",
+    "Pietro De Giovanni": "Та же сеть партнёров SOSC Monitor; пишет о транспорте и устойчивых операциях.",
+    "Vittoria Veronesi": "Входила в совет Zeroquattro Logistica (перевозки продуктов, Болонья): прямой выход на офис перевозок.",
+    "Francesco Gallmann": "Ведёт корпоративные программы по дистрибуции: знает логистов по именам.",
+    "Silvia Zamboni": "Изучает сбои и устойчивость цепочек поставок, работает с компаниями.",
+    "Iolanda D'Amato": "Логистика и сервисные операции — её основное исследование.",
+    "Marco Percoco": "Директор GREEN: может направить к исследователям, работающим с перевозчиками.",
+    "Lanfranco Senn": "Основатель CERTeT, десятилетия контактов с логистикой Ломбардии.",
+}
+
+
+def bocconi() -> list[dict]:
+    """The nine Bocconi and SDA professors in logistics and transport (outreach/12-bocconi-professors.md): their own
+    letters, for load logs rather than the survey, in the same console so the team sees who has written to whom."""
+    path = OUT / "12-bocconi-professors.md"
+    if not path.exists():
+        return []
+    md = path.read_text(encoding="utf-8")
+    table = {}
+    for m in re.finditer(r"^\| \d \| \*\*(.+?)\*\* · (.+?) \| (.+?) \| (.+?) \| (.+?) \|$", md, re.M):
+        src = re.search(r"\((https?://[^)]+)\)", m.group(5))
+        table[m.group(1)] = {"role": m.group(2), "why": m.group(3), "src": src.group(1) if src else ""}
+    rows = []
+    for m in re.finditer(r"^## \d · (.+?)\n\n\*\*To:\*\* (.+?)\n\*\*Subject:\*\* (.+?)\n\n(.*?)\n---", md, re.M | re.S):
+        name, to, subject, body = m.group(1).strip(), m.group(2).strip(), m.group(3).strip(), m.group(4).strip()
+        # the letters are wrapped for reading in the repo: put each paragraph back on one line
+        out, lines = [], body.split("\n")
+        for i, line in enumerate(lines):
+            nxt = lines[i + 1] if i + 1 < len(lines) else ""
+            out.append(line)
+            if line and nxt and not (nxt.startswith("http") or nxt.startswith("[Nome]") or line.endswith(":") or line.endswith(",") or line.startswith("http")):
+                out.append(" ")
+            elif i + 1 < len(lines):
+                out.append("\n")
+        text = "".join(out).replace("  ", " ")
+        email = re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", to)
+        info = table.get(name, {})
+        info["why"] = WHY_RU.get(name, info.get("why", ""))
+        link = next(iter(re.findall(r"https://zhol\.live/q/it\?src=prof-[a-z]+", text)), SURVEY)
+        rows.append({"id": "u-" + slug(name), "type": "bocconi", "name": name, "city": "Università Bocconi",
+                     "region": info.get("role", ""), "to": email[0] if email else "",
+                     "where": "" if email else "Outlook → Кому → наберите фамилию (адресная книга Bocconi)" + (": " + to if "CV" in to else ""),
+                     "search": google(name + " Bocconi"), "subject": subject, "message": text, "link": link, "fit": str(20 - len(rows)),
+                     "why": info.get("why", ""), "why_src": info.get("src", "")})
+    return rows
+
+
 def main() -> None:
-    rows = build()
+    rows = bocconi() + build()
     with open(OUT / "survey_send_list.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "to", "where", "search", "subject", "message", "link", "fit", "why", "why_src"])
         w.writeheader()
