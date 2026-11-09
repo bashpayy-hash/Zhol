@@ -1,0 +1,117 @@
+id,email,source,form,note
+a-confartigianato-imprese-verona,info@confartigianato.verona.it,https://confartigianato.verona.it/categorie/trasporti-logistica-mobilita/,,"general address in footer (seen via search-index text). Trasporti/logistica category page has 'Scrivi Email' buttons for coordinator Luca Baldani Guerra, tel 045 9211521; switchboard 045 9211555"
+a-associazione-artigiani-e-piccole-imprese,info@artigiani.tn.it,https://www.artigiani.tn.it/categoria-artigiana/trasporto/autotrasportatori/,,"info@ = general address (footer/contatti, seen via search-index text). m.falsirolli@ is personal: Mattia Falsirolli, referent of the Autotrasportatori category, tel 0461 803715 (same page)"
+a-fai-conftrasporto,segrenazionale@fai.it,https://www.conftrasporto.it/2022/11/17/dalle-federazioni-fai-conftrasporto-annuncia-il-rientro-nelliru/,,"national secretariat; seen in FAI contact block of a FAI press release on conftrasporto.it via search-index text (exact page not 100% sure, could be conftrasporto.it/2022/02/18/notizie-dalle-federazio"
+p-shipping-italy,redazione@shippingitaly.it,https://www.shippingitaly.it/biografia/,,"fetched directly; redazione@ on the page linked as 'Contatti'. segreteria@alocinmedia.it = publisher Alocin Media, advertising (https://www.shippingitaly.it/pubblicita/)"
+c-trasporti-boscaini-srl,commerciale@trasportiboscaini.it,https://www.trasportiboscaini.com/impressum/,,commerciale@ labelled as operational/sales contact on Impressum page (seen via search-index text); PEC excluded
+c-reiterer-trans,info@reiterer-transporte.com,https://reiterer-transporte.com/de/,,seen via search index of official site (direct fetch blocked)
+c-rieger-transport,,,https://www.riegers.it/contact/?lang=en,"email on site is spam-obfuscated, could not be read; contact page only"
+c-unterthiner-transport,info@unterthiner.bz,https://www.unterthiner.bz/,https://www.unterthiner.bz/,seen via search index of official site
+c-profanter-manfred-gmbh,info@profanter-transporte.it,https://www.profanter-transporte.it/,,other = trailer dispatcher (personal); based in Vintl/Vandoies
+c-benaco-trans-trasporti-internazionali-sr,info@benacotrans.com,https://www.benacotrans.com/contacts.html,,others are personal export/groupage staff
+c-bresciana-trasporti-frigo-srl,info@brescianatrasporti.it,https://brescianatrasporti.it/sede-e-contatti/,,operations site in Carobbio degli Angeli (BG)
+c-valor-trasporti,info@valortrasporti.it,https://www.valortrasporti.it/contatti.html,https://www.valortrasporti.it/contatti.html,
+c-bresciasped-srl,operativo@bresciasped.it,https://www.bresciasped.it/public/attachments/8/attachment.pdf,,operativo@ from company brochure PDF; info@ on https://www.bresciasped.it/public/en
+c-autotrasporti-trento-trans,info@trentotrans.it,https://autotrasportitrentotrans.it/contatti/,https://autotrasportitrentotrans.it/contatti/,"Trento Trans srl, Vobarno (BS)"
+c-baresi-enzo-autotrasporti,info@baresienzotrasporti.it,https://baresienzotrasporti.it/contatti/,http://baresienzotrasporti.it/preventivo/,
+c-autotrasporti-bergamaschi-f-lli,,,https://www.trasporti.it/azienda/autotrasporti-bergamaschi-trasporti-internazionali-2948,"only directory listing (trasporti.it), no own site or email found"
+c-autotrasporti-torresani-luca,traffico@autotrasportitorresani.com,https://autotrasportitorresani.it/contatti/,,emails use .com domain while site is .it
+c-autotrasporti-franzoni,info@autotrasportifranzoni.it,https://autotrasportifranzoni.eu/contatti/,,email uses .it domain while site is .eu
+c-autotrasporti-cambianica-srl,logistica@cambianica.com,https://www.cambianica.com/en/contact-us/,,
+c-bergoli-autotrasporti,a.trasportibergoli@gmail.com,https://www.bergoliautotrasporti.it/contatti/,,gmail address is the only general one; operations in Maclodio (BS)
+c-z-d-srl,zdsrlunipersonale@yahoo.it,https://zdgroup.eu/contatti/,,yahoo address; Costa Volpino (BG)
+c-pesenti-trasporti-logistica,info@pesenti.com,https://www.pesenti.com/it/contatti,https://www.pesenti.com/en/request-quote,now part of Rhenus group (since Nov 2023)
+c-malik-trasporti,info@maliktrasporti.it,https://www.maliktrasporti.it/en/contact/,https://www.maliktrasporti.it/chiedi-un-preventivo/,Grumello del Monte (BG)
+c-manenti-autotrasporti,info@manentitrasporti.it,https://www.manentitrasporti.it/,,
+c-valsped,info@valspedgroup.it,https://www.valspedgroup.it/it/network-e-servizi/network,,info@valspedvicenza.it given for Brendola on https://www.valspedgroup.it/it/network-e-servizi/camionistico-import
+c-gazzotti-spa,logistica@gazzotti-spa.com,https://www.gazzotti-spa.com/contatti.php,,info@ seen on https://www.gazzotti-spa.com/privacy.php
+c-samberisi-autotrasporti,,,https://www.reteimprese.it/info_A102677B2,"no email found; form is a directory (reteimprese) relay form, not official site; tel +39 0522 1751591; site not fetched: WebFetch blocked by session network allowlist; WebSearch only"
+ba-assolombarda-gruppo-trasporti-logistica-,gruppi@assolombarda.it,https://www.assolombarda.it/governance/gruppi/trasporti/informazioni/assemblea-elettiva-2020-gruppo-trasporti-logistica-e-infrastrutture,,"secretariat of the groups area (Segreteria Gruppo Trasporti, Logistica e Infrastrutture, tel 02 58370.342); seen in search excerpt of the official page (2020, repeated in a 2024 notice), page not fetc"
+ba-confartigianato-brescia-autotrasporto-me,area.categorie@confartigianato.bs.it,https://old.provincia.brescia.it/sites/default/files/allegati/documenti/6663/elenco_associazioni.pdf,,"categories-area address (not transport-specific) from an old Provincia di Brescia list of associations, dated; seen in search excerpt; Via Orzinuovi 28 Brescia, tel 030 37451"
+ba-confartigianato-vicenza-autotrasporto,m.petris@confartigianatovicenza.it,https://www.informaimpresa.it/?p=42353,,"personal: Maurizio Petris, provincial head of the transport category (tel 0444 168432), in Confartigianato Vicenza's own InformaImpresa notices 2022-23; seen in search excerpt; general switchboard 044"
+ba-astre-italia,info@astreitalia.it,https://www.astreitalia.it/index.php/contatti/,,HQ at Interporto Bologna (Bentivoglio). Seen via search index of the official contact page (site not fetchable from sandbox)
+ba-fai-elenco-sedi-territoriali,segrenazionale@fai.it,https://www.fai.it/contact/,,national secretariat (Roma). Territorial offices' own emails are listed on https://www.fai.it/territoriali/ (not extracted: site not fetchable from sandbox). Seen via search index
+ba-legacoop-produzione-e-servizi,segreteria@lps.coop,https://www.lps.coop/contatti/,,Roma HQ. Seen via search index of the official contact page
+ba-plus-scrl-affiliati,plus@plusscrl.it,https://www.plusscrl.it/index.php/contatti/,,"HQ Hub Plus, Interporto Bentivoglio (BO); affiliates list at https://www.plusscrl.it/index.php/affiliati/. Seen via search index"
+ba-pnp-pallet-network-partners,info@direzionepnp.it,https://www.pnpnetwork.it/contact/,https://www.pnpnetwork.it/contact/,"HQ Via Bagutta 13, Milano. Seen via search index"
+ba-resta-italia,info@restaitalia.it,https://restaitalia.it/,,"B2PWeb load exchange, Interporto Bentivoglio (BO). Seen via search index"
+ba-interporto-bologna,info@bo.interporto.it,https://www.interporto.it/come-raggiungerci/,,Seen via search index
+bp-gazzetta-logistica,info@gazzettalogistica.it,https://gazzettalogistica.it/partner/servizi-consulenza-logistica/,,no redazione@ address; site says it prefers its Contatti form (URL not confirmed). Seen via search index
+bp-il-giornale-della-logistica,info@ilgiornaledellalogistica.it,https://ilgiornaledellalogistica.it/scrivici/,https://ilgiornaledellalogistica.it/scrivici/,publisher Koster Publishing (Peschiera Borromeo MI); no dedicated redazione@ found. Seen via search index
+bp-lista-testate-logistica,info@logisticait.com,https://logisticait.com/,https://logisticait.com/contatti/,"row is a list page, not an outlet; email belongs to LogisticaIT (Rende CS, same owner as Gazzetta Logistica). Seen via search index"
+bp-logistica-management,marketing@editricetemi.com,https://www.logisticamanagement.it/it/articles/20181129/logistica_management_rivista_e_portale_scarica_il_media_kit,,publisher Editrice TeMi (Monza); no redazione@ found; cecilia.biondi@ is the editor-in-chief's personal address (seen on https://www.logisticamanagement.it/it/articles/20250524/la_trasformazione_digit
+bp-logisticamente-it,servizi@logisticamente.it,https://www.logisticamente.it/contatti/,,Parma. Seen via search index
+bp-supply-chain-italy,redazione@supplychainitaly.it,https://www.supplychainitaly.it/contatti/,,publisher Alocin Media (Genova). Seen via search index
+bp-transportonline,info@transportonline.com,http://www.transportonline.com/contatti.php,https://transportonline.com/contatti/,publisher Pubbliconsult Multimedia (Torino); no redazione@ found; address seen on older contact page. Seen via search index
+b-a-msc-logistica,info@amsclogistica.it,https://www.amsclogistica.it/,,Seen via search index
+b-aelle-trasporti-srl,info@aelletrasporti.com,https://aelletrasporti.com/contatti/,,Seen via search index
+b-autotrasporti-bertoni,operativo@autotrasportibertoni.com,https://autotrasportibertoni.com/blog/post/supplemento-carburante,,Besozzo (VA). operativo@ seen on the fuel-surcharge blog posts; commerciale@ on https://autotrasportibertoni.com/contatti. Seen via search index
+b-autotrasporti-garattini,info@autotrasportigarattini.it,http://www.autotrasportigarattini.it/preventivi-trasporti-brescia.html,http://www.autotrasportigarattini.it/preventivi-trasporti-brescia.html,Seen via search index
+b-autotrasporti-pasinetti-e-anselmi,logistica@pasinettieanselmi.it,https://www.pasinettieanselmi.it/mostra_articolo.asp?area=151&area_news=151,,addresses from the site's Contatti page (search index; exact page URL not confirmed)
+b-autotrasporti-poggese,poggeseautotrasporti4@gmail.com,https://www.poggeseautotrasporti.com/contatti/,https://www.poggeseautotrasporti.com/contatti/,Gmail address published by the company; Poggio Rusco (MN). Seen via search index
+b-autotrasporti-rota,info@rotatrasporti.it,https://www.rotatrasporti.it/contatti/,https://www.rotatrasporti.it/contatti/,info@ is listed as the traffic office; Ponte San Pietro (BG). Seen via search index
+b-azzurra-trasporti,traffico@azzurratrasporti.eu,https://www.azzurratrasporti.com/preventivi-e-contatti/,https://www.azzurratrasporti.com/preventivi-e-contatti/,actually based in Lallio (BG). Seen via search index
+b-bisi-logistica,info@bisilogistica.it,https://www.bisilogistica.it/contatti/,,Seen via search index
+b-cargonyx,info@cargonyx.com,https://cargonyx.com/privacy-policy/,https://cargonyx.com/contact-us/,Seen via search index
+b-dalmine-express,info@dalmineexpress.it,http://www.dalmineexpress.it/contatti_4.html,,info@ covers management/sales/logistics. Seen via search index
+b-distribo-srl,trasporti@distribo.it,https://www.distribo.net/contatti/,,"trucking section Dosolo (MN), legal seat Gualtieri (RE). Seen via search index"
+b-ebc-cargo,info@ebccargo.com,http://www.ebccargo.com/contatti.php,,actual HQ Paderno Dugnano (MI); seen via search index of own site (direct fetch blocked by sandbox)
+b-g-b-autotrasporti,info@gbautotrasportimontichiari.it,https://www.gbautotrasportimontichiari.it/contatti-azienda-trasporti-brescia/,,gmail address is given on accessibility page for site issues; via search index
+b-general-trasporti,info@generaltrasporti.eu,https://generaltrasporti.eu/contatti/,,via search index of own site
+b-genio-logistica-srl,spedizioni@geniologistica.it,https://www.geniologistica.it/contatti/,https://www.geniologistica.it/genio-preventivo/,legal seat Milano; via search index of own site
+b-italtrans-spa,info@italtrans.com,https://www.italtrans.com/en/contatti/,,via search index of own site
+b-matricardi-srl,info@matricardisrl.com,https://www.matricardisrl.com/contattaci/,,"HQ Montecosaro (MC); milano@ is Lombardy branch Vignate (MI), from an old branch page https://www.matricardisrl.com/trasporti/regione-lombardia-vignate-mi/; via search index"
+b-messaggerie-del-garda,info@messaggeriedelgarda.it,https://www.messaggeriedelgarda.com/en/contacts/,,HQ Castiglione delle Stiviere (MN); site shows both .it and .com info@; commerciale@ from 2022 policy PDF on own site; via search index
+b-monaci-trasporti,ufficio@monacitrasporti.it,https://www.monacitrasporti.com/,https://www.monacitrasporti.com/contatti,email domain .it while site is .com; via search index
+b-mp-srl-trasporti-e-spedizioni,info@mp-srl.eu,https://mpsrltrasporti.com/,https://mpsrltrasporti.com/,via search index of own site
+b-nicoli-trasporti-spedizioni,servizioclienti@nicoligroup.com,https://www.nicolitrasporta.it/contatti/,,Nicoli Group; servizioclienti@ listed as Commerciale; info@ covers Ghisalba site; via search index
+b-niku-autotrasporti-srl,niku.autotrasporti@gmail.com,http://nikuautotrasportisrl.it/,http://nikuautotrasportisrl.it/,Bellusco (MB); gmail is the only address on site; via search index
+b-riva-logistic-service,info@rivalogistic.com,https://www.rivalogistic.com/contatti/,https://www.rivalogistic.com/contatti/,via search index of own site
+b-sitrel,info@sitrel.it,https://www.sitrel.it/contatti/,,actual seat Paderno Dugnano (MI); via search index
+b-stb-trasporti-srl,stb@stb-srl.eu,https://www.stb-srl.eu/,https://www.stb-srl.eu/,Desio (MB); via search index
+b-tde-solutions,info@tdesolutions.it,https://tdesolutions.it/contatti/,https://tdesolutions.it/contatti/,actual seat Peschiera Borromeo (MI); via search index
+b-trasped-srl,info@trasped.it,https://www.traspedsrl.it/trasporto-merci/spedizioni-merci/,https://www.traspedsrl.it/en/contacts/,Settimo Milanese (MI); via search index
+b-vector-spa,salesteam@vectorspa.it,https://www.vectorspa.it/spedizioni_internazionali/en/contact-us,,Castellanza (VA) forwarder; via search index
+b-alpina-italiana-spa,info@alpinaitaliana.com,https://alpinaitaliana.com/en/contact-en/,https://www.alpinaitaliana.com/it/contatti,"Carre (VI), Via Fondovilla 86; via search index of own site"
+b-autotrasporti-f-lli-battistella,giuseppe@battistellaonline.it,https://www.autotrasportibattistella.it/contatti,https://www.autotrasportibattistella.it/contatti,"personal: only named addresses published; giuseppe@ is given for transport quotes, stefano@ for vehicle fit-out; via search index"
+b-autotrasporti-nalesso-srl,info@autotrasportinalessosrl.com,https://www.autotrasportinalessosrl.com/contatti/,,via search index of own site
+b-due-torri-spa,info@duetorrispa.com,https://www.duetorrispa.com/servizi/logistica/logistica-servizi-valore-aggiunto,https://www.duetorrispa.com/contatti/,"HQ actually Minerbio (BO); address in site structured data/footer, obfuscated on contact page (WebFetch blocked by session network; address read from web-search index of the page)"
+b-emiliana-trasporti,info@emilianatrasporti.it,https://www.emilianatrasporti.it/Contatti.aspx,,general address (WebFetch blocked by session network; address read from web-search index of the page)
+b-ferri-autotrasporti-snc,,,http://www.ferriautotrasporti.com/contatti.html,"only form (contatti page has form, no email) (WebFetch blocked by session network; address read from web-search index of the page)"
+b-francida,info@francida.eu,https://francida.eu/azienda/,,general address (WebFetch blocked by session network; address read from web-search index of the page)
+b-g-b-trasporti-refrigerati,commerciale@gebtrasportirefrigerati.it,https://www.gebtrasportirefrigerati.it/contatti/,,"offices Ancona/Pesaro, serves Cesena (WebFetch blocked by session network; address read from web-search index of the page)"
+b-gelog-srl,commerciale@gelog.it,https://www.gelogitsrl.it/contattaci.php,https://www.gelogitsrl.it/contattaci.php,emails use gelog.it domain (WebFetch blocked by session network; address read from web-search index of the page)
+b-gruppo-bolognese-autotrasporti,info@gruppobolognese.it,https://www.gruppobolognese.it/contatti/,,general address (WebFetch blocked by session network; address read from web-search index of the page)
+b-il-parmense-trasporti,preventivi@ilparmensetrasporti.com,https://www.ilparmensetrasporti.it/contatti,,preventivi = quotes; info@ seen in privacy policy (https://www.ilparmensetrasporti.it/cookie-policy?lang=en) (WebFetch blocked by session network; address read from web-search index of the page)
+b-imola-trasporti,info@imolatrasporti.it,https://www.imolatrasporti.it/contatti/,https://www.imolatrasporti.it/preventivi/,only email on site (WebFetch blocked by session network; address read from web-search index of the page)
+b-m-c-truck,commerciale@mctrucksrl.it,https://mctruck.it/contatti/,https://mctruck.it/contatti/,email uses mctrucksrl.it domain (WebFetch blocked by session network; address read from web-search index of the page)
+b-movitrans-line,info@movitransline.it,https://www.movitransline.it/contatti.php,,general address; traffic office has phone lines only; based Campogalliano (MO) (WebFetch blocked by session network; address read from web-search index of the page)
+b-nuova-dimensione-trasporti,info@nuovadimensionetrasporti.it,https://www.nuovadimensionetrasporti.it/index.php/contatti,,based in Cesena (FC) (WebFetch blocked by session network; address read from web-search index of the page)
+b-olimpia-trasporti,info@olimpiatrasportimodena.it,https://www.olimpiatrasportimodena.it/contatti-ditta-di-autotrasporti-container-di-modena-trasporti-nazionali-e-internazionali/,,"site inconsistent: newest pages show trasporti.fabio@gmail.com (personal), info@/fabio@/deborah@ on older pages - may be stale; PEC excluded (WebFetch blocked by session network; address read from web"
+b-porrini-srl,commerciale@porrini.com,https://porrini.com/trasporti-rapidi-emilia-romagna-modena/,,footer email; HQ Campogalliano (MO) (WebFetch blocked by session network; address read from web-search index of the page)
+b-s-t-l-servizi-trasporti-logistica,commerciale@stlpiacenza.it,https://www.stlpiacenza.it/,,(WebFetch blocked by session network; address read from web-search index of the page)
+b-t-a-b-trasporti-artigiani-bibbiano,ufficio@tabtrasporti.com,https://www.tabtrasporti.com/contatti,https://www.tabtrasporti.com/contatti,office address; other two look personal (WebFetch blocked by session network; address read from web-search index of the page)
+b-tlp-srl-trasporti-logistica-piacenza,logistica@tlpsrl.it,https://www.tlpsrl.it/contattaci/,https://www.tlpsrl.it/contattaci/,logistics address (WebFetch blocked by session network; address read from web-search index of the page)
+b-trasporto-logistica,logistica@trasportopiacentino.com,https://www.trasportopiacentino.com/contatti,,Trasporto Logistica Piacentino srl (WebFetch blocked by session network; address read from web-search index of the page)
+b-zanotti-tagliani,info@zanottietagliani.it,https://www.zanottietagliani.it/contatti-spedizione-e-consegna-merce/,https://www.zanottietagliani.it/contatti-spedizione-e-consegna-merce/,"only general address; company is in Castiglione delle Stiviere (MN, Lombardia), not Emilia (WebFetch blocked by session network; address read from web-search index of the page)"
+b-zini-dino,trasporti@zini.re.it,https://zini.re.it/chi-siamo/,https://zini.re.it/contatti/,transport dept address; amministrazione@ and gmail on https://zini.re.it/contatti/ (WebFetch blocked by session network; address read from web-search index of the page)
+b-autotrasporti-toffolo,autotrasportitoffolo@gmail.com,https://www.autotrasportitoffolo.it/contattaci/,https://www.autotrasportitoffolo.it/contattaci/,gmail address printed on own site; read via search index (direct fetch blocked by session network)
+b-cesped,marketing@cesped.it,https://www.cesped.it/en/contacts/,,"Cesped HQ Lauzacco (UD), branch at Interporto Pordenone; now Rhenus group; via search index"
+b-fidel-srl,info@fideltrasporti.com,https://fideltrasporti.com/localit/trasporti-internazionali-e-logistica-3061/,,HQ actually Correzzola/Padova (PD); Gorizia is an SEO local page; via search index
+b-santarossa-trasporti,info@santarossatrasporti.it,https://www.santarossatrasporti.com/contatti,,address domain .it although site is .com (as printed); via search index
+b-taboga-autotrasporti-srl,cristian@tabogatrasporti.it,https://www.tabogatrasporti.it/contatti/,,personal (only email published); via search index
+b-zc-transport,operativo@zctransport.it,http://www.zctransport.it/contatti.html,,via search index
+b-autotrasporti-napolitano-giovanni,autotrasporti.gnapolitano@gmail.com,https://www.autotrasportigiovanninapolitano.it/,,gmail address printed on own site; via search index
+b-fatigati-srl,info@trasportifatigati.it,https://www.fatigatisrl.it/contatto/,https://www.fatigatisrl.it/contatto/,addresses on domain trasportifatigati.it as printed on site; via search index
+b-lgv-srl-logistica-e-trasporti,info@lgvtrasporti.it,https://lgvtrasporti.it/contattaci-lgv-srl-logistica-e-trasporti-napoli/,,via search index
+b-mafo-trasporti,mafotrasporti@gmail.com,https://www.mafotrasporti.it/contatti,https://www.mafotrasporti.it/contatti,gmail address printed on own site; Interporto di Nola; via search index
+b-rocco-trasporti-srl,,,http://www.roccotrasporti.it/it/contatti.html,only form (request-information form + phones on contatti page); no email seen
+b-vincenzo-miele-trasporti,info@vincenzomiele.it,https://www.vincenzomieletrasporti.com/contatti/,,email domain vincenzomiele.it as printed; office Volla (NA); via search index
+b-autotrasporti-taccogna,info@taccogna.com,https://www.taccogna.com/,,HQ Altamura (BA); via search index
+b-coo-tra-sa-soc-coop,cootrasa@libero.it,https://cootrasa.it/azienda-di-autotrasporti-lecce-chi-siamo/,,libero address printed on own site; via search index
+b-lotras-srl,logistica@lotras.it,https://www.lotras.it/en/team,,"intermodal rail terminal operator Foggia Incoronata, now FHP group; info@ on https://www.lotras.it/en/contatti; via search index"
+b-malorgio-trasporti,info@malorgiotrasporti.it,https://www.malorgiotrasporti.com/contatti,https://www.malorgiotrasporti.com/contatti,email domain .it although site is .com (as printed); via search index
+b-nesta-trasporti-logistics-snc,info@nestatrasporti.it,https://www.nestatrasportisnc.it/,,email domain nestatrasporti.it as printed; via search index
+b-nigro-trasporti,nigrotrasporti@libero.it,https://www.nigrotrasporti.it/,,San Vito dei Normanni (BR); libero address on own site; via search index
+b-cavaleri-srl,info@cavaleri.it,https://www.cavaleri.it/contatti,,"contact page also lists named staff addresses per department (logistics: tonino@cavaleri.it, personal); via search index"
+b-dgv-group-srl,commerciale@dgvgroupsrl.it,https://www.dgvgroupsrl.it/,,site also lists two personal addresses; via search index
