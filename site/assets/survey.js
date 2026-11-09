@@ -100,7 +100,7 @@
     if (focus) {
       // bring the new question (and on phones the mascot above it) back into view
       const stage = document.querySelector(".sv-stage"), top = stage.getBoundingClientRect().top;
-      if (top < 0 || top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + top - 76, behavior: reduced ? "auto" : "smooth" });
+      if (top < 0 || top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + top - ((document.querySelector(".top") || {}).offsetHeight || 64) - 12, behavior: reduced ? "auto" : "smooth" });
       focusStep(steps[at]);
     }
   }

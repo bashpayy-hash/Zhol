@@ -37,7 +37,7 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px)); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0; color: var(--ink-2); font-family: var(--font-sans); font-size: 17px; line-height: 1.5; letter-spacing: -0.006em;
@@ -77,8 +77,9 @@ b, strong { color: var(--ink); font-weight: 600; }
 .grid > *, .split > * { min-width: 0; }
 
 /* ------------------------------------------------------------------ header (deck tab bar) */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--paper); }
+/* the header sticks to the very top and covers the safe area (notch, or an in-app browser's bar such as Telegram's)
+   with its own background; a separate fixed strip did not paint in Telegram's iOS browser (design critique, 9 Nov) */
+.top { position: sticky; top: 0; z-index: 30; background: var(--paper); padding-top: env(safe-area-inset-top, 0px); }
 .top .wrap { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; min-height: 64px; border-bottom: 1px solid var(--rule); }
 .top .logo { align-self: center; padding: 10px 0; }
 .top .logo img { height: 30px; width: auto; }
