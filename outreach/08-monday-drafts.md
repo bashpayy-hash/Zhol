@@ -9,44 +9,44 @@
 ### 1. Fabio Trevisan, Autotrasporti Trevisan (Padova): звонок в офис, потом письмо
 
 **Звонок (9:00–11:00):**
-> Buongiorno, sono Alikhan, studente della Bocconi. Cercavo Fabio o Mirko Trevisan: stiamo facendo una ricerca su come gli uffici traffico gestiscono divieti, dosaggi e chiusure sulle linee estere. Bastano 20 minuti, anche passando da voi a Padova.
+> Buongiorno, sono Alikhan, studente della Bocconi. Cercavo Fabio o Mirko Trevisan. Stiamo facendo una ricerca su come gli uffici traffico gestiscono divieti, dosaggi e chiusure sulle linee estere. Bastano 20 minuti, anche passando da voi a Padova.
 
 **Письмо после звонка:**
 > Gentile Fabio Trevisan,
-> grazie per la disponibilità al telefono. Ho visto [l'intervista per i 50 anni dell'azienda su Uomini e Trasporti]: con la componentistica auto un ritardo al Brennero costa caro.
-> Siamo tre studenti della Bocconi e studiamo proprio quel momento: quando e come scoprite che un carico di domani sarà fermato, e cosa costa. Non vendiamo nulla. In cambio analizziamo gratis un vostro mese passato.
+> grazie per la disponibilità al telefono. Ho visto [l'intervista per i 50 anni dell'azienda su Uomini e Trasporti]. Con la componentistica auto un ritardo al Brennero costa caro.
+> Siamo tre studenti della Bocconi e studiamo proprio quel momento. Quando e come scoprite che un carico di domani sarà fermato, e cosa costa. Non vendiamo nulla. In cambio analizziamo gratis un vostro mese passato.
 > Le andrebbe bene [martedì o mercoledì] a Padova?
 
 ### 2. Lorenzo Bommartini, Autotrasporti Bommartini (Soave, VR): LinkedIn
 
-> Buongiorno Lorenzo, a maggio [ha detto a TrasportoEuropa che i dati vi rendono più flessibili]. Studiamo alla Bocconi come gli uffici traffico pianificano intorno a divieti francesi, chiusure del Fréjus e del Monte Bianco e al divieto notturno svizzero. Le chiederei 20 minuti: in cambio analizziamo gratis un vostro mese passato.
+> Buongiorno Lorenzo, a maggio [ha detto a TrasportoEuropa che i dati vi rendono più flessibili]. Studiamo alla Bocconi come gli uffici traffico pianificano intorno a divieti francesi, chiusure del Fréjus e del Monte Bianco e al divieto notturno svizzero. Le chiederei 20 minuti. In cambio analizziamo gratis un vostro mese passato.
 
 ### 3. Gernot Günther und das Verkehrsbüro, Autotransporte Günther (Vahrn, BZ): E-Mail an office@ (DE), Kopie IT
 
 > Sehr geehrter Herr Günther,
 > wir sind drei Studierende der Bocconi-Universität in Mailand und untersuchen, wie Verkehrsbüros mit Fahrverboten, der Blockabfertigung in Kufstein und den Sperren an der Luegbrücke planen. Ihr Standort direkt an der A22 bei Brixen Nord ist dafür besonders interessant.
-> Wir verkaufen nichts. Wir würden gern 20 Minuten mit Ihnen oder mit Ihrem Verkehrsbüro sprechen (Frau Sandra Günther, Herr Ivan Günther oder Herr Fischnaller), gern auch vor Ort. Als Dank werten wir kostenlos einen vergangenen Monat Ihrer Fahrten aus: welche Fahrten betroffen gewesen wären und wie viele Stunden sich hätten sparen lassen.
+> Wir verkaufen nichts. Wir würden gern 20 Minuten mit Ihnen oder mit Ihrem Verkehrsbüro sprechen (Frau Sandra Günther, Herr Ivan Günther oder Herr Fischnaller), gern auch vor Ort. Als Dank werten wir kostenlos einen vergangenen Monat Ihrer Fahrten aus. Welche Fahrten betroffen gewesen wären und wie viele Stunden sich hätten sparen lassen.
 > Hätten Sie diese oder nächste Woche Zeit?
 
 *IT, если ответят по-итальянски:* шаблон 1 из `07-interview-requests.md`.
 
 ### 4. Andrea Gottardi, Gottardi Autotrasporti (Trento): LinkedIn
 
-> Buongiorno Andrea, studenti Bocconi. Con carichi completi verso Francia, Austria, Svizzera e Germania avete quattro calendari di divieti sulla stessa flotta: stiamo studiando quanto tempo costa controllarli ogni sera e cosa succede quando arriva un imprevisto. 20 minuti, anche al telefono? In cambio analizziamo gratis un vostro mese passato.
+> Buongiorno Andrea, studenti Bocconi. Con carichi completi verso Francia, Austria, Svizzera e Germania avete quattro calendari di divieti sulla stessa flotta. Stiamo studiando quanto tempo costa controllarli ogni sera e cosa succede quando arriva un imprevisto. 20 minuti, anche al telefono? In cambio analizziamo gratis un vostro mese passato.
 
 ### 5. Stefano Pasinato, Prisma Logistics (Verona): LinkedIn; второй контакт Alberto Brizzi (трафик)
 
-> Buongiorno Stefano, studenti Bocconi. Con groupage strada e treno verso Germania e Austria, una domanda ci incuriosisce: quando decidete di spostare un collegamento su treno prima di un giorno di dosaggio a Kufstein, e quanto vale quella decisione? Avrebbe 20 minuti, lei o chi segue il traffico? Non vendiamo nulla.
+> Buongiorno Stefano, studenti Bocconi. Con groupage strada e treno verso Germania e Austria, una domanda ci incuriosisce. Quando decidete di spostare un collegamento su treno prima di un giorno di dosaggio a Kufstein, e quanto vale quella decisione? Avrebbe 20 minuti, lei o chi segue il traffico? Non vendiamo nulla.
 
 ### 6. Marco Ghezzi, Farosped (Liscate, MI): LinkedIn
 
-> Buongiorno Marco, studenti Bocconi a Milano. Studiamo come gli spedizionieri con groupage giornaliero verso la Germania gestiscono divieti, dosaggi a Kufstein e chiusure: chi lo segue, quando lo scoprite, cosa costa una consegna saltata. Possiamo passare da voi a Liscate per 20 minuti?
+> Buongiorno Marco, studenti Bocconi a Milano. Studiamo come gli spedizionieri con groupage giornaliero verso la Germania gestiscono divieti, dosaggi a Kufstein e chiusure. Chi lo segue, quando lo scoprite, cosa costa una consegna saltata. Possiamo passare da voi a Liscate per 20 minuti?
 
 ### 7. Dorian Emini, Emini Trasporti (Piobesi Torinese, TO): форма на сайте
 
 > Gentile Sig. Emini,
 > con il groupage giornaliero Torino–Milano–Lione basta una chiusura del Fréjus per cambiare tutto il giro. Siamo tre studenti della Bocconi e studiamo come gli uffici traffico scoprono e gestiscono questi imprevisti, e quanto costano.
-> Non vendiamo nulla: ci servono 20 minuti, anche al telefono. In cambio analizziamo gratis un vostro mese passato. Quando le farebbe comodo?
+> Non vendiamo nulla. Ci servono 20 minuti, anche al telefono. In cambio analizziamo gratis un vostro mese passato. Quando le farebbe comodo?
 
 ### 8. Gianluca Sanitate, Pavisa Spedizioni (Lagnasco, CN): LinkedIn
 
@@ -54,7 +54,7 @@
 
 ### 9. Carlo Mancini, Benaco Trans (Brescia): LinkedIn
 
-> Buongiorno Carlo, studenti Bocconi. Lei pianifica i viaggi verso il Regno Unito: deperibili che attraversano la Francia, tra divieti festivi, scioperi e controlli. Studiamo proprio la sera prima della partenza: cosa controlla, quanto tempo le prende, cosa succede quando arriva un imprevisto. Avrebbe 20 minuti questa settimana?
+> Buongiorno Carlo, studenti Bocconi. Lei pianifica i viaggi verso il Regno Unito. Deperibili che attraversano la Francia, tra divieti festivi, scioperi e controlli. Studiamo proprio la sera prima della partenza. Cosa controlla, quanto tempo le prende, cosa succede quando arriva un imprevisto. Avrebbe 20 minuti questa settimana?
 
 ### 10. ASTRE Italia: просьба об интро сразу к четырём членам сети (Camellini, Detassis, Cambianica, Avanzini)
 
@@ -77,7 +77,7 @@
 ### 11. Oliviero Baccelli, Università Bocconi: письмо через университетскую почту (самый тёплый вход)
 
 > Gentile Professor Baccelli,
-> siamo tre studenti della Bocconi (Alikhan, Inkara, Tomiris) e, nell'ambito del programma TEF Ignition, stiamo studiando come gli uffici traffico degli autotrasportatori del Nord gestiscono divieti, dosaggi a Kufstein, chiusure del Brennero e scioperi.
+> sono Alikhan Bashpay, studente della Bocconi, e con il mio team, nell'ambito del programma TEF Ignition, stiamo studiando come gli uffici traffico degli autotrasportatori del Nord gestiscono divieti, dosaggi a Kufstein, chiusure del Brennero e scioperi.
 > Ci servono 8 interviste entro il 13 novembre. Le chiederemmo 20 minuti per un suo parere sul metodo e, se lo ritiene opportuno, il contatto di due aziende disposte a parlarci.
 
 ### 12. Pietro Vavassori, presidente ALSEA (Milano): письмо через секретариат ALSEA
@@ -96,7 +96,7 @@
 
 ### 15. Claudio Carrano, Infogestweb / Golia360 (Verona): разговор с поставщиком ПО
 
-> Buongiorno Claudio, studenti Bocconi. Stiamo studiando come i piccoli autotrasportatori pianificano intorno a divieti e chiusure all'estero. Ci interessa il punto di vista di chi fa il gestionale: cosa vi chiedono i clienti su questo, e come arrivano oggi i dati dei viaggi di domani. 20 minuti?
+> Buongiorno Claudio, studenti Bocconi. Stiamo studiando come i piccoli autotrasportatori pianificano intorno a divieti e chiusure all'estero. Ci interessa il punto di vista di chi fa il gestionale. Cosa vi chiedono i clienti su questo, e come arrivano oggi i dati dei viaggi di domani. 20 minuti?
 
 ## События этой недели (сверить даты и регистрацию)
 

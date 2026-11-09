@@ -30,7 +30,7 @@
 
 > Dear Professor Baccelli,
 >
-> In May you told RSI that the Brenner restrictions have a fair goal but distorting effects, because they limit timing, goods and roads. We are three Bocconi students (TEF Ignition 2026) working on exactly that cost for small hauliers:
+> In May you told RSI that the Brenner restrictions have a fair goal but distorting effects, because they limit timing, goods and roads. We are three Bocconi students (TEF Ignition 2026) working on exactly that cost for small hauliers.
 >
 > - **Problem:** traffic offices learn about bans, Kufstein dosing days and closures when the truck is already in the queue.
 > - **Product:** the evening before, one WhatsApp message tells them which of tomorrow's loads will be hit and what each option costs.
@@ -38,15 +38,15 @@
 > - **Our question:** how would you measure the cost of a delay per truck credibly?
 > - **Our ask:** 20 minutes next week and, if you see fit, one or two hauliers or forwarders we could interview.
 >
-> Overview: https://zhol.live
+> Overview. https://zhol.live
 >
 > Thank you,
-> Alikhan, Inkara and Tomiris
+> Alikhan Bashpay
 
 **IT:**
 > Gentile Professor Baccelli,
 >
-> a maggio ha detto alla RSI che i divieti sul Brennero hanno un obiettivo comprensibile ma effetti distorsivi, perché vincolano orari, merci e strade. Siamo tre studenti Bocconi (TEF Ignition 2026) e lavoriamo proprio su quel costo per i piccoli autotrasportatori:
+> a maggio ha detto alla RSI che i divieti sul Brennero hanno un obiettivo comprensibile ma effetti distorsivi, perché vincolano orari, merci e strade. Siamo tre studenti Bocconi (TEF Ignition 2026) e lavoriamo proprio su quel costo per i piccoli autotrasportatori.
 >
 > - **Problema:** gli uffici traffico scoprono divieti, dosaggi a Kufstein e chiusure quando il camion è già in coda.
 > - **Prodotto:** la sera prima, un messaggio WhatsApp dice quali carichi di domani saranno toccati e quanto costa ogni alternativa.
@@ -55,7 +55,7 @@
 > - **Richiesta:** 20 minuti la prossima settimana e, se lo ritiene opportuno, il contatto di una o due aziende da intervistare.
 >
 > https://zhol.live
-> Grazie, Alikhan, Inkara e Tomiris
+> Grazie, Alikhan Bashpay
 
 ## 2. Giuseppe Stabilini — SDA Bocconi; преподавал в магистратуре по транспорту (MEMIT)
 
@@ -73,7 +73,7 @@
 > https://zhol.live
 >
 > Thank you,
-> Alikhan, Inkara and Tomiris
+> Alikhan Bashpay
 
 ## 3. Marco Bettucci — SDA Bocconi, Operations & Supply Chain
 
@@ -84,14 +84,14 @@
 > Dear Professor Bettucci,
 >
 > - **Who:** three Bocconi students, TEF Ignition 2026.
-> - **What:** evening-before alerts for the traffic offices of small hauliers: which of tomorrow's loads a ban, a closure or a strike will hit, and what each option costs.
-> - **Next month:** 4-week pilots, measured against the office's current process: minutes a day, re-plans per 100 trips, verified savings, our review time per event.
+> - **What:** evening-before alerts for the traffic offices of small hauliers. Which of tomorrow's loads a ban, a closure or a strike will hit, and what each option costs.
+> - **Next month:** 4-week pilots, measured against the office's current process. Minutes a day, re-plans per 100 trips, verified savings, our review time per event.
 > - **Ask:** 15 minutes to check these measures and thresholds; and, if you know logistics managers from executive programmes, an introduction.
 >
 > https://zhol.live
 >
 > Thank you,
-> Alikhan, Inkara and Tomiris
+> Alikhan Bashpay
 
 ---
 

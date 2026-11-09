@@ -41,23 +41,23 @@
 
 > Gentile [Nome],
 > siamo tre studenti della Bocconi e stiamo misurando quanto costano agli autotrasportatori divieti, code, chiusure e scioperi.
-> Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio: sette domande, un minuto: [link]. Non vendiamo nulla e le risposte sono anonime, se non lasciano un contatto.
+> Vi chiederemmo di inoltrare ai vostri associati con linee estere questo sondaggio. Sette domande, un minuto. [link]. Non vendiamo nulla e le risposte sono anonime, se non lasciano un contatto.
 > All'associazione mandiamo i risultati aggregati appena chiudiamo la raccolta.
 > Grazie, [Firma]
 
 **2. LinkedIn: пост каждого из команды**
 
 > Quanto tempo passa ogni giorno un ufficio traffico a controllare divieti, code, chiusure e scioperi? E quanto è costato l'ultimo imprevisto?
-> Stiamo raccogliendo numeri veri, non stime da convegno: sette domande, un minuto, anonimo, per chi gestisce linee verso Germania, Austria, Svizzera e Francia. I risultati li condividiamo con chi risponde.
-> [link] · Se conoscete un responsabile traffico, inoltratelo: ci aiuta molto.
+> Stiamo raccogliendo numeri veri, non stime da convegno. Sette domande, un minuto, anonimo, per chi gestisce linee verso Germania, Austria, Svizzera e Francia. I risultati li condividiamo con chi risponde.
+> [link] · Se conoscete un responsabile traffico, inoltratelo. Ci aiuta molto.
 
 **3. WhatsApp: переслать знакомому** (только тем, кто дал номер сам или через знакомых)
 
-> Ciao [Nome], ti giro un sondaggio di un minuto per gli uffici traffico con linee estere (divieti, dosaggi, chiusure). È per una ricerca alla Bocconi, niente vendite: [link]
+> Ciao [Nome], ti giro un sondaggio di un minuto per gli uffici traffico con linee estere (divieti, dosaggi, chiusure). È per una ricerca alla Bocconi, niente vendite. [link]
 
 **4. P.S. к письмам-просьбам об интервью** (шаблоны 1–3 и напоминание дня 8 в `07-interview-requests.md`)
 
-> P.S. Se 20 minuti sono troppi, basta un minuto: [link]
+> P.S. Se 20 minuti sono troppi, basta un minuto. [link]
 
 ## Как считать результаты
 
@@ -75,12 +75,12 @@
 
 ## Массовая рассылка за два дня
 
-**Пульт:** https://claude.ai/artifact/9uv2W3txr1GgrJAf6VJh3J (приватный: откройте Share и дайте Inkara и Tomiris доступ Contributor или Editor). В нём 120 адресатов, у каждого готовое письмо на итальянском, тема и ссылка с меткой канала. Кнопка «Отправлено» видна всей команде, поэтому никто не напишет дважды. Копия без общего статуса: `outreach/send-console.html` (открыть в браузере). Список пересобирается командой `python scripts/survey_targets.py` из `leads_beachhead.csv` и `interview_targets_network.csv`.
+**Пульт:** https://claude.ai/artifact/9uv2W3txr1GgrJAf6VJh3J (приватный: откройте Share и дайте команде доступ Contributor или Editor). В нём 120 адресатов, у каждого готовое письмо на итальянском, тема и ссылка с меткой канала. Кнопка «Отправлено» видна всей команде, поэтому никто не напишет дважды. Копия без общего статуса: `outreach/send-console.html` (открыть в браузере). Список пересобирается командой `python scripts/survey_targets.py` из `leads_beachhead.csv` и `interview_targets_network.csv`.
 
 | Когда | Кто | Что | Охват |
 |---|---|---|---|
-| День 1, утро | Tomiris | 21 ассоциация: письмо или форма «Contatti», просьба переслать членам | одно письмо → десятки и сотни офисов |
-| День 1, утро | Inkara | 7 отраслевых изданий: короткая заметка о сборе данных | читатели издания |
+| День 1, утро | Alikhan | 21 ассоциация: письмо или форма «Contatti», просьба переслать членам | одно письмо → десятки и сотни офисов |
+| День 1, утро | Alikhan | 7 отраслевых изданий: короткая заметка о сборе данных | читатели издания |
 | День 1 | все трое | Пост в своём LinkedIn; в группах — сначала спросить админа | сеть каждого |
 | Дни 1–2 | по 30 на человека | 92 компании через формы на сайте: скопировать → вставить → «Отправлено» (≈1 минута на компанию) | 92 офиса |
 | День 4 | тот же человек | Одно напоминание ассоциациям и изданиям без ответа | |

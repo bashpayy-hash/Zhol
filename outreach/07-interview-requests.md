@@ -9,10 +9,10 @@
 | День | Кто | Что |
 |---|---|---|
 | Пн | Alikhan | 20 сообщений приоритета A: LinkedIn или почта компании (шаблоны 1–3). 5 звонков на коммутатор с утра, 9:00–11:00 (шаблон 6) |
-| Пн | Tomiris | 6 местных ассоциаций: просьба собрать 3–5 членов на 30 минут или переслать сообщение (шаблон 4) |
+| Пн | Alikhan | 6 местных ассоциаций: просьба собрать 3–5 членов на 30 минут или переслать сообщение (шаблон 4) |
 | Вт | Alikhan | Ещё 20 сообщений. Ответившим сразу назначаем время; визит в офис лучше звонка |
 | Вт–Чт | все | Интервью: один спрашивает, второй пишет в `interview_log.csv`. После каждого — сообщение «спасибо» с обещанным подарком |
-| Чт | Inkara | Для каждого, кто прислал прошлые загрузки: прогон в zhol, разбор с диспетчером |
+| Чт | Alikhan | Для каждого, кто прислал прошлые загрузки: прогон в zhol, разбор с диспетчером |
 | Пт | все | Сводка: что подтвердилось и что нет по `docs/10-feedback-round-2.md` |
 
 **Что даём взамен** (только то, что можем выполнить):
@@ -29,8 +29,8 @@
 ## 1. Владельцу (titolare, amministratore): LinkedIn или почта компании
 
 > Gentile [Nome],
-> siamo tre studenti della Bocconi e stiamo studiando come gli uffici traffico gestiscono divieti, dosaggi a Kufstein, chiusure e scioperi sulle linee estere. Non vendiamo nulla: ci servono 20 minuti con chi decide, per capire quanto costano davvero questi imprevisti e come li gestite oggi.
-> In cambio analizziamo gratis un vostro mese passato: quali viaggi sarebbero stati toccati e quante ore si potevano risparmiare.
+> siamo tre studenti della Bocconi e stiamo studiando come gli uffici traffico gestiscono divieti, dosaggi a Kufstein, chiusure e scioperi sulle linee estere. Non vendiamo nulla. Ci servono 20 minuti con chi decide, per capire quanto costano davvero questi imprevisti e come li gestite oggi.
+> In cambio analizziamo gratis un vostro mese passato. Quali viaggi sarebbero stati toccati e quante ore si potevano risparmiare.
 > Potremmo passare da voi [città] martedì o mercoledì, o sentirci al telefono?
 > [Firma]
 
@@ -39,25 +39,25 @@
 ## 2. Начальнику отдела перевозок (responsabile traffico)
 
 > Buongiorno [Nome],
-> lei è la persona che ogni sera decide quali carichi partono e da quale valico. Stiamo facendo una ricerca alla Bocconi proprio su quel momento: quanto tempo prende controllare calendari e notizie, e cosa succede quando un blocco arriva all'ultimo.
+> lei è la persona che ogni sera decide quali carichi partono e da quale valico. Stiamo facendo una ricerca alla Bocconi proprio su quel momento. Quanto tempo prende controllare calendari e notizie, e cosa succede quando un blocco arriva all'ultimo.
 > Le andrebbero 20 minuti questa settimana? Le mostriamo anche il nostro bollettino settimanale con divieti e giorni di dosaggio.
 
 ## 3. Экспедитору с автомобильным отделом (spedizioniere, reparto groupage o stradale)
 
 > Gentile [Nome],
-> stiamo studiando come gli spedizionieri lombardi gestiscono i ritardi sulle linee per Germania, Austria e Svizzera: dosaggi a Kufstein, divieti, chiusure, scioperi. Ci interessa capire chi lo segue, quando lo scoprite e cosa costa una consegna saltata.
+> stiamo studiando come gli spedizionieri lombardi gestiscono i ritardi sulle linee per Germania, Austria e Svizzera. Dosaggi a Kufstein, divieti, chiusure, scioperi. Ci interessa capire chi lo segue, quando lo scoprite e cosa costa una consegna saltata.
 > Siamo studenti della Bocconi, non vendiamo nulla. Avrebbe 20 minuti, in ufficio o al telefono?
 
 ## 4. Местной ассоциации: собрать 3–5 членов или переслать сообщение
 
 > Gentile [Nome],
 > siamo tre studenti della Bocconi e stiamo facendo una ricerca su quanto costano agli autotrasportatori divieti, dosaggi a Kufstein, chiusure del Brennero e scioperi, e su come li gestiscono gli uffici traffico.
-> Ci aiuterebbe molto parlare con 3–5 vostri associati con linee estere: anche 30 minuti insieme, in sede, oppure inoltrando questo messaggio a chi pensa sia interessato. Condivideremo con l'associazione i risultati anonimi della ricerca.
+> Ci aiuterebbe molto parlare con 3–5 vostri associati con linee estere. Anche 30 minuti insieme, in sede, oppure inoltrando questo messaggio a chi pensa sia interessato. Condivideremo con l'associazione i risultati anonimi della ricerca.
 > Possiamo sentirci per 10 minuti questa settimana?
 
 ## 5. LinkedIn: заметка к запросу на контакт (до 300 знаков)
 
-> Buongiorno [Nome], studenti Bocconi: ricerca su divieti, dosaggi e chiusure sulle linee estere e su come li gestiscono gli uffici traffico. Non vendiamo nulla. Le chiederei 20 minuti: in cambio analizziamo gratis un vostro mese passato.
+> Buongiorno [Nome], studenti Bocconi. Ricerca su divieti, dosaggi e chiusure sulle linee estere e su come li gestiscono gli uffici traffico. Non vendiamo nulla. Le chiederei 20 minuti. In cambio analizziamo gratis un vostro mese passato.
 
 ## 6. Звонок на коммутатор (30 секунд)
 
@@ -75,7 +75,7 @@
 
 ## 8. После интервью (в тот же день)
 
-> Grazie [Nome] per il tempo di oggi. Come promesso: [bollettino / risultati del sondaggio]. Ci farebbe anche il nome di un collega che dovremmo sentire?
+> Grazie [Nome] per il tempo di oggi. Come promesso. [bollettino / risultati del sondaggio]. Ci farebbe anche il nome di un collega che dovremmo sentire?
 
 ---
 

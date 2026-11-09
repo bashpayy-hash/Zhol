@@ -1,6 +1,6 @@
 # 11. Журнал рейсов: просим у тёплого круга
 
-> **На паузе с 9 ноября 2026.** Бесплатный разбор прошлого месяца сейчас не предлагаем: «мы пока что не делаем
+> **На паузе с 9 ноября 2026.** Бесплатный разбор прошлого месяца сейчас не предлагаем. «мы пока что не делаем
 > фри-анализов, потому что мы пока что не анализируем хорошо». Тексты ниже (разделы 3–4) не отправлять;
 > тёплому кругу, в том числе профессорам, — только опрос https://zhol.live/q/ (см. DESIGN.md).
 
@@ -28,9 +28,9 @@
 
 > Dear Professor [Surname],
 >
-> We are three Bocconi students (TEF Ignition 2026) building zhol: the evening before, it tells a haulier's traffic office which of tomorrow's loads will be hit by a ban, a closure, queues or a strike, and what to do.
+> We are three Bocconi students (TEF Ignition 2026) building zhol. The evening before, it tells a haulier's traffic office which of tomorrow's loads will be hit by a ban, a closure, queues or a strike, and what to do.
 >
-> - **What we need:** one past month of trips from one office: date, time, origin, destination. Customers can be removed.
+> - **What we need:** one past month of trips from one office. Date, time, origin, destination. Customers can be removed.
 > - **What the office gets in two days:** each trip replayed against the real bans and closures of that month, with the hours and euros it could have saved ([example report](https://zhol.live/replay-example)).
 > - **Data:** kept by us only, never shared, deleted on request.
 >
@@ -44,9 +44,9 @@
 
 > Gentile Professor [Cognome],
 >
-> siamo tre studenti della Bocconi (TEF Ignition 2026) e stiamo costruendo zhol: la sera prima dice all'ufficio traffico di un autotrasportatore quali carichi di domani saranno toccati da un divieto, una chiusura, una coda o uno sciopero, e cosa conviene fare.
+> siamo tre studenti della Bocconi (TEF Ignition 2026) e stiamo costruendo zhol. La sera prima dice all'ufficio traffico di un autotrasportatore quali carichi di domani saranno toccati da un divieto, una chiusura, una coda o uno sciopero, e cosa conviene fare.
 >
-> - **Cosa ci serve:** un mese passato di viaggi di un ufficio: data, ora, partenza, arrivo. I clienti si possono togliere.
+> - **Cosa ci serve:** un mese passato di viaggi di un ufficio. Data, ora, partenza, arrivo. I clienti si possono togliere.
 > - **Cosa riceve l'ufficio in due giorni:** ogni viaggio ripassato sui divieti e sulle chiusure reali di quel mese, con le ore e gli euro che si potevano risparmiare ([esempio](https://zhol.live/replay-example)).
 > - **Dati:** restano a noi, non li giriamo a nessuno e li cancelliamo su richiesta.
 >
@@ -56,7 +56,7 @@
 
 ### 3. Текст, который профессор может переслать офису как есть (по-итальянски)
 
-> Vi presento tre studenti della Bocconi che lavorano sui costi di divieti, chiusure e code per gli uffici traffico. Vi chiedono un mese passato di viaggi (data, ora, partenza, arrivo, senza clienti) e in due giorni vi restituiscono un'analisi gratuita: quali viaggi sarebbero stati toccati e quanto si poteva risparmiare. I dati restano a loro e si cancellano su richiesta. Esempio: https://zhol.live/replay-example
+> Vi presento tre studenti della Bocconi che lavorano sui costi di divieti, chiusure e code per gli uffici traffico. Vi chiedono un mese passato di viaggi (data, ora, partenza, arrivo, senza clienti) e in due giorni vi restituiscono un'analisi gratuita. Quali viaggi sarebbero stati toccati e quanto si poteva risparmiare. I dati restano a loro e si cancellano su richiesta. Esempio. https://zhol.live/replay-example
 
 ### 4. Офису после знакомства (по-итальянски)
 
@@ -64,9 +64,9 @@
 
 > Buongiorno [Nome],
 >
-> [Chi] ci ha suggerito di scrivervi. Siamo tre studenti della Bocconi: in due giorni ripassiamo un vostro mese di viaggi sui divieti, le chiusure e le code reali di quel mese e vi diciamo quali viaggi sarebbero stati toccati, quante ore e quanti euro si potevano risparmiare.
+> [Chi] ci ha suggerito di scrivervi. Siamo tre studenti della Bocconi. In due giorni ripassiamo un vostro mese di viaggi sui divieti, le chiusure e le code reali di quel mese e vi diciamo quali viaggi sarebbero stati toccati, quante ore e quanti euro si potevano risparmiare.
 >
-> Ci basta un Excel o una foto con data, ora, partenza e arrivo dei viaggi di un mese (anche senza clienti). Il modello, se vi è comodo: [allegare modello_carichi.xlsx]. Esempio di risultato: https://zhol.live/replay-example
+> Ci basta un Excel o una foto con data, ora, partenza e arrivo dei viaggi di un mese (anche senza clienti). Il modello, se vi è comodo. [allegare modello_carichi.xlsx]. Esempio di risultato. https://zhol.live/replay-example
 >
 > I dati restano a noi e li cancelliamo quando volete. Possiamo anche passare da voi 20 minuti per mostrarvi il risultato.
 >
@@ -74,7 +74,7 @@
 
 ### 5. Выпускникам и клубам Bocconi (пост или письмо, по-английски)
 
-> Bocconi students looking for one logistics office: we replay one past month of your trips against the real truck bans, closures and queues, and show which trips could have been saved and how much. Free, two days, data deleted on request. If you work at a haulier, a forwarder or a shipper with its own trucks, or know someone who does, write to us. Example: https://zhol.live/replay-example
+> Bocconi students looking for one logistics office. We replay one past month of your trips against the real truck bans, closures and queues, and show which trips could have been saved and how much. Free, two days, data deleted on request. If you work at a haulier, a forwarder or a shipper with its own trucks, or know someone who does, write to us. Example. https://zhol.live/replay-example
 
 ## Когда журнал пришёл
 

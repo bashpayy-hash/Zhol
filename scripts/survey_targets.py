@@ -35,20 +35,20 @@ PRESS = [  # outlet, known address (to verify), note
     ("Rivista TIR", "", ""), ("Vado e Torno", "", ""), ("Trasporti-Italia", "", ""),
 ]
 
-SIGN = "[Nome] · Università Bocconi · zhol (Alikhan, Inkara, Tomiris)"
+SIGN = "Alikhan Bashpay · Università Bocconi · zhol"
 
 # The message, in the owner's order (DESIGN.md, 8 Nov 2026): who we are (TEF, grant, Bocconi), how big the problem
 # is (the most reliable figure), what it means for this company (its lanes, its region, a recent event with a
 # source), the network of offices, the automation, the survey. Every figure has a public source (SOURCES).
-ASK_FIRST = "vi scriviamo per chiedervi un minuto per un breve sondaggio: sette domande, anonimo."
-HOOK = ("Siamo Alikhan, Inkara e Tomiris, studenti della Bocconi. zhol, il nostro progetto di logistica, è tra i 100 "
-        "selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €.")
-PLATFORM = ("Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche "
+ASK_FIRST = "vi scrivo per chiedervi un minuto per un breve sondaggio di sette domande, anonimo."
+HOOK = ("Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, "
+        "è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €.")
+PLATFORM = ("Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche "
             "di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code "
             "e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.")
 SIZE = ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
         "2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
-BASELINE = ("Per ora vi chiediamo solo di rispondere: stiamo raccogliendo i dati di partenza per capire a fondo il problema "
+BASELINE = ("Per ora vi chiediamo solo di rispondere. Stiamo raccogliendo i dati di partenza per capire a fondo il problema "
             "e avere numeri concreti.")
 OPTOUT = "Se preferite non ricevere altri messaggi, basta rispondere «no»."
 
@@ -150,7 +150,7 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
     route = f" verso {join_it(cs[:3])}" if cs else ""
     load = f" con {what}" if what else ""
     where = f" da {city}" if city and "[" not in city and city.lower() != "n/a" else ""
-    line = (f"Pensando {'ai' if trucks.startswith('i ') else 'a'} {trucks[2:] if trucks.startswith('i ') else trucks}{load}{where}{route}: {event}. "
+    line = (f"Pensando {'ai' if trucks.startswith('i ') else 'a'} {trucks[2:] if trucks.startswith('i ') else trucks}{load}{where}{route}, ci torna in mente che {event}. "
             f"Vorremmo capire quanto pesa davvero per voi.")
     return line, SOURCES[src]
 
@@ -161,16 +161,16 @@ def company_message(name: str, line: str, link: str) -> str:
 
 
 def association_message(name: str, link: str, members: str = "associati con linee estere") -> str:
-    return (f"Gentile segreteria di {name},\nvi scriviamo per chiedervi di inoltrare ai vostri {members} un breve sondaggio: "
-            f"sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
-            f"Per ora chiediamo solo risposte: stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere "
+    return (f"Gentile segreteria di {name},\nvi scrivo per chiedervi di inoltrare ai vostri {members} un breve sondaggio "
+            f"di sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
+            f"Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere "
             f"numeri concreti. All'associazione mandiamo i risultati aggregati.\n{link}\n\nGrazie,\n{SIGN}")
 
 
 def press_message(outlet: str, link: str) -> str:
-    return (f"Gentile redazione di {outlet},\nvi scriviamo per chiedervi una breve segnalazione di un sondaggio per gli uffici "
-            f"traffico: sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
-            f"Stiamo raccogliendo i dati di partenza: minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto, "
+    return (f"Gentile redazione di {outlet},\nvi scrivo per chiedervi una breve segnalazione di un sondaggio per gli uffici "
+            f"traffico di sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
+            f"Stiamo raccogliendo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto, "
             f"e quanti uffici sarebbero pronti a scambiarsi informazioni. I risultati aggregati ve li mandiamo in esclusiva, "
             f"se lo desiderate.\n{link}\n\nGrazie,\n{SIGN}")
 
@@ -194,7 +194,7 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": clean_city(r["city"]),
                      "to": email, "where": site.rstrip(").,;") if site else ("" if email else "сайт ассоциации → «Contatti», спросить отдел автотранспорта"),
                      "search": google(org + " contatti"),
-                     "subject": "Un sondaggio di un minuto per i vostri associati: divieti, code e scioperi (Bocconi, TEF Ignition)",
+                     "subject": "Un sondaggio di un minuto per i vostri associati su divieti, code e scioperi (Bocconi, TEF Ignition)",
                      "message": association_message(org, link), "link": link})
     for org in NATIONAL_ASSOCIATIONS:
         if org in seen:
@@ -203,13 +203,13 @@ def build() -> list[dict]:
         rows.append({"id": "a-" + slug(org), "type": "association", "name": org, "city": "nazionale", "to": "",
                      "where": "сайт ассоциации → «Contatti», спросить отдел автотранспорта",
                      "search": google(org + " contatti sede nazionale"),
-                     "subject": "Un sondaggio di un minuto per i vostri associati: divieti, code e scioperi (Bocconi, TEF Ignition)",
+                     "subject": "Un sondaggio di un minuto per i vostri associati su divieti, code e scioperi (Bocconi, TEF Ignition)",
                      "message": association_message(org, link), "link": link})
     for outlet, email, note in PRESS:
         link = f"{SURVEY}?src=press-{slug(outlet)}"
         rows.append({"id": "p-" + slug(outlet), "type": "press", "name": outlet, "city": "", "to": email,
                      "where": note or "сайт издания → «Redazione» или «Contatti»", "search": google(outlet + " redazione contatti"),
-                     "subject": "Dati sul campo: quanto costano divieti, code e chiusure agli uffici traffico (Bocconi, TEF Ignition)",
+                     "subject": "Dati sul campo, quanto costano divieti, code e chiusure agli uffici traffico (Bocconi, TEF Ignition)",
                      "message": press_message(outlet, link), "link": link})
     for r in csv.DictReader(open(OUT / "leads_beachhead.csv", encoding="utf-8")):
         name, city = clean_name(r["company"]), clean_city(r["city"])
@@ -230,9 +230,9 @@ def build() -> list[dict]:
 
 
 def group_message(link: str) -> str:
-    return ("Buongiorno a tutti, con il permesso degli amministratori: vi chiediamo un minuto per un breve sondaggio. "
+    return ("Buongiorno a tutti, con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio. "
             + HOOK + " " + PLATFORM + "\n\n" + SIZE + "\n\n"
-            f"Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde:\n{link}\n\n"
+            f"Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde.\n{link}\n\n"
             f"Grazie a chi ci dedica un minuto!\n{SIGN}")
 
 
@@ -271,7 +271,7 @@ def broad(existing: list[dict]) -> list[dict]:
         elif kind == "media":
             link = f"{SURVEY}?src=press-{slug(name)}"
             row = base | {"id": "bp-" + slug(name), "type": "press",
-                          "subject": "Dati sul campo: quanto costano divieti, code e chiusure agli uffici traffico (Bocconi, TEF Ignition)",
+                          "subject": "Dati sul campo, quanto costano divieti, code e chiusure agli uffici traffico (Bocconi, TEF Ignition)",
                           "message": press_message(name, link), "link": link}
         elif kind == "group":
             link = f"{SURVEY}?src=group-{slug(name)}"

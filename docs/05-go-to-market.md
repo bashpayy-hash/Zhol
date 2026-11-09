@@ -31,8 +31,8 @@
 
 Weekly team rhythm:
 - **Alikhan** (customer discovery): 40 contacts, 4 calls, 2 visits.
-- **Inkara** (product): onboards pilot loads, ships one improvement a week from pilot feedback.
-- **Tomiris** (pilots & measurement): runs the review queue, the savings ledger and the weekly pilot report.
+- **Product**: onboards pilot loads, ships one improvement a week from pilot feedback.
+- **Pilots & measurement**: runs the review queue, the savings ledger and the weekly pilot report.
 
 ## 5.4 Channels
 
