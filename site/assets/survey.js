@@ -39,14 +39,14 @@
   const intro = $("sv-intro"), stepsBox = $("sv-steps"), startBtn = $("sv-start");
   if (intro && stepsBox && startBtn) {
     stepsBox.hidden = true;
-    startBtn.addEventListener("click", e => {
+    [startBtn, ...document.querySelectorAll("[data-start]")].forEach(b => b.addEventListener("click", e => {
       e.preventDefault();
       intro.hidden = true;
       stepsBox.hidden = false;
       window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
       const first = steps[at].querySelector("input");
       if (first) first.focus({ preventScroll: true });
-    });
+    }));
   }
 
   let at = 0;
@@ -172,24 +172,78 @@
   let radarP = null;
   const radarLoad = () => radarP || (radarP = fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)));
   const radar = { then: (a, b) => radarLoad().then(a, b) };
-  idle(function showNow() {
-    const box = $("sv-now"), list = $("sv-now-list");
-    if (!box || !list) return;
-    radar.then(d => {
-      const next = d.items.filter(i => i.start && i.start >= d.today).sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p).slice(0, 3);
-      if (!next.length) return;
-      const day = s => new Date(s + "T12:00:00").toLocaleDateString(IT ? "it-IT" : "en-GB", { weekday: "short", day: "numeric", month: "short" });
-      next.forEach(it => {
-        const li = document.createElement("li"), t = document.createElement("span"), b = document.createElement("b"), p = document.createElement("span");
-        b.textContent = day(it.start);
-        t.append(b, document.createTextNode(" " + ((IT && it.title_it) || it.title)));
-        p.className = "sv-now-p"; p.textContent = Math.round(it.p * 100) + "%";
-        li.append(t, p); list.append(li);
+  // the intro's pitch (VISION.md: one point per card): when trouble comes, the radar's schedule with chances,
+  // and the agents that come next. The first two are drawn from the radar and stay hidden if it cannot load.
+  const cards = [...document.querySelectorAll(".sv-card")];
+  const io = ("IntersectionObserver" in window) && !reduced ? new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.35 }) : null;
+  const watch = c => io ? io.observe(c) : c.classList.add("in");
+  const c3 = $("sv-c3"); if (c3) watch(c3);
+  idle(() => radar.then(d => {
+    const D = s => new Date(s + "T00:00:00Z"), iso = x => x.toISOString().slice(0, 10);
+    const add = (s, k) => { const x = D(s); x.setUTCDate(x.getUTCDate() + k); return iso(x); };
+    const now = new Date(), local = iso(new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())));
+    const today = d.today > local ? d.today : local;
+    const dow = s => (D(s).getUTCDay() + 6) % 7;                // Monday first
+    const from = add(today, -dow(today)), to = add(from, 56);
+    const items = d.items.filter(i => i.start && (i.end || i.start) >= today && i.start < to);
+    if (!items.length) return;
+    const days = i => { const out = []; for (let s = i.start > today ? i.start : today; s <= (i.end || i.start) && out.length < 60; s = add(s, 1)) out.push(s); return out; };
+    const holiday = new Set(), event = new Map();
+    items.forEach(i => days(i).forEach(s => {
+      if (i.kind === "ban" && /holiday/i.test(i.title)) holiday.add(s);
+      event.set(s, Math.max(event.get(s) || 0, i.p || 0));
+    }));
+    const off = s => dow(s) >= 5 || holiday.has(s);
+
+    // 1. eight weeks, day by day: days off tinted, events in red
+    const cal = $("sv-cal"), c1 = $("sv-c1");
+    if (cal && c1) {
+      T("MTWTFSS", "LMMGVSD").split("").forEach(h => { const e = document.createElement("span"); e.className = "h"; e.textContent = h; cal.append(e); });
+      for (let k = 0; k < 56; k++) {
+        const s = add(from, k), cell = document.createElement("span"), n = document.createElement("span");
+        cell.className = "d" + (s < today ? " past" : "") + (s === today ? " today" : "") + (off(s) ? " off" : "") + (s >= today && event.has(s) ? " ev" : "");
+        cell.style.setProperty("--r", Math.floor(k / 7));
+        n.textContent = String(D(s).getUTCDate());
+        cell.append(n); cal.append(cell);
+      }
+      const hit = items.filter(i => days(i).some(off)).length;
+      $("sv-c1-n").textContent = T(hit + " of the next " + items.length + " events fall on a weekend or a public holiday.",
+                                   hit + " dei prossimi " + items.length + " eventi cadono di weekend o in un giorno festivo.");
+      c1.hidden = false; watch(c1);
+    }
+
+    // 2. the schedule with chances: the next four events
+    const list = $("sv-sched"), c2 = $("sv-c2");
+    if (list && c2) {
+      const loc = IT ? "it-IT" : "en-GB";
+      const seen = new Set();                        // one line per kind of event: Kufstein's weekly dosing shows once
+      items.slice().sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p)
+        .filter(it => { const k = it.title.replace(/:.*$/, "") + "|" + (it.where || ""); if (it.kind !== "ban" && seen.has(k)) return false; seen.add(k); return true; })
+        .slice(0, 4).forEach(it => {
+        const li = document.createElement("li"), dt = document.createElement("span"), tx = document.createElement("span"),
+              ti = document.createElement("span"), wh = document.createElement("span"), pc = document.createElement("span"),
+              bar = document.createElement("span"), fill = document.createElement("i");
+        const when = D(it.start > today ? it.start : today);
+        dt.className = "dt"; dt.append(when.toLocaleDateString(loc, { weekday: "short", timeZone: "UTC" }), document.createElement("br"),
+                                       when.toLocaleDateString(loc, { day: "numeric", month: "short", timeZone: "UTC" }));
+        const title = (IT && it.title_it) || it.title;     // "Holiday truck bans: Christmas" reads "Truck ban: Christmas" here
+        ti.className = "ti"; ti.textContent = it.kind === "ban" && title.includes(": ") ? T("Truck ban: ", "Divieto camion: ") + title.slice(title.indexOf(": ") + 2) : title;
+        wh.className = "wh"; wh.textContent = (IT && it.where_it) || it.where || "";
+        tx.append(ti, wh);
+        pc.className = "pc"; pc.textContent = Math.round((it.p || 0) * 100) + "%";
+        bar.className = "bar"; bar.setAttribute("aria-hidden", "true"); fill.style.setProperty("--p", (it.p || 0).toFixed(2)); bar.append(fill);
+        li.append(dt, tx, pc, bar); list.append(li);
       });
-      box.hidden = false;
-      if (window.ZholMap) window.ZholMap(box, { mini: true }).update(d.items, d.today);
-    }).catch(() => {});
-  });
+      c2.hidden = false; watch(c2);
+    }
+    // the cards came in before the agents' card: on a phone, start the row from the first one again
+    const row = document.querySelector(".sv-cards");
+    if (row && !row.dataset.touched) row.scrollLeft = 0;
+  }).catch(() => {}));
+  const row = document.querySelector(".sv-cards");
+  if (row) ["pointerdown", "wheel", "keydown"].forEach(t => row.addEventListener(t, () => { row.dataset.touched = "1"; }, { passive: true }));
 
   // forward to a colleague
   const link = location.origin + location.pathname + "?src=share";

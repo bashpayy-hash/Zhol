@@ -3,7 +3,7 @@
      (cd site && python3 -m http.server 8765) &
      node tests/browser/survey_flow.js [base-url] [screenshot-dir]
    It answers all seven steps on a phone (390x844) and a desktop (1440x900), in Italian and English,
-   checks that each step shows its own mascot pose, that Back and Next work, that the answers and the
+   checks the pitch under the welcome scene (calendar, schedule with chances, agents), that each step shows its own mascot pose, that Back and Next work, that the answers and the
    optional contact go out as two posts linked by the same random id, that nothing scrolls sideways,
    and saves a screenshot of every state. Posts are intercepted: nothing reaches Netlify. */
 const { chromium } = require("playwright");
@@ -37,6 +37,17 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       await shot("intro");
       check(await page.isVisible("#sv-intro") && !(await page.isVisible("#survey")), `${tag}: opens on the welcome scene`);
       check(!(await page.$(".tabs")), `${tag}: no site menu on the standalone survey`);
+      // the pitch under the welcome scene: eight weeks day by day, the schedule with chances, the agents (example)
+      await page.evaluate(() => document.getElementById("sv-pitch").scrollIntoView({ block: "start" }));
+      const pitchOk = await page.waitForSelector("#sv-c2:not([hidden]) .sv-sched li", { timeout: 8000 }).then(() => true, () => false);
+      check(pitchOk, `${tag}: the schedule with chances is drawn from the radar`);
+      check((await page.$$eval("#sv-cal .d", c => c.length)) === 56, `${tag}: the calendar shows eight weeks`);
+      check(/\d+ (of the next|dei prossimi) \d+/.test(await page.textContent("#sv-c1-n")), `${tag}: the count of events on days off`);
+      check((await page.$$eval(".sv-feed li", l => l.length)) === 4 && /Example|Esempio/.test(await page.textContent("#sv-c3")), `${tag}: the agents' exchange is labelled as an example`);
+      check(await page.evaluate(() => document.querySelector(".sv-cards").scrollLeft) === 0, `${tag}: the row of cards starts at the first one`);
+      await page.waitForTimeout(2600);
+      await shot("pitch");
+      await page.evaluate(() => window.scrollTo(0, 0));
       await page.click("#sv-start"); await page.waitForTimeout(600);
       check(!(await page.isVisible("#sv-intro")) && await page.isVisible("#survey"), `${tag}: Start shows the questions`);
       await shot("step1");

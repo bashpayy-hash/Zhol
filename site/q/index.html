@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s8">
+<link rel="stylesheet" href="/assets/zhol.css?v=s9">
 <link rel="alternate" hreflang="en" href="https://zhol.live/q/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/q/it/">
 <!-- links sent to Italian offices before English became the default carry an Italian campaign tag: send them on to /q/it -->
@@ -32,21 +32,49 @@
       <span class="sv-label">Bocconi research for traffic offices</span>
       <h1 class="title sv-title">Seven questions. One minute.</h1>
       <p class="lead">What do bans, queues, closures and strikes cost you, by road, rail or ferry? One tap per answer, anonymous, and we sell nothing.</p>
-      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Start</a><span class="small muted">Anonymous · nothing to buy</span></div>
+      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Start</a><a class="sv-more" href="#sv-pitch">See what we are building</a></div>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
     </div>
   </div>
-  <div class="wrap sv-now-row">
-    <div class="sv-now" id="sv-now" hidden>
-      <p class="sv-now-head"><span class="sv-live-dot" aria-hidden="true"></span><b>On Europe’s roads right now</b></p>
-      <div class="sv-now-grid">
-        <div class="map-frame" role="img" aria-label="Map of Europe with the events zhol expects in the next eight weeks"></div>
-        <ul class="sv-now-list" id="sv-now-list"></ul>
-      </div>
-      <p class="small muted">What zhol watches every day. Next: offices warning each other about what their drivers see.</p>
+  <div class="wrap sv-pitch" id="sv-pitch">
+    <div class="sv-pitch-head">
+      <span class="sv-label">What zhol is building</span>
+      <h2 class="sv-pitch-title">Trouble on the road comes when nobody is at the desk.</h2>
     </div>
+    <div class="sv-cards">
+      <article class="sv-card" id="sv-c1" hidden>
+        <h3>The next eight weeks, day by day.</h3>
+        <div class="sv-card-scene">
+          <div class="sv-cal" id="sv-cal" role="img" aria-label="The next eight weeks: weekends and holidays, and the days with an event on the radar"></div>
+          <p class="sv-cal-key" aria-hidden="true"><span><i class="off"></i>Weekend or public holiday</span><span><i class="ev"></i>Event on the radar</span></p>
+        </div>
+        <p class="sv-card-foot"><b id="sv-c1-n"></b> Emails wait for Monday; the road does not.</p>
+      </article>
+      <article class="sv-card" id="sv-c2" hidden>
+        <h3>The schedule, with the chance of each event.</h3>
+        <div class="sv-card-scene">
+          <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Working prototype</span>
+          <ul class="sv-sched" id="sv-sched"></ul>
+        </div>
+        <p class="sv-card-foot">Every day zhol reads the bans, closures and strike notices and gives each one its chance. <a href="/outlook">Open the radar</a></p>
+      </article>
+      <article class="sv-card" id="sv-c3">
+        <h3>Next: an agent for every office.</h3>
+        <div class="sv-card-scene">
+          <span class="sv-proto ex">Example · how it will work</span>
+          <ol class="sv-feed">
+          <li style="--i:0"><span class="meta"><b>Office in Verona</b><span>Sun 22:10</span></span><p>Our driver: the A22 is closed after Bolzano, an accident.</p></li>
+          <li style="--i:1"><span class="meta"><b>zhol network</b><span>22:10</span></span><p>The agents of 14 offices with trucks on the A22 tonight know.</p></li>
+          <li class="you" style="--i:2"><span class="meta"><b>Your agent</b><span>22:11</span></span><p>Two trucks rerouted via Tarvisio. The drivers have the new route.</p></li>
+          <li style="--i:3"><span class="meta"><b>You</b><span>Mon 8:30</span></span><p>You open the day: the plan is already done.</p></li>
+          </ol>
+        </div>
+        <p class="sv-card-foot">Agents pass warnings to each other in seconds, day and night. No waiting for an email, a lunch break or Monday.</p>
+      </article>
+    </div>
+    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Answer the seven questions</a><span class="small muted">Your numbers decide what we build first.</span></div>
   </div>
 </section>
 
@@ -116,7 +144,7 @@
             </div>
           </fieldset>
           <fieldset class="q" data-img="radio"><legend><span class="n">Question 6 of 7</span>If other offices told you about a queue or a closure their drivers see, before your trucks leave, would you share yours too?</legend>
-            <p class="sv-why">zhol can become a network where offices warn each other, anonymously.</p>
+            <p class="sv-why">Each office would have its own agent that passes these warnings to the others in seconds, anonymously.</p>
             <div class="opts tall">
               <label><input type="radio" name="share" value="yes" required><span>Yes, gladly</span></label>
               <label><input type="radio" name="share" value="anon"><span>Yes, if it stays anonymous</span></label>
@@ -183,7 +211,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/map.js?v=a3" defer></script>
-<script src="/assets/survey.js?v=q6" defer></script>
+<script src="/assets/survey.js?v=q7" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

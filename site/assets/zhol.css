@@ -728,24 +728,9 @@ details > summary { min-height: 44px; display: flex; align-items: center; }
 .field select, .field input:not([type=checkbox]):not([type=radio]) { min-height: 44px; }
 
 /* survey intro: what is on the roads right now (assets/survey.js), a reason to start */
-.sv-now { margin-top: 10px; padding: 16px; border: 1px solid var(--card-line); border-radius: var(--r-card); background: var(--card); display: flex; flex-direction: column; gap: 12px; }
-.sv-now-head { margin: 0; display: flex; align-items: center; gap: 8px; font-size: 15px; }
 .sv-live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 0 rgba(162, 49, 30, .45); animation: sv-live 2.4s var(--ease) 3; }
 @keyframes sv-live { 0% { box-shadow: 0 0 0 0 rgba(162, 49, 30, .45); } 100% { box-shadow: 0 0 0 8px rgba(162, 49, 30, 0); } }
-.sv-now-grid { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 14px; align-items: center; }
-.sv-now .map-frame { border-radius: 14px; }
-.sv-now .map-pin { width: 16px; height: 16px; margin: -8px 0 0 -8px; }
-.sv-now .map-pin i { width: 7px !important; height: 7px !important; }
-.sv-now .map-pin.wide i { box-shadow: 0 0 0 1px var(--card), 0 0 0 2.5px rgba(53, 43, 40, .18); }
-.sv-now .map-pin.soon::before { width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; }
-.sv-now-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.sv-now-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 7px 0; font-size: 14px; line-height: 1.35; color: var(--ink-2); }
-.sv-now-list li + li { border-top: 1px solid var(--card-line); }
-.sv-now-list b { color: var(--ink); font-weight: 600; }
-.sv-now-p { font-weight: 650; color: var(--red); font-variant-numeric: tabular-nums; }
-.sv-now > .small { margin: 0; }
 @media (prefers-reduced-motion: reduce) { .sv-live-dot { animation: none; } }
-@media (max-width: 560px) { .sv-now-grid { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; } .sv-now { padding: 14px; } }
 
 /* one question at a time (assets/steps.js): beta sign-up and feedback */
 form.stepped .fields { grid-template-columns: minmax(0, 1fr); }
@@ -933,8 +918,6 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 .sv-full h1.sv-title { color: #fff; }
 .sv-full .lead { color: rgba(255, 255, 255, .88); }
 .sv-full .actions .small.muted { color: rgba(255, 255, 255, .72); }
-.sv-now-row { margin-top: 18px; }
-.sv-now-row .sv-now { max-width: 680px; margin-top: 0; }
 @media (max-width: 760px) {
   .sv-full .sv-intro-grid { align-items: flex-end; min-height: 82vh; border-radius: 22px; padding-block: 24px; }
   .sv-full .sv-scene video { object-position: 24% 40%; }
@@ -945,3 +928,84 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 .sv-full .sv-intro-grid { margin-inline: auto; width: calc(100% - 2 * max(20px, env(safe-area-inset-left, 0px))); max-width: calc(var(--wrap) - 40px); }
 .sv-full .sv-intro-grid { clip-path: inset(0 round 28px); }
 @media (max-width: 760px) { .sv-full .sv-intro-grid { clip-path: inset(0 round 22px); } }
+
+/* survey intro: the pitch in three cards (when trouble comes, the radar's schedule, the agents next).
+   Card container per VISION.md 2.3: heading on two lines, a scene in the middle, two quiet lines below. */
+.sv-more { display: inline-flex; align-items: center; min-height: 44px; color: rgba(255, 255, 255, .86); font-size: 15px; font-weight: 500; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .35); }
+.sv-more:hover { color: #fff; text-decoration-color: #fff; }
+.sv-full .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.sv-pitch { margin-top: 64px; display: flex; flex-direction: column; gap: 24px; }
+.sv-pitch-head { display: flex; flex-direction: column; gap: 8px; max-width: 780px; }
+.sv-pitch-title { font-size: clamp(27px, 3.1vw, 40px); line-height: 1.1; letter-spacing: -0.028em; font-weight: 650; }
+.sv-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.sv-card { background: var(--card); border: 1px solid var(--card-line); border-radius: 28px; padding: 30px 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0;
+  box-shadow: 0 1px 0 rgba(53, 43, 40, .04), 0 18px 34px -28px rgba(53, 43, 40, .35); }
+.sv-card h3 { font-size: 21px; line-height: 1.2; letter-spacing: -0.016em; font-weight: 650; min-height: 2.4em; }
+.sv-card-scene { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 300px; }
+.sv-card-foot { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.sv-card-foot b { display: block; color: var(--ink); }
+.sv-proto { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--sage-ink); background: var(--sage-card); border-radius: var(--r-pill); padding: 5px 12px; }
+.sv-proto .sv-live-dot { background: var(--sage-ink); animation: none; }
+.sv-proto.ex { color: var(--ink-2); background: var(--msg-box); }
+.sv-pitch-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+
+/* 1. eight weeks, day by day */
+.sv-cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.sv-cal .h { font-size: 11px; font-weight: 600; color: var(--muted); text-align: center; padding-bottom: 2px; }
+.sv-cal .d { position: relative; aspect-ratio: 1 / 1; border-radius: 8px; display: grid; place-items: center; background: rgba(53, 43, 40, .045);
+  font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums;
+  transition: opacity var(--dur-in) var(--ease), transform var(--dur-in) var(--ease); transition-delay: calc(var(--r, 0) * 55ms); }
+.sv-cal .d.off { background: #e6dccb; color: var(--ink-2); }
+.sv-cal .d.today { box-shadow: inset 0 0 0 1.5px var(--ink); color: var(--ink); font-weight: 600; }
+.sv-cal .d > span { position: relative; z-index: 1; }
+.sv-cal .d.ev::before { content: ""; position: absolute; inset: 14%; border-radius: 50%; background: var(--red-btn);
+  transition: transform 420ms var(--ease); transition-delay: calc(480ms + var(--r, 0) * 55ms); }
+.sv-cal .d.ev { color: #fff; font-weight: 600; }
+.sv-card:not(.in) .sv-cal .d { opacity: 0; transform: scale(.86); }
+.sv-card:not(.in) .sv-cal .d.ev::before { transform: scale(0); }
+.sv-card:not(.in) .sv-cal .d.ev { color: var(--muted); }
+.sv-cal .d.past { opacity: .35; }
+.sv-cal-key { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; color: var(--muted); }
+.sv-cal-key span { display: inline-flex; align-items: center; gap: 6px; }
+.sv-cal-key i { width: 12px; height: 12px; border-radius: 4px; background: #e6dccb; }
+.sv-cal-key i.ev { border-radius: 50%; background: var(--red-btn); }
+
+/* 2. the schedule with chances */
+.sv-sched { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.sv-sched li { display: grid; grid-template-columns: 52px minmax(0, 1fr) 42px; column-gap: 12px; row-gap: 8px; padding: 12px 0; border-top: 1px solid var(--card-line); align-items: start; }
+.sv-sched li:first-child { border-top: 0; padding-top: 4px; }
+.sv-sched .dt { font-size: 13px; line-height: 1.3; font-weight: 600; color: var(--ink); }
+.sv-sched .ti { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 14px; line-height: 1.35; color: var(--ink); }
+.sv-sched .wh { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12.5px; line-height: 1.4; color: var(--muted); margin-top: 2px; }
+.sv-sched .pc { font-size: 15px; font-weight: 650; color: var(--red); text-align: right; font-variant-numeric: tabular-nums; }
+.sv-sched .bar { grid-column: 2 / 4; height: 4px; border-radius: 2px; background: rgba(53, 43, 40, .08); overflow: hidden; }
+.sv-sched .bar i { display: block; height: 100%; background: var(--red-btn); transform-origin: left center; transform: scaleX(var(--p, 0)); transition: transform 900ms var(--ease); }
+.sv-sched li:nth-child(2) .bar i { transition-delay: 90ms; } .sv-sched li:nth-child(3) .bar i { transition-delay: 180ms; } .sv-sched li:nth-child(4) .bar i { transition-delay: 270ms; }
+.sv-card:not(.in) .sv-sched .bar i { transform: scaleX(0); }
+
+/* 3. the agents: an example exchange, one line after another */
+.sv-feed { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.sv-feed li { padding: 10px 14px 11px; border-radius: var(--r-field); background: var(--paper); border: 1px solid var(--card-line);
+  transition: opacity var(--dur-in) var(--ease), transform var(--dur-in) var(--ease); transition-delay: calc(150ms + var(--i, 0) * 520ms); }
+.sv-feed li.you { background: var(--sage-card); border-color: #c4d2bd; }
+.sv-feed li:nth-child(4) { margin-left: 18%; background: var(--card); }
+.sv-feed .meta { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; line-height: 1.3; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sv-feed .meta b { color: var(--ink); font-weight: 600; }
+.sv-feed li.you .meta b { color: var(--sage-ink); }
+.sv-feed p { margin: 3px 0 0; font-size: 14px; line-height: 1.35; color: var(--ink); }
+.sv-card:not(.in) .sv-feed li { opacity: 0; transform: translateY(10px); }
+
+@media (max-width: 960px) {
+  .sv-pitch { margin-top: 40px; gap: 18px; }
+  /* a row of cards, the next one peeking in from the edge; swiped with a finger */
+  .sv-cards { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(84%, 360px); overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); padding: 4px max(20px, env(safe-area-inset-left, 0px)) 12px; scroll-padding-inline: max(20px, env(safe-area-inset-left, 0px));
+    scrollbar-width: none; overscroll-behavior-x: contain; }
+  .sv-cards::-webkit-scrollbar { display: none; }
+  .sv-card { scroll-snap-align: start; padding: 24px 22px; border-radius: 24px; }
+  .sv-card h3 { font-size: 19px; }
+  .sv-card-scene { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-cal .d, .sv-cal .d.ev::before, .sv-sched .bar i, .sv-feed li { transition: none; }
+}

@@ -327,7 +327,7 @@ def bocconi() -> list[dict]:
         email = re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", to)
         info = table.get(name, {})
         info["why"] = WHY_RU.get(name, info.get("why", ""))
-        link = next(iter(re.findall(r"https://zhol\.live/q/it\?src=prof-[a-z]+", text)), SURVEY)
+        link = next(iter(re.findall(r"https://zhol\.live/q/(?:it/)?\?src=prof-[a-z]+", text)), SURVEY)
         rows.append({"id": "u-" + slug(name), "type": "bocconi", "name": name, "city": "Università Bocconi",
                      "region": info.get("role", ""), "to": email[0] if email else "",
                      "where": "" if email else "Outlook → Кому → наберите фамилию (адресная книга Bocconi)" + (": " + to if "CV" in to else ""),

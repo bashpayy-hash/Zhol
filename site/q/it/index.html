@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s8">
+<link rel="stylesheet" href="/assets/zhol.css?v=s9">
 <link rel="alternate" hreflang="en" href="https://zhol.live/q/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/q/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
@@ -30,21 +30,49 @@
       <span class="sv-label">Ricerca Bocconi per gli uffici traffico</span>
       <h1 class="title sv-title">Sette domande. Un minuto.</h1>
       <p class="lead">Quanto vi costano divieti, code, chiusure e scioperi, su strada, rotaia o traghetto? Si risponde con un tocco, è anonimo e non vendiamo nulla.</p>
-      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Inizia</a><span class="small muted">Anonimo · nessuna vendita</span></div>
+      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Inizia</a><a class="sv-more" href="#sv-pitch">Guardate cosa stiamo costruendo</a></div>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
     </div>
   </div>
-  <div class="wrap sv-now-row">
-    <div class="sv-now" id="sv-now" hidden>
-      <p class="sv-now-head"><span class="sv-live-dot" aria-hidden="true"></span><b>Sulle strade d’Europa adesso</b></p>
-      <div class="sv-now-grid">
-        <div class="map-frame" role="img" aria-label="Mappa d’Europa con gli eventi che zhol prevede nelle prossime otto settimane"></div>
-        <ul class="sv-now-list" id="sv-now-list"></ul>
-      </div>
-      <p class="small muted">Ciò che zhol segue ogni giorno. Poi: uffici che si avvisano tra loro su ciò che vedono i loro autisti.</p>
+  <div class="wrap sv-pitch" id="sv-pitch">
+    <div class="sv-pitch-head">
+      <span class="sv-label">Cosa sta costruendo zhol</span>
+      <h2 class="sv-pitch-title">I problemi sulla strada arrivano quando in ufficio non c’è nessuno.</h2>
     </div>
+    <div class="sv-cards">
+      <article class="sv-card" id="sv-c1" hidden>
+        <h3>Le prossime otto settimane, giorno per giorno.</h3>
+        <div class="sv-card-scene">
+          <div class="sv-cal" id="sv-cal" role="img" aria-label="Le prossime otto settimane: weekend e festivi, e i giorni con un evento sul radar"></div>
+          <p class="sv-cal-key" aria-hidden="true"><span><i class="off"></i>Weekend o festivo</span><span><i class="ev"></i>Evento sul radar</span></p>
+        </div>
+        <p class="sv-card-foot"><b id="sv-c1-n"></b> Le email aspettano il lunedì, la strada no.</p>
+      </article>
+      <article class="sv-card" id="sv-c2" hidden>
+        <h3>Il calendario, con la probabilità di ogni evento.</h3>
+        <div class="sv-card-scene">
+          <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Prototipo funzionante</span>
+          <ul class="sv-sched" id="sv-sched"></ul>
+        </div>
+        <p class="sv-card-foot">Ogni giorno zhol legge divieti, chiusure e avvisi di sciopero e dà a ciascuno la sua probabilità. <a href="/it/outlook">Aprite il radar</a></p>
+      </article>
+      <article class="sv-card" id="sv-c3">
+        <h3>Poi: un agente per ogni ufficio.</h3>
+        <div class="sv-card-scene">
+          <span class="sv-proto ex">Esempio · come funzionerà</span>
+          <ol class="sv-feed">
+          <li style="--i:0"><span class="meta"><b>Ufficio a Verona</b><span>Dom 22:10</span></span><p>Il nostro autista: A22 chiusa dopo Bolzano, un incidente.</p></li>
+          <li style="--i:1"><span class="meta"><b>Rete zhol</b><span>22:10</span></span><p>Lo sanno gli agenti di 14 uffici con camion sull’A22 stanotte.</p></li>
+          <li class="you" style="--i:2"><span class="meta"><b>Il vostro agente</b><span>22:11</span></span><p>Due camion deviati per Tarvisio. Gli autisti hanno il nuovo percorso.</p></li>
+          <li style="--i:3"><span class="meta"><b>Voi</b><span>Lun 8:30</span></span><p>Aprite la giornata: il piano è già pronto.</p></li>
+          </ol>
+        </div>
+        <p class="sv-card-foot">Gli agenti si passano gli avvisi in pochi secondi, giorno e notte. Senza aspettare un’email, la pausa pranzo o il lunedì.</p>
+      </article>
+    </div>
+    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Rispondete alle sette domande</a><span class="small muted">I vostri numeri decidono cosa costruiamo prima.</span></div>
   </div>
 </section>
 
@@ -114,7 +142,7 @@
             </div>
           </fieldset>
           <fieldset class="q" data-img="radio"><legend><span class="n">Domanda 6 di 7</span>Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?</legend>
-            <p class="sv-why">zhol può diventare una rete in cui gli uffici si avvisano tra loro, in forma anonima.</p>
+            <p class="sv-why">Ogni ufficio avrebbe un suo agente che passa questi avvisi agli altri in pochi secondi, in forma anonima.</p>
             <div class="opts tall">
               <label><input type="radio" name="share" value="yes" required><span>Sì, volentieri</span></label>
               <label><input type="radio" name="share" value="anon"><span>Sì, se resta anonimo</span></label>
@@ -181,7 +209,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/map.js?v=a3" defer></script>
-<script src="/assets/survey.js?v=q6" defer></script>
+<script src="/assets/survey.js?v=q7" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>
