@@ -2,7 +2,7 @@
 
 Answers from 2026-11-09T17:00 UTC on (the outreach began then; earlier rows were the team's own tests).
 
-1 answers; 0 in the beachhead (6–100 vehicles, shipments abroad every week). Thresholds are the ones fixed before collection in docs/10-feedback-round-2.md, applied to the beachhead only. Self-reported: the interviews and pilots confirm or correct these figures.
+2 answers; 0 in the beachhead (6–100 vehicles, shipments abroad every week). Thresholds are the ones fixed before collection in docs/10-feedback-round-2.md, applied to the beachhead only. Self-reported: the interviews and pilots confirm or correct these figures.
 
 | Measure | Result | Answers | Threshold | Status |
 |---|---|---|---|---|
@@ -55,7 +55,7 @@ Answers from 2026-11-09T17:00 UTC on (the outreach began then; earlier rows were
 | Answer | Count |
 |---|---|
 | 1–5 | 1 |
-| 6–20 | 0 |
+| 6–20 | 1 |
 | 21–50 | 0 |
 | 51–100 | 0 |
 | over 100 | 0 |
@@ -64,12 +64,12 @@ Answers from 2026-11-09T17:00 UTC on (the outreach began then; earlier rows were
 
 | Answer | Count |
 |---|---|
-| never | 1 |
+| never | 2 |
 | 1–5 | 0 |
 | 6–20 | 0 |
 | over 20 | 0 |
 
-## People who know the field (5 answers, from experience)
+## People who know the field (6 answers, from experience)
 
 Teachers, researchers, consultants and former staff answering about offices in general. Reported apart: they do not count towards the thresholds above.
 
@@ -78,7 +78,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | works around it (forwarding, association, consultancy) | 2 |
-| teaches or researches logistics | 3 |
+| teaches or researches logistics | 4 |
 | used to work in logistics | 0 |
 
 ### The part of transport they know best
@@ -89,7 +89,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | rail and intermodal | 1 |
 | ferries and ports | 1 |
 | shippers | 2 |
-| several | 1 |
+| several | 2 |
 
 ### Time an office spends checking each day
 
@@ -97,7 +97,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 |---|---|
 | under 10 min | 0 |
 | 10–20 min | 2 |
-| 20–40 min | 0 |
+| 20–40 min | 1 |
 | over 40 min | 2 |
 | don’t know | 1 |
 
@@ -106,7 +106,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | under 2 | 0 |
-| 2–5 | 2 |
+| 2–5 | 3 |
 | 5–10 | 1 |
 | over 10 | 2 |
 | don’t know | 0 |
@@ -118,7 +118,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | under €100 | 0 |
 | €100–300 | 1 |
 | €300–1,000 | 1 |
-| over €1,000 | 1 |
+| over €1,000 | 2 |
 | don’t know | 2 |
 
 ### Would offices share what their drivers see, if anonymous
@@ -126,7 +126,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | most would | 2 |
-| some would | 1 |
+| some would | 2 |
 | few would | 2 |
 | don’t know | 0 |
 
@@ -137,7 +137,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | trusting the information | 1 |
 | the price | 0 |
 | habits: phone, email, WhatsApp | 2 |
-| fitting it into their software | 2 |
+| fitting it into their software | 3 |
 | sharing data near competitors | 0 |
 
 ### A fair price per vehicle a month, for an office
@@ -145,7 +145,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | nothing | 0 |
-| up to €5 | 0 |
+| up to €5 | 1 |
 | €5–10 | 2 |
 | €10–20 | 1 |
 | over €20 | 0 |
@@ -153,19 +153,20 @@ Teachers, researchers, consultants and former staff answering about offices in g
 
 ## What they asked for
 
-- the results: 2
+- the results: 3
 - a place in the shared network: 1
-- contacts left: 3 (in the follow-up export only)
+- contacts left: 4 (in the follow-up export only)
 
 ## Where the answers came from
 
 - prof-degiovanni: 2
+- direct: 2
 - prof-grando: 1
 - prof-baccelli: 1
 - prof-zamboni: 1
-- direct: 1
+- prof-senn: 1
 
 ## Language
 
-- it: 4
-- en: 2
+- it: 5
+- en: 3
