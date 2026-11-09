@@ -192,8 +192,14 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   // keeps it, and without the stars as plain text
   const plain = t => t.replace(/\*\*(.+?)\*\*/g, "$1");
   const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  const html = t => '<div style="font-family:Calibri,Arial,sans-serif;font-size:11pt">' + t.split(/\n{2,}/).map(par =>
-    "<p>" + esc(par).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1">$1</a>').replace(/\n/g, "<br>") + "</p>").join("") + "</div>";
+  // each part carries its language, so Outlook checks English as English and Italian as Italian, not as Russian
+  const paras = t => t.split(/\n{2,}/).map(par =>
+    "<p>" + esc(par).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1">$1</a>').replace(/\n/g, "<br>") + "</p>").join("");
+  const part = (lang, mso, t) => '<div lang="' + lang + '" style="font-family:Calibri,Arial,sans-serif;font-size:11pt;mso-ansi-language:' + mso + '">' + paras(t) + "</div>";
+  const html = t => {
+    const k = t.indexOf("— Versione italiana —");
+    return k > 0 ? part("en-GB", "EN-GB", t.slice(0, k)) + part("it-IT", "IT", t.slice(k)) : part("it-IT", "IT", t);
+  };
   const rich = (parent, t) => t.split(/(\*\*.+?\*\*)/).forEach(part => {
     if (/^\*\*.+\*\*$/.test(part)) parent.append(el("b", null, part.slice(2, -2))); else if (part) parent.append(document.createTextNode(part));
   });

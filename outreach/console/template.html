@@ -1,0 +1,384 @@
+<title>zhol · рассылка опроса</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* layout: a workbench — the list of people to write to on the left, the one you picked on the right (stacked on a phone) */
+:root {
+  --paper: #f6f3ea; --card: #fbf9f3; --line: #e2dbcc; --rule: #d8d0c1;
+  --ink: #352b28; --ink-2: #554b45; --muted: #675e57;
+  --red: #a2311e; --red-soft: #f4e2da; --sage: #e3ebdd; --sage-ink: #2f5f45;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 20px; --ease: cubic-bezier(.22, 1, .36, 1);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #1f1a17; --card: #2a231f; --line: #3d342e; --rule: #3d342e;
+  --ink: #f3ede4; --ink-2: #d6cdc2; --muted: #a99e93;
+  --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #1f1a17; --card: #2a231f; --line: #3d342e; --rule: #3d342e;
+  --ink: #f3ede4; --ink-2: #d6cdc2; --muted: #a99e93;
+  --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0; color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { color: var(--ink); margin: 0; text-wrap: balance; }
+a { color: var(--red); }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+/* progress, always visible */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; align-items: center; gap: 16px; padding-block: 12px; flex-wrap: wrap; }
+.count { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.track { flex: 1; min-width: 120px; height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; display: flex; }
+.track i { display: block; height: 100%; transition: width .4s var(--ease); }
+.track .r { background: var(--sage-ink); } .track .s { background: var(--red); }
+.sync { font-size: 13px; color: var(--muted); }
+
+/* intro */
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 24px 40px; align-items: end; padding-block: 28px 20px; }
+.intro .kicker { font-size: 14px; font-weight: 600; color: var(--red); }
+.intro h1 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -0.025em; margin-top: 6px; }
+.intro p { margin: 10px 0 0; max-width: 60ch; }
+.how { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--muted); }
+.how b { color: var(--ink); font-weight: 600; }
+.sign { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+.sign input { font: inherit; font-size: 15px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 11px 14px; min-height: 44px; }
+
+/* tabs and filters */
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding-block: 6px 16px; border-bottom: 1px solid var(--rule); }
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.tabs button, .chips button { border: 1px solid transparent; background: none; color: var(--muted); border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer; transition: background-color .16s, color .16s; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.tabs button .n { font-size: 12px; opacity: .7; margin-left: 4px; font-variant-numeric: tabular-nums; }
+.chips { display: flex; gap: 4px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.chips button { white-space: nowrap; }
+.chips button { border-color: var(--line); font-size: 13px; padding: 6px 12px; min-height: 36px; }
+.chips button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
+.tools input[type=search] { margin-left: auto; font: inherit; font-size: 14px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; min-height: 40px; width: min(280px, 100%); }
+
+/* the workbench */
+.bench { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 24px; padding-block: 18px 48px; align-items: start; }
+.list { display: flex; flex-direction: column; gap: 6px; max-height: calc(100vh - 140px); overflow-y: auto; padding-right: 4px; position: sticky; top: 70px; }
+.row { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; padding: 12px 14px; border: 1px solid transparent; border-radius: 16px; background: none; color: var(--ink-2); cursor: pointer; transition: background-color .16s, border-color .16s; }
+.row:hover { background: var(--card); }
+.row[aria-current="true"] { background: var(--card); border-color: var(--line); }
+.row .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--rule); }
+.row.sent .dot { background: var(--red); border-color: var(--red); }
+.row.replied .dot { background: var(--sage-ink); border-color: var(--sage-ink); }
+.row.skip { opacity: .5; }
+.row b { display: block; color: var(--ink); font-weight: 600; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row small { display: block; font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .fit { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.empty { padding: 24px 14px; color: var(--muted); }
+
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 26px 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.detail .head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.detail h2 { font-size: 24px; letter-spacing: -0.02em; line-height: 1.2; }
+.detail .meta { font-size: 14px; color: var(--muted); margin-top: 2px; }
+.kind { font-size: 13px; font-weight: 600; color: var(--sage-ink); background: var(--sage); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+.why { background: var(--red-soft); border-radius: 16px; padding: 14px 16px; font-size: 14.5px; color: var(--ink); }
+.why span { display: block; font-size: 13px; font-weight: 600; color: var(--red); margin-bottom: 4px; }
+.why a { font-size: 13px; }
+.contacts { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; }
+.contacts code { font: 14px/1.4 var(--font); background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 4px 10px; color: var(--ink); user-select: all; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field .lab { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.subject { color: var(--ink); font-weight: 500; }
+.msg { margin: 0; white-space: pre-wrap; font: 15px/1.6 var(--font); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; max-height: 420px; overflow-y: auto; }
+.msg mark { background: var(--red-soft); color: var(--ink); border-radius: 4px; padding: 0 2px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 1.5px solid var(--ink); background: none; color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color .16s, color .16s, transform .16s var(--ease); }
+.btn:active { transform: scale(.98); }
+.btn.main { background: var(--red); border-color: var(--red); color: #fff; }
+.btn.small { min-height: 34px; padding: 6px 14px; font-size: 13px; border-width: 1px; }
+.btn.on { background: var(--ink); color: var(--paper); }
+.btn.ok.on { background: var(--sage-ink); border-color: var(--sage-ink); color: var(--paper); }
+.acts { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 6px; border-top: 1px solid var(--line); }
+.acts .status { font-size: 13px; color: var(--muted); margin-left: auto; }
+.placeholder { color: var(--muted); padding: 40px 20px; text-align: center; }
+textarea.fallback { width: 100%; min-height: 120px; font: 13px/1.4 var(--font); }
+
+/* posts */
+.posts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding-block: 18px 48px; }
+.post { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+.post h3 { font-size: 16px; }
+.post .msg { max-height: 260px; }
+
+footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
+
+@media (max-width: 900px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .bench { grid-template-columns: minmax(0, 1fr); }
+  .list { position: static; max-height: none; overflow: visible; }
+  .bench > .detail.desk { display: none; }
+  .row + .detail { margin-block: 4px 10px; }
+  .posts { grid-template-columns: minmax(0, 1fr); }
+  .tools input[type=search] { margin-left: 0; width: 100%; }
+  .detail { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="bar"><div class="wrap">
+  <span class="count" id="count">0 из 0 отправлено</span>
+  <div class="track" aria-hidden="true"><i class="r" id="tr-r"></i><i class="s" id="tr-s"></i></div>
+  <span class="sync" id="sync">Подключаемся к общему статусу…</span>
+</div></div>
+
+<div class="wrap">
+  <header class="intro">
+    <div>
+      <span class="kicker">zhol · опрос офисов перевозок</span>
+      <h1>Кому написать, что написать и кто уже отправил</h1>
+      <p>Каждое письмо сначала просит пройти опрос, потом говорит, кто мы (проект в логистике, 100 из ~500 в TEF, грант 2 000 €) и что строим: платформу, которая объединяет перевозчиков, следит за дорогами ночью, берёт на себя часть мониторинга и решений и даёт офисам обмениваться информацией. Просим только ответы: собираем исходные данные. Преподавателям Bocconi — на английском и итальянском, с просьбой переслать знакомым логистам.</p>
+      <ul class="how"><li><b>1</b> Выберите адресата</li><li><b>2</b> Скопируйте тему и письмо</li><li><b>3</b> Отметьте «Отправлено»</li><li>Не больше 40 писем в день с одного ящика</li></ul>
+    </div>
+    <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
+      <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
+    </label>
+  </header>
+
+  <div class="tools">
+    <div class="tabs" role="group" aria-label="Кому" id="f-type">
+      <button type="button" data-v="bocconi" aria-pressed="true">Bocconi<span class="n" id="n-bocconi"></span></button>
+      <button type="button" data-v="company" aria-pressed="false">Компании<span class="n" id="n-company"></span></button>
+      <button type="button" data-v="association" aria-pressed="false">Ассоциации<span class="n" id="n-association"></span></button>
+      <button type="button" data-v="press" aria-pressed="false">Издания<span class="n" id="n-press"></span></button>
+      <button type="button" data-v="group" aria-pressed="false">Группы<span class="n" id="n-group"></span></button>
+      <button type="button" data-v="posts" aria-pressed="false">Посты</button>
+    </div>
+    <div class="chips" role="group" aria-label="Статус" id="f-state">
+      <button type="button" data-v="todo" aria-pressed="true">Не отправлено</button><button type="button" data-v="sent" aria-pressed="false">Отправлено</button><button type="button" data-v="replied" aria-pressed="false">Ответили</button><button type="button" data-v="any" aria-pressed="false">Все</button>
+    </div>
+    <input type="search" id="q" placeholder="Название, город или регион" aria-label="Поиск">
+  </div>
+
+  <div class="bench" id="bench">
+    <div class="list" id="list"></div>
+    <article class="detail desk" id="detail"><p class="placeholder">Выберите адресата слева.</p></article>
+  </div>
+  <div class="posts" id="posts" hidden></div>
+
+  <footer>Ссылки на опрос помечены только каналом (co-form, assoc-…, press-…), а не компанией: ответы остаются анонимными. Факты в письмах взяты из открытых источников, ссылка на источник — в блоке «Почему им». Список собирается командой <code>python scripts/survey_targets.py</code>.</footer>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script type="application/json" id="posts-data">__POSTS__</script>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
+  const ROWS = JSON.parse($("data").textContent);
+  const POSTS = JSON.parse($("posts-data").textContent);
+  const KIND = { bocconi: "преподаватель Bocconi", association: "ассоциация", press: "издание", group: "группа", company: "компания" };
+  ROWS.sort((a, b) => (Number(b.fit || 0) - Number(a.fit || 0)) || a.name.localeCompare(b.name));
+  const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                  set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
+  const narrow = matchMedia("(max-width: 900px)");
+
+  let status = {};            // id -> {state, by, at}
+  let db = null, user = null, shared = false, writable = true;
+  let fType = store.get("zhol-tab") || "bocconi", fState = "todo", q = "", pick = null;
+
+  const me = $("me-name");
+  me.value = store.get("zhol-sign") || "";
+  me.addEventListener("input", () => { store.set("zhol-sign", me.value.trim()); render(); });
+  const sign = txt => txt.replace("[Nome]", me.value.trim() || "[Nome]");
+
+  // letters mark two or three anchors in bold with **…**: shown bold here, copied as real bold (text/html) so Outlook
+  // keeps it, and without the stars as plain text
+  const plain = t => t.replace(/\*\*(.+?)\*\*/g, "$1");
+  const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // each part carries its language, so Outlook checks English as English and Italian as Italian, not as Russian
+  const paras = t => t.split(/\n{2,}/).map(par =>
+    "<p>" + esc(par).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1">$1</a>').replace(/\n/g, "<br>") + "</p>").join("");
+  const part = (lang, mso, t) => '<div lang="' + lang + '" style="font-family:Calibri,Arial,sans-serif;font-size:11pt;mso-ansi-language:' + mso + '">' + paras(t) + "</div>";
+  const html = t => {
+    const k = t.indexOf("— Versione italiana —");
+    return k > 0 ? part("en-GB", "EN-GB", t.slice(0, k)) + part("it-IT", "IT", t.slice(k)) : part("it-IT", "IT", t);
+  };
+  const rich = (parent, t) => t.split(/(\*\*.+?\*\*)/).forEach(part => {
+    if (/^\*\*.+\*\*$/.test(part)) parent.append(el("b", null, part.slice(2, -2))); else if (part) parent.append(document.createTextNode(part));
+  });
+  function copy(text, btn, holder) {
+    const label = btn.textContent;
+    const done = () => { btn.textContent = "Скопировано"; setTimeout(() => { btn.textContent = label; }, 1400); };
+    const fallback = () => {
+      let ta = holder.querySelector("textarea.fallback");
+      if (!ta) { ta = el("textarea", "fallback"); ta.readOnly = true; holder.append(ta); }
+      ta.value = text; ta.focus(); ta.select();
+      btn.textContent = "Выделено: нажмите Ctrl+C";
+    };
+    const source = text, formatted = /\*\*.+?\*\*/.test(source);
+    text = plain(source);
+    try {
+      if (formatted && window.ClipboardItem && navigator.clipboard.write) {
+        navigator.clipboard.write([new ClipboardItem({ "text/plain": new Blob([text], { type: "text/plain" }), "text/html": new Blob([html(source)], { type: "text/html" }) })])
+          .then(done, () => navigator.clipboard.writeText(text).then(done, fallback));
+      } else navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  }
+
+  // ---- posts
+  POSTS.forEach(p => {
+    const box = el("div", "post");
+    const pre = el("pre", "msg", p.text);
+    const b = el("button", "btn main", "Скопировать"); b.type = "button";
+    b.addEventListener("click", () => copy(sign(p.text), b, box));
+    box.append(el("h3", null, p.title), pre, b);
+    $("posts").append(box);
+  });
+
+  // ---- filters
+  function group(id, set) {
+    $(id).querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      $(id).querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      set(b.dataset.v); pick = null; render();
+    }));
+    $(id).querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === (id === "f-type" ? fType : fState))));
+  }
+  group("f-type", v => { fType = v; store.set("zhol-tab", v); });
+  group("f-state", v => { fState = v; });
+  $("q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); render(); });
+  narrow.addEventListener("change", () => render());
+
+  const stateOf = id => (status[id] && status[id].state) || "";
+  function visible(r) {
+    if (r.type !== fType) return false;
+    const s = stateOf(r.id);
+    if (fState === "todo" && s) return false;
+    if (fState === "sent" && s !== "sent") return false;
+    if (fState === "replied" && s !== "replied") return false;
+    return !q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q);
+  }
+
+  async function setState(r, state) {
+    const prev = status[r.id];
+    if (prev && prev.state === state) state = "";          // tapping the active state clears it
+    const id = user ? await user.id() : null;
+    const next = state ? { state, by: id, at: new Date().toISOString() } : null;
+    if (next) status[r.id] = next; else delete status[r.id];
+    render();
+    if (shared && writable) {
+      const ref = db.collection("status").doc(r.id);
+      try { next ? await ref.set(next) : await ref.delete(); }
+      catch (e) {
+        if (e && e.code === "invalid_argument") { writable = false; $("sync").textContent = "Только просмотр: попросите владельца дать вам доступ Contributor или Editor"; }
+        if (prev) status[r.id] = prev; else delete status[r.id];
+        render();
+      }
+    } else {
+      store.set("zhol-status", JSON.stringify(status));
+    }
+  }
+
+  const fmt = iso => { try { return new Date(iso).toLocaleString("ru-RU", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
+
+  // the letter, with the part written for this company highlighted
+  function letter(r) {
+    const text = sign(r.message), pre = el("pre", "msg");
+    const i = r.why ? text.indexOf(r.why) : -1;
+    if (i < 0) { rich(pre, text); return pre; }
+    rich(pre, text.slice(0, i)); pre.append(el("mark", null, r.why)); rich(pre, text.slice(i + r.why.length));
+    return pre;
+  }
+
+  function detail(r, ps) {
+    const box = el("article", "detail");
+    const head = el("div", "head"), t = el("div");
+    t.append(el("h2", null, r.name), el("div", "meta", [r.city, r.region].filter(Boolean).filter((x, k, a) => a.indexOf(x) === k).join(" · ")));
+    head.append(t, el("span", "kind", KIND[r.type] || r.type));
+    box.append(head);
+    if (r.why) {
+      const w = el("div", "why"); w.append(el("span", null, r.type === "bocconi" ? "Почему ему или ей" : "Почему им (абзац в письме выделен)"), document.createTextNode(r.why + " "));
+      if (r.why_src) { const a = el("a", null, "Источник"); a.href = r.why_src; a.target = "_blank"; a.rel = "noopener"; w.append(a); }
+      box.append(w);
+    }
+    const c = el("div", "contacts");
+    if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "btn small", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b); }
+    if (/^https?:\/\//.test(r.where)) { const a = el("a", null, r.type === "company" ? "Сайт или форма контактов" : "Открыть сайт"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a); }
+    else if (r.where) c.append(el("span", null, r.where));
+    const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
+    box.append(c);
+    const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : "Тема письма"));
+    const sb = el("button", "btn small", "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
+    if (r.type !== "group") sl.append(sb);
+    sf.append(sl, el("div", "subject", r.subject)); box.append(sf);
+    const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, "Письмо"));
+    const mb = el("button", "btn main", "Скопировать письмо"); mb.type = "button"; mb.addEventListener("click", () => copy(sign(r.message), mb, box));
+    ml.append(mb); mf.append(ml, letter(r)); box.append(mf);
+    const acts = el("div", "acts"), st = stateOf(r.id), s = status[r.id];
+    [["sent", "Отправлено", ""], ["replied", "Ответили", " ok"], ["skip", "Не писать", ""]].forEach(([k, label, cls]) => {
+      const b = el("button", "btn small" + cls + (st === k ? " on" : ""), label); b.type = "button";
+      b.setAttribute("aria-pressed", String(st === k));
+      b.addEventListener("click", () => setState(r, k));
+      acts.append(b);
+    });
+    if (s) {
+      const who = s.by && ps[s.by] ? (ps[s.by].isMe ? "вы" : (ps[s.by].name || "коллега")) : "";
+      acts.append(el("span", "status", [who, fmt(s.at)].filter(Boolean).join(" · ")));
+    }
+    box.append(acts);
+    return box;
+  }
+
+  let seq = 0;
+  async function render() {
+    const mine = ++seq;
+    const ids = [...new Set(Object.values(status).map(s => s.by).filter(Boolean))];
+    const ps = (user && ids.length) ? await user.profiles(ids) : {};
+    if (mine !== seq) return;               // a newer render has started
+    const sent = ROWS.filter(r => ["sent", "replied"].includes(stateOf(r.id))).length;
+    const replied = ROWS.filter(r => stateOf(r.id) === "replied").length;
+    $("count").textContent = sent + " из " + ROWS.length + " отправлено · ответили " + replied;
+    $("tr-r").style.width = (replied / ROWS.length * 100) + "%";
+    $("tr-s").style.width = ((sent - replied) / ROWS.length * 100) + "%";
+    ["bocconi", "company", "association", "press", "group"].forEach(k => { $("n-" + k).textContent = ROWS.filter(r => r.type === k && !stateOf(r.id)).length; });
+
+    const isPosts = fType === "posts";
+    $("posts").hidden = !isPosts; $("bench").hidden = isPosts; $("f-state").hidden = isPosts; $("q").hidden = isPosts;
+    if (isPosts) return;
+
+    const list = $("list"); list.textContent = "";
+    const rows = ROWS.filter(visible);
+    if (pick && !rows.some(r => r.id === pick)) pick = null;
+    if (!pick && rows.length && !narrow.matches) pick = rows[0].id;
+    if (!rows.length) list.append(el("div", "empty", fState === "todo" ? "Здесь всё отправлено. Выберите «Все», чтобы увидеть статусы." : "Ничего не найдено."));
+    rows.forEach(r => {
+      const b = el("button", "row " + stateOf(r.id)); b.type = "button";
+      b.setAttribute("aria-current", String(r.id === pick));
+      const t = el("span"); t.append(el("b", null, r.name), el("small", null, [r.city, r.region].filter(Boolean).filter((x, k, a) => a.indexOf(x) === k).join(" · ") || KIND[r.type]));
+      b.append(el("span", "dot"), t, el("span", "fit", r.fit && r.type === "company" ? "★ " + r.fit : ""));
+      b.addEventListener("click", () => { pick = pick === r.id && narrow.matches ? null : r.id; render(); });
+      list.append(b);
+      if (narrow.matches && r.id === pick) list.append(detail(r, ps));
+    });
+    const d = $("detail"); d.textContent = "";
+    const cur = rows.find(r => r.id === pick);
+    if (cur && !narrow.matches) d.replaceChildren(...detail(cur, ps).childNodes);
+    else d.append(el("p", "placeholder", "Выберите адресата слева."));
+  }
+
+  // local status first, so the page works before (or without) the shared store
+  try { status = JSON.parse(store.get("zhol-status") || "{}") || {}; } catch (e) { status = {}; }
+  render();
+
+  (async () => {
+    if (!window.claude || !window.claude.use) { $("sync").textContent = "Статус хранится только в этом браузере"; return; }
+    [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db) { $("sync").textContent = "Статус хранится только в этом браузере"; return; }
+    if (user) { const can = await user.can("data.write"); if (can === false) { writable = false; } }
+    const timer = setTimeout(() => { $("sync").textContent = "Общий статус пока не отвечает: показываем то, что есть"; }, 10000);
+    db.collection("status").onSnapshot(snap => {
+      clearTimeout(timer);
+      shared = true; status = {};
+      snap.docs.forEach(d => { if (d.exists) status[d.id] = d.data(); });
+      $("sync").textContent = writable ? "Общий статус для всей команды" : "Только просмотр: попросите доступ Contributor или Editor";
+      render();
+    }, () => { clearTimeout(timer); $("sync").textContent = "Общий статус недоступен: отметки сохраняются только в этом браузере"; shared = false; });
+  })();
+})();
+</script>
