@@ -45,7 +45,7 @@ Links used in the letters:
 ## 1 · Oliviero Baccelli
 
 **To:** oliviero.baccelli@unibocconi.it
-**Subject:** Dal «franco destino» a zhol, progetto Bocconi (TEF Ignition)
+**Subject:** From “franco destino” to zhol, a Bocconi project (TEF Ignition)
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -88,7 +88,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 2 · Alberto Grando
 
 **To:** alberto.grando@sdabocconi.it
-**Subject:** Survey logistica (1 minuto), progetto Bocconi · TEF Ignition
+**Subject:** Logistics survey (1 minute), Bocconi project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -131,7 +131,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 3 · Pietro De Giovanni
 
 **To:** (Bocconi address book: "De Giovanni")
-**Subject:** Costo dei disagi su strada, survey di 1 minuto
+**Subject:** The cost of road disruptions, a 1-minute survey
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -174,7 +174,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 4 · Vittoria Veronesi
 
 **To:** (Bocconi address book: "Veronesi")
-**Subject:** Distribuzione e disagi su strada, survey di 1 minuto
+**Subject:** Distribution and road disruptions, a 1-minute survey
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -217,7 +217,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 5 · Francesco Gallmann
 
 **To:** (Bocconi address book: "Gallmann")
-**Subject:** Survey logistica (1 minuto), progetto Bocconi · TEF Ignition
+**Subject:** Logistics survey (1 minute), Bocconi project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -260,7 +260,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 6 · Silvia Zamboni
 
 **To:** (the @sdabocconi.it address in her CV)
-**Subject:** Collaborazione tra uffici traffico, survey di 1 minuto (Bocconi)
+**Subject:** Collaboration between traffic offices, a 1-minute survey (Bocconi)
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -303,7 +303,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 7 · Iolanda D'Amato
 
 **To:** (Bocconi address book: "D'Amato")
-**Subject:** Come si muovono le merci, survey di 1 minuto
+**Subject:** How goods really move, a 1-minute survey
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -346,7 +346,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 8 · Marco Percoco
 
 **To:** (Bocconi address book: "Percoco")
-**Subject:** Quanto costano i disagi su strada, progetto Bocconi
+**Subject:** What road disruptions really cost, a Bocconi project
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -389,7 +389,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 9 · Lanfranco Senn
 
 **To:** (Bocconi address book: "Senn")
-**Subject:** Ai diplomati del suo master, survey di 1 minuto (Bocconi)
+**Subject:** For your master's graduates, a 1-minute survey (Bocconi)
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
