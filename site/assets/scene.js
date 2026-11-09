@@ -4,7 +4,7 @@
    - plays only while on screen, pauses when scrolled away;
    - with reduced motion or Save-Data the poster stays and no video is downloaded. */
 (function () {
-  const V = "?v=1";   // bump when the loops change: /assets is cached for a day
+  const V = "?v=2";   // bump when the loops change: /assets is cached for a day
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const saveData = navigator.connection && navigator.connection.saveData;
   const videos = [...document.querySelectorAll("video[data-scene]")];
