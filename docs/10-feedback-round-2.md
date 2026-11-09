@@ -6,7 +6,7 @@
 
 **Three sources, one set of thresholds.** Interviews give depth (8, script v2). A seven-question, one-minute survey gives breadth
 (target 30 answers from the beachhead, `/q`, distribution in `outreach/10-survey.md`): it measures four of the
-thresholds below (minutes a day, cost of the last incident, a fair price, interest in the evening alert), and
+thresholds below (minutes a day, re-plans approximated from shipments changed last month, cost of the last incident, a fair price), and
 `scripts/survey_summary.py` writes them to `docs/14-survey-results.md`. Re-plans, decision time, who signs and the package
 stay with the interviews. Pilots give verified numbers. A threshold counts as met only when the interviews do not
 contradict the survey; survey answers are self-reported and marked as such.

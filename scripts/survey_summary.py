@@ -27,7 +27,8 @@ TRIPS = [("0", "never"), ("1-5", "1–5"), ("6-20", "6–20"), ("20+", "over 20"
 MINUTES = [("<10", "under 10 min"), ("10-20", "10–20 min"), ("20-40", "20–40 min"), ("40+", "over 40 min")]
 COST = [("<100", "under €100"), ("100-300", "€100–300"), ("300-1000", "€300–1,000"), ("1000+", "over €1,000")]
 PRICE = [("0", "nothing"), ("<5", "up to €5"), ("5-10", "€5–10"), ("10-20", "€10–20"), ("20+", "over €20")]
-USE = [("yes", "yes, a lot"), ("maybe", "maybe"), ("no", "no")]
+USE = [("yes", "yes, a lot"), ("maybe", "maybe"), ("no", "no")]        # dropped from the survey on 9 Nov; kept to read early answers
+CHANGES = [("0", "never"), ("1-2", "1–2"), ("3-5", "3–5"), ("6-10", "6–10"), ("10+", "over 10")]
 SHARE = [("yes", "yes, gladly"), ("anon", "yes, if anonymous"), ("receive", "only receive"), ("no", "no")]
 FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis", "interview": "a 20-minute chat",
             "network": "a place in the shared network"}
@@ -41,10 +42,10 @@ GOOGLE_FORM = {
         "Mai": "0", "1–5 volte": "1-5", "6–20 volte": "6-20", "Più di 20 volte": "20+"}),
     "Quanto tempo passate ogni giorno a controllare divieti, code e scioperi?": ("minutes", {
         "Meno di 10 minuti": "<10", "10–20 minuti": "10-20", "20–40 minuti": "20-40", "Più di 40 minuti": "40+"}),
+    "Nell’ultimo mese, quante volte un divieto, una coda, una chiusura o uno sciopero vi ha costretto a cambiare una spedizione (orario, percorso o data)?": ("changes", {
+        "Mai": "0", "1–2 volte": "1-2", "3–5 volte": "3-5", "6–10 volte": "6-10", "Più di 10 volte": "10+"}),
     "L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?": ("last_cost", {
         "Meno di 100 €": "<100", "100–300 €": "100-300", "300–1.000 €": "300-1000", "Più di 1.000 €": "1000+", "Non lo so": "unknown"}),
-    "Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?": ("would_use", {
-        "Sì, molto": "yes", "Forse": "maybe", "No": "no"}),
     "Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?": ("share", {
         "Sì, volentieri": "yes", "Sì, se resta anonimo": "anon", "Vorrei solo riceverle": "receive", "No": "no"}),
     "Quale prezzo vi sembra giusto, al mese per ogni mezzo?": ("price", {
@@ -137,8 +138,13 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
     i, n = median_bucket([r.get("price", "") for r in core], PRICE)
     check("Fair price per vehicle a month, median", PRICE[i][1] if i is not None else None, n, i is not None and i >= 2,
           "€5–10 or more (founding price €8)")
-    v, n = share(core, "would_use", {"yes"})
-    check("Would use the evening WhatsApp: “yes, a lot”", f"{v:.0%}" if v is not None else None, n, False, "–", judged=False)
+    # how often: changes last month against trips abroad in a month (bucket midpoints), the interviews' re-plan threshold
+    MID = {"1-5": 3, "6-20": 13, "20+": 25}, {"0": 0, "1-2": 1.5, "3-5": 4, "6-10": 8, "10+": 12}
+    rates = [MID[1][r["changes"]] / (MID[0][r["trips_abroad"]] * 4.3) * 100 for r in core
+             if r.get("changes") in MID[1] and r.get("trips_abroad") in MID[0]]
+    v = sum(x >= 2 for x in rates) / len(rates) if rates else None
+    check("Shipments changed ≥ 2 per 100 trips abroad (approx.)", f"{v:.0%}" if v is not None else None, len(rates),
+          v is not None and v >= 5 / 8, "≥ 5 of 8 (63%)")
     v, n = share(core, "share", {"yes", "anon"})
     check("Would share what their drivers see (shared watch, docs/15)", f"{v:.0%}" if v is not None else None, n, False, "–", judged=False)
 
@@ -147,7 +153,7 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
         "n_all": len(answers), "n_core": len(core), "checks": checks,
         "fleet": dist("fleet", FLEET, answers), "trips": dist("trips_abroad", TRIPS, answers),
         "minutes": dist("minutes", MINUTES, core), "cost": dist("last_cost", COST + [("unknown", "don’t know")], core),
-        "use": dist("would_use", USE, core), "share": dist("share", SHARE, core), "price": dist("price", PRICE, core),
+        "changes": dist("changes", CHANGES, core), "use": dist("would_use", USE, core), "share": dist("share", SHARE, core), "price": dist("price", PRICE, core),
         "followup": Counter(FOLLOWUP.get(t, t) for r in (follow or []) for t in multi(r.get("followup", ""))),
         "contacts": sum(1 for r in (follow or []) if r.get("contact")),
         "channels": Counter(r.get("src") or "direct" for r in answers),
@@ -163,9 +169,11 @@ def markdown(s: dict) -> str:
            "| Measure | Result | Answers | Threshold | Status |", "|---|---|---|---|---|"]
     out += [f"| {c['measure']} | {c['result']} | {c['n']} | {c['threshold']} | {c['status']} |" for c in s["checks"]]
     for title, key in (("Time spent checking, beachhead", "minutes"), ("Cost of the last incident, beachhead", "cost"),
-                       ("Fair price per vehicle a month, beachhead", "price"), ("Would use the evening WhatsApp, beachhead", "use"),
+                       ("Fair price per vehicle a month, beachhead", "price"), ("Shipments changed last month, beachhead", "changes"),
                        ("Would share what their drivers see, beachhead", "share"),
                        ("Fleet size, all answers", "fleet"), ("Trips abroad a week, all answers", "trips")):
+        if not any(s[key].values()) and key == "changes":
+            continue
         out += ["", f"## {title}", "", "| Answer | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in s[key].items()]
     if s["followup"] or s["contacts"]:
         out += ["", "## What they asked for", ""] + [f"- {k}: {v}" for k, v in s["followup"].most_common()] + \

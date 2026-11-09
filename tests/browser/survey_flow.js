@@ -10,8 +10,8 @@ const { chromium } = require("playwright");
 
 const BASE = process.argv[2] || "http://localhost:8765";
 const OUT = process.argv[3] || require("os").tmpdir();
-const POSES = ["truck", "route", "watch", "coin", "phone", "radio", "thinking"];
-const ANSWERS = [["fleet", "21-50"], ["trips_abroad", "6-20"], ["minutes", "20-40"], ["last_cost", "300-1000"], ["would_use", "yes"], ["share", "anon"], ["price", "5-10"]];
+const POSES = ["truck", "route", "watch", "phone", "coin", "radio", "thinking"];
+const ANSWERS = [["fleet", "21-50"], ["trips_abroad", "6-20"], ["minutes", "20-40"], ["changes", "3-5"], ["last_cost", "300-1000"], ["share", "anon"], ["price", "5-10"]];
 let failed = 0;
 const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); } };
 

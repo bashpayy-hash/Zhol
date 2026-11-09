@@ -91,7 +91,17 @@
               <label><input type="radio" name="minutes" value="40+"><span>Più di 40 minuti</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">Domanda 4 di 7</span>L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?</legend>
+          <fieldset class="q" data-img="phone"><legend><span class="n">Domanda 4 di 7</span>Nell’ultimo mese, quante volte un divieto, una coda, una chiusura o uno sciopero vi ha costretto a cambiare una spedizione (orario, percorso o data)?</legend>
+            <p class="sv-why">Quanto spesso succede conta quanto quanto costa.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="changes" value="0" required><span>Mai</span></label>
+              <label><input type="radio" name="changes" value="1-2"><span>1–2 volte</span></label>
+              <label><input type="radio" name="changes" value="3-5"><span>3–5 volte</span></label>
+              <label><input type="radio" name="changes" value="6-10"><span>6–10 volte</span></label>
+              <label><input type="radio" name="changes" value="10+"><span>Più di 10 volte</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="coin"><legend><span class="n">Domanda 5 di 7</span>L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?</legend>
             <p class="sv-why">Ci dice quanto vale un avviso arrivato in tempo.</p>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Meno di 100 €</span></label>
@@ -99,14 +109,6 @@
               <label><input type="radio" name="last_cost" value="300-1000"><span>300–1.000 €</span></label>
               <label><input type="radio" name="last_cost" value="1000+"><span>Più di 1.000 €</span></label>
               <label><input type="radio" name="last_cost" value="unknown"><span>Non lo so</span></label>
-            </div>
-          </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">Domanda 5 di 7</span>Vi servirebbe un WhatsApp la sera prima che vi dice quali spedizioni di domani avranno un problema, e cosa fare?</legend>
-            <p class="sv-why">È esattamente ciò che stiamo costruendo.</p>
-            <div class="opts tall">
-              <label><input type="radio" name="would_use" value="yes" required><span>Sì, molto</span></label>
-              <label><input type="radio" name="would_use" value="maybe"><span>Forse</span></label>
-              <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
           <fieldset class="q" data-img="radio"><legend><span class="n">Domanda 6 di 7</span>Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?</legend>
@@ -177,7 +179,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/map.js?v=a3" defer></script>
-<script src="/assets/survey.js?v=q5" defer></script>
+<script src="/assets/survey.js?v=q6" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

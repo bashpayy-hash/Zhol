@@ -6,7 +6,7 @@ spec = importlib.util.spec_from_file_location("survey_summary", Path(__file__).p
 ss = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ss)
 
-ANSWER_FIELDS = ["Created At", "fleet", "trips_abroad", "minutes", "last_cost", "would_use", "share", "price", "lang", "src", "rid"]
+ANSWER_FIELDS = ["Created At", "fleet", "trips_abroad", "minutes", "changes", "last_cost", "share", "price", "lang", "src", "rid"]
 FOLLOW_FIELDS = ["Created At", "rid", "followup", "contact", "consent", "lang"]
 
 
@@ -22,13 +22,13 @@ def _write(tmp_path, name, fields, rows):
 
 def _office(**kw):
     base = {"fleet": "21-50", "trips_abroad": "6-20", "minutes": "20-40", "last_cost": "300-1000",
-            "would_use": "yes", "share": "yes", "price": "5-10", "lang": "it", "src": "assoc-fai"}
+            "changes": "3-5", "share": "yes", "price": "5-10", "lang": "it", "src": "assoc-fai"}
     return base | kw
 
 
 def test_thresholds_on_the_beachhead_only(tmp_path):
     rows = [_office() for _ in range(5)] + [
-        _office(minutes="<10", last_cost="<100", would_use="maybe", price="<5"),
+        _office(minutes="<10", last_cost="<100", changes="0", price="<5"),
         _office(minutes="10-20", last_cost="unknown", price="0"),
         _office(minutes="40+", last_cost="1000+", price="10-20"),
         _office(fleet="100+"),                      # outside the beachhead
@@ -44,7 +44,8 @@ def test_thresholds_on_the_beachhead_only(tmp_path):
     cost = c["Cost of the last incident, median"]
     assert cost["n"] == 7 and cost["result"] == "€300–1,000" and cost["status"] == "met"   # "don't know" left out
     assert c["Fair price per vehicle a month, median"]["result"] == "€5–10"
-    assert c["Would use the evening WhatsApp: “yes, a lot”"]["status"] == "for information"
+    often = c["Shipments changed ≥ 2 per 100 trips abroad (approx.)"]
+    assert often["result"] == "88%" and often["status"] == "met"                         # 7 of 8: one office never changed a shipment
     assert s["channels"]["assoc-fai"] == 10
 
 
@@ -76,10 +77,10 @@ def test_google_form_export_is_read_like_the_site_form(tmp_path):
     titles = list(ss.GOOGLE_FORM)
     rows = [["Informazioni cronologiche"] + titles]
     for _ in range(5):
-        rows.append(["07/11/2026 18:00:00", "21–50", "6–20 volte", "20–40 minuti", "300–1.000 €", "Sì, molto", "Sì, se resta anonimo", "5–10 €",
+        rows.append(["07/11/2026 18:00:00", "21–50", "6–20 volte", "20–40 minuti", "3–5 volte", "300–1.000 €", "Sì, se resta anonimo", "5–10 €",
                      "I risultati del sondaggio, L’analisi gratuita di un vostro mese passato, Un posto tra i primi uffici della rete condivisa", "ufficio@example.com",
                      "Potete usare questo contatto solo per ciò che ho scelto."])
-    rows.append(["07/11/2026 18:05:00", "Più di 100", "Mai", "Meno di 10 minuti", "Non lo so", "No", "No", "Niente, non pagherei", "", "", ""])
+    rows.append(["07/11/2026 18:05:00", "Più di 100", "Mai", "Meno di 10 minuti", "Mai", "Non lo so", "No", "Niente, non pagherei", "", "", ""])
     p = tmp_path / "google.csv"
     with open(p, "w", newline="", encoding="utf-8") as f:
         csv.writer(f).writerows(rows)

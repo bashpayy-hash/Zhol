@@ -93,7 +93,17 @@
               <label><input type="radio" name="minutes" value="40+"><span>Over 40 minutes</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">Question 4 of 7</span>The last time a ban, a queue or a strike stopped one of your shipments, what did it cost you?</legend>
+          <fieldset class="q" data-img="phone"><legend><span class="n">Question 4 of 7</span>In the last month, how many times did a ban, a queue, a closure or a strike make you change a shipment (time, route or date)?</legend>
+            <p class="sv-why">How often it happens matters as much as what it costs.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="changes" value="0" required><span>Never</span></label>
+              <label><input type="radio" name="changes" value="1-2"><span>1–2 times</span></label>
+              <label><input type="radio" name="changes" value="3-5"><span>3–5 times</span></label>
+              <label><input type="radio" name="changes" value="6-10"><span>6–10 times</span></label>
+              <label><input type="radio" name="changes" value="10+"><span>More than 10 times</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="coin"><legend><span class="n">Question 5 of 7</span>The last time a ban, a queue or a strike stopped one of your shipments, what did it cost you?</legend>
             <p class="sv-why">It tells us what an alert that arrives in time is worth.</p>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Under €100</span></label>
@@ -101,14 +111,6 @@
               <label><input type="radio" name="last_cost" value="300-1000"><span>€300–1,000</span></label>
               <label><input type="radio" name="last_cost" value="1000+"><span>Over €1,000</span></label>
               <label><input type="radio" name="last_cost" value="unknown"><span>Don’t know</span></label>
-            </div>
-          </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">Question 5 of 7</span>Would a WhatsApp the evening before help, telling you which of tomorrow’s shipments will hit a problem and what to do?</legend>
-            <p class="sv-why">This is exactly what we are building.</p>
-            <div class="opts tall">
-              <label><input type="radio" name="would_use" value="yes" required><span>Yes, a lot</span></label>
-              <label><input type="radio" name="would_use" value="maybe"><span>Maybe</span></label>
-              <label><input type="radio" name="would_use" value="no"><span>No</span></label>
             </div>
           </fieldset>
           <fieldset class="q" data-img="radio"><legend><span class="n">Question 6 of 7</span>If other offices told you about a queue or a closure their drivers see, before your trucks leave, would you share yours too?</legend>
@@ -179,7 +181,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/map.js?v=a3" defer></script>
-<script src="/assets/survey.js?v=q5" defer></script>
+<script src="/assets/survey.js?v=q6" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>
