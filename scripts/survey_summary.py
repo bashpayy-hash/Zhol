@@ -44,7 +44,7 @@ X_CHANGES = [("<2", "under 2"), ("2-5", "2–5"), ("5-10", "5–10"), ("10+", "o
 X_SHARE = [("most", "most would"), ("some", "some would"), ("few", "few would")]
 X_OBSTACLE = [("trust", "trusting the information"), ("price", "the price"), ("habit", "habits: phone, email, WhatsApp"),
               ("integration", "fitting it into their software"), ("competitors", "sharing data near competitors")]
-FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis (no longer offered)", "interview": "a 20-minute chat",
+FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis (no longer offered)", "interview": "a 20-minute chat (no longer offered)",
             "network": "a place in the shared network"}
 
 # The Google Form (outreach/google-form.gs) exports question titles as headers and choice labels as values.
@@ -66,7 +66,7 @@ GOOGLE_FORM = {
         "Niente, non pagherei": "0", "Fino a 5 €": "<5", "5–10 €": "5-10", "10–20 €": "10-20", "Più di 20 €": "20+"}),
     "Cosa vi interessa?": ("followup", {
         "I risultati del sondaggio": "results",
-        "Fare due chiacchiere, 20 minuti": "interview", "Un posto tra i primi uffici della rete condivisa": "network"}),
+        "Un posto tra i primi uffici della rete condivisa": "network"}),
     "Email o telefono aziendale": ("contact", None),
     "Consenso": ("consent", None),
 }

@@ -61,7 +61,7 @@ function createZholForm() {
     .setHelpText('Se lasciate un contatto lo usiamo solo per ciò che avete scelto e lo cancelliamo a fine progetto, ' +
       'o prima se ce lo chiedete.');
   form.addCheckboxItem().setTitle('Cosa vi interessa?')
-    .setChoiceValues(['I risultati del sondaggio', 'Fare due chiacchiere, 20 minuti',
+    .setChoiceValues(['I risultati del sondaggio',
       'Un posto tra i primi uffici della rete condivisa']);
   form.addTextItem().setTitle('Email o telefono aziendale');
   form.addCheckboxItem().setTitle('Consenso')
