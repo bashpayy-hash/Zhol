@@ -227,9 +227,15 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("csv", nargs="+", type=Path, help="CSV exports of the 'survey' and 'survey-followup' forms")
     ap.add_argument("--out", type=Path, help="write Markdown here instead of printing it")
+    ap.add_argument("--since", help="keep answers from this UTC time on, e.g. 2026-11-09T17:00 (drops the team's own tests)")
     args = ap.parse_args()
     answers, follow = read(args.csv)
+    if args.since:
+        keep = lambda r: (r.get("created_at") or "") >= args.since
+        answers, follow = [r for r in answers if keep(r)], [r for r in follow if keep(r)]
     text = markdown(summarise(answers, follow))
+    if args.since:
+        text = text.replace("\n\n", f"\n\nAnswers from {args.since} UTC on (the outreach began then; earlier rows were the team's own tests).\n\n", 1)
     if args.out:
         args.out.write_text(text, encoding="utf-8")
         print(f"wrote {args.out}")
