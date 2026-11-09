@@ -173,11 +173,20 @@
     const box = $("sv-map");
     if (!box || !window.ZholMap || box.dataset.on) return;
     box.dataset.on = "1";
-    const map = window.ZholMap(box, { mini: true });
-    radar.then(d => map.update(d.items, d.today)).then(c => {
+    // the full radar: places, the events at each with their chance, the week player; "Plan and cost" opens the radar page
+    const mo = { detail: true, show: id => { location.href = (IT ? "/it/outlook" : "/outlook") + "#rd-" + id; } };
+    const map = window.ZholMap(box, mo);
+    radar.then(d => {
+      mo.method = d.method;
+      // what the radar read today, in numbers
+      const n = $("sv-reads-n");
+      if (n && d.articles_read) n.textContent = T("Today: " + d.articles_read + " articles from " + d.sources_ok + " sources, " + d.signals + " signals.",
+                                                  "Oggi: " + d.articles_read + " articoli da " + d.sources_ok + " fonti, " + d.signals + " segnali.");
+      return map.update(d.items, d.today);
+    }).then(c => {
       if (!c || !c.events) { box.hidden = true; return; }
-      $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places on Europe’s roads in the next eight weeks, each with its chance.",
-                                      c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità.");
+      $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places on Europe’s roads in the next eight weeks, each with its chance. Tap a place, or play the weeks.",
+                                      c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità. Toccate un luogo o scorrete le settimane.");
     }).catch(() => { box.hidden = true; });
   }
 

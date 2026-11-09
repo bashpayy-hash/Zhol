@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s10">
+<link rel="stylesheet" href="/assets/zhol.css?v=s12">
 <link rel="alternate" hreflang="en" href="https://zhol.live/q/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/q/it/">
 <!-- links sent to Italian offices before English became the default carry an Italian campaign tag: send them on to /q/it -->
@@ -272,14 +272,50 @@
           <h2 class="sv-q-title">Thank you! That helps a lot.</h2>
           <p>Know another traffic office? Every extra answer makes the numbers stronger.</p>
           <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Forward on WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copy the link</button></div>
-          <div class="sv-map" id="sv-map" hidden>
-            <p class="small"><b>Our first work in progress: how the map would look.</b> <span id="sv-map-cap">what zhol sees coming on Europe’s roads in the next eight weeks.</span></p>
-            <div class="map-frame" role="img" aria-label="Map of Europe with the events zhol expects in the next eight weeks"></div>
-            <a class="small" href="/outlook#map">Open the prototype: the full map, with the chance of each event</a>
-          </div>
         </div>
       </div>
     </div>
+
+    <section class="sv-map card" id="sv-map" hidden aria-labelledby="sv-map-h">
+      <div class="sv-map-head">
+        <span class="sv-label">Our first work in progress</span>
+        <h2 class="sv-q-title" id="sv-map-h">How the map would look</h2>
+        <p class="small muted" id="sv-map-cap">What zhol sees coming on Europe’s roads in the next eight weeks.</p>
+      </div>
+      <div class="map-grid">
+        <div class="map-col">
+          <div class="seg map-views" role="tablist" aria-label="Map view">
+            <button role="tab" type="button" aria-selected="true" data-v="europe">Europe</button>
+            <button role="tab" type="button" aria-selected="false" data-v="alps">Alps up close</button>
+          </div>
+          <div class="map-frame" role="group" aria-label="Map of Europe with the events on the radar"></div>
+          <div class="map-time"></div>
+          <div class="legend map-legend">
+            <span><i class="dot vl"></i>80% and up</span>
+            <span><i class="dot l"></i>50–80%</span>
+            <span><i class="dot po"></i>20–50%</span>
+            <span><i class="dot watch"></i>Crossing we watch, nothing expected</span>
+            <span><i class="area"></i>Whole country (a holiday ban)</span>
+          </div>
+        </div>
+        <div class="map-panel card" aria-live="polite"></div>
+      </div>
+      <div class="sv-reads">
+        <h3>What the radar reads</h3>
+        <ul>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Holiday truck bans</b> set by law in seven countries.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Official calendars</b> Tyrol’s dosing at Kufstein, tunnel closures.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Weather at the passes</b> and on the Messina ferry, 16 days ahead.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>News and trade press</b> in four languages: strikes, blockades, protests, closures. <span id="sv-reads-n"></span></p></li>
+          <li class="is-next"><span class="sv-reads-st">Next</span><p><b>Social media</b> drivers’ groups, unions’ and farmers’ channels: the mood before a protest.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Next</span><p><b>Politics</b> elections, a change of government, budget votes that bring strikes.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Next</span><p><b>Big events and unrest</b> summits, matches, riots that close roads and borders.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Next</span><p><b>Offices’ own agents</b> what their drivers see, shared in seconds.</p></li>
+        </ul>
+        <p class="small muted">Each signal moves the chance: an official source ×3, dates named ×2, six or more outlets ×2, talks with the government ×0.6.</p>
+      </div>
+      <a class="small" href="/outlook#map">Open the prototype on its own page</a>
+    </section>
 
     <p class="small muted sv-privacy">A project by the zhol team at Bocconi University for TEF Ignition 2026. Answers are anonymous and we publish aggregate figures only. If you leave a contact, we link it to your answers, use it only for what you chose, and delete it when the project ends, or sooner if you ask. Data stored on Netlify.</p>
   </div>
@@ -291,8 +327,8 @@
   <span>zhol team · Bocconi University · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
-<script src="/assets/map.js?v=a3" defer></script>
-<script src="/assets/survey.js?v=q8" defer></script>
+<script src="/assets/map.js?v=a4" defer></script>
+<script src="/assets/survey.js?v=q10" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

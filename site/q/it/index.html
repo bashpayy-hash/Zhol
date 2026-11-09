@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s10">
+<link rel="stylesheet" href="/assets/zhol.css?v=s12">
 <link rel="alternate" hreflang="en" href="https://zhol.live/q/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/q/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
@@ -270,14 +270,50 @@
           <h2 class="sv-q-title">Grazie! Ci avete aiutato molto.</h2>
           <p>Conoscete un altro ufficio traffico? Ogni risposta in più rende i numeri più solidi.</p>
           <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Inoltra su WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copia il link</button></div>
-          <div class="sv-map" id="sv-map" hidden>
-            <p class="small"><b>I nostri primi lavori: ecco come sarebbe la mappa.</b> <span id="sv-map-cap">cosa vede zhol in arrivo sulle strade d’Europa nelle prossime otto settimane.</span></p>
-            <div class="map-frame" role="img" aria-label="Mappa d’Europa con gli eventi che zhol prevede nelle prossime otto settimane"></div>
-            <a class="small" href="/it/outlook#map">Aprite il prototipo: la mappa completa, con la probabilità di ogni evento</a>
-          </div>
         </div>
       </div>
     </div>
+
+    <section class="sv-map card" id="sv-map" hidden aria-labelledby="sv-map-h">
+      <div class="sv-map-head">
+        <span class="sv-label">I nostri primi lavori</span>
+        <h2 class="sv-q-title" id="sv-map-h">Ecco come sarebbe la mappa</h2>
+        <p class="small muted" id="sv-map-cap">Cosa vede zhol in arrivo sulle strade d’Europa nelle prossime otto settimane.</p>
+      </div>
+      <div class="map-grid">
+        <div class="map-col">
+          <div class="seg map-views" role="tablist" aria-label="Vista della mappa">
+            <button role="tab" type="button" aria-selected="true" data-v="europe">Europa</button>
+            <button role="tab" type="button" aria-selected="false" data-v="alps">Alpi da vicino</button>
+          </div>
+          <div class="map-frame" role="group" aria-label="Mappa d’Europa con gli eventi del radar"></div>
+          <div class="map-time"></div>
+          <div class="legend map-legend">
+            <span><i class="dot vl"></i>80% e oltre</span>
+            <span><i class="dot l"></i>50–80%</span>
+            <span><i class="dot po"></i>20–50%</span>
+            <span><i class="dot watch"></i>Valico che seguiamo, nulla in vista</span>
+            <span><i class="area"></i>Tutto il paese (un divieto festivo)</span>
+          </div>
+        </div>
+        <div class="map-panel card" aria-live="polite"></div>
+      </div>
+      <div class="sv-reads">
+        <h3>Cosa legge il radar</h3>
+        <ul>
+          <li class="is-live"><span class="sv-reads-st">Attivo</span><p><b>Divieti festivi per i mezzi pesanti</b> fissati per legge in sette paesi.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Attivo</span><p><b>Calendari ufficiali</b> il dosaggio del Tirolo a Kufstein, le chiusure dei trafori.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Attivo</span><p><b>Meteo ai valichi</b> e sul traghetto dello Stretto, 16 giorni avanti.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Attivo</span><p><b>Notizie e stampa di settore</b> in quattro lingue: scioperi, blocchi, proteste, chiusure. <span id="sv-reads-n"></span></p></li>
+          <li class="is-next"><span class="sv-reads-st">Prossimo</span><p><b>Social</b> gruppi di autisti, canali di sindacati e agricoltori: il clima prima di una protesta.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Prossimo</span><p><b>Politica</b> elezioni, un cambio di governo, voti sul bilancio che portano scioperi.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Prossimo</span><p><b>Grandi eventi e disordini</b> vertici, partite, scontri che chiudono strade e confini.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Prossimo</span><p><b>Gli agenti degli uffici</b> ciò che vedono i loro autisti, condiviso in pochi secondi.</p></li>
+        </ul>
+        <p class="small muted">Ogni segnale sposta la probabilità: una fonte ufficiale ×3, date indicate ×2, sei o più testate ×2, un incontro con il governo ×0,6.</p>
+      </div>
+      <a class="small" href="/it/outlook#map">Aprite il prototipo nella sua pagina</a>
+    </section>
 
     <p class="small muted sv-privacy">Un progetto del team zhol dell’Università Bocconi per TEF Ignition 2026. Le risposte sono anonime e pubblichiamo solo dati aggregati. Se lasciate un contatto lo colleghiamo alle vostre risposte, lo usiamo solo per ciò che avete scelto e lo cancelliamo a fine progetto, o prima se ce lo chiedete. Dati conservati su Netlify.</p>
   </div>
@@ -289,8 +325,8 @@
   <span>team zhol · Università Bocconi · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
-<script src="/assets/map.js?v=a3" defer></script>
-<script src="/assets/survey.js?v=q8" defer></script>
+<script src="/assets/map.js?v=a4" defer></script>
+<script src="/assets/survey.js?v=q10" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

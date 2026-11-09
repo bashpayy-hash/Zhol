@@ -690,11 +690,6 @@ details.backup[open] > summary { margin-bottom: 14px; }
 @keyframes map-li { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .map-sweep { display: none; } .map-pin, .map-frame .watch { transition: none; } .map-panel li { animation: none !important; } }
 /* the small map on the survey's last screen */
-.sv-map { margin-top: 6px; display: flex; flex-direction: column; gap: 10px; }
-.sv-map .map-frame { border-radius: 18px; }
-.sv-map .map-pin { width: 20px; height: 20px; margin: -10px 0 0 -10px; }
-.sv-map .map-pin.wide i { box-shadow: 0 0 0 1.5px var(--card), 0 0 0 3.5px rgba(53, 43, 40, .18); }
-.sv-map .map-pin.soon::before { width: 12px; height: 12px; margin: -6px 0 0 -6px; }
 
 /* three steps, numbered (home: why not just have someone check) */
 .steps .card { position: relative; }
@@ -1022,3 +1017,31 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 }
 /* phones: the mascot sits above the question; the desktop's sticky offset (top: 96px) must not push it onto the text */
 @media (max-width: 760px) { .sv-mascot.scene-3d { top: 0; } }
+
+/* the survey's last screen: the whole radar prototype (map, places, weeks), full width under the thank-you card */
+.sv-map { margin-top: 20px; max-width: 1040px; padding: 32px 40px 36px; border-radius: 28px; gap: 22px; }
+.sv-map-head { display: flex; flex-direction: column; gap: 6px; }
+.sv-map-head .sv-q-title { margin: 0; }
+.sv-map-head p { margin: 0; }
+.sv-map .map-panel { background: var(--paper); }
+@media (max-width: 760px) { .sv-map { padding: 22px 18px 24px; border-radius: 24px; } }
+
+/* the survey's last screen in detail: why each chance, the articles behind it, and what the radar reads */
+.map-why { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.map-src { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; line-height: 1.35; }
+.map-src li { padding-left: 12px; position: relative; }
+.map-src li::before { content: ""; position: absolute; left: 0; top: .55em; width: 5px; height: 5px; border-radius: 50%; background: var(--rule); }
+.map-src a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule); }
+.map-src a:hover { color: var(--red); text-decoration-color: currentColor; }
+.map-more { align-self: flex-start; }
+.sv-reads { border-top: 1px solid var(--card-line); padding-top: 22px; display: flex; flex-direction: column; gap: 12px; }
+.sv-reads h3 { font-size: 19px; font-weight: 650; }
+.sv-reads ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; }
+.sv-reads li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.sv-reads li p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
+.sv-reads-st { justify-self: start; font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: var(--r-pill); }
+.sv-reads li.is-live .sv-reads-st { color: var(--sage-ink); background: var(--sage-card); }
+.sv-reads li.is-next .sv-reads-st { color: var(--ink-2); background: var(--msg-box); }
+.sv-reads > p { margin: 0; }
+@media (max-width: 760px) { .sv-reads ul { grid-template-columns: minmax(0, 1fr); } .sv-reads li { grid-template-columns: 68px minmax(0, 1fr); } }
+@media (min-width: 921px) { .sv-map .map-col { position: sticky; top: 84px; } }   /* the map stays in view while the events scroll by */

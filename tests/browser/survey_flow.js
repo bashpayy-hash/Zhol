@@ -87,6 +87,10 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       check((await pose()).includes("encourage"), `${tag}: encourage pose on the thank-you step`);
       const mapOk = await page.waitForSelector("#sv-map:not([hidden]) .map-pin", { timeout: 10000 }).then(() => true, () => false);
       check(mapOk, `${tag}: the last screen shows the map with the radar's events`);
+      check((await page.$$eval("#sv-map .map-evs li", l => l.length)) > 0 && !!(await page.$("#sv-map .map-play")), `${tag}: the last screen shows the whole radar: every event with its chance and the week player`);
+      check(/work in progress|primi lavori/i.test(await page.textContent("#sv-map")), `${tag}: the map is labelled as our first work in progress`);
+      check((await page.$$eval("#sv-map .map-ev .map-why .chip", c => c.length)) > 0, `${tag}: each event says why its chance is what it is`);
+      check((await page.$$eval("#sv-map .sv-reads li", l => l.length)) === 8, `${tag}: what the radar reads, live and next`);
       await page.waitForTimeout(2600);                   // the small map comes in behind its sweep
       await shot("done");
 

@@ -6,7 +6,9 @@
    Motion (VISION.md, --ease): when the map first scrolls into view a soft band sweeps west to east and
    the countries, the watched crossings and the events come in behind it. "Play the weeks" walks through
    the next eight weeks and lights up only what falls in each one. Picking a place flies the map to it.
-   opts.mini draws a small map with no controls (the survey's last screen). */
+   opts.mini draws a small map with no controls (the survey's intro).
+   opts.detail (the survey's last screen) puts everything in the panel: every event with its chance, why the chance is
+   what it is (the model's factors, opts.method) and the articles or official texts behind it. */
 window.ZholMap = function (root, opts) {
   opts = opts || {};
   const mini = !!opts.mini;
@@ -38,6 +40,16 @@ window.ZholMap = function (root, opts) {
         IT: "Italia", LU: "Lussemburgo", NL: "Paesi Bassi", PL: "Polonia", SI: "Slovenia", SK: "Slovacchia", DK: "Danimarca" }
     : { AT: "Austria", BE: "Belgium", CH: "Switzerland", CZ: "Czechia", DE: "Germany", ES: "Spain", FR: "France", HR: "Croatia", HU: "Hungary",
         IT: "Italy", LU: "Luxembourg", NL: "Netherlands", PL: "Poland", SI: "Slovenia", SK: "Slovakia", DK: "Denmark" };
+  // the evidence behind a chance, for opts.detail
+  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie" }
+                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals" };
+  const STAGE_IT = { tension: "tensione", threat: "minaccia", announced: "annunciato", confirmed: "confermato", ongoing: "in corso", revoked: "revocato" };
+  const factorIt = l => l.replace(/^forecast alone: /, "solo previsione: ").replace(/^weight ([\d.]+) for (\d+) days ahead, rest from the season's /, "peso $1 a $2 giorni, il resto dalla media stagionale del ");
+  const factorName = x => {
+    const m = (opts.method && opts.method.multipliers) || {};
+    return IT ? ((x.key && m[x.key] && m[x.key].label_it) || x.label_it || factorIt(x.label || "")) : x.label;
+  };
+  const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
   const placeName = (id, p) => (IT && PLACE_IT[id]) || p.name.replace(/\s*\(.*\)\s*$/, "");
 
   root.classList.add("map");
@@ -209,6 +221,27 @@ window.ZholMap = function (root, opts) {
     const li = el("li", "map-ev " + tone(it.p));
     const t = el("div");
     t.append(el("b", null, it.start ? fmt(it.start) : T("No date yet", "Senza data")), el("span", null, L(it, "title")));
+    if (opts.detail) {
+      const where = L(it, "where"); if (where) t.append(el("span", "small muted", where));
+      // why this chance: where it comes from, the starting point and every factor that moved it
+      const why = el("div", "map-why");
+      why.append(el("span", "chip", BASIS[it.basis] || it.basis));
+      if (it.prior != null && it.stage) why.append(el("span", "chip", T("start: ", "partenza: ") + (IT ? (STAGE_IT[it.stage] || it.stage) : it.stage) + " " + pct(it.prior)));
+      (it.factors || []).forEach(x => why.append(el("span", "chip", (x.x != null ? "×" + x.x + " " : "") + factorName(x))));
+      t.append(why);
+      // the articles or the official texts behind it
+      if (it.sources && it.sources.length) {
+        const src = el("ul", "map-src");
+        it.sources.slice(0, it.group === "official" ? 2 : 3).forEach(x => {
+          const li2 = el("li"), u = safeUrl(x.url), name = x.title || x.outlet || T("source", "fonte");
+          if (u) { const a = el("a", null, name); a.href = u; a.target = "_blank"; a.rel = "noopener nofollow"; li2.append(a); }
+          else li2.append(document.createTextNode(name));
+          if (x.outlet && x.title && x.outlet !== x.title) li2.append(el("span", "small muted", " · " + x.outlet));
+          src.append(li2);
+        });
+        t.append(src);
+      }
+    }
     const a = el("a", "small", T("Plan and cost", "Piano e costo"));
     a.href = "#rd-" + it.id;
     a.addEventListener("click", e => { if (opts.show) { e.preventDefault(); opts.show(it.id); } });
@@ -230,6 +263,22 @@ window.ZholMap = function (root, opts) {
       const back = el("button", "btn ghost map-back", T("All places", "Tutti i luoghi")); back.type = "button";
       back.addEventListener("click", () => pick(null));
       panel.append(head, ul, back);
+      return;
+    }
+    if (opts.detail) {
+      const evs = items.filter(i => inWeek(i, week)).sort((a, b) => (a.start || "9").localeCompare(b.start || "9") || b.p - a.p);
+      const head = el("div", "map-head");
+      head.append(el("h3", null, week ? weekName(week) : T("Everything on the radar", "Tutto ciò che c’è sul radar")),
+        el("p", "small muted", evs.length ? T("Each with its chance, why, and the articles behind it. Tap a point to see one place.", "Ognuno con la sua probabilità, il perché e gli articoli dietro. Toccate un punto per vedere un luogo.")
+                                          : T("Nothing in this week.", "Niente in questa settimana.")));
+      const ul = el("ul", "map-evs"), SHOW = 5;
+      evs.forEach((it, k) => { const li = eventLine(it); if (k >= SHOW) li.hidden = true; ul.append(li); });
+      panel.append(head, ul);
+      if (evs.length > SHOW) {
+        const more = el("button", "btn ghost map-more", T("Show all " + evs.length, "Mostra tutti e " + evs.length)); more.type = "button";
+        more.addEventListener("click", () => { ul.querySelectorAll("li[hidden]").forEach(li => { li.hidden = false; }); more.remove(); });
+        panel.append(more);
+      }
       return;
     }
     const live = spots.filter(x => x.now.list.length)
