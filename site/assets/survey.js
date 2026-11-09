@@ -30,9 +30,10 @@
   } catch (e) { /* no channel */ }
 
   // preload the poses so the mascot never flashes empty
-  ["truck", "route", "watch", "coin", "phone", "radio", "thinking", "celebrate", "encourage"].forEach(n => {
+  const idle = f => ("requestIdleCallback" in window) ? requestIdleCallback(f, { timeout: 2500 }) : setTimeout(f, 1200);
+  idle(() => ["route", "watch", "coin", "phone", "radio", "thinking", "celebrate", "encourage"].forEach(n => {
     const i = new Image(); i.sizes = img.sizes; i.srcset = srcset(n);
-  });
+  }));
 
   // the /q page opens on a welcome scene; the questions come after one tap
   const intro = $("sv-intro"), stepsBox = $("sv-steps"), startBtn = $("sv-start");
@@ -168,8 +169,10 @@
   }
 
   // the radar, read once: the intro shows what is on the roads now, the last screen the whole map
-  const radar = fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status));
-  (function showNow() {
+  let radarP = null;
+  const radarLoad = () => radarP || (radarP = fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)));
+  const radar = { then: (a, b) => radarLoad().then(a, b) };
+  idle(function showNow() {
     const box = $("sv-now"), list = $("sv-now-list");
     if (!box || !list) return;
     radar.then(d => {
@@ -186,7 +189,7 @@
       box.hidden = false;
       if (window.ZholMap) window.ZholMap(box, { mini: true }).update(d.items, d.today);
     }).catch(() => {});
-  })();
+  });
 
   // forward to a colleague
   const link = location.origin + location.pathname + "?src=share";

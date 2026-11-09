@@ -96,8 +96,8 @@ JavaScript форма остаётся целой. Тест: `tests/browser/beta
 > «Было около 500 команд и взяли только 100, и сейчас появился новый домен, и дай ссылку отдельно на опросник»
 
 Сделано: все ссылки сайта, рассылки, писем и документов ведут на https://zhol.live (старый адрес
-zhol-beta.netlify.app Netlify перенаправляет на основной домен). Опрос: https://zhol.live/q (англ.),
-https://zhol.live/q/it (ит.). В письмах профессорам: «uno dei 100 team selezionati su circa 500 per TEF Ignition 2026».
+zhol-beta.netlify.app Netlify перенаправляет на основной домен). Опрос: https://zhol.live/q/ (англ.),
+https://zhol.live/q/it/ (ит.). В письмах профессорам: «uno dei 100 team selezionati su circa 500 per TEF Ignition 2026».
 
 ### 8 ноября 2026 · Письма профессорам начинаются с отбора в TEF и гранта
 

@@ -28,6 +28,18 @@
   to = "/"
   status = 301
 
+# the survey opens at once: /q and /q/it are served directly, without the trailing-slash redirect (it cost ~0.5 s)
+[[redirects]]
+  from = "/q"
+  to = "/q/index.html"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/q/it"
+  to = "/q/it/index.html"
+  status = 200
+  force = true
+
 # the survey is a short standalone link: /q in English (the default), /q/it in Italian; old links keep working, with their ?src=
 [[redirects]]
   from = "/q/en"
