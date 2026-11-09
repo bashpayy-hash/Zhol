@@ -45,7 +45,7 @@ function createZholForm() {
     ['Nell’ultimo mese, quante volte un divieto, una coda, una chiusura o uno sciopero vi ha costretto a cambiare una spedizione (orario, percorso o data)?',
       ['Mai', '1–2 volte', '3–5 volte', '6–10 volte', 'Più di 10 volte']],
     ['L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?',
-      ['Meno di 100 €', '100–300 €', '300–1.000 €', 'Più di 1.000 €', 'Non lo so']],
+      ['Meno di 100 €', '100–300 €', '300–1.000 €', '1.000–3.000 €', 'Più di 3.000 €', 'Non lo so']],
     ['Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?',
       ['Sì, volentieri', 'Sì, se resta anonimo', 'Vorrei solo riceverle', 'No']],
     ['Quale prezzo vi sembra giusto, al mese per ogni mezzo?',

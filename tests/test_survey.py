@@ -127,3 +127,10 @@ def test_people_who_know_the_field_are_reported_apart(tmp_path):
     assert e["Time an office spends checking each day"]["don’t know"] == 1
     text = ss.markdown(s)
     assert "## People who know the field (2 answers, from experience)" in text and s["channels"]["prof-senn"] == 1
+
+
+def test_cost_has_two_top_buckets_and_reads_the_earlier_one(tmp_path):
+    rows = [_office(last_cost="3000+"), _office(last_cost="1000-3000"), _office(last_cost="1000+"), _office(), _office()]
+    answers, _ = ss.read([_write(tmp_path, "survey.csv", ANSWER_FIELDS, rows)])
+    cost = ss.summarise(answers)["cost"]
+    assert cost["over €3,000"] == 1 and cost["€1,000–3,000"] == 1 and cost["over €1,000 (earlier option)"] == 1

@@ -28,7 +28,9 @@ Answers from 2026-11-09T17:00 UTC on (the outreach began then; earlier rows were
 | under €100 | 0 |
 | €100–300 | 0 |
 | €300–1,000 | 0 |
-| over €1,000 | 0 |
+| over €1,000 (earlier option) | 0 |
+| €1,000–3,000 | 0 |
+| over €3,000 | 0 |
 | don’t know | 0 |
 
 ## Fair price per vehicle a month, beachhead
@@ -118,7 +120,9 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | under €100 | 0 |
 | €100–300 | 1 |
 | €300–1,000 | 1 |
-| over €1,000 | 2 |
+| over €1,000 (earlier option) | 2 |
+| €1,000–3,000 | 0 |
+| over €3,000 | 0 |
 | don’t know | 2 |
 
 ### Would offices share what their drivers see, if anonymous

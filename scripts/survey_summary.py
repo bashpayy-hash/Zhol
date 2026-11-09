@@ -30,7 +30,9 @@ MIN_N = 5                      # below this a share is shown but not judged
 FLEET = [("1-5", "1–5"), ("6-20", "6–20"), ("21-50", "21–50"), ("51-100", "51–100"), ("100+", "over 100")]
 TRIPS = [("0", "never"), ("1-5", "1–5"), ("6-20", "6–20"), ("20+", "over 20")]
 MINUTES = [("<10", "under 10 min"), ("10-20", "10–20 min"), ("20-40", "20–40 min"), ("40+", "over 40 min")]
-COST = [("<100", "under €100"), ("100-300", "€100–300"), ("300-1000", "€300–1,000"), ("1000+", "over €1,000")]
+# 9 Nov 2026: "over €1,000" split into €1,000–3,000 and over €3,000 (owner); answers given before keep "1000+"
+COST = [("<100", "under €100"), ("100-300", "€100–300"), ("300-1000", "€300–1,000"), ("1000+", "over €1,000 (earlier option)"),
+        ("1000-3000", "€1,000–3,000"), ("3000+", "over €3,000")]
 PRICE = [("0", "nothing"), ("<5", "up to €5"), ("5-10", "€5–10"), ("10-20", "€10–20"), ("20+", "over €20")]
 USE = [("yes", "yes, a lot"), ("maybe", "maybe"), ("no", "no")]        # dropped from the survey on 9 Nov; kept to read early answers
 CHANGES = [("0", "never"), ("1-2", "1–2"), ("3-5", "3–5"), ("6-10", "6–10"), ("10+", "over 10")]
@@ -59,7 +61,7 @@ GOOGLE_FORM = {
     "Nell’ultimo mese, quante volte un divieto, una coda, una chiusura o uno sciopero vi ha costretto a cambiare una spedizione (orario, percorso o data)?": ("changes", {
         "Mai": "0", "1–2 volte": "1-2", "3–5 volte": "3-5", "6–10 volte": "6-10", "Più di 10 volte": "10+"}),
     "L’ultima volta che un divieto, una coda o uno sciopero ha fermato una vostra spedizione, quanto vi è costato?": ("last_cost", {
-        "Meno di 100 €": "<100", "100–300 €": "100-300", "300–1.000 €": "300-1000", "Più di 1.000 €": "1000+", "Non lo so": "unknown"}),
+        "Meno di 100 €": "<100", "100–300 €": "100-300", "300–1.000 €": "300-1000", "1.000–3.000 €": "1000-3000", "Più di 3.000 €": "3000+", "Non lo so": "unknown"}),
     "Se altri uffici vi avvisassero di una coda o di una chiusura vista dai loro autisti, prima che partano i vostri camion, condividereste anche le vostre?": ("share", {
         "Sì, volentieri": "yes", "Sì, se resta anonimo": "anon", "Vorrei solo riceverle": "receive", "No": "no"}),
     "Quale prezzo vi sembra giusto, al mese per ogni mezzo?": ("price", {
@@ -87,7 +89,7 @@ def _from_google(raw: dict) -> dict | None:
         elif field == "followup":   # checkbox answers come joined with ", "
             row[field] = "; ".join(code for label, code in codes.items() if label in value)
         else:
-            row[field] = codes.get(value, value)
+            row[field] = codes.get(value, {"Più di 1.000 €": "1000+"}.get(value, value))
     return row
 
 
