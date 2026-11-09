@@ -26,6 +26,28 @@
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
 
+# the radar's old address (it was first called "outlook"): old links and bookmarks still arrive (owner, 9 Nov 2026)
+[[redirects]]
+  from = "/outlook"
+  to = "/radar"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/outlook.html"
+  to = "/radar"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/it/outlook"
+  to = "/it/radar"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/it/outlook.html"
+  to = "/it/radar"
+  status = 301
+  force = true
+
 # the TEF answers moved to the home page
 [[redirects]]
   from = "/answers"

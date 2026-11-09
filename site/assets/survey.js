@@ -176,7 +176,7 @@
     if (!box || !window.ZholMap || box.dataset.on) return;
     box.dataset.on = "1";
     // the full radar: places, the events at each with their chance, the week player; "Plan and cost" opens the radar page
-    const mo = { detail: true, show: id => { location.href = (IT ? "/it/outlook" : "/outlook") + "#rd-" + id; } };
+    const mo = { detail: true, show: id => { location.href = (IT ? "/it/radar" : "/radar") + "#rd-" + id; } };
     const map = window.ZholMap(box, mo);
     radar.then(d => {
       mo.method = d.method;

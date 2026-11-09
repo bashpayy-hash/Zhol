@@ -20,7 +20,7 @@
    "video": "kling4_0 image-to-video 1080p 5 s, start_image = end_image = still; small tick on the clipboard, looks up, dust motes drift"
   },
   "pass": {
-   "where": "radar hero (/outlook and /it/outlook)",
+   "where": "radar hero (/radar and /it/radar)",
    "still_job": "04cdb5fb-5228-4f2c-af34-34e7fd9c47ac",
    "video_job": "947d7411-6388-4799-b209-03f46488adf3",
    "still": "gpt_image_2_5 flare high 2k 4:3; Zholdas on the sill of a wooden lookout hut above a snowy Alpine pass, brass binoculars lowered to his chest, face turned to the viewer (dot eyes, cheeks, smile visible), trucks on the road below, barometer, radio, map and mug",

@@ -1,6 +1,6 @@
 # 11. Радар: что ожидается на дорогах и с какой вероятностью
 
-Страница: [zhol.live/outlook](https://zhol.live/outlook). Код: `zhol/radar/`, тесты: `tests/test_radar.py`.
+Страница: [zhol.live/radar](https://zhol.live/radar) (до 9 ноября — /outlook, старый адрес перенаправляет). Код: `zhol/radar/`, тесты: `tests/test_radar.py`.
 
 ## Что делает
 
