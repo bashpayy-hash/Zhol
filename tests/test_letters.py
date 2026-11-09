@@ -36,5 +36,5 @@ def test_professor_letters_have_no_colons_and_no_team_names():
         assert len(subject.split()) <= 10, subject
         body = block.split("**Subject:**", 1)[1]
         assert body.count("**") // 2 <= 3, subject
-        assert any(l.startswith("https://zhol.live/q/") for l in body.split("\n")), subject
+        assert any(l.startswith(("https://zhol.live/survey?", "https://zhol.live/it/sondaggio?")) for l in body.split("\n")), subject
         assert "you will have met" not in body and "avrà conosciuto" not in body

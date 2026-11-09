@@ -134,7 +134,7 @@ def letter(p: dict) -> str:
 {ASK_EN}
 
 {ANCHOR_EN}
-https://zhol.live/q/?src=prof-{p['tag']}
+https://zhol.live/survey?src=prof-{p['tag']}
 
 {en_net}
 
@@ -152,7 +152,7 @@ Alikhan Bashpay · Bocconi University · zhol
 {ASK_IT}
 
 {ANCHOR_IT}
-https://zhol.live/q/it/?src=prof-{p['tag']}
+https://zhol.live/it/sondaggio?src=prof-{p['tag']}
 
 {it_net}
 

@@ -54,7 +54,18 @@
   to = "/"
   status = 301
 
-# the survey opens at once: /q and /q/it are served directly, without the trailing-slash redirect (it cost ~0.5 s)
+# the survey: readable addresses, served directly (no redirect, it cost ~0.5 s): /survey in English, /it/sondaggio in
+# Italian (owner, 9 Nov 2026). The first short links /q and /q/it keep working the same way, with their ?src=.
+[[redirects]]
+  from = "/survey"
+  to = "/q/index.html"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/it/sondaggio"
+  to = "/q/it/index.html"
+  status = 200
+  force = true
 [[redirects]]
   from = "/q"
   to = "/q/index.html"
@@ -65,31 +76,21 @@
   to = "/q/it/index.html"
   status = 200
   force = true
-
-# the survey is a short standalone link: /q in English (the default), /q/it in Italian; old links keep working, with their ?src=
 [[redirects]]
-  from = "/q/en"
-  to = "/q"
-  status = 301
-[[redirects]]
-  from = "/q/en/*"
-  to = "/q"
-  status = 301
-[[redirects]]
-  from = "/it/sondaggio"
-  to = "/q/it"
+  from = "/survey.html"
+  to = "/survey"
   status = 301
 [[redirects]]
   from = "/it/sondaggio.html"
-  to = "/q/it"
+  to = "/it/sondaggio"
   status = 301
 [[redirects]]
-  from = "/survey"
-  to = "/q"
+  from = "/q/en"
+  to = "/survey"
   status = 301
 [[redirects]]
-  from = "/survey.html"
-  to = "/q"
+  from = "/q/en/*"
+  to = "/survey"
   status = 301
 
 # Italian pages get the Italian "page not found"

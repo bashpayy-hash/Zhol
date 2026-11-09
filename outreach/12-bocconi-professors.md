@@ -38,7 +38,7 @@ You can name the co-author when you write to them.
 
 Links used in the letters:
 - the site: https://zhol.live/
-- the survey: https://zhol.live/q/it/
+- the survey: https://zhol.live/it/sondaggio
 
 ---
 
@@ -58,7 +58,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-baccelli
+https://zhol.live/survey?src=prof-baccelli
 
 Given your network among traffic managers, built through the transport master's you direct and your work with operators, would you also consider forwarding it to one or two of them?
 
@@ -76,7 +76,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-baccelli
+https://zhol.live/it/sondaggio?src=prof-baccelli
 
 Data la sua rete di contatti tra i responsabili traffico, costruita con il master in trasporti che dirige e il lavoro con gli operatori, potrebbe anche inoltrarlo a uno o due di loro?
 
@@ -101,7 +101,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-grando
+https://zhol.live/survey?src=prof-grando
 
 Given the network of companies around the SOSC Monitor, would you also consider forwarding it to one or two logistics managers?
 
@@ -119,7 +119,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-grando
+https://zhol.live/it/sondaggio?src=prof-grando
 
 Data la rete di aziende attorno al SOSC Monitor, potrebbe anche inoltrarlo a uno o due responsabili logistici?
 
@@ -144,7 +144,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-degiovanni
+https://zhol.live/survey?src=prof-degiovanni
 
 Given your network among logistics and traffic managers, would you also consider forwarding it to one or two of them? If you have a moment, we would also value your view on how we measure the cost of a disruption (probability × waiting time × hourly cost).
 
@@ -162,7 +162,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-degiovanni
+https://zhol.live/it/sondaggio?src=prof-degiovanni
 
 Data la sua rete di contatti tra i responsabili logistici e traffico, potrebbe anche inoltrarlo a uno o due di loro? Se ha un momento, ci farebbe piacere anche un suo parere su come misuriamo il costo di un'interruzione (probabilità × attesa × costo orario).
 
@@ -187,7 +187,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-veronesi
+https://zhol.live/survey?src=prof-veronesi
 
 Given your contacts among the people who plan trips, at Zeroquattro or at a similar food distributor, would you also consider forwarding it to them?
 
@@ -205,7 +205,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-veronesi
+https://zhol.live/it/sondaggio?src=prof-veronesi
 
 Dati i suoi contatti tra chi pianifica i viaggi, in Zeroquattro o in un distributore alimentare simile, potrebbe anche inoltrarlo a loro?
 
@@ -230,7 +230,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-gallmann
+https://zhol.live/survey?src=prof-gallmann
 
 Given your contacts among those managers, would you also consider forwarding it to one or two who run trips abroad?
 
@@ -248,7 +248,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-gallmann
+https://zhol.live/it/sondaggio?src=prof-gallmann
 
 Dati i suoi contatti tra quei responsabili, potrebbe anche inoltrarlo a uno o due che gestiscono viaggi all'estero?
 
@@ -273,7 +273,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-zamboni
+https://zhol.live/survey?src=prof-zamboni
 
 Given your contacts among logistics managers from your projects with companies, would you also consider forwarding it to one or two of them? We would also value your view on the idea itself.
 
@@ -291,7 +291,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-zamboni
+https://zhol.live/it/sondaggio?src=prof-zamboni
 
 Dati i suoi contatti tra i responsabili logistici conosciuti nei progetti con le aziende, potrebbe anche inoltrarlo a uno o due di loro? Ci farebbe piacere anche un suo parere sull'idea.
 
@@ -316,7 +316,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-damato
+https://zhol.live/survey?src=prof-damato
 
 Given your contacts among logistics and transport managers in those sectors, would you also consider forwarding it to one or two of them?
 
@@ -334,7 +334,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-damato
+https://zhol.live/it/sondaggio?src=prof-damato
 
 Dati i suoi contatti tra i responsabili logistici e dei trasporti in quei settori, potrebbe anche inoltrarlo a uno o due di loro?
 
@@ -359,7 +359,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-percoco
+https://zhol.live/survey?src=prof-percoco
 
 Given your network of researchers and operators who work with carriers, who would you suggest we ask to share it? Even a name would help.
 
@@ -377,7 +377,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-percoco
+https://zhol.live/it/sondaggio?src=prof-percoco
 
 Data la sua rete di ricercatori e operatori che lavorano con gli autotrasportatori, a chi ci suggerirebbe di chiedere di diffonderlo? Anche solo un nome ci aiuterebbe.
 
@@ -402,7 +402,7 @@ zhol watches roads, passes and ferries at night, when offices are closed, and co
 Before going further we are collecting baseline numbers. Would you answer our survey? It has a path for people who know the field, so you can answer from your own experience.
 
 **Survey, 7 questions, 1 minute, anonymous**
-https://zhol.live/q/?src=prof-senn
+https://zhol.live/survey?src=prof-senn
 
 Given your network among those graduates and the operators you worked with over your career, would you also consider forwarding it to one or two who plan trips abroad?
 
@@ -420,7 +420,7 @@ zhol tiene d'occhio strade, valichi e traghetti anche di notte, quando gli uffic
 Prima di andare avanti raccogliamo i dati di partenza. Potrebbe rispondere al nostro sondaggio? Ha un percorso per chi conosce il settore, così può rispondere in base alla sua esperienza.
 
 **Sondaggio, 7 domande, 1 minuto, anonimo**
-https://zhol.live/q/it/?src=prof-senn
+https://zhol.live/it/sondaggio?src=prof-senn
 
 Data la sua rete tra quei diplomati e gli operatori con cui ha lavorato negli anni, potrebbe anche inoltrarlo a uno o due che pianificano viaggi all'estero?
 

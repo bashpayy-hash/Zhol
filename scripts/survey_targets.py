@@ -17,7 +17,7 @@ from urllib.parse import quote_plus
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outreach"
-SURVEY = "https://zhol.live/q/it/"
+SURVEY = "https://zhol.live/it/sondaggio"
 
 COUNTRIES = [  # (pattern in the English lead notes, Italian name)
     (r"\bGerman|\bDE\b", "Germania"), (r"\bAustria", "Austria"), (r"\bSwitzerland|\bSwiss|\bCH\b", "Svizzera"),
@@ -327,7 +327,7 @@ def bocconi() -> list[dict]:
         email = re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", to)
         info = table.get(name, {})
         info["why"] = WHY_RU.get(name, info.get("why", ""))
-        link = next(iter(re.findall(r"https://zhol\.live/q/(?:it/)?\?src=prof-[a-z]+", text)), SURVEY)
+        link = next(iter(re.findall(r"https://zhol\.live/(?:survey|it/sondaggio)\?src=prof-[a-z]+", text)), SURVEY)
         rows.append({"id": "u-" + slug(name), "type": "bocconi", "name": name, "city": "Università Bocconi",
                      "region": info.get("role", ""), "to": email[0] if email else "",
                      "where": "" if email else "Outlook → Кому → наберите фамилию (адресная книга Bocconi)" + (": " + to if "CV" in to else ""),
