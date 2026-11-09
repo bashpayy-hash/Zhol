@@ -921,3 +921,27 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 .tile.wide .tile-title { font-size: 24px; max-width: 30ch; }
 @media (max-width: 920px) { .tiles, .blocks.tiles-mode { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tile.wide, .blocks.tiles-mode .block.wide { grid-column: span 2 !important; } }
 @media (max-width: 560px) { .tile { min-height: 156px; } .tile.wide .tile-title { font-size: 18px; } .tile-line { font-size: 13px; -webkit-line-clamp: 3; padding-right: 30px; } }
+
+/* survey: the words sit on the scene, softly blurred, like the home page (sv-full) */
+.sv-full .sv-intro-grid { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(78vh, 720px); border-radius: 28px; overflow: hidden; background: #2a2420; padding-block: 56px; }
+.sv-full .sv-scene { position: absolute; inset: 0; z-index: -2; margin: 0; border-radius: 0; aspect-ratio: auto; background: #2a2420; }
+.sv-full .sv-scene video { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; filter: blur(5px) saturate(1.05) brightness(.95); transform: scale(-1.07, 1.07); }
+.sv-full .sv-intro-grid::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(28, 22, 18, .84) 0%, rgba(28, 22, 18, .64) 36%, rgba(28, 22, 18, .2) 64%, rgba(28, 22, 18, .04) 100%); }
+.sv-full .sv-intro-text { max-width: 620px; padding-inline: clamp(8px, 3.4vw, 44px); }
+.sv-full .sv-label { color: var(--red-on-dark); }
+.sv-full h1.sv-title { color: #fff; }
+.sv-full .lead { color: rgba(255, 255, 255, .88); }
+.sv-full .actions .small.muted { color: rgba(255, 255, 255, .72); }
+.sv-now-row { margin-top: 18px; }
+.sv-now-row .sv-now { max-width: 680px; margin-top: 0; }
+@media (max-width: 760px) {
+  .sv-full .sv-intro-grid { align-items: flex-end; min-height: 82vh; border-radius: 22px; padding-block: 24px; }
+  .sv-full .sv-scene video { object-position: 24% 40%; }
+  .sv-full .sv-intro-grid::before { background: linear-gradient(180deg, rgba(28, 22, 18, 0) 12%, rgba(28, 22, 18, .6) 44%, rgba(28, 22, 18, .9) 74%); }
+  .sv-full .sv-intro-text { padding-inline: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { .sv-full .sv-scene video { filter: blur(5px); } }
+.sv-full .sv-intro-grid { margin-inline: auto; width: calc(100% - 2 * max(20px, env(safe-area-inset-left, 0px))); max-width: calc(var(--wrap) - 40px); }
+.sv-full .sv-intro-grid { clip-path: inset(0 round 28px); }
+@media (max-width: 760px) { .sv-full .sv-intro-grid { clip-path: inset(0 round 22px); } }

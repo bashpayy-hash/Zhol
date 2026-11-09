@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=t5">
+<link rel="stylesheet" href="/assets/zhol.css?v=s8">
 <link rel="alternate" hreflang="en" href="https://zhol.live/q/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/q/it/">
 <!-- links sent to Italian offices before English became the default carry an Italian campaign tag: send them on to /q/it -->
@@ -26,24 +26,26 @@
 </div></header>
 
 <main>
-<section class="slide sv-intro" id="sv-intro">
+<section class="slide sv-intro sv-full" id="sv-intro">
   <div class="wrap sv-intro-grid">
     <div class="sv-intro-text">
       <span class="sv-label">Bocconi research for traffic offices</span>
       <h1 class="title sv-title">Seven questions. One minute.</h1>
       <p class="lead">What do bans, queues, closures and strikes cost you, by road, rail or ferry? One tap per answer, anonymous, and we sell nothing.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Start</a><span class="small muted">Anonymous · nothing to buy</span></div>
-      <div class="sv-now" id="sv-now" hidden>
-        <p class="sv-now-head"><span class="sv-live-dot" aria-hidden="true"></span><b>On Europe’s roads right now</b></p>
-        <div class="sv-now-grid">
-          <div class="map-frame" role="img" aria-label="Map of Europe with the events zhol expects in the next eight weeks"></div>
-          <ul class="sv-now-list" id="sv-now-list"></ul>
-        </div>
-        <p class="small muted">What zhol watches every day. Next: offices warning each other about what their drivers see.</p>
-      </div>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
+    </div>
+  </div>
+  <div class="wrap sv-now-row">
+    <div class="sv-now" id="sv-now" hidden>
+      <p class="sv-now-head"><span class="sv-live-dot" aria-hidden="true"></span><b>On Europe’s roads right now</b></p>
+      <div class="sv-now-grid">
+        <div class="map-frame" role="img" aria-label="Map of Europe with the events zhol expects in the next eight weeks"></div>
+        <ul class="sv-now-list" id="sv-now-list"></ul>
+      </div>
+      <p class="small muted">What zhol watches every day. Next: offices warning each other about what their drivers see.</p>
     </div>
   </div>
 </section>
@@ -170,14 +172,14 @@
       </div>
     </div>
 
-    <p class="small muted sv-privacy">A project by three Bocconi students (Alikhan, Inkara, Tomiris) for TEF Ignition 2026. Answers are anonymous and we publish aggregate figures only. If you leave a contact, we link it to your answers, use it only for what you chose, and delete it when the project ends, or sooner if you ask. Data stored on Netlify.</p>
+    <p class="small muted sv-privacy">A project by the zhol team at Bocconi University for TEF Ignition 2026. Answers are anonymous and we publish aggregate figures only. If you leave a contact, we link it to your answers, use it only for what you chose, and delete it when the project ends, or sooner if you ask. Data stored on Netlify.</p>
   </div>
 </section>
 </main>
 
 <footer class="site"><div class="wrap">
   <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
-  <span>Alikhan · Inkara · Tomiris · Bocconi University · TEF Ignition 2026</span>
+  <span>zhol team · Bocconi University · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/map.js?v=a3" defer></script>
