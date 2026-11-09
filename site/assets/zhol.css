@@ -1045,3 +1045,10 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 .sv-reads > p { margin: 0; }
 @media (max-width: 760px) { .sv-reads ul { grid-template-columns: minmax(0, 1fr); } .sv-reads li { grid-template-columns: 68px minmax(0, 1fr); } }
 @media (min-width: 921px) { .sv-map .map-col { position: sticky; top: 84px; } }   /* the map stays in view while the events scroll by */
+/* the survey's last screens (contact, thank you): short, so the mascot does not stick; it sits centred in the card */
+.sv-stage.end .sv-mascot { position: relative; top: 0; align-self: center; }
+/* the last screen on phones: the map stays inside the card's margins, and the list is not a card inside a card */
+@media (max-width: 760px) {
+  .sv-map .map-frame { margin: 0; }
+  .sv-map .map-panel { background: none; border: 0; border-radius: 0; padding: 18px 0 0; border-top: 1px solid var(--card-line); }
+}

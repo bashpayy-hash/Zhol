@@ -136,6 +136,8 @@
     post(form).then(() => {
       form.hidden = true;
       follow.hidden = false;
+      // the last screens are short: Zholdas stops following the scroll and sits in the middle of the card
+      const stage = document.querySelector(".sv-stage"); if (stage) stage.classList.add("end");
       setPose("celebrate");
       live.textContent = T("Answers sent. Thank you.", "Risposte inviate. Grazie.");
       const h = follow.querySelector(".sv-q-title"); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }

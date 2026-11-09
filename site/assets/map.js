@@ -45,8 +45,12 @@ window.ZholMap = function (root, opts) {
                    : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals" };
   const STAGE_IT = { tension: "tensione", threat: "minaccia", announced: "annunciato", confirmed: "confermato", ongoing: "in corso", revoked: "revocato" };
   const factorIt = l => l.replace(/^forecast alone: /, "solo previsione: ").replace(/^weight ([\d.]+) for (\d+) days ahead, rest from the season's /, "peso $1 a $2 giorni, il resto dalla media stagionale del ");
+  // the forecast's own weighting, said in words rather than numbers to two decimals (VISION.md 2.1.7)
+  const plainForecast = l => l.replace(/^weight [\d.]+ for (\d+) days? ahead, rest from the season's ([\d.]+%)$/, (m, d, avg) =>
+    IT ? "a " + d + " giorni, corretta con la media stagionale (" + avg + ")" : d + " days ahead, tempered by the season's average (" + avg + ")");
   const factorName = x => {
     const m = (opts.method && opts.method.multipliers) || {};
+    if (!x.key && /^weight /.test(x.label || "")) return plainForecast(x.label);
     return IT ? ((x.key && m[x.key] && m[x.key].label_it) || x.label_it || factorIt(x.label || "")) : x.label;
   };
   const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
