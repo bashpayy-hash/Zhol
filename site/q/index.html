@@ -12,7 +12,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s9">
+<link rel="stylesheet" href="/assets/zhol.css?v=s10">
 <link rel="alternate" hreflang="en" href="https://zhol.live/q/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/q/it/">
 <!-- links sent to Italian offices before English became the default carry an Italian campaign tag: send them on to /q/it -->
@@ -31,7 +31,7 @@
     <div class="sv-intro-text">
       <span class="sv-label">Bocconi research for traffic offices</span>
       <h1 class="title sv-title">Seven questions. One minute.</h1>
-      <p class="lead">What do bans, queues, closures and strikes cost you, by road, rail or ferry? One tap per answer, anonymous, and we sell nothing.</p>
+      <p class="lead">What do bans, queues, closures and strikes cost the people who move freight by road, rail or ferry? Answer from your own desk or from what you know of the field. One tap per answer, anonymous, and we sell nothing.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Start</a><a class="sv-more" href="#sv-pitch">See what we are building</a></div>
     </div>
     <div class="sv-scene" aria-hidden="true">
@@ -41,24 +41,27 @@
   <div class="wrap sv-pitch" id="sv-pitch">
     <div class="sv-pitch-head">
       <span class="sv-label">What zhol is building</span>
-      <h2 class="sv-pitch-title">Trouble on the road comes when nobody is at the desk.</h2>
+      <h2 class="sv-pitch-title">A radar for Europe’s roads, then a network of agents.</h2>
     </div>
+    <article class="sv-card sv-radar" id="sv-c2" hidden>
+      <div class="sv-radar-map">
+        <div class="map-frame" role="img" aria-label="Map of Europe with the events zhol expects in the next eight weeks"></div>
+      </div>
+      <div class="sv-radar-side">
+        <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Working prototype</span>
+        <h3>The radar: what is coming on Europe’s roads, with the chance of each event.</h3>
+        <ul class="sv-sched" id="sv-sched"></ul>
+        <p class="sv-card-foot">Every day zhol reads the bans, closures and strike notices and gives each one its chance. <a href="/outlook">Open the full radar</a></p>
+      </div>
+    </article>
     <div class="sv-cards">
       <article class="sv-card" id="sv-c1" hidden>
-        <h3>The next eight weeks, day by day.</h3>
+        <h3>Trouble comes when nobody is at the desk.</h3>
         <div class="sv-card-scene">
           <div class="sv-cal" id="sv-cal" role="img" aria-label="The next eight weeks: weekends and holidays, and the days with an event on the radar"></div>
           <p class="sv-cal-key" aria-hidden="true"><span><i class="off"></i>Weekend or public holiday</span><span><i class="ev"></i>Event on the radar</span></p>
         </div>
         <p class="sv-card-foot"><b id="sv-c1-n"></b> Emails wait for Monday; the road does not.</p>
-      </article>
-      <article class="sv-card" id="sv-c2" hidden>
-        <h3>The schedule, with the chance of each event.</h3>
-        <div class="sv-card-scene">
-          <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Working prototype</span>
-          <ul class="sv-sched" id="sv-sched"></ul>
-        </div>
-        <p class="sv-card-foot">Every day zhol reads the bans, closures and strike notices and gives each one its chance. <a href="/outlook">Open the radar</a></p>
       </article>
       <article class="sv-card" id="sv-c3">
         <h3>Next: an agent for every office.</h3>
@@ -82,7 +85,7 @@
   <div class="wrap">
 
     <div class="sv-stage">
-      <div class="sv-mascot scene-3d" aria-hidden="true"><div class="scape"><img src="/assets/img/scape.svg?v=1" alt="" width="500" height="300"></div><img id="sv-img" src="/assets/img/mascot/truck-560.webp?v=zd1" srcset="/assets/img/mascot/truck-280.webp?v=zd1 280w, /assets/img/mascot/truck-560.webp?v=zd1 560w" sizes="(max-width: 760px) 170px, 300px" alt="" width="560" height="448"></div>
+      <div class="sv-mascot scene-3d" aria-hidden="true"><div class="scape"><img src="/assets/img/scape.svg?v=1" alt="" width="500" height="300"></div><img id="sv-img" src="/assets/img/mascot/delivered-560.webp?v=zd1" srcset="/assets/img/mascot/delivered-280.webp?v=zd1 280w, /assets/img/mascot/delivered-560.webp?v=zd1 560w" sizes="(max-width: 760px) 170px, 300px" alt="" width="560" height="448"></div>
 
       <div class="sv-panel">
         <div class="sv-road" aria-hidden="true"><i id="sv-road"></i></div>
@@ -95,7 +98,16 @@
           <input type="hidden" name="rid" value="">
           <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
 
-          <fieldset class="q" data-img="truck"><legend><span class="n">Question 1 of 7</span>How many vehicles do you manage (trucks, trailers, containers, wagons)?</legend>
+          <fieldset class="q role" data-img="delivered"><legend><span class="n">Before we start</span>Which describes you best?</legend>
+            <p class="sv-why">If you do not plan transport yourself, the questions ask what you know of the field.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="role" value="office" required><span>I plan or run transport (traffic office, carrier, shipper)</span></label>
+              <label><input type="radio" name="role" value="around"><span>I work around it (forwarding, association, consultancy)</span></label>
+              <label><input type="radio" name="role" value="academic"><span>I teach or research logistics</span></label>
+              <label><input type="radio" name="role" value="former"><span>I used to work in logistics</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="truck" data-path="op"><legend><span class="n">Question 1 of 7</span>How many vehicles do you manage (trucks, trailers, containers, wagons)?</legend>
             <p class="sv-why">To compare operations of a similar size.</p>
             <div class="opts tall">
               <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
@@ -105,7 +117,7 @@
               <label><input type="radio" name="fleet" value="100+"><span>Over 100</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="route"><legend><span class="n">Question 2 of 7</span>How many shipments a week go abroad, by road, rail or ferry?</legend>
+          <fieldset class="q" data-img="route" data-path="op"><legend><span class="n">Question 2 of 7</span>How many shipments a week go abroad, by road, rail or ferry?</legend>
             <p class="sv-why">Long shipments are the ones most exposed to bans, queues and ferries that do not sail.</p>
             <div class="opts tall">
               <label><input type="radio" name="trips_abroad" value="0" required><span>Never</span></label>
@@ -114,7 +126,7 @@
               <label><input type="radio" name="trips_abroad" value="20+"><span>Over 20 times</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="watch"><legend><span class="n">Question 3 of 7</span>How long do you spend each day checking bans, queues and strikes?</legend>
+          <fieldset class="q" data-img="watch" data-path="op"><legend><span class="n">Question 3 of 7</span>How long do you spend each day checking bans, queues and strikes?</legend>
             <p class="sv-why">This is the time zhol wants to give back to you.</p>
             <div class="opts tall">
               <label><input type="radio" name="minutes" value="<10" required><span>Under 10 minutes</span></label>
@@ -123,7 +135,7 @@
               <label><input type="radio" name="minutes" value="40+"><span>Over 40 minutes</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="phone"><legend><span class="n">Question 4 of 7</span>In the last month, how many times did a ban, a queue, a closure or a strike make you change a shipment (time, route or date)?</legend>
+          <fieldset class="q" data-img="phone" data-path="op"><legend><span class="n">Question 4 of 7</span>In the last month, how many times did a ban, a queue, a closure or a strike make you change a shipment (time, route or date)?</legend>
             <p class="sv-why">How often it happens matters as much as what it costs.</p>
             <div class="opts tall">
               <label><input type="radio" name="changes" value="0" required><span>Never</span></label>
@@ -133,7 +145,7 @@
               <label><input type="radio" name="changes" value="10+"><span>More than 10 times</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="coin"><legend><span class="n">Question 5 of 7</span>The last time a ban, a queue or a strike stopped one of your shipments, what did it cost you?</legend>
+          <fieldset class="q" data-img="coin" data-path="op"><legend><span class="n">Question 5 of 7</span>The last time a ban, a queue or a strike stopped one of your shipments, what did it cost you?</legend>
             <p class="sv-why">It tells us what an alert that arrives in time is worth.</p>
             <div class="opts tall">
               <label><input type="radio" name="last_cost" value="<100" required><span>Under €100</span></label>
@@ -143,7 +155,7 @@
               <label><input type="radio" name="last_cost" value="unknown"><span>Don’t know</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="radio"><legend><span class="n">Question 6 of 7</span>If other offices told you about a queue or a closure their drivers see, before your trucks leave, would you share yours too?</legend>
+          <fieldset class="q" data-img="radio" data-path="op"><legend><span class="n">Question 6 of 7</span>If other offices told you about a queue or a closure their drivers see, before your trucks leave, would you share yours too?</legend>
             <p class="sv-why">Each office would have its own agent that passes these warnings to the others in seconds, anonymously.</p>
             <div class="opts tall">
               <label><input type="radio" name="share" value="yes" required><span>Yes, gladly</span></label>
@@ -152,7 +164,7 @@
               <label><input type="radio" name="share" value="no"><span>No</span></label>
             </div>
           </fieldset>
-          <fieldset class="q" data-img="thinking"><legend><span class="n">Question 7 of 7</span>What price feels fair, per vehicle per month?</legend>
+          <fieldset class="q" data-img="thinking" data-path="op"><legend><span class="n">Question 7 of 7</span>What price feels fair, per vehicle per month?</legend>
             <p class="sv-why">To set a fair price before asking for a single euro.</p>
             <div class="opts tall">
               <label><input type="radio" name="price" value="0" required><span>Nothing, I wouldn’t pay</span></label>
@@ -160,6 +172,77 @@
               <label><input type="radio" name="price" value="5-10"><span>€5–10</span></label>
               <label><input type="radio" name="price" value="10-20"><span>€10–20</span></label>
               <label><input type="radio" name="price" value="20+"><span>Over €20</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="q" data-img="truck" data-path="ex"><legend><span class="n">Question 1 of 7</span>Which part of freight transport do you know best?</legend>
+            <p class="sv-why">So we read your answers next to others from the same field.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="scope" value="road"><span>Road haulage</span></label>
+              <label><input type="radio" name="scope" value="rail"><span>Rail and intermodal</span></label>
+              <label><input type="radio" name="scope" value="sea"><span>Ferries and ports</span></label>
+              <label><input type="radio" name="scope" value="shipper"><span>Shippers: industry and retail</span></label>
+              <label><input type="radio" name="scope" value="mixed"><span>Several of these</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="watch" data-path="ex"><legend><span class="n">Question 2 of 7</span>In your experience, how long does a traffic office with lanes abroad spend each day checking bans, queues and strikes?</legend>
+            <p class="sv-why">This is the time zhol wants to give back to offices.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_minutes" value="<10"><span>Under 10 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="10-20"><span>10–20 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="20-40"><span>20–40 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="40+"><span>Over 40 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="unknown"><span>Don’t know</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="phone" data-path="ex"><legend><span class="n">Question 3 of 7</span>Out of 100 shipments abroad, how many have to be changed in a typical month because of a ban, a queue, a closure or a strike?</legend>
+            <p class="sv-why">How often it happens matters as much as what it costs.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_changes" value="<2"><span>Fewer than 2</span></label>
+              <label><input type="radio" name="x_changes" value="2-5"><span>2–5</span></label>
+              <label><input type="radio" name="x_changes" value="5-10"><span>5–10</span></label>
+              <label><input type="radio" name="x_changes" value="10+"><span>More than 10</span></label>
+              <label><input type="radio" name="x_changes" value="unknown"><span>Don’t know</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="coin" data-path="ex"><legend><span class="n">Question 4 of 7</span>When a ban, a queue or a strike stops a shipment, what does it typically cost the carrier?</legend>
+            <p class="sv-why">It tells us what an alert that arrives in time is worth.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_cost" value="<100"><span>Under €100</span></label>
+              <label><input type="radio" name="x_cost" value="100-300"><span>€100–300</span></label>
+              <label><input type="radio" name="x_cost" value="300-1000"><span>€300–1,000</span></label>
+              <label><input type="radio" name="x_cost" value="1000+"><span>Over €1,000</span></label>
+              <label><input type="radio" name="x_cost" value="unknown"><span>Don’t know</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="radio" data-path="ex"><legend><span class="n">Question 5 of 7</span>Would traffic offices share what their drivers see with other offices, if it stayed anonymous?</legend>
+            <p class="sv-why">Each office would have its own agent that passes warnings to the others in seconds.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_share" value="most"><span>Most would</span></label>
+              <label><input type="radio" name="x_share" value="some"><span>Some would</span></label>
+              <label><input type="radio" name="x_share" value="few"><span>Few: they keep information to themselves</span></label>
+              <label><input type="radio" name="x_share" value="unknown"><span>Don’t know</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="route" data-path="ex"><legend><span class="n">Question 6 of 7</span>What would most hold an office back from a tool like this?</legend>
+            <p class="sv-why">So we build around the real obstacle, not the one we imagine.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_obstacle" value="trust"><span>Trusting the information</span></label>
+              <label><input type="radio" name="x_obstacle" value="price"><span>The price</span></label>
+              <label><input type="radio" name="x_obstacle" value="habit"><span>Habits: phone, email, WhatsApp</span></label>
+              <label><input type="radio" name="x_obstacle" value="integration"><span>Fitting it into their software</span></label>
+              <label><input type="radio" name="x_obstacle" value="competitors"><span>Sharing data near competitors</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="thinking" data-path="ex"><legend><span class="n">Question 7 of 7</span>What price would an office find fair, per vehicle per month?</legend>
+            <p class="sv-why">To set a fair price before asking for a single euro.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_price" value="0"><span>Nothing, they wouldn’t pay</span></label>
+              <label><input type="radio" name="x_price" value="<5"><span>Up to €5</span></label>
+              <label><input type="radio" name="x_price" value="5-10"><span>€5–10</span></label>
+              <label><input type="radio" name="x_price" value="10-20"><span>€10–20</span></label>
+              <label><input type="radio" name="x_price" value="20+"><span>Over €20</span></label>
+              <label><input type="radio" name="x_price" value="unknown"><span>Don’t know</span></label>
             </div>
           </fieldset>
 
@@ -176,7 +259,6 @@
           <h2 class="sv-q-title">Would you like something back? Optional.</h2>
           <div class="opts tall multi">
             <label><input type="checkbox" name="followup" value="results"><span>The survey results</span></label>
-            <label><input type="checkbox" name="followup" value="analysis"><span>A free analysis of one of your past months</span></label>
             <label><input type="checkbox" name="followup" value="interview"><span>A 20-minute chat</span></label>
             <label><input type="checkbox" name="followup" value="network"><span>A place among the first offices in the shared network</span></label>
           </div>
@@ -211,7 +293,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=q1" defer></script>
 <script src="/assets/map.js?v=a3" defer></script>
-<script src="/assets/survey.js?v=q7" defer></script>
+<script src="/assets/survey.js?v=q8" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

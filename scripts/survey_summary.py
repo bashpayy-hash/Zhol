@@ -7,6 +7,11 @@ Then run:
     python scripts/survey_summary.py outreach/private/survey.csv outreach/private/survey-followup.csv \
         --out docs/14-survey-results.md
 
+Since 9 Nov the form starts with "which describes you best": traffic offices (role=office, or no role in
+early answers) answer about their own desk and feed the thresholds; people who know the field (teachers,
+researchers, consultants, former staff) answer the same topics from experience (scope, x_*) and are
+reported apart, never mixed into the offices' figures.
+
 Only aggregate figures are written; contacts never leave the CSV. The survey covers four thresholds
 (time, cost, price, interest) on the beachhead; re-plans, decision time, who signs and the package
 stay with the interviews. Answers are self-reported: interviews and pilots confirm them.
@@ -30,7 +35,16 @@ PRICE = [("0", "nothing"), ("<5", "up to €5"), ("5-10", "€5–10"), ("10-20"
 USE = [("yes", "yes, a lot"), ("maybe", "maybe"), ("no", "no")]        # dropped from the survey on 9 Nov; kept to read early answers
 CHANGES = [("0", "never"), ("1-2", "1–2"), ("3-5", "3–5"), ("6-10", "6–10"), ("10+", "over 10")]
 SHARE = [("yes", "yes, gladly"), ("anon", "yes, if anonymous"), ("receive", "only receive"), ("no", "no")]
-FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis", "interview": "a 20-minute chat",
+# people who know the field: the same topics, asked from experience
+ROLE = [("office", "plans or runs transport"), ("around", "works around it (forwarding, association, consultancy)"),
+        ("academic", "teaches or researches logistics"), ("former", "used to work in logistics")]
+SCOPE = [("road", "road haulage"), ("rail", "rail and intermodal"), ("sea", "ferries and ports"), ("shipper", "shippers"), ("mixed", "several")]
+DK = [("unknown", "don’t know")]
+X_CHANGES = [("<2", "under 2"), ("2-5", "2–5"), ("5-10", "5–10"), ("10+", "over 10")]
+X_SHARE = [("most", "most would"), ("some", "some would"), ("few", "few would")]
+X_OBSTACLE = [("trust", "trusting the information"), ("price", "the price"), ("habit", "habits: phone, email, WhatsApp"),
+              ("integration", "fitting it into their software"), ("competitors", "sharing data near competitors")]
+FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis (no longer offered)", "interview": "a 20-minute chat",
             "network": "a place in the shared network"}
 
 # The Google Form (outreach/google-form.gs) exports question titles as headers and choice labels as values.
@@ -51,7 +65,7 @@ GOOGLE_FORM = {
     "Quale prezzo vi sembra giusto, al mese per ogni mezzo?": ("price", {
         "Niente, non pagherei": "0", "Fino a 5 €": "<5", "5–10 €": "5-10", "10–20 €": "10-20", "Più di 20 €": "20+"}),
     "Cosa vi interessa?": ("followup", {
-        "I risultati del sondaggio": "results", "L’analisi gratuita di un vostro mese passato": "analysis",
+        "I risultati del sondaggio": "results",
         "Fare due chiacchiere, 20 minuti": "interview", "Un posto tra i primi uffici della rete condivisa": "network"}),
     "Email o telefono aziendale": ("contact", None),
     "Consenso": ("consent", None),
@@ -100,6 +114,8 @@ def read(paths: list[Path]) -> tuple[list[dict], list[dict]]:
                 r = _norm(raw)
                 if r.get("fleet") and r.get("minutes"):
                     answers.append(r)
+                elif r.get("role") and r.get("role") != "office" and (r.get("scope") or r.get("x_minutes")):
+                    answers.append(r)                    # someone who knows the field, answering from experience
                 elif "followup" in r or "contact" in r:
                     follow.append(r)
     return answers, follow
@@ -123,7 +139,13 @@ def share(rows: list[dict], field: str, keys: set[str]) -> tuple[float | None, i
     return ((sum(v in keys for v in vals) / len(vals)) if vals else None), len(vals)
 
 
+def is_expert(r: dict) -> bool:
+    return (r.get("role") or "office") != "office"
+
+
 def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
+    experts = [r for r in answers if is_expert(r)]
+    answers = [r for r in answers if not is_expert(r)]
     core = [r for r in answers if r.get("fleet") in BEACHHEAD_FLEET and r.get("trips_abroad") not in ("", "0")]
     checks = []
 
@@ -156,8 +178,19 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
         "changes": dist("changes", CHANGES, core), "use": dist("would_use", USE, core), "share": dist("share", SHARE, core), "price": dist("price", PRICE, core),
         "followup": Counter(FOLLOWUP.get(t, t) for r in (follow or []) for t in multi(r.get("followup", ""))),
         "contacts": sum(1 for r in (follow or []) if r.get("contact")),
-        "channels": Counter(r.get("src") or "direct" for r in answers),
-        "lang": Counter(r.get("lang") or "?" for r in answers),
+        "channels": Counter(r.get("src") or "direct" for r in answers + experts),
+        "lang": Counter(r.get("lang") or "?" for r in answers + experts),
+        "n_expert": len(experts),
+        "experts": {
+            "Who they are": dist("role", ROLE[1:], experts),
+            "The part of transport they know best": dist("scope", SCOPE, experts),
+            "Time an office spends checking each day": dist("x_minutes", MINUTES + DK, experts),
+            "Shipments abroad changed in a typical month, per 100": dist("x_changes", X_CHANGES + DK, experts),
+            "Typical cost to the carrier of a stopped shipment": dist("x_cost", COST + DK, experts),
+            "Would offices share what their drivers see, if anonymous": dist("x_share", X_SHARE + DK, experts),
+            "What would most hold an office back": dist("x_obstacle", X_OBSTACLE, experts),
+            "A fair price per vehicle a month, for an office": dist("x_price", PRICE + DK, experts),
+        },
     }
 
 
@@ -175,6 +208,12 @@ def markdown(s: dict) -> str:
         if not any(s[key].values()) and key == "changes":
             continue
         out += ["", f"## {title}", "", "| Answer | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in s[key].items()]
+    if s.get("n_expert"):
+        out += ["", f"## People who know the field ({s['n_expert']} answers, from experience)", "",
+                "Teachers, researchers, consultants and former staff answering about offices in general. Reported apart: "
+                "they do not count towards the thresholds above."]
+        for title, d in s["experts"].items():
+            out += ["", f"### {title}", "", "| Answer | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in d.items()]
     if s["followup"] or s["contacts"]:
         out += ["", "## What they asked for", ""] + [f"- {k}: {v}" for k, v in s["followup"].most_common()] + \
                [f"- contacts left: {s['contacts']} (in the follow-up export only)"]

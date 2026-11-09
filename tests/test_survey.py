@@ -58,7 +58,7 @@ def test_followups_are_counted_without_contacts_in_the_report(tmp_path):
     answers, follow = ss.read([a, f])
     text = ss.markdown(ss.summarise(answers, follow))
     assert "example.com" not in text and "045" not in text
-    assert "- a free past-month analysis: 1" in text and "- contacts left: 2" in text
+    assert "- a free past-month analysis (no longer offered): 1" in text and "- contacts left: 2" in text
     assert "| Offices spending ≥ 20 min a day checking | 100% | 5 |" in text
 
 
@@ -78,7 +78,7 @@ def test_google_form_export_is_read_like_the_site_form(tmp_path):
     rows = [["Informazioni cronologiche"] + titles]
     for _ in range(5):
         rows.append(["07/11/2026 18:00:00", "21–50", "6–20 volte", "20–40 minuti", "3–5 volte", "300–1.000 €", "Sì, se resta anonimo", "5–10 €",
-                     "I risultati del sondaggio, L’analisi gratuita di un vostro mese passato, Un posto tra i primi uffici della rete condivisa", "ufficio@example.com",
+                     "I risultati del sondaggio, Un posto tra i primi uffici della rete condivisa", "ufficio@example.com",
                      "Potete usare questo contatto solo per ciò che ho scelto."])
     rows.append(["07/11/2026 18:05:00", "Più di 100", "Mai", "Meno di 10 minuti", "Mai", "Non lo so", "No", "Niente, non pagherei", "", "", ""])
     p = tmp_path / "google.csv"
@@ -91,7 +91,7 @@ def test_google_form_export_is_read_like_the_site_form(tmp_path):
     c = {x["measure"]: x for x in s["checks"]}
     assert c["Offices spending ≥ 20 min a day checking"]["result"] == "100%"
     assert c["Fair price per vehicle a month, median"]["result"] == "€5–10"
-    assert s["followup"]["a free past-month analysis"] == 5 and s["channels"]["google-form"] == 6
+    assert s["followup"]["the results"] == 5 and s["channels"]["google-form"] == 6
     assert s["followup"]["a place in the shared network"] == 5
     assert c["Would share what their drivers see (shared watch, docs/15)"]["result"] == "100%"
     assert s["share"]["yes, if anonymous"] == 5
@@ -104,3 +104,26 @@ def test_google_form_labels_match_the_apps_script():
         assert f"'{title}'" in gs, title
         for label in (codes or {}):
             assert f"'{label}'" in gs, label
+
+
+EXPERT_FIELDS = ["Created At", "role", "scope", "x_minutes", "x_changes", "x_cost", "x_share", "x_obstacle", "x_price", "lang", "src", "rid"]
+
+
+def test_people_who_know_the_field_are_reported_apart(tmp_path):
+    offices = _write(tmp_path, "survey.csv", ANSWER_FIELDS, [_office() for _ in range(5)])
+    experts = _write(tmp_path, "experts.csv", EXPERT_FIELDS, [
+        {"role": "academic", "scope": "road", "x_minutes": "40+", "x_changes": "2-5", "x_cost": "1000+", "x_share": "some",
+         "x_obstacle": "trust", "x_price": "0", "lang": "en", "src": "prof-senn"},
+        {"role": "former", "scope": "rail", "x_minutes": "unknown", "x_changes": "unknown", "x_cost": "unknown", "x_share": "few",
+         "x_obstacle": "habit", "x_price": "unknown", "lang": "it", "src": "prof-baccelli"},
+    ])
+    answers, _ = ss.read([offices, experts])
+    s = ss.summarise(answers)
+    assert s["n_all"] == 5 and s["n_core"] == 5 and s["n_expert"] == 2          # experts never enter the offices' figures
+    c = {x["measure"]: x for x in s["checks"]}
+    assert c["Fair price per vehicle a month, median"]["result"] == "€5–10"      # the academic's "nothing" is not counted here
+    e = s["experts"]
+    assert e["Who they are"]["teaches or researches logistics"] == 1 and e["What would most hold an office back"]["trusting the information"] == 1
+    assert e["Time an office spends checking each day"]["don’t know"] == 1
+    text = ss.markdown(s)
+    assert "## People who know the field (2 answers, from experience)" in text and s["channels"]["prof-senn"] == 1

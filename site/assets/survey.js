@@ -7,7 +7,15 @@
   const IT = document.documentElement.lang === "it";
   const T = (en, it) => IT ? it : en;
   const $ = id => document.getElementById(id);
-  const steps = [...form.querySelectorAll("fieldset.q")];
+  // who is answering comes first: traffic offices get the questions about their own desk (data-path="op"),
+  // people who know the field (teachers, researchers, consultants, former staff) the same topics from experience ("ex")
+  const all = [...form.querySelectorAll("fieldset.q")];
+  let steps = all;
+  function setPath(p) {
+    all.forEach(s => { if (s.dataset.path) s.querySelectorAll("input").forEach(i => { i.disabled = s.dataset.path !== p; }); });
+    steps = all.filter(s => !s.dataset.path || s.dataset.path === p);
+  }
+  setPath("op");
   const img = $("sv-img"), scene = img && img.closest(".sv-mascot"), road = $("sv-road"), live = $("sv-live"), back = $("sv-back"), next = $("sv-next"), send = $("sv-send");
   const follow = $("sv-follow"), done = $("sv-done");
   const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -27,11 +35,14 @@
   try {
     const src = new URLSearchParams(location.search).get("src");
     if (src) form.elements.src.value = src.replace(/[^\w.-]/g, "").slice(0, 60);
+    // the letters to professors carry ?src=prof-…: start them on "I teach or research"
+    const academic = form.querySelector('input[name="role"][value="academic"]');
+    if (src && /^prof-/.test(src) && academic) { academic.checked = true; setPath("ex"); }
   } catch (e) { /* no channel */ }
 
   // preload the poses so the mascot never flashes empty
   const idle = f => ("requestIdleCallback" in window) ? requestIdleCallback(f, { timeout: 2500 }) : setTimeout(f, 1200);
-  idle(() => ["route", "watch", "coin", "phone", "radio", "thinking", "celebrate", "encourage"].forEach(n => {
+  idle(() => ["truck", "route", "watch", "coin", "phone", "radio", "thinking", "celebrate", "encourage"].forEach(n => {
     const i = new Image(); i.sizes = img.sizes; i.srcset = srcset(n);
   }));
 
@@ -53,7 +64,7 @@
   form.classList.add("stepping");
   form.noValidate = true;
 
-  let pose = "truck";
+  let pose = "delivered";
   function setPose(name) {
     if (!img || pose === name) return;
     pose = name;
@@ -65,7 +76,7 @@
 
   function show(i, focus) {
     at = Math.max(0, Math.min(steps.length - 1, i));
-    steps.forEach((s, k) => { s.hidden = k !== at; });
+    all.forEach(s => { s.hidden = s !== steps[at]; });
     const answered = !!steps[at].querySelector("input:checked"), last = at === steps.length - 1;
     back.hidden = at === 0;
     next.hidden = !(answered && !last);      // after going back, move on without changing the answer
@@ -73,7 +84,8 @@
     road.style.transform = "scaleX(" + (at / steps.length) + ")";
     if (scene) scene.style.setProperty("--p", (at / (steps.length - 1)).toFixed(3));   // the road runs on toward the mountains
     setPose(steps[at].dataset.img);
-    live.textContent = T("Question " + (at + 1) + " of " + steps.length, "Domanda " + (at + 1) + " di " + steps.length);
+    const n = steps[at].querySelector(".n");
+    live.textContent = n ? n.textContent : "";
     if (focus) {
       // bring the new question (and on phones the mascot above it) back into view
       const stage = document.querySelector(".sv-stage"), top = stage.getBoundingClientRect().top;
@@ -86,6 +98,7 @@
   form.addEventListener("change", e => {
     if (e.target.type !== "radio") return;
     $("sv-error").hidden = true;
+    if (e.target.name === "role") setPath(e.target.value === "office" ? "op" : "ex");
     const i = steps.indexOf(e.target.closest("fieldset.q"));
     setTimeout(() => {
       if (i < steps.length - 1) show(i + 1, true);
@@ -237,6 +250,9 @@
         li.append(dt, tx, pc, bar); list.append(li);
       });
       c2.hidden = false; watch(c2);
+      // the map of the same events: comes in behind its sweep when it scrolls into view (assets/map.js)
+      const m = c2.querySelector(".sv-radar-map");
+      if (m && window.ZholMap) window.ZholMap(m, { mini: true }).update(d.items, d.today);
     }
     // the cards came in before the agents' card: on a phone, start the row from the first one again
     const row = document.querySelector(".sv-cards");

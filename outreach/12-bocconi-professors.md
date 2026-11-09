@@ -15,7 +15,7 @@ name.surname: some faculty use @sdabocconi.it, others @unibocconi.it.
 **Who sends.** Alikhan, from his @studbocconi.it address; the letters are already signed with his name. Each one starts with a line saying the English version comes first and the Italian one below. Send Monday or Tuesday morning,
 at most three a day. Follow up once after four working days.
 
-**Tracking.** Each letter has its own `?src=` tag on the survey link, so we can see who forwarded it.
+**Tracking.** Each letter has its own `?src=` tag on the survey link, so we can see who answered or forwarded it. A `prof-` link opens the survey on "I teach or research logistics": the questions then ask what they know of the field, and those answers are counted apart from the offices' (owner, 9 Nov 2026).
 
 | # | Who | Why them | Email | Source |
 |---|---|---|---|---|
@@ -50,7 +50,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor Baccelli,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -66,7 +66,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professor Baccelli,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -89,7 +89,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor Grando,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -105,7 +105,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professor Grando,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -128,7 +128,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor De Giovanni,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -144,7 +144,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professor De Giovanni,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -167,7 +167,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor Veronesi,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -183,7 +183,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professoressa Veronesi,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -206,7 +206,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor Gallmann,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -222,7 +222,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professor Gallmann,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -245,7 +245,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor Zamboni,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -261,7 +261,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professoressa Zamboni,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -284,7 +284,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor D'Amato,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -300,7 +300,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professoressa D'Amato,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -323,7 +323,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor Percoco,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -339,7 +339,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professor Percoco,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 
@@ -362,7 +362,7 @@ English version first, Italian version below. · Versione inglese prima, italian
 
 Dear Professor Senn,
 
-I am writing to ask for your help with a short survey for traffic offices: seven questions, one minute, anonymous.
+I am writing to ask you to answer a short survey: seven questions, one minute, anonymous. It has a path for people who know the field without working in a traffic office, so you can answer from your own experience.
 
 My name is Alikhan Bashpay, a Bocconi student. zhol, the logistics project I am building with Inkara and Tomiris, is one of the 100 projects selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, and received a €2,000 grant. We want to build a platform that brings carriers and traffic offices together: it watches the roads at night, while everyone sleeps, takes over part of the monitoring and of the decisions about bans, closures, queues and strikes, and lets offices exchange information with each other.
 
@@ -378,7 +378,7 @@ Alikhan Bashpay · Bocconi University · zhol (with Inkara and Tomiris)
 
 Gentile Professor Senn,
 
-le scrivo per chiederle un aiuto con un breve sondaggio per gli uffici traffico: sette domande, un minuto, anonimo.
+le scrivo per chiederle di rispondere a un breve sondaggio: sette domande, un minuto, anonimo. Ha un percorso per chi conosce il settore senza lavorare in un ufficio traffico, così può rispondere in base alla sua esperienza.
 
 Sono Alikhan Bashpay, studente Bocconi. zhol, il progetto di logistica che sviluppo con Inkara e Tomiris, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 della Tech Europe Foundation e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico: tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
 

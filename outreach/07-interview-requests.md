@@ -75,7 +75,7 @@
 
 ## 8. После интервью (в тот же день)
 
-> Grazie [Nome] per il tempo di oggi. Come promesso: [analisi del mese / bollettino]. Se ci manda il piano carichi di un mese passato (anche un Excel o una foto), le mostriamo entro due giorni quali viaggi avremmo segnalato. Ci farebbe anche il nome di un collega che dovremmo sentire?
+> Grazie [Nome] per il tempo di oggi. Come promesso: [bollettino / risultati del sondaggio]. Ci farebbe anche il nome di un collega che dovremmo sentire?
 
 ---
 

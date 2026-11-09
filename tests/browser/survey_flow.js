@@ -1,4 +1,4 @@
-/* Browser check of the seven-question survey at /q (English) and /q/it (brand/PRINCIPLES.md §10: scenarios recorded in the repo).
+/* Browser check of the survey at /q (English, a traffic office answering) and /q/it (Italian, a professor answering from experience).
    Serve the site, then run:
      (cd site && python3 -m http.server 8765) &
      node tests/browser/survey_flow.js [base-url] [screenshot-dir]
@@ -10,16 +10,22 @@ const { chromium } = require("playwright");
 
 const BASE = process.argv[2] || "http://localhost:8765";
 const OUT = process.argv[3] || require("os").tmpdir();
-const POSES = ["truck", "route", "watch", "phone", "coin", "radio", "thinking"];
-const ANSWERS = [["fleet", "21-50"], ["trips_abroad", "6-20"], ["minutes", "20-40"], ["changes", "3-5"], ["last_cost", "300-1000"], ["share", "anon"], ["price", "5-10"]];
+// who answers comes first; a traffic office gets its own seven questions, someone who knows the field the same topics from experience
+const PATHS = {
+  office: { src: "check", poses: ["delivered", "truck", "route", "watch", "phone", "coin", "radio", "thinking"],
+            answers: [["role", "office"], ["fleet", "21-50"], ["trips_abroad", "6-20"], ["minutes", "20-40"], ["changes", "3-5"], ["last_cost", "300-1000"], ["share", "anon"], ["price", "5-10"]] },
+  expert: { src: "prof-check", poses: ["delivered", "truck", "watch", "phone", "coin", "radio", "route", "thinking"],      // a professor's link starts on "I teach or research"
+            answers: [["role", "academic"], ["scope", "road"], ["x_minutes", "20-40"], ["x_changes", "2-5"], ["x_cost", "300-1000"], ["x_share", "some"], ["x_obstacle", "trust"], ["x_price", "5-10"]] },
+};
 let failed = 0;
 const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); } };
 
 (async () => {
   const browser = await chromium.launch();
-  for (const [lang, path] of [["en", "/q/"], ["it", "/q/it/"]]) {
+  for (const [lang, path, who] of [["en", "/q/", "office"], ["it", "/q/it/", "expert"]]) {
+    const { src, poses: POSES, answers: ANSWERS } = PATHS[who];
     for (const [w, h] of [[390, 844], [1440, 900]]) {
-      const tag = `${lang}-${w}`;
+      const tag = `${lang}-${w}-${who}`;
       const page = await browser.newPage({ viewport: { width: w, height: h } });
       const errors = [], posts = [];
       page.on("pageerror", e => errors.push(e.message));
@@ -28,7 +34,7 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
         posts.push(new URLSearchParams(r.request().postData()));
         return r.fulfill({ status: 200, body: "ok" });
       });
-      await page.goto(BASE + path + "?src=check", { waitUntil: "networkidle" });
+      await page.goto(BASE + path + "?src=" + src, { waitUntil: "networkidle" });
       const shot = name => page.screenshot({ path: `${OUT}/survey-${tag}-${name}.png` });
       const visibleStep = () => page.evaluate(() => [...document.querySelectorAll("fieldset.q")].findIndex(f => !f.hidden));
       const pose = () => page.evaluate(() => document.getElementById("sv-img").getAttribute("src"));
@@ -51,13 +57,19 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       await page.click("#sv-start"); await page.waitForTimeout(600);
       check(!(await page.isVisible("#sv-intro")) && await page.isVisible("#survey"), `${tag}: Start shows the questions`);
       await shot("step1");
+      const order = await page.evaluate(() => [...document.querySelectorAll("fieldset.q")].map(f => f.querySelector("input").name));
       for (let i = 0; i < ANSWERS.length; i++) {
-        check((await visibleStep()) === i, `${tag}: step ${i + 1} visible`);
+        if (i === 0 && who === "expert") {                 // already chosen from the link: move on with Next
+          check(await page.isChecked('input[name="role"][value="academic"]'), `${tag}: a professor's link preselects the academic path`);
+          await page.click("#sv-next"); await page.waitForTimeout(650);
+          continue;
+        }
+        check((await visibleStep()) === order.indexOf(ANSWERS[i][0]), `${tag}: step ${i + 1} (${ANSWERS[i][0]}) visible`);
         check((await pose()).includes(POSES[i]), `${tag}: step ${i + 1} shows the ${POSES[i]} pose`);
-        if (i === 1) {                                     // back, then move on with Next without changing the answer
+        if (i === 2) {                                     // back, then move on with Next without changing the answer
           await pick(...ANSWERS[i]);
           await page.click("#sv-back"); await page.waitForTimeout(400);
-          check((await visibleStep()) === 1, `${tag}: Back returns to step 2`);
+          check((await visibleStep()) === order.indexOf(ANSWERS[i][0]), `${tag}: Back returns to step 3`);
           await page.click("#sv-next"); await page.waitForTimeout(650);
           continue;
         }
@@ -79,12 +91,15 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       await shot("done");
 
       check(posts.length === 2, `${tag}: two posts (answers, contact)`);
+      check(!(await page.$('input[name="followup"][value="analysis"]')), `${tag}: no free analysis offered`);
       if (posts.length === 2) {
         const [a, f] = posts;
         check(a.get("form-name") === "survey" && f.get("form-name") === "survey-followup", `${tag}: form names`);
-        check(ANSWERS.every(([k, v]) => a.get(k) === v), `${tag}: all seven answers sent`);
+        check(ANSWERS.every(([k, v]) => a.get(k) === v), `${tag}: the role and all seven answers sent`);
+        const other = who === "office" ? "x_minutes" : "fleet";
+        check(!a.has(other), `${tag}: nothing from the other path is sent`);
         check(a.get("rid") && a.get("rid") === f.get("rid"), `${tag}: same random id links the two`);
-        check(a.get("lang") === lang && a.get("src") === "check", `${tag}: lang and channel`);
+        check(a.get("lang") === lang && a.get("src") === src, `${tag}: lang and channel`);
         check(!a.get("contact"), `${tag}: no contact inside the answers`);
       }
       const sideways = await page.evaluate(() => { window.scrollBy(120, 0); const x = window.scrollX; window.scrollTo(0, window.scrollY); return x; });
