@@ -7,6 +7,13 @@
 
 ## Решения
 
+### 9 ноября 2026 · Карта на последнем экране опроса подписана как первые наработки
+
+> «здесь напиши что здесь первые наработки how map would look like»
+
+Сделано: вместо «While you are here» — «Our first work in progress: how the map would look.» / «I nostri primi
+lavori: ecco come sarebbe la mappa.»; ссылка ниже — «Open the prototype: the full map…» / «Aprite il prototipo…».
+
 ### 9 ноября 2026 · В конце опроса нет «20-минутного разговора»
 
 > «убери 20 minute chat from options»
