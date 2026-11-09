@@ -45,7 +45,7 @@ Links used in the letters:
 ## 1 · Oliviero Baccelli
 
 **To:** oliviero.baccelli@unibocconi.it
-**Subject:** From “franco destino” to zhol, a Bocconi project (TEF Ignition)
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -88,7 +88,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 2 · Alberto Grando
 
 **To:** alberto.grando@sdabocconi.it
-**Subject:** Logistics survey (1 minute), Bocconi project · TEF Ignition
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -131,7 +131,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 3 · Pietro De Giovanni
 
 **To:** (Bocconi address book: "De Giovanni")
-**Subject:** The cost of road disruptions, a 1-minute survey
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -174,7 +174,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 4 · Vittoria Veronesi
 
 **To:** (Bocconi address book: "Veronesi")
-**Subject:** Distribution and road disruptions, a 1-minute survey
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -217,7 +217,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 5 · Francesco Gallmann
 
 **To:** (Bocconi address book: "Gallmann")
-**Subject:** Logistics survey (1 minute), Bocconi project · TEF Ignition
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -260,7 +260,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 6 · Silvia Zamboni
 
 **To:** (the @sdabocconi.it address in her CV)
-**Subject:** Collaboration between traffic offices, a 1-minute survey (Bocconi)
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -303,7 +303,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 7 · Iolanda D'Amato
 
 **To:** (Bocconi address book: "D'Amato")
-**Subject:** How goods really move, a 1-minute survey
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -346,7 +346,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 8 · Marco Percoco
 
 **To:** (Bocconi address book: "Percoco")
-**Subject:** What road disruptions really cost, a Bocconi project
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 
@@ -389,7 +389,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 ## 9 · Lanfranco Senn
 
 **To:** (Bocconi address book: "Senn")
-**Subject:** For your master's graduates, a 1-minute survey (Bocconi)
+**Subject:** Logistics survey (1 minute), Bocconi student project · TEF Ignition
 
 English version first, Italian version below. · Versione inglese prima, italiana più sotto.
 

@@ -2,7 +2,7 @@
 
 The owner's rules (DESIGN.md, 9 Nov 2026):
 - bold only on zhol (first mention, English) and on the two survey anchors, so three per letter;
-- a short subject in English (under ten words) with the hooks in it, no colons anywhere;
+- one short, generic subject in English (under ten words), no colons anywhere;
 - pyramid order: the hook from their own work and who I am, then zhol in two sentences, then the call to action;
 - the survey link on its own line, with an anchor in bold above it; at most three bold anchors per letter;
 - a respectful ask to forward ("given your network among…"), never "you will have met";
@@ -15,11 +15,10 @@ from pathlib import Path
 
 MD = Path(__file__).resolve().parents[1] / "outreach" / "12-bocconi-professors.md"
 
-# who · to · subject · (Dear / Gentile) · hook EN/IT · network EN/IT (who they would forward it to) · extra EN/IT · close
+# who · to · (Dear / Gentile) · hook EN/IT · network EN/IT (who they would forward it to) · extra EN/IT · close
 PROFS = [
     dict(
         name="Oliviero Baccelli", tag="baccelli", to="oliviero.baccelli@unibocconi.it",
-        subject="From “franco destino” to zhol, a Bocconi project (TEF Ignition)",
         dear="Dear Professor Baccelli,", gentile="Gentile Professor Baccelli,",
         hook_en="I read your remarks at the Confetra assembly on what “franco destino” costs Italy in freight, and your piece on Italy leading Europe in sea highways.",
         hook_it="Ho letto il suo intervento all'assemblea Confetra su quanto il «franco destino» costi all'Italia nel trasporto merci, e il suo articolo sulle autostrade del mare.",
@@ -28,7 +27,6 @@ PROFS = [
     ),
     dict(
         name="Alberto Grando", tag="grando", to="alberto.grando@sdabocconi.it",
-        subject="Logistics survey (1 minute), Bocconi project · TEF Ignition",
         dear="Dear Professor Grando,", gentile="Gentile Professor Grando,",
         hook_en="I know your time is very limited, all the more with the University's strategic plan, so I will be brief. Your years of research on supply chain and the SOSC Monitor are close to the problem we study.",
         hook_it="So che il suo tempo è pochissimo, tanto più con il piano strategico dell'Università, e sarò breve. I suoi anni di ricerca sulla supply chain e il SOSC Monitor sono vicini al problema che studiamo.",
@@ -37,7 +35,6 @@ PROFS = [
     ),
     dict(
         name="Pietro De Giovanni", tag="degiovanni", to="(Bocconi address book: \"De Giovanni\")",
-        subject="The cost of road disruptions, a 1-minute survey",
         dear="Dear Professor De Giovanni,", gentile="Gentile Professor De Giovanni,",
         hook_en="Your work on sustainable operations, from Luiss and ESSEC to SDA and the SOSC Monitor, is close to the problem we study.",
         hook_it="Il suo lavoro sulle operations sostenibili, dalla Luiss e dall'ESSEC fino all'SDA e al SOSC Monitor, è vicino al problema che studiamo.",
@@ -48,7 +45,6 @@ PROFS = [
     ),
     dict(
         name="Vittoria Veronesi", tag="veronesi", to="(Bocconi address book: \"Veronesi\")",
-        subject="Distribution and road disruptions, a 1-minute survey",
         dear="Dear Professor Veronesi,", gentile="Gentile Professoressa Veronesi,",
         hook_en="Between MAFED, the Kering Supply Chain Academy and your time on the board of Zeroquattro Logistica, you have seen distribution from both sides.",
         hook_it="Tra il MAFED, la Kering Supply Chain Academy e il periodo nel consiglio di Zeroquattro Logistica, ha visto la distribuzione da entrambi i lati.",
@@ -57,7 +53,6 @@ PROFS = [
     ),
     dict(
         name="Francesco Gallmann", tag="gallmann", to="(Bocconi address book: \"Gallmann\")",
-        subject="Logistics survey (1 minute), Bocconi project · TEF Ignition",
         dear="Dear Professor Gallmann,", gentile="Gentile Professor Gallmann,",
         hook_en="The supply chain and after-sales academies you designed for an automotive group, and the Lean study tours in Japan, brought together many logistics and distribution managers.",
         hook_it="Le academy di supply chain e post-vendita che ha progettato per un gruppo automotive, e i Lean study tour in Giappone, hanno riunito molti responsabili di logistica e distribuzione.",
@@ -66,7 +61,6 @@ PROFS = [
     ),
     dict(
         name="Silvia Zamboni", tag="zamboni", to="(the @sdabocconi.it address in her CV)",
-        subject="Collaboration between traffic offices, a 1-minute survey (Bocconi)",
         dear="Dear Professor Zamboni,", gentile="Gentile Professoressa Zamboni,",
         hook_en="Your PhD with the MIT-Zaragoza Logistics Center on supply chain collaboration is close to what we want to build, offices that share what they see, anonymously, before the trucks leave.",
         hook_it="Il suo dottorato con il MIT-Zaragoza Logistics Center sulla collaborazione nella supply chain è vicino a ciò che vogliamo costruire, uffici che condividono ciò che vedono, in forma anonima, prima della partenza dei camion.",
@@ -77,7 +71,6 @@ PROFS = [
     ),
     dict(
         name="Iolanda D'Amato", tag="damato", to="(Bocconi address book: \"D'Amato\")",
-        subject="How goods really move, a 1-minute survey",
         dear="Dear Professor D'Amato,", gentile="Gentile Professoressa D'Amato,",
         hook_en="Your work on traceability and supply chain control in food & beverage and fashion looks at how goods actually move, and who moves them.",
         hook_it="Il suo lavoro su tracciabilità e controllo della supply chain nel food & beverage e nella moda guarda a come si muovono davvero le merci, e a chi le muove.",
@@ -86,7 +79,6 @@ PROFS = [
     ),
     dict(
         name="Marco Percoco", tag="percoco", to="(Bocconi address book: \"Percoco\")",
-        subject="What road disruptions really cost, a Bocconi project",
         dear="Dear Professor Percoco,", gentile="Gentile Professor Percoco,",
         hook_en="Your work on evaluating transport policy, and GREEN, which you founded, are close to our question of what disruptions on the road really cost.",
         hook_it="Il suo lavoro sulla valutazione delle politiche dei trasporti, e GREEN, che ha fondato, sono vicini alla nostra domanda su quanto costino davvero i disagi su strada.",
@@ -95,7 +87,6 @@ PROFS = [
     ),
     dict(
         name="Lanfranco Senn", tag="senn", to="(Bocconi address book: \"Senn\")",
-        subject="For your master's graduates, a 1-minute survey (Bocconi)",
         dear="Dear Professor Senn,", gentile="Gentile Professor Senn,",
         hook_en="You founded CERTeT and led the master in transport and logistics for 24 years, with some 680 graduates, many of whom now run logistics in Lombardy.",
         hook_it="Ha fondato il CERTeT e guidato per 24 anni il master in trasporti e logistica, con circa 680 diplomati, molti dei quali oggi gestiscono la logistica in Lombardia.",
@@ -104,6 +95,9 @@ PROFS = [
         close_en="Kind regards,", close_it="Con stima,",
     ),
 ]
+
+# one plain subject for all nine (owner: "в теме можно быть более дженерик"): what it is, how long, who asks
+SUBJECT = "Logistics survey (1 minute), Bocconi student project · TEF Ignition"
 
 WHO_EN = ("My name is Alikhan Bashpay, a Bocconi student, and my team and I are building **zhol**, one of 100 projects "
           "selected out of about 500 for TEF Ignition 2026 by the Tech Europe Foundation, with a €2,000 grant.")
@@ -127,7 +121,7 @@ def letter(p: dict) -> str:
     en_net = p["net_en"] + (" " + p["extra_en"] if p.get("extra_en") else "")
     it_net = p["net_it"] + (" " + p["extra_it"] if p.get("extra_it") else "")
     return f"""**To:** {p['to']}
-**Subject:** {p['subject']}
+**Subject:** {SUBJECT}
 
 {NOTE}
 
