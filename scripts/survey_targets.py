@@ -287,16 +287,16 @@ def broad(existing: list[dict]) -> list[dict]:
     return out
 
 
-WHY_RU = {  # for the team, in the console: why this professor
-    "Oliviero Baccelli": "Грузовой транспорт — его область; выпускники MEMIT работают у перевозчиков и экспедиторов.",
-    "Alberto Grando": "SOSC Monitor держится на сети компаний-партнёров: попросить переслать одному-двум.",
-    "Pietro De Giovanni": "Та же сеть партнёров SOSC Monitor; пишет о транспорте и устойчивых операциях.",
-    "Vittoria Veronesi": "Входила в совет Zeroquattro Logistica (перевозки продуктов, Болонья): прямой выход на офис перевозок.",
-    "Francesco Gallmann": "Ведёт корпоративные программы по дистрибуции: знает логистов по именам.",
-    "Silvia Zamboni": "Изучает сбои и устойчивость цепочек поставок, работает с компаниями.",
-    "Iolanda D'Amato": "Логистика и сервисные операции — её основное исследование.",
-    "Marco Percoco": "Директор GREEN: может направить к исследователям, работающим с перевозчиками.",
-    "Lanfranco Senn": "Основатель CERTeT, десятилетия контактов с логистикой Ломбардии.",
+WHY_RU = {  # for the team, in the console: why this professor (background checked 9 Nov 2026)
+    "Oliviero Baccelli": "Руководит магистратурой по транспорту, инфраструктуре и цепочкам поставок; выступал на ассамблее Confetra о «franco destino», писал о морских автомагистралях.",
+    "Alberto Grando": "Годы исследований цепочек поставок и логистики, сеть вокруг SOSC Monitor; сейчас занят как проректор по стратегическому плану.",
+    "Pietro De Giovanni": "Устойчивые операции: Luiss, ESSEC, теперь SDA и SOSC Monitor.",
+    "Vittoria Veronesi": "Ведёт MAFED и Kering Supply Chain Academy; была в совете Zeroquattro Logistica (перевозки продуктов).",
+    "Francesco Gallmann": "Делал академии по цепочкам поставок для автоконцерна и Lean-туры в Японию: знает много логистов.",
+    "Silvia Zamboni": "PhD вместе с MIT-Zaragoza Logistics Center о сотрудничестве в цепочках поставок: близко к нашей идее обмена информацией.",
+    "Iolanda D'Amato": "Прослеживаемость и контроль цепочек в продуктах питания и моде.",
+    "Marco Percoco": "Основатель GREEN, оценка транспортной политики; директор ли сейчас — неясно.",
+    "Lanfranco Senn": "Почётный профессор с 2016 г.; основал CERTeT, 24 года вёл магистратуру по транспорту (≈680 выпускников).",
 }
 
 
