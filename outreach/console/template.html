@@ -298,7 +298,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       box.append(w);
     }
     const c = el("div", "contacts");
-    if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "btn small", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b); }
+    if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "btn small", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b);
+      if (r.to_src) { const s = el("a", null, "Где найден адрес"); s.href = r.to_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
     if (/^https?:\/\//.test(r.where)) { const a = el("a", null, r.type === "company" ? "Сайт или форма контактов" : "Открыть сайт"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a); }
     else if (r.where) c.append(el("span", null, r.where));
     const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);

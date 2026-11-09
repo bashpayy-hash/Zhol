@@ -336,10 +336,28 @@ def bocconi() -> list[dict]:
     return rows
 
 
+def found_contacts(rows: list[dict]) -> list[dict]:
+    """Addresses found on each organisation's own site (outreach/contacts_found.csv: id, email, source, form, note),
+    with the page where each was seen. Never guessed; PEC addresses are left out."""
+    path = OUT / "contacts_found.csv"
+    if not path.exists():
+        return rows
+    found = {r["id"]: r for r in csv.DictReader(open(path, encoding="utf-8"))}
+    for r in rows:
+        f = found.get(r["id"])
+        if not f:
+            continue
+        if f.get("email") and not r.get("to"):
+            r["to"], r["to_src"] = f["email"], f.get("source", "")
+        if f.get("form") and not (r.get("where") or "").startswith("http"):
+            r["where"] = f["form"]
+    return rows
+
+
 def main() -> None:
-    rows = bocconi() + build()
+    rows = found_contacts(bocconi() + build())
     with open(OUT / "survey_send_list.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "to", "where", "search", "subject", "message", "link", "fit", "why", "why_src"])
+        w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "to", "to_src", "where", "search", "subject", "message", "link", "fit", "why", "why_src"], extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
     (OUT / "survey_send_list.json").write_text(json.dumps(rows, ensure_ascii=False, indent=0), encoding="utf-8")
