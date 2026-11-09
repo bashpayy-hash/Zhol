@@ -1052,3 +1052,16 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
   .sv-map .map-frame { margin: 0; }
   .sv-map .map-panel { background: none; border: 0; border-radius: 0; padding: 18px 0 0; border-top: 1px solid var(--card-line); }
 }
+
+/* map polish (design critique, 9 Nov 2026): places with nothing in the chosen week become small neutral dots without
+   numbers, the chosen place gets a thin terracotta ring, names that would collide stay hidden (map.js declutter) */
+.map-pin.off { opacity: .6; }
+.map-pin.off i { background: #bdb3a8 !important; transform: scale(.42); box-shadow: 0 0 0 1.5px var(--card) !important; }
+.map-pin.off .n { display: none; }
+.map-pin.off::before { display: none; }
+.map-pin[aria-pressed="true"] i { box-shadow: 0 0 0 2.5px var(--card), 0 0 0 4.5px var(--red); }
+.map-pin .lbl.hid, .map-wlbl.hid { visibility: hidden; }
+.map-pin .lbl { transition: opacity var(--dur) var(--ease-color); }
+/* the survey: a question that receives focus (finger or mouse) shows no ring; answers keep theirs for the keyboard */
+.survey legend:focus { outline: none; }
+.map-frame .land.t-po, .map-frame .land.t-un { fill: #f4eee7; }   /* 20–50%: a warm tint, not a grey "switched off" block */

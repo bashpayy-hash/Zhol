@@ -77,8 +77,35 @@ window.ZholMap = function (root, opts) {
     if (!fw) measure();
     spots.concat(watchLabels).forEach(s => {
       const x = (s.x - b[0]) / b[2], y = (s.y - b[1]) / b[3];
-      s.btn.style.transform = `translate3d(${(x * fw).toFixed(1)}px, ${(y * fh).toFixed(1)}px, 0)` + (s.label ? " translate(8px, -50%)" : "");
-      s.btn.hidden = x < -0.02 || x > 1.02 || y < -0.02 || y > 1.02;
+      let px = x * fw, py = y * fh;
+      // a whole-country point is only a marker inside the country: keep it fully inside the frame, never cut by the edge
+      if (s.type === "c" && x > -0.15 && x < 1.15 && y > -0.15 && y < 1.15) { px = Math.max(18, Math.min(fw - 18, px)); py = Math.max(18, Math.min(fh - 18, py)); }
+      s.btn.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0)` + (s.label ? " translate(8px, -50%)" : "");
+      s.btn.hidden = s.type === "c" ? (x < -0.15 || x > 1.15 || y < -0.15 || y > 1.15) : (x < -0.02 || x > 1.02 || y < -0.02 || y > 1.02);
+    });
+    declutter(b);
+  }
+  // close up, names sit beside the points: a name that would cover another point or another name stays hidden
+  // (the chosen place first, then the most likely), so labels never run into each other (design critique, 9 Nov)
+  function declutter(b) {
+    if (mini) return;
+    const at = s => [(s.x - b[0]) / b[2] * fw, (s.y - b[1]) / b[3] * fh];
+    const dots = spots.filter(s => !s.btn.hidden).map(s => { const [x, y] = at(s); const r = (s.btn.classList.contains("off") ? 4 : (parseFloat(s.dot && s.dot.style.width) || 14) / 2) + 2; return { s, x1: x - r, x2: x + r, y1: y - r, y2: y + r }; });
+    const hit = (a, c) => a.x1 < c.x2 && a.x2 > c.x1 && a.y1 < c.y2 && a.y2 > c.y1;
+    const taken = [];
+    const order = spots.filter(s => s.lbl).sort((p, q) => (q.btn.getAttribute("aria-pressed") === "true") - (p.btn.getAttribute("aria-pressed") === "true") || ((q.now && q.now.top) || 0) - ((p.now && p.now.top) || 0));
+    order.forEach(s => {
+      const [x, y] = at(s), w = s.name.length * 6.6 + 18, box = { x1: x + 14, x2: x + 14 + w, y1: y - 11, y2: y + 11 };
+      const clash = box.x2 > fw + 4 || dots.some(d => d.s !== s && hit(box, d)) || taken.some(t => hit(box, t));
+      s.lbl.classList.toggle("hid", clash && s.btn.getAttribute("aria-pressed") !== "true");
+      if (!s.lbl.classList.contains("hid") && !s.btn.hidden && !s.btn.classList.contains("off")) taken.push(box);
+    });
+    watchLabels.forEach(wl => {
+      const x = (wl.x - b[0]) / b[2] * fw, y = (wl.y - b[1]) / b[3] * fh, w = wl.btn.textContent.length * 6 + 4;
+      const box = { x1: x + 8, x2: x + 8 + w, y1: y - 8, y2: y + 8 };
+      const clash = box.x2 > fw || dots.some(d => hit(box, d)) || taken.some(t => hit(box, t));
+      wl.btn.classList.toggle("hid", clash);
+      if (!clash) taken.push(box);
     });
   }
   if ("ResizeObserver" in window) new ResizeObserver(() => { measure(); if (vb) setBox(vb); }).observe(frame);
@@ -95,7 +122,10 @@ window.ZholMap = function (root, opts) {
     };
     anim = requestAnimationFrame(step);
   }
+  // any tap ends the entrance at once, so the map never looks half drawn while someone is using it
+  const settle = () => root.classList.remove("entering");
   function go(name) {
+    settle();
     tab = name;
     views.forEach(b => b.setAttribute("aria-selected", String(b.dataset.v === name)));
     root.dataset.view = name;
@@ -168,10 +198,10 @@ window.ZholMap = function (root, opts) {
       if (!mini) { b.type = "button"; b.addEventListener("click", () => pick(selected === s.key ? null : s.key)); }
       else b.setAttribute("aria-hidden", "true");
       b.style.setProperty("--d", Math.round(500 + s.x / W * 1000) + "ms");
-      const dot = el("i"); const size = mini ? 9 + 2 * Math.min(3, s.list.length - 1) : 14 + 4 * Math.min(3, s.list.length - 1); dot.style.width = dot.style.height = size + "px";
+      const dot = el("i"); s.dot = dot; const size = mini ? 9 + 2 * Math.min(3, s.list.length - 1) : 14 + 4 * Math.min(3, s.list.length - 1); dot.style.width = dot.style.height = size + "px";
       b.append(dot);
       if (s.list.length > 1 && !mini) b.append(el("span", "n", String(s.list.length)));
-      if (s.type === "p" && !mini) b.append(el("span", "lbl", s.name));   // names show close up, where points spread out
+      if (s.type === "p" && !mini) { s.lbl = el("span", "lbl", s.name); b.append(s.lbl); }   // names show close up, where points spread out
       s.btn = b; pins.append(b);
     });
     if (!mini) {
@@ -210,11 +240,14 @@ window.ZholMap = function (root, opts) {
       pins.append(b);                                              // the most likely end up on top
     });
     watchLabels.forEach(w => pins.append(w.btn));
+    if (vb && fw) declutter(vb);
   }
 
   function pick(key, from) {
+    settle();
     selected = key;
     spots.forEach(s => s.btn.setAttribute("aria-pressed", String(s.key === key)));
+    if (vb && fw) declutter(vb);
     const s = spots.find(x => x.key === key);
     if (s && from === "list") flyTo(s.x, s.y);
     if (!s && root.dataset.view === "close") go(tab);
@@ -308,6 +341,7 @@ window.ZholMap = function (root, opts) {
   const weekName = k => { const [a, b] = weekOf(k); return (k === 1 ? T("This week", "Questa settimana") : T("Week ", "Settimana ") + k) + " · " + short(a) + " – " + short(b); };
   let playBtn, range, label, timer = 0;
   function setWeek(k) {
+    settle();
     week = k;
     if (range) range.value = String(k);
     root.classList.toggle("by-week", k > 0);

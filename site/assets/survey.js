@@ -46,6 +46,18 @@
     const i = new Image(); i.sizes = img.sizes; i.srcset = srcset(n);
   }));
 
+  // focus follows the visitor: with a keyboard it lands on the first answer (with its ring), with a finger or a mouse
+  // on the question itself, so phones do not show a red ring around an answer nobody chose (design critique, 9 Nov)
+  let keys = false;
+  addEventListener("keydown", e => { if (/^(Tab|Arrow|Enter| )/.test(e.key)) keys = true; }, true);
+  addEventListener("pointerdown", () => { keys = false; }, true);
+  function focusStep(step) {
+    if (!step) return;
+    if (keys) { const first = step.querySelector("input:checked") || step.querySelector("input"); if (first) first.focus({ preventScroll: true }); return; }
+    const q = step.querySelector("legend"); if (!q) return;
+    q.tabIndex = -1; q.focus({ preventScroll: true });
+  }
+
   // the /q page opens on a welcome scene; the questions come after one tap
   const intro = $("sv-intro"), stepsBox = $("sv-steps"), startBtn = $("sv-start");
   if (intro && stepsBox && startBtn) {
@@ -55,8 +67,7 @@
       intro.hidden = true;
       stepsBox.hidden = false;
       window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
-      const first = steps[at].querySelector("input");
-      if (first) first.focus({ preventScroll: true });
+      focusStep(steps[at]);
     }));
   }
 
@@ -90,8 +101,7 @@
       // bring the new question (and on phones the mascot above it) back into view
       const stage = document.querySelector(".sv-stage"), top = stage.getBoundingClientRect().top;
       if (top < 0 || top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + top - 76, behavior: reduced ? "auto" : "smooth" });
-      const first = steps[at].querySelector("input:checked") || steps[at].querySelector("input");
-      if (first) first.focus({ preventScroll: true });
+      focusStep(steps[at]);
     }
   }
 
