@@ -21,6 +21,7 @@
   --ink: #f3ede4; --ink-2: #d6cdc2; --muted: #a99e93;
   --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0; color-scheme: dark }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
 .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -57,7 +58,8 @@ button { font: inherit; }
 .chips { display: flex; gap: 4px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
 .chips button { white-space: nowrap; }
 .chips button { border-color: var(--line); font-size: 13px; padding: 6px 12px; min-height: 36px; }
-.chips button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
+.chips button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); background: var(--card); }
+.chips button .n { margin-left: 6px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .tools input[type=search] { margin-left: auto; font: inherit; font-size: 14px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; min-height: 40px; width: min(280px, 100%); }
 
 /* the workbench */
@@ -69,11 +71,22 @@ button { font: inherit; }
 .row .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--rule); }
 .row.sent .dot { background: var(--red); border-color: var(--red); }
 .row.replied .dot { background: var(--sage-ink); border-color: var(--sage-ink); }
-.row.skip { opacity: .5; }
+.row.skip { opacity: .7; }
 .row b { display: block; color: var(--ink); font-weight: 600; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .row small { display: block; font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .row .fit { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .empty { padding: 24px 14px; color: var(--muted); }
+/* status as words, right in the list (owner, 11 Nov: «помечай, сделай интуитивно понятную навигацию») */
+.group-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 16px 14px 6px; font-size: 13px; font-weight: 600; color: var(--ink); border-top: 1px solid var(--line); }
+.group-h:first-child { border-top: 0; padding-top: 4px; }
+.group-h span { font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pill { font-size: 12px; font-weight: 600; line-height: 1.3; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.pill.sent { background: var(--red-soft); color: var(--red); }
+.pill.replied { background: var(--sage); color: var(--sage-ink); }
+.pill.skip { background: var(--line); color: var(--muted); }
+.row.sent b, .row.replied b, .row.skip b { color: var(--ink-2); font-weight: 500; }
+.row .noaddr { color: var(--red); }
+.tabs button .n { font-weight: 500; }
 
 .detail { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 26px 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 .detail .head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
@@ -136,7 +149,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <span class="kicker">zhol · опрос офисов перевозок</span>
       <h1>Кому написать, что написать и кто уже отправил</h1>
       <p>Каждое письмо сначала просит пройти опрос, потом говорит, кто мы (проект в логистике, 100 из ~500 в TEF, грант 2 000 €) и что строим: платформу, которая объединяет перевозчиков, следит за дорогами ночью, берёт на себя часть мониторинга и решений и даёт офисам обмениваться информацией. Просим только ответы: собираем исходные данные. Преподавателям Bocconi — на английском и итальянском, с просьбой переслать знакомым логистам.</p>
-      <ul class="how"><li><b>1</b> Выберите адресата</li><li><b>2</b> Скопируйте тему и письмо</li><li><b>3</b> Отметьте «Отправлено»</li><li>Не больше 40 писем в день с одного ящика</li></ul>
+      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> Скопируйте адрес, тему и письмо</li><li><b>3</b> Нажмите «Отправлено»: откроется следующий</li><li>Не больше 40 писем в день с одного ящика</li></ul>
     </div>
     <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
       <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
@@ -153,7 +166,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <button type="button" data-v="posts" aria-pressed="false">Посты</button>
     </div>
     <div class="chips" role="group" aria-label="Статус" id="f-state">
-      <button type="button" data-v="todo" aria-pressed="true">Не отправлено</button><button type="button" data-v="sent" aria-pressed="false">Отправлено</button><button type="button" data-v="replied" aria-pressed="false">Ответили</button><button type="button" data-v="any" aria-pressed="false">Все</button>
+      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Не отправлено<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Отправлено<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button>
     </div>
     <input type="search" id="q" placeholder="Название, город или регион" aria-label="Поиск">
   </div>
@@ -183,7 +196,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 
   let status = {};            // id -> {state, by, at}
   let db = null, user = null, shared = false, writable = true;
-  let fType = store.get("zhol-tab") || "bocconi", fState = "todo", q = "", pick = null;
+  let fType = store.get("zhol-tab") || "bocconi", fState = store.get("zhol-state") || "any", q = "", pick = null;
 
   const me = $("me-name");
   me.value = store.get("zhol-sign") || "";
@@ -243,11 +256,17 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $(id).querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === (id === "f-type" ? fType : fState))));
   }
   group("f-type", v => { fType = v; store.set("zhol-tab", v); });
-  group("f-state", v => { fState = v; });
+  group("f-state", v => { fState = v; store.set("zhol-state", v); });
   $("q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); render(); });
   narrow.addEventListener("change", () => render());
 
   const stateOf = id => (status[id] && status[id].state) || "";
+  const ORDER = { "": 0, sent: 1, replied: 2, skip: 3 };
+  const GROUP = { "": "Не отправлено", sent: "Отправлено", replied: "Ответили", skip: "Не писать" };
+  const day = iso => { try { return new Date(iso).toLocaleDateString("ru-RU", { day: "numeric", month: "short" }); } catch (e) { return ""; } };
+  const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
+  const place = r => [r.city, r.region].filter(x => x && !/^n\/?a$/i.test(x.trim()) && !/^\[check/i.test(x.trim()))
+    .map(x => x.replace(/\s*\[check[^\]]*\]/i, "").trim()).filter((x, k, a) => x && a.indexOf(x) === k).join(" · ");
   function visible(r) {
     if (r.type !== fType) return false;
     const s = stateOf(r.id);
@@ -262,6 +281,13 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (prev && prev.state === state) state = "";          // tapping the active state clears it
     const id = user ? await user.id() : null;
     const next = state ? { state, by: id, at: new Date().toISOString() } : null;
+    // after «Отправлено» or «Не писать» the next one still to write opens by itself
+    if (next && (state === "sent" || state === "skip") && !(prev && prev.state)) {
+      const queue = ROWS.filter(x => visible(x) && !stateOf(x.id) && x.id !== r.id);
+      const order = ROWS.filter(visible).map(x => x.id), at = order.indexOf(r.id);
+      const after = queue.find(x => order.indexOf(x.id) > at) || queue[0];
+      if (after) pick = after.id;
+    }
     if (next) status[r.id] = next; else delete status[r.id];
     render();
     if (shared && writable) {
@@ -291,10 +317,14 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   function detail(r, ps) {
     const box = el("article", "detail");
     const head = el("div", "head"), t = el("div");
-    t.append(el("h2", null, r.name), el("div", "meta", [r.city, r.region].filter(Boolean).filter((x, k, a) => a.indexOf(x) === k).join(" · ")));
+    t.append(el("h2", null, r.name), el("div", "meta", place(r)));
     // who this is (associations) or what they do and how big they are (companies)
     if (r.about) t.append(el("div", "about", "Кто это: " + r.about));
-    head.append(t, el("span", "kind", KIND[r.type] || r.type));
+    const tag = el("div"); tag.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;align-items:center";
+    tag.append(el("span", "kind", KIND[r.type] || r.type));
+    const sNow = status[r.id];
+    if (sNow && sNow.state) tag.append(el("span", "pill " + sNow.state, GROUP[sNow.state] + (sNow.at ? " · " + day(sNow.at) : "")));
+    head.append(t, tag);
     box.append(head);
     if (r.why) {
       const w = el("div", "why"); w.append(el("span", null, r.type === "bocconi" ? "Почему ему или ей" : "Почему им (абзац в письме выделен)"), document.createTextNode(r.why + " "));
@@ -305,7 +335,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "btn small", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b);
       if (r.to_src) { const s = el("a", null, "Где найден адрес"); s.href = r.to_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
     if (/^https?:\/\//.test(r.where)) { const a = el("a", null, r.type === "company" ? "Сайт или форма контактов" : "Открыть сайт"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a); }
-    else if (r.where) c.append(el("span", null, r.where));
+    else if (r.where && !r.to) c.append(el("span", null, r.where));
     const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
     box.append(c);
     const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : "Тема письма"));
@@ -343,22 +373,43 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $("count").textContent = sent + " из " + ROWS.length + " отправлено · ответили " + replied;
     $("tr-r").style.width = (replied / ROWS.length * 100) + "%";
     $("tr-s").style.width = ((sent - replied) / ROWS.length * 100) + "%";
-    ["bocconi", "company", "association", "press", "group"].forEach(k => { $("n-" + k).textContent = ROWS.filter(r => r.type === k && !stateOf(r.id)).length; });
+    ["bocconi", "company", "association", "press", "group"].forEach(k => {
+      const all = ROWS.filter(r => r.type === k), done = all.filter(r => stateOf(r.id) && stateOf(r.id) !== "skip").length;
+      $("n-" + k).textContent = done + " из " + all.length;
+      $("n-" + k).parentNode.title = "отправлено " + done + " из " + all.length;
+    });
+    // the status chips count what is in this tab
+    const inTab = ROWS.filter(r => r.type === fType && (!q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q)));
+    $("c-any").textContent = inTab.length;
+    $("c-todo").textContent = inTab.filter(r => !stateOf(r.id)).length;
+    $("c-sent").textContent = inTab.filter(r => stateOf(r.id) === "sent").length;
+    $("c-replied").textContent = inTab.filter(r => stateOf(r.id) === "replied").length;
 
     const isPosts = fType === "posts";
     $("posts").hidden = !isPosts; $("bench").hidden = isPosts; $("f-state").hidden = isPosts; $("q").hidden = isPosts;
     if (isPosts) return;
 
     const list = $("list"); list.textContent = "";
-    const rows = ROWS.filter(visible);
+    const rows = ROWS.filter(visible).sort((a, b) => ORDER[stateOf(a.id)] - ORDER[stateOf(b.id)]);
     if (pick && !rows.some(r => r.id === pick)) pick = null;
     if (!pick && rows.length && !narrow.matches) pick = rows[0].id;
-    if (!rows.length) list.append(el("div", "empty", fState === "todo" ? "Здесь всё отправлено. Выберите «Все», чтобы увидеть статусы." : "Ничего не найдено."));
+    if (!rows.length) list.append(el("div", "empty", fState === "todo" ? "Здесь всё отправлено." : "Ничего не найдено."));
+    let lastGroup = null;
     rows.forEach(r => {
+      const g = stateOf(r.id);
+      if (fState === "any" && g !== lastGroup) {
+        const h = el("div", "group-h", GROUP[g]); h.append(el("span", null, String(rows.filter(x => stateOf(x.id) === g).length)));
+        list.append(h); lastGroup = g;
+      }
       const b = el("button", "row " + stateOf(r.id)); b.type = "button";
       b.setAttribute("aria-current", String(r.id === pick));
-      const t = el("span"); t.append(el("b", null, r.name), el("small", null, [r.city, r.region].filter(Boolean).filter((x, k, a) => a.indexOf(x) === k).join(" · ") || KIND[r.type]));
-      b.append(el("span", "dot"), t, el("span", "fit", r.fit && r.type === "company" ? "★ " + r.fit : ""));
+      const sm = el("small", null, place(r) || KIND[r.type]);
+      if (!hasAddr(r) && r.type !== "group") { sm.append(" · "); sm.append(el("span", "noaddr", "адреса нет")); }
+      const t = el("span"); t.append(el("b", null, r.name), sm);
+      const st = status[r.id];
+      const right = st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) : GROUP[st.state])
+                                   : el("span", "fit", r.fit && r.type === "company" ? "★ " + r.fit : "");
+      b.append(el("span", "dot"), t, right);
       b.addEventListener("click", () => { pick = pick === r.id && narrow.matches ? null : r.id; render(); });
       list.append(b);
       if (narrow.matches && r.id === pick) list.append(detail(r, ps));
