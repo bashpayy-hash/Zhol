@@ -199,7 +199,7 @@
       const a = fillSched($("sv-sched-end"), u.items, u.today, 8), b = fillNews($("sv-news"), d.items, 5);
       if (a) $("sv-sched-box").hidden = false;
       if (b) $("sv-news-box").hidden = false;
-      if (a || b) $("sv-now").hidden = false;              // its own card, above the map, so it is seen first
+      if (a || b) $("sv-now").hidden = false;              // its own card under the map (owner, 10 Nov: map, then schedule and radar)
       if (!a || !b) $("sv-now").classList.add("one");      // a day without news: the schedule takes the whole card, no empty half
       // on a computer the list beside the map is as tall as the map and scrolls inside, no hole under the legend
       const col = box.querySelector(".map-col"), pan = box.querySelector(".map-panel");

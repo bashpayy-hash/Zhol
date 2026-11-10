@@ -1147,6 +1147,7 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
 .sv-end-col .sv-sched .ti { -webkit-line-clamp: 3; }
 /* the schedule and the news in their own card above the map; the list beside the map scrolls inside on a computer */
 .sv-now .sv-end-grid { border-top: 0; padding-top: 0; }
-.sv-now + .sv-map { margin-top: 20px; }
+.sv-map + .sv-now, .sv-now + .sv-map { margin-top: 20px; }
+.sv-now .sv-reads { margin-top: 28px; }
 @media (min-width: 921px) { .sv-map .map-grid > .map-panel { overflow-y: auto; overscroll-behavior: contain; } }
 .sv-now.one .sv-end-grid { grid-template-columns: minmax(0, 1fr); }
