@@ -1108,3 +1108,25 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
 .map-pin .n { display: none; }
 .map-legend .dot.sm { width: 7px; height: 7px; margin-right: 3px; vertical-align: 1px; }
 .map-legend .dot.lg { width: 13px; height: 13px; vertical-align: -1px; }
+
+/* radar cover: the scene fills a large card, softly blurred, with the heading centred on it (owner, 10 Nov) */
+.rd-hero { padding-top: 32px; }
+.rd-cover { position: relative; isolation: isolate; display: grid; place-items: center; min-height: min(74vh, 640px); border-radius: 28px; overflow: hidden; background: #3a3230; text-align: center; }
+.rd-cover > .media { position: absolute; inset: 0; z-index: -2; }
+.rd-cover > .media video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: blur(4px) saturate(1.05); transform: scale(1.05); }
+.rd-cover::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 70% 62% at 50% 50%, rgba(28, 22, 20, .62), rgba(28, 22, 20, .38) 70%, rgba(28, 22, 20, .30)); }
+.rd-cover-text { display: flex; flex-direction: column; align-items: center; gap: 18px; max-width: 860px; padding: 64px 48px; }
+.rd-cover-text .kicker { color: #f8c9b8; text-shadow: 0 1px 12px rgba(20, 15, 14, .45); }
+.rd-cover-text h1.title { color: #fff; font-size: clamp(38px, 4.4vw, 62px); max-width: 17ch; text-shadow: 0 2px 24px rgba(20, 15, 14, .35); }
+.rd-cover-text .lead { color: rgba(255, 255, 255, .9); max-width: 36em; text-wrap: pretty; }
+.rd-below { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; margin-top: 36px; }
+.rd-below .brief { max-width: none; }
+@media (max-width: 920px) {
+  .rd-cover { min-height: 78vh; border-radius: 22px; }
+  .rd-cover-text { padding: 40px 22px; gap: 14px; }
+  .rd-cover-text h1.title { font-size: 34px; }
+  .rd-cover > .media video { object-position: 38% 50%; filter: blur(3px); }
+  .rd-below { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .rd-cover > .media video { transform: none; } }

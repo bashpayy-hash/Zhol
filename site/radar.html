@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=2">
-<link rel="stylesheet" href="/assets/zhol.css?v=s19">
+<link rel="stylesheet" href="/assets/zhol.css?v=s20">
 <link rel="alternate" hreflang="en" href="https://zhol.live/radar">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/radar">
 </head>
@@ -25,19 +25,26 @@
 </div></header>
 
 <main>
-<section class="slide hero">
-  <div class="wrap split center">
-    <div class="stack" style="gap:20px">
-      <span class="kicker">zhol radar · the next eight weeks</span>
-      <h1 class="title">What is coming on Europe’s freight roads, and how likely it is</h1>
-      <p class="lead">Twice a day the radar reads the news and the trade press in four languages, the official ban and dosing calendars, the weather at the Alpine passes and the Strait of Messina ferries. Every item gets a chance, with the reasons behind it.</p>
-      <label class="field rd-route"><span class="small">Your route: the whole page shows only what touches it</span>
-        <select id="rd-route"><option value="">All routes</option></select></label>
-      <p class="small muted" id="rd-status">Loading the latest radar…</p>
-      <ul class="brief" id="rd-brief" hidden></ul>
+<!-- the scene fills the cover, softly blurred behind the heading (owner, 10 Nov) -->
+<section class="slide hero rd-hero">
+  <div class="wrap">
+    <div class="rd-cover">
+      <div class="media">
+        <video data-scene="/assets/img/scenes/pass" muted loop playsinline preload="none" poster="/assets/img/scenes/pass-poster.webp?v=2" width="1280" height="960" aria-label="Zholdas, our plush mascot, watching a snowy Alpine pass through binoculars from a lookout hut, a barometer and a radio on the sill"></video>
+      </div>
+      <div class="rd-cover-text">
+        <span class="kicker">zhol radar · the next eight weeks</span>
+        <h1 class="title">What is coming on Europe’s freight roads, and how likely it is</h1>
+        <p class="lead">Twice a day the radar reads the news and the trade press in four languages, the official ban and dosing calendars, the weather at the Alpine passes and the Strait of Messina ferries. Every item gets a chance, with the reasons behind it.</p>
+      </div>
     </div>
-    <div class="media scene-frame">
-      <video data-scene="/assets/img/scenes/pass" muted loop playsinline preload="none" poster="/assets/img/scenes/pass-poster.webp?v=2" width="1280" height="960" aria-label="Zholdas, our plush mascot, watching a snowy Alpine pass through binoculars from a lookout hut, a barometer and a radio on the sill"></video>
+    <div class="rd-below">
+      <div class="stack" style="gap:14px">
+        <label class="field rd-route"><span class="small">Your route: the whole page shows only what touches it</span>
+        <select id="rd-route"><option value="">All routes</option></select></label>
+        <p class="small muted" id="rd-status">Loading the latest radar…</p>
+      </div>
+      <ul class="brief" id="rd-brief" hidden></ul>
     </div>
   </div>
 </section>
