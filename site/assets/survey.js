@@ -194,12 +194,72 @@
       const n = $("sv-reads-n");
       if (n && d.articles_read) n.textContent = T("Today: " + d.articles_read + " articles from " + d.sources_ok + " sources, " + d.signals + " signals.",
                                                   "Oggi: " + d.articles_read + " articoli da " + d.sources_ok + " fonti, " + d.signals + " segnali.");
+      // under the map, again: the schedule with chances and what the news says (owner, 10 Nov 2026)
+      const u = upcoming(d);
+      if (fillSched($("sv-sched-end"), u.items, u.today, 8)) $("sv-sched-box").hidden = false;
+      if (fillNews($("sv-news"), d.items, 5)) $("sv-news-box").hidden = false;
       return map.update(d.items, d.today);
     }).then(c => {
       if (!c || !c.events) { box.hidden = true; return; }
       $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places on Europe’s roads in the next eight weeks, each with its chance. Tap a place, or play the weeks.",
                                       c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità. Toccate un luogo o scorrete le settimane.");
     }).catch(() => { box.hidden = true; });
+  }
+
+  // the next eight weeks of the radar, and its schedule with chances (the intro card shows four rows, the last screen eight)
+  const D = s => new Date(s + "T00:00:00Z"), iso = x => x.toISOString().slice(0, 10);
+  const add = (s, k) => { const x = D(s); x.setUTCDate(x.getUTCDate() + k); return iso(x); };
+  const dow = s => (D(s).getUTCDay() + 6) % 7;                // Monday first
+  function upcoming(d) {
+    const now = new Date(), local = iso(new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())));
+    const today = d.today > local ? d.today : local, from = add(today, -dow(today)), to = add(from, 56);
+    return { today, from, items: d.items.filter(i => i.start && (i.end || i.start) >= today && i.start < to) };
+  }
+  function fillSched(list, items, today, n) {
+    const loc = IT ? "it-IT" : "en-GB", seen = new Set();   // one line per kind of event: Kufstein's weekly dosing shows once
+    items.slice().sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p)
+      .filter(it => { const k = it.title.replace(/:.*$/, "") + "|" + (it.where || ""); if (it.kind !== "ban" && seen.has(k)) return false; seen.add(k); return true; })
+      .slice(0, n).forEach(it => {
+      const li = document.createElement("li"), dt = document.createElement("span"), tx = document.createElement("span"),
+            ti = document.createElement("span"), wh = document.createElement("span"), pc = document.createElement("span"),
+            bar = document.createElement("span"), fill = document.createElement("i");
+      const when = D(it.start > today ? it.start : today);
+      dt.className = "dt"; dt.append(when.toLocaleDateString(loc, { weekday: "short", timeZone: "UTC" }), document.createElement("br"),
+                                     when.toLocaleDateString(loc, { day: "numeric", month: "short", timeZone: "UTC" }));
+      const title = (IT && it.title_it) || it.title;     // "Holiday truck bans: Christmas" reads "Truck ban: Christmas" here
+      ti.className = "ti"; ti.textContent = it.kind === "ban" && title.includes(": ") ? T("Truck ban: ", "Divieto camion: ") + title.slice(title.indexOf(": ") + 2) : title;
+      wh.className = "wh"; wh.textContent = (IT && it.where_it) || it.where || "";
+      tx.append(ti, wh);
+      pc.className = "pc"; pc.textContent = Math.round((it.p || 0) * 100) + "%";
+      bar.className = "bar"; bar.setAttribute("aria-hidden", "true"); fill.style.setProperty("--p", (it.p || 0).toFixed(2)); bar.append(fill);
+      li.append(dt, tx, pc, bar); list.append(li);
+    });
+    return list.children.length;
+  }
+  // the news the radar read: each story with its place, date, chance and the outlets that carried it (links only to http/https)
+  function fillNews(list, items, n) {
+    const loc = IT ? "it-IT" : "en-GB", safe = u => /^https?:\/\//i.test(u || "");
+    items.filter(i => i.group === "news").sort((a, b) => (b.p || 0) - (a.p || 0)).slice(0, n).forEach(it => {
+      const li = document.createElement("li"), meta = document.createElement("span"), b = document.createElement("b"),
+            when = document.createElement("span"), p = document.createElement("p"), src = document.createElement("span");
+      meta.className = "meta"; b.textContent = (IT && it.where_it) || it.where || "";
+      when.textContent = (it.start ? D(it.start).toLocaleDateString(loc, { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : T("date not set", "data da definire"))
+        + " · " + Math.round((it.p || 0) * 100) + "%";
+      meta.append(b, when);
+      p.textContent = it.headline || (IT && it.title_it) || it.title;
+      src.className = "src";
+      const ss = (it.sources || []).filter(x => x.outlet);
+      ss.slice(0, 3).forEach((x, k) => {
+        if (k) src.append(" · ");
+        if (safe(x.url)) { const a = document.createElement("a"); a.href = x.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = x.outlet; src.append(a); }
+        else src.append(x.outlet);
+      });
+      if (ss.length > 3) src.append(" · +" + (ss.length - 3));
+      li.append(meta, p);
+      if (ss.length) li.append(src);
+      list.append(li);
+    });
+    return list.children.length;
   }
 
   // the radar, read once: the intro shows what is on the roads now, the last screen the whole map
@@ -215,13 +275,7 @@
   const watch = c => io ? io.observe(c) : c.classList.add("in");
   const c3 = $("sv-c3"); if (c3) watch(c3);
   idle(() => radar.then(d => {
-    const D = s => new Date(s + "T00:00:00Z"), iso = x => x.toISOString().slice(0, 10);
-    const add = (s, k) => { const x = D(s); x.setUTCDate(x.getUTCDate() + k); return iso(x); };
-    const now = new Date(), local = iso(new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())));
-    const today = d.today > local ? d.today : local;
-    const dow = s => (D(s).getUTCDay() + 6) % 7;                // Monday first
-    const from = add(today, -dow(today)), to = add(from, 56);
-    const items = d.items.filter(i => i.start && (i.end || i.start) >= today && i.start < to);
+    const { today, from, items } = upcoming(d);
     if (!items.length) return;
     const days = i => { const out = []; for (let s = i.start > today ? i.start : today; s <= (i.end || i.start) && out.length < 60; s = add(s, 1)) out.push(s); return out; };
     const holiday = new Set(), event = new Map();
@@ -251,25 +305,7 @@
     // 2. the schedule with chances: the next four events
     const list = $("sv-sched"), c2 = $("sv-c2");
     if (list && c2) {
-      const loc = IT ? "it-IT" : "en-GB";
-      const seen = new Set();                        // one line per kind of event: Kufstein's weekly dosing shows once
-      items.slice().sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p)
-        .filter(it => { const k = it.title.replace(/:.*$/, "") + "|" + (it.where || ""); if (it.kind !== "ban" && seen.has(k)) return false; seen.add(k); return true; })
-        .slice(0, 4).forEach(it => {
-        const li = document.createElement("li"), dt = document.createElement("span"), tx = document.createElement("span"),
-              ti = document.createElement("span"), wh = document.createElement("span"), pc = document.createElement("span"),
-              bar = document.createElement("span"), fill = document.createElement("i");
-        const when = D(it.start > today ? it.start : today);
-        dt.className = "dt"; dt.append(when.toLocaleDateString(loc, { weekday: "short", timeZone: "UTC" }), document.createElement("br"),
-                                       when.toLocaleDateString(loc, { day: "numeric", month: "short", timeZone: "UTC" }));
-        const title = (IT && it.title_it) || it.title;     // "Holiday truck bans: Christmas" reads "Truck ban: Christmas" here
-        ti.className = "ti"; ti.textContent = it.kind === "ban" && title.includes(": ") ? T("Truck ban: ", "Divieto camion: ") + title.slice(title.indexOf(": ") + 2) : title;
-        wh.className = "wh"; wh.textContent = (IT && it.where_it) || it.where || "";
-        tx.append(ti, wh);
-        pc.className = "pc"; pc.textContent = Math.round((it.p || 0) * 100) + "%";
-        bar.className = "bar"; bar.setAttribute("aria-hidden", "true"); fill.style.setProperty("--p", (it.p || 0).toFixed(2)); bar.append(fill);
-        li.append(dt, tx, pc, bar); list.append(li);
-      });
+      fillSched(list, items, today, 4);
       c2.hidden = false; watch(c2);
       // the map of the same events: comes in behind its sweep when it scrolls into view (assets/map.js)
       const m = c2.querySelector(".sv-radar-map");

@@ -91,6 +91,11 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       check(/work in progress|primi lavori/i.test(await page.textContent("#sv-map")), `${tag}: the map is labelled as our first work in progress`);
       check((await page.$$eval("#sv-map .map-ev .map-why .chip", c => c.length)) > 0, `${tag}: each event says why its chance is what it is`);
       check((await page.$$eval("#sv-map .sv-reads li", l => l.length)) === 8, `${tag}: what the radar reads, live and next`);
+      check((await page.$$eval("#sv-sched-end li", l => l.length)) > 0 && await page.isVisible("#sv-sched-box"), `${tag}: the schedule with chances is on the last screen again`);
+      const news = await page.$$eval("#sv-news li", l => l.length);
+      check(news === 0 ? await page.isHidden("#sv-news-box") : await page.isVisible("#sv-news-box"), `${tag}: the news summary shows when the radar has news, and hides when it has none`);
+      await page.$eval(".sv-end-grid", e => e.scrollIntoView({ block: "start" })); await page.waitForTimeout(400);
+      await page.locator(".sv-end-grid").screenshot({ path: `${OUT}/survey-${tag}-end-grid.png` });
       await page.waitForTimeout(2600);                   // the small map comes in behind its sweep
       await shot("done");
 
