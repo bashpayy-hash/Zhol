@@ -196,8 +196,13 @@
                                                   "Oggi: " + d.articles_read + " articoli da " + d.sources_ok + " fonti, " + d.signals + " segnali.");
       // under the map, again: the schedule with chances and what the news says (owner, 10 Nov 2026)
       const u = upcoming(d);
-      if (fillSched($("sv-sched-end"), u.items, u.today, 8)) $("sv-sched-box").hidden = false;
-      if (fillNews($("sv-news"), d.items, 5)) $("sv-news-box").hidden = false;
+      const a = fillSched($("sv-sched-end"), u.items, u.today, 8), b = fillNews($("sv-news"), d.items, 5);
+      if (a) $("sv-sched-box").hidden = false;
+      if (b) $("sv-news-box").hidden = false;
+      if (a || b) $("sv-now").hidden = false;              // its own card, above the map, so it is seen first
+      // on a computer the list beside the map is as tall as the map and scrolls inside, no hole under the legend
+      const col = box.querySelector(".map-col"), pan = box.querySelector(".map-panel");
+      if (col && pan && "ResizeObserver" in window) new ResizeObserver(() => { pan.style.maxHeight = innerWidth > 920 ? col.offsetHeight + "px" : ""; }).observe(col);
       return map.update(d.items, d.today);
     }).then(c => {
       if (!c || !c.events) { box.hidden = true; return; }

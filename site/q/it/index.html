@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s21">
+<link rel="stylesheet" href="/assets/zhol.css?v=s22">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
@@ -277,6 +277,24 @@
       </div>
     </div>
 
+    <section class="sv-map card sv-now" id="sv-now" hidden aria-labelledby="sv-now-h">
+      <div class="sv-map-head">
+        <span class="sv-label">Dal radar, oggi</span>
+        <h2 class="sv-q-title" id="sv-now-h">Cosa arriva nelle prossime settimane</h2>
+      </div>
+      <div class="sv-end-grid">
+        <div class="sv-end-col" id="sv-sched-box" hidden>
+          <h3>Le prossime settimane, con la probabilità di ognuno</h3>
+          <ul class="sv-sched" id="sv-sched-end"></ul>
+        </div>
+        <div class="sv-end-col" id="sv-news-box" hidden>
+          <h3>Dalle notizie di oggi</h3>
+          <p class="small muted">Cosa ha trovato il radar nella stampa in quattro lingue, con le testate.</p>
+          <ol class="sv-news" id="sv-news"></ol>
+        </div>
+      </div>
+    </section>
+
     <section class="sv-map card" id="sv-map" hidden aria-labelledby="sv-map-h">
       <div class="sv-map-head">
         <span class="sv-label">I nostri primi lavori</span>
@@ -301,17 +319,6 @@
           </div>
         </div>
         <div class="map-panel card" aria-live="polite"></div>
-      </div>
-      <div class="sv-end-grid">
-        <div class="sv-end-col" id="sv-sched-box" hidden>
-          <h3>Le prossime settimane, con la probabilità di ognuno</h3>
-          <ul class="sv-sched" id="sv-sched-end"></ul>
-        </div>
-        <div class="sv-end-col" id="sv-news-box" hidden>
-          <h3>Dalle notizie di oggi</h3>
-          <p class="small muted">Cosa ha trovato il radar nella stampa in quattro lingue, con le testate.</p>
-          <ol class="sv-news" id="sv-news"></ol>
-        </div>
       </div>
       <div class="sv-reads">
         <h3>Cosa legge il radar</h3>
@@ -341,7 +348,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=q2" defer></script>
 <script src="/assets/map.js?v=a8" defer></script>
-<script src="/assets/survey.js?v=q15" defer></script>
+<script src="/assets/survey.js?v=q16" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

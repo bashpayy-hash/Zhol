@@ -94,8 +94,11 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       check((await page.$$eval("#sv-sched-end li", l => l.length)) > 0 && await page.isVisible("#sv-sched-box"), `${tag}: the schedule with chances is on the last screen again`);
       const news = await page.$$eval("#sv-news li", l => l.length);
       check(news === 0 ? await page.isHidden("#sv-news-box") : await page.isVisible("#sv-news-box"), `${tag}: the news summary shows when the radar has news, and hides when it has none`);
-      await page.$eval(".sv-end-grid", e => e.scrollIntoView({ block: "start" })); await page.waitForTimeout(400);
-      await page.locator(".sv-end-grid").screenshot({ path: `${OUT}/survey-${tag}-end-grid.png` });
+      check(await page.isVisible("#sv-now") && await page.$eval("#sv-now", (n) => n.compareDocumentPosition(document.getElementById("sv-map")) & Node.DOCUMENT_POSITION_FOLLOWING), `${tag}: the schedule and the news come before the map, in their own card`);
+      await page.$eval("#sv-now", e => e.scrollIntoView({ block: "start" })); await page.waitForTimeout(400);
+      await page.screenshot({ path: `${OUT}/survey-${tag}-end-now.png`, fullPage: false });
+      await page.$eval("#sv-map", e => e.scrollIntoView({ block: "start" })); await page.waitForTimeout(600);
+      await page.screenshot({ path: `${OUT}/survey-${tag}-end-map.png`, fullPage: false });
       await page.waitForTimeout(2600);                   // the small map comes in behind its sweep
       await shot("done");
 
