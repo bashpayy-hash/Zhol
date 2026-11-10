@@ -5,6 +5,7 @@
   const form = document.getElementById("survey");
   if (!form) return;
   const IT = document.documentElement.lang === "it";
+  const toRadar = () => { const src = new URLSearchParams(location.search).get("src"); return "?from=survey" + (src ? "&src=" + encodeURIComponent(src) : ""); };
   const T = (en, it) => IT ? it : en;
   const $ = id => document.getElementById(id);
   // who is answering comes first: traffic offices get the questions about their own desk (data-path="op"),
@@ -186,7 +187,7 @@
     if (!box || !window.ZholMap || box.dataset.on) return;
     box.dataset.on = "1";
     // the full radar: places, the events at each with their chance, the week player; "Plan and cost" opens the radar page
-    const mo = { detail: true, show: id => { location.href = (IT ? "/it/radar" : "/radar") + "#rd-" + id; } };
+    const mo = { detail: true, show: id => { location.href = (IT ? "/it/radar" : "/radar") + toRadar() + "#rd-" + id; } };
     const map = window.ZholMap(box, mo);
     radar.then(d => {
       mo.method = d.method;
@@ -337,6 +338,13 @@
   });
 
   show(0, false);
+
+  // links to the radar keep the visitor in the survey: the radar page then shows one button back to its first page
+  // (assets/from-survey.js; owner, 10 Nov 2026: «это же всё было про опросник»)
+  document.querySelectorAll('a[href^="/radar"], a[href^="/it/radar"]').forEach(a => {
+    const [p, h] = a.getAttribute("href").split("#");
+    a.href = p + toRadar() + (h ? "#" + h : "");
+  });
 
   // the logo takes you back to the survey's first page (owner, 10 Nov 2026), keeping where you came from (?src=)
   const logo = document.querySelector(".top a.logo"), from = new URLSearchParams(location.search).get("src");

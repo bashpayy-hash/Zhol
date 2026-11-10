@@ -1151,3 +1151,6 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
 .sv-now .sv-reads { margin-top: 28px; }
 @media (min-width: 921px) { .sv-map .map-grid > .map-panel { overflow-y: auto; overscroll-behavior: contain; } }
 .sv-now.one .sv-end-grid { grid-template-columns: minmax(0, 1fr); }
+/* the radar opened from the survey: one button back to the survey instead of the site menu */
+.top .back-survey { align-self: center; margin-left: auto; padding: 8px 16px; font-size: 14px; min-height: 0; }
+@media (max-width: 920px) { .top .back-survey { padding: 6px 12px; font-size: 13px; } }
