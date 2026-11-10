@@ -283,7 +283,8 @@ def association_message(name: str, link: str, kind: str = "hauliers", region: st
 
 # Letters to the press (owner, 10 Nov 2026: «а по письмам изданиям как, есть персонализация?»): the figures fit what
 # the outlet's readers do (hauliers, ports, logistics managers), one line ties the survey to what the outlet covers
-# (taken from its own site), and every outlet gets the results in preview, never an exclusive promised to all.
+# (taken from its own site). No results in advance and no exclusive (owner, 10 Nov 2026: «мы им не будем присылать
+# заранее»); what we offer is the public radar as a free source for their pieces, and a few questions if they want the story.
 PRESS_KIND = {
     "p-uomini-e-trasporti": "trade", "p-trasportoeuropa": "trade", "p-trans-info-italia": "trade", "p-rivista-tir": "trade",
     "p-vado-e-torno": "trade", "p-trasporti-italia": "trade", "bp-il-mondo-dei-trasporti": "trade", "bp-transportonline": "trade",
@@ -359,14 +360,20 @@ def press_message(outlet: str, link: str, pid: str = "") -> tuple[str, str, str,
           f"traffico, sette domande, un minuto.\n\n{HOOK} {PLATFORM}\n\n{fig_it}\n\n"
           + (ang_it + " " if ang_it else "")
           + "Raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto "
-          "e quanti uffici sarebbero pronti a scambiarsi informazioni. Se vi interessa, vi mandiamo i risultati aggregati "
-          f"in anteprima, prima di pubblicarli.\n{link}\n\nGrazie,\n{SIGN}")
+          f"e quanti uffici sarebbero pronti a scambiarsi informazioni.\n{link}\n\n"
+          "Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar. Due volte al giorno mette in fila "
+          "divieti, chiusure e scioperi delle prossime otto settimane, con la probabilità e le fonti, e potete usarlo "
+          "liberamente citando zhol. Se la storia vi interessa, io e il mio team siamo disponibili per qualche domanda."
+          f"\n\nGrazie,\n{SIGN}")
     ru = (f"Уважаемая редакция {outlet},\nпишу, чтобы попросить вас коротко упомянуть анонимный опрос для отделов перевозок, "
           f"семь вопросов, одна минута.\n\n{HOOK_RU} {PLATFORM_RU}\n\n{fig_ru}\n\n"
           + (ang_ru + " " if ang_ru else "")
           + "Мы собираем исходные данные, то есть сколько минут теряется каждый день, сколько отправок меняется, во что обошёлся "
-          "последний непредвиденный случай и сколько офисов готовы обмениваться информацией. Если интересно, пришлём сводные "
-          f"результаты заранее, до публикации.\n{link}\n\nСпасибо,\n{SIGN}")
+          f"последний непредвиденный случай и сколько офисов готовы обмениваться информацией.\n{link}\n\n"
+          "Для ваших статей может пригодиться наш открытый радар, zhol.live/it/radar. Дважды в день он собирает запреты, "
+          "закрытия и забастовки на ближайшие восемь недель, с вероятностью и источниками, и им можно свободно пользоваться "
+          "со ссылкой на zhol. Если история вам интересна, мы с командой готовы ответить на вопросы."
+          f"\n\nСпасибо,\n{SIGN}")
     return it, ru, (ang_it or fig_it), SOURCES[src], PRESS_SUBJECT[kind]
 
 
