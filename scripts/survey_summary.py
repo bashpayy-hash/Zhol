@@ -232,12 +232,18 @@ def main() -> None:
     ap.add_argument("--since", help="keep answers from this UTC time on, e.g. 2026-11-09T17:00 (drops the team's own tests)")
     args = ap.parse_args()
     answers, follow = read(args.csv)
+    # the team's own test runs, listed by response id next to the exports (outreach/private/excluded.txt, git-ignored)
+    skip_path = args.csv[0].parent / "excluded.txt"
+    skip = {l.strip() for l in skip_path.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")} if skip_path.exists() else set()
+    left_out = sum(1 for r in answers if r.get("rid") in skip)
+    answers, follow = [r for r in answers if r.get("rid") not in skip], [r for r in follow if r.get("rid") not in skip]
     if args.since:
         keep = lambda r: (r.get("created_at") or "") >= args.since
         answers, follow = [r for r in answers if keep(r)], [r for r in follow if keep(r)]
     text = markdown(summarise(answers, follow))
     if args.since:
-        text = text.replace("\n\n", f"\n\nAnswers from {args.since} UTC on (the outreach began then; earlier rows were the team's own tests).\n\n", 1)
+        text = text.replace("\n\n", f"\n\nAnswers from {args.since} UTC on (the outreach began then; earlier rows were the team's own tests)"
+                            + (f"; {left_out} later test runs by the team left out" if left_out else "") + ".\n\n", 1)
     if args.out:
         args.out.write_text(text, encoding="utf-8")
         print(f"wrote {args.out}")
