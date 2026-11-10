@@ -25,7 +25,7 @@ c-malik-trasporti,info@maliktrasporti.it,https://www.maliktrasporti.it/en/contac
 c-manenti-autotrasporti,info@manentitrasporti.it,https://www.manentitrasporti.it/,,
 c-valsped,info@valspedgroup.it,https://www.valspedgroup.it/it/network-e-servizi/network,,info@valspedvicenza.it given for Brendola on https://www.valspedgroup.it/it/network-e-servizi/camionistico-import
 c-gazzotti-spa,logistica@gazzotti-spa.com,https://www.gazzotti-spa.com/contatti.php,,info@ seen on https://www.gazzotti-spa.com/privacy.php
-c-samberisi-autotrasporti,,,https://www.reteimprese.it/info_A102677B2,"no email found; form is a directory (reteimprese) relay form, not official site; tel +39 0522 1751591; site not fetched: WebFetch blocked by session network allowlist; WebSearch only"
+c-samberisi-autotrasporti,info@samberisi.it,https://www.samberisi.it/,https://www.reteimprese.it/info_A102677B2,"crawl: own site | also: commerciale@samberisi.it, direzione@samberisi.it"
 ba-assolombarda-gruppo-trasporti-logistica-,gruppi@assolombarda.it,https://www.assolombarda.it/governance/gruppi/trasporti/informazioni/assemblea-elettiva-2020-gruppo-trasporti-logistica-e-infrastrutture,,"secretariat of the groups area (Segreteria Gruppo Trasporti, Logistica e Infrastrutture, tel 02 58370.342); seen in search excerpt of the official page (2020, repeated in a 2024 notice), page not fetc"
 ba-confartigianato-brescia-autotrasporto-me,area.categorie@confartigianato.bs.it,https://old.provincia.brescia.it/sites/default/files/allegati/documenti/6663/elenco_associazioni.pdf,,"categories-area address (not transport-specific) from an old Provincia di Brescia list of associations, dated; seen in search excerpt; Via Orzinuovi 28 Brescia, tel 030 37451"
 ba-confartigianato-vicenza-autotrasporto,m.petris@confartigianatovicenza.it,https://www.informaimpresa.it/?p=42353,,"personal: Maurizio Petris, provincial head of the transport category (tel 0444 168432), in Confartigianato Vicenza's own InformaImpresa notices 2022-23; seen in search excerpt; general switchboard 044"
@@ -111,7 +111,7 @@ b-autotrasporti-taccogna,info@taccogna.com,https://www.taccogna.com/,,HQ Altamur
 b-coo-tra-sa-soc-coop,cootrasa@libero.it,https://cootrasa.it/azienda-di-autotrasporti-lecce-chi-siamo/,,libero address printed on own site; via search index
 b-lotras-srl,logistica@lotras.it,https://www.lotras.it/en/team,,"intermodal rail terminal operator Foggia Incoronata, now FHP group; info@ on https://www.lotras.it/en/contatti; via search index"
 b-malorgio-trasporti,info@malorgiotrasporti.it,https://www.malorgiotrasporti.com/contatti,https://www.malorgiotrasporti.com/contatti,email domain .it although site is .com (as printed); via search index
-b-nesta-trasporti-logistics-snc,info@nestatrasporti.it,https://www.nestatrasportisnc.it/,,email domain nestatrasporti.it as printed; via search index
+b-nesta-trasporti-logistics-snc,,,,"removed info@nestatrasporti.it: domain no longer exists (DNS, 10 Nov 2026) | email domain nestatrasporti.it as printed; via search index"
 b-nigro-trasporti,nigrotrasporti@libero.it,https://www.nigrotrasporti.it/,,San Vito dei Normanni (BR); libero address on own site; via search index
 b-cavaleri-srl,info@cavaleri.it,https://www.cavaleri.it/contatti,,"contact page also lists named staff addresses per department (logistics: tonino@cavaleri.it, personal); via search index"
 b-dgv-group-srl,commerciale@dgvgroupsrl.it,https://www.dgvgroupsrl.it/,,site also lists two personal addresses; via search index
@@ -137,7 +137,7 @@ c-tma-trasporto-alimenti,tma.trasporti@gmail.com,https://www.tmatrasportoaliment
 c-sogema-group-srl,logistica@sogemagroup.it,https://www.sogemagroup.it/contatti/,,"via search index; logistica@/spedizioni@ = operations, commericale@ = commercial (spelled so on site, likely typo), info@ = administration, sales@ = sales; privacy-controller personal address omitted"
 c-trasporti-pigozzi-snc,info@trasportipigozzi.it,https://trasportipigozzi.it/en/about-us.php,,"via search index; general (Autotrasporti Pigozzi Antenore & C. snc, Suzzara)"
 ba-cna-fita-forli-cesena,cna@cnafc.it,https://forlicesena.cna.it/wp-content/uploads/2021/03/Statuto_CNA_FC_2021.pdf,,"via search index; general address of CNA Forli-Cesena from its 2021 statute on its own site, not FITA-specific (ask to forward to FITA)"
-b-contship-italia-drivemybox,info@contshipitalia-rhm.it,https://contshipitalia.com/?p=2437,,"via search index; general address of Contship's Rail Hub Milano (Melzo) terminal, where driveMybox is based, from a COVID-era operational notice on Contship's own site, so it may be outdated; no Drive"
+b-contship-italia-drivemybox,,,,"removed info@contshipitalia-rhm.it: domain no longer exists (DNS, 10 Nov 2026) | via search index; general address of Contship's Rail Hub Milano (Melzo) terminal, where driveMybox is based, from a COVID-era operational notice on Contship's own site, so it may be outdated; no Drive"
 a-confindustria-brescia,stampa@confindustriabrescia.it,https://group.intesasanpaolo.com/content/dam/portalgroup/repository-documenti/newsroom/comunicati-stampa-it/2022/06/Cs%20Accordo%20Isp-Confindustria_tappa%20Brescia%2024062022.pdf,,pass3: press office address seen in partner press release / Confindustria Lombardia PDFs (domain matches own site); no general info@ seen
 ba-spediporto,info@spediporto-genova.com,https://icc.org.hk/members-directory/spediporto,,pass3: справочник ICC Hong Kong members directory (domain matches own site); other: Spediservices address on portsofgenoa.com dangerous-goods page
 ba-alis-associazione-logistica-dell-intermo,info@alis.it,https://www.autorita-trasporti.it/wp-content/uploads/2018/10/ALIS.pdf,,"pass3: own letterhead (ALIS document hosted on autorita-trasporti.it, also in ALIS presentation on ecgassociation.eu)"
@@ -146,10 +146,96 @@ p-vado-e-torno,segreteria@vadoetornoedizioni.it,https://www.vadoetornoweb.com/su
 a-confartigianato-imprese-marca-trevigiana,info.prov@confartigianatomarcatrevigiana.it,https://apps.unive.it/server/eventi/114554/locandina-AI-ACADEMY-9-aprile.pdf,,"pass3: third-party flyer (unive.it), domain matches own site; general address, not transport group"
 a-freight-leaders-council,flc@freightleaders.org,https://www.diati.polito.it/en/content/download/2262/17136/file/La logistica ai tempi dell'e-commerce.pdf,,"pass3: third-party PDF (polito.it, 2017), domain matches own site; Roma"
 a-trasportounito,varese@trasportounito.org,https://www.varesenews.it/2013/05/trasportounito-varese-si-presenta-a-malpensafiere/59378/?output=pdf,,"pass3: third-party news (varesenews 2013), Varese provincial office; domain trasportounito.org; national HQ email not found"
-ba-interporto-padova,info@pcs.interportopd.it,https://www.intermodal-terminals.eu/database/terminal/view/id/862,,"pass3: справочник intermodal-terminals.eu; terminal (Nord Est Terminal) address on subdomain of interportopd.it, not confirmed as general"
+ba-interporto-padova,,,,"removed info@pcs.interportopd.it: domain no longer exists (DNS, 10 Nov 2026) | pass3: справочник intermodal-terminals.eu; terminal (Nord Est Terminal) address on subdomain of interportopd.it, not confirmed as general"
 ba-sito-interporto-di-torino,sitospa@sitospa.it,https://www.gazzettaufficiale.it/eli/id/2010/06/25/T10BGA13016/s5,,pass3: company notice in Gazzetta Ufficiale (2010); domain matches own site sitospa.it; may be dated
 b-curcio-trasporti-e-servizi-srl,info@curciotrasporti.com,https://cdnc.heyzine.com/flip-book/pdf/16335b21d0e6dd95f5cf92ed5c15e03d5119004c.pdf,,"pass3: company own sustainability reports (heyzine-hosted PDFs; exact one among the heyzine results uncertain); other_emails entry is a personal address; HQ Polla, site in Calerno"
 b-consorzio-savonese-autotrasporti,info@csa.sv.it,https://portsofgenoa.com/en/port-basins-logistics/port-activities/operators/logistics-services/consorzio-savonese-autotrasporti.html,,pass3: справочник Ports of Genoa (port authority operators directory); domain matches own site csa.sv.it
 a-fai-bergamo,maura@faibergamo.it,https://www.bg.camcom.it/sites/default/files/contenuto_redazione/bandi/allegati/2019-01-08/bando_0207-elenco-dei-soggetti-attuatori-accreditati.pdf,,"pass3: personal address; справочник Camera di Commercio Bergamo (list 2019), domain = own domain faibergamo.it; may be outdated"
 a-confartigianato-trasporti,trasporti@confartigianato.it,https://trasporti-italia.com/wp-content/uploads/2024/10/Lettera_Unatras_Ministro_Salvini_02ott2024.pdf,,pass3: own letterhead in Unatras letter (Oct 2024) hosted by trasporti-italia.com; domain = own confartigianato.it
 ba-unatras,,,,"pass3: UNATRAS secretariat inbox is trasporti@confartigianato.it (CNA Modena PDF, Apr 2026), same as Confartigianato Trasporti — write once there"
+p-trasporti-italia,info@trasporti-italia.com,https://www.trasporti-italia.com/,,crawl: own site
+c-eurotir,preventivi@eurotir.org,https://eurotirsrl.com/,,crawl: own site
+c-d-g-f-trans-srl,info@dgftrans.it,https://www.dgftrans.it/,,crawl: own site
+c-farosped,info@farosped.com,https://www.farosped.com/it/,,crawl: own site
+c-tis-srl,milano@tissrl.com,https://www.tissrl.com/,,crawl: own site | also: salatino@tissrl.com
+c-spedizioni-vison,info@spedizionivisona.com,https://www.spedizionivisona.com/,,crawl: own site
+c-scortrans,info@scortrans.com,https://scortrans.com/,,"crawl: own site | also: milano@scortrans.com, c.davide@scortrans.com"
+c-fe-transport,info@fetrasporti.it,https://www.fetrasporti.com/,,crawl: own site
+c-autotrasporti-trevisan,info@autotrasportitrevisan.it,https://www.autotrasportitrevisan.it/,,crawl: own site
+c-autotrasporti-padova-srl,info@autotrasportipadova.it,https://www.autotrasportipadova.com/,,crawl: own site | also: logistica@autotrasportipadova.it
+c-passione-autotrasporti,info@passioneautotrasporti.it,https://www.passioneautotrasporti.it/,,crawl: own site
+c-favaron-autotrasporti,info@favarontrasporti.com,https://www.favarontrasporti.eu/,,crawl: own site
+c-g-t-i-srl,traffico@trasportigti.com,https://www.trasportigti.it/,,crawl: own site
+c-serima-srl,info@serimatrasporti.it,https://www.serimatrasporti.it/,,crawl: own site | also: logistica@serimatrasporti.it
+c-pmg-srl,info@pmgsrl.net,https://pmgsrl.net/,,"crawl: own site | also: operativopd@pmgsrl.net, infove@pmgsrl.net"
+c-autotrasporti-marcon,info@marconautotrasporti.it,https://marconautotrasporti.it/it/,,crawl: own site | also: michela@marconautotrasporti.it
+c-bilibio-autotrasporti,nadia.operativo@bilibio.it,https://www.autotrasportibilibio.it/contatti/,,"crawl: own site | also: giovanni.logistica@bilibio.it, franca.amministrazione@bilibio.it"
+c-ellero-srl,info@ellerosrl.net,https://www.ellerosrl.net/,,crawl: own site
+c-camellini-srl,info@camellinisrl.it,https://www.camellinisrl.it/,,crawl: own site
+c-transtir-srl,info@transtir.com,https://www.transtir.it/it/,,crawl: own site
+c-cfp-modena,cfpmo@cfpmo.it,https://cfpmo.it/,,"crawl: own site | also: trasporti.dedicati@cfpmo.it, ufficio.distribuzione2@cfpmo.it"
+c-rosso-antonio-srl,trasporti@rossoantoniosrl.it,https://www.rossoantoniosrl.com/,,crawl: own site
+c-monsignori-autotrasporti-srl,info@monsignoritrasporti.com,https://www.monsignoritrasporti.com/,,crawl: own site
+c-autotrasporti-contenti,info@autotrasporticontenti.it,https://www.autotrasporticontenti.it/,,crawl: own site
+c-effemme-trasporti,effemmetrasporti@live.it,https://www.effemmetrasporti.com/,,"crawl: own site, webmail address printed there"
+c-coppola-nunzio-trasporti,coppolanunziotrasporti@live.com,https://www.coppolanunziotrasporti.it/,,"crawl: own site, webmail address printed there"
+ba-asea-associazione-spedizionieri-ed-autot,aseavarese@aseavarese.it,https://aseavarese.it/,,"crawl: own site | also: 836501giacomo.bragatti@aseavarese.it, davide.gaeta@aseavarese.it"
+ba-assologistica,milano@assologistica.it,https://www.assologistica.it/,,crawl: own site | also: roma@assologistica.it
+ba-cna-lombardia-fita,info@cnalombardia.it,https://www.cnalombardia.it/,,crawl: own site
+ba-consorzi-lecco-trasporti,info@leccotrasporti.it,https://www.leccotrasporti.it/contatti/,,crawl: own site
+ba-consorzio-bergamo-trasporti,info@bergamotrasporti.it,https://www.bergamotrasporti.it/contatti/,,crawl: own site
+ba-fai-como-lecco,segreteria@faicomo.it,https://faicomo.it/,,crawl: own site | also: segreteria@failecco.it
+ba-fedespedi-30-associazioni-territoriali,fedespedi@fedespedi.it,https://www.fedespedi.it/,,crawl: own site
+ba-fai-regionale-veneto,info@faiveneto.com,https://fairegionaleveneto.com/,,"crawl: own site | also: faiveneto@faiveneto.com, anna@faiveneto.com"
+ba-lvh-apa-berufsgemeinschaft-warentranspor,info@lvh.it,https://www.lvh.it/,,crawl: own site
+ba-aspt-astra,info@aspt-astra.it,https://www.aspt-astra.it/contatti/,,crawl: own site
+ba-confetra-confetra-mezzogiorno,confetra@confetra.com,https://www.confetra.com/,,"crawl: own site | also: deluca@confetra.com, scarfia@confetra.com"
+ba-palletways-italia,info_italia@palletways.com,https://www.palletways.com/contact/,,"crawl: own site | also: info@palletways.com, info.hu@palletways.com"
+ba-interporto-centro-ingrosso-pordenone,info@interportocentroingrosso.com,https://interportocentroingrosso.com/,,"crawl: own site | also: fusari@interportocentroingrosso.com, pradal@interportocentroingrosso.com"
+ba-interporto-campano,info@interportocampano.it,https://www.interportocampano.it/contatti/,,crawl: own site
+b-consorzio-tre-laghi,consorzio@tre-laghi.it,https://tre-laghi.it/contatti/,,crawl: own site
+b-cermesoni-group,info@cermesonigroup.com,https://www.cermesonigroup.com/it/,,crawl: own site
+b-chiggiato-spa,info@chiggiatospa.com,https://www.chiggiatospa.com/contatti/,,"crawl: own site | also: bari@chiggiatospa.com, lucca@chiggiatospa.com"
+b-da-rold-cassol-srl,assistenzaclienti.pd1@daroldcassol.com,https://daroldcassol.com/contatti/,,"crawl: own site | also: assistenzaclienti.bl1@daroldcassol.com, assistenzaclienti.tv1@daroldcassol.com"
+b-global-service-srl,info@globalservicetrasporti.it,https://www.globalservicetrasporti.it/,,"crawl: own site | also: operativo@globalservicetrasporti.it, lorenza@globalservicetrasporti.it"
+b-gruppo-sts,info@grupposts.it,https://www.grupposts.it/,,crawl: own site
+b-ld-logistic,info@ldlogistic.it,https://www.ldlogistic.it/,,crawl: own site
+b-mp-trasporti,traffico@mp-trasporti.it,https://www.mp-trasporti.it/contatti/,,"crawl: own site | also: commerciale@mp-trasporti.it, amministrazione@mp-trasporti.it"
+b-prior-trasporti,priortrasporti@gmail.com,https://www.priortrasporti.it/,,"crawl: own site, webmail address printed there"
+b-rovigo-trasporti-srl,info@rovigotrasporti.it,https://rovigotrasporti.it/,,crawl: own site
+b-salmaso-trasporti-srl,info@salmasotrasporti.it,https://www.salmasotrasporti.it/,,crawl: own site
+b-settentrionale-trasporti-spa,contact@settentrionale.com,https://www.settentrionale.com/,,crawl: own site
+b-tonello-g-b,info@tonellogb.it,https://www.tonellogb.net/,,crawl: own site
+b-trasporti-e-servizi-fabbian-srl,info@autotrasportifabbian.it,https://trasportieservizifabbian.com/,,crawl: own site
+b-a-t-f-i-soc-coop,info@atfi.it,https://atfi.it/,,crawl: own site
+b-autotrasporti-marazzi,traffico@marazziautotrasporti.it,https://www.marazziautotrasporti.it/,,crawl: own site
+b-autotrasporti-mozzi,info@autotrasportimozzi.it,https://autotrasportimozzi.it/,,crawl: own site
+b-avionship,florie.avionship@gmail.com,https://www.spedizioni-avionship.com/,,"crawl: own site, webmail address printed there, personal address"
+b-c-t-transport-srl,info@cttransportsrl.com,https://www.cttransportsrl.it/,,crawl: own site | also: commerciale@cttransportsrl.com
+b-comandini-trasporti,info@comandinitrasporti.it,https://www.comandinitrasporti.com/,,"crawl: own site | also: amministrazione@comandinitrasporti.it, nrico@comandinitrasporti.it"
+b-dani-nardi-srl,daninardi@daninardi.it,https://www.danienardi.com/,,crawl: own site
+b-baraldo-autotrasporti,info@baraldoautotrasporti.it,https://www.baraldoautotrasporti.com/,,crawl: own site | also: amministrazione@baraldoautotrasporti.it
+b-delfitto-srl,traffico@delfittosrl.it,https://www.delfittosrl.it/contatti.html,,"crawl: own site | also: info@delfittosrl.it, commerciale@delfittosrl.it"
+b-lannutti-group,info@lannutti.com,https://lannutti.com/en/,,"crawl: own site | also: sales@lannutti.com, jobs@lannutti.com"
+b-p-m-trasporti-srl,pm.trasporti.srl@hotmail.com,https://pmtrasportisrl.it/,,"crawl: own site, webmail address printed there"
+b-trasporti-de-cillis,autotrasportimicheledecillis@gmail.com,https://autotrasportidecillis.com/,,"crawl: own site, webmail address printed there"
+b-d-p-logistica,dp@dp-genova.eu,https://www.dp-genova.eu/,,crawl: own site
+b-gv-spedizioni-internazionali,a.gasciarini@gvsped.it,https://www.gvspedizioni.it/,,"crawl: own site, personal address"
+b-laghezza-spa,info@laghezza.com,https://laghezza.com/,,"crawl: own site | also: logistica@laghezza.com, trasporti@laghezza.com"
+b-ocean-sped,info@oceansped.it,https://oceansped.com/,,crawl: own site
+b-placido-macor-c-spedizioni,info@placidomacor.it,https://spedizionimacor.it/,,"crawl: own site | also: export@placidomacor.it, import@placidomacor.it"
+b-s-l-trasporti,info@selgenova.it,https://www.selgenova.it/privacy-policy/,,crawl: own site | also: trasporti@selgenova.it
+b-la-belmontese-soc-coop,labelmontese@libero.it,https://www.labelmontese.it/,,"crawl: own site, webmail address printed there | also: labelmontese.mare@libero.it"
+b-mediblea-trasporti,medibleatrasporti@gmail.com,https://www.medibleatrasporti.it/,,"crawl: own site, webmail address printed there"
+b-morana-trasporti,info@moranatrasporti.it,https://www.moranatrasporti.it/,,crawl: own site
+b-sicilog,logistica@sicilog.it,https://www.sicilog.com/,,crawl: own site | also: amministrazione@sicilog.it
+b-sud-trasporti,info@sudtrasporti.it,https://www.sudtrasporti.it/,,"crawl: own site | also: logistica@sudtrasporti.it, legale@sudtrasporti.it"
+b-acb-srl,info@acbsrl.it,https://www.acbsrl.it/,,crawl: own site
+b-autotrasporti-s-p,info@autotrasportisp.it,https://www.autotrasportisp.it/,,crawl: own site
+b-ctf-trasporti,info@ctftrasporti.com,https://www.ctftrasporti.com/,,crawl: own site
+b-dima-trasporti,info@dimatrasporti.it,https://www.dimatrasporti.it/,,crawl: own site
+b-free-sped,office@freesped.com,https://www.freesped.com/,,crawl: own site
+b-gea-trasporti,info@geatrasporti.it,https://www.geatrasporti.it/,,crawl: own site
+b-morleo-autotrasporti,info@morleoautotrasporti.it,https://www.morleoautotrasporti.it/it/contatti.html,,crawl: own site | also: logistica@morleoautotrasporti.it
+b-paeurope,info@paeurope.it,https://www.paeurope.it/contatti/,,crawl: own site
+b-trial-srl,trial@trialsrl.com,https://www.trialsrl.com/,,crawl: own site

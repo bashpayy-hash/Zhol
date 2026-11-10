@@ -505,12 +505,13 @@
 "type": "press",
 "name": "Trasporti-Italia",
 "city": "",
-"to": "",
+"to": "info@trasporti-italia.com",
 "where": "сайт издания → «Redazione» или «Contatti»",
 "search": "https://www.google.com/search?q=Trasporti-Italia+redazione+contatti",
 "subject": "Dati sul campo, quanto costano divieti, code e chiusure agli uffici traffico (Bocconi, TEF Ignition)",
 "message": "Gentile redazione di Trasporti-Italia,\nvi scrivo per chiedervi una breve segnalazione di un sondaggio per gli uffici traffico di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nStiamo raccogliendo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto, e quanti uffici sarebbero pronti a scambiarsi informazioni. I risultati aggregati ve li mandiamo in esclusiva, se lo desiderate.\nhttps://zhol.live/it/sondaggio?src=press-trasporti-italia\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
-"link": "https://zhol.live/it/sondaggio?src=press-trasporti-italia"
+"link": "https://zhol.live/it/sondaggio?src=press-trasporti-italia",
+"to_src": "https://www.trasporti-italia.com/"
 },
 {
 "id": "c-autotrasporti-bommartini-srl",
@@ -1335,7 +1336,7 @@
 "name": "Eurotir",
 "city": "Castel Goffredo",
 "region": "Lombardia",
-"to": "",
+"to": "preventivi@eurotir.org",
 "where": "",
 "search": "https://www.google.com/search?q=Eurotir+Castel+Goffredo+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1344,6 +1345,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con groupage da Castel Goffredo, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://eurotirsrl.com/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
@@ -1422,7 +1424,7 @@
 "name": "D.G.F. Trans srl",
 "city": "Buscate",
 "region": "Lombardia",
-"to": "",
+"to": "info@dgftrans.it",
 "where": "https://www.dgftrans.it/",
 "search": "https://www.google.com/search?q=D.G.F.+Trans+srl+Buscate+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1431,6 +1433,7 @@
 "fit": "3",
 "why": "Pensando ai vostri circa 35 mezzi con groupage da Buscate verso Germania, Austria e Polonia, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.dgftrans.it/",
 "about": "Перевозчик и экспедитор · около 240 машин"
 },
 {
@@ -1439,7 +1442,7 @@
 "name": "Farosped",
 "city": "Milano",
 "region": "Lombardia",
-"to": "",
+"to": "info@farosped.com",
 "where": "https://www.farosped.com/",
 "search": "https://www.google.com/search?q=Farosped+Milano+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1448,6 +1451,7 @@
 "fit": "3",
 "why": "Pensando ai vostri camion con groupage da Milano verso Germania, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.farosped.com/it/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -1456,7 +1460,7 @@
 "name": "TIS srl",
 "city": "Cornaredo",
 "region": "Lombardia",
-"to": "",
+"to": "milano@tissrl.com",
 "where": "https://www.tissrl.com/",
 "search": "https://www.google.com/search?q=TIS+srl+Cornaredo+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1465,6 +1469,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con groupage da Cornaredo verso Germania e Francia, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.tissrl.com/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -1473,7 +1478,7 @@
 "name": "Spedizioni Visonà",
 "city": "Montecchio Maggiore",
 "region": "Veneto",
-"to": "",
+"to": "info@spedizionivisona.com",
 "where": "http://www.spedizionivisona.com/",
 "search": "https://www.google.com/search?q=Spedizioni+Vison%C3%A0+Montecchio+Maggiore+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1482,6 +1487,7 @@
 "fit": "3",
 "why": "Pensando ai vostri camion con groupage da Montecchio Maggiore verso Francia, Svizzera e Austria, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://www.spedizionivisona.com/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
@@ -1508,7 +1514,7 @@
 "name": "Scortrans",
 "city": "Vicenza",
 "region": "Veneto",
-"to": "",
+"to": "info@scortrans.com",
 "where": "https://www.scortrans.com/",
 "search": "https://www.google.com/search?q=Scortrans+Vicenza+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1517,6 +1523,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion da Vicenza verso Austria e Germania, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://scortrans.com/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -1525,7 +1532,7 @@
 "name": "FE Transport",
 "city": "Sovizzo",
 "region": "Veneto",
-"to": "",
+"to": "info@fetrasporti.it",
 "where": "",
 "search": "https://www.google.com/search?q=FE+Transport+Sovizzo+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1534,6 +1541,7 @@
 "fit": "1",
 "why": "Pensando ai vostri camion con groupage da Sovizzo verso Francia, Germania e Belgio, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://www.fetrasporti.com/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -1542,7 +1550,7 @@
 "name": "Autotrasporti Trevisan",
 "city": "Feriole di Teolo",
 "region": "Veneto",
-"to": "",
+"to": "info@autotrasportitrevisan.it",
 "where": "https://www.autotrasportitrevisan.it/",
 "search": "https://www.google.com/search?q=Autotrasporti+Trevisan+Feriole+di+Teolo+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1551,6 +1559,7 @@
 "fit": "3",
 "why": "Pensando ai vostri camion da Feriole di Teolo verso Austria, Germania e Francia, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.autotrasportitrevisan.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1559,7 +1568,7 @@
 "name": "Autotrasporti Padova srl",
 "city": "Padova",
 "region": "Veneto",
-"to": "",
+"to": "info@autotrasportipadova.it",
 "where": "https://www.autotrasportipadova.com/",
 "search": "https://www.google.com/search?q=Autotrasporti+Padova+srl+Padova+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1568,6 +1577,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con groupage da Padova, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.autotrasportipadova.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1576,7 +1586,7 @@
 "name": "Passione Autotrasporti",
 "city": "Padova",
 "region": "Veneto",
-"to": "",
+"to": "info@passioneautotrasporti.it",
 "where": "https://www.passioneautotrasporti.it/",
 "search": "https://www.google.com/search?q=Passione+Autotrasporti+Padova+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1585,6 +1595,7 @@
 "fit": "2",
 "why": "Pensando ai vostri circa 20 mezzi da Padova, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.passioneautotrasporti.it/",
 "about": "Перевозчик · около 20 тягачей"
 },
 {
@@ -1593,7 +1604,7 @@
 "name": "Favaron Autotrasporti",
 "city": "Padova",
 "region": "Veneto",
-"to": "",
+"to": "info@favarontrasporti.com",
 "where": "https://www.favarontrasporti.eu/",
 "search": "https://www.google.com/search?q=Favaron+Autotrasporti+Padova+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1602,6 +1613,7 @@
 "fit": "1",
 "why": "Pensando ai vostri camion con merce a temperatura controllata da Padova, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.favarontrasporti.eu/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1627,7 +1639,7 @@
 "name": "G.T.I. srl",
 "city": "Oderzo",
 "region": "Veneto",
-"to": "",
+"to": "traffico@trasportigti.com",
 "where": "https://www.trasportigti.it/",
 "search": "https://www.google.com/search?q=G.T.I.+srl+Oderzo+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1636,6 +1648,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con cisterne da Oderzo, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.trasportigti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1644,7 +1657,7 @@
 "name": "Serima srl",
 "city": "Monastier di Treviso",
 "region": "Veneto",
-"to": "",
+"to": "info@serimatrasporti.it",
 "where": "https://www.serimatrasporti.it/",
 "search": "https://www.google.com/search?q=Serima+srl+Monastier+di+Treviso+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1653,6 +1666,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con groupage da Monastier di Treviso, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.serimatrasporti.it/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
@@ -1661,7 +1675,7 @@
 "name": "PMG srl",
 "city": "Montebelluna",
 "region": "Veneto",
-"to": "",
+"to": "info@pmgsrl.net",
 "where": "http://pmgsrl.net/",
 "search": "https://www.google.com/search?q=PMG+srl+Montebelluna+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1670,6 +1684,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con groupage da Montebelluna verso Austria e Germania, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://pmgsrl.net/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -1678,7 +1693,7 @@
 "name": "Autotrasporti Marcon",
 "city": "Castelfranco Veneto",
 "region": "Veneto",
-"to": "",
+"to": "info@marconautotrasporti.it",
 "where": "https://marconautotrasporti.it/",
 "search": "https://www.google.com/search?q=Autotrasporti+Marcon+Castelfranco+Veneto+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1687,6 +1702,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con cisterne da Castelfranco Veneto verso Francia, Austria e Germania, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://marconautotrasporti.it/it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1695,7 +1711,7 @@
 "name": "Bilibio Autotrasporti",
 "city": "Treviso area",
 "region": "Veneto",
-"to": "",
+"to": "nadia.operativo@bilibio.it",
 "where": "https://www.autotrasportibilibio.it/",
 "search": "https://www.google.com/search?q=Bilibio+Autotrasporti+Treviso+area+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1704,6 +1720,7 @@
 "fit": "1",
 "why": "Pensando ai vostri camion da Treviso area, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.autotrasportibilibio.it/contatti/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1712,7 +1729,7 @@
 "name": "Ellero srl",
 "city": "Montebelluna",
 "region": "Veneto",
-"to": "",
+"to": "info@ellerosrl.net",
 "where": "http://www.ellerosrl.net/",
 "search": "https://www.google.com/search?q=Ellero+srl+Montebelluna+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1721,6 +1738,7 @@
 "fit": "1",
 "why": "Pensando ai vostri camion da Montebelluna, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.ellerosrl.net/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1729,7 +1747,7 @@
 "name": "Camellini srl",
 "city": "Sassuolo",
 "region": "Emilia-Romagna",
-"to": "",
+"to": "info@camellinisrl.it",
 "where": "https://www.camellinisrl.it/",
 "search": "https://www.google.com/search?q=Camellini+srl+Sassuolo+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1738,6 +1756,7 @@
 "fit": "3",
 "why": "Pensando ai vostri circa 30 mezzi da Sassuolo verso Francia, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://www.camellinisrl.it/",
 "about": "Перевозчик · около 30 машин"
 },
 {
@@ -1764,7 +1783,7 @@
 "name": "Transtir srl",
 "city": "Carpi",
 "region": "Emilia-Romagna",
-"to": "",
+"to": "info@transtir.com",
 "where": "https://www.transtir.it/",
 "search": "https://www.google.com/search?q=Transtir+srl+Carpi+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1773,6 +1792,7 @@
 "fit": "1",
 "why": "Pensando ai vostri camion con groupage da Carpi verso Regno Unito, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.transtir.it/it/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -1798,7 +1818,7 @@
 "name": "CFP Modena",
 "city": "Modena",
 "region": "Emilia-Romagna",
-"to": "",
+"to": "cfpmo@cfpmo.it",
 "where": "https://cfpmo.it/",
 "search": "https://www.google.com/search?q=CFP+Modena+Modena+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1807,6 +1827,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion da Modena verso Germania, Austria e Paesi Bassi, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://cfpmo.it/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
@@ -1815,7 +1836,7 @@
 "name": "Samberisi Autotrasporti",
 "city": "Correggio",
 "region": "Emilia-Romagna",
-"to": "",
+"to": "info@samberisi.it",
 "where": "https://www.samberisi.it/",
 "search": "https://www.google.com/search?q=Samberisi+Autotrasporti+Correggio+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1824,6 +1845,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion da Correggio verso Germania, Austria e Polonia, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.samberisi.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1917,7 +1939,7 @@
 "name": "Rosso Antonio srl",
 "city": "Fossano",
 "region": "Piemonte",
-"to": "",
+"to": "trasporti@rossoantoniosrl.it",
 "where": "https://www.rossoantoniosrl.com/ (per directory)",
 "search": "https://www.google.com/search?q=Rosso+Antonio+srl+Fossano+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1926,6 +1948,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con groupage da Fossano, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://www.rossoantoniosrl.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1951,7 +1974,7 @@
 "name": "Monsignori Autotrasporti srl",
 "city": "Cermenate",
 "region": "Lombardia",
-"to": "",
+"to": "info@monsignoritrasporti.com",
 "where": "https://www.monsignoritrasporti.com/",
 "search": "https://www.google.com/search?q=Monsignori+Autotrasporti+srl+Cermenate+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1960,6 +1983,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion da Cermenate verso Germania, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.monsignoritrasporti.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -1968,7 +1992,7 @@
 "name": "Autotrasporti Contenti",
 "city": "Candelo",
 "region": "Piemonte",
-"to": "",
+"to": "info@autotrasporticontenti.it",
 "where": "https://www.autotrasporticontenti.it/",
 "search": "https://www.google.com/search?q=Autotrasporti+Contenti+Candelo+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -1977,6 +2001,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion da Candelo verso Germania, Francia e Austria, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.autotrasporticontenti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -2019,7 +2044,7 @@
 "name": "Effemme Trasporti",
 "city": "Catania",
 "region": "Sicilia",
-"to": "",
+"to": "effemmetrasporti@live.it",
 "where": "https://www.effemmetrasporti.com/",
 "search": "https://www.google.com/search?q=Effemme+Trasporti+Catania+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -2028,6 +2053,7 @@
 "fit": "2",
 "why": "Pensando ai vostri circa 50 mezzi con merce a temperatura controllata da Catania, ci torna in mente che a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, e al mercato di Vittoria i box sono rimasti vuoti. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.open.online/2026/10/19/protesta-autotrasportatori-scaffali-vuoti-supermercati-sud-danni-economici/",
+"to_src": "https://www.effemmetrasporti.com/",
 "about": "Перевозчик · 50 машин"
 },
 {
@@ -2036,7 +2062,7 @@
 "name": "Coppola Nunzio Trasporti",
 "city": "Catania",
 "region": "Sicilia",
-"to": "",
+"to": "coppolanunziotrasporti@live.com",
 "where": "https://www.coppolanunziotrasporti.it/",
 "search": "https://www.google.com/search?q=Coppola+Nunzio+Trasporti+Catania+contatti",
 "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -2045,6 +2071,7 @@
 "fit": "2",
 "why": "Pensando ai vostri camion con merce a temperatura controllata da Catania verso Spagna e Francia, ci torna in mente che a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, e al mercato di Vittoria i box sono rimasti vuoti. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.open.online/2026/10/19/protesta-autotrasportatori-scaffali-vuoti-supermercati-sud-danni-economici/",
+"to_src": "https://www.coppolanunziotrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -2118,7 +2145,7 @@
 {
 "name": "ASEA - Associazione Spedizionieri ed Autotrasportatori della provincia di Varese",
 "city": "Varese",
-"to": "",
+"to": "aseavarese@aseavarese.it",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=ASEA+-+Associazione+Spedizionieri+ed+Autotrasportatori+della+provincia+di+Varese+Varese+contatti",
 "fit": "",
@@ -2127,12 +2154,13 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di ASEA - Associazione Spedizionieri ed Autotrasportatori della provincia di Varese,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-asea-associazione-spedizionieri-ed-autot\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-asea-associazione-spedizionieri-ed-autot",
+"to_src": "https://aseavarese.it/",
 "about": "ASEA: ассоциация экспедиторов и автоперевозчиков провинции Варезе; источник 2012 года, проверить, действует ли."
 },
 {
 "name": "Assologistica",
 "city": "Milano",
-"to": "",
+"to": "milano@assologistica.it",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Assologistica+Milano+contatti",
 "fit": "",
@@ -2141,6 +2169,7 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di Assologistica,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-assologistica\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-assologistica",
+"to_src": "https://www.assologistica.it/",
 "about": "Assologistica: объединение логистических операторов (склады, терминалы, логистика для грузовладельцев)."
 },
 {
@@ -2161,7 +2190,7 @@
 {
 "name": "CNA Lombardia - FITA",
 "city": "Milano",
-"to": "",
+"to": "info@cnalombardia.it",
 "where": "https://www.cnalombardia.it/fita/",
 "search": "https://www.google.com/search?q=CNA+Lombardia+-+FITA+Milano+contatti",
 "fit": "",
@@ -2170,6 +2199,7 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di CNA Lombardia - FITA,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-cna-lombardia-fita\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-cna-lombardia-fita",
+"to_src": "https://www.cnalombardia.it/",
 "about": "CNA Fita объединяет автоперевозчиков внутри CNA, конфедерации ремесленников и малого бизнеса. В основном небольшие компании и перевозчики-собственники."
 },
 {
@@ -2232,7 +2262,7 @@
 {
 "name": "Consorzi Lecco Trasporti",
 "city": "Lecco",
-"to": "",
+"to": "info@leccotrasporti.it",
 "where": "https://www.leccotrasporti.it/",
 "search": "https://www.google.com/search?q=Consorzi+Lecco+Trasporti+Lecco+contatti",
 "fit": "",
@@ -2241,12 +2271,13 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di Consorzi Lecco Trasporti,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-consorzi-lecco-trasporti\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-consorzi-lecco-trasporti",
+"to_src": "https://www.leccotrasporti.it/contatti/",
 "about": "Похоже, это консорциум общественного транспорта (автобусы), а не грузовой. Можно не писать."
 },
 {
 "name": "Consorzio Bergamo Trasporti",
 "city": "Bergamo",
-"to": "",
+"to": "info@bergamotrasporti.it",
 "where": "https://www.bergamotrasporti.it/",
 "search": "https://www.google.com/search?q=Consorzio+Bergamo+Trasporti+Bergamo+contatti",
 "fit": "",
@@ -2255,12 +2286,13 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di Consorzio Bergamo Trasporti,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-consorzio-bergamo-trasporti\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-consorzio-bergamo-trasporti",
+"to_src": "https://www.bergamotrasporti.it/contatti/",
 "about": "Похоже, это консорциум общественного транспорта (автобусы), а не грузовой. Можно не писать."
 },
 {
 "name": "FAI Como Lecco",
 "city": "Como",
-"to": "",
+"to": "segreteria@faicomo.it",
 "where": "https://www.faicomo.it/",
 "search": "https://www.google.com/search?q=FAI+Como+Lecco+Como+contatti",
 "fit": "",
@@ -2269,12 +2301,13 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di FAI Como Lecco,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-fai-como-lecco\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-fai-como-lecco",
+"to_src": "https://faicomo.it/",
 "about": "Местное отделение FAI, объединения автоперевозчиков (Conftrasporto). Ближе всего к небольшим и средним перевозчикам своей провинции и регулярно рассылает им циркуляры."
 },
 {
 "name": "Fedespedi - 30+ associazioni territoriali",
 "city": "Milano",
-"to": "",
+"to": "fedespedi@fedespedi.it",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Fedespedi+-+30%2B+associazioni+territoriali+Milano+contatti",
 "fit": "",
@@ -2283,6 +2316,7 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di Fedespedi - 30+ associazioni territoriali,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-fedespedi-30-associazioni-territoriali\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-fedespedi-30-associazioni-territoriali",
+"to_src": "https://www.fedespedi.it/",
 "about": "Fedespedi: национальная федерация экспедиторов, объединяет 30+ территориальных ассоциаций (Confetra). Экспедиторы планируют рейсы для клиентов и тоже теряют на запретах и очередях."
 },
 {
@@ -2303,7 +2337,7 @@
 {
 "name": "FAI Regionale Veneto",
 "city": "Marghera",
-"to": "",
+"to": "info@faiveneto.com",
 "where": "https://fairegionaleveneto.com/",
 "search": "https://www.google.com/search?q=FAI+Regionale+Veneto+Marghera+contatti",
 "fit": "",
@@ -2312,6 +2346,7 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di FAI Regionale Veneto,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-fai-regionale-veneto\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-fai-regionale-veneto",
+"to_src": "https://fairegionaleveneto.com/",
 "about": "Местное отделение FAI, объединения автоперевозчиков (Conftrasporto). Ближе всего к небольшим и средним перевозчикам своей провинции и регулярно рассылает им циркуляры."
 },
 {
@@ -2501,7 +2536,7 @@
 {
 "name": "lvh.apa Berufsgemeinschaft Warentransporteure",
 "city": "Bolzano",
-"to": "",
+"to": "info@lvh.it",
 "where": "https://lvh.it/",
 "search": "https://www.google.com/search?q=lvh.apa+Berufsgemeinschaft+Warentransporteure+Bolzano+contatti",
 "fit": "",
@@ -2510,12 +2545,13 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di lvh.apa Berufsgemeinschaft Warentransporteure,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-lvh-apa-berufsgemeinschaft-warentranspor\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-lvh-apa-berufsgemeinschaft-warentranspor",
+"to_src": "https://www.lvh.it/",
 "about": "lvh.apa: объединение ремесленников Южного Тироля (Больцано), группа грузоперевозчиков. Много перевозчиков на коридоре Бреннер."
 },
 {
 "name": "ASPT-ASTRA",
 "city": "Trieste",
-"to": "",
+"to": "info@aspt-astra.it",
 "where": "https://www.aspt-astra.it/",
 "search": "https://www.google.com/search?q=ASPT-ASTRA+Trieste+contatti",
 "fit": "",
@@ -2524,6 +2560,7 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di ASPT-ASTRA,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-aspt-astra\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-aspt-astra",
+"to_src": "https://www.aspt-astra.it/contatti/",
 "about": "Объединение в сфере транспорта и логистики; профиль уточнить на сайте."
 },
 {
@@ -2643,7 +2680,7 @@
 {
 "name": "Confetra / Confetra Mezzogiorno",
 "city": "Roma",
-"to": "",
+"to": "confetra@confetra.com",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Confetra+%2F+Confetra+Mezzogiorno+Roma+contatti",
 "fit": "",
@@ -2652,6 +2689,7 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di Confetra / Confetra Mezzogiorno,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-confetra-confetra-mezzogiorno\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-confetra-confetra-mezzogiorno",
+"to_src": "https://www.confetra.com/",
 "about": "Confetra: общенациональная конфедерация транспорта и логистики (в неё входят Fedespedi, Assologistica и другие)."
 },
 {
@@ -2701,7 +2739,7 @@
 {
 "name": "Palletways Italia",
 "city": "Bologna",
-"to": "",
+"to": "info_italia@palletways.com",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Palletways+Italia+Bologna+contatti",
 "fit": "",
@@ -2710,6 +2748,7 @@
 "subject": "Sette domande, un minuto, per i vostri associati (ricerca Bocconi)",
 "message": "Gentile segreteria di Palletways Italia,\nvi scrivo per chiedervi di inoltrare ai vostri associati un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-palletways-italia\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-palletways-italia",
+"to_src": "https://www.palletways.com/contact/",
 "about": "Сеть доставки палет: десятки независимых перевозчиков-участников по всей Италии работают через общий хаб. Просим переслать участникам сети."
 },
 {
@@ -2774,7 +2813,7 @@
 {
 "name": "Interporto Padova",
 "city": "Padova",
-"to": "info@pcs.interportopd.it",
+"to": "",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Interporto+Padova+Padova+contatti",
 "fit": "",
@@ -2783,7 +2822,6 @@
 "subject": "Sette domande, un minuto, per i vostri operatori (ricerca Bocconi)",
 "message": "Gentile segreteria di Interporto Padova,\nvi scrivo per chiedervi di inoltrare ai vostri operatori un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-interporto-padova\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-interporto-padova",
-"to_src": "https://www.intermodal-terminals.eu/database/terminal/view/id/862",
 "about": "Интерпорт: грузовой логистический узел (склады, терминал «машина–поезд», стоянки), на его территории работают десятки транспортных и логистических компаний. Просим переслать опрос арендаторам."
 },
 {
@@ -2918,7 +2956,7 @@
 {
 "name": "Interporto Centro Ingrosso Pordenone",
 "city": "Pordenone",
-"to": "",
+"to": "info@interportocentroingrosso.com",
 "where": "https://interportocentroingrosso.com/",
 "search": "https://www.google.com/search?q=Interporto+Centro+Ingrosso+Pordenone+Pordenone+contatti",
 "fit": "",
@@ -2927,12 +2965,13 @@
 "subject": "Sette domande, un minuto, per i vostri operatori (ricerca Bocconi)",
 "message": "Gentile segreteria di Interporto Centro Ingrosso Pordenone,\nvi scrivo per chiedervi di inoltrare ai vostri operatori un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-interporto-centro-ingrosso-pordenone\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-interporto-centro-ingrosso-pordenone",
+"to_src": "https://interportocentroingrosso.com/",
 "about": "Интерпорт: грузовой логистический узел (склады, терминал «машина–поезд», стоянки), на его территории работают десятки транспортных и логистических компаний. Просим переслать опрос арендаторам."
 },
 {
 "name": "Interporto Campano",
 "city": "Nola",
-"to": "",
+"to": "info@interportocampano.it",
 "where": "interportocampano.it [CHECK]",
 "search": "https://www.google.com/search?q=Interporto+Campano+Nola+contatti",
 "fit": "",
@@ -2941,6 +2980,7 @@
 "subject": "Sette domande, un minuto, per i vostri operatori (ricerca Bocconi)",
 "message": "Gentile segreteria di Interporto Campano,\nvi scrivo per chiedervi di inoltrare ai vostri operatori un breve sondaggio di sette domande, un minuto, anonimo.\n\nSono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.\n\nSolo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\nPer ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere numeri concreti. All'associazione mandiamo i risultati aggregati.\nhttps://zhol.live/it/sondaggio?src=assoc-interporto-campano\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "link": "https://zhol.live/it/sondaggio?src=assoc-interporto-campano",
+"to_src": "https://www.interportocampano.it/contatti/",
 "about": "Интерпорт: грузовой логистический узел (склады, терминал «машина–поезд», стоянки), на его территории работают десятки транспортных и логистических компаний. Просим переслать опрос арендаторам."
 },
 {
@@ -3369,7 +3409,7 @@
 {
 "name": "Consorzio Tre Laghi",
 "city": "Besozzo",
-"to": "",
+"to": "consorzio@tre-laghi.it",
 "where": "https://tre-laghi.it/chi-siamo/",
 "search": "https://www.google.com/search?q=Consorzio+Tre+Laghi+Besozzo+contatti",
 "fit": "",
@@ -3381,12 +3421,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Besozzo verso Svizzera, ci torna in mente che in Svizzera i mezzi pesanti non viaggiano di notte né la domenica, e una coda alla dogana fa perdere la finestra. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.ch.ch/en/vehicles-and-traffic/driving-bans-for-lorries/",
+"to_src": "https://tre-laghi.it/contatti/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Contship Italia / DriveMybox",
 "city": "Melzo",
-"to": "info@contshipitalia-rhm.it",
+"to": "",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Contship+Italia+%2F+DriveMybox+Melzo+contatti",
 "fit": "",
@@ -3398,7 +3439,6 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con container da Melzo, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
-"to_src": "https://contshipitalia.com/?p=2437",
 "about": "Логистика · парк не известен"
 },
 {
@@ -3885,7 +3925,7 @@
 {
 "name": "Cermesoni Group",
 "city": "Veneto [CHECK HQ]",
-"to": "",
+"to": "info@cermesonigroup.com",
 "where": "https://www.cermesonigroup.com/",
 "search": "https://www.google.com/search?q=Cermesoni+Group+Veneto+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -3897,12 +3937,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.cermesonigroup.com/it/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
 "name": "Chiggiato SpA",
 "city": "Piombino Dese",
-"to": "",
+"to": "info@chiggiatospa.com",
 "where": "https://www.chiggiatospa.com/en/about-us/",
 "search": "https://www.google.com/search?q=Chiggiato+SpA+Piombino+Dese+contatti",
 "fit": "",
@@ -3914,6 +3955,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con merce a temperatura controllata da Piombino Dese, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.chiggiatospa.com/contatti/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -3936,7 +3978,7 @@
 {
 "name": "Da Rold Cassol srl",
 "city": "Belluno",
-"to": "",
+"to": "assistenzaclienti.pd1@daroldcassol.com",
 "where": "https://daroldcassol.com/contatti/",
 "search": "https://www.google.com/search?q=Da+Rold+Cassol+srl+Belluno+contatti",
 "fit": "",
@@ -3948,6 +3990,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri circa 100 mezzi da Belluno, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://daroldcassol.com/contatti/",
 "about": "Логистика · парк не известен"
 },
 {
@@ -3987,7 +4030,7 @@
 {
 "name": "Global Service srl",
 "city": "Rovigo area [CHECK]",
-"to": "",
+"to": "info@globalservicetrasporti.it",
 "where": "https://www.globalservicetrasporti.it/",
 "search": "https://www.google.com/search?q=Global+Service+srl+Rovigo+area+%5BCHECK%5D+contatti",
 "fit": "",
@@ -3999,6 +4042,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.globalservicetrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4021,7 +4065,7 @@
 {
 "name": "Gruppo STS",
 "city": "Padova area",
-"to": "",
+"to": "info@grupposts.it",
 "where": "https://www.grupposts.it/",
 "search": "https://www.google.com/search?q=Gruppo+STS+Padova+area+contatti",
 "fit": "",
@@ -4033,12 +4077,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Padova area, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.grupposts.it/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
 "name": "LD Logistic",
 "city": "Padova",
-"to": "",
+"to": "info@ldlogistic.it",
 "where": "https://www.ldlogistic.it/",
 "search": "https://www.google.com/search?q=LD+Logistic+Padova+contatti",
 "fit": "",
@@ -4050,12 +4095,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage da Padova, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.ldlogistic.it/",
 "about": "Логистика · парк не известен"
 },
 {
 "name": "MP Trasporti",
 "city": "Verona",
-"to": "",
+"to": "traffico@mp-trasporti.it",
 "where": "https://www.mp-trasporti.it/",
 "search": "https://www.google.com/search?q=MP+Trasporti+Verona+contatti",
 "fit": "",
@@ -4067,12 +4113,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage da Verona, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.mp-trasporti.it/contatti/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Prior Trasporti",
 "city": "Castelfranco Veneto",
-"to": "",
+"to": "priortrasporti@gmail.com",
 "where": "https://www.priortrasporti.it/",
 "search": "https://www.google.com/search?q=Prior+Trasporti+Castelfranco+Veneto+contatti",
 "fit": "",
@@ -4084,12 +4131,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Castelfranco Veneto, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.priortrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Rovigo Trasporti srl",
 "city": "Rovigo",
-"to": "",
+"to": "info@rovigotrasporti.it",
 "where": "https://www.rovigotrasporti.it/",
 "search": "https://www.google.com/search?q=Rovigo+Trasporti+srl+Rovigo+contatti",
 "fit": "",
@@ -4101,12 +4149,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Rovigo, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://rovigotrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Salmaso Trasporti srl",
 "city": "Sant'Apollinare",
-"to": "",
+"to": "info@salmasotrasporti.it",
 "where": "https://www.salmasotrasporti.it/",
 "search": "https://www.google.com/search?q=Salmaso+Trasporti+srl+Sant%27Apollinare+contatti",
 "fit": "",
@@ -4118,6 +4167,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con rifiuti da Sant'Apollinare, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.salmasotrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4140,7 +4190,7 @@
 {
 "name": "Settentrionale Trasporti SpA",
 "city": "Possagno",
-"to": "",
+"to": "contact@settentrionale.com",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Settentrionale+Trasporti+SpA+Possagno+contatti",
 "fit": "",
@@ -4152,12 +4202,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri circa 70 mezzi con rifiuti da Possagno, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.settentrionale.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Tonello G.B.",
 "city": "Padova",
-"to": "",
+"to": "info@tonellogb.it",
 "where": "https://www.tonellogb.net/",
 "search": "https://www.google.com/search?q=Tonello+G.B.+Padova+contatti",
 "fit": "",
@@ -4169,6 +4220,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage da Padova, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.tonellogb.net/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4191,7 +4243,7 @@
 {
 "name": "Trasporti e Servizi Fabbian srl",
 "city": "Castelfranco Veneto",
-"to": "",
+"to": "info@autotrasportifabbian.it",
 "where": "https://trasportieservizifabbian.com/chi-siamo/",
 "search": "https://www.google.com/search?q=Trasporti+e+Servizi+Fabbian+srl+Castelfranco+Veneto+contatti",
 "fit": "",
@@ -4203,6 +4255,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con merce a temperatura controllata da Castelfranco Veneto, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://trasportieservizifabbian.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4225,7 +4278,7 @@
 {
 "name": "A.T.F.I. soc. coop.",
 "city": "Imola",
-"to": "",
+"to": "info@atfi.it",
 "where": "https://atfi.it/",
 "search": "https://www.google.com/search?q=A.T.F.I.+soc.+coop.+Imola+contatti",
 "fit": "",
@@ -4237,6 +4290,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con trasporti eccezionali da Imola, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://atfi.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4259,7 +4313,7 @@
 {
 "name": "Autotrasporti Marazzi",
 "city": "Cortemaggiore",
-"to": "",
+"to": "traffico@marazziautotrasporti.it",
 "where": "https://www.marazziautotrasporti.it/",
 "search": "https://www.google.com/search?q=Autotrasporti+Marazzi+Cortemaggiore+contatti",
 "fit": "",
@@ -4271,12 +4325,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri circa 150 mezzi da Cortemaggiore, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.marazziautotrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Autotrasporti Mozzi",
 "city": "Piacenza",
-"to": "",
+"to": "info@autotrasportimozzi.it",
 "where": "https://www.autotrasportimozzi.it/",
 "search": "https://www.google.com/search?q=Autotrasporti+Mozzi+Piacenza+contatti",
 "fit": "",
@@ -4288,12 +4343,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Piacenza, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://autotrasportimozzi.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Avionship",
 "city": "Bologna",
-"to": "",
+"to": "florie.avionship@gmail.com",
 "where": "https://www.spedizioni-avionship.com/",
 "search": "https://www.google.com/search?q=Avionship+Bologna+contatti",
 "fit": "",
@@ -4305,12 +4361,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Bologna, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.spedizioni-avionship.com/",
 "about": "Экспедитор · парк не известен"
 },
 {
 "name": "C.T. Transport srl",
 "city": "Parma",
-"to": "",
+"to": "info@cttransportsrl.com",
 "where": "https://www.cttransportsrl.it/",
 "search": "https://www.google.com/search?q=C.T.+Transport+srl+Parma+contatti",
 "fit": "",
@@ -4322,6 +4379,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri circa 70 mezzi da Parma, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.cttransportsrl.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4344,7 +4402,7 @@
 {
 "name": "Comandini Trasporti",
 "city": "Cesena",
-"to": "",
+"to": "info@comandinitrasporti.it",
 "where": "https://www.comandinitrasporti.com/",
 "search": "https://www.google.com/search?q=Comandini+Trasporti+Cesena+contatti",
 "fit": "",
@@ -4356,6 +4414,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con merce a temperatura controllata da Cesena, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.comandinitrasporti.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4379,7 +4438,7 @@
 {
 "name": "Dani & Nardi srl",
 "city": "Bologna",
-"to": "",
+"to": "daninardi@daninardi.it",
 "where": "https://www.danienardi.com/",
 "search": "https://www.google.com/search?q=Dani+%26+Nardi+srl+Bologna+contatti",
 "fit": "",
@@ -4391,6 +4450,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Bologna, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.danienardi.com/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -4823,7 +4883,7 @@
 {
 "name": "Baraldo Autotrasporti",
 "city": "Novi Ligure",
-"to": "",
+"to": "info@baraldoautotrasporti.it",
 "where": "https://www.baraldoautotrasporti.com/",
 "search": "https://www.google.com/search?q=Baraldo+Autotrasporti+Novi+Ligure+contatti",
 "fit": "",
@@ -4835,12 +4895,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Novi Ligure verso Francia, Spagna e Germania, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.baraldoautotrasporti.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Delfitto srl",
 "city": "Novi Ligure",
-"to": "",
+"to": "traffico@delfittosrl.it",
 "where": "https://www.delfittosrl.it/",
 "search": "https://www.google.com/search?q=Delfitto+srl+Novi+Ligure+contatti",
 "fit": "",
@@ -4852,6 +4913,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Novi Ligure, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://www.delfittosrl.it/contatti.html",
 "about": "Логистика · парк не известен"
 },
 {
@@ -4874,7 +4936,7 @@
 {
 "name": "Lannutti Group",
 "city": "Cuneo",
-"to": "",
+"to": "info@lannutti.com",
 "where": "сайт не найден: нажмите «Найти контакты»",
 "search": "https://www.google.com/search?q=Lannutti+Group+Cuneo+contatti",
 "fit": "",
@@ -4886,6 +4948,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con merce a temperatura controllata da Cuneo, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://lannutti.com/en/",
 "about": "Логистика · парк не известен"
 },
 {
@@ -4925,7 +4988,7 @@
 {
 "name": "P.M. Trasporti srl",
 "city": "Alessandria",
-"to": "",
+"to": "pm.trasporti.srl@hotmail.com",
 "where": "https://pmtrasportisrl.it/",
 "search": "https://www.google.com/search?q=P.M.+Trasporti+srl+Alessandria+contatti",
 "fit": "",
@@ -4937,6 +5000,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con container da Alessandria, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://pmtrasportisrl.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -4959,7 +5023,7 @@
 {
 "name": "Trasporti De Cillis",
 "city": "Vercelli",
-"to": "",
+"to": "autotrasportimicheledecillis@gmail.com",
 "where": "https://autotrasportidecillis.com/en",
 "search": "https://www.google.com/search?q=Trasporti+De+Cillis+Vercelli+contatti",
 "fit": "",
@@ -4971,6 +5035,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Vercelli, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://autotrasportidecillis.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -5011,7 +5076,7 @@
 {
 "name": "D&P Logistica",
 "city": "Genova",
-"to": "",
+"to": "dp@dp-genova.eu",
 "where": "https://www.dp-genova.eu/en/chi-siamo/",
 "search": "https://www.google.com/search?q=D%26P+Logistica+Genova+contatti",
 "fit": "",
@@ -5023,6 +5088,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage da Genova, ci torna in mente che al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trasporti-italia.com/?p=134314",
+"to_src": "https://www.dp-genova.eu/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
@@ -5045,7 +5111,7 @@
 {
 "name": "GV Spedizioni Internazionali",
 "city": "Genova",
-"to": "",
+"to": "a.gasciarini@gvsped.it",
 "where": "https://www.gvspedizioni.it/",
 "search": "https://www.google.com/search?q=GV+Spedizioni+Internazionali+Genova+contatti",
 "fit": "",
@@ -5057,6 +5123,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con spedizioni doganali da Genova, ci torna in mente che al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trasporti-italia.com/?p=134314",
+"to_src": "https://www.gvspedizioni.it/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -5079,7 +5146,7 @@
 {
 "name": "Laghezza SpA",
 "city": "La Spezia",
-"to": "",
+"to": "info@laghezza.com",
 "where": "https://laghezza.com/transport-division/?lang=en",
 "search": "https://www.google.com/search?q=Laghezza+SpA+La+Spezia+contatti",
 "fit": "",
@@ -5091,6 +5158,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con container da La Spezia, ci torna in mente che al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trasporti-italia.com/?p=134314",
+"to_src": "https://laghezza.com/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
@@ -5113,7 +5181,7 @@
 {
 "name": "Ocean Sped",
 "city": "Genova",
-"to": "",
+"to": "info@oceansped.it",
 "where": "https://oceansped.com/",
 "search": "https://www.google.com/search?q=Ocean+Sped+Genova+contatti",
 "fit": "",
@@ -5125,12 +5193,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage da Genova, ci torna in mente che al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trasporti-italia.com/?p=134314",
+"to_src": "https://oceansped.com/",
 "about": "Экспедитор · парк не известен"
 },
 {
 "name": "Placido Macor & C. Spedizioni",
 "city": "Genova",
-"to": "",
+"to": "info@placidomacor.it",
 "where": "https://spedizionimacor.it/",
 "search": "https://www.google.com/search?q=Placido+Macor+%26+C.+Spedizioni+Genova+contatti",
 "fit": "",
@@ -5142,12 +5211,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con container da Genova, ci torna in mente che al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trasporti-italia.com/?p=134314",
+"to_src": "https://spedizionimacor.it/",
 "about": "Экспедитор · парк не известен"
 },
 {
 "name": "S&L Trasporti",
 "city": "Genova",
-"to": "",
+"to": "info@selgenova.it",
 "where": "https://www.selgenova.it/",
 "search": "https://www.google.com/search?q=S%26L+Trasporti+Genova+contatti",
 "fit": "",
@@ -5159,6 +5229,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri circa 60 mezzi con container da Genova, ci torna in mente che al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trasporti-italia.com/?p=134314",
+"to_src": "https://www.selgenova.it/privacy-policy/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -5638,7 +5709,7 @@
 {
 "name": "NESTA Trasporti & Logistics snc",
 "city": "Andria",
-"to": "info@nestatrasporti.it",
+"to": "",
 "where": "https://www.nestatrasportisnc.it/",
 "search": "https://www.google.com/search?q=NESTA+Trasporti+%26+Logistics+snc+Andria+contatti",
 "fit": "",
@@ -5650,7 +5721,6 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Andria, ci torna in mente che a ottobre la protesta dei tir ha bloccato la A1 e la A30 e mandato in tilt il porto di Napoli. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.quotidiano.net/cronaca/a1-e-a30-bloccate-porto-di-napoli-in-tilt-la-protesta-dei-tir-paralizza-il-sud-viijy8nd",
-"to_src": "https://www.nestatrasportisnc.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -5744,7 +5814,7 @@
 {
 "name": "La Belmontese soc. coop.",
 "city": "Palermo",
-"to": "",
+"to": "labelmontese@libero.it",
 "where": "https://www.labelmontese.it/",
 "search": "https://www.google.com/search?q=La+Belmontese+soc.+coop.+Palermo+contatti",
 "fit": "",
@@ -5756,12 +5826,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Palermo, ci torna in mente che a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, e al mercato di Vittoria i box sono rimasti vuoti. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.open.online/2026/10/19/protesta-autotrasportatori-scaffali-vuoti-supermercati-sud-danni-economici/",
+"to_src": "https://www.labelmontese.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Mediblea Trasporti",
 "city": "Sicilia [CHECK]",
-"to": "",
+"to": "medibleatrasporti@gmail.com",
 "where": "https://www.medibleatrasporti.it/chi-siamo/",
 "search": "https://www.google.com/search?q=Mediblea+Trasporti+Sicilia+%5BCHECK%5D+contatti",
 "fit": "",
@@ -5773,12 +5844,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri circa 15 mezzi con merce a temperatura controllata, ci torna in mente che a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, e al mercato di Vittoria i box sono rimasti vuoti. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.open.online/2026/10/19/protesta-autotrasportatori-scaffali-vuoti-supermercati-sud-danni-economici/",
+"to_src": "https://www.medibleatrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Morana Trasporti",
 "city": "Modica",
-"to": "",
+"to": "info@moranatrasporti.it",
 "where": "https://www.moranatrasporti.it/",
 "search": "https://www.google.com/search?q=Morana+Trasporti+Modica+contatti",
 "fit": "",
@@ -5790,6 +5862,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion da Modica, ci torna in mente che a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, e al mercato di Vittoria i box sono rimasti vuoti. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.open.online/2026/10/19/protesta-autotrasportatori-scaffali-vuoti-supermercati-sud-danni-economici/",
+"to_src": "https://www.moranatrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -5812,7 +5885,7 @@
 {
 "name": "Sicilog",
 "city": "Belpasso",
-"to": "",
+"to": "logistica@sicilog.it",
 "where": "https://www.sicilog.com/",
 "search": "https://www.google.com/search?q=Sicilog+Belpasso+contatti",
 "fit": "",
@@ -5824,12 +5897,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con merce a temperatura controllata da Belpasso, ci torna in mente che a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, e al mercato di Vittoria i box sono rimasti vuoti. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.open.online/2026/10/19/protesta-autotrasportatori-scaffali-vuoti-supermercati-sud-danni-economici/",
+"to_src": "https://www.sicilog.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Sud Trasporti",
 "city": "Sicilia [CHECK HQ]",
-"to": "",
+"to": "info@sudtrasporti.it",
 "where": "https://www.sudtrasporti.it/",
 "search": "https://www.google.com/search?q=Sud+Trasporti+Sicilia+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5841,12 +5915,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion, ci torna in mente che a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, e al mercato di Vittoria i box sono rimasti vuoti. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.open.online/2026/10/19/protesta-autotrasportatori-scaffali-vuoti-supermercati-sud-danni-economici/",
+"to_src": "https://www.sudtrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "ACB srl",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "info@acbsrl.it",
 "where": "https://www.acbsrl.it/",
 "search": "https://www.google.com/search?q=ACB+srl+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5858,12 +5933,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage verso Polonia, Romania e Germania, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.acbsrl.it/",
 "about": "Перевозчик и экспедитор · парк не известен"
 },
 {
 "name": "Autotrasporti S.P.",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "info@autotrasportisp.it",
 "where": "https://www.autotrasportisp.it/chi-siamo.html",
 "search": "https://www.google.com/search?q=Autotrasporti+S.P.+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5875,6 +5951,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.autotrasportisp.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
@@ -5897,7 +5974,7 @@
 {
 "name": "CTF Trasporti",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "info@ctftrasporti.com",
 "where": "https://www.ctftrasporti.com/",
 "search": "https://www.google.com/search?q=CTF+Trasporti+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5909,12 +5986,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.ctftrasporti.com/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Dima Trasporti",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "info@dimatrasporti.it",
 "where": "https://www.dimatrasporti.it/",
 "search": "https://www.google.com/search?q=Dima+Trasporti+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5926,12 +6004,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.dimatrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Free Sped",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "office@freesped.com",
 "where": "https://www.freesped.com/",
 "search": "https://www.google.com/search?q=Free+Sped+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5943,12 +6022,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage verso Francia e Spagna, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://www.freesped.com/",
 "about": "Экспедитор · парк не известен"
 },
 {
 "name": "GEA Trasporti",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "info@geatrasporti.it",
 "where": "https://www.geatrasporti.it/",
 "search": "https://www.google.com/search?q=GEA+Trasporti+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5960,12 +6040,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.geatrasporti.it/",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Morleo Autotrasporti",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "info@morleoautotrasporti.it",
 "where": "https://www.morleoautotrasporti.it/it/",
 "search": "https://www.google.com/search?q=Morleo+Autotrasporti+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5977,12 +6058,13 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.morleoautotrasporti.it/it/contatti.html",
 "about": "Перевозчик · парк не известен"
 },
 {
 "name": "Paeurope",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "info@paeurope.it",
 "where": "https://www.paeurope.it/",
 "search": "https://www.google.com/search?q=Paeurope+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -5994,6 +6076,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion verso Germania e Spagna, ci torna in mente che a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.paeurope.it/contatti/",
 "about": "Экспедитор · парк не известен"
 },
 {
@@ -6016,7 +6099,7 @@
 {
 "name": "Trial srl",
 "city": "[CHECK HQ]",
-"to": "",
+"to": "trial@trialsrl.com",
 "where": "https://www.trialsrl.com/",
 "search": "https://www.google.com/search?q=Trial+srl+%5BCHECK+HQ%5D+contatti",
 "fit": "",
@@ -6028,6 +6111,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Pensando ai vostri camion con groupage, ci torna in mente che nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. Vorremmo capire quanto pesa davvero per voi.",
 "why_src": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
+"to_src": "https://www.trialsrl.com/",
 "about": "Перевозчик · парк не известен"
 }
 ]
