@@ -24,6 +24,22 @@ def main() -> None:
     page = page.replace("__DATA__", enc(OUT / "survey_send_list.json")).replace("__POSTS__", enc(OUT / "console" / "posts.json"))
     (OUT / "send-console.html").write_text(page, encoding="utf-8")
     print("wrote outreach/send-console.html")
+    # addresses the companies gave us themselves (an auto-reply naming a new address) stay out of the repository:
+    # outreach/private/contact_overrides.csv (id,email,note) goes only into the copy that is published privately
+    over = OUT / "private" / "contact_overrides.csv"
+    if over.exists():
+        import csv
+        fix = {r["id"]: r for r in csv.DictReader(open(over, encoding="utf-8")) if r.get("email")}
+        rows = json.loads((OUT / "survey_send_list.json").read_text(encoding="utf-8"))
+        for r in rows:
+            if r["id"] in fix:
+                r["to"], r["to_src"] = fix[r["id"]]["email"], ""
+                r["where"] = "адрес из автоответа самой компании: старый ящик отключён"
+        data = json.dumps(rows, ensure_ascii=False).replace("</", "<\\/")
+        private = (OUT / "console" / "template.html").read_text(encoding="utf-8")
+        private = private.replace("__DATA__", data).replace("__POSTS__", enc(OUT / "console" / "posts.json"))
+        (OUT / "private" / "send-console.html").write_text(private, encoding="utf-8")
+        print(f"wrote outreach/private/send-console.html ({len(fix)} address(es) from the companies' own replies)")
 
 
 if __name__ == "__main__":
