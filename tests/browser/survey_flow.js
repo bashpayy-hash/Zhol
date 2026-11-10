@@ -43,6 +43,8 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       await shot("intro");
       check(await page.isVisible("#sv-intro") && !(await page.isVisible("#survey")), `${tag}: opens on the welcome scene`);
       check(!(await page.$(".tabs")), `${tag}: no site menu on the standalone survey`);
+      const logoHref = await page.getAttribute(".top a.logo", "href");
+      check(/^\/(survey|it\/sondaggio)\?src=/.test(logoHref || ""), `${tag}: the logo goes back to the survey's first page, keeping the source`);
       // the pitch under the welcome scene: eight weeks day by day, the schedule with chances, the agents (example)
       await page.evaluate(() => document.getElementById("sv-pitch").scrollIntoView({ block: "start" }));
       const pitchOk = await page.waitForSelector("#sv-c2:not([hidden]) .sv-sched li", { timeout: 8000 }).then(() => true, () => false);

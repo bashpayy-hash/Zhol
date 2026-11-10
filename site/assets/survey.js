@@ -338,6 +338,10 @@
 
   show(0, false);
 
+  // the logo takes you back to the survey's first page (owner, 10 Nov 2026), keeping where you came from (?src=)
+  const logo = document.querySelector(".top a.logo"), from = new URLSearchParams(location.search).get("src");
+  if (logo && from) logo.href = logo.getAttribute("href") + "?src=" + encodeURIComponent(from);
+
   // ?preview=end opens the last screen straight away, for the team to check it: nothing is sent, nothing is counted
   if (/[?&]preview=end\b/.test(location.search)) {
     form.hidden = true;
