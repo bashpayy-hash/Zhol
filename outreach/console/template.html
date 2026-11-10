@@ -106,6 +106,7 @@ textarea.fallback { width: 100%; min-height: 120px; font: 13px/1.4 var(--font); 
 .post { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
 .post h3 { font-size: 16px; }
 .post .msg { max-height: 260px; }
+.ru { margin-top: 10px; } .ru summary { cursor: pointer; font-size: 14px; color: var(--muted); padding: 4px 0; } .ru .msg { margin-top: 8px; }
 
 footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 
@@ -314,6 +315,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, "Письмо"));
     const mb = el("button", "btn main", "Скопировать письмо"); mb.type = "button"; mb.addEventListener("click", () => copy(sign(r.message), mb, box));
     ml.append(mb); mf.append(ml, letter(r)); box.append(mf);
+    // for the team only: what the Italian letter says (never sent)
+    if (r.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "Перевод для команды (не отправляется)"), el("pre", "msg", r.message_ru)); mf.append(d); }
     const acts = el("div", "acts"), st = stateOf(r.id), s = status[r.id];
     [["sent", "Отправлено", ""], ["replied", "Ответили", " ok"], ["skip", "Не писать", ""]].forEach(([k, label, cls]) => {
       const b = el("button", "btn small" + cls + (st === k ? " on" : ""), label); b.type = "button";

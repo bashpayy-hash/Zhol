@@ -160,11 +160,94 @@ def company_message(name: str, line: str, link: str) -> str:
             f"Grazie,\n{SIGN}\n{OPTOUT}")
 
 
-def association_message(name: str, link: str, members: str = "associati con linee estere") -> str:
-    return (f"Gentile segreteria di {name},\nvi scrivo per chiedervi di inoltrare ai vostri {members} un breve sondaggio "
-            f"di sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
-            f"Per ora chiediamo solo risposte. Stiamo raccogliendo i dati di partenza per capire a fondo il problema e avere "
-            f"numeri concreti. All'associazione mandiamo i risultati aggregati.\n{link}\n\nGrazie,\n{SIGN}")
+# Letters to associations (owner, 10 Nov 2026: «ты их персонализируешь?»): the ask fits what the body is (hauliers'
+# association, artisans, forwarders, a freight village, a consortium, an industry group), the reason fits where its
+# members drive (Brenner, France, Austria and Slovenia, the South), every reason with a public source. Italian only;
+# the console shows the team a Russian translation that is never sent.
+KIND_RULES = [
+    (r"interport|terminal|cepim|\bcim\b|\bsito\b|rivalta|interbrennero|centro ingrosso|freight village", "terminal"),
+    (r"consorzi|federtrasporti|transcoop|con\.?\s?tr\.?\s?a|\bcars\b|tre laghi|astre|movitrans|palletways|pallex|pallet network|\bpnp\b", "consortium"),
+    (r"fedespedi|alsea|spediporto|spedimar|spedizionier|\basea\b|assologistica|confetra|freight leaders|anama|fiata|clecat", "forwarders"),
+    (r"\bcna\b|confartigianato|lvh|artigian|casartigiani", "artisans"),
+    (r"confindustria|assolombarda|confcommercio|unione industriali|camera di commercio|legacoop", "industry"),
+]
+ASK = {  # (Italian, Russian)
+    "hauliers": ("di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere,", "переслать вашим членам-перевозчикам, особенно тем, кто ездит за границу,"),
+    "artisans": ("di girare alle imprese di autotrasporto della vostra categoria, soprattutto a chi lavora con l'estero,", "переслать транспортным предприятиям вашей категории, особенно тем, кто работает с заграницей,"),
+    "forwarders": ("di girare ai vostri associati spedizionieri e ai loro uffici traffico", "переслать вашим членам-экспедиторам и их отделам перевозок"),
+    "terminal": ("di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto", "переслать перевозчикам и операторам, которые работают на вашем терминале,"),
+    "consortium": ("di girare ai vostri consorziati e ai loro uffici traffico", "переслать участникам вашего консорциума и их отделам перевозок"),
+    "industry": ("di girare alle imprese del vostro gruppo trasporti e logistica", "переслать компаниям вашей группы транспорта и логистики"),
+}
+REGION_RULES = [
+    (r"friuli|udine|pordenone|trieste|gorizia|tarvisio|fvg", "east"),
+    (r"piemonte|torino|cuneo|novara|alessandria|asti|biella|vercelli|liguria|genova|savona|spezia|aosta|rivalta|pianfei", "france"),
+    (r"napoli|campania|puglia|bari|sicilia|palermo|catania|calabria|salerno|caserta|marcianise|nola|messina|taranto|lecce|foggia|barletta|mezzogiorno|vittoria|ragusa", "south"),
+    (r"lombard|milano|bergamo|brescia|como|lecco|varese|sondrio|mantova|cremona|lodi|monza|pavia|veneto|verona|padova|vicenza|treviso|venezia|rovigo|belluno|trentino|trento|bolzano|alto adige|s.dtirol|emilia|parma|modena|reggio|bologna|piacenza|ferrara|imola|romagna", "brenner"),
+]
+WHY = {  # (Italian, Russian, source key)
+    "brenner": ("Per chi va in Germania e in Austria dal Brennero, i giorni di dosaggio a Kufstein e i divieti notturni in Tirolo "
+                "cambiano i piani quasi ogni settimana. Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro "
+                "l'anno (Uniontrasporti per Unioncamere, 2026).",
+                "Для тех, кто ездит в Германию и Австрию через Бреннер, дни дозирования в Куфштайне и ночные запреты в Тироле "
+                "меняют планы почти каждую неделю. Одни только ограничения на Бреннере стоят Италии 544 млн евро в год.", "brenner"),
+    "france": ("Per chi va in Francia, le chiusure notturne del traforo del Monte Bianco fino a dicembre 2026 e i divieti "
+               "festivi francesi spostano partenze e consegne, e spesso lo si scopre all'ultimo momento.",
+               "Для тех, кто ездит во Францию, ночные закрытия тоннеля Монблан до декабря 2026 года и французские праздничные "
+               "запреты сдвигают отправки и доставки, и часто об этом узнают в последний момент.", "montblanc"),
+    "east": ("Per chi va in Austria e in Slovenia, i divieti notturni e festivi austriaci e i giorni di dosaggio in Tirolo "
+             "spostano partenze e consegne quasi ogni settimana.",
+             "Для тех, кто ездит в Австрию и Словению, австрийские ночные и праздничные запреты и дни дозирования в Тироле "
+             "сдвигают отправки и доставки почти каждую неделю.", "kufstein"),
+    "south": ("Per chi lavora tra il Sud e il Nord, gli otto giorni di blocchi dell'ottobre 2026 hanno svuotato gli scaffali "
+              "del Sud, e la sera prima nessuno poteva dire quali camion sarebbero rimasti fermi.",
+              "Для тех, кто возит между Югом и Севером, восемь дней блокад в октябре 2026 года опустошили полки на Юге, и "
+              "накануне вечером никто не мог сказать, какие машины встанут.", "sicily"),
+    "national": ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
+                 "2026), e d'inverno si aggiungono chiusure dei trafori, divieti festivi e scioperi.",
+                 "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а зимой к ним добавляются закрытия "
+                 "тоннелей, праздничные запреты и забастовки.", "brenner"),
+}
+HOOK_RU = ("Меня зовут Алихан Башпай, я студент Боккони. zhol, логистический проект, который мы с командой развиваем, вошёл "
+           "в 100 отобранных из примерно 500 на TEF Ignition 2026 (Tech Europe Foundation) и получил грант 2 000 евро.")
+PLATFORM_RU = ("Мы хотим построить платформу, которая объединит перевозчиков и отделы перевозок. Она следит за дорогами и "
+               "ночью, пока все спят, берёт на себя часть наблюдения и решений по запретам, закрытиям, пробкам и забастовкам "
+               "и даёт офисам обмениваться информацией.")
+
+
+def assoc_kind(name: str, about: str = "") -> str:
+    """By the name first; the site note only tells a terminal, a consortium or forwarders apart (it often names a parent
+    confederation, which says nothing about the members)."""
+    by_name = next((k for pat, k in KIND_RULES if re.search(pat, name.lower())), "")
+    if by_name:
+        return by_name
+    return next((k for pat, k in KIND_RULES[:3] if re.search(pat, about.lower())), "hauliers")
+
+
+def assoc_region(name: str, city: str, region: str = "", about: str = "") -> str:
+    text = " ".join((name, city, region, about)).lower()
+    if "nazionale" in city.lower() and not re.search(r"lombard|veneto|piemonte|sicilia|puglia|friuli", name.lower()):
+        return "national"
+    return next((k for pat, k in REGION_RULES if re.search(pat, text)), "national")
+
+
+def association_message(name: str, link: str, kind: str = "hauliers", region: str = "national") -> tuple[str, str, str, str]:
+    """The letter in Italian, its Russian translation for the team, the reason line (highlighted in the console) and its source."""
+    ask_it, ask_ru = ASK[kind]
+    why_it, why_ru, src = WHY[region]
+    back = "Vi mandiamo i risultati aggregati, da condividere con chi vi lavora." if kind == "terminal" else \
+        "All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati."
+    back_ru = "Мы пришлём вам сводные результаты, чтобы поделиться с теми, кто у вас работает." if kind == "terminal" else \
+        "Ассоциации пришлём сводные результаты, чтобы поделиться с вашими членами."
+    it = (f"Gentile segreteria di {name},\nvi scrivo per chiedervi {ask_it} un sondaggio anonimo di sette domande, un minuto.\n\n"
+          f"{HOOK} {PLATFORM}\n\n{why_it} Per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\n"
+          f"Per ora chiediamo solo risposte, per avere numeri concreti di partenza. {back}\n{link}\n\nGrazie,\n{SIGN}")
+    ru = (f"Уважаемый секретариат {name},\nпишу, чтобы попросить вас {ask_ru} анонимный опрос из семи вопросов на одну минуту.\n\n"
+          f"{HOOK_RU} {PLATFORM_RU}\n\n{why_ru} По итальянскому закону каждый час ожидания грузовика стоит 100 евро.\n\n"
+          f"Пока мы просим только ответы, чтобы получить конкретные исходные цифры. {back_ru}\n{link}\n\nСпасибо,\n{SIGN}")
+    if "autoparco" in name.lower():
+        it, ru = it.replace("nel vostro interporto", "nel vostro autoparco"), ru.replace("на вашем терминале", "на вашей стоянке")
+    return it, ru, why_it, SOURCES[src]
 
 
 def press_message(outlet: str, link: str) -> str:
@@ -195,7 +278,7 @@ def build() -> list[dict]:
                      "to": email, "where": site.rstrip(").,;") if site else ("" if email else "сайт ассоциации → «Contatti», спросить отдел автотранспорта"),
                      "search": google(org + " contatti"),
                      "subject": "Un sondaggio di un minuto per i vostri associati su divieti, code e scioperi (Bocconi, TEF Ignition)",
-                     "message": association_message(org, link), "link": link})
+                     "link": link})
     for org in NATIONAL_ASSOCIATIONS:
         if org in seen:
             continue
@@ -204,7 +287,7 @@ def build() -> list[dict]:
                      "where": "сайт ассоциации → «Contatti», спросить отдел автотранспорта",
                      "search": google(org + " contatti sede nazionale"),
                      "subject": "Un sondaggio di un minuto per i vostri associati su divieti, code e scioperi (Bocconi, TEF Ignition)",
-                     "message": association_message(org, link), "link": link})
+                     "link": link})
     for outlet, email, note in PRESS:
         link = f"{SURVEY}?src=press-{slug(outlet)}"
         rows.append({"id": "p-" + slug(outlet), "type": "press", "name": outlet, "city": "", "to": email,
@@ -265,9 +348,9 @@ def broad(existing: list[dict]) -> list[dict]:
                           "message": company_message(name, line, link), "link": link, "why": line, "why_src": src}
         elif kind in ("association", "interporto"):
             link = f"{SURVEY}?src=assoc-{slug(name)}"
-            row = base | {"id": "ba-" + slug(name), "type": "association",
-                          "subject": "Sette domande, un minuto, per i vostri " + ("operatori" if kind == "interporto" else "associati") + " (ricerca Bocconi)",
-                          "message": association_message(name, link, "operatori" if kind == "interporto" else "associati"), "link": link}
+            row = base | {"id": "ba-" + slug(name), "type": "association", "region": (r.get("region") or "").strip(),
+                          "subject": "Un sondaggio di un minuto per i vostri " + ("operatori" if kind == "interporto" else "associati") + " su divieti, code e scioperi (Bocconi, TEF Ignition)",
+                          "link": link, "kind_hint": "terminal" if kind == "interporto" else ""}
         elif kind == "media":
             link = f"{SURVEY}?src=press-{slug(name)}"
             row = base | {"id": "bp-" + slug(name), "type": "press",
@@ -429,8 +512,29 @@ def found_contacts(rows: list[dict]) -> list[dict]:
     return rows
 
 
+SUBJECT_BY_KIND = {
+    "terminal": "Un sondaggio di un minuto per chi lavora nel vostro interporto, su divieti, code e scioperi (Bocconi, TEF Ignition)",
+    "consortium": "Un sondaggio di un minuto per i vostri consorziati su divieti, code e scioperi (Bocconi, TEF Ignition)",
+    "industry": "Un sondaggio di un minuto per le imprese del vostro gruppo trasporti su divieti, code e scioperi (Bocconi, TEF Ignition)",
+}
+
+
+def association_letters(rows: list[dict]) -> list[dict]:
+    """Each association gets the ask for what it is and the reason for where its members drive (after describe, which
+    knows from its own site what each body is)."""
+    for r in rows:
+        if r["type"] != "association":
+            continue
+        kind = r.pop("kind_hint", "") or assoc_kind(r["name"], r.get("about", ""))
+        region = assoc_region(r["name"], r.get("city", ""), r.get("region", ""), r.get("about", ""))
+        r["message"], r["message_ru"], r["why"], r["why_src"] = association_message(r["name"], r["link"], kind, region)
+        r["subject"] = SUBJECT_BY_KIND.get(kind, "Un sondaggio di un minuto per i vostri associati su divieti, code e scioperi (Bocconi, TEF Ignition)")
+        r["kind"], r["area"] = kind, region
+    return rows
+
+
 def main() -> None:
-    rows = describe(found_contacts(bocconi() + build()))
+    rows = association_letters(describe(found_contacts(bocconi() + build())))
     with open(OUT / "survey_send_list.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "about", "to", "to_src", "where", "search", "subject", "message", "link", "fit", "why", "why_src"], extrasaction="ignore")
         w.writeheader()
