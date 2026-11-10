@@ -164,6 +164,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <button type="button" data-v="association" aria-pressed="false">Ассоциации<span class="n" id="n-association"></span></button>
       <button type="button" data-v="press" aria-pressed="false">Издания<span class="n" id="n-press"></span></button>
       <button type="button" data-v="group" aria-pressed="false">Группы<span class="n" id="n-group"></span></button>
+      <button type="button" data-v="abroad" aria-pressed="false">За рубежом<span class="n" id="n-abroad"></span></button>
       <button type="button" data-v="posts" aria-pressed="false">Посты</button>
     </div>
     <div class="chips" role="group" aria-label="Статус" id="f-state">
@@ -189,7 +190,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
   const ROWS = JSON.parse($("data").textContent);
   const POSTS = JSON.parse($("posts-data").textContent);
-  const KIND = { bocconi: "преподаватель Bocconi", association: "ассоциация", press: "издание", group: "группа", company: "компания" };
+  const KIND = { bocconi: "преподаватель Bocconi", association: "ассоциация", press: "издание", group: "группа", company: "компания", abroad: "за рубежом" };
   ROWS.sort((a, b) => (Number(b.fit || 0) - Number(a.fit || 0)) || a.name.localeCompare(b.name));
   const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
                   set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
@@ -384,7 +385,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $("count").textContent = sent + " из " + ROWS.length + " отправлено · ответили " + replied;
     $("tr-r").style.width = (replied / ROWS.length * 100) + "%";
     $("tr-s").style.width = ((sent - replied) / ROWS.length * 100) + "%";
-    ["bocconi", "company", "association", "press", "group"].forEach(k => {
+    ["bocconi", "company", "association", "press", "group", "abroad"].forEach(k => {
       const all = ROWS.filter(r => r.type === k), done = all.filter(r => stateOf(r.id) && stateOf(r.id) !== "skip").length;
       $("n-" + k).textContent = done + " из " + all.length;
       $("n-" + k).parentNode.title = "отправлено " + done + " из " + all.length;

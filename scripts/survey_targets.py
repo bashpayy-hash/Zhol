@@ -676,6 +676,75 @@ def found_contacts(rows: list[dict]) -> list[dict]:
     return rows
 
 
+
+# Abroad (owner, 11 Nov 2026: big companies in the nearby countries, France, Switzerland, Austria, Germany, Spain,
+# that would at least read). English letters; the reason is the crossing their lanes to Italy take. Addresses only
+# from each organisation's own site (outreach/abroad_targets.csv).
+ABROAD_REASON = {
+    "DE": "For hauliers crossing the Brenner, Tyrol's dosing days at Kufstein and the night bans change plans almost every week, and in 2025 21 of the 57 dosing days came outside the published calendar.",
+    "AT": "On the Brenner, Tyrol's dosing days at Kufstein and the night bans change plans almost every week, and in 2025 21 of the 57 dosing days came outside the published calendar.",
+    "CH": "On the lanes between Switzerland and Italy, the Swiss night and Sunday bans meet Italian holiday bans and strikes, and one queue at the border can cost the delivery window.",
+    "FR": "On the lanes into Italy, the Mont Blanc tunnel closes at night until December 2026, the queues then move to the Fréjus, and Italian holiday bans and strikes add to it.",
+    "ES": "On the lanes to Italy through France, the Mont Blanc tunnel closes at night until December 2026, the queues then move to the Fréjus, and Italian holiday bans and strikes add to it.",
+}
+ABROAD_REASON_DEFAULT = ("On the roads into Italy the Brenner restrictions alone cost Italy €544 million a year, and in October eight "
+                         "days of truck stoppages in the South caused more than €400 million of damage.")
+ABROAD_WHO = ("I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, a platform for "
+              "hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a "
+              "strike. The project is one of 100 selected from about 500 by TEF Ignition, a European programme for new tech companies.")
+ABROAD_GIFT = ("In the meantime our radar is free and open to everyone, zhol.live/radar, with the bans, closures and strikes of "
+               "the next eight weeks and the chance of each.")
+ABROAD_SUBJECT = {
+    "association": "Bans, queues and strikes on the lanes to Italy, a 1-minute survey from Bocconi University",
+    "intermodal": "Alpine bans and the Brenner, a 1-minute survey from Bocconi University",
+    "company": "Lanes to Italy, what do bans and queues cost you? A 1-minute Bocconi survey",
+    "press": "Bans, queues and strikes on the lanes to Italy, field data from Bocconi University",
+}
+
+
+def abroad_message(name: str, kind: str, country: str, link: str) -> tuple[str, str]:
+    why = ABROAD_REASON.get(country, ABROAD_REASON_DEFAULT) + " By Italian law every hour a truck waits is worth €100."
+    if kind == "association":
+        head = (f"Dear {name} team,\nI am writing to ask whether you could share a one-minute, anonymous survey with your "
+                f"members who run lanes to and through Italy.")
+        ask = "The survey has seven questions, takes a minute and asks for nothing else."
+    elif kind == "intermodal":
+        head = (f"Dear {name} team,\nI am writing to ask whether you could share a one-minute, anonymous survey with the "
+                f"hauliers and forwarders who book trains with you across the Alps.")
+        ask = "The survey has seven questions, takes a minute and asks for nothing else."
+    elif kind == "press":
+        head = (f"Dear {name} editors,\nI am writing to ask for a short mention of an anonymous one-minute survey for "
+                f"traffic offices on the lanes to Italy.")
+        ask = ("We are collecting baseline figures, minutes lost every day, shipments changed, the cost of the last incident, "
+               "and how many offices would share information with each other.")
+    else:
+        head = "Good morning,\nI am writing about your lanes to Italy."
+        ask = ("We would like to understand how much this really costs an office like yours. Could you give us one minute for "
+               "a survey of seven questions, anonymous, no sign-up and no sales?")
+    gift = ("For your pieces our radar can be a free source, zhol.live/radar, with the bans, closures and strikes of the next "
+            "eight weeks, the chance of each and the sources, free to use when citing zhol.") if kind == "press" else ABROAD_GIFT
+    text = (f"{head}\n\n{why}\n\n{ask}\n{link}\n\n{ABROAD_WHO}\n\n{gift}\n\nThank you,\n"
+            "Alikhan Bashpay · Bocconi University · zhol" + ("\nIf you prefer not to receive further messages, just reply «no»." if kind == "company" else ""))
+    return text, why
+
+
+def abroad() -> list[dict]:
+    path = OUT / "abroad_targets.csv"
+    if not path.exists():
+        return []
+    rows = []
+    for r in csv.DictReader(open(path, encoding="utf-8")):
+        link = f"https://zhol.live/survey?src={r['id']}"
+        msg, why = abroad_message(r["name"], r["kind"], r["country"], link)
+        rows.append({"id": r["id"], "type": "abroad", "name": r["name"], "city": "", "region": r["country"],
+                     "about": r["about_ru"], "to": r["email"], "to_src": r["source"], "where": r["website"],
+                     "search": google(r["name"] + " contact"), "subject": ABROAD_SUBJECT[r["kind"]], "message": msg,
+                     "link": link, "why": why, "why_src": SOURCES["kufstein"] if r["country"] in ("DE", "AT") else
+                     SOURCES["montblanc"] if r["country"] in ("FR", "ES") else SOURCES["swiss"] if r["country"] == "CH" else SOURCES["brenner"],
+                     "fit": {"association": "30", "intermodal": "25", "company": "20", "press": "10"}[r["kind"]]})
+    return rows
+
+
 SUBJECT_BY_KIND = {
     "terminal": "Un sondaggio di un minuto per chi lavora nel vostro interporto, su divieti, code e scioperi (Bocconi, TEF Ignition)",
     "consortium": "Un sondaggio di un minuto per i vostri consorziati su divieti, code e scioperi (Bocconi, TEF Ignition)",
@@ -698,7 +767,7 @@ def association_letters(rows: list[dict]) -> list[dict]:
 
 
 def main() -> None:
-    rows = press_letters(association_letters(describe(found_contacts(bocconi() + build()))))
+    rows = press_letters(association_letters(describe(found_contacts(bocconi() + build())))) + abroad()
     with open(OUT / "survey_send_list.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "about", "to", "to_src", "where", "search", "subject", "message", "link", "fit", "why", "why_src"], extrasaction="ignore")
         w.writeheader()
