@@ -83,7 +83,7 @@ EVENTS = {
     "italy": ("nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio",
               "anticipare le consegne critiche o avvisare per tempo i clienti", "strikes"),
 }
-REGION_EVENT = {"Sicilia": "sicily", "Calabria": "south", "Campania": "south", "Puglia": "south", "Basilicata": "south",
+REGION_EVENT = {"Lombardia": "brenner", "Emilia-Romagna": "brenner", "Sicilia": "sicily", "Calabria": "south", "Campania": "south", "Puglia": "south", "Basilicata": "south",
                 "Liguria": "liguria", "Trentino-Alto Adige": "brenner", "Veneto": "brenner", "Friuli-Venezia Giulia": "brenner",
                 "Piemonte": "france", "Valle d'Aosta": "france"}
 
@@ -129,24 +129,41 @@ def fleet(text: str) -> str:
 
 
 def corridor(crossings: str, cs: list[str], region: str) -> str:
+    """The corridor whose event goes in the letter: the crossings named first, then the main lane (the first country),
+    then the region (Piemonte and Liguria look to France, Lombardy, the North-East and Emilia to the Brenner)."""
     c = (crossings or "").lower()
-    if "brenner" in c or "austria" in " ".join(cs).lower() or "germania" in " ".join(cs).lower():
-        if "fréjus" in c or "frejus" in c or "mont blanc" in c:
-            return "france" if "Francia" in cs[:1] else "brenner"
+    west = "fréjus" in c or "frejus" in c or "mont blanc" in c
+    if "brenner" in c and not west:
         return "brenner"
-    if "fréjus" in c or "frejus" in c or "mont blanc" in c or "Francia" in cs:
+    if west and "brenner" not in c:
         return "france"
-    if "swiss" in c or "Svizzera" in cs:
+    main = cs[0] if cs else ""
+    if "swiss" in c or main == "Svizzera":
         return "swiss"
+    if main in ("Francia", "Spagna") or ("Francia" in cs and region in ("Piemonte", "Liguria", "Valle d'Aosta")):
+        return "france"
+    if any(x in cs for x in ("Germania", "Austria", "Paesi Bassi", "Polonia", "Repubblica Ceca", "Scandinavia", "Ungheria", "Slovenia")):
+        return "brenner"
+    if "Francia" in cs:
+        return "france"
     return REGION_EVENT.get(region, "italy")
 
 
-def personal(name: str, city: str, region: str, cs: list[str], crossings: str = "", spec: str = "", fleet_txt: str = "") -> tuple[str, str]:
+# what each company's own site says about it (outreach/site_facts.json: countries, cargo, fleet), used where the lead
+# sheet had nothing (owner, 11 Nov 2026: «а компаниям ты персонализировал?»)
+_FACTS_PATH = Path(__file__).resolve().parent.parent / "outreach" / "site_facts.json"
+FACTS = json.loads(_FACTS_PATH.read_text(encoding="utf-8")) if _FACTS_PATH.exists() else {}
+
+
+def personal(name: str, city: str, region: str, cs: list[str], crossings: str = "", spec: str = "", fleet_txt: str = "",
+             facts: dict | None = None) -> tuple[str, str]:
     """The paragraph about this company: its trucks, lanes and cargo, a recent event on its corridor or in its region
     (with a source), and what an evening warning would have let the office do."""
+    facts = facts or {}
+    cs = cs or list(facts.get("countries") or [])
     key = REGION_EVENT[region] if REGION_EVENT.get(region) in ("sicily", "south") else corridor(crossings, cs, region)
     event, alt, src = EVENTS[key]
-    n, what = fleet(fleet_txt), cargo(spec)
+    n, what = fleet(fleet_txt) or (facts.get("fleet") or ""), cargo(spec) or (facts.get("cargo") or "")
     trucks = f"i vostri circa {n} mezzi" if n else "i vostri camion"
     route = f" verso {join_it(cs[:3])}" if cs else ""
     load = f" con {what}" if what else ""
@@ -428,7 +445,7 @@ def build() -> list[dict]:
         site = r["website"].strip()
         link = f"{SURVEY}?src=" + ("co-form" if form or site else "co-email")
         cs = countries(r["lanes_abroad"])
-        line, src = personal(name, city, r["region"], cs, r["crossings"], r["specialisation"], r["fleet_size"])
+        line, src = personal(name, city, r["region"], cs, r["crossings"], r["specialisation"], r["fleet_size"], FACTS.get("c-" + slug(name)))
         rows.append({"id": "c-" + slug(name), "type": "company", "name": name, "city": city, "region": r["region"], "to": "",
                      "where": form or site or "", "search": google(name + " " + city + " contatti"),
                      "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
@@ -470,7 +487,7 @@ def broad(existing: list[dict]) -> list[dict]:
         if kind == "company":
             link = f"{SURVEY}?src=co-broad"
             region = (r.get("region") or "").strip()
-            line, src = personal(name, city, region, countries(r.get("notes") or ""), r.get("notes") or "", (r.get("segment") or "") + " " + (r.get("notes") or ""), r.get("notes") or "")
+            line, src = personal(name, city, region, countries(r.get("notes") or ""), r.get("notes") or "", (r.get("segment") or "") + " " + (r.get("notes") or ""), r.get("notes") or "", FACTS.get("b-" + slug(name)))
             row = base | {"id": "b-" + slug(name), "type": "company", "region": region,
                           "subject": "Un sondaggio di un minuto su divieti, code e scioperi sui vostri viaggi (Bocconi, TEF Ignition)",
                           "message": company_message(name, line, link, src), "link": link, "why": line, "why_src": src}

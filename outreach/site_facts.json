@@ -1,0 +1,1182 @@
+{
+ "b-a-t-f-i-soc-coop": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://atfi.it/"
+ },
+ "b-acb-srl": {
+  "cargo": "groupage",
+  "countries": [
+   "Polonia",
+   "Romania",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": "https://www.acbsrl.it/"
+ },
+ "b-aelle-trasporti-srl": {
+  "cargo": "",
+  "countries": [
+   "Svizzera"
+  ],
+  "fleet": "40",
+  "source": "https://aelletrasporti.com/"
+ },
+ "b-alpina-italiana-spa": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://alpinaitaliana.com/"
+ },
+ "b-autotrasporti-bertoni": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://autotrasportibertoni.com/"
+ },
+ "b-autotrasporti-f-lli-battistella": {
+  "cargo": "carta",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.autotrasportibattistella.it/"
+ },
+ "b-autotrasporti-garattini": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://autotrasportigarattini.it/"
+ },
+ "b-autotrasporti-mozzi": {
+  "cargo": "rifiuti",
+  "countries": [],
+  "fleet": "",
+  "source": "https://autotrasportimozzi.it/"
+ },
+ "b-autotrasporti-napolitano-giovanni": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "6",
+  "source": "https://www.autotrasportigiovanninapolitano.it/"
+ },
+ "b-autotrasporti-poggese": {
+  "cargo": "",
+  "countries": [],
+  "fleet": "20",
+  "source": "https://www.poggeseautotrasporti.com/"
+ },
+ "b-autotrasporti-rota": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.rotatrasporti.it/"
+ },
+ "b-autotrasporti-taccogna": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://taccogna.com/"
+ },
+ "b-avionship": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.spedizioni-avionship.com/"
+ },
+ "b-azzurra-trasporti": {
+  "cargo": "",
+  "countries": [],
+  "fleet": "100",
+  "source": "https://www.azzurratrasporti.com/"
+ },
+ "b-baraldo-autotrasporti": {
+  "cargo": "",
+  "countries": [
+   "Francia",
+   "Spagna",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": "https://www.baraldoautotrasporti.com/"
+ },
+ "b-bertoldo-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://bertoldosrl.com/"
+ },
+ "b-bisinella-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.bisinellatrasporti.it/"
+ },
+ "b-c-t-transport-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.cttransportsrl.it/"
+ },
+ "b-camelot-express": {
+  "cargo": "groupage",
+  "countries": [
+   "Regno Unito"
+  ],
+  "fleet": "",
+  "source": "https://camelotexpress.it/"
+ },
+ "b-cargonyx": {
+  "cargo": "",
+  "countries": [
+   "Bulgaria",
+   "Croazia",
+   "Grecia",
+   "Romania"
+  ],
+  "fleet": "",
+  "source": "https://cargonyx.com/"
+ },
+ "b-cavaleri-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "80",
+  "source": "https://www.cavaleri.it/"
+ },
+ "b-cermesoni-group": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.cermesonigroup.com/it/"
+ },
+ "b-chiggiato-spa": {
+  "cargo": "alimentari",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.chiggiatospa.com/"
+ },
+ "b-comandini-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.comandinitrasporti.com/"
+ },
+ "b-consorzio-tre-laghi": {
+  "cargo": "",
+  "countries": [
+   "Svizzera"
+  ],
+  "fleet": "",
+  "source": "https://tre-laghi.it/"
+ },
+ "b-contship-italia-drivemybox": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://contshipitalia.com/"
+ },
+ "b-coo-tra-sa-soc-coop": {
+  "cargo": "rifiuti",
+  "countries": [],
+  "fleet": "",
+  "source": "https://cootrasa.it/"
+ },
+ "b-coop-paratori-genova": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.paratori.it/"
+ },
+ "b-ctf-trasporti": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.ctftrasporti.com/"
+ },
+ "b-curcio-trasporti-e-servizi-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://curciotrasporti.com/it/curcio-trasporti/"
+ },
+ "b-dani-nardi-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.danienardi.com/"
+ },
+ "b-dgv-group-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "20",
+  "source": "https://www.dgvgroupsrl.it/"
+ },
+ "b-dima-trasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.dimatrasporti.it/"
+ },
+ "b-distribo-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.distribo.net/"
+ },
+ "b-due-torri-spa": {
+  "cargo": "merci pericolose",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.duetorrispa.com/"
+ },
+ "b-ebc-cargo": {
+  "cargo": "groupage",
+  "countries": [
+   "Svizzera",
+   "Paesi Bassi",
+   "Regno Unito"
+  ],
+  "fleet": "",
+  "source": "https://www.ebccargo.com/"
+ },
+ "b-emiliana-trasporti": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.emilianatrasporti.it/"
+ },
+ "b-fatigati-srl": {
+  "cargo": "auto",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.fatigatisrl.it/"
+ },
+ "b-ferrarese-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.ferraresetrasporti.it/"
+ },
+ "b-free-sped": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.freesped.com/"
+ },
+ "b-g-b-autotrasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.gbautotrasportimontichiari.it/"
+ },
+ "b-gea-trasporti": {
+  "cargo": "cisterne",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.geatrasporti.it/"
+ },
+ "b-general-trasporti": {
+  "cargo": "rifiuti",
+  "countries": [],
+  "fleet": "",
+  "source": "https://generaltrasporti.eu/"
+ },
+ "b-genio-logistica-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.geniologistica.it/"
+ },
+ "b-gianfranco-righi-srl": {
+  "cargo": "",
+  "countries": [
+   "Spagna"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "b-global-service-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.globalservicetrasporti.it/"
+ },
+ "b-gruppo-spinelli": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.gruppospinelli.com/"
+ },
+ "b-il-parmense-trasporti": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.ilparmensetrasporti.it/"
+ },
+ "b-la-belmontese-soc-coop": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.labelmontese.it/"
+ },
+ "b-lannutti-group": {
+  "cargo": "",
+  "countries": [],
+  "fleet": "2500",
+  "source": "https://lannutti.com/en/"
+ },
+ "b-lgv-srl-logistica-e-trasporti": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://lgvtrasporti.it/"
+ },
+ "b-logtainer": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "500",
+  "source": "https://www.logtainer.com/"
+ },
+ "b-m-c-truck": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://mctruck.it/"
+ },
+ "b-mafo-trasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.mafotrasporti.it/"
+ },
+ "b-matricardi-srl": {
+  "cargo": "merci pericolose",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.matricardisrl.com/"
+ },
+ "b-mediblea-trasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.medibleatrasporti.it/"
+ },
+ "b-monaci-trasporti": {
+  "cargo": "merci pericolose",
+  "countries": [],
+  "fleet": "",
+  "source": "https://monacitrasporti.com/"
+ },
+ "b-morana-trasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.moranatrasporti.it/"
+ },
+ "b-movitrans-line": {
+  "cargo": "cisterne",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.movitransline.it/"
+ },
+ "b-mp-srl-trasporti-e-spedizioni": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://mpsrltrasporti.com/"
+ },
+ "b-mp-trasporti": {
+  "cargo": "",
+  "countries": [],
+  "fleet": "70",
+  "source": "https://www.mp-trasporti.it/"
+ },
+ "b-navarria-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.navarria.net/"
+ },
+ "b-nesta-trasporti-logistics-snc": {
+  "cargo": "merci pericolose",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.nestatrasportisnc.it/"
+ },
+ "b-nicoli-trasporti-spedizioni": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.nicolitrasporta.it/"
+ },
+ "b-nigro-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.nigrotrasporti.it/"
+ },
+ "b-nuova-dimensione-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.nuovadimensionetrasporti.it/"
+ },
+ "b-ocean-sped": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://oceansped.com/"
+ },
+ "b-olimpia-trasporti": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.olimpiatrasportimodena.it/"
+ },
+ "b-p-m-trasporti-srl": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://pmtrasportisrl.it/"
+ },
+ "b-paeurope": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [
+   "Regno Unito",
+   "Svizzera",
+   "Germania",
+   "Spagna"
+  ],
+  "fleet": "",
+  "source": "https://www.paeurope.it/"
+ },
+ "b-pierri-trasporti-snc": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.pierritrasporti.it/"
+ },
+ "b-porrini-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://porrini.com/"
+ },
+ "b-prior-trasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.priortrasporti.it/"
+ },
+ "b-riva-logistic-service": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.rivalogistic.com/"
+ },
+ "b-rovigo-trasporti-srl": {
+  "cargo": "alimentari",
+  "countries": [],
+  "fleet": "",
+  "source": "https://rovigotrasporti.it/"
+ },
+ "b-s-l-trasporti": {
+  "cargo": "merci pericolose",
+  "countries": [
+   "Francia"
+  ],
+  "fleet": "",
+  "source": "https://www.selgenova.it/"
+ },
+ "b-salmaso-trasporti-srl": {
+  "cargo": "rifiuti",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.salmasotrasporti.it/"
+ },
+ "b-santarossa-trasporti": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.santarossatrasporti.com/"
+ },
+ "b-settentrionale-trasporti-spa": {
+  "cargo": "merci pericolose",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.settentrionale.com/"
+ },
+ "b-sicilog": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.sicilog.com/"
+ },
+ "b-siexpress": {
+  "cargo": "",
+  "countries": [
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "b-sitrel": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.sitrel.it/"
+ },
+ "b-stb-trasporti-srl": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.stb-srl.eu/"
+ },
+ "b-sud-trasporti": {
+  "cargo": "alimentari",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.sudtrasporti.it/"
+ },
+ "b-t-a-b-trasporti-artigiani-bibbiano": {
+  "cargo": "",
+  "countries": [],
+  "fleet": "11",
+  "source": "https://www.tabtrasporti.com/"
+ },
+ "b-tde-solutions": {
+  "cargo": "macchinari",
+  "countries": [],
+  "fleet": "",
+  "source": "https://tdesolutions.it/"
+ },
+ "b-tonello-g-b": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.tonellogb.net/"
+ },
+ "b-trasped-srl": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.traspedsrl.it/"
+ },
+ "b-trasporti-e-servizi-fabbian-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://trasportieservizifabbian.com/"
+ },
+ "b-trasporto-logistica": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.trasportopiacentino.com/"
+ },
+ "b-trial-srl": {
+  "cargo": "merci pericolose",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.trialsrl.com/"
+ },
+ "b-vector-spa": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://vectorspa.it/"
+ },
+ "b-vincenzo-miele-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.vincenzomieletrasporti.com/"
+ },
+ "b-zanotti-tagliani": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "25",
+  "source": "https://www.zanottietagliani.it/"
+ },
+ "c-aimone-autotrasporti-srl": {
+  "cargo": "trasporti eccezionali",
+  "countries": [
+   "Francia",
+   "Germania",
+   "Regno Unito",
+   "Spagna"
+  ],
+  "fleet": "",
+  "source": "https://aimonetrasporti.it/"
+ },
+ "c-autotransporte-g-nther-srl": {
+  "cargo": "",
+  "countries": [
+   "Germania",
+   "Austria"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-autotrasporti-bommartini-srl": {
+  "cargo": "",
+  "countries": [
+   "Francia",
+   "Svizzera",
+   "Austria"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-autotrasporti-cambianica-srl": {
+  "cargo": "merci pericolose",
+  "countries": [
+   "Svizzera",
+   "Francia",
+   "Austria"
+  ],
+  "fleet": "",
+  "source": "https://www.cambianica.com/"
+ },
+ "c-autotrasporti-contenti": {
+  "cargo": "trasporti eccezionali",
+  "countries": [
+   "Francia",
+   "Austria",
+   "Germania",
+   "Svizzera"
+  ],
+  "fleet": "",
+  "source": "https://www.autotrasporticontenti.it/"
+ },
+ "c-autotrasporti-falt": {
+  "cargo": "",
+  "countries": [
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-autotrasporti-franzoni": {
+  "cargo": "rifiuti",
+  "countries": [],
+  "fleet": "",
+  "source": "https://autotrasportifranzoni.eu/"
+ },
+ "c-autotrasporti-marcon": {
+  "cargo": "cisterne",
+  "countries": [
+   "Francia",
+   "Austria",
+   "Germania"
+  ],
+  "fleet": "30",
+  "source": "https://marconautotrasporti.it/it/"
+ },
+ "c-autotrasporti-padova-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.autotrasportipadova.com/"
+ },
+ "c-autotrasporti-torresani-luca": {
+  "cargo": "rinfuse",
+  "countries": [],
+  "fleet": "",
+  "source": "https://autotrasportitorresani.it/"
+ },
+ "c-autotrasporti-trevisan": {
+  "cargo": "",
+  "countries": [
+   "Austria",
+   "Germania",
+   "Francia",
+   "Spagna"
+  ],
+  "fleet": "",
+  "source": "https://www.autotrasportitrevisan.it/"
+ },
+ "c-avanzini": {
+  "cargo": "",
+  "countries": [
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-baresi-enzo-autotrasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://baresienzotrasporti.it/"
+ },
+ "c-baudino-trasporti-srl": {
+  "cargo": "rifiuti",
+  "countries": [
+   "Francia",
+   "Belgio",
+   "Paesi Bassi"
+  ],
+  "fleet": "",
+  "source": "https://baudinotrasporti.it/"
+ },
+ "c-benaco-trans-trasporti-internazionali-sr": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [
+   "Belgio",
+   "Francia",
+   "Paesi Bassi"
+  ],
+  "fleet": "",
+  "source": "https://benacotrans.com/"
+ },
+ "c-bergoli-autotrasporti": {
+  "cargo": "",
+  "countries": [
+   "Francia",
+   "Svizzera",
+   "Germania",
+   "Belgio"
+  ],
+  "fleet": "",
+  "source": "https://www.bergoliautotrasporti.it/"
+ },
+ "c-bilibio-autotrasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.autotrasportibilibio.it/"
+ },
+ "c-bodner-autotransporte-autotrasporti-bodn": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [
+   "Germania",
+   "Austria"
+  ],
+  "fleet": "",
+  "source": "https://www.bodnertrans.it/it/"
+ },
+ "c-bresciana-trasporti-frigo-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [
+   "Spagna",
+   "Francia",
+   "Belgio"
+  ],
+  "fleet": "50",
+  "source": "https://brescianatrasporti.it/"
+ },
+ "c-bresciasped-srl": {
+  "cargo": "",
+  "countries": [
+   "Germania",
+   "Austria"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-c-s-trasporti-srl": {
+  "cargo": "rifiuti",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.cstrasporti.it/"
+ },
+ "c-camellini-srl": {
+  "cargo": "groupage",
+  "countries": [
+   "Francia"
+  ],
+  "fleet": "30",
+  "source": "https://www.camellinisrl.it/"
+ },
+ "c-cars-consorzio-autotrasportatori-riuniti": {
+  "cargo": "rifiuti",
+  "countries": [
+   "Svizzera"
+  ],
+  "fleet": "",
+  "source": "https://cars-autotrasporti.it/it"
+ },
+ "c-cfp-modena": {
+  "cargo": "alimentari",
+  "countries": [
+   "Germania",
+   "Austria",
+   "Paesi Bassi"
+  ],
+  "fleet": "",
+  "source": "https://cfpmo.it/"
+ },
+ "c-coppola-nunzio-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [
+   "Francia",
+   "Spagna"
+  ],
+  "fleet": "",
+  "source": "https://www.coppolanunziotrasporti.it/"
+ },
+ "c-corsi-spa": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [
+   "Germania",
+   "Austria",
+   "Paesi Bassi"
+  ],
+  "fleet": "",
+  "source": "https://www.corsispa.it/"
+ },
+ "c-d-g-f-trans-srl": {
+  "cargo": "groupage",
+  "countries": [
+   "Germania",
+   "Austria",
+   "Polonia"
+  ],
+  "fleet": "",
+  "source": "https://www.dgftrans.it/"
+ },
+ "c-detassis-autotrasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.detassis.it/it"
+ },
+ "c-effemme-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "50",
+  "source": "https://www.effemmetrasporti.com/"
+ },
+ "c-ellero-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.ellerosrl.net/"
+ },
+ "c-eminitrasporti": {
+  "cargo": "",
+  "countries": [
+   "Francia"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-farosped": {
+  "cargo": "",
+  "countries": [
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-favaron-autotrasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.favarontrasporti.eu/"
+ },
+ "c-fe-transport": {
+  "cargo": "groupage",
+  "countries": [
+   "Francia",
+   "Germania",
+   "Belgio"
+  ],
+  "fleet": "",
+  "source": "https://www.fetrasporti.com/"
+ },
+ "c-g-t-i-srl": {
+  "cargo": "cisterne",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.trasportigti.it/"
+ },
+ "c-gasser-logistic": {
+  "cargo": "",
+  "countries": [
+   "Austria",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-gazzotti-spa": {
+  "cargo": "container",
+  "countries": [
+   "Svizzera",
+   "Francia"
+  ],
+  "fleet": "100",
+  "source": "https://gazzotti-spa.com/"
+ },
+ "c-gottardi-autotrasporti-srl": {
+  "cargo": "trasporti eccezionali",
+  "countries": [
+   "Francia",
+   "Austria",
+   "Svizzera",
+   "Spagna"
+  ],
+  "fleet": "",
+  "source": "https://gottardiautotrasporti.it/"
+ },
+ "c-gsm-group-italia": {
+  "cargo": "trasporti eccezionali",
+  "countries": [],
+  "fleet": "",
+  "source": "https://gsmgroupitalia.it/"
+ },
+ "c-interliggi-trasporti-sas": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.interliggitrasporti.it/"
+ },
+ "c-keitel-italia-srl": {
+  "cargo": "rinfuse",
+  "countries": [
+   "Germania",
+   "Belgio",
+   "Paesi Bassi"
+  ],
+  "fleet": "",
+  "source": "https://keitel-italia.it/"
+ },
+ "c-lunardi-trasporti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://lunarditrasporti.it/"
+ },
+ "c-manenti-autotrasporti": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.manentitrasporti.it/"
+ },
+ "c-michele-sole-srl": {
+  "cargo": "",
+  "countries": [
+   "Germania",
+   "Austria",
+   "Svizzera"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-monsignori-autotrasporti-srl": {
+  "cargo": "",
+  "countries": [
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-ortrans-srl": {
+  "cargo": "",
+  "countries": [
+   "Austria",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-passione-autotrasporti": {
+  "cargo": "alimentari",
+  "countries": [],
+  "fleet": "6",
+  "source": "https://www.passioneautotrasporti.it/"
+ },
+ "c-pavisa-spedizioni": {
+  "cargo": "",
+  "countries": [
+   "Francia",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-pesenti-trasporti-logistica": {
+  "cargo": "",
+  "countries": [
+   "Germania",
+   "Polonia"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-pichler-transport-gmbh": {
+  "cargo": "",
+  "countries": [
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-pmg-srl": {
+  "cargo": "",
+  "countries": [
+   "Austria",
+   "Germania"
+  ],
+  "fleet": "1200",
+  "source": "https://pmgsrl.net/"
+ },
+ "c-prisma-logistics-spa": {
+  "cargo": "groupage",
+  "countries": [
+   "Germania",
+   "Austria"
+  ],
+  "fleet": "",
+  "source": "https://www.prismalogistics.net/"
+ },
+ "c-reiterer-trans": {
+  "cargo": "",
+  "countries": [
+   "Austria",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-rosati-srl": {
+  "cargo": "",
+  "countries": [
+   "Paesi Bassi",
+   "Germania",
+   "Belgio"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-rosso-antonio-srl": {
+  "cargo": "container",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.rossoantoniosrl.com/"
+ },
+ "c-samberisi-autotrasporti": {
+  "cargo": "",
+  "countries": [
+   "Germania",
+   "Austria",
+   "Polonia"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-scortrans": {
+  "cargo": "container",
+  "countries": [
+   "Austria",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": "https://scortrans.com/"
+ },
+ "c-serima-srl": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.serimatrasporti.it/"
+ },
+ "c-spedition-oberhammer": {
+  "cargo": "",
+  "countries": [
+   "Germania"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-spedizioni-vison": {
+  "cargo": "groupage",
+  "countries": [
+   "Francia",
+   "Svizzera",
+   "Austria"
+  ],
+  "fleet": "",
+  "source": "https://www.spedizionivisona.com/"
+ },
+ "c-tis-srl": {
+  "cargo": "mobili",
+  "countries": [
+   "Francia"
+  ],
+  "fleet": "",
+  "source": "https://www.tissrl.com/"
+ },
+ "c-tma-trasporto-alimenti": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [
+   "Austria",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": "https://www.tmatrasportoalimenti.com/"
+ },
+ "c-transtir-srl": {
+  "cargo": "",
+  "countries": [
+   "Regno Unito"
+  ],
+  "fleet": "",
+  "source": ""
+ },
+ "c-trasporti-boscaini-srl": {
+  "cargo": "trasporti eccezionali",
+  "countries": [
+   "Francia",
+   "Germania",
+   "Belgio"
+  ],
+  "fleet": "",
+  "source": "https://www.trasportiboscaini.com/"
+ },
+ "c-trasporti-pigozzi-snc": {
+  "cargo": "groupage",
+  "countries": [],
+  "fleet": "",
+  "source": "https://trasportipigozzi.it/"
+ },
+ "c-valor-trasporti": {
+  "cargo": "groupage",
+  "countries": [
+   "Svizzera",
+   "Germania"
+  ],
+  "fleet": "",
+  "source": "https://www.valortrasporti.it/"
+ },
+ "c-valsped": {
+  "cargo": "container",
+  "countries": [
+   "Francia"
+  ],
+  "fleet": "",
+  "source": "https://www.valspedgroup.it/"
+ },
+ "c-z-d-srl": {
+  "cargo": "trasporti eccezionali",
+  "countries": [
+   "Germania",
+   "Austria",
+   "Francia"
+  ],
+  "fleet": "",
+  "source": "https://zdgroup.eu/"
+ },
+ "c-zambon-gmbh": {
+  "cargo": "merci pericolose",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.zambongmbh.com/"
+ },
+ "c-zaninelli-trasporti-srl": {
+  "cargo": "merce a temperatura controllata",
+  "countries": [],
+  "fleet": "",
+  "source": "https://www.zaninellitrasportisrl.it/"
+ }
+}
