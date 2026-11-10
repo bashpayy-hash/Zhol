@@ -292,7 +292,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const head = el("div", "head"), t = el("div");
     t.append(el("h2", null, r.name), el("div", "meta", [r.city, r.region].filter(Boolean).filter((x, k, a) => a.indexOf(x) === k).join(" · ")));
     // who this is (associations) or what they do and how big they are (companies)
-    if (r.about) t.append(el("div", "about", (r.type === "association" ? "Кто это: " : "") + r.about));
+    if (r.about) t.append(el("div", "about", "Кто это: " + r.about));
     head.append(t, el("span", "kind", KIND[r.type] || r.type));
     box.append(head);
     if (r.why) {

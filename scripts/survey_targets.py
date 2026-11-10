@@ -402,6 +402,12 @@ def describe(rows: list[dict]) -> list[dict]:
                 unit = next((ru for pat, ru in FLEET_RU if re.search(pat, m.group(2), re.I)), "машин")
                 size = ("около " if "~" in fleet or ">" in fleet else "") + m.group(1).replace(",", "") + " " + unit
             r["about"] = " · ".join(x for x in (seg.capitalize() if seg else "", size or ("парк не известен" if seg else "")) if x)
+    # a written note for every row, from the organisation's own site and what we already knew (outreach/about_ru.json)
+    notes_path = OUT / "about_ru.json"
+    notes = json.loads(notes_path.read_text(encoding="utf-8")) if notes_path.exists() else {}
+    for r in rows:
+        if notes.get(r["id"]):
+            r["about"] = notes[r["id"]]
     return rows
 
 
