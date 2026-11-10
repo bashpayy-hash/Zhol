@@ -200,6 +200,7 @@
       if (a) $("sv-sched-box").hidden = false;
       if (b) $("sv-news-box").hidden = false;
       if (a || b) $("sv-now").hidden = false;              // its own card, above the map, so it is seen first
+      if (!a || !b) $("sv-now").classList.add("one");      // a day without news: the schedule takes the whole card, no empty half
       // on a computer the list beside the map is as tall as the map and scrolls inside, no hole under the legend
       const col = box.querySelector(".map-col"), pan = box.querySelector(".map-panel");
       if (col && pan && "ResizeObserver" in window) new ResizeObserver(() => { pan.style.maxHeight = innerWidth > 920 ? col.offsetHeight + "px" : ""; }).observe(col);
@@ -336,4 +337,14 @@
   });
 
   show(0, false);
+
+  // ?preview=end opens the last screen straight away, for the team to check it: nothing is sent, nothing is counted
+  if (/[?&]preview=end\b/.test(location.search)) {
+    form.hidden = true;
+    const stage = document.querySelector(".sv-stage"); if (stage) stage.classList.add("end");
+    if (intro) intro.hidden = true;
+    if (stepsBox) stepsBox.hidden = false;
+    finish();
+    window.scrollTo(0, 0);
+  }
 })();

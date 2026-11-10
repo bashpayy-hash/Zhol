@@ -1149,3 +1149,4 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
 .sv-now .sv-end-grid { border-top: 0; padding-top: 0; }
 .sv-now + .sv-map { margin-top: 20px; }
 @media (min-width: 921px) { .sv-map .map-grid > .map-panel { overflow-y: auto; overscroll-behavior: contain; } }
+.sv-now.one .sv-end-grid { grid-template-columns: minmax(0, 1fr); }
