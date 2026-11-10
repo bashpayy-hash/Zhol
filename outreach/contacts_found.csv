@@ -182,8 +182,8 @@ c-coppola-nunzio-trasporti,coppolanunziotrasporti@live.com,https://www.coppolanu
 ba-asea-associazione-spedizionieri-ed-autot,aseavarese@aseavarese.it,https://aseavarese.it/,,"crawl: own site | also: 836501giacomo.bragatti@aseavarese.it, davide.gaeta@aseavarese.it"
 ba-assologistica,milano@assologistica.it,https://www.assologistica.it/,,crawl: own site | also: roma@assologistica.it
 ba-cna-lombardia-fita,info@cnalombardia.it,https://www.cnalombardia.it/,,crawl: own site
-ba-consorzi-lecco-trasporti,info@leccotrasporti.it,https://www.leccotrasporti.it/contatti/,,crawl: own site
-ba-consorzio-bergamo-trasporti,info@bergamotrasporti.it,https://www.bergamotrasporti.it/contatti/,,crawl: own site
+ba-consorzi-lecco-trasporti,,,,"not sent: bus public-transport consortium, not freight (info@leccotrasporti.it on own site) | crawl: own site"
+ba-consorzio-bergamo-trasporti,,,,"not sent: bus public-transport consortium, not freight (info@bergamotrasporti.it on own site) | crawl: own site"
 ba-fai-como-lecco,segreteria@faicomo.it,https://faicomo.it/,,crawl: own site | also: segreteria@failecco.it
 ba-fedespedi-30-associazioni-territoriali,fedespedi@fedespedi.it,https://www.fedespedi.it/,,crawl: own site
 ba-fai-regionale-veneto,info@faiveneto.com,https://fairegionaleveneto.com/,,"crawl: own site | also: faiveneto@faiveneto.com, anna@faiveneto.com"
