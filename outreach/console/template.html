@@ -120,6 +120,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   .detail { padding: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.about { margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: var(--ink); max-width: 640px; }
 </style>
 
 <div class="bar"><div class="wrap">
@@ -290,6 +291,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const box = el("article", "detail");
     const head = el("div", "head"), t = el("div");
     t.append(el("h2", null, r.name), el("div", "meta", [r.city, r.region].filter(Boolean).filter((x, k, a) => a.indexOf(x) === k).join(" · ")));
+    // who this is (associations) or what they do and how big they are (companies)
+    if (r.about) t.append(el("div", "about", (r.type === "association" ? "Кто это: " : "") + r.about));
     head.append(t, el("span", "kind", KIND[r.type] || r.type));
     box.append(head);
     if (r.why) {

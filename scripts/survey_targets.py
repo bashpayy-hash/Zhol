@@ -336,6 +336,75 @@ def bocconi() -> list[dict]:
     return rows
 
 
+# Who each association is and why we write to them (shown in the send console, in Russian). Matched on the name,
+# first rule wins; "уточнить" where the profile could not be checked.
+ASSOC_RU = [
+    (r"elenco sedi territoriali", "Список региональных отделений FAI: отсюда берутся адреса местных отделений, а национальный офис может переслать опрос по всей сети."),
+    (r"elenco associati", "Список членов FAI Veneto, то есть самих перевозчиков региона: из него можно писать компаниям напрямую."),
+    (r"^fai conftrasporto$", "FAI (Federazione Autotrasportatori Italiani) входит в Conftrasporto–Confcommercio, одно из крупнейших объединений автоперевозчиков Италии. Национальный офис: лучше всего, если перешлёт опрос в региональные отделения."),
+    (r"\bfai\b", "Местное отделение FAI, объединения автоперевозчиков (Conftrasporto). Ближе всего к небольшим и средним перевозчикам своей провинции и регулярно рассылает им циркуляры."),
+    (r"\bunatras\b", "UNATRAS объединяет главные ассоциации автоперевозчиков (FAI, CNA Fita, Confartigianato Trasporti, Assotir, FIAP и другие) и говорит от имени отрасли с правительством."),
+    (r"cna.*fita|fita.*cna|^cna fita", "CNA Fita объединяет автоперевозчиков внутри CNA, конфедерации ремесленников и малого бизнеса. В основном небольшие компании и перевозчики-собственники."),
+    (r"lvh", "lvh.apa: объединение ремесленников Южного Тироля (Больцано), группа грузоперевозчиков. Много перевозчиков на коридоре Бреннер."),
+    (r"artigiani e piccole imprese", "Объединение ремесленников и малых предприятий Трентино, в нём есть категория автоперевозчиков. Коридор Бреннер."),
+    (r"confartigianato", "Confartigianato: конфедерация ремесленников и малого бизнеса, это её отделение по грузоперевозкам. Главный выход на малых перевозчиков своей территории."),
+    (r"^assotir", "Assotir: национальное объединение небольших и средних автоперевозчиков."),
+    (r"trasportounito", "Trasportounito: национальное объединение автоперевозчиков, в основном небольших."),
+    (r"^fiap", "FIAP (Federazione Italiana Autotrasportatori Professionali): национальное объединение автоперевозчиков."),
+    (r"^anita", "ANITA: объединение крупных компаний автоперевозок и логистики в системе Confindustria."),
+    (r"^fedit", "Fedit (Federazione Italiana Trasportatori): национальное объединение перевозчиков; профиль уточнить на сайте."),
+    (r"assotrasporti", "Assotrasporti: объединение транспортных компаний; профиль уточнить на сайте."),
+    (r"ruote libere", "Ruote Libere: объединение небольших автоперевозчиков; профиль уточнить на сайте."),
+    (r"astre|plus scrl", "ASTRE: сеть независимых перевозчиков (итальянская часть европейской сети ASTRE), Plus scrl — её консорциум. Просим переслать участникам."),
+    (r"fedespedi", "Fedespedi: национальная федерация экспедиторов, объединяет 30+ территориальных ассоциаций (Confetra). Экспедиторы планируют рейсы для клиентов и тоже теряют на запретах и очередях."),
+    (r"alsea", "ALSEA: ассоциация экспедиторов и логистических компаний Ломбардии (Милан)."),
+    (r"spediporto", "Spediporto: ассоциация экспедиторов и операторов порта Генуи."),
+    (r"spedizionieri del porto", "Ассоциация экспедиторов порта Специи."),
+    (r"spedimar", "Spedimar: ассоциация экспедиторов и морских агентов Ливорно."),
+    (r"^asea", "ASEA: ассоциация экспедиторов и автоперевозчиков провинции Варезе; источник 2012 года, проверить, действует ли."),
+    (r"assologistica", "Assologistica: объединение логистических операторов (склады, терминалы, логистика для грузовладельцев)."),
+    (r"confetra", "Confetra: общенациональная конфедерация транспорта и логистики (в неё входят Fedespedi, Assologistica и другие)."),
+    (r"freight leaders", "Freight Leaders Council: площадка руководителей логистики и транспорта (исследования, встречи), не профсоюз."),
+    (r"^alis", "ALIS: ассоциация интермодальной логистики — паромы Ro-Ro («морские магистрали») и железная дорога вместе с грузовиками."),
+    (r"assolombarda", "Assolombarda: объединение промышленников Милана и Ломбардии (Confindustria), группа транспорта и логистики. Голос грузовладельцев и крупных операторов."),
+    (r"confindustria", "Объединение промышленников провинции (Confindustria): выход на грузовладельцев, то есть производителей, которые заказывают перевозки."),
+    (r"legacoop", "Legacoop Produzione e Servizi: объединение кооперативов, среди них много транспортных и логистических."),
+    (r"pallex|palletways|pallet network|\bpnp\b", "Сеть доставки палет: десятки независимых перевозчиков-участников по всей Италии работают через общий хаб. Просим переслать участникам сети."),
+    (r"consorzi lecco|consorzio bergamo trasporti", "Похоже, это консорциум общественного транспорта (автобусы), а не грузовой. Можно не писать."),
+    (r"transcoop|con\.tr\.a\.c|federtrasporti", "Консорциум автоперевозчиков: десятки небольших перевозчиков-членов под общим брендом и диспетчерской. Просим переслать членам."),
+    (r"comitato trasportatori siciliani", "Комитет сицилийских автоперевозчиков: объединение перевозчиков Сицилии."),
+    (r"autoparco sadobre", "Автопарк Садобре у Випитено: большая стоянка грузовиков у Бреннера с сервисами для водителей и перевозчиков. Просим передать опрос перевозчикам, которые у них останавливаются."),
+    (r"interport|interbrennero|cepim|\bcim\b|\bsito\b|polo logistico", "Интерпорт: грузовой логистический узел (склады, терминал «машина–поезд», стоянки), на его территории работают десятки транспортных и логистических компаний. Просим переслать опрос арендаторам."),
+    (r"resta italia|fedralog|aspt", "Объединение в сфере транспорта и логистики; профиль уточнить на сайте."),
+]
+SEGMENT_RU = {"haulier": "перевозчик", "forwarder": "экспедитор", "logistics": "логистика", "mixed": "перевозчик и экспедитор",
+              "both": "перевозчик и экспедитор"}
+FLEET_RU = [(r"tractors?", "тягачей"), (r"trucks?|lorries", "грузовиков"), (r"own vehicles|vehicles|mezzi|veicoli", "машин"),
+            (r"reefer bodies|reefer", "рефрижераторов"), (r"semi-?trailers?", "полуприцепов")]
+
+
+def describe(rows: list[dict]) -> list[dict]:
+    """Associations: who they are and why we write; companies: what they do and how big they are, where known."""
+    leads = {clean_name(r["company"]).lower(): r for r in csv.DictReader(open(OUT / "leads_beachhead.csv", encoding="utf-8"))}
+    broad_path = OUT / "survey_targets_broad.csv"
+    broad = {clean_name(r.get("name") or "").lower(): r for r in csv.DictReader(open(broad_path, encoding="utf-8"))} if broad_path.exists() else {}
+    for r in rows:
+        name = r["name"].lower()
+        if r["type"] == "association":
+            r["about"] = next((txt for pat, txt in ASSOC_RU if re.search(pat, name)), "Объединение в сфере транспорта; профиль уточнить на сайте.")
+        elif r["type"] == "company":
+            src = leads.get(name) or broad.get(name) or {}
+            seg = SEGMENT_RU.get((src.get("segment") or "").split(" ")[0], "")
+            fleet = (src.get("fleet_size") or "").strip()
+            m = re.search(r"(\d[\d,.]*)\s*\+?\s*([A-Za-z -]+)", fleet)
+            size = ""
+            if m:
+                unit = next((ru for pat, ru in FLEET_RU if re.search(pat, m.group(2), re.I)), "машин")
+                size = ("около " if "~" in fleet or ">" in fleet else "") + m.group(1).replace(",", "") + " " + unit
+            r["about"] = " · ".join(x for x in (seg.capitalize() if seg else "", size or ("парк не известен" if seg else "")) if x)
+    return rows
+
+
 def found_contacts(rows: list[dict]) -> list[dict]:
     """Addresses found on each organisation's own site (outreach/contacts_found.csv: id, email, source, form, note),
     with the page where each was seen. Never guessed; PEC addresses are left out."""
@@ -355,9 +424,9 @@ def found_contacts(rows: list[dict]) -> list[dict]:
 
 
 def main() -> None:
-    rows = found_contacts(bocconi() + build())
+    rows = describe(found_contacts(bocconi() + build()))
     with open(OUT / "survey_send_list.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "to", "to_src", "where", "search", "subject", "message", "link", "fit", "why", "why_src"], extrasaction="ignore")
+        w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "about", "to", "to_src", "where", "search", "subject", "message", "link", "fit", "why", "why_src"], extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
     (OUT / "survey_send_list.json").write_text(json.dumps(rows, ensure_ascii=False, indent=0), encoding="utf-8")
