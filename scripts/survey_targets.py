@@ -62,6 +62,7 @@ SOURCES = {
     "genoa": "https://trasporti-italia.com/?p=134314",
     "strikes": "https://www.money.it/sciopero-autotrasportatori-dal-25-al-29-maggio-2026-rifornimenti-a-rischio-in-tutta-italia",
     "swiss": "https://www.ch.ch/en/vehicles-and-traffic/driving-bans-for-lorries/",
+    "messaggero": "https://www.ilmessaggero.it/economia/blocco_tir_danni_protesta_quali_sono_cosa_succede_ora_prezzi-9844541.html",
 }
 
 # one recent, sourced event per corridor or region, and what an evening warning would have let the office do
@@ -155,8 +156,15 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
     return line, SOURCES[src]
 
 
-def company_message(name: str, line: str, link: str) -> str:
-    return (f"Buongiorno,\n{ASK_FIRST}\n\n{HOOK} {PLATFORM}\n\n{SIZE} {line}\n\n{BASELINE}\n{link}\n\n"
+SIZE_SOUTH = ("A ottobre otto giorni di fermo dei tir al Sud hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni "
+              "di euro di danni secondo Il Messaggero, e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
+
+
+def company_message(name: str, line: str, link: str, src: str = "") -> str:
+    """The figure that opens the paragraph is the one closest to the company (owner, 10 Nov 2026: «важен не только
+    бреннер»), the Brenner for the North, the October blockades for the South."""
+    size = SIZE_SOUTH if src in (SOURCES["sicily"], SOURCES["south"], SOURCES["vittoria"]) else SIZE
+    return (f"Buongiorno,\n{ASK_FIRST}\n\n{HOOK} {PLATFORM}\n\n{size} {line}\n\n{BASELINE}\n{link}\n\n"
             f"Grazie,\n{SIGN}\n{OPTOUT}")
 
 
@@ -180,33 +188,56 @@ ASK = {  # (Italian, Russian)
     "industry": ("di girare alle imprese del vostro gruppo trasporti e logistica", "переслать компаниям вашей группы транспорта и логистики"),
 }
 REGION_RULES = [
+    (r"sicilia|palermo|catania|messina|vittoria|ragusa|siracusa|trapani|agrigento", "sicily"),
+    (r"campania|napoli|cercola|nola|marcianise|caserta|salerno", "campania"),
+    (r"puglia|bari|taranto|lecce|foggia|barletta|calabria|basilicata|mezzogiorno|sud italia", "south"),
+    (r"liguria|genova|savona|spezia", "liguria"),
     (r"friuli|udine|pordenone|trieste|gorizia|tarvisio|fvg", "east"),
-    (r"piemonte|torino|cuneo|novara|alessandria|asti|biella|vercelli|liguria|genova|savona|spezia|aosta|rivalta|pianfei", "france"),
-    (r"napoli|campania|puglia|bari|sicilia|palermo|catania|calabria|salerno|caserta|marcianise|nola|messina|taranto|lecce|foggia|barletta|mezzogiorno|vittoria|ragusa", "south"),
-    (r"lombard|milano|bergamo|brescia|como|lecco|varese|sondrio|mantova|cremona|lodi|monza|pavia|veneto|verona|padova|vicenza|treviso|venezia|rovigo|belluno|trentino|trento|bolzano|alto adige|s.dtirol|emilia|parma|modena|reggio|bologna|piacenza|ferrara|imola|romagna", "brenner"),
+    (r"piemonte|torino|orbassano|cuneo|novara|alessandria|tortona|asti|biella|vercelli|aosta|rivalta|pianfei", "france"),
+    (r"lombard|milano|bergamo|brescia|como|lecco|varese|sondrio|mantova|cremona|lodi|monza|pavia|veneto|verona|padova|vicenza|treviso|venezia|marghera|mestre|rovigo|belluno|trentino|trento|bolzano|vipiteno|alto adige|s.dtirol|emilia|parma|fontevivo|modena|reggio|bologna|bentivoglio|piacenza|fiorenzuola|ferrara|imola|forl|romagna|montichiari", "brenner"),
 ]
-WHY = {  # (Italian, Russian, source key)
-    "brenner": ("Per chi va in Germania e in Austria dal Brennero, i giorni di dosaggio a Kufstein e i divieti notturni in Tirolo "
-                "cambiano i piani quasi ogni settimana. Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro "
-                "l'anno (Uniontrasporti per Unioncamere, 2026).",
-                "Для тех, кто ездит в Германию и Австрию через Бреннер, дни дозирования в Куфштайне и ночные запреты в Тироле "
-                "меняют планы почти каждую неделю. Одни только ограничения на Бреннере стоят Италии 544 млн евро в год.", "brenner"),
-    "france": ("Per chi va in Francia, le chiusure notturne del traforo del Monte Bianco fino a dicembre 2026 e i divieti "
-               "festivi francesi spostano partenze e consegne, e spesso lo si scopre all'ultimo momento.",
-               "Для тех, кто ездит во Францию, ночные закрытия тоннеля Монблан до декабря 2026 года и французские праздничные "
-               "запреты сдвигают отправки и доставки, и часто об этом узнают в последний момент.", "montblanc"),
-    "east": ("Per chi va in Austria e in Slovenia, i divieti notturni e festivi austriaci e i giorni di dosaggio in Tirolo "
-             "spostano partenze e consegne quasi ogni settimana.",
-             "Для тех, кто ездит в Австрию и Словению, австрийские ночные и праздничные запреты и дни дозирования в Тироле "
-             "сдвигают отправки и доставки почти каждую неделю.", "kufstein"),
-    "south": ("Per chi lavora tra il Sud e il Nord, gli otto giorni di blocchi dell'ottobre 2026 hanno svuotato gli scaffali "
-              "del Sud, e la sera prima nessuno poteva dire quali camion sarebbero rimasti fermi.",
-              "Для тех, кто возит между Югом и Севером, восемь дней блокад в октябре 2026 года опустошили полки на Юге, и "
-              "накануне вечером никто не мог сказать, какие машины встанут.", "sicily"),
+WHY = {  # (Italian, Russian, source key), the figures closest to where the members drive (owner, 10 Nov 2026)
+    "brenner": ("Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro "
+                "l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono "
+                "arrivati fuori dal calendario pubblicato.",
+                "Для тех, кто ездит в Германию и Австрию через Бреннер, одни только ограничения там стоят Италии 544 млн евро "
+                "в год, а в Куфштайне в 2025 году 21 день дозирования из 57 пришёл вне опубликованного календаря.", "kufstein"),
+    "france": ("Per chi va in Francia, da settembre a dicembre 2026 il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, "
+               "e quando si ferma il Fréjus le code si spostano tutte lì.",
+               "Для тех, кто ездит во Францию, с сентября по декабрь 2026 года тоннель Монблан закрыт по ночам с 22 до 6, а когда "
+               "встаёт Фрежюс, все очереди перетекают туда.", "montblanc"),
+    "liguria": ("Al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un "
+                "indennizzo, e per chi va in Francia da settembre a dicembre 2026 il Monte Bianco chiude di notte.",
+                "В порту Генуи очереди у въездных ворот стали стоить 120–180 евро за рейс, настолько, что за них ввели "
+                "компенсацию, а тем, кто едет во Францию, с сентября по декабрь 2026 года Монблан закрыт по ночам.", "genoa"),
+    "east": ("Per chi va in Austria e in Slovenia, i divieti notturni e festivi austriaci decidono l'orario di partenza, e nel "
+             "2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio.",
+             "Для тех, кто ездит в Австрию и Словению, австрийские ночные и праздничные запреты определяют время выезда, а в "
+             "2026 году перевозчики уже объявляли общенациональные остановки в апреле и мае.", "strikes"),
+    # the South: some of these associations led the October stoppage, so the figures say how much trucks matter,
+    # never who is to blame
+    "sicily": ("A ottobre 2026 il fermo in Sicilia ha mostrato quanto conta l'autotrasporto. In cinque giorni il mercato di "
+               "Vittoria, che di solito spedisce circa 100 camion al giorno, è rimasto con i box vuoti, e Coldiretti e "
+               "Confcommercio Sicilia hanno stimato 90–100 milioni di euro di danni.",
+               "Октябрьская остановка 2026 года на Сицилии показала, как много значат грузоперевозки. За пять дней рынок "
+               "Виттории, откуда обычно уходит около 100 грузовиков в день, остался с пустыми боксами, а Coldiretti и "
+               "Confcommercio Sicilia оценили ущерб в 90–100 млн евро.", "vittoria"),
+    "campania": ("A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno "
+                 "mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa "
+                 "300 in Campania.",
+                 "Октябрьские дни протеста дальнобойщиков в Кампании 2026 года, когда стояли трассы A1, A30 и порт Неаполя, "
+                 "показали, как много значат грузоперевозки. Il Messaggero оценивает ущерб на Юге больше чем в 400 млн евро, "
+                 "из них около 300 млн в Кампании.", "messaggero"),
+    "south": ("A ottobre 2026 otto giorni di fermo dei tir al Sud hanno mostrato quanto conta l'autotrasporto. Il Messaggero "
+              "stima oltre 400 milioni di euro di danni, e chi aveva camion in viaggio la sera prima non sapeva dove si "
+              "sarebbero fermati.",
+              "Восемь дней остановки дальнобойщиков на Юге в октябре 2026 года показали, как много значат грузоперевозки. "
+              "Il Messaggero оценивает ущерб больше чем в 400 млн евро, а те, у кого машины были в пути, накануне вечером "
+              "не знали, где они встанут.", "messaggero"),
     "national": ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
-                 "2026), e d'inverno si aggiungono chiusure dei trafori, divieti festivi e scioperi.",
-                 "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а зимой к ним добавляются закрытия "
-                 "тоннелей, праздничные запреты и забастовки.", "brenner"),
+                 "2026), e a ottobre otto giorni di blocchi dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero).",
+                 "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а в октябре восемь дней блокад "
+                 "дальнобойщиков на Юге принесли больше 400 млн евро ущерба.", "brenner"),
 }
 HOOK_RU = ("Меня зовут Алихан Башпай, я студент Боккони. zhol, логистический проект, который мы с командой развиваем, вошёл "
            "в 100 отобранных из примерно 500 на TEF Ignition 2026 (Tech Europe Foundation) и получил грант 2 000 евро.")
@@ -304,7 +335,7 @@ def build() -> list[dict]:
         rows.append({"id": "c-" + slug(name), "type": "company", "name": name, "city": city, "region": r["region"], "to": "",
                      "where": form or site or "", "search": google(name + " " + city + " contatti"),
                      "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
-                     "message": company_message(name, line, link), "link": link, "fit": r.get("fit", ""),
+                     "message": company_message(name, line, link, src), "link": link, "fit": r.get("fit", ""),
                      "why": line, "why_src": src})
     rows += broad(rows)
     ids = [r["id"] for r in rows]
@@ -345,7 +376,7 @@ def broad(existing: list[dict]) -> list[dict]:
             line, src = personal(name, city, region, countries(r.get("notes") or ""), r.get("notes") or "", (r.get("segment") or "") + " " + (r.get("notes") or ""), r.get("notes") or "")
             row = base | {"id": "b-" + slug(name), "type": "company", "region": region,
                           "subject": "Un sondaggio di un minuto su divieti, code e scioperi sui vostri viaggi (Bocconi, TEF Ignition)",
-                          "message": company_message(name, line, link), "link": link, "why": line, "why_src": src}
+                          "message": company_message(name, line, link, src), "link": link, "why": line, "why_src": src}
         elif kind in ("association", "interporto"):
             link = f"{SURVEY}?src=assoc-{slug(name)}"
             row = base | {"id": "ba-" + slug(name), "type": "association", "region": (r.get("region") or "").strip(),
