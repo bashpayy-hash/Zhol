@@ -106,6 +106,7 @@ button { font: inherit; }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 1.5px solid var(--ink); background: none; color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color .16s, color .16s, transform .16s var(--ease); }
 .btn:active { transform: scale(.98); }
 .btn.main { background: var(--red); border-color: var(--red); color: #fff; }
+a.btn { text-decoration: none; }
 .btn.small { min-height: 34px; padding: 6px 14px; font-size: 13px; border-width: 1px; }
 .btn.on { background: var(--ink); color: var(--paper); }
 .btn.ok.on { background: var(--sage-ink); border-color: var(--sage-ink); color: var(--paper); }
@@ -149,7 +150,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <span class="kicker">zhol · опрос офисов перевозок</span>
       <h1>Кому написать, что написать и кто уже отправил</h1>
       <p>Каждое письмо сначала просит пройти опрос, потом говорит, кто мы (проект в логистике, 100 из ~500 в TEF, грант 2 000 €) и что строим: платформу, которая объединяет перевозчиков, следит за дорогами ночью, берёт на себя часть мониторинга и решений и даёт офисам обмениваться информацией. Просим только ответы: собираем исходные данные. Преподавателям Bocconi — на английском и итальянском, с просьбой переслать знакомым логистам.</p>
-      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> Скопируйте адрес, тему и письмо</li><li><b>3</b> Нажмите «Отправлено»: откроется следующий</li><li>Не больше 40 писем в день с одного ящика</li></ul>
+      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook»: адрес, тема и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Не больше 40 писем в день с одного ящика</li></ul>
     </div>
     <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
       <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
@@ -344,7 +345,17 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     sf.append(sl, el("div", "subject", r.subject)); box.append(sf);
     const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, "Письмо"));
     const mb = el("button", "btn main", "Скопировать письмо"); mb.type = "button"; mb.addEventListener("click", () => copy(sign(r.message), mb, box));
-    ml.append(mb); mf.append(ml, letter(r)); box.append(mf);
+    // one click to a new letter in Outlook on the web with the address, subject and text already in place (owner, 11 Nov)
+    const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
+    if (r.to && r.type !== "group") {
+      const body = plain(sign(r.message)).replace(/\n/g, "\r\n");
+      const ol = el("a", "btn", "Открыть в Outlook");
+      ol.href = "https://outlook.office.com/mail/deeplink/compose?to=" + encodeURIComponent(r.to) + "&subject=" + encodeURIComponent(r.subject) + "&body=" + encodeURIComponent(body);
+      ol.target = "_blank"; ol.rel = "noopener"; ol.title = "Новое письмо в Outlook: адрес, тема и текст уже вставлены. Проверьте и нажмите «Отправить», затем отметьте здесь «Отправлено».";
+      btns.append(ol);
+    }
+    btns.append(mb);
+    ml.append(btns); mf.append(ml, letter(r)); box.append(mf);
     // for the team only: what the Italian letter says (never sent)
     if (r.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "Перевод для команды (не отправляется)"), el("pre", "msg", r.message_ru)); mf.append(d); }
     const acts = el("div", "acts"), st = stateOf(r.id), s = status[r.id];
