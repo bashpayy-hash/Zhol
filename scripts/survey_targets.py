@@ -281,12 +281,103 @@ def association_message(name: str, link: str, kind: str = "hauliers", region: st
     return it, ru, why_it, SOURCES[src]
 
 
-def press_message(outlet: str, link: str) -> str:
-    return (f"Gentile redazione di {outlet},\nvi scrivo per chiedervi una breve segnalazione di un sondaggio per gli uffici "
-            f"traffico di sette domande, un minuto, anonimo.\n\n{HOOK} {PLATFORM}\n\n{SIZE}\n\n"
-            f"Stiamo raccogliendo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto, "
-            f"e quanti uffici sarebbero pronti a scambiarsi informazioni. I risultati aggregati ve li mandiamo in esclusiva, "
-            f"se lo desiderate.\n{link}\n\nGrazie,\n{SIGN}")
+# Letters to the press (owner, 10 Nov 2026: «а по письмам изданиям как, есть персонализация?»): the figures fit what
+# the outlet's readers do (hauliers, ports, logistics managers), one line ties the survey to what the outlet covers
+# (taken from its own site), and every outlet gets the results in preview, never an exclusive promised to all.
+PRESS_KIND = {
+    "p-uomini-e-trasporti": "trade", "p-trasportoeuropa": "trade", "p-trans-info-italia": "trade", "p-rivista-tir": "trade",
+    "p-vado-e-torno": "trade", "p-trasporti-italia": "trade", "bp-il-mondo-dei-trasporti": "trade", "bp-transportonline": "trade",
+    "p-shipping-italy": "ports", "bp-ship2shore": "ports", "bp-il-messaggero-marittimo": "ports",
+    "bp-gazzetta-logistica": "logistics", "bp-il-giornale-della-logistica": "logistics", "bp-logistica-management": "logistics",
+    "bp-logisticamente-it": "logistics", "bp-supply-chain-italy": "logistics",
+}
+PRESS_FIGURES = {  # (Italian, Russian, source key)
+    "trade": ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
+              "2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per "
+              "la legge italiana ogni ora che un camion aspetta vale 100 €.",
+              "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, в октябре восемь дней остановки "
+              "дальнобойщиков на Юге принесли больше 400 млн евро ущерба, а по итальянскому закону каждый час ожидания "
+              "грузовика стоит 100 евро.", "brenner"),
+    "ports": ("Al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un "
+              "indennizzo, e a ottobre la protesta dei tir ha fermato anche il porto di Napoli.",
+              "В порту Генуи очереди у ворот стали стоить 120–180 евро за рейс, настолько, что за них ввели компенсацию, а в "
+              "октябре протест дальнобойщиков остановил и порт Неаполя.", "genoa"),
+    "logistics": ("Per chi gestisce le consegne, un divieto o un blocco non previsto vuol dire ritardi e slot persi. Solo le "
+                  "limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno, e a ottobre otto giorni di fermo dei "
+                  "tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero).",
+                  "Для тех, кто отвечает за доставки, непредвиденный запрет или блокада означают опоздания и потерянные окна "
+                  "разгрузки. Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а в октябре восемь дней "
+                  "остановки дальнобойщиков на Юге принесли больше 400 млн евро ущерба.", "brenner"),
+}
+PRESS_ANGLE = {  # what the outlet covers, from its own homepage (10 Nov 2026); outlets we know little about get none
+    "p-rivista-tir": ("Su TIR si parla spesso di valichi e del Brennero, e qui si vede quanto pesano sul lavoro dell'ufficio traffico.",
+                      "TIR часто пишет о перевалах и Бреннере, а здесь видно, во что они обходятся отделу перевозок."),
+    "p-trasporti-italia": ("Trasporti-Italia segue da vicino i conti dell'autotrasporto, e qui c'è una voce che di solito non si misura, "
+                           "il costo di un imprevisto in strada.",
+                           "Trasporti-Italia внимательно следит за расходами перевозчиков, а здесь статья, которую обычно не считают, "
+                           "цена непредвиденного на дороге."),
+    "p-trans-info-italia": ("trans.info segue le tratte internazionali, e il sondaggio parte proprio da chi va all'estero ogni settimana.",
+                            "trans.info следит за международными маршрутами, а опрос как раз для тех, кто каждую неделю ездит за границу."),
+    "p-trasportoeuropa": ("TrasportoEuropa racconta ogni giorno il trasporto merci in Italia e in Europa, e questi sono i numeri visti "
+                          "dall'ufficio traffico.",
+                          "TrasportoEuropa каждый день пишет о грузоперевозках в Италии и Европе, а это те же темы, увиденные из "
+                          "отдела перевозок."),
+    "bp-gazzetta-logistica": ("Gazzetta Logistica ha raccontato anche le chiusure notturne sulla A1, e il sondaggio misura proprio quanto "
+                              "costano agli uffici traffico.",
+                              "Gazzetta Logistica писала и о ночных закрытиях на A1, а опрос как раз измеряет, во что они обходятся "
+                              "отделам перевозок."),
+    "bp-transportonline": ("TransportOnline pubblica già i bollettini sulla viabilità, e il sondaggio misura quanto costano agli uffici "
+                           "traffico i divieti e le chiusure che vi si leggono.",
+                           "TransportOnline уже публикует сводки о дорогах, а опрос измеряет, во что отделам перевозок обходятся "
+                           "запреты и закрытия из этих сводок."),
+    "bp-logisticamente-it": ("Logisticamente riunisce spesso chi gestisce la logistica, e i risultati potrebbero servire anche ai vostri incontri.",
+                             "Logisticamente часто собирает тех, кто управляет логистикой, и результаты могут пригодиться и на ваших встречах."),
+    "bp-supply-chain-italy": ("Supply Chain Italy segue export e trasporti, e qui c'è il pezzo che manca spesso, cosa succede la sera prima "
+                              "in un ufficio traffico.",
+                              "Supply Chain Italy пишет об экспорте и перевозках, а здесь то, чего часто не хватает, что происходит "
+                              "накануне вечером в отделе перевозок."),
+    "bp-ship2shore": ("Ship2Shore segue porti e logistica, e il sondaggio arriva anche a chi porta i container dal porto all'interno.",
+                      "Ship2Shore пишет о портах и логистике, а опрос доходит и до тех, кто везёт контейнеры из порта вглубь страны."),
+    "p-shipping-italy": ("Shipping Italy racconta ogni giorno porti e logistica, e il sondaggio arriva anche a chi porta i container dal "
+                         "porto all'interno.",
+                         "Shipping Italy каждый день пишет о портах и логистике, а опрос доходит и до тех, кто везёт контейнеры из "
+                         "порта вглубь страны."),
+}
+PRESS_SUBJECT = {
+    "trade": "Quanto costano divieti, code e chiusure agli uffici traffico, un sondaggio Bocconi (TEF Ignition)",
+    "ports": "Code ai porti, divieti e scioperi, un sondaggio Bocconi per gli uffici traffico (TEF Ignition)",
+    "logistics": "Divieti, blocchi e consegne in ritardo, un sondaggio Bocconi per chi gestisce i trasporti (TEF Ignition)",
+}
+
+
+def press_message(outlet: str, link: str, pid: str = "") -> tuple[str, str, str, str, str]:
+    """The letter in Italian, its Russian translation for the team, the figures line, its source and the subject."""
+    kind = PRESS_KIND.get(pid, "trade")
+    fig_it, fig_ru, src = PRESS_FIGURES[kind]
+    ang_it, ang_ru = PRESS_ANGLE.get(pid, ("", ""))
+    it = (f"Gentile redazione di {outlet},\nvi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo per gli uffici "
+          f"traffico, sette domande, un minuto.\n\n{HOOK} {PLATFORM}\n\n{fig_it}\n\n"
+          + (ang_it + " " if ang_it else "")
+          + "Raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto "
+          "e quanti uffici sarebbero pronti a scambiarsi informazioni. Se vi interessa, vi mandiamo i risultati aggregati "
+          f"in anteprima, prima di pubblicarli.\n{link}\n\nGrazie,\n{SIGN}")
+    ru = (f"Уважаемая редакция {outlet},\nпишу, чтобы попросить вас коротко упомянуть анонимный опрос для отделов перевозок, "
+          f"семь вопросов, одна минута.\n\n{HOOK_RU} {PLATFORM_RU}\n\n{fig_ru}\n\n"
+          + (ang_ru + " " if ang_ru else "")
+          + "Мы собираем исходные данные, то есть сколько минут теряется каждый день, сколько отправок меняется, во что обошёлся "
+          "последний непредвиденный случай и сколько офисов готовы обмениваться информацией. Если интересно, пришлём сводные "
+          f"результаты заранее, до публикации.\n{link}\n\nСпасибо,\n{SIGN}")
+    return it, ru, (ang_it or fig_it), SOURCES[src], PRESS_SUBJECT[kind]
+
+
+def press_letters(rows: list[dict]) -> list[dict]:
+    for r in rows:
+        if r["type"] != "press":
+            continue
+        if r["id"] == "bp-lista-testate-logistica":   # our list of outlets, not an outlet: nothing to send
+            r["to"], r["where"] = "", "это наш список изданий, а не редакция: письмо не отправлять"
+        r["message"], r["message_ru"], r["why"], r["why_src"], r["subject"] = press_message(r["name"], r["link"], r["id"])
+    return rows
 
 
 def build() -> list[dict]:
@@ -323,8 +414,7 @@ def build() -> list[dict]:
         link = f"{SURVEY}?src=press-{slug(outlet)}"
         rows.append({"id": "p-" + slug(outlet), "type": "press", "name": outlet, "city": "", "to": email,
                      "where": note or "сайт издания → «Redazione» или «Contatti»", "search": google(outlet + " redazione contatti"),
-                     "subject": "Dati sul campo, quanto costano divieti, code e chiusure agli uffici traffico (Bocconi, TEF Ignition)",
-                     "message": press_message(outlet, link), "link": link})
+                     "link": link})
     for r in csv.DictReader(open(OUT / "leads_beachhead.csv", encoding="utf-8")):
         name, city = clean_name(r["company"]), clean_city(r["city"])
         form = r["contact_page"].split(" ; ")[0].strip()
@@ -385,8 +475,7 @@ def broad(existing: list[dict]) -> list[dict]:
         elif kind == "media":
             link = f"{SURVEY}?src=press-{slug(name)}"
             row = base | {"id": "bp-" + slug(name), "type": "press",
-                          "subject": "Dati sul campo, quanto costano divieti, code e chiusure agli uffici traffico (Bocconi, TEF Ignition)",
-                          "message": press_message(name, link), "link": link}
+                          "link": link}
         elif kind == "group":
             link = f"{SURVEY}?src=group-{slug(name)}"
             row = base | {"id": "bg-" + slug(name), "type": "group", "to": "", "where": site or ch,
@@ -565,7 +654,7 @@ def association_letters(rows: list[dict]) -> list[dict]:
 
 
 def main() -> None:
-    rows = association_letters(describe(found_contacts(bocconi() + build())))
+    rows = press_letters(association_letters(describe(found_contacts(bocconi() + build()))))
     with open(OUT / "survey_send_list.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "about", "to", "to_src", "where", "search", "subject", "message", "link", "fit", "why", "why_src"], extrasaction="ignore")
         w.writeheader()
