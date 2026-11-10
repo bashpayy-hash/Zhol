@@ -73,11 +73,12 @@ EVENTS = {
                "le code si spostano tutte lì", "scegliere l'altro traforo o anticipare la partenza", "montblanc"),
     "swiss": ("in Svizzera i mezzi pesanti non viaggiano di notte né la domenica, e una coda alla dogana fa perdere la finestra",
               "anticipare il passaggio in dogana o passare dal Brennero", "swiss"),
-    "sicily": ("a ottobre, in cinque giorni di protesta dei tir, Confcommercio Sicilia ha stimato tra 40 e 50 milioni di danni, "
-               "e al mercato di Vittoria i box sono rimasti vuoti", "spostare i carichi sulla nave da Palermo o Catania, o anticipare "
-               "le consegne", "sicily"),
-    "south": ("a ottobre la protesta dei tir ha bloccato la A1 e la A30 e mandato in tilt il porto di Napoli",
-              "anticipare le consegne o cambiare porto", "south"),
+    "sicily": ("a ottobre il fermo in Sicilia ha mostrato quanto conta l'autotrasporto, con il mercato di Vittoria a box vuoti "
+               "per cinque giorni e 90–100 milioni di danni stimati da Coldiretti e Confcommercio Sicilia",
+               "spostare i carichi sulla nave da Palermo o Catania, o anticipare le consegne", "vittoria"),
+    "south": ("a ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta "
+              "l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero",
+              "anticipare le consegne o cambiare porto", "messaggero"),
     "liguria": ("al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo",
                 "spostare l'orario d'ingresso al varco", "genoa"),
     "italy": ("nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio",
@@ -169,19 +170,38 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
     load = f" con {what}" if what else ""
     where = f" da {city}" if city and "[" not in city and city.lower() != "n/a" else ""
     line = (f"Pensando {'ai' if trucks.startswith('i ') else 'a'} {trucks[2:] if trucks.startswith('i ') else trucks}{load}{where}{route}, ci torna in mente che {event}. "
-            f"Vorremmo capire quanto pesa davvero per voi.")
+            f"Saperlo la sera prima permette di {alt}, e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
     return line, SOURCES[src]
 
 
-SIZE_SOUTH = ("A ottobre otto giorni di fermo dei tir al Sud hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni "
-              "di euro di danni secondo Il Messaggero, e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
+# The letter to a company (owner, 11 Nov 2026: «компании же не в курсе, что такое TEF Ignition… что можно усилить
+# в композиции письма для компаний»). Their own lanes first, then the ask with the link, then who we are in one
+# paragraph (Bocconi, which every Italian office knows; TEF said in plain words), then something useful today.
+COMPANY_ASK = ("Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, "
+               "anonimo, senza registrazione e senza vendite.")
+COMPANY_WHO = ("Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma per "
+               "autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una "
+               "chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per "
+               "nuove imprese tecnologiche.")
+COMPANY_GIFT = ("Intanto il nostro radar è gratuito e aperto a tutti, zhol.live/it/radar, con divieti, chiusure e scioperi delle "
+                "prossime otto settimane e la probabilità di ognuno.")
+COMPANY_SUBJECT = {  # by the event in the letter; no TEF (companies do not know it), Bocconi (they do)
+    SOURCES["kufstein"]: "Dosaggio a Kufstein e Brennero, quanto vi costano? Sondaggio Bocconi, un minuto",
+    SOURCES["montblanc"]: "Monte Bianco e Fréjus, quanto vi costano? Sondaggio Bocconi, un minuto",
+    SOURCES["swiss"]: "Divieti in Svizzera e code in dogana, quanto vi costano? Sondaggio Bocconi",
+    SOURCES["genoa"]: "Code al porto di Genova, quanto vi costano? Sondaggio Bocconi, un minuto",
+    SOURCES["vittoria"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi",
+    SOURCES["messaggero"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi",
+}
+COMPANY_SUBJECT_DEFAULT = "Divieti, code e scioperi, quanto vi costano? Sondaggio Bocconi, un minuto"
+
+
+def company_subject(src: str) -> str:
+    return COMPANY_SUBJECT.get(src, COMPANY_SUBJECT_DEFAULT)
 
 
 def company_message(name: str, line: str, link: str, src: str = "") -> str:
-    """The figure that opens the paragraph is the one closest to the company (owner, 10 Nov 2026: «важен не только
-    бреннер»), the Brenner for the North, the October blockades for the South."""
-    size = SIZE_SOUTH if src in (SOURCES["sicily"], SOURCES["south"], SOURCES["vittoria"]) else SIZE
-    return (f"Buongiorno,\n{ASK_FIRST}\n\n{HOOK} {PLATFORM}\n\n{size} {line}\n\n{BASELINE}\n{link}\n\n"
+    return (f"Buongiorno,\n{line}\n\n{COMPANY_ASK}\n{link}\n\n{COMPANY_WHO}\n\n{COMPANY_GIFT}\n\n"
             f"Grazie,\n{SIGN}\n{OPTOUT}")
 
 
@@ -448,7 +468,7 @@ def build() -> list[dict]:
         line, src = personal(name, city, r["region"], cs, r["crossings"], r["specialisation"], r["fleet_size"], FACTS.get("c-" + slug(name)))
         rows.append({"id": "c-" + slug(name), "type": "company", "name": name, "city": city, "region": r["region"], "to": "",
                      "where": form or site or "", "search": google(name + " " + city + " contatti"),
-                     "subject": "Un sondaggio di un minuto su divieti, code e scioperi sulle vostre linee (Bocconi, TEF Ignition)",
+                     "subject": company_subject(src),
                      "message": company_message(name, line, link, src), "link": link, "fit": r.get("fit", ""),
                      "why": line, "why_src": src})
     rows += broad(rows)
@@ -489,7 +509,7 @@ def broad(existing: list[dict]) -> list[dict]:
             region = (r.get("region") or "").strip()
             line, src = personal(name, city, region, countries(r.get("notes") or ""), r.get("notes") or "", (r.get("segment") or "") + " " + (r.get("notes") or ""), r.get("notes") or "", FACTS.get("b-" + slug(name)))
             row = base | {"id": "b-" + slug(name), "type": "company", "region": region,
-                          "subject": "Un sondaggio di un minuto su divieti, code e scioperi sui vostri viaggi (Bocconi, TEF Ignition)",
+                          "subject": company_subject(src),
                           "message": company_message(name, line, link, src), "link": link, "why": line, "why_src": src}
         elif kind in ("association", "interporto"):
             link = f"{SURVEY}?src=assoc-{slug(name)}"
