@@ -92,19 +92,21 @@
     marked[0].parentNode.insertBefore(wrap, marked[0]);
     marked.forEach((s, i) => {
       if (!s.id) s.id = "part-" + (i + 1);
-      const k = text(s.querySelector(".kicker")) || text(s.querySelector(".qhead .small"));
+      const k = s.dataset.tileKicker || text(s.querySelector(".kicker")) || text(s.querySelector(".qhead .small"));
       const t = text(s.querySelector("h2, h3"));
-      const num = s.dataset.tileNum || text(s.querySelector(".big, .mid"));
+      const num = s.dataset.tileNum === "" ? "" : (s.dataset.tileNum || text(s.querySelector(".big, .mid"))); // data-tile-num="" : no number (it is filled in later)
       const tile = el("button", "tile");
       tile.type = "button"; tile.setAttribute("aria-haspopup", "dialog");
       if (k) tile.append(el("span", "kicker", k));
       tile.append(el("span", "tile-title", t || k));
-      // the bottom of the tile: the section's number if it has one, else the first line of what it says
-      if (num && num.length < 14) tile.append(el("span", "tile-num", num));
-      else {
-        const p = [...s.querySelectorAll(".lead, p")].map(text).find(x => x.length > 30 && x !== t);
-        if (p) tile.append(el("span", "tile-line", p.length > 120 ? p.slice(0, 117).replace(/\s+\S*$/, "") + "…" : p));
-      }
+      // the bottom of every tile looks the same: the section's number, if it has one, and one short line
+      // written for the tile (data-tile-line); without it, the first sentence of the section if it is short. Never a cut-off sentence.
+      const foot = el("span", "tile-foot");
+      if (num && num.length < 14) foot.append(el("span", "tile-num", num));
+      const first = [...s.querySelectorAll(".lead, p")].map(text).find(x => x.length > 30 && x !== t);
+      const line = s.dataset.tileLine || (first && first.split(/(?<=[.!?])\s/)[0].length <= 90 ? first.split(/(?<=[.!?])\s/)[0] : "");
+      if (line) foot.append(el("span", "tile-line", line));
+      if (foot.childNodes.length) tile.append(foot);
       tile.append(el("span", "tile-plus"));
       tile.addEventListener("click", () => { opener = tile; open(s, k, t || k, s.classList.contains("dark") ? "dark" : ""); });
       grid.append(tile);

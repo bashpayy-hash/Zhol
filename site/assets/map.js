@@ -200,8 +200,8 @@ window.ZholMap = function (root, opts) {
       b.style.setProperty("--d", Math.round(500 + s.x / W * 1000) + "ms");
       const dot = el("i"); s.dot = dot; const size = mini ? 9 + 2 * Math.min(3, s.list.length - 1) : 14 + 4 * Math.min(3, s.list.length - 1); dot.style.width = dot.style.height = size + "px";
       b.append(dot);
-      if (s.list.length > 1 && !mini) b.append(el("span", "n", String(s.list.length)));
-      if (s.type === "p" && !mini) { s.lbl = el("span", "lbl", s.name); b.append(s.lbl); }   // names show close up, where points spread out
+      // no count inside the point: its size already says how many events, and a bare number read as a code (owner, 10 Nov)
+      if (!mini) { s.lbl = el("span", "lbl", s.name); b.append(s.lbl); }   // every point is named: countries on the whole map, crossings close up
       s.btn = b; pins.append(b);
     });
     if (!mini) {

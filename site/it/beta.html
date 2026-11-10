@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s18">
+<link rel="stylesheet" href="/assets/zhol.css?v=s19">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
@@ -28,7 +28,7 @@
   <div class="wrap split">
     <div class="stack">
       <span class="kicker">Beta · per gli uffici traffico con tratte attraverso le Alpi</span>
-      <h1 class="title">I carichi di domani, verificati su regole reali</h1>
+      <h1 class="title">I carichi di domani, <span class="ans">verificati su regole reali</span></h1>
       <p class="lead">Tutto ciò che vedete in questa pagina è calcolato dal motore di zhol a partire dai divieti di circolazione ufficiali per i mezzi pesanti di sette paesi e dal calendario ufficiale del dosaggio in Tirolo. I carichi sono di esempio; le regole sono reali.</p>
       <p class="small muted" id="built">Dati calcolati dal motore a ogni aggiornamento del sito.</p>
       <div class="actions"><a class="btn" href="#join">Partecipa alla beta</a><a href="#when">Verifica un corridoio</a></div>
@@ -37,7 +37,7 @@
   </div>
 </section>
 
-<section data-tile class="slide sage" id="evening">
+<section data-tile data-tile-line="I carichi di esempio di stasera, verificati, e l’avviso WhatsApp che ne esce" class="slide sage" id="evening">
   <div class="wrap stack">
     <span class="kicker green" id="ev-kicker">La sera prima</span>
     <h2 class="title" id="ev-title">Una serata, regole reali</h2>
@@ -57,7 +57,7 @@
   <div class="wrap"><div class="foot"><span>Regole: WKO (Austria), DM MIT 325/2025 (Italia), StVO e Ferienreiseverordnung (Germania), VRV (Svizzera), Bison Futé (Francia), calendario del dosaggio del Land Tirolo</span></div></div>
 </section>
 
-<section data-tile class="slide" id="when">
+<section data-tile data-tile-kicker="Orario di partenza" data-tile-line="Ogni ora di partenza dei prossimi 14 giorni, e quella che perde meno" class="slide" id="when">
   <div class="wrap stack">
     <h2 class="title">Quando deve partire il mio camion?</h2>
     <p class="lead">Scegliete un corridoio. Ogni cella è un orario di partenza nei prossimi 14 giorni: quanto tempo perderebbe il camion per divieti e dosaggio con il piano attuale, e cosa suggerirebbe zhol. Cliccate su una cella per i dettagli.</p>
@@ -71,7 +71,7 @@
   <div class="wrap"><div class="foot"><span>Velocità media 68 km/h, regole UE sui tempi di guida (Reg. 561/2006), camion da 40 t Euro VI, merce generica. Il traffico in tempo reale non è modellato: zhol pianifica la sera prima.</span></div></div>
 </section>
 
-<section data-tile class="slide dark" id="bulletin">
+<section data-tile data-tile-kicker="Calendario dei divieti" data-tile-line="Divieti del fine settimana, festivi e notturni, e i giorni di dosaggio in Tirolo" class="slide dark" id="bulletin">
   <div class="wrap stack">
     <h2 class="title">Le prossime due settimane sulle strade europee dei mezzi pesanti</h2>
     <p class="lead" style="color:var(--on-dark-2)">Divieti del fine settimana e festivi e giorni ufficiali di dosaggio per i mezzi oltre 7,5 t. I divieti notturni in Austria (22:00–05:00) e in Svizzera (22:00–05:00, oltre 3,5 t) valgono ogni notte e qui non sono ripetuti.</p>
@@ -80,7 +80,7 @@
   <div class="wrap"><div class="foot"><span>Condivisibile liberamente. Questa è la parte pubblica, quella dei calendari; zhol aggiunge la parte non pianificata e l’abbinamento con i vostri carichi.</span></div></div>
 </section>
 
-<section data-tile class="slide" id="demos">
+<section data-tile data-tile-kicker="Serate reali, rivissute" data-tile-line="La Sicilia il 18 ottobre e il Brennero l’11 novembre, rivissuti" class="slide" id="demos">
   <div class="wrap stack">
     <h2 class="title">Due serate dimostrative</h2>
     <div class="seg" role="tablist" aria-label="Scenari dimostrativi">
@@ -124,7 +124,7 @@
   </div>
 </section>
 
-<section data-tile class="slide" id="feedback">
+<section data-tile data-tile-line="Un avviso sbagliato costa fiducia. Diteci quale non tornava" class="slide" id="feedback">
   <div class="wrap split" style="align-items:start">
     <div class="stack">
       <span class="kicker">State provando la beta?</span>
@@ -154,7 +154,7 @@
 <script src="/assets/beta.js?v=a3" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/steps.js?v=s1" defer></script>
-<script src="/assets/sheets.js?v=t3" defer></script>
+<script src="/assets/sheets.js?v=t4" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

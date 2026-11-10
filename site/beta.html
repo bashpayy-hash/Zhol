@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s18">
+<link rel="stylesheet" href="/assets/zhol.css?v=s19">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
@@ -28,7 +28,7 @@
   <div class="wrap split">
     <div class="stack">
       <span class="kicker">Beta · for traffic offices with lanes over the Alps</span>
-      <h1 class="title">Tomorrow’s loads, checked against real rules</h1>
+      <h1 class="title">Tomorrow’s loads, <span class="ans">checked against real rules</span></h1>
       <p class="lead">Everything on this page is computed by the zhol engine from the official truck bans of seven countries and the official Tyrol dosing calendar. Loads are samples; the rules are real.</p>
       <p class="small muted" id="built">Data built from the engine on every deploy.</p>
       <div class="actions"><a class="btn" href="#join">Join the beta</a><a href="#when">Check a corridor</a></div>
@@ -37,7 +37,7 @@
   </div>
 </section>
 
-<section data-tile class="slide sage" id="evening">
+<section data-tile data-tile-line="Tonight’s sample loads, checked, and the WhatsApp alert they produce" class="slide sage" id="evening">
   <div class="wrap stack">
     <span class="kicker green" id="ev-kicker">The evening before</span>
     <h2 class="title" id="ev-title">One evening, real rules</h2>
@@ -57,7 +57,7 @@
   <div class="wrap"><div class="foot"><span>Rules: WKO (Austria), DM MIT 325/2025 (Italy), StVO and Ferienreiseverordnung (Germany), VRV (Switzerland), Bison Futé (France), Land Tirol dosing calendar</span></div></div>
 </section>
 
-<section data-tile class="slide" id="when">
+<section data-tile data-tile-kicker="Departure planner" data-tile-line="Every departure hour of the next 14 days, and the one that loses least" class="slide" id="when">
   <div class="wrap stack">
     <h2 class="title">When should my truck leave?</h2>
     <p class="lead">Pick a corridor. Each cell is one departure time over the next 14 days: how much time the truck would lose to bans and dosing as planned, and what zhol would suggest. Click a cell for the details.</p>
@@ -71,7 +71,7 @@
   <div class="wrap"><div class="foot"><span>Average speed 68 km/h, EU driving-time rules (Reg. 561/2006), 40 t Euro VI truck, general cargo. Live traffic is not modelled: zhol plans the evening before.</span></div></div>
 </section>
 
-<section data-tile class="slide dark" id="bulletin">
+<section data-tile data-tile-kicker="Ban calendar" data-tile-line="Weekend, holiday and night bans, and the Tyrol dosing days" class="slide dark" id="bulletin">
   <div class="wrap stack">
     <h2 class="title">This fortnight on Europe’s truck routes</h2>
     <p class="lead" style="color:var(--on-dark-2)">Weekend and holiday bans and official dosing days for trucks over 7.5 t. Night bans in Austria (22:00–05:00) and Switzerland (22:00–05:00, over 3.5 t) apply every night and are not repeated here.</p>
@@ -80,7 +80,7 @@
   <div class="wrap"><div class="foot"><span>Free to share. This is the public, calendar part; what zhol adds is the unplanned part and the match to your loads.</span></div></div>
 </section>
 
-<section data-tile class="slide" id="demos">
+<section data-tile data-tile-kicker="Real evenings, replayed" data-tile-line="Sicily on 18 October and the Brenner on 11 November, replayed" class="slide" id="demos">
   <div class="wrap stack">
     <h2 class="title">Two demo evenings</h2>
     <div class="seg" role="tablist" aria-label="Demo scenarios">
@@ -99,32 +99,31 @@
 <section class="slide sage" id="join">
   <div class="wrap split" style="align-items:start">
     <div class="stack">
-      <span class="kicker green">Join the beta · Partecipa alla beta</span>
+      <span class="kicker green">Join the beta</span>
       <h2 class="title">Four weeks, free, with a weekly savings ledger</h2>
       <p class="lead">Send us tomorrow’s loads by 16:00 as Excel or CSV. At 17:30 and 20:00 we check every load; if one is at risk you get one WhatsApp message with the options. A person checks every event before it is sent.</p>
-      <p class="small">Inviateci entro le 16:00 i carichi di domani (Excel o CSV). Alle 17:30 e alle 20:00 controlliamo ogni carico: se uno è a rischio ricevete un solo messaggio WhatsApp con le opzioni. Ogni evento è verificato da una persona.</p>
       <p class="small muted">We use only what the check needs: reference, route, times, cargo type. EU servers; data deleted 90 days after delivery or on request.</p>
     </div>
     <form class="card" data-steps name="beta-signup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="beta-signup">
       <p class="hidden-field"><label>Do not fill this in: <input name="bot-field"></label></p>
       <div class="fields">
-        <div class="field"><label for="f-company">Company · Azienda</label><input id="f-company" name="company" required autocomplete="organization"></div>
-        <div class="field"><label for="f-name">Your name · Nome</label><input id="f-name" name="name" required autocomplete="name"></div>
-        <div class="field"><label for="f-role">Role · Ruolo</label><select id="f-role" name="role"><option>Owner · Titolare</option><option>Traffic office · Ufficio traffico</option><option>Operations manager</option><option>Forwarder · Spedizioniere</option><option>Other · Altro</option></select></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" required autocomplete="organization"></div>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="f-role">Role</label><select id="f-role" name="role"><option>Owner</option><option>Traffic office</option><option>Operations manager</option><option>Forwarder</option><option>Other</option></select></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
         <div class="field"><label for="f-wa">WhatsApp</label><input id="f-wa" name="whatsapp" type="tel" placeholder="+39 …" autocomplete="tel"></div>
-        <div class="field"><label for="f-trucks">Trucks · Mezzi</label><input id="f-trucks" name="trucks" type="number" min="1" step="1"></div>
-        <div class="field" style="grid-column:1/-1"><label for="f-lanes">Main lanes and crossings · Linee e valichi</label><input id="f-lanes" name="lanes" placeholder="e.g. Verona–München via Brennero, Milano–Lyon via Fréjus"></div>
-        <div class="field" style="grid-column:1/-1"><label for="f-msg">The last disruption that cost you a day · L’ultimo blocco che vi è costato una giornata</label><textarea id="f-msg" name="last_disruption"></textarea></div>
+        <div class="field"><label for="f-trucks">Trucks</label><input id="f-trucks" name="trucks" type="number" min="1" step="1"></div>
+        <div class="field" style="grid-column:1/-1"><label for="f-lanes">Main lanes and crossings</label><input id="f-lanes" name="lanes" placeholder="e.g. Verona–München via Brennero, Milano–Lyon via Fréjus"></div>
+        <div class="field" style="grid-column:1/-1"><label for="f-msg">The last disruption that cost you a day</label><textarea id="f-msg" name="last_disruption"></textarea></div>
       </div>
-      <label class="check"><input type="checkbox" name="consent" value="yes" required> I agree that zhol stores these details to contact me about the beta. · Acconsento al trattamento dei dati per essere contattato.</label>
+      <label class="check"><input type="checkbox" name="consent" value="yes" required> I agree that zhol stores these details to contact me about the beta.</label>
       <div class="actions"><button class="btn" type="submit">Join the beta</button></div>
     </form>
   </div>
 </section>
 
-<section data-tile class="slide" id="feedback">
+<section data-tile data-tile-line="A wrong alert costs trust. Tell us which one looked wrong" class="slide" id="feedback">
   <div class="wrap split" style="align-items:start">
     <div class="stack">
       <span class="kicker">Testing the beta?</span>
@@ -154,7 +153,7 @@
 <script src="/assets/beta.js?v=a3" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/steps.js?v=s1" defer></script>
-<script src="/assets/sheets.js?v=t3" defer></script>
+<script src="/assets/sheets.js?v=t4" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>
