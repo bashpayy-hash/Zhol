@@ -31,7 +31,7 @@
 
 ## 1. Итальянские компании
 
-**Порядок:** их собственные маршруты и свежий случай на их коридоре → просьба со ссылкой → кто мы → бесплатный
+**Порядок:** кто мы и грант → их собственные маршруты и свежий случай на их коридоре → просьба со ссылкой →
 отписка. Радар без ссылки, он открывается в конце опроса.
 
 ### Темы (по событию в письме)
@@ -48,12 +48,12 @@
 
 ```text
 Buongiorno,
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+
 {строка про компанию}
 
 Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 {ссылка}
-
-Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -84,12 +84,12 @@ Pensando ai vostri circa {N} mezzi con {груз} da {город} verso {стр�
 
 ```text
 Buongiorno,
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+
 Ho visto che lavorate da Soave verso Francia, Svizzera e Austria, con circa 90 mezzi. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
 Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-form
-
-Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -102,12 +102,12 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ```text
 Buongiorno,
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+
 Ho visto che lavorate da Verona verso Francia, Germania e Belgio, soprattutto trasporti eccezionali. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
 Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-form
-
-Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -120,12 +120,12 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ```text
 Buongiorno,
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+
 Ho visto che lavorate da Nocera Inferiore verso Germania, Austria e Svizzera, soprattutto merce a temperatura controllata. A ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo la sera prima permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
 Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-email
-
-Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -136,8 +136,8 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ## 2. Итальянские ассоциации
 
-**Порядок:** просьба переслать (по типу организации) → кто мы и AI-платформа → цифры региона, где ездят их члены →
-закон про 100 € → «пока только ответы», сводные результаты ассоциации → ссылка.
+**Порядок:** кто мы и грант → просьба переслать (по типу организации) и сводные результаты ассоциации → цифры
+региона, где ездят их члены → закон про 100 € → «пока только ответы» → ссылка.
 
 ### Темы по типу
 
@@ -150,13 +150,13 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ```text
 Gentile segreteria di {name},
-vi scrivo per chiedervi {просьба по типу} un sondaggio anonimo di sette domande, un minuto.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
+Vi scrivo per chiedervi {просьба по типу} un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 {цифры региона} Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
-Per ora chiediamo solo risposte, per avere numeri concreti di partenza. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
+Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 {ссылка}
 
 Grazie,
@@ -205,13 +205,13 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Gentile segreteria di ALSEA,
-vi scrivo per chiedervi di girare ai vostri associati spedizionieri e ai loro uffici traffico un sondaggio anonimo di sette domande, un minuto.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
+Vi scrivo per chiedervi di girare ai vostri associati spedizionieri e ai loro uffici traffico un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
-Per ora chiediamo solo risposte, per avere numeri concreti di partenza. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
+Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-alsea
 
 Grazie,
@@ -224,13 +224,13 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Gentile segreteria di FAI Napoli,
-vi scrivo per chiedervi di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere, un sondaggio anonimo di sette domande, un minuto.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
+Vi scrivo per chiedervi di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere, un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa 300 in Campania. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
-Per ora chiediamo solo risposte, per avere numeri concreti di partenza. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
+Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-fai-napoli
 
 Grazie,
@@ -243,13 +243,13 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Gentile segreteria di Interporto Padova,
-vi scrivo per chiedervi di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto un sondaggio anonimo di sette domande, un minuto.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
+Vi scrivo per chiedervi di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto un sondaggio anonimo di sette domande, un minuto. Vi mandiamo i risultati aggregati, da condividere con chi vi lavora.
 
 Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
-Per ora chiediamo solo risposte, per avere numeri concreti di partenza. Vi mandiamo i risultati aggregati, da condividere con chi vi lavora.
+Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-interporto-padova
 
 Grazie,
@@ -260,7 +260,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ## 3. Отраслевая пресса
 
-**Порядок:** просьба коротко упомянуть опрос → кто мы → цифры для их читателей → строка про то, о чём пишет издание
+**Порядок:** кто мы и грант → просьба коротко упомянуть опрос → цифры для их читателей → строка про то, о чём пишет издание
 (с их сайта) → что собираем → ссылка → радар как бесплатный источник и готовность ответить на вопросы.
 
 ### Темы по типу издания
@@ -294,9 +294,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Gentile redazione di Uomini e Trasporti,
-vi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo per gli uffici traffico, sette domande, un minuto.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
+Vi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo per gli uffici traffico, sette domande, un minuto.
 
 Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
@@ -316,9 +316,10 @@ Alikhan Bashpay · Università Bocconi · zhol
 Пост только с разрешения администратора группы.
 
 ```text
-Buongiorno a tutti, con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio. Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
+Buongiorno a tutti,
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio. Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
 Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde.
 https://zhol.live/it/sondaggio?src=group-lega-trasporto-marmo

@@ -47,7 +47,7 @@ T = {
             "company": "At the end of the survey you will see our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.",
             "press": "We are collecting baseline figures, minutes lost every day, shipments changed, the cost of the last incident, and how many offices would share information with each other.",
         },
-        "who": "I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition, a European programme for new tech companies.",
+        "who": "I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.",
         "gift_press": "For your pieces our radar can be a free source, zhol.live/radar, with the bans, closures and strikes of the next eight weeks, the chance of each and the sources, free to use when citing zhol.",
         "thanks": "Thank you,",
         "optout": "If you prefer not to receive further messages, just reply «no».",
@@ -77,7 +77,7 @@ T = {
             "company": "Am Ende der Umfrage sehen Sie unseren kostenlosen KI-Radar mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und der Wahrscheinlichkeit jedes Ereignisses.",
             "press": "Wir sammeln Ausgangsdaten, also verlorene Minuten pro Tag, geänderte Sendungen, die Kosten des letzten Vorfalls und wie viele Büros bereit wären, Informationen auszutauschen. Die Umfrage ist auf Englisch.",
         },
-        "who": "Ich bin Alikhan Bashpay, Student an der Universität Bocconi in Mailand. Mein Team und ich entwickeln zhol, eine KI-Plattform für Transportunternehmen, die die Disposition am Vorabend warnt, wenn eine Ladung von morgen von einem Verbot, einer Sperrung oder einem Streik betroffen sein könnte. Das Projekt ist eines von 100, die TEF Ignition, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat.",
+        "who": "Ich bin Alikhan Bashpay, Student an der Universität Bocconi in Mailand. Mein Team und ich entwickeln zhol, eine KI-Plattform für Transportunternehmen, die die Disposition am Vorabend warnt, wenn eine Ladung von morgen von einem Verbot, einer Sperrung oder einem Streik betroffen sein könnte. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und hat einen Zuschuss von 2.000 € erhalten.",
         "gift_press": "Für Ihre Artikel kann unser Radar eine kostenlose Quelle sein, zhol.live/radar, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen, ihrer Wahrscheinlichkeit und den Quellen, frei nutzbar mit Hinweis auf zhol.",
         "thanks": "Vielen Dank,",
         "optout": "Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie einfach mit «nein».",
@@ -105,7 +105,7 @@ T = {
             "company": "À la fin de l'enquête, vous verrez notre radar IA gratuit avec les interdictions, fermetures et grèves des huit prochaines semaines et la probabilité de chacune.",
             "press": "Nous recueillons des données de départ, c'est-à-dire les minutes perdues chaque jour, les envois modifiés, le coût du dernier imprévu et le nombre de services prêts à échanger des informations. L'enquête est en anglais.",
         },
-        "who": "Je m'appelle Alikhan Bashpay et je suis étudiant à l'Université Bocconi de Milan. Mon équipe et moi développons zhol, une plateforme d'IA pour les transporteurs qui prévient le service d'exploitation la veille au soir si un chargement du lendemain risque une interdiction, une fermeture ou une grève. Le projet fait partie des 100 retenus sur environ 500 par TEF Ignition, un programme européen pour les nouvelles entreprises technologiques.",
+        "who": "Je m'appelle Alikhan Bashpay et je suis étudiant à l'Université Bocconi de Milan. Mon équipe et moi développons zhol, une plateforme d'IA pour les transporteurs qui prévient le service d'exploitation la veille au soir si un chargement du lendemain risque une interdiction, une fermeture ou une grève. Le projet fait partie des 100 retenus sur environ 500 par TEF Ignition 2026, un programme européen pour les nouvelles entreprises technologiques, et a reçu une subvention de 2 000 €.",
         "gift_press": "Pour vos articles, notre radar peut être une source gratuite, zhol.live/radar, avec les interdictions, fermetures et grèves des huit prochaines semaines, leur probabilité et leurs sources, utilisable librement en citant zhol.",
         "thanks": "Merci,",
         "optout": "Si vous préférez ne plus recevoir de messages, il suffit de répondre « non ».",
@@ -133,7 +133,7 @@ T = {
             "company": "Al final de la encuesta verán nuestro radar con IA gratuito, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y la probabilidad de cada uno.",
             "press": "Recogemos datos de partida, es decir, los minutos perdidos cada día, los envíos modificados, el coste del último imprevisto y cuántas oficinas estarían dispuestas a intercambiar información. La encuesta está en inglés.",
         },
-        "who": "Me llamo Alikhan Bashpay y soy estudiante de la Universidad Bocconi de Milán. Mi equipo y yo desarrollamos zhol, una plataforma con IA para transportistas que avisa a la oficina de tráfico la noche anterior si una carga del día siguiente corre el riesgo de una prohibición, un cierre o una huelga. El proyecto es uno de los 100 seleccionados entre unos 500 por TEF Ignition, un programa europeo para nuevas empresas tecnológicas.",
+        "who": "Me llamo Alikhan Bashpay y soy estudiante de la Universidad Bocconi de Milán. Mi equipo y yo desarrollamos zhol, una plataforma con IA para transportistas que avisa a la oficina de tráfico la noche anterior si una carga del día siguiente corre el riesgo de una prohibición, un cierre o una huelga. El proyecto es uno de los 100 seleccionados entre unos 500 por TEF Ignition 2026, un programa europeo para nuevas empresas tecnológicas, y ha recibido una subvención de 2.000 €.",
         "gift_press": "Para sus artículos, nuestro radar puede ser una fuente gratuita, zhol.live/radar, con las prohibiciones, cierres y huelgas de las próximas ocho semanas, su probabilidad y sus fuentes, de uso libre citando zhol.",
         "thanks": "Gracias,",
         "optout": "Si prefieren no recibir más mensajes, basta con responder «no».",
@@ -161,7 +161,7 @@ T = {
             "company": "Alla fine del sondaggio vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.",
             "press": "Raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni.",
         },
-        "who": "Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.",
+        "who": "Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.",
         "gift_press": "Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar, con divieti, chiusure e scioperi delle prossime otto settimane, la probabilità e le fonti, utilizzabile liberamente citando zhol.",
         "thanks": "Grazie,",
         "optout": "Se preferite non ricevere altri messaggi, basta rispondere «no».",
@@ -190,7 +190,7 @@ RU = {  # the team's translation, never sent
         "press": "Мы собираем исходные данные: сколько минут теряется каждый день, сколько отправок меняется, во что обошёлся последний случай и сколько офисов готовы обмениваться информацией.",
     },
     "in_english": " Опрос на английском.",
-    "who": "Меня зовут Алихан Башпай, я студент Университета Боккони в Милане. Мы с командой разрабатываем zhol, AI-платформу для перевозчиков, которая накануне вечером предупреждает отдел перевозок, если завтрашнему грузу грозит запрет, закрытие или забастовка. Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition, европейской программой для новых технологических компаний.",
+    "who": "Меня зовут Алихан Башпай, я студент Университета Боккони в Милане. Мы с командой разрабатываем zhol, AI-платформу для перевозчиков, которая накануне вечером предупреждает отдел перевозок, если завтрашнему грузу грозит запрет, закрытие или забастовка. Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition 2026, европейской программой для новых технологических компаний, и получил грант 2 000 евро.",
     "gift_press": "Для ваших статей наш радар может быть бесплатным источником, zhol.live/radar: запреты, закрытия и забастовки на восемь недель вперёд, их вероятность и источники, можно использовать со ссылкой на zhol.",
     "thanks": "Спасибо,",
     "optout": "Если не хотите получать новые сообщения, просто ответьте «нет».",
@@ -209,49 +209,54 @@ def survey_link(oid: str, lang: str) -> str:
 
 
 # Letters written for one organisation only, when it can matter more than the rest (owner, 11 Nov 2026, on IRU:
-# «особенно сконцентрируйся на этом, это организация возможно станет билетом в успех для проекта»). IRU's members
-# are national associations, not hauliers, and it has its own fight on the Brenner, so the letter starts there.
-IRU_SRC = "https://www.iru.org/node/18406"   # IRU supports joint call to end Brenner transit restrictions, 16 Apr 2026
+# «особенно сконцентрируйся на этом, это организация возможно станет билетом в успех для проекта»). IRU's members are
+# national associations, not hauliers, so the ask is to pass the survey to them. No mention of IRU's own Brenner
+# statements or the court case yet (owner: «проситься на 16-е апреля было бы пока что рановато»).
+BRENNER_SRC = "https://www.agi.it/economia/news/2026-05-30/brennero-traffico-limitazioni-danno-37305644/"
 BESPOKE = {
     "ab-iru": {
-        "subject": "Brenner case C-524/24, traffic-office data from a Bocconi AI project",
-        "why": ("The cost of the Tyrol measures is known at country level. The Brenner restrictions alone cost Italy €544 "
-                "million a year, and in 2025 21 of the 57 dosing days at Kufstein came outside the published calendar. What "
-                "is still missing ahead of the Court's ruling in case C-524/24 is the cost seen from a single traffic office, "
-                "the minutes lost every day, the loads moved and the price of the last surprise. By Italian law every hour a "
-                "truck waits is worth €100."),
-        "why_src": IRU_SRC,
+        "subject": "Bocconi AI project on Alpine bans, a 1-minute survey for IRU members",
+        "why": ("The cost of the restrictions on the lanes to Italy is known at country level. The Brenner restrictions alone "
+                "cost Italy €544 million a year, and in 2025 21 of the 57 dosing days at Kufstein came outside the published "
+                "calendar. What is still missing is the cost seen from a single traffic office, the minutes lost every day, "
+                "the loads moved and the price of the last surprise. By Italian law every hour a truck waits is worth €100."),
+        "why_src": BRENNER_SRC,
         "message": (
-            "Dear IRU team,\n"
-            "Could you pass this to your EU advocacy team in Brussels? It is a short request linked to IRU's joint call of "
-            "16 April to end the Brenner transit restrictions.\n\n"
+            "Dear IRU team,\n{who}\n\n"
+            "Could you share a one-minute, anonymous survey with the member associations whose hauliers run lanes to and "
+            "through Italy? We will send IRU the aggregated results, free to use in its work for road transport.\n\n"
             "{why}\n\n"
-            "We are measuring this with an anonymous survey, seven questions, one minute, nothing else asked. Could IRU "
-            "share it with the member associations whose hauliers run lanes to and through Italy? We will send IRU the "
-            "aggregated results, free to use in its work on the Brenner, and at the end every respondent sees our free AI "
-            "radar of bans, closures and strikes for the next eight weeks.\n"
+            "The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, "
+            "closures and strikes of the next eight weeks and the chance of each.\n"
             "{link}\n\n"
-            "{who}\n\n"
             "Thank you,\n{sign}"),
         "message_ru": (
             "Письмо на английском. Перевод для команды. Письмо написано только для IRU.\n\n"
-            "Уважаемая команда IRU,\n"
-            "не могли бы вы передать это вашей команде по делам ЕС в Брюсселе? Это короткая просьба, связанная с совместным "
-            "призывом IRU от 16 апреля отменить транзитные ограничения на Бреннере.\n\n"
-            "Цена мер Тироля известна на уровне стран. Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а в "
-            "2025 году 21 из 57 дней дозирования в Куфштайне пришёлся вне опубликованного календаря. Перед решением Суда ЕС по "
-            "делу C-524/24 всё ещё не хватает цены, которую видит один отдел перевозок, то есть сколько минут теряется каждый "
-            "день, сколько грузов переносится и во что обошёлся последний сюрприз. По итальянскому закону каждый час ожидания "
-            "грузовика стоит 100 евро.\n\n"
-            "Мы измеряем это анонимным опросом, семь вопросов, одна минута, больше ничего. Не могли бы вы поделиться им с "
-            "ассоциациями-членами, чьи перевозчики ездят в Италию и через неё? IRU пришлём сводные результаты, их можно "
-            "свободно использовать в работе по Бреннеру, а в конце каждый ответивший увидит наш бесплатный AI-радар запретов, "
-            "закрытий и забастовок на восемь недель вперёд.\n"
+            "Уважаемая команда IRU,\n{who_ru}\n\n"
+            "Не могли бы вы поделиться анонимным опросом на одну минуту с ассоциациями-членами, чьи перевозчики ездят в Италию "
+            "и через неё? IRU пришлём сводные результаты, их можно свободно использовать в работе для автоперевозок.\n\n"
+            "Цена ограничений на маршрутах в Италию известна на уровне стран. Одни только ограничения на Бреннере стоят Италии "
+            "544 млн евро в год, а в 2025 году 21 из 57 дней дозирования в Куфштайне пришёлся вне опубликованного календаря. "
+            "Не хватает цены, которую видит один отдел перевозок, то есть сколько минут теряется каждый день, сколько грузов "
+            "переносится и во что обошёлся последний сюрприз. По итальянскому закону каждый час ожидания грузовика стоит 100 "
+            "евро.\n\n"
+            "В опросе семь вопросов, больше он ничего не просит. В конце он показывает наш бесплатный AI-радар с запретами, "
+            "закрытиями и забастовками на восемь недель вперёд и вероятностью каждого.\n"
             "{link}\n\n"
-            "{who_ru}\n\n"
             "Спасибо,\n{sign}"),
     },
 }
+
+
+def _cap(t: str) -> str:
+    """A request that now opens its own paragraph starts with a capital («¿Podrían», «Könnten Sie»)."""
+    i = 1 if t[:1] == "¿" else 0
+    return t[:i] + t[i].upper() + t[i + 1:]
+
+
+def _after_greeting(t: str, lang: str) -> str:
+    """Right after the greeting comma: lower case in German (DIN 5008), French, Spanish, Italian and Russian, as usual."""
+    return t if lang == "en" else t[0].lower() + t[1:]
 
 
 def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None) -> dict:
@@ -262,7 +267,7 @@ def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None
     if own and oid in BESPOKE:
         b, link = BESPOKE[oid], survey_link(oid, "en")
         why = b["why"]
-        fill = dict(why=why, link=link, who=T["en"]["who"], who_ru=RU["who"], sign=SIGN["en"])
+        fill = dict(why=why, link=link, who=T["en"]["who"], who_ru=_after_greeting(RU["who"], "ru"), sign=SIGN["en"])
         return {"subject": b["subject"], "message": b["message"].format(**fill), "why": why, "why_src": b["why_src"],
                 "message_ru": b["message_ru"].format(**fill), "link": link, "lang": "en"}
     lang = lang or LANG.get(oid, "en")
@@ -279,10 +284,14 @@ def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None
     head = t["head"][kind].format(name=name)
     if lang == "fr" and name[:1].upper() in "AEIOUH":                   # French elision, «l'équipe d'OTRE»
         head = head.replace(f" de {name}", f" d'{name}")
-    text = (f"{head}\n\n{why}\n\n{t['ask'][ask_key]}\n{link}\n\n{t['who']}\n\n{gift}"
+    # who we are first, with the grant (owner, 11 Nov 2026), then the request in its own paragraph
+    greet, request = head.split("\n", 1)
+    text = (f"{greet}\n{_after_greeting(t['who'], lang)}\n\n{_cap(request)}\n\n{why}\n\n{t['ask'][ask_key]}\n{link}\n\n{gift}"
             f"{t['thanks']}\n{SIGN[lang]}" + (f"\n{t['optout']}" if kind == "company" else ""))
-    ru = (f"Письмо на {LANG_NAME_RU[lang]}. Перевод для команды.\n\n{RU['head'][kind].format(name=name)}\n\n{reason_ru} {RU['law']}\n\n"
-          f"{RU['ask'][ask_key]}{note_ru}\n{link}\n\n{RU['who']}\n\n{gift_ru}{RU['thanks']}\n{SIGN[lang]}"
+    greet_ru, request_ru = RU["head"][kind].format(name=name).split("\n", 1)
+    ru = (f"Письмо на {LANG_NAME_RU[lang]}. Перевод для команды.\n\n{greet_ru}\n{_after_greeting(RU['who'], 'ru')}\n\n"
+          f"{_cap(request_ru)}\n\n{reason_ru} {RU['law']}\n\n"
+          f"{RU['ask'][ask_key]}{note_ru}\n{link}\n\n{gift_ru}{RU['thanks']}\n{SIGN[lang]}"
           + (f"\n{RU['optout']}" if kind == "company" else ""))
     subject = t["subject"][kind]
     if lang == "it" and kind == "company" and country != "CH":     # an Italian branch whose lanes are not the Swiss ones

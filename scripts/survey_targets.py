@@ -41,10 +41,12 @@ SIGN = "Alikhan Bashpay · Università Bocconi · zhol"
 # is (the most reliable figure), what it means for this company (its lanes, its region, a recent event with a
 # source), the network of offices, the automation, the survey. Every figure has a public source (SOURCES).
 ASK_FIRST = "vi scrivo per chiedervi un minuto per un breve sondaggio di sette domande, anonimo."
-HOOK = ("Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima "
-        "avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli "
-        "uffici di avvisarsi tra loro.")
-PLATFORM = ("Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.")
+# Who we are comes first in every letter, with the grant (owner, 11 Nov 2026: «всё-таки стоит начать с того, чтобы
+# представиться, рассказать о гранте»). Lower case after the greeting comma, as Italian letters do.
+HOOK = ("sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per "
+        "autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura "
+        "o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove "
+        "imprese tecnologiche, e ha ricevuto un grant di 2.000 €.")
 SIZE = ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
         "2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
 BASELINE = ("Per ora vi chiediamo solo di rispondere. Stiamo raccogliendo i dati di partenza per capire a fondo il problema "
@@ -187,10 +189,7 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
 COMPANY_ASK = ("Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, "
                "anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, "
                "chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.")
-COMPANY_WHO = ("Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per "
-               "autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una "
-               "chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per "
-               "nuove imprese tecnologiche.")
+COMPANY_WHO = HOOK
 COMPANY_SUBJECT = {  # by the event in the letter; no TEF (companies do not know it), Bocconi (they do)
     SOURCES["kufstein"]: "Progetto AI della Bocconi, quanto vi costano Kufstein e il Brennero?",
     SOURCES["montblanc"]: "Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?",
@@ -207,7 +206,7 @@ def company_subject(src: str) -> str:
 
 
 def company_message(name: str, line: str, link: str, src: str = "") -> str:
-    return (f"Buongiorno,\n{line}\n\n{COMPANY_ASK}\n{link}\n\n{COMPANY_WHO}\n\n"
+    return (f"Buongiorno,\n{HOOK}\n\n{line}\n\n{COMPANY_ASK}\n{link}\n\n"
             f"Grazie,\n{SIGN}\n{OPTOUT}")
 
 
@@ -284,11 +283,10 @@ WHY = {  # (Italian, Russian, source key), the figures closest to where the memb
                  "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а в октябре восемь дней блокад "
                  "дальнобойщиков на Юге принесли больше 400 млн евро ущерба.", "brenner"),
 }
-HOOK_RU = ("Меня зовут Алихан Башпай, я студент Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая накануне "
-           "вечером предупреждает отдел перевозок, если завтрашнему грузу грозит запрет, закрытие или забастовка, и даёт "
-           "офисам предупреждать друг друга.")
-PLATFORM_RU = ("Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition, европейской программой для новых "
-               "технологических компаний.")
+HOOK_RU = ("меня зовут Алихан Башпай, я студент Университета Боккони. Мы с командой разрабатываем zhol, AI-платформу для "
+           "перевозчиков, которая накануне вечером предупреждает отдел перевозок, если завтрашнему грузу грозит запрет, "
+           "закрытие или забастовка. Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition 2026, европейской "
+           "программой для новых технологических компаний, и получил грант 2 000 евро.")
 
 
 def assoc_kind(name: str, about: str = "") -> str:
@@ -315,12 +313,12 @@ def association_message(name: str, link: str, kind: str = "hauliers", region: st
         "All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati."
     back_ru = "Мы пришлём вам сводные результаты, чтобы поделиться с теми, кто у вас работает." if kind == "terminal" else \
         "Ассоциации пришлём сводные результаты, чтобы поделиться с вашими членами."
-    it = (f"Gentile segreteria di {name},\nvi scrivo per chiedervi {ask_it} un sondaggio anonimo di sette domande, un minuto.\n\n"
-          f"{HOOK} {PLATFORM}\n\n{why_it} Per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\n"
-          f"Per ora chiediamo solo risposte, per avere numeri concreti di partenza. {back}\n{link}\n\nGrazie,\n{SIGN}")
-    ru = (f"Уважаемый секретариат {name},\nпишу, чтобы попросить вас {ask_ru} анонимный опрос из семи вопросов на одну минуту.\n\n"
-          f"{HOOK_RU} {PLATFORM_RU}\n\n{why_ru} По итальянскому закону каждый час ожидания грузовика стоит 100 евро.\n\n"
-          f"Пока мы просим только ответы, чтобы получить конкретные исходные цифры. {back_ru}\n{link}\n\nСпасибо,\n{SIGN}")
+    it = (f"Gentile segreteria di {name},\n{HOOK}\n\nVi scrivo per chiedervi {ask_it} un sondaggio anonimo di sette domande, "
+          f"un minuto. {back}\n\n{why_it} Per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\n"
+          f"Per ora chiediamo solo risposte, per avere numeri concreti di partenza.\n{link}\n\nGrazie,\n{SIGN}")
+    ru = (f"Уважаемый секретариат {name},\n{HOOK_RU}\n\nПишу, чтобы попросить вас {ask_ru} анонимный опрос из семи вопросов на "
+          f"одну минуту. {back_ru}\n\n{why_ru} По итальянскому закону каждый час ожидания грузовика стоит 100 евро.\n\n"
+          f"Пока мы просим только ответы, чтобы получить конкретные исходные цифры.\n{link}\n\nСпасибо,\n{SIGN}")
     if "autoparco" in name.lower():
         it, ru = it.replace("nel vostro interporto", "nel vostro autoparco"), ru.replace("на вашем терминале", "на вашей стоянке")
     return it, ru, why_it, SOURCES[src]
@@ -401,8 +399,8 @@ def press_message(outlet: str, link: str, pid: str = "") -> tuple[str, str, str,
     kind = PRESS_KIND.get(pid, "trade")
     fig_it, fig_ru, src = PRESS_FIGURES[kind]
     ang_it, ang_ru = PRESS_ANGLE.get(pid, ("", ""))
-    it = (f"Gentile redazione di {outlet},\nvi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo per gli uffici "
-          f"traffico, sette domande, un minuto.\n\n{HOOK} {PLATFORM}\n\n{fig_it}\n\n"
+    it = (f"Gentile redazione di {outlet},\n{HOOK}\n\nVi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo "
+          f"per gli uffici traffico, sette domande, un minuto.\n\n{fig_it}\n\n"
           + (ang_it + " " if ang_it else "")
           + "Raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto "
           f"e quanti uffici sarebbero pronti a scambiarsi informazioni.\n{link}\n\n"
@@ -410,8 +408,8 @@ def press_message(outlet: str, link: str, pid: str = "") -> tuple[str, str, str,
           "divieti, chiusure e scioperi delle prossime otto settimane, con la probabilità e le fonti, e potete usarlo "
           "liberamente citando zhol. Se la storia vi interessa, io e il mio team siamo disponibili per qualche domanda."
           f"\n\nGrazie,\n{SIGN}")
-    ru = (f"Уважаемая редакция {outlet},\nпишу, чтобы попросить вас коротко упомянуть анонимный опрос для отделов перевозок, "
-          f"семь вопросов, одна минута.\n\n{HOOK_RU} {PLATFORM_RU}\n\n{fig_ru}\n\n"
+    ru = (f"Уважаемая редакция {outlet},\n{HOOK_RU}\n\nПишу, чтобы попросить вас коротко упомянуть анонимный опрос для "
+          f"отделов перевозок, семь вопросов, одна минута.\n\n{fig_ru}\n\n"
           + (ang_ru + " " if ang_ru else "")
           + "Мы собираем исходные данные, то есть сколько минут теряется каждый день, сколько отправок меняется, во что обошёлся "
           f"последний непредвиденный случай и сколько офисов готовы обмениваться информацией.\n{link}\n\n"
@@ -486,8 +484,8 @@ def build() -> list[dict]:
 
 
 def group_message(link: str) -> str:
-    return ("Buongiorno a tutti, con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio. "
-            + HOOK + " " + PLATFORM + "\n\n" + SIZE + "\n\n"
+    return ("Buongiorno a tutti,\n" + HOOK + "\n\nCon il permesso degli amministratori vi chiedo un minuto per un breve "
+            "sondaggio. " + SIZE + "\n\n"
             f"Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde.\n{link}\n\n"
             f"Grazie a chi ci dedica un minuto!\n{SIGN}")
 
