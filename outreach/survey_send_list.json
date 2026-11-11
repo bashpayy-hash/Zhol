@@ -1525,7 +1525,7 @@
 "name": "G.A.M. Gruppo Autocisterne Mantova soc. coop.",
 "city": "Mantova",
 "region": "Lombardia",
-"to": "",
+"to": "traffico@gammn.it",
 "where": "https://www.transportonline.com/azienda_28286_G.A.M.-Gruppo-Autocisterne-Mantova-Soc.Coop.html",
 "search": "https://www.google.com/search?q=G.A.M.+Gruppo+Autocisterne+Mantova+soc.+coop.+Mantova+contatti",
 "subject": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
@@ -1534,6 +1534,7 @@
 "fit": "2",
 "why": "Ho visto che lavorate da Mantova, soprattutto rifiuti. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. A Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Saperlo la sera prima permette di partire prima, passare da Tarvisio o mettere il semirimorchio sul treno, e per la legge italiana ogni ora che un camion aspetta vale 100 €.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://www.gammn.it/contatti/",
 "about": "Кооператив из Мантуи, по названию — группа автоцистерн; по прежним данным возит отходы. Своего сайта не нашли, профиль не описан."
 },
 {
@@ -1954,7 +1955,7 @@
 "name": "CARS - Consorzio Autotrasportatori Riuniti Sassolesi",
 "city": "Sassuolo",
 "region": "Emilia-Romagna",
-"to": "",
+"to": "servizi@c-a-r-s.it",
 "where": "https://www.cars-autotrasporti.it/",
 "search": "https://www.google.com/search?q=CARS+-+Consorzio+Autotrasportatori+Riuniti+Sassolesi+Sassuolo+contatti",
 "subject": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
@@ -1963,6 +1964,7 @@
 "fit": "2",
 "why": "Ho visto che lavorate da Sassuolo verso Svizzera, soprattutto rifiuti. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. In Svizzera i divieti di notte e la domenica lasciano già una finestra stretta, e basta una coda imprevista alla dogana di Chiasso o un cantiere sul percorso per perderla. Saperlo la sera prima permette di anticipare il passaggio in dogana o avvisare per tempo il cliente, e per la legge italiana ogni ora che un camion aspetta vale 100 €.",
 "why_src": "https://www.ch.ch/en/vehicles-and-traffic/driving-bans-for-lorries/",
+"to_src": "https://cars-autotrasporti.it/it",
 "about": "Консорциум перевозчиков Сассуоло с базой в Казальгранде. Возит плитку, стройматериалы и отходы керамики по северу и центру Италии и в Швейцарию — наш профиль. Склад 9 000 м²."
 },
 {
@@ -2406,7 +2408,7 @@
 {
 "name": "Confartigianato Bergamo - Trasporti",
 "city": "Bergamo",
-"to": "",
+"to": "info@artigianibg.com",
 "where": "https://confartigianatobergamo.it/",
 "search": "https://www.google.com/search?q=Confartigianato+Bergamo+-+Trasporti+Bergamo+contatti",
 "fit": "",
@@ -2415,6 +2417,7 @@
 "region": "Lombardia",
 "subject": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
 "link": "https://zhol.live/it/sondaggio?src=assoc-confartigianato-bergamo-trasporti",
+"to_src": "https://confartigianatobergamo.it/",
 "about": "Объединение ремесленников и малого бизнеса Бергамо, есть транспортное направление. Помогает членам с финансами, кредитами и экспортом; может разослать опрос малым перевозчикам провинции.",
 "message": "Gentile segreteria di Confartigianato Bergamo - Trasporti,\nsono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.\n\nDivieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.\n\nPer cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Per questo vi chiedo di girare alle imprese di autotrasporto della vostra categoria, soprattutto a chi lavora in Europa, il nostro sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati. Il sondaggio non chiede nient'altro e si chiude con il nostro radar AI gratuito delle prossime otto settimane.\nhttps://zhol.live/it/sondaggio?src=assoc-confartigianato-bergamo-trasporti\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "message_ru": "Уважаемый секретариат Confartigianato Bergamo - Trasporti,\nменя зовут Алихан Башпай, я студент Университета Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая накануне вечером предупреждает отделы перевозок, если грузу грозит запрет, закрытие или забастовка. Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition 2026, европейской программой для новых технологических компаний, и получил грант 2 000 евро.\n\nЗапреты, закрытия и забастовки на дорогах Европы стоят перевозчикам времени и денег. Какие-то цифры уже есть. Для тех, кто ездит в Германию и Австрию через Бреннер, одни только ограничения там стоят Италии 544 млн евро в год, а в Куфштайне в 2025 году 21 день дозирования из 57 пришёл вне опубликованного календаря. По итальянскому закону каждый час ожидания грузовика стоит 100 евро. Это лишь видимая часть проблемы, и мы хотим помочь уменьшить её с помощью новых инструментов, таких как ИИ, начиная с Италии и Альп и с целью охватить всю Европу.\n\nДля начала мы хотим измерить, во что это обходится одному отделу перевозок. Поэтому прошу вас переслать транспортным предприятиям вашей категории, особенно тем, кто работает по Европе, наш анонимный опрос из семи вопросов на одну минуту. Ассоциации пришлём сводные результаты, чтобы поделиться с вашими членами. Больше опрос ничего не просит и в конце показывает наш бесплатный AI-радар на восемь недель вперёд.\nhttps://zhol.live/it/sondaggio?src=assoc-confartigianato-bergamo-trasporti\n\nСпасибо,\nAlikhan Bashpay · Università Bocconi · zhol",
@@ -2591,7 +2594,7 @@
 {
 "name": "FAI Regionale Veneto - elenco associati",
 "city": "Marghera",
-"to": "",
+"to": "info@faiveneto.com",
 "where": "https://fairegionaleveneto.com/i-nostri-associati/",
 "search": "https://www.google.com/search?q=FAI+Regionale+Veneto+-+elenco+associati+Marghera+contatti",
 "fit": "",
@@ -2600,6 +2603,7 @@
 "region": "Veneto",
 "subject": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
 "link": "https://zhol.live/it/sondaggio?src=assoc-fai-regionale-veneto-elenco-associati",
+"to_src": "https://fairegionaleveneto.com/",
 "about": "Список членов региональной FAI Венето (Маргера), то есть самих перевозчиков региона, — по нему можно писать фирмам напрямую. Сама FAI рассылает членам новости о правилах и тахографах.",
 "message": "Gentile segreteria di FAI Regionale Veneto - elenco associati,\nsono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.\n\nDivieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.\n\nPer cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Per questo vi chiedo di girare ai vostri associati autotrasportatori, soprattutto a chi lavora in Europa, il nostro sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati. Il sondaggio non chiede nient'altro e si chiude con il nostro radar AI gratuito delle prossime otto settimane.\nhttps://zhol.live/it/sondaggio?src=assoc-fai-regionale-veneto-elenco-associati\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "message_ru": "Уважаемый секретариат FAI Regionale Veneto - elenco associati,\nменя зовут Алихан Башпай, я студент Университета Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая накануне вечером предупреждает отделы перевозок, если грузу грозит запрет, закрытие или забастовка. Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition 2026, европейской программой для новых технологических компаний, и получил грант 2 000 евро.\n\nЗапреты, закрытия и забастовки на дорогах Европы стоят перевозчикам времени и денег. Какие-то цифры уже есть. Для тех, кто ездит в Германию и Австрию через Бреннер, одни только ограничения там стоят Италии 544 млн евро в год, а в Куфштайне в 2025 году 21 день дозирования из 57 пришёл вне опубликованного календаря. По итальянскому закону каждый час ожидания грузовика стоит 100 евро. Это лишь видимая часть проблемы, и мы хотим помочь уменьшить её с помощью новых инструментов, таких как ИИ, начиная с Италии и Альп и с целью охватить всю Европу.\n\nДля начала мы хотим измерить, во что это обходится одному отделу перевозок. Поэтому прошу вас переслать вашим членам-перевозчикам, особенно тем, кто работает по Европе, наш анонимный опрос из семи вопросов на одну минуту. Ассоциации пришлём сводные результаты, чтобы поделиться с вашими членами. Больше опрос ничего не просит и в конце показывает наш бесплатный AI-радар на восемь недель вперёд.\nhttps://zhol.live/it/sondaggio?src=assoc-fai-regionale-veneto-elenco-associati\n\nСпасибо,\nAlikhan Bashpay · Università Bocconi · zhol",
@@ -2753,7 +2757,7 @@
 {
 "name": "Confartigianato Cuneo - Trasporto e Logistica",
 "city": "Cuneo",
-"to": "",
+"to": "segreteria@confartcn.com",
 "where": "https://cuneo.confartigianato.it/",
 "search": "https://www.google.com/search?q=Confartigianato+Cuneo+-+Trasporto+e+Logistica+Cuneo+contatti",
 "fit": "",
@@ -2762,6 +2766,7 @@
 "region": "Piemonte",
 "subject": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
 "link": "https://zhol.live/it/sondaggio?src=assoc-confartigianato-cuneo-trasporto-e-logist",
+"to_src": "https://cuneo.confartigianato.it/home/contatti/",
 "about": "Confartigianato Кунео — объединение ремесленников провинции, здесь его отделение транспорта и логистики. Выход на малых перевозчиков провинции, может разослать опрос членам.",
 "message": "Gentile segreteria di Confartigianato Cuneo - Trasporto e Logistica,\nsono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.\n\nDivieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Per chi va in Francia, da settembre a dicembre 2026 il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.\n\nPer cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Per questo vi chiedo di girare alle imprese di autotrasporto della vostra categoria, soprattutto a chi lavora in Europa, il nostro sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati. Il sondaggio non chiede nient'altro e si chiude con il nostro radar AI gratuito delle prossime otto settimane.\nhttps://zhol.live/it/sondaggio?src=assoc-confartigianato-cuneo-trasporto-e-logist\n\nGrazie,\nAlikhan Bashpay · Università Bocconi · zhol",
 "message_ru": "Уважаемый секретариат Confartigianato Cuneo - Trasporto e Logistica,\nменя зовут Алихан Башпай, я студент Университета Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая накануне вечером предупреждает отделы перевозок, если грузу грозит запрет, закрытие или забастовка. Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition 2026, европейской программой для новых технологических компаний, и получил грант 2 000 евро.\n\nЗапреты, закрытия и забастовки на дорогах Европы стоят перевозчикам времени и денег. Какие-то цифры уже есть. Для тех, кто ездит во Францию, с сентября по декабрь 2026 года тоннель Монблан закрыт по ночам с 22 до 6, а когда встаёт Фрежюс, все очереди перетекают туда. По итальянскому закону каждый час ожидания грузовика стоит 100 евро. Это лишь видимая часть проблемы, и мы хотим помочь уменьшить её с помощью новых инструментов, таких как ИИ, начиная с Италии и Альп и с целью охватить всю Европу.\n\nДля начала мы хотим измерить, во что это обходится одному отделу перевозок. Поэтому прошу вас переслать транспортным предприятиям вашей категории, особенно тем, кто работает по Европе, наш анонимный опрос из семи вопросов на одну минуту. Ассоциации пришлём сводные результаты, чтобы поделиться с вашими членами. Больше опрос ничего не просит и в конце показывает наш бесплатный AI-радар на восемь недель вперёд.\nhttps://zhol.live/it/sondaggio?src=assoc-confartigianato-cuneo-trasporto-e-logist\n\nСпасибо,\nAlikhan Bashpay · Università Bocconi · zhol",
@@ -4456,7 +4461,7 @@
 {
 "name": "Bertoldo srl",
 "city": "Veneto [CHECK town]",
-"to": "",
+"to": "info@betralog.com",
 "where": "https://bertoldosrl.com/servizi/",
 "search": "https://www.google.com/search?q=Bertoldo+srl+Veneto+%5BCHECK+town%5D+contatti",
 "fit": "",
@@ -4468,6 +4473,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Ho visto che lavorate, soprattutto merce a temperatura controllata. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. A Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni. Saperlo la sera prima permette di partire prima, passare da Tarvisio o mettere il semirimorchio sul treno, e per la legge italiana ogni ora che un camion aspetta vale 100 €.",
 "why_src": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+"to_src": "https://bertoldosrl.com/",
 "about": "Семейный перевозчик из провинции Венеция, с 1970-х годов: склад, грузы с контролем температуры, доставка в супермаркеты. Работает по северо-востоку, всей Италии и за границей."
 },
 {
@@ -5573,7 +5579,7 @@
 {
 "name": "Transmar [CHECK]",
 "city": "Torino area",
-"to": "",
+"to": "info@trasporti.torino.it",
 "where": "https://www.trasporti.torino.it/",
 "search": "https://www.google.com/search?q=Transmar+%5BCHECK%5D+Torino+area+contatti",
 "fit": "",
@@ -5585,6 +5591,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Ho visto che lavorate da Torino area. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.",
 "why_src": "https://trans.info/it/traforo-del-monte-bianco-chiusure-notturne-da-settembre-a-dicembre-2026-497687",
+"to_src": "https://www.trasporti.torino.it/",
 "about": "Компания автоперевозок из Турина. Больше на сайте ничего нет; название стоит проверить."
 },
 {
@@ -5696,7 +5703,7 @@
 {
 "name": "International Transit Spedizioni",
 "city": "Genova",
-"to": "",
+"to": "info@itsped.it",
 "where": "https://internationaltransit.it/",
 "search": "https://www.google.com/search?q=International+Transit+Spedizioni+Genova+contatti",
 "fit": "",
@@ -5708,6 +5715,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Ho visto che lavorate da Genova, soprattutto groupage. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo. Saperlo la sera prima permette di spostare l'orario d'ingresso al varco, e per la legge italiana ogni ora che un camion aspetta vale 100 €.",
 "why_src": "https://trasporti-italia.com/?p=134314",
+"to_src": "https://internationaltransit.it/",
 "about": "Таможенный экспедитор в Генуе — оформляет и доставляет грузы, которые приходят в порт, делает санитарные и таможенные сертификаты. По нашим данным, работает и со сборными грузами."
 },
 {
@@ -6281,7 +6289,7 @@
 {
 "name": "NESTA Trasporti & Logistics snc",
 "city": "Andria",
-"to": "",
+"to": "info@nestatrasporti.it",
 "where": "https://www.nestatrasportisnc.it/",
 "search": "https://www.google.com/search?q=NESTA+Trasporti+%26+Logistics+snc+Andria+contatti",
 "fit": "",
@@ -6293,6 +6301,7 @@
 "link": "https://zhol.live/it/sondaggio?src=co-broad",
 "why": "Ho visto che lavorate da Andria, soprattutto merci pericolose. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. A ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo la sera prima permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.",
 "why_src": "https://www.ilmessaggero.it/economia/blocco_tir_danni_protesta_quali_sono_cosa_succede_ora_prezzi-9844541.html",
+"to_src": "https://www.nestatrasportisnc.it/",
 "about": "Перевозчик из Андрии, полные и частичные загрузки в основном по Апулии — Бари, Фоджа, BAT. Работает в своём регионе, далеко от нашего профиля."
 },
 {
