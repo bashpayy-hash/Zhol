@@ -4,13 +4,15 @@
 (function () {
   const q = new URLSearchParams(location.search);
   if (q.get("from") !== "survey") return;
-  const IT = document.documentElement.lang === "it", src = q.get("src");
-  const start = (IT ? "/it/sondaggio" : "/survey") + (src ? "?src=" + encodeURIComponent(src) : "");
-  const keep = "?from=survey" + (src ? "&src=" + encodeURIComponent(src) : "");
+  const IT = document.documentElement.lang === "it", src = q.get("src"), sl = q.get("sl");
+  // a survey in German, French or Spanish leads back to itself (sl=); the radar itself is in English or Italian
+  const SURVEY = { de: ["/de/umfrage", "Zurück zur Umfrage"], fr: ["/fr/enquete", "Retour à l’enquête"], es: ["/es/encuesta", "Volver a la encuesta"] };
+  const start = ((SURVEY[sl] || [])[0] || (IT ? "/it/sondaggio" : "/survey")) + (src ? "?src=" + encodeURIComponent(src) : "");
+  const keep = "?from=survey" + (src ? "&src=" + encodeURIComponent(src) : "") + (SURVEY[sl] ? "&sl=" + sl : "");
   const run = () => {
     const top = document.querySelector(".top .wrap");
     if (!top) return;
-    const label = IT ? "Torna al sondaggio" : "Back to the survey";
+    const label = (SURVEY[sl] || [])[1] || (IT ? "Torna al sondaggio" : "Back to the survey");
     const logo = top.querySelector(".logo");
     if (logo) { logo.href = start; logo.setAttribute("aria-label", label); }
     const back = document.createElement("a");

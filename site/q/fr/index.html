@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f3ea">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Sept questions pour les services d’exploitation</title>
+<meta name="description" content="Sept questions, une minute : ce que coûtent les interdictions, les bouchons, les fermetures et les grèves à ceux qui planifient le transport par route, rail ou ferry. Un clic par réponse, anonyme, rien à acheter.">
+<meta property="og:title" content="Sept questions, une minute : que vous coûtent les interdictions, les bouchons et les grèves ?">
+<meta property="og:description" content="Une étude de trois étudiants de Bocconi pour les services d’exploitation avec des lignes à l’étranger. Anonyme ; les résultats sont partagés avec tous ceux qui répondent.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s30">
+<link rel="alternate" hreflang="en" href="https://zhol.live/survey">
+<link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
+<link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
+<link rel="alternate" hreflang="fr" href="https://zhol.live/fr/enquete">
+<link rel="alternate" hreflang="es" href="https://zhol.live/es/encuesta">
+<link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
+<link rel="alternate" hreflang="fr" href="https://zhol.live/fr/enquete">
+<link rel="alternate" hreflang="es" href="https://zhol.live/es/encuesta">
+<link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
+</head>
+<body>
+<header class="top q-top"><div class="wrap">
+  <a class="logo" href="/fr/enquete" aria-label="Enquête zhol, retour au début"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <span class="lang-switch" role="group" aria-label="Language · FR"><i aria-hidden="true"></i><a href="/survey" lang="en" hreflang="en">EN</a><a href="/fr/enquete" lang="fr" hreflang="fr" aria-current="true">FR</a></span>
+</div></header>
+
+<main>
+<section class="slide sv-intro sv-full" id="sv-intro">
+  <div class="wrap sv-intro-grid">
+    <div class="sv-intro-text">
+      <span class="sv-label">Étude Bocconi pour les services d’exploitation</span>
+      <h1 class="title sv-title">Sept questions. Une minute.</h1>
+      <p class="lead">Que coûtent les interdictions, les bouchons, les fermetures et les grèves à ceux qui transportent des marchandises par route, rail ou ferry ? Répondez depuis votre propre bureau ou d’après ce que vous savez du secteur. Un clic par réponse, anonyme, et nous ne vendons rien.</p>
+      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Commencer</a><a class="sv-more" href="#sv-pitch">Ce que nous construisons</a></div>
+    </div>
+    <div class="sv-scene" aria-hidden="true">
+      <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
+    </div>
+  </div>
+  <div class="wrap sv-pitch" id="sv-pitch">
+    <div class="sv-pitch-head">
+      <span class="sv-label">Ce que construit zhol</span>
+      <h2 class="sv-pitch-title">Un radar pour les routes d’Europe, puis un réseau d’agents.</h2>
+    </div>
+    <article class="sv-card sv-radar" id="sv-c2" hidden>
+      <div class="sv-radar-map">
+        <div class="map-frame" role="img" aria-label="Carte de l’Europe avec les événements que zhol attend dans les huit prochaines semaines"></div>
+      </div>
+      <div class="sv-radar-side">
+        <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Prototype en service</span>
+        <h3>Le radar : ce qui arrive sur les routes d’Europe, avec la probabilité de chaque événement.</h3>
+        <ul class="sv-sched" id="sv-sched"></ul>
+        <p class="sv-card-foot">Chaque jour, zhol lit les interdictions, les fermetures et les préavis de grève et donne à chacun sa probabilité. <a href="/radar">Ouvrir le radar complet, en anglais</a></p>
+      </div>
+    </article>
+    <div class="sv-cards">
+      <article class="sv-card" id="sv-c1" hidden>
+        <h3>Les ennuis arrivent quand personne n’est au bureau.</h3>
+        <div class="sv-card-scene">
+          <div class="sv-cal" id="sv-cal" role="img" aria-label="Les huit prochaines semaines : week-ends et jours fériés, et les jours avec un événement sur le radar"></div>
+          <p class="sv-cal-key" aria-hidden="true"><span><i class="off"></i>Week-end ou jour férié</span><span><i class="ev"></i>Événement sur le radar</span></p>
+        </div>
+        <p class="sv-card-foot"><b id="sv-c1-n"></b> Les e-mails attendent lundi ; la route, non.</p>
+      </article>
+      <article class="sv-card" id="sv-c3">
+        <h3>Ensuite : un agent pour chaque bureau.</h3>
+        <div class="sv-card-scene">
+          <span class="sv-proto ex">Exemple · comment cela fonctionnera</span>
+          <ol class="sv-feed">
+          <li style="--i:0"><span class="meta"><b>Bureau à Vérone</b><span>dim. 22:10</span></span><p>Notre chauffeur : l’A22 est fermée après Bolzano, un accident.</p></li>
+          <li style="--i:1"><span class="meta"><b>Réseau zhol</b><span>22:10</span></span><p>Les agents de 14 bureaux avec des camions sur l’A22 ce soir sont prévenus.</p></li>
+          <li class="you" style="--i:2"><span class="meta"><b>Votre agent</b><span>22:11</span></span><p>Deux camions déviés par Tarvisio. Les chauffeurs ont le nouvel itinéraire.</p></li>
+          <li style="--i:3"><span class="meta"><b>Vous</b><span>lun. 8:30</span></span><p>Vous ouvrez la journée : le plan est déjà prêt.</p></li>
+          </ol>
+        </div>
+        <p class="sv-card-foot">Les agents se transmettent les alertes en quelques secondes, jour et nuit. Sans attendre un e-mail, une pause déjeuner ou le lundi.</p>
+      </article>
+    </div>
+    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Répondre aux sept questions</a><span class="small muted">Vos chiffres décident de ce que nous construisons en premier.</span></div>
+  </div>
+</section>
+
+<section class="slide sv" id="sv-steps">
+  <div class="wrap">
+
+    <div class="sv-stage">
+      <div class="sv-mascot scene-3d" aria-hidden="true"><div class="scape"><img src="/assets/img/scape.svg?v=1" alt="" width="500" height="300"></div><img id="sv-img" src="/assets/img/mascot/delivered-560.webp?v=zd1" srcset="/assets/img/mascot/delivered-280.webp?v=zd1 280w, /assets/img/mascot/delivered-560.webp?v=zd1 560w" sizes="(max-width: 760px) 170px, 300px" alt="" width="560" height="448"></div>
+
+      <div class="sv-panel">
+        <div class="sv-road" aria-hidden="true"><i id="sv-road"></i></div>
+        <p class="sr-only" id="sv-live" aria-live="polite"></p>
+
+        <form class="survey" id="survey" name="survey" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="survey">
+          <input type="hidden" name="lang" value="fr">
+          <input type="hidden" name="src" value="">
+          <input type="hidden" name="rid" value="">
+          <p class="hidden-field"><label>Laissez ce champ vide : <input name="bot-field"></label></p>
+
+          <fieldset class="q role" data-img="delivered"><legend><span class="n">Avant de commencer</span>Qu’est-ce qui vous décrit le mieux ?</legend>
+            <p class="sv-why">Si vous ne planifiez pas vous-même de transports, les questions portent sur ce que vous savez du secteur.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="role" value="office" required><span>Je planifie ou gère des transports (exploitation, transporteur, chargeur)</span></label>
+              <label><input type="radio" name="role" value="around"><span>Je travaille autour (commission de transport, fédération, conseil)</span></label>
+              <label><input type="radio" name="role" value="academic"><span>J’enseigne ou je fais de la recherche en logistique</span></label>
+              <label><input type="radio" name="role" value="former"><span>J’ai travaillé dans la logistique</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="truck" data-path="op"><legend><span class="n">Question 1 sur 7</span>Combien de véhicules gérez-vous (camions, semi-remorques, conteneurs, wagons) ?</legend>
+            <p class="sv-why">Pour comparer des activités de taille similaire.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
+              <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
+              <label><input type="radio" name="fleet" value="21-50"><span>21–50</span></label>
+              <label><input type="radio" name="fleet" value="51-100"><span>51–100</span></label>
+              <label><input type="radio" name="fleet" value="100+"><span>Plus de 100</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="route" data-path="op"><legend><span class="n">Question 2 sur 7</span>Combien d’envois par semaine partent à l’étranger, par route, rail ou ferry ?</legend>
+            <p class="sv-why">Les longs trajets sont les plus exposés aux interdictions, aux bouchons et aux ferries qui ne partent pas.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="trips_abroad" value="0" required><span>Jamais</span></label>
+              <label><input type="radio" name="trips_abroad" value="1-5"><span>1 à 5 fois</span></label>
+              <label><input type="radio" name="trips_abroad" value="6-20"><span>6 à 20 fois</span></label>
+              <label><input type="radio" name="trips_abroad" value="20+"><span>Plus de 20 fois</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="watch" data-path="op"><legend><span class="n">Question 3 sur 7</span>Combien de temps passez-vous chaque jour à vérifier interdictions, bouchons et grèves ?</legend>
+            <p class="sv-why">C’est le temps que zhol veut vous rendre.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="minutes" value="<10" required><span>Moins de 10 minutes</span></label>
+              <label><input type="radio" name="minutes" value="10-20"><span>10 à 20 minutes</span></label>
+              <label><input type="radio" name="minutes" value="20-40"><span>20 à 40 minutes</span></label>
+              <label><input type="radio" name="minutes" value="40+"><span>Plus de 40 minutes</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="phone" data-path="op"><legend><span class="n">Question 4 sur 7</span>Le mois dernier, combien de fois une interdiction, un bouchon, une fermeture ou une grève vous a-t-elle obligé à modifier un envoi (horaire, itinéraire ou date) ?</legend>
+            <p class="sv-why">La fréquence compte autant que le coût.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="changes" value="0" required><span>Jamais</span></label>
+              <label><input type="radio" name="changes" value="1-2"><span>1 à 2 fois</span></label>
+              <label><input type="radio" name="changes" value="3-5"><span>3 à 5 fois</span></label>
+              <label><input type="radio" name="changes" value="6-10"><span>6 à 10 fois</span></label>
+              <label><input type="radio" name="changes" value="10+"><span>Plus de 10 fois</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="coin" data-path="op"><legend><span class="n">Question 5 sur 7</span>La dernière fois qu’une interdiction, un bouchon ou une grève a bloqué l’un de vos envois, combien cela vous a-t-il coûté ?</legend>
+            <p class="sv-why">Cela nous dit ce que vaut une alerte qui arrive à temps.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="last_cost" value="<100" required><span>Moins de 100 €</span></label>
+              <label><input type="radio" name="last_cost" value="100-300"><span>100 à 300 €</span></label>
+              <label><input type="radio" name="last_cost" value="300-1000"><span>300 à 1 000 €</span></label>
+              <label><input type="radio" name="last_cost" value="1000-3000"><span>1 000 à 3 000 €</span></label>
+              <label><input type="radio" name="last_cost" value="3000+"><span>Plus de 3 000 €</span></label>
+              <label><input type="radio" name="last_cost" value="unknown"><span>Je ne sais pas</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="radio" data-path="op"><legend><span class="n">Question 6 sur 7</span>Si d’autres bureaux vous signalaient un bouchon ou une fermeture vus par leurs chauffeurs, avant le départ de vos camions, partageriez-vous aussi les vôtres ?</legend>
+            <p class="sv-why">Chaque bureau aurait son propre agent qui transmet ces alertes aux autres en quelques secondes, de façon anonyme.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="share" value="yes" required><span>Oui, volontiers</span></label>
+              <label><input type="radio" name="share" value="anon"><span>Oui, si cela reste anonyme</span></label>
+              <label><input type="radio" name="share" value="receive"><span>Je ne ferais que recevoir</span></label>
+              <label><input type="radio" name="share" value="no"><span>Non</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="thinking" data-path="op"><legend><span class="n">Question 7 sur 7</span>Quel prix vous semble juste, par véhicule et par mois ?</legend>
+            <p class="sv-why">Pour fixer un prix juste avant de demander le moindre euro.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="price" value="0" required><span>Rien, je ne paierais pas</span></label>
+              <label><input type="radio" name="price" value="<5"><span>Jusqu’à 5 €</span></label>
+              <label><input type="radio" name="price" value="5-10"><span>5 à 10 €</span></label>
+              <label><input type="radio" name="price" value="10-20"><span>10 à 20 €</span></label>
+              <label><input type="radio" name="price" value="20+"><span>Plus de 20 €</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="q" data-img="truck" data-path="ex"><legend><span class="n">Question 1 sur 7</span>Quelle partie du transport de marchandises connaissez-vous le mieux ?</legend>
+            <p class="sv-why">Pour lire vos réponses à côté de celles du même domaine.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="scope" value="road"><span>Transport routier</span></label>
+              <label><input type="radio" name="scope" value="rail"><span>Rail et intermodal</span></label>
+              <label><input type="radio" name="scope" value="sea"><span>Ferries et ports</span></label>
+              <label><input type="radio" name="scope" value="shipper"><span>Chargeurs : industrie et distribution</span></label>
+              <label><input type="radio" name="scope" value="mixed"><span>Plusieurs de ces domaines</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="watch" data-path="ex"><legend><span class="n">Question 2 sur 7</span>D’après votre expérience, combien de temps un service d’exploitation avec des lignes à l’étranger passe-t-il chaque jour à vérifier interdictions, bouchons et grèves ?</legend>
+            <p class="sv-why">C’est le temps que zhol veut rendre aux bureaux.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_minutes" value="<10"><span>Moins de 10 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="10-20"><span>10 à 20 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="20-40"><span>20 à 40 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="40+"><span>Plus de 40 minutes</span></label>
+              <label><input type="radio" name="x_minutes" value="unknown"><span>Je ne sais pas</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="phone" data-path="ex"><legend><span class="n">Question 3 sur 7</span>Sur 100 envois à l’étranger, combien doivent être modifiés au cours d’un mois typique à cause d’une interdiction, d’un bouchon, d’une fermeture ou d’une grève ?</legend>
+            <p class="sv-why">La fréquence compte autant que le coût.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_changes" value="<2"><span>Moins de 2</span></label>
+              <label><input type="radio" name="x_changes" value="2-5"><span>2–5</span></label>
+              <label><input type="radio" name="x_changes" value="5-10"><span>5–10</span></label>
+              <label><input type="radio" name="x_changes" value="10+"><span>Plus de 10</span></label>
+              <label><input type="radio" name="x_changes" value="unknown"><span>Je ne sais pas</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="coin" data-path="ex"><legend><span class="n">Question 4 sur 7</span>Quand une interdiction, un bouchon ou une grève bloque un envoi, combien cela coûte-t-il en général au transporteur ?</legend>
+            <p class="sv-why">Cela nous dit ce que vaut une alerte qui arrive à temps.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_cost" value="<100"><span>Moins de 100 €</span></label>
+              <label><input type="radio" name="x_cost" value="100-300"><span>100 à 300 €</span></label>
+              <label><input type="radio" name="x_cost" value="300-1000"><span>300 à 1 000 €</span></label>
+              <label><input type="radio" name="x_cost" value="1000-3000"><span>1 000 à 3 000 €</span></label>
+              <label><input type="radio" name="x_cost" value="3000+"><span>Plus de 3 000 €</span></label>
+              <label><input type="radio" name="x_cost" value="unknown"><span>Je ne sais pas</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="radio" data-path="ex"><legend><span class="n">Question 5 sur 7</span>Les services d’exploitation partageraient-ils avec d’autres bureaux ce que voient leurs chauffeurs, si cela restait anonyme ?</legend>
+            <p class="sv-why">Chaque bureau aurait son propre agent qui transmet les alertes aux autres en quelques secondes.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_share" value="most"><span>La plupart, oui</span></label>
+              <label><input type="radio" name="x_share" value="some"><span>Certains, oui</span></label>
+              <label><input type="radio" name="x_share" value="few"><span>Peu : ils gardent l’information pour eux</span></label>
+              <label><input type="radio" name="x_share" value="unknown"><span>Je ne sais pas</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="route" data-path="ex"><legend><span class="n">Question 6 sur 7</span>Qu’est-ce qui retiendrait le plus un bureau d’utiliser un tel outil ?</legend>
+            <p class="sv-why">Pour construire autour du vrai obstacle, pas de celui que nous imaginons.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_obstacle" value="trust"><span>La confiance dans l’information</span></label>
+              <label><input type="radio" name="x_obstacle" value="price"><span>Le prix</span></label>
+              <label><input type="radio" name="x_obstacle" value="habit"><span>Les habitudes : téléphone, e-mail, WhatsApp</span></label>
+              <label><input type="radio" name="x_obstacle" value="integration"><span>L’intégration dans leur logiciel</span></label>
+              <label><input type="radio" name="x_obstacle" value="competitors"><span>Partager des données près des concurrents</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="thinking" data-path="ex"><legend><span class="n">Question 7 sur 7</span>Quel prix un bureau trouverait-il juste, par véhicule et par mois ?</legend>
+            <p class="sv-why">Pour fixer un prix juste avant de demander le moindre euro.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_price" value="0"><span>Rien, ils ne paieraient pas</span></label>
+              <label><input type="radio" name="x_price" value="<5"><span>Jusqu’à 5 €</span></label>
+              <label><input type="radio" name="x_price" value="5-10"><span>5 à 10 €</span></label>
+              <label><input type="radio" name="x_price" value="10-20"><span>10 à 20 €</span></label>
+              <label><input type="radio" name="x_price" value="20+"><span>Plus de 20 €</span></label>
+              <label><input type="radio" name="x_price" value="unknown"><span>Je ne sais pas</span></label>
+            </div>
+          </fieldset>
+
+          <p class="sv-error" id="sv-error" role="alert" hidden></p>
+          <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Retour</button><button class="btn" type="button" id="sv-next" hidden>Suivant</button><button class="btn" type="submit" id="sv-send">Envoyer mes réponses</button></div>
+        </form>
+
+        <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
+          <input type="hidden" name="form-name" value="survey-followup">
+          <input type="hidden" name="lang" value="fr">
+          <input type="hidden" name="rid" value="">
+          <p class="hidden-field"><label>Laissez ce champ vide : <input name="bot-field"></label></p>
+          <span class="sv-label ok">C’est fait, merci !</span>
+          <h2 class="sv-q-title">Souhaitez-vous quelque chose en retour ? Facultatif.</h2>
+          <div class="opts tall multi">
+            <label><input type="checkbox" name="followup" value="results"><span>Les résultats de l’enquête</span></label>
+            <label><input type="checkbox" name="followup" value="network"><span>Une place parmi les premiers bureaux du réseau partagé</span></label>
+          </div>
+          <div class="field sv-contact"><label for="sv-contact">E-mail professionnel ou téléphone</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> Vous pouvez utiliser ce contact uniquement pour ce que j’ai choisi.</label>
+          <p class="sv-error" id="sv-error2" role="alert" hidden></p>
+          <div class="sv-nav"><button class="btn" type="submit">Envoyer</button><button class="sv-link" type="button" id="sv-skip">Non, merci</button></div>
+        </form>
+
+        <div class="sv-done" id="sv-done" hidden tabindex="-1">
+          <span class="sv-label ok">Reçu</span>
+          <h2 class="sv-q-title">Merci ! Cela nous aide beaucoup.</h2>
+          <p>Vous connaissez un autre service d’exploitation ? Chaque réponse en plus renforce les chiffres.</p>
+          <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Transférer sur WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copier le lien</button></div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="sv-map card sv-now" id="sv-now" hidden aria-labelledby="sv-now-h">
+      <div class="sv-map-head">
+        <span class="sv-label">Du radar, aujourd’hui</span>
+        <h2 class="sv-q-title" id="sv-now-h">Ce qui arrive dans les prochaines semaines</h2>
+      </div>
+      <div class="sv-end-grid">
+        <div class="sv-end-col" id="sv-sched-box" hidden>
+          <h3>Les prochaines semaines, avec la probabilité de chaque événement</h3>
+          <ul class="sv-sched" id="sv-sched-end"></ul>
+        </div>
+        <div class="sv-end-col" id="sv-news-box" hidden>
+          <h3>Dans l’actualité aujourd’hui</h3>
+          <p class="small muted">Ce que le radar a relevé dans la presse en quatre langues, avec les médias.</p>
+          <ol class="sv-news" id="sv-news"></ol>
+        </div>
+      </div>
+      <div class="sv-reads">
+        <h3>Ce que lit le radar</h3>
+        <ul>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Interdictions des jours fériés</b> fixées par la loi dans sept pays.</p></li>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Calendriers officiels</b> régulation du Tyrol à Kufstein, fermetures de tunnels.</p></li>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Météo aux cols</b> et sur le ferry de Messine, 16 jours à l’avance.</p></li>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Actualité et presse spécialisée</b> en quatre langues : grèves, blocages, manifestations, fermetures. <span id="sv-reads-n"></span></p></li>
+          <li class="is-next"><span class="sv-reads-st">Bientôt</span><p><b>Réseaux sociaux</b> groupes de chauffeurs, canaux des syndicats et des agriculteurs : l’ambiance avant une manifestation.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Bientôt</span><p><b>Politique</b> élections, changement de gouvernement, votes du budget qui entraînent des grèves.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Bientôt</span><p><b>Grands événements et troubles</b> sommets, matchs, émeutes qui ferment routes et frontières.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Bientôt</span><p><b>Les agents des bureaux</b> ce que voient leurs chauffeurs, partagé en quelques secondes.</p></li>
+        </ul>
+        <p class="small muted">Chaque signal fait bouger la probabilité : une source officielle ×3, des dates annoncées ×2, six médias ou plus ×2, des discussions avec le gouvernement ×0,6.</p>
+      </div>
+    </section>
+
+    <p class="small muted sv-privacy">Un projet de l’équipe zhol de l’Université Bocconi pour TEF Ignition 2026. Les réponses sont anonymes et nous ne publions que des chiffres agrégés. Si vous laissez un contact, nous le relions à vos réponses, l’utilisons uniquement pour ce que vous avez choisi et le supprimons à la fin du projet, ou avant si vous le demandez. Données hébergées chez Netlify.</p>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Équipe zhol · Université Bocconi · TEF Ignition 2026</span>
+</div></footer>
+<script src="/assets/scene.js?v=q2" defer></script>
+<script src="/assets/map.js?v=a8" defer></script>
+<script src="/assets/survey.js?v=q22" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
+</body>
+</html>

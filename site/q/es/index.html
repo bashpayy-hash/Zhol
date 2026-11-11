@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f3ea">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Siete preguntas para departamentos de tráfico</title>
+<meta name="description" content="Siete preguntas, un minuto: lo que cuestan las prohibiciones, las colas, los cierres y las huelgas a quienes planifican el transporte por carretera, tren o ferry. Un toque por respuesta, anónimo, nada que comprar.">
+<meta property="og:title" content="Siete preguntas, un minuto: ¿cuánto le cuestan las prohibiciones, las colas y las huelgas?">
+<meta property="og:description" content="Un estudio de tres estudiantes de Bocconi para departamentos de tráfico con rutas al extranjero. Anónimo; los resultados se comparten con todos los que respondan.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s30">
+<link rel="alternate" hreflang="en" href="https://zhol.live/survey">
+<link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
+<link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
+<link rel="alternate" hreflang="fr" href="https://zhol.live/fr/enquete">
+<link rel="alternate" hreflang="es" href="https://zhol.live/es/encuesta">
+<link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
+<link rel="alternate" hreflang="fr" href="https://zhol.live/fr/enquete">
+<link rel="alternate" hreflang="es" href="https://zhol.live/es/encuesta">
+<link rel="preload" as="image" href="/assets/img/scenes/dock-poster.webp?v=1">
+</head>
+<body>
+<header class="top q-top"><div class="wrap">
+  <a class="logo" href="/es/encuesta" aria-label="Encuesta zhol, volver al inicio"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <span class="lang-switch" role="group" aria-label="Language · ES"><i aria-hidden="true"></i><a href="/survey" lang="en" hreflang="en">EN</a><a href="/es/encuesta" lang="es" hreflang="es" aria-current="true">ES</a></span>
+</div></header>
+
+<main>
+<section class="slide sv-intro sv-full" id="sv-intro">
+  <div class="wrap sv-intro-grid">
+    <div class="sv-intro-text">
+      <span class="sv-label">Estudio Bocconi para departamentos de tráfico</span>
+      <h1 class="title sv-title">Siete preguntas. Un minuto.</h1>
+      <p class="lead">¿Cuánto cuestan las prohibiciones, las colas, los cierres y las huelgas a quienes mueven mercancías por carretera, tren o ferry? Responda desde su propio puesto o desde lo que sabe del sector. Un toque por respuesta, anónimo, y no vendemos nada.</p>
+      <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Empezar</a><a class="sv-more" href="#sv-pitch">Lo que estamos construyendo</a></div>
+    </div>
+    <div class="sv-scene" aria-hidden="true">
+      <video data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" poster="/assets/img/scenes/dock-poster.webp?v=1" width="1280" height="960"></video>
+    </div>
+  </div>
+  <div class="wrap sv-pitch" id="sv-pitch">
+    <div class="sv-pitch-head">
+      <span class="sv-label">Lo que construye zhol</span>
+      <h2 class="sv-pitch-title">Un radar para las carreteras de Europa y después una red de agentes.</h2>
+    </div>
+    <article class="sv-card sv-radar" id="sv-c2" hidden>
+      <div class="sv-radar-map">
+        <div class="map-frame" role="img" aria-label="Mapa de Europa con los eventos que zhol espera en las próximas ocho semanas"></div>
+      </div>
+      <div class="sv-radar-side">
+        <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Prototipo en funcionamiento</span>
+        <h3>El radar: lo que viene en las carreteras de Europa, con la probabilidad de cada evento.</h3>
+        <ul class="sv-sched" id="sv-sched"></ul>
+        <p class="sv-card-foot">Cada día zhol lee las prohibiciones, los cierres y los avisos de huelga y da a cada uno su probabilidad. <a href="/radar">Abrir el radar completo, en inglés</a></p>
+      </div>
+    </article>
+    <div class="sv-cards">
+      <article class="sv-card" id="sv-c1" hidden>
+        <h3>Los problemas llegan cuando no hay nadie en la oficina.</h3>
+        <div class="sv-card-scene">
+          <div class="sv-cal" id="sv-cal" role="img" aria-label="Las próximas ocho semanas: fines de semana y festivos, y los días con un evento en el radar"></div>
+          <p class="sv-cal-key" aria-hidden="true"><span><i class="off"></i>Fin de semana o festivo</span><span><i class="ev"></i>Evento en el radar</span></p>
+        </div>
+        <p class="sv-card-foot"><b id="sv-c1-n"></b> Los correos esperan al lunes; la carretera, no.</p>
+      </article>
+      <article class="sv-card" id="sv-c3">
+        <h3>Después: un agente para cada oficina.</h3>
+        <div class="sv-card-scene">
+          <span class="sv-proto ex">Ejemplo · cómo funcionará</span>
+          <ol class="sv-feed">
+          <li style="--i:0"><span class="meta"><b>Oficina en Verona</b><span>dom. 22:10</span></span><p>Nuestro conductor: la A22 está cortada después de Bolzano, un accidente.</p></li>
+          <li style="--i:1"><span class="meta"><b>Red zhol</b><span>22:10</span></span><p>Los agentes de 14 oficinas con camiones en la A22 esta noche ya lo saben.</p></li>
+          <li class="you" style="--i:2"><span class="meta"><b>Su agente</b><span>22:11</span></span><p>Dos camiones desviados por Tarvisio. Los conductores tienen la nueva ruta.</p></li>
+          <li style="--i:3"><span class="meta"><b>Usted</b><span>lun. 8:30</span></span><p>Usted empieza el día: el plan ya está hecho.</p></li>
+          </ol>
+        </div>
+        <p class="sv-card-foot">Los agentes se pasan los avisos en segundos, de día y de noche. Sin esperar un correo, la pausa de la comida o el lunes.</p>
+      </article>
+    </div>
+    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Responder a las siete preguntas</a><span class="small muted">Sus cifras deciden qué construimos primero.</span></div>
+  </div>
+</section>
+
+<section class="slide sv" id="sv-steps">
+  <div class="wrap">
+
+    <div class="sv-stage">
+      <div class="sv-mascot scene-3d" aria-hidden="true"><div class="scape"><img src="/assets/img/scape.svg?v=1" alt="" width="500" height="300"></div><img id="sv-img" src="/assets/img/mascot/delivered-560.webp?v=zd1" srcset="/assets/img/mascot/delivered-280.webp?v=zd1 280w, /assets/img/mascot/delivered-560.webp?v=zd1 560w" sizes="(max-width: 760px) 170px, 300px" alt="" width="560" height="448"></div>
+
+      <div class="sv-panel">
+        <div class="sv-road" aria-hidden="true"><i id="sv-road"></i></div>
+        <p class="sr-only" id="sv-live" aria-live="polite"></p>
+
+        <form class="survey" id="survey" name="survey" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="survey">
+          <input type="hidden" name="lang" value="es">
+          <input type="hidden" name="src" value="">
+          <input type="hidden" name="rid" value="">
+          <p class="hidden-field"><label>Deje este campo vacío: <input name="bot-field"></label></p>
+
+          <fieldset class="q role" data-img="delivered"><legend><span class="n">Antes de empezar</span>¿Qué le describe mejor?</legend>
+            <p class="sv-why">Si usted no planifica transportes, las preguntas se refieren a lo que sabe del sector.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="role" value="office" required><span>Planifico o gestiono transportes (tráfico, transportista, cargador)</span></label>
+              <label><input type="radio" name="role" value="around"><span>Trabajo en el entorno (transitario, asociación, consultoría)</span></label>
+              <label><input type="radio" name="role" value="academic"><span>Enseño o investigo en logística</span></label>
+              <label><input type="radio" name="role" value="former"><span>Trabajé en logística</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="truck" data-path="op"><legend><span class="n">Pregunta 1 de 7</span>¿Cuántos vehículos gestiona (camiones, semirremolques, contenedores, vagones)?</legend>
+            <p class="sv-why">Para comparar operaciones de tamaño similar.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="fleet" value="1-5" required><span>1–5</span></label>
+              <label><input type="radio" name="fleet" value="6-20"><span>6–20</span></label>
+              <label><input type="radio" name="fleet" value="21-50"><span>21–50</span></label>
+              <label><input type="radio" name="fleet" value="51-100"><span>51–100</span></label>
+              <label><input type="radio" name="fleet" value="100+"><span>Más de 100</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="route" data-path="op"><legend><span class="n">Pregunta 2 de 7</span>¿Cuántos envíos a la semana van al extranjero, por carretera, tren o ferry?</legend>
+            <p class="sv-why">Los envíos largos son los más expuestos a prohibiciones, colas y ferris que no zarpan.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="trips_abroad" value="0" required><span>Nunca</span></label>
+              <label><input type="radio" name="trips_abroad" value="1-5"><span>1–5 veces</span></label>
+              <label><input type="radio" name="trips_abroad" value="6-20"><span>6–20 veces</span></label>
+              <label><input type="radio" name="trips_abroad" value="20+"><span>Más de 20 veces</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="watch" data-path="op"><legend><span class="n">Pregunta 3 de 7</span>¿Cuánto tiempo dedica cada día a revisar prohibiciones, colas y huelgas?</legend>
+            <p class="sv-why">Es el tiempo que zhol quiere devolverle.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="minutes" value="<10" required><span>Menos de 10 minutos</span></label>
+              <label><input type="radio" name="minutes" value="10-20"><span>10–20 minutos</span></label>
+              <label><input type="radio" name="minutes" value="20-40"><span>20–40 minutos</span></label>
+              <label><input type="radio" name="minutes" value="40+"><span>Más de 40 minutos</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="phone" data-path="op"><legend><span class="n">Pregunta 4 de 7</span>En el último mes, ¿cuántas veces una prohibición, una cola, un cierre o una huelga le obligó a cambiar un envío (hora, ruta o fecha)?</legend>
+            <p class="sv-why">La frecuencia importa tanto como el coste.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="changes" value="0" required><span>Nunca</span></label>
+              <label><input type="radio" name="changes" value="1-2"><span>1–2 veces</span></label>
+              <label><input type="radio" name="changes" value="3-5"><span>3–5 veces</span></label>
+              <label><input type="radio" name="changes" value="6-10"><span>6–10 veces</span></label>
+              <label><input type="radio" name="changes" value="10+"><span>Más de 10 veces</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="coin" data-path="op"><legend><span class="n">Pregunta 5 de 7</span>La última vez que una prohibición, una cola o una huelga paró uno de sus envíos, ¿cuánto le costó?</legend>
+            <p class="sv-why">Nos dice cuánto vale un aviso que llega a tiempo.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="last_cost" value="<100" required><span>Menos de 100 €</span></label>
+              <label><input type="radio" name="last_cost" value="100-300"><span>100–300 €</span></label>
+              <label><input type="radio" name="last_cost" value="300-1000"><span>300–1.000 €</span></label>
+              <label><input type="radio" name="last_cost" value="1000-3000"><span>1.000–3.000 €</span></label>
+              <label><input type="radio" name="last_cost" value="3000+"><span>Más de 3.000 €</span></label>
+              <label><input type="radio" name="last_cost" value="unknown"><span>No lo sé</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="radio" data-path="op"><legend><span class="n">Pregunta 6 de 7</span>Si otras oficinas le avisaran de una cola o un cierre que ven sus conductores, antes de que salgan sus camiones, ¿compartiría también los suyos?</legend>
+            <p class="sv-why">Cada oficina tendría su propio agente que pasa estos avisos a las demás en segundos, de forma anónima.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="share" value="yes" required><span>Sí, con gusto</span></label>
+              <label><input type="radio" name="share" value="anon"><span>Sí, si sigue siendo anónimo</span></label>
+              <label><input type="radio" name="share" value="receive"><span>Solo recibiría</span></label>
+              <label><input type="radio" name="share" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="thinking" data-path="op"><legend><span class="n">Pregunta 7 de 7</span>¿Qué precio le parece justo, por vehículo y mes?</legend>
+            <p class="sv-why">Para fijar un precio justo antes de pedir un solo euro.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="price" value="0" required><span>Nada, no pagaría</span></label>
+              <label><input type="radio" name="price" value="<5"><span>Hasta 5 €</span></label>
+              <label><input type="radio" name="price" value="5-10"><span>5–10 €</span></label>
+              <label><input type="radio" name="price" value="10-20"><span>10–20 €</span></label>
+              <label><input type="radio" name="price" value="20+"><span>Más de 20 €</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="q" data-img="truck" data-path="ex"><legend><span class="n">Pregunta 1 de 7</span>¿Qué parte del transporte de mercancías conoce mejor?</legend>
+            <p class="sv-why">Para leer sus respuestas junto a otras del mismo ámbito.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="scope" value="road"><span>Transporte por carretera</span></label>
+              <label><input type="radio" name="scope" value="rail"><span>Ferrocarril e intermodal</span></label>
+              <label><input type="radio" name="scope" value="sea"><span>Ferris y puertos</span></label>
+              <label><input type="radio" name="scope" value="shipper"><span>Cargadores: industria y distribución</span></label>
+              <label><input type="radio" name="scope" value="mixed"><span>Varios de ellos</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="watch" data-path="ex"><legend><span class="n">Pregunta 2 de 7</span>Según su experiencia, ¿cuánto tiempo dedica cada día un departamento de tráfico con rutas al extranjero a revisar prohibiciones, colas y huelgas?</legend>
+            <p class="sv-why">Es el tiempo que zhol quiere devolver a las oficinas.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_minutes" value="<10"><span>Menos de 10 minutos</span></label>
+              <label><input type="radio" name="x_minutes" value="10-20"><span>10–20 minutos</span></label>
+              <label><input type="radio" name="x_minutes" value="20-40"><span>20–40 minutos</span></label>
+              <label><input type="radio" name="x_minutes" value="40+"><span>Más de 40 minutos</span></label>
+              <label><input type="radio" name="x_minutes" value="unknown"><span>No lo sé</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="phone" data-path="ex"><legend><span class="n">Pregunta 3 de 7</span>De cada 100 envíos al extranjero, ¿cuántos hay que cambiar en un mes normal por una prohibición, una cola, un cierre o una huelga?</legend>
+            <p class="sv-why">La frecuencia importa tanto como el coste.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_changes" value="<2"><span>Menos de 2</span></label>
+              <label><input type="radio" name="x_changes" value="2-5"><span>2–5</span></label>
+              <label><input type="radio" name="x_changes" value="5-10"><span>5–10</span></label>
+              <label><input type="radio" name="x_changes" value="10+"><span>Más de 10</span></label>
+              <label><input type="radio" name="x_changes" value="unknown"><span>No lo sé</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="coin" data-path="ex"><legend><span class="n">Pregunta 4 de 7</span>Cuando una prohibición, una cola o una huelga para un envío, ¿cuánto le cuesta normalmente al transportista?</legend>
+            <p class="sv-why">Nos dice cuánto vale un aviso que llega a tiempo.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_cost" value="<100"><span>Menos de 100 €</span></label>
+              <label><input type="radio" name="x_cost" value="100-300"><span>100–300 €</span></label>
+              <label><input type="radio" name="x_cost" value="300-1000"><span>300–1.000 €</span></label>
+              <label><input type="radio" name="x_cost" value="1000-3000"><span>1.000–3.000 €</span></label>
+              <label><input type="radio" name="x_cost" value="3000+"><span>Más de 3.000 €</span></label>
+              <label><input type="radio" name="x_cost" value="unknown"><span>No lo sé</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="radio" data-path="ex"><legend><span class="n">Pregunta 5 de 7</span>¿Compartirían los departamentos de tráfico con otras oficinas lo que ven sus conductores, si fuera anónimo?</legend>
+            <p class="sv-why">Cada oficina tendría su propio agente que pasa los avisos a las demás en segundos.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_share" value="most"><span>La mayoría sí</span></label>
+              <label><input type="radio" name="x_share" value="some"><span>Algunas sí</span></label>
+              <label><input type="radio" name="x_share" value="few"><span>Pocas: se guardan la información</span></label>
+              <label><input type="radio" name="x_share" value="unknown"><span>No lo sé</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="route" data-path="ex"><legend><span class="n">Pregunta 6 de 7</span>¿Qué frenaría más a una oficina ante una herramienta así?</legend>
+            <p class="sv-why">Para construir en torno al obstáculo real, no al que imaginamos.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_obstacle" value="trust"><span>Confiar en la información</span></label>
+              <label><input type="radio" name="x_obstacle" value="price"><span>El precio</span></label>
+              <label><input type="radio" name="x_obstacle" value="habit"><span>Los hábitos: teléfono, correo, WhatsApp</span></label>
+              <label><input type="radio" name="x_obstacle" value="integration"><span>Integrarla en su software</span></label>
+              <label><input type="radio" name="x_obstacle" value="competitors"><span>Compartir datos cerca de competidores</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="thinking" data-path="ex"><legend><span class="n">Pregunta 7 de 7</span>¿Qué precio le parecería justo a una oficina, por vehículo y mes?</legend>
+            <p class="sv-why">Para fijar un precio justo antes de pedir un solo euro.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="x_price" value="0"><span>Nada, no pagarían</span></label>
+              <label><input type="radio" name="x_price" value="<5"><span>Hasta 5 €</span></label>
+              <label><input type="radio" name="x_price" value="5-10"><span>5–10 €</span></label>
+              <label><input type="radio" name="x_price" value="10-20"><span>10–20 €</span></label>
+              <label><input type="radio" name="x_price" value="20+"><span>Más de 20 €</span></label>
+              <label><input type="radio" name="x_price" value="unknown"><span>No lo sé</span></label>
+            </div>
+          </fieldset>
+
+          <p class="sv-error" id="sv-error" role="alert" hidden></p>
+          <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Atrás</button><button class="btn" type="button" id="sv-next" hidden>Siguiente</button><button class="btn" type="submit" id="sv-send">Enviar mis respuestas</button></div>
+        </form>
+
+        <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
+          <input type="hidden" name="form-name" value="survey-followup">
+          <input type="hidden" name="lang" value="es">
+          <input type="hidden" name="rid" value="">
+          <p class="hidden-field"><label>Deje este campo vacío: <input name="bot-field"></label></p>
+          <span class="sv-label ok">¡Listo, gracias!</span>
+          <h2 class="sv-q-title">¿Quiere algo a cambio? Opcional.</h2>
+          <div class="opts tall multi">
+            <label><input type="checkbox" name="followup" value="results"><span>Los resultados de la encuesta</span></label>
+            <label><input type="checkbox" name="followup" value="network"><span>Un lugar entre las primeras oficinas de la red compartida</span></label>
+          </div>
+          <div class="field sv-contact"><label for="sv-contact">Correo de trabajo o teléfono</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> Pueden usar este contacto solo para lo que he elegido.</label>
+          <p class="sv-error" id="sv-error2" role="alert" hidden></p>
+          <div class="sv-nav"><button class="btn" type="submit">Enviar</button><button class="sv-link" type="button" id="sv-skip">No, gracias</button></div>
+        </form>
+
+        <div class="sv-done" id="sv-done" hidden tabindex="-1">
+          <span class="sv-label ok">Recibido</span>
+          <h2 class="sv-q-title">¡Gracias! Nos ayuda mucho.</h2>
+          <p>¿Conoce otro departamento de tráfico? Cada respuesta más hace las cifras más sólidas.</p>
+          <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Reenviar por WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copiar el enlace</button></div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="sv-map card sv-now" id="sv-now" hidden aria-labelledby="sv-now-h">
+      <div class="sv-map-head">
+        <span class="sv-label">Del radar, hoy</span>
+        <h2 class="sv-q-title" id="sv-now-h">Lo que viene en las próximas semanas</h2>
+      </div>
+      <div class="sv-end-grid">
+        <div class="sv-end-col" id="sv-sched-box" hidden>
+          <h3>Las próximas semanas, con la probabilidad de cada uno</h3>
+          <ul class="sv-sched" id="sv-sched-end"></ul>
+        </div>
+        <div class="sv-end-col" id="sv-news-box" hidden>
+          <h3>De las noticias de hoy</h3>
+          <p class="small muted">Lo que el radar ha encontrado en la prensa en cuatro idiomas, con los medios.</p>
+          <ol class="sv-news" id="sv-news"></ol>
+        </div>
+      </div>
+      <div class="sv-reads">
+        <h3>Lo que lee el radar</h3>
+        <ul>
+          <li class="is-live"><span class="sv-reads-st">Activo</span><p><b>Prohibiciones en festivos</b> fijadas por ley en siete países.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Activo</span><p><b>Calendarios oficiales</b> dosificación del Tirol en Kufstein, cierres de túneles.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Activo</span><p><b>Tiempo en los puertos de montaña</b> y en el ferry de Mesina, con 16 días de antelación.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Activo</span><p><b>Noticias y prensa especializada</b> en cuatro idiomas: huelgas, bloqueos, protestas, cierres. <span id="sv-reads-n"></span></p></li>
+          <li class="is-next"><span class="sv-reads-st">Pronto</span><p><b>Redes sociales</b> grupos de conductores, canales de sindicatos y agricultores: el ambiente antes de una protesta.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Pronto</span><p><b>Política</b> elecciones, un cambio de gobierno, votaciones del presupuesto que traen huelgas.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Pronto</span><p><b>Grandes eventos y disturbios</b> cumbres, partidos, disturbios que cierran carreteras y fronteras.</p></li>
+          <li class="is-next"><span class="sv-reads-st">Pronto</span><p><b>Los agentes de las oficinas</b> lo que ven sus conductores, compartido en segundos.</p></li>
+        </ul>
+        <p class="small muted">Cada señal mueve la probabilidad: una fuente oficial ×3, fechas anunciadas ×2, seis medios o más ×2, conversaciones con el gobierno ×0,6.</p>
+      </div>
+    </section>
+
+    <p class="small muted sv-privacy">Un proyecto del equipo zhol de la Universidad Bocconi para TEF Ignition 2026. Las respuestas son anónimas y solo publicamos cifras agregadas. Si deja un contacto, lo vinculamos a sus respuestas, lo usamos solo para lo que haya elegido y lo borramos al terminar el proyecto, o antes si lo pide. Datos alojados en Netlify.</p>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Equipo zhol · Universidad Bocconi · TEF Ignition 2026</span>
+</div></footer>
+<script src="/assets/scene.js?v=q2" defer></script>
+<script src="/assets/map.js?v=a8" defer></script>
+<script src="/assets/survey.js?v=q22" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
+</body>
+</html>

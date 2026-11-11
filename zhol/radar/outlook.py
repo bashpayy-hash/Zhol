@@ -18,6 +18,7 @@ from ..ingest.feeds import load_all_calendars
 from ..rules import generate_ban_events
 from . import model
 from .impact import attach, lane_it
+from .langs import add_languages
 from .signals import STAGE_ORDER, Signal, read_signals
 
 TZ = ZoneInfo("Europe/Rome")
@@ -406,6 +407,7 @@ def build_outlook(today: date, horizon: int = 60, fetch: bool = True) -> dict:
     end = (today + timedelta(days=horizon)).isoformat()
     items = [i for i in items if not i.get("start") or i["start"] <= end]
     attach(items)
+    add_languages(items)
     ok = sum(1 for v in status.values() if v == "ok")
     return {
         "built_at": datetime.now(TZ).isoformat(timespec="minutes"), "today": today.isoformat(),

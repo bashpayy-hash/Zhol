@@ -1246,3 +1246,5 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
   footer.site { padding-bottom: 84px; }   /* the end of the page is never under the button */
 }
 @media (prefers-reduced-motion: reduce) { .asst-bubble { transition: none; } }
+/* the language switch on the surveys in German, French and Spanish: EN | DE and so on, the second one current */
+.lang-switch:has(a:last-child[aria-current]) i { transform: translateX(100%); }

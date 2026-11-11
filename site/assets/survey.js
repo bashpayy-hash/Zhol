@@ -4,9 +4,10 @@
 (function () {
   const form = document.getElementById("survey");
   if (!form) return;
-  const IT = document.documentElement.lang === "it";
-  const toRadar = () => { const src = new URLSearchParams(location.search).get("src"); return "?from=survey" + (src ? "&src=" + encodeURIComponent(src) : ""); };
-  const T = (en, it) => IT ? it : en;
+  const LG = document.documentElement.lang, IT = LG === "it";
+  const LOCALE = { it: "it-IT", de: "de-DE", fr: "fr-FR", es: "es-ES" }[LG] || "en-GB";
+  const toRadar = () => { const src = new URLSearchParams(location.search).get("src"); return "?from=survey" + (src ? "&src=" + encodeURIComponent(src) : "") + (["de", "fr", "es"].includes(document.documentElement.lang) ? "&sl=" + document.documentElement.lang : ""); };
+  const T = (en, it, de, fr, es) => ({ it, de, fr, es })[LG] || en;   // German, French, Spanish: owner, 11 Nov 2026
   const $ = id => document.getElementById(id);
   // who is answering comes first: traffic offices get the questions about their own desk (data-path="op"),
   // people who know the field (teachers, researchers, consultants, former staff) the same topics from experience ("ex")
@@ -135,7 +136,7 @@
     const missing = steps.findIndex(s => !s.querySelector("input:checked"));
     if (missing >= 0) {
       show(missing, true);
-      $("sv-error").textContent = T("This one is still missing.", "Manca ancora questa.");
+      $("sv-error").textContent = T("This one is still missing.", "Manca ancora questa.", "Diese Antwort fehlt noch.", "Il manque encore cette réponse.", "Falta esta respuesta.");
       $("sv-error").hidden = false;
       return;
     }
@@ -150,7 +151,7 @@
       // the last screens are short: Zholdas stops following the scroll and sits in the middle of the card
       const stage = document.querySelector(".sv-stage"); if (stage) stage.classList.add("end");
       setPose("celebrate");
-      live.textContent = T("Answers sent. Thank you.", "Risposte inviate. Grazie.");
+      live.textContent = T("Answers sent. Thank you.", "Risposte inviate. Grazie.", "Antworten gesendet. Vielen Dank.", "Réponses envoyées. Merci.", "Respuestas enviadas. Gracias.");
       const h = follow.querySelector(".sv-q-title"); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
     }).catch(() => { form.noValidate = false; HTMLFormElement.prototype.submit.call(form); });
   }
@@ -164,10 +165,10 @@
     const err = $("sv-error2");
     const wants = follow.querySelectorAll('input[name="followup"]:checked').length > 0;
     if (!contact.value.trim()) {
-      if (wants) { err.textContent = T("Leave an email or a phone number so we can send it.", "Lasciate un’email o un telefono per potervelo mandare."); err.hidden = false; contact.focus(); return; }
+      if (wants) { err.textContent = T("Leave an email or a phone number so we can send it.", "Lasciate un’email o un telefono per potervelo mandare.", "Hinterlassen Sie eine E-Mail oder eine Telefonnummer, damit wir es Ihnen schicken können.", "Laissez un e-mail ou un téléphone pour que nous puissions vous l’envoyer.", "Deje un correo o un teléfono para que podamos enviárselo."); err.hidden = false; contact.focus(); return; }
       return finish();
     }
-    if (!consent.checked) { err.textContent = T("Tick the box so we may use this contact.", "Spuntate la casella per permetterci di usare il contatto."); err.hidden = false; consent.focus(); return; }
+    if (!consent.checked) { err.textContent = T("Tick the box so we may use this contact.", "Spuntate la casella per permetterci di usare il contatto.", "Bitte setzen Sie das Häkchen, damit wir diesen Kontakt nutzen dürfen.", "Cochez la case pour que nous puissions utiliser ce contact.", "Marque la casilla para que podamos usar este contacto."); err.hidden = false; consent.focus(); return; }
     err.hidden = true;
     post(follow).then(finish).catch(() => { follow.noValidate = false; HTMLFormElement.prototype.submit.call(follow); });
   });
@@ -182,26 +183,36 @@
   }
 
   // the last screen shows what the radar sees coming (assets/map.js), so the answer gets something back at once
+  // what the radar sees: the schedule with chances and today's news, in its own card
+  function fillNow(d) {
+    // what the radar read today, in numbers
+    const n = $("sv-reads-n");
+    if (n && d.articles_read) n.textContent = T("Today: " + d.articles_read + " articles from " + d.sources_ok + " sources, " + d.signals + " signals.",
+                                                "Oggi: " + d.articles_read + " articoli da " + d.sources_ok + " fonti, " + d.signals + " segnali.",
+                                                "Heute: " + d.articles_read + " Artikel aus " + d.sources_ok + " Quellen, " + d.signals + " Signale.",
+                                                "Aujourd’hui : " + d.articles_read + " articles de " + d.sources_ok + " sources, " + d.signals + " signaux.",
+                                                "Hoy: " + d.articles_read + " artículos de " + d.sources_ok + " fuentes, " + d.signals + " señales.");
+    // under the map, again: the schedule with chances and what the news says (owner, 10 Nov 2026)
+    const u = upcoming(d);
+    const a = fillSched($("sv-sched-end"), u.items, u.today, 8), b = fillNews($("sv-news"), d.items, 5);
+    if (a) $("sv-sched-box").hidden = false;
+    if (b) $("sv-news-box").hidden = false;
+    if (a || b) $("sv-now").hidden = false;              // its own card under the map (owner, 10 Nov: map, then schedule and radar)
+    if (!a || !b) $("sv-now").classList.add("one");      // a day without news: the schedule takes the whole card, no empty half
+  }
+
   function showMap() {
     const box = $("sv-map");
-    if (!box || !window.ZholMap || box.dataset.on) return;
+    // the pages in German, French and Spanish have no big map (its labels are in English and Italian): the card only
+    if (!box || !window.ZholMap) { if (!showMap.done) { showMap.done = 1; radar.then(fillNow).catch(() => {}); } return; }
+    if (box.dataset.on) return;
     box.dataset.on = "1";
     // the full radar: places, the events at each with their chance, the week player; "Plan and cost" opens the radar page
     const mo = { detail: true, show: id => { location.href = (IT ? "/it/radar" : "/radar") + toRadar() + "#rd-" + id; } };
     const map = window.ZholMap(box, mo);
     radar.then(d => {
       mo.method = d.method;
-      // what the radar read today, in numbers
-      const n = $("sv-reads-n");
-      if (n && d.articles_read) n.textContent = T("Today: " + d.articles_read + " articles from " + d.sources_ok + " sources, " + d.signals + " signals.",
-                                                  "Oggi: " + d.articles_read + " articoli da " + d.sources_ok + " fonti, " + d.signals + " segnali.");
-      // under the map, again: the schedule with chances and what the news says (owner, 10 Nov 2026)
-      const u = upcoming(d);
-      const a = fillSched($("sv-sched-end"), u.items, u.today, 8), b = fillNews($("sv-news"), d.items, 5);
-      if (a) $("sv-sched-box").hidden = false;
-      if (b) $("sv-news-box").hidden = false;
-      if (a || b) $("sv-now").hidden = false;              // its own card under the map (owner, 10 Nov: map, then schedule and radar)
-      if (!a || !b) $("sv-now").classList.add("one");      // a day without news: the schedule takes the whole card, no empty half
+      fillNow(d);
       // on a computer the list beside the map is as tall as the map and scrolls inside, no hole under the legend
       const col = box.querySelector(".map-col"), pan = box.querySelector(".map-panel");
       if (col && pan && "ResizeObserver" in window) new ResizeObserver(() => { pan.style.maxHeight = innerWidth > 920 ? col.offsetHeight + "px" : ""; }).observe(col);
@@ -209,7 +220,10 @@
     }).then(c => {
       if (!c || !c.events) { box.hidden = true; return; }
       $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places on Europe’s roads in the next eight weeks, each with its chance. Tap a place, or play the weeks.",
-                                      c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità. Toccate un luogo o scorrete le settimane.");
+                                      c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità. Toccate un luogo o scorrete le settimane.",
+                                      c.events + " Ereignisse an " + c.places + " Orten auf Europas Straßen in den nächsten acht Wochen, jedes mit seiner Wahrscheinlichkeit.",
+                                      c.events + " événements en " + c.places + " lieux sur les routes d’Europe dans les huit prochaines semaines, chacun avec sa probabilité.",
+                                      c.events + " eventos en " + c.places + " lugares de las carreteras de Europa en las próximas ocho semanas, cada uno con su probabilidad.");
     }).catch(() => { box.hidden = true; });
   }
 
@@ -223,7 +237,7 @@
     return { today, from, items: d.items.filter(i => i.start && (i.end || i.start) >= today && i.start < to) };
   }
   function fillSched(list, items, today, n) {
-    const loc = IT ? "it-IT" : "en-GB", seen = new Set();   // one line per kind of event: Kufstein's weekly dosing shows once
+    const loc = LOCALE, seen = new Set();   // one line per kind of event: Kufstein's weekly dosing shows once
     items.slice().sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p)
       .filter(it => { const k = it.title.replace(/:.*$/, "") + "|" + (it.where || ""); if (it.kind !== "ban" && seen.has(k)) return false; seen.add(k); return true; })
       .slice(0, n).forEach(it => {
@@ -233,9 +247,9 @@
       const when = D(it.start > today ? it.start : today);
       dt.className = "dt"; dt.append(when.toLocaleDateString(loc, { weekday: "short", timeZone: "UTC" }), document.createElement("br"),
                                      when.toLocaleDateString(loc, { day: "numeric", month: "short", timeZone: "UTC" }));
-      const title = (IT && it.title_it) || it.title;     // "Holiday truck bans: Christmas" reads "Truck ban: Christmas" here
-      ti.className = "ti"; ti.textContent = it.kind === "ban" && title.includes(": ") ? T("Truck ban: ", "Divieto camion: ") + title.slice(title.indexOf(": ") + 2) : title;
-      wh.className = "wh"; wh.textContent = (IT && it.where_it) || it.where || "";
+      const title = it["title_" + LG] || it.title;     // "Holiday truck bans: Christmas" reads "Truck ban: Christmas" here
+      ti.className = "ti"; ti.textContent = it.kind === "ban" && title.includes(": ") ? T("Truck ban: ", "Divieto camion: ", "LKW-Fahrverbot: ", "Interdiction poids lourds : ", "Prohibición de camiones: ") + title.slice(title.indexOf(": ") + 2) : title;
+      wh.className = "wh"; wh.textContent = it["where_" + LG] || it.where || "";
       tx.append(ti, wh);
       pc.className = "pc"; pc.textContent = Math.round((it.p || 0) * 100) + "%";
       bar.className = "bar"; bar.setAttribute("aria-hidden", "true"); fill.style.setProperty("--p", (it.p || 0).toFixed(2)); bar.append(fill);
@@ -245,15 +259,15 @@
   }
   // the news the radar read: each story with its place, date, chance and the outlets that carried it (links only to http/https)
   function fillNews(list, items, n) {
-    const loc = IT ? "it-IT" : "en-GB", safe = u => /^https?:\/\//i.test(u || "");
+    const loc = LOCALE, safe = u => /^https?:\/\//i.test(u || "");
     items.filter(i => i.group === "news").sort((a, b) => (b.p || 0) - (a.p || 0)).slice(0, n).forEach(it => {
       const li = document.createElement("li"), meta = document.createElement("span"), b = document.createElement("b"),
             when = document.createElement("span"), p = document.createElement("p"), src = document.createElement("span");
-      meta.className = "meta"; b.textContent = (IT && it.where_it) || it.where || "";
-      when.textContent = (it.start ? D(it.start).toLocaleDateString(loc, { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : T("date not set", "data da definire"))
+      meta.className = "meta"; b.textContent = it["where_" + LG] || it.where || "";
+      when.textContent = (it.start ? D(it.start).toLocaleDateString(loc, { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : T("date not set", "data da definire", "Datum offen", "date à définir", "fecha por definir"))
         + " · " + Math.round((it.p || 0) * 100) + "%";
       meta.append(b, when);
-      p.textContent = it.headline || (IT && it.title_it) || it.title;
+      p.textContent = it.headline || it["title_" + LG] || it.title;
       src.className = "src";
       const ss = (it.sources || []).filter(x => x.outlet);
       ss.slice(0, 3).forEach((x, k) => {
@@ -295,7 +309,7 @@
     // 1. eight weeks, day by day: days off tinted, events in red
     const cal = $("sv-cal"), c1 = $("sv-c1");
     if (cal && c1) {
-      T("MTWTFSS", "LMMGVSD").split("").forEach(h => { const e = document.createElement("span"); e.className = "h"; e.textContent = h; cal.append(e); });
+      T("MTWTFSS", "LMMGVSD", "MDMDFSS", "LMMJVSD", "LMXJVSD").split("").forEach(h => { const e = document.createElement("span"); e.className = "h"; e.textContent = h; cal.append(e); });
       for (let k = 0; k < 56; k++) {
         const s = add(from, k), cell = document.createElement("span"), n = document.createElement("span");
         cell.className = "d" + (s < today ? " past" : "") + (s === today ? " today" : "") + (off(s) ? " off" : "") + (s >= today && event.has(s) ? " ev" : "");
@@ -305,7 +319,10 @@
       }
       const hit = items.filter(i => days(i).some(off)).length;
       $("sv-c1-n").textContent = T(hit + " of the next " + items.length + " events fall on a weekend or a public holiday.",
-                                   hit + " dei prossimi " + items.length + " eventi cadono di weekend o in un giorno festivo.");
+                                   hit + " dei prossimi " + items.length + " eventi cadono di weekend o in un giorno festivo.",
+                                   hit + " der nächsten " + items.length + " Ereignisse fallen auf ein Wochenende oder einen Feiertag.",
+                                   hit + " des " + items.length + " prochains événements tombent un week-end ou un jour férié.",
+                                   hit + " de los próximos " + items.length + " eventos caen en fin de semana o en festivo.");
       c1.hidden = false; watch(c1);
     }
 
@@ -328,13 +345,16 @@
   // forward to a colleague
   const link = location.origin + location.pathname + "?src=share";
   const text = T("Seven questions, one minute, for traffic offices with lanes abroad: what bans, queues and strikes really cost. ",
-                 "Sette domande, un minuto, per gli uffici traffico con linee estere: quanto costano davvero divieti, code e scioperi. ");
+                 "Sette domande, un minuto, per gli uffici traffico con linee estere: quanto costano davvero divieti, code e scioperi. ",
+                 "Sieben Fragen, eine Minute, für Dispositionen mit Verkehren ins Ausland: was Fahrverbote, Staus und Streiks wirklich kosten. ",
+                 "Sept questions, une minute, pour les services d’exploitation avec des lignes à l’étranger : ce que coûtent vraiment interdictions, bouchons et grèves. ",
+                 "Siete preguntas, un minuto, para los departamentos de tráfico con rutas al extranjero: lo que cuestan de verdad prohibiciones, colas y huelgas. ");
   $("sv-wa").href = "https://wa.me/?text=" + encodeURIComponent(text + link);
   const copy = $("sv-copy");
   copy.addEventListener("click", () => {
     (navigator.clipboard ? navigator.clipboard.writeText(link) : Promise.reject())
-      .then(() => { copy.textContent = T("Copied", "Copiato"); setTimeout(() => { copy.textContent = T("Copy the link", "Copia il link"); }, 1500); })
-      .catch(() => { window.prompt(T("Copy this link:", "Copiate questo link:"), link); });
+      .then(() => { copy.textContent = T("Copied", "Copiato", "Kopiert", "Copié", "Copiado"); setTimeout(() => { copy.textContent = T("Copy the link", "Copia il link", "Link kopieren", "Copier le lien", "Copiar el enlace"); }, 1500); })
+      .catch(() => { window.prompt(T("Copy this link:", "Copiate questo link:", "Diesen Link kopieren:", "Copiez ce lien :", "Copie este enlace:"), link); });
   });
 
   show(0, false);

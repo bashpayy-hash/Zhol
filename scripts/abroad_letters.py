@@ -1,8 +1,8 @@
 """Letters to the organisations abroad, in their own language (owner, 11 Nov 2026: «нужно ли добавлять перевод на их
 языках зарубежным компаниям?»). German for Germany, Austria and German-speaking Switzerland, French for France, Spanish
 for Spain, Italian for Ticino and the Italian branches, English only for the European and international bodies. One
-language per letter, never two. The survey exists in English and Italian, so the German, French and Spanish letters
-say plainly that it is in English. No colons in the letters (owner's rule); a Russian translation for the team.
+language per letter, never two. The survey exists in each letter's language (English, Italian, German, French, Spanish;
+owner, 11 Nov 2026), so no letter has to say it is in another language. No colons in the letters (owner's rule); a Russian translation for the team.
 """
 
 LANG = {  # organisation id -> language of the letter
@@ -85,9 +85,9 @@ T = {
             "association": "Könnten Sie unsere anonyme Umfrage von einer Minute an Ihre Mitglieder im internationalen Verkehr in Europa weiterleiten? Sie erhalten die zusammengefassten Ergebnisse.",
             "intermodal": "Könnten Sie unsere anonyme Umfrage von einer Minute an die Unternehmen weiterleiten, die bei Ihnen Züge über die Alpen buchen? Sie erhalten die zusammengefassten Ergebnisse.",
             "company": "Hätten Sie eine Minute für unsere anonyme Umfrage zu Ihren Verkehren in Europa, ohne Anmeldung und ohne Verkaufsabsicht?",
-            "press": "Wir sammeln Ausgangsdaten von Dispositionen in Europa, etwa verlorene Minuten pro Tag und die Kosten des letzten Vorfalls. Könnten Sie kurz auf unsere anonyme Umfrage von einer Minute (auf Englisch) hinweisen?",
+            "press": "Wir sammeln Ausgangsdaten von Dispositionen in Europa, etwa verlorene Minuten pro Tag und die Kosten des letzten Vorfalls. Könnten Sie kurz auf unsere anonyme Umfrage von einer Minute hinweisen?",
         },
-        "survey": "Die Umfrage hat sieben Fragen, ist auf Englisch, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.",
+        "survey": "Die Umfrage hat sieben Fragen, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.",
         "gift_press": "Für Ihre Artikel ist unser Radar zhol.live/radar eine kostenlose Quelle, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und ihren Quellen, mit Hinweis auf zhol.",
         "thanks": "Vielen Dank,",
         "optout": "Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie bitte mit «nein».",
@@ -113,9 +113,9 @@ T = {
             "association": "Pourriez-vous partager notre enquête anonyme d'une minute avec vos adhérents en trafic international en Europe ? Vous recevrez les résultats agrégés.",
             "intermodal": "Pourriez-vous partager notre enquête anonyme d'une minute avec les transporteurs qui réservent vos trains à travers les Alpes ? Vous recevrez les résultats agrégés.",
             "company": "Pourriez-vous nous accorder une minute pour notre enquête anonyme sur vos trajets en Europe, sans inscription ni démarche commerciale ?",
-            "press": "Nous recueillons des données de départ auprès des services d'exploitation en Europe, comme les minutes perdues chaque jour et le coût du dernier imprévu. Pourriez-vous mentionner brièvement notre enquête anonyme d'une minute (en anglais) ?",
+            "press": "Nous recueillons des données de départ auprès des services d'exploitation en Europe, comme les minutes perdues chaque jour et le coût du dernier imprévu. Pourriez-vous mentionner brièvement notre enquête anonyme d'une minute ?",
         },
-        "survey": "L'enquête compte sept questions, est en anglais, ne demande rien d'autre et se termine par notre radar IA gratuit des huit prochaines semaines.",
+        "survey": "L'enquête compte sept questions, ne demande rien d'autre et se termine par notre radar IA gratuit des huit prochaines semaines.",
         "gift_press": "Pour vos articles, notre radar zhol.live/radar est une source gratuite, avec les interdictions, fermetures et grèves des huit prochaines semaines et leurs sources, en citant zhol.",
         "thanks": "Merci,",
         "optout": "Pour ne plus recevoir de messages, répondez « non ».",
@@ -141,9 +141,9 @@ T = {
             "association": "¿Podrían compartir nuestra encuesta anónima de un minuto con sus asociados en rutas internacionales por Europa? Les enviaremos los resultados agregados.",
             "intermodal": "¿Podrían compartir nuestra encuesta anónima de un minuto con los transportistas que reservan sus trenes a través de los Alpes? Les enviaremos los resultados agregados.",
             "company": "¿Podrían dedicarnos un minuto a nuestra encuesta anónima sobre sus rutas en Europa, sin registro ni fines comerciales?",
-            "press": "Recogemos datos de partida de oficinas de tráfico de toda Europa, como los minutos perdidos cada día y el coste del último imprevisto. ¿Podrían mencionar brevemente nuestra encuesta anónima de un minuto (en inglés)?",
+            "press": "Recogemos datos de partida de oficinas de tráfico de toda Europa, como los minutos perdidos cada día y el coste del último imprevisto. ¿Podrían mencionar brevemente nuestra encuesta anónima de un minuto?",
         },
-        "survey": "La encuesta tiene siete preguntas, está en inglés, no pide nada más y termina con nuestro radar de IA gratuito de las próximas ocho semanas.",
+        "survey": "La encuesta tiene siete preguntas, no pide nada más y termina con nuestro radar de IA gratuito de las próximas ocho semanas.",
         "gift_press": "Para sus artículos, nuestro radar zhol.live/radar es una fuente gratuita, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y sus fuentes, citando zhol.",
         "thanks": "Gracias,",
         "optout": "Si prefieren no recibir más mensajes, basta con responder «no».",
@@ -218,9 +218,13 @@ EN_MARK = "— English version —"
 LANG_NAME_RU = {"en": "английском", "de": "немецком", "fr": "французском", "es": "испанском", "it": "итальянском"}
 
 
+SURVEY_PATH = {"it": "/it/sondaggio", "de": "/de/umfrage", "fr": "/fr/enquete", "es": "/es/encuesta"}
+
+
 def survey_link(oid: str, lang: str) -> str:
-    """The English survey for everyone abroad, the Italian one for Ticino and the Italian branches."""
-    return (f"https://zhol.live/it/sondaggio?src={oid}" if lang == "it" else f"https://zhol.live/survey?src={oid}")
+    """The survey in the letter's language: German, French and Spanish since 11 Nov 2026 (owner: «Да, добавляй языки»),
+    Italian for Ticino and the Italian branches, English for everyone else."""
+    return f"https://zhol.live{SURVEY_PATH.get(lang, '/survey')}?src={oid}"
 
 
 # Letters written for one organisation only, when it can matter more than the rest (owner, 11 Nov 2026, on IRU:
@@ -270,7 +274,7 @@ def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None
     ask_ru = BESPOKE.get(oid, {}).get("ask_ru") or RU["ask"][kind]
     lead_ru = "" if kind == "press" else RU["measure"] + " "
     survey_ru = "" if kind == "press" else " " + RU["survey"]
-    note_ru = RU["in_english"] if lang in ("de", "fr", "es") else ""
+    note_ru = ""   # the survey is in the letter's own language now
     gift_ru = f"\n\n{RU['gift_press']}" if kind == "press" else ""
     ru = (f"Письмо на {LANG_NAME_RU[lang]}. Перевод для команды." + (" Ниже в письме идёт полный английский текст."
           if lang != "en" else "") + f"\n\n{RU['greet'][kind].format(name=name)}\n{_after_greeting(RU['who'], 'ru')}\n\n"

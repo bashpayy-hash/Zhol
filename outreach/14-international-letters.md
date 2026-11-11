@@ -126,8 +126,8 @@
 - **ask · association:** Könnten Sie unsere anonyme Umfrage von einer Minute an Ihre Mitglieder im internationalen Verkehr in Europa weiterleiten? Sie erhalten die zusammengefassten Ergebnisse.
 - **ask · intermodal:** Könnten Sie unsere anonyme Umfrage von einer Minute an die Unternehmen weiterleiten, die bei Ihnen Züge über die Alpen buchen? Sie erhalten die zusammengefassten Ergebnisse.
 - **ask · company:** Hätten Sie eine Minute für unsere anonyme Umfrage zu Ihren Verkehren in Europa, ohne Anmeldung und ohne Verkaufsabsicht?
-- **ask · press:** Wir sammeln Ausgangsdaten von Dispositionen in Europa, etwa verlorene Minuten pro Tag und die Kosten des letzten Vorfalls. Könnten Sie kurz auf unsere anonyme Umfrage von einer Minute (auf Englisch) hinweisen?
-- **survey:** Die Umfrage hat sieben Fragen, ist auf Englisch, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
+- **ask · press:** Wir sammeln Ausgangsdaten von Dispositionen in Europa, etwa verlorene Minuten pro Tag und die Kosten des letzten Vorfalls. Könnten Sie kurz auf unsere anonyme Umfrage von einer Minute hinweisen?
+- **survey:** Die Umfrage hat sieben Fragen, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
 - **gift_press:** Für Ihre Artikel ist unser Radar zhol.live/radar eine kostenlose Quelle, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und ihren Quellen, mit Hinweis auf zhol.
 - **thanks:** Vielen Dank,
 - **optout:** Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie bitte mit «nein».
@@ -150,8 +150,8 @@
 - **ask · association:** Pourriez-vous partager notre enquête anonyme d'une minute avec vos adhérents en trafic international en Europe ? Vous recevrez les résultats agrégés.
 - **ask · intermodal:** Pourriez-vous partager notre enquête anonyme d'une minute avec les transporteurs qui réservent vos trains à travers les Alpes ? Vous recevrez les résultats agrégés.
 - **ask · company:** Pourriez-vous nous accorder une minute pour notre enquête anonyme sur vos trajets en Europe, sans inscription ni démarche commerciale ?
-- **ask · press:** Nous recueillons des données de départ auprès des services d'exploitation en Europe, comme les minutes perdues chaque jour et le coût du dernier imprévu. Pourriez-vous mentionner brièvement notre enquête anonyme d'une minute (en anglais) ?
-- **survey:** L'enquête compte sept questions, est en anglais, ne demande rien d'autre et se termine par notre radar IA gratuit des huit prochaines semaines.
+- **ask · press:** Nous recueillons des données de départ auprès des services d'exploitation en Europe, comme les minutes perdues chaque jour et le coût du dernier imprévu. Pourriez-vous mentionner brièvement notre enquête anonyme d'une minute ?
+- **survey:** L'enquête compte sept questions, ne demande rien d'autre et se termine par notre radar IA gratuit des huit prochaines semaines.
 - **gift_press:** Pour vos articles, notre radar zhol.live/radar est une source gratuite, avec les interdictions, fermetures et grèves des huit prochaines semaines et leurs sources, en citant zhol.
 - **thanks:** Merci,
 - **optout:** Pour ne plus recevoir de messages, répondez « non ».
@@ -174,8 +174,8 @@
 - **ask · association:** ¿Podrían compartir nuestra encuesta anónima de un minuto con sus asociados en rutas internacionales por Europa? Les enviaremos los resultados agregados.
 - **ask · intermodal:** ¿Podrían compartir nuestra encuesta anónima de un minuto con los transportistas que reservan sus trenes a través de los Alpes? Les enviaremos los resultados agregados.
 - **ask · company:** ¿Podrían dedicarnos un minuto a nuestra encuesta anónima sobre sus rutas en Europa, sin registro ni fines comerciales?
-- **ask · press:** Recogemos datos de partida de oficinas de tráfico de toda Europa, como los minutos perdidos cada día y el coste del último imprevisto. ¿Podrían mencionar brevemente nuestra encuesta anónima de un minuto (en inglés)?
-- **survey:** La encuesta tiene siete preguntas, está en inglés, no pide nada más y termina con nuestro radar de IA gratuito de las próximas ocho semanas.
+- **ask · press:** Recogemos datos de partida de oficinas de tráfico de toda Europa, como los minutos perdidos cada día y el coste del último imprevisto. ¿Podrían mencionar brevemente nuestra encuesta anónima de un minuto?
+- **survey:** La encuesta tiene siete preguntas, no pide nada más y termina con nuestro radar de IA gratuito de las próximas ocho semanas.
 - **gift_press:** Para sus artículos, nuestro radar zhol.live/radar es una fuente gratuita, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y sus fuentes, citando zhol.
 - **thanks:** Gracias,
 - **optout:** Si prefieren no recibir más mensajes, basta con responder «no».
@@ -257,8 +257,8 @@ ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich 
 
 Verbote, Sperrungen und Streiks auf Europas Straßen kosten Transportunternehmen Zeit und Geld. Einige Zahlen gibt es bereits. In Kufstein lagen 2025 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders. Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert. Das ist nur der sichtbare Teil des Problems, und wir wollen helfen, es mit neuen Werkzeugen wie KI zu verringern, zuerst in Italien und den Alpen, mit ganz Europa als Ziel.
 
-Zunächst wollen wir messen, was das eine einzelne Disposition kostet. Könnten Sie unsere anonyme Umfrage von einer Minute an Ihre Mitglieder im internationalen Verkehr in Europa weiterleiten? Sie erhalten die zusammengefassten Ergebnisse. Die Umfrage hat sieben Fragen, ist auf Englisch, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
-https://zhol.live/survey?src=ab-bgl
+Zunächst wollen wir messen, was das eine einzelne Disposition kostet. Könnten Sie unsere anonyme Umfrage von einer Minute an Ihre Mitglieder im internationalen Verkehr in Europa weiterleiten? Sie erhalten die zusammengefassten Ergebnisse. Die Umfrage hat sieben Fragen, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
+https://zhol.live/de/umfrage?src=ab-bgl
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
@@ -271,7 +271,7 @@ I am Alikhan Bashpay, a student at Bocconi University. My team and I are buildin
 Bans, closures and strikes on Europe's roads cost hauliers time and money. Some figures already exist. At Kufstein, 21 of the 57 dosing days of 2025 came outside the published calendar. By Italian law every hour a truck waits is worth €100. This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal.
 
 To start, we want to measure what it costs a single traffic office. Could you share our one-minute, anonymous survey with your members on international routes in Europe? We will send you the aggregated results. The survey has seven questions, asks for nothing else and ends with our free AI radar of the next eight weeks.
-https://zhol.live/survey?src=ab-bgl
+https://zhol.live/de/umfrage?src=ab-bgl
 
 Thank you.
 ```
@@ -288,8 +288,8 @@ je suis Alikhan Bashpay, étudiant à l'Université Bocconi. Mon équipe et moi 
 
 Les interdictions, fermetures et grèves sur les routes d'Europe coûtent du temps et de l'argent aux transporteurs. Certains chiffres existent déjà. Le tunnel du Mont-Blanc ferme la nuit jusqu'en décembre 2026, et une fermeture au Fréjus laisse les camions sans passage. Selon la loi italienne, chaque heure d'attente d'un camion vaut 100 €. Ce n'est que la partie visible du problème, que nous voulons aider à réduire avec de nouveaux outils comme l'IA, d'abord en Italie et dans les Alpes, avec toute l'Europe pour objectif.
 
-Pour commencer, nous voulons mesurer ce que cela coûte à un service d'exploitation. Pourriez-vous partager notre enquête anonyme d'une minute avec vos adhérents en trafic international en Europe ? Vous recevrez les résultats agrégés. L'enquête compte sept questions, est en anglais, ne demande rien d'autre et se termine par notre radar IA gratuit des huit prochaines semaines.
-https://zhol.live/survey?src=ab-fntr
+Pour commencer, nous voulons mesurer ce que cela coûte à un service d'exploitation. Pourriez-vous partager notre enquête anonyme d'une minute avec vos adhérents en trafic international en Europe ? Vous recevrez les résultats agrégés. L'enquête compte sept questions, ne demande rien d'autre et se termine par notre radar IA gratuit des huit prochaines semaines.
+https://zhol.live/fr/enquete?src=ab-fntr
 
 Merci,
 Alikhan Bashpay · Université Bocconi · zhol
@@ -302,7 +302,7 @@ I am Alikhan Bashpay, a student at Bocconi University. My team and I are buildin
 Bans, closures and strikes on Europe's roads cost hauliers time and money. Some figures already exist. The Mont Blanc tunnel closes at night until December 2026, and one closure at the Fréjus leaves trucks without a crossing. By Italian law every hour a truck waits is worth €100. This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal.
 
 To start, we want to measure what it costs a single traffic office. Could you share our one-minute, anonymous survey with your members on international routes in Europe? We will send you the aggregated results. The survey has seven questions, asks for nothing else and ends with our free AI radar of the next eight weeks.
-https://zhol.live/survey?src=ab-fntr
+https://zhol.live/fr/enquete?src=ab-fntr
 
 Thank you.
 ```
@@ -319,8 +319,8 @@ soy Alikhan Bashpay, estudiante de la Universidad Bocconi. Mi equipo y yo desarr
 
 Las prohibiciones, los cierres y las huelgas en las carreteras de Europa cuestan tiempo y dinero a los transportistas. Algunas cifras ya existen. El túnel del Mont Blanc cierra de noche hasta diciembre de 2026, y un cierre en el Fréjus deja a los camiones sin paso. Según la ley italiana, cada hora que espera un camión vale 100 €. Es solo la parte visible del problema, y queremos ayudar a reducirlo con nuevas herramientas como la IA, empezando por Italia y los Alpes y con toda Europa como objetivo.
 
-Para empezar, queremos medir cuánto le cuesta a una sola oficina de tráfico. ¿Podrían compartir nuestra encuesta anónima de un minuto con sus asociados en rutas internacionales por Europa? Les enviaremos los resultados agregados. La encuesta tiene siete preguntas, está en inglés, no pide nada más y termina con nuestro radar de IA gratuito de las próximas ocho semanas.
-https://zhol.live/survey?src=ab-astic
+Para empezar, queremos medir cuánto le cuesta a una sola oficina de tráfico. ¿Podrían compartir nuestra encuesta anónima de un minuto con sus asociados en rutas internacionales por Europa? Les enviaremos los resultados agregados. La encuesta tiene siete preguntas, no pide nada más y termina con nuestro radar de IA gratuito de las próximas ocho semanas.
+https://zhol.live/es/encuesta?src=ab-astic
 
 Gracias,
 Alikhan Bashpay · Universidad Bocconi · zhol
@@ -333,7 +333,7 @@ I am Alikhan Bashpay, a student at Bocconi University. My team and I are buildin
 Bans, closures and strikes on Europe's roads cost hauliers time and money. Some figures already exist. The Mont Blanc tunnel closes at night until December 2026, and one closure at the Fréjus leaves trucks without a crossing. By Italian law every hour a truck waits is worth €100. This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal.
 
 To start, we want to measure what it costs a single traffic office. Could you share our one-minute, anonymous survey with your members on international routes in Europe? We will send you the aggregated results. The survey has seven questions, asks for nothing else and ends with our free AI radar of the next eight weeks.
-https://zhol.live/survey?src=ab-astic
+https://zhol.live/es/encuesta?src=ab-astic
 
 Thank you.
 ```
@@ -399,8 +399,8 @@ ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich 
 
 Verbote, Sperrungen und Streiks auf Europas Straßen kosten Transportunternehmen Zeit und Geld. Einige Zahlen gibt es bereits. Im Verkehr durch die Schweiz lassen die Nacht- und Sonntagsfahrverbote nur ein enges Zeitfenster, und ein unerwarteter Stau an der Grenze reicht, um es zu verpassen. Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert. Das ist nur der sichtbare Teil des Problems, und wir wollen helfen, es mit neuen Werkzeugen wie KI zu verringern, zuerst in Italien und den Alpen, mit ganz Europa als Ziel.
 
-Zunächst wollen wir messen, was das eine einzelne Disposition kostet. Hätten Sie eine Minute für unsere anonyme Umfrage zu Ihren Verkehren in Europa, ohne Anmeldung und ohne Verkaufsabsicht? Die Umfrage hat sieben Fragen, ist auf Englisch, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
-https://zhol.live/survey?src=ab-bertschi
+Zunächst wollen wir messen, was das eine einzelne Disposition kostet. Hätten Sie eine Minute für unsere anonyme Umfrage zu Ihren Verkehren in Europa, ohne Anmeldung und ohne Verkaufsabsicht? Die Umfrage hat sieben Fragen, verlangt sonst nichts und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
+https://zhol.live/de/umfrage?src=ab-bertschi
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
@@ -414,7 +414,7 @@ I am Alikhan Bashpay, a student at Bocconi University. My team and I are buildin
 Bans, closures and strikes on Europe's roads cost hauliers time and money. Some figures already exist. On the routes through Switzerland the night and Sunday bans already leave a narrow window, and one unexpected queue at the border is enough to miss it. By Italian law every hour a truck waits is worth €100. This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal.
 
 To start, we want to measure what it costs a single traffic office. Could you give us one minute for an anonymous survey about your routes across Europe, with no sign-up and no sales? The survey has seven questions, asks for nothing else and ends with our free AI radar of the next eight weeks.
-https://zhol.live/survey?src=ab-bertschi
+https://zhol.live/de/umfrage?src=ab-bertschi
 
 Thank you.
 ```
@@ -431,8 +431,8 @@ ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich 
 
 Verbote, Sperrungen und Streiks auf Europas Straßen kosten Transportunternehmen Zeit und Geld. Einige Zahlen gibt es bereits. In Kufstein lagen 2025 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders. Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert. Das ist nur der sichtbare Teil des Problems, und wir wollen helfen, es mit neuen Werkzeugen wie KI zu verringern, zuerst in Italien und den Alpen, mit ganz Europa als Ziel.
 
-Wir sammeln Ausgangsdaten von Dispositionen in Europa, etwa verlorene Minuten pro Tag und die Kosten des letzten Vorfalls. Könnten Sie kurz auf unsere anonyme Umfrage von einer Minute (auf Englisch) hinweisen?
-https://zhol.live/survey?src=ab-verkehrsrundschau
+Wir sammeln Ausgangsdaten von Dispositionen in Europa, etwa verlorene Minuten pro Tag und die Kosten des letzten Vorfalls. Könnten Sie kurz auf unsere anonyme Umfrage von einer Minute hinweisen?
+https://zhol.live/de/umfrage?src=ab-verkehrsrundschau
 
 Für Ihre Artikel ist unser Radar zhol.live/radar eine kostenlose Quelle, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und ihren Quellen, mit Hinweis auf zhol.
 
@@ -447,7 +447,7 @@ I am Alikhan Bashpay, a student at Bocconi University. My team and I are buildin
 Bans, closures and strikes on Europe's roads cost hauliers time and money. Some figures already exist. At Kufstein, 21 of the 57 dosing days of 2025 came outside the published calendar. By Italian law every hour a truck waits is worth €100. This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal.
 
 We are collecting baseline figures from traffic offices across Europe, such as minutes lost every day and the cost of the last disruption. Could you give our anonymous one-minute survey a short mention?
-https://zhol.live/survey?src=ab-verkehrsrundschau
+https://zhol.live/de/umfrage?src=ab-verkehrsrundschau
 
 For your articles our radar zhol.live/radar is a free source, with the bans, closures and strikes of the next eight weeks and their sources, when citing zhol.
 

@@ -71,6 +71,22 @@
   to = "/q/it/index.html"
   status = 200
   force = true
+# the survey in German, French and Spanish for the letters abroad (owner, 11 Nov 2026)
+[[redirects]]
+  from = "/de/umfrage"
+  to = "/q/de/index.html"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/fr/enquete"
+  to = "/q/fr/index.html"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/es/encuesta"
+  to = "/q/es/index.html"
+  status = 200
+  force = true
 [[redirects]]
   from = "/q"
   to = "/q/index.html"
