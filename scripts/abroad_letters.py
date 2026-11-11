@@ -48,22 +48,22 @@ T = {
     },
     "de": {
         "subject": {"association": "Verbote, Staus und Streiks auf den Strecken nach Italien, eine Umfrage der Universität Bocconi (1 Minute)",
-                    "intermodal": "Alpenverbote und Brenner, eine Umfrage der Universität Bocconi (1 Minute)",
+                    "intermodal": "Fahrverbote in den Alpen und Brenner, eine Umfrage der Universität Bocconi (1 Minute)",
                     "company": "Strecken nach Italien, was kosten Sie Verbote und Staus? Umfrage der Universität Bocconi, 1 Minute",
-                    "press": "Verbote, Staus und Streiks auf den Strecken nach Italien, Daten aus der Praxis von der Universität Bocconi"},
-        "head": {"association": "Sehr geehrtes Team von {name},\nich schreibe Ihnen mit der Bitte, eine anonyme Umfrage von einer Minute an Ihre Mitglieder weiterzuleiten, die Strecken nach und durch Italien fahren.",
-                 "intermodal": "Sehr geehrtes Team von {name},\nich schreibe Ihnen mit der Bitte, eine anonyme Umfrage von einer Minute an die Transportunternehmen und Spediteure weiterzuleiten, die bei Ihnen Züge über die Alpen buchen.",
-                 "press": "Sehr geehrte Redaktion von {name},\nich schreibe Ihnen mit der Bitte um einen kurzen Hinweis auf eine anonyme Umfrage von einer Minute für Disponenten auf den Strecken nach Italien.",
+                    "press": "Verbote, Staus und Streiks auf den Strecken nach Italien, Praxisdaten der Universität Bocconi"},
+        "head": {"association": "Sehr geehrtes Team von {name},\nich schreibe Ihnen mit der Bitte, eine kurze anonyme Umfrage (eine Minute) an Ihre Mitglieder weiterzuleiten, die nach Italien oder durch Italien fahren.",
+                 "intermodal": "Sehr geehrtes Team von {name},\nich schreibe Ihnen mit der Bitte, eine kurze anonyme Umfrage (eine Minute) an die Transportunternehmen und Spediteure weiterzuleiten, die bei Ihnen Stellplätze auf Zügen über die Alpen buchen.",
+                 "press": "Sehr geehrte Redaktion von {name},\nich schreibe Ihnen mit der Bitte um einen kurzen Hinweis auf eine anonyme Umfrage (eine Minute) für Disponenten auf den Strecken nach Italien.",
                  "company": "Guten Tag,\nich schreibe Ihnen wegen Ihrer Strecken nach Italien."},
-        "reason": {"DE": "Für Transportunternehmen über den Brenner ändern die Dosiertage in Kufstein und die Nachtfahrverbote in Tirol die Planung fast jede Woche, und 2025 lagen 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders.",
+        "reason": {"DE": "Für Transportunternehmen, die über den Brenner fahren, ändern die Dosiertage in Kufstein und die Nachtfahrverbote in Tirol die Planung fast jede Woche, und 2025 lagen 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders.",
                    "AT": "Am Brenner ändern die Dosiertage in Kufstein und die Nachtfahrverbote in Tirol die Planung fast jede Woche, und 2025 lagen 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders.",
                    "CH": "Auf den Strecken zwischen der Schweiz und Italien treffen die Schweizer Nacht- und Sonntagsfahrverbote auf italienische Feiertagsfahrverbote und Streiks, und ein Stau an der Grenze kann das Lieferfenster kosten.",
                    "": "Allein die Einschränkungen am Brenner kosten Italien 544 Millionen Euro im Jahr, und im Oktober haben acht Tage Lkw-Stillstand im Süden mehr als 400 Millionen Euro Schaden verursacht."},
         "law": "Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert.",
-        "ask": {"forward": "Die Umfrage hat sieben Fragen, dauert eine Minute und fragt nach nichts anderem.",
-                "company": "Wir möchten verstehen, was das ein Büro wie Ihres wirklich kostet. Hätten Sie eine Minute für eine Umfrage mit sieben Fragen, anonym, ohne Anmeldung und ohne Verkauf?",
+        "ask": {"forward": "Die Umfrage hat sieben Fragen, dauert eine Minute und verlangt sonst nichts.",
+                "company": "Wir möchten verstehen, was das eine Disposition wie Ihre wirklich kostet. Hätten Sie eine Minute für eine Umfrage mit sieben Fragen, anonym, ohne Anmeldung und ohne Verkaufsabsicht?",
                 "press": "Wir sammeln Ausgangsdaten, also verlorene Minuten pro Tag, geänderte Sendungen, die Kosten des letzten Vorfalls und wie viele Büros bereit wären, Informationen auszutauschen."},
-        "in_english": " Die Umfrage ist auf Englisch.",
+        "in_english": " Sie ist auf Englisch.",
         "who": "Ich bin Alikhan Bashpay, Student an der Universität Bocconi in Mailand. Mein Team und ich entwickeln zhol, eine Plattform für Transportunternehmen, die die Disposition am Vorabend warnt, wenn eine Ladung von morgen von einem Verbot, einer Sperrung oder einem Streik betroffen sein könnte. Das Projekt ist eines von 100, die TEF Ignition, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat.",
         "gift": "Unser Radar ist schon jetzt kostenlos und für alle offen, zhol.live/radar, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und der Wahrscheinlichkeit jedes Ereignisses.",
         "gift_press": "Für Ihre Artikel kann unser Radar eine kostenlose Quelle sein, zhol.live/radar, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen, ihrer Wahrscheinlichkeit und den Quellen, frei nutzbar mit Hinweis auf zhol.",
@@ -72,20 +72,20 @@ T = {
     },
     "fr": {
         "subject": {"association": "Interdictions, bouchons et grèves sur les axes vers l'Italie, une enquête de l'Université Bocconi (1 minute)",
-                    "intermodal": "Interdictions alpines et Brenner, une enquête de l'Université Bocconi (1 minute)",
+                    "intermodal": "Interdictions de circulation dans les Alpes et Brenner, une enquête de l'Université Bocconi (1 minute)",
                     "company": "Axes vers l'Italie, combien vous coûtent les interdictions et les bouchons ? Enquête Bocconi, 1 minute",
                     "press": "Interdictions, bouchons et grèves sur les axes vers l'Italie, des données de terrain de l'Université Bocconi"},
-        "head": {"association": "Bonjour à l'équipe de {name},\nje vous écris pour vous demander de partager une enquête anonyme d'une minute avec vos adhérents qui roulent vers l'Italie et à travers l'Italie.",
-                 "intermodal": "Bonjour à l'équipe de {name},\nje vous écris pour vous demander de partager une enquête anonyme d'une minute avec les transporteurs et commissionnaires qui réservent chez vous des trains à travers les Alpes.",
+        "head": {"association": "Bonjour à l'équipe de {name},\nje vous écris pour vous demander de partager une enquête anonyme d'une minute avec vos adhérents dont les camions vont en Italie ou la traversent.",
+                 "intermodal": "Bonjour à l'équipe de {name},\nje vous écris pour vous demander de partager une enquête anonyme d'une minute avec les transporteurs et commissionnaires qui réservent chez vous des places sur les trains à travers les Alpes.",
                  "press": "Bonjour à la rédaction de {name},\nje vous écris pour vous demander une brève mention d'une enquête anonyme d'une minute destinée aux services d'exploitation sur les axes vers l'Italie.",
                  "company": "Bonjour,\nje vous écris au sujet de vos axes vers l'Italie."},
-        "reason": {"FR": "Sur les axes vers l'Italie, le tunnel du Mont-Blanc ferme la nuit jusqu'en décembre 2026, les bouchons se reportent alors sur le Fréjus, et les interdictions des jours fériés et les grèves en Italie s'y ajoutent.",
+        "reason": {"FR": "Sur les axes vers l'Italie, le tunnel du Mont-Blanc ferme la nuit jusqu'en décembre 2026, les bouchons se reportent alors sur le Fréjus, et les interdictions de circuler les jours fériés et les grèves en Italie s'y ajoutent.",
                    "": "Les seules restrictions au Brenner coûtent à l'Italie 544 millions d'euros par an, et en octobre huit jours d'arrêt des poids lourds dans le Sud ont causé plus de 400 millions d'euros de dégâts."},
         "law": "Selon la loi italienne, chaque heure d'attente d'un camion vaut 100 €.",
         "ask": {"forward": "L'enquête compte sept questions, prend une minute et ne demande rien d'autre.",
                 "company": "Nous aimerions comprendre ce que cela coûte vraiment à un service comme le vôtre. Pourriez-vous nous accorder une minute pour une enquête de sept questions, anonyme, sans inscription et sans démarche commerciale ?",
                 "press": "Nous recueillons des données de départ, c'est-à-dire les minutes perdues chaque jour, les envois modifiés, le coût du dernier imprévu et le nombre de services prêts à échanger des informations."},
-        "in_english": " L'enquête est en anglais.",
+        "in_english": " Elle est en anglais.",
         "who": "Je m'appelle Alikhan Bashpay et je suis étudiant à l'Université Bocconi de Milan. Mon équipe et moi développons zhol, une plateforme pour les transporteurs qui prévient le service d'exploitation la veille au soir si un chargement du lendemain risque une interdiction, une fermeture ou une grève. Le projet fait partie des 100 retenus sur environ 500 par TEF Ignition, un programme européen pour les nouvelles entreprises technologiques.",
         "gift": "En attendant, notre radar est gratuit et ouvert à tous, zhol.live/radar, avec les interdictions, fermetures et grèves des huit prochaines semaines et la probabilité de chacune.",
         "gift_press": "Pour vos articles, notre radar peut être une source gratuite, zhol.live/radar, avec les interdictions, fermetures et grèves des huit prochaines semaines, leur probabilité et leurs sources, utilisable librement en citant zhol.",
@@ -94,29 +94,29 @@ T = {
     },
     "es": {
         "subject": {"association": "Prohibiciones, colas y huelgas en las rutas a Italia, una encuesta de la Universidad Bocconi (1 minuto)",
-                    "intermodal": "Prohibiciones alpinas y Brennero, una encuesta de la Universidad Bocconi (1 minuto)",
-                    "company": "Rutas a Italia, ¿cuánto le cuestan las prohibiciones y las colas? Encuesta Bocconi, 1 minuto",
+                    "intermodal": "Prohibiciones de circulación en los Alpes y Brennero, una encuesta de la Universidad Bocconi (1 minuto)",
+                    "company": "Rutas a Italia, ¿cuánto les cuestan las prohibiciones y las colas? Encuesta Bocconi, 1 minuto",
                     "press": "Prohibiciones, colas y huelgas en las rutas a Italia, datos de campo de la Universidad Bocconi"},
-        "head": {"association": "Estimado equipo de {name},\nle escribo para pedirle que comparta una encuesta anónima de un minuto con sus asociados que hacen rutas hacia Italia y a través de Italia.",
-                 "intermodal": "Estimado equipo de {name},\nle escribo para pedirle que comparta una encuesta anónima de un minuto con los transportistas y transitarios que reservan con ustedes trenes a través de los Alpes.",
-                 "press": "Estimada redacción de {name},\nle escribo para pedirle una breve mención de una encuesta anónima de un minuto para las oficinas de tráfico en las rutas a Italia.",
-                 "company": "Buenos días,\nle escribo sobre sus rutas a Italia."},
-        "reason": {"ES": "En las rutas a Italia a través de Francia, el túnel del Mont Blanc cierra de noche hasta diciembre de 2026, las colas se trasladan entonces al Fréjus, y a ello se suman las prohibiciones de los festivos y las huelgas en Italia.",
+        "head": {"association": "Estimado equipo de {name},\nles escribo para pedirles que compartan una encuesta anónima de un minuto con sus asociados que viajan a Italia o la atraviesan.",
+                 "intermodal": "Estimado equipo de {name},\nles escribo para pedirles que compartan una encuesta anónima de un minuto con los transportistas y transitarios que reservan con ustedes plazas en los trenes a través de los Alpes.",
+                 "press": "Estimada redacción de {name},\nles escribo para pedirles una breve mención de una encuesta anónima de un minuto para las oficinas de tráfico en las rutas a Italia.",
+                 "company": "Buenos días,\nles escribo sobre sus rutas a Italia."},
+        "reason": {"ES": "En las rutas a Italia a través de Francia, el túnel del Mont Blanc cierra de noche hasta diciembre de 2026, las colas se trasladan entonces al Fréjus, y a ello se suman las prohibiciones de circulación en festivos y las huelgas en Italia.",
                    "": "Solo las restricciones en el Brennero le cuestan a Italia 544 millones de euros al año, y en octubre ocho días de paro de camiones en el Sur causaron más de 400 millones de euros de daños."},
         "law": "Según la ley italiana, cada hora que espera un camión vale 100 €.",
         "ask": {"forward": "La encuesta tiene siete preguntas, dura un minuto y no pide nada más.",
-                "company": "Nos gustaría entender cuánto le cuesta realmente esto a una oficina como la suya. ¿Podría dedicarnos un minuto a una encuesta de siete preguntas, anónima, sin registro y sin ventas?",
+                "company": "Nos gustaría entender cuánto le cuesta realmente esto a una oficina como la suya. ¿Podrían dedicarnos un minuto a una encuesta de siete preguntas, anónima, sin registro y sin fines comerciales?",
                 "press": "Recogemos datos de partida, es decir, los minutos perdidos cada día, los envíos modificados, el coste del último imprevisto y cuántas oficinas estarían dispuestas a intercambiar información."},
-        "in_english": " La encuesta está en inglés.",
+        "in_english": " Está en inglés.",
         "who": "Me llamo Alikhan Bashpay y soy estudiante de la Universidad Bocconi de Milán. Mi equipo y yo desarrollamos zhol, una plataforma para transportistas que avisa a la oficina de tráfico la noche anterior si una carga del día siguiente corre el riesgo de una prohibición, un cierre o una huelga. El proyecto es uno de los 100 seleccionados entre unos 500 por TEF Ignition, un programa europeo para nuevas empresas tecnológicas.",
         "gift": "Mientras tanto, nuestro radar es gratuito y abierto a todos, zhol.live/radar, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y la probabilidad de cada uno.",
         "gift_press": "Para sus artículos, nuestro radar puede ser una fuente gratuita, zhol.live/radar, con las prohibiciones, cierres y huelgas de las próximas ocho semanas, su probabilidad y sus fuentes, de uso libre citando zhol.",
         "thanks": "Gracias,",
-        "optout": "Si prefiere no recibir más mensajes, basta con responder «no».",
+        "optout": "Si prefieren no recibir más mensajes, basta con responder «no».",
     },
     "it": {
         "subject": {"association": "Divieti, code e scioperi sulle linee con l'Italia, un sondaggio dell'Università Bocconi (1 minuto)",
-                    "intermodal": "Divieti alpini e Brennero, un sondaggio dell'Università Bocconi (1 minuto)",
+                    "intermodal": "Divieti nelle Alpi e Brennero, un sondaggio dell'Università Bocconi (1 minuto)",
                     "company": "Divieti in Svizzera e code in dogana, quanto vi costano? Sondaggio Bocconi, un minuto",
                     "press": "Divieti, code e scioperi sulle linee con l'Italia, dati dal campo dall'Università Bocconi"},
         "head": {"association": "Gentile team di {name},\nvi scrivo per chiedervi di girare un sondaggio anonimo di un minuto ai vostri associati con linee da e per l'Italia.",
@@ -161,6 +161,10 @@ RU = {  # the team's translation, never sent
     "optout": "Если не хотите получать новые сообщения, просто ответьте «нет».",
 }
 
+BELOW = {"de": "(Die englische Fassung finden Sie unten.)", "fr": "(La version anglaise se trouve plus bas.)",
+         "es": "(La versión en inglés está más abajo.)", "it": "(La versione in inglese è più in basso.)"}
+EN_MARK = "— English version —"
+
 LANG_NAME_RU = {"en": "английском", "de": "немецком", "fr": "французском", "es": "испанском", "it": "итальянском"}
 
 
@@ -169,9 +173,12 @@ def survey_link(oid: str, lang: str) -> str:
     return (f"https://zhol.live/it/sondaggio?src={oid}" if lang == "it" else f"https://zhol.live/survey?src={oid}")
 
 
-def letter(oid: str, name: str, kind: str, country: str) -> dict:
-    """Subject, letter, the highlighted reason, the team's Russian translation, the link and the language."""
-    lang = LANG.get(oid, "en")
+def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None) -> dict:
+    """Subject, letter, the highlighted reason, the team's Russian translation, the link and the language. A letter
+    in another language says on its first line that the English version is below, and has it under a separator
+    (owner, 11 Nov 2026: «внизу всё равно прилагай текст на англ, сразу пиши, что снизу текст на англ»)."""
+    own = lang is None
+    lang = lang or LANG.get(oid, "en")
     t = T[lang]
     link = survey_link(oid, lang)
     reason = t["reason"].get(country) or t["reason"][""]
@@ -192,4 +199,8 @@ def letter(oid: str, name: str, kind: str, country: str) -> dict:
     subject = t["subject"][kind]
     if lang == "it" and kind == "company" and country != "CH":     # an Italian branch whose lanes are not the Swiss ones
         subject = "Divieti, code e scioperi, quanto vi costano? Sondaggio Bocconi, un minuto"
+    if own and lang != "en":
+        en = letter(oid, name, kind, country, "en")
+        text = f"{BELOW[lang]}\n\n{text}\n\n{EN_MARK}\n\n{en['message']}"
+        ru = ru.replace("Перевод для команды.", "Перевод для команды. Ниже в письме идёт тот же текст на английском.", 1)
     return {"subject": subject, "message": text, "why": why, "message_ru": ru, "link": link, "lang": lang}
