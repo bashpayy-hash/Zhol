@@ -10,11 +10,12 @@ LANG = {  # organisation id -> language of the letter
                          "ab-tx-logistik", "ab-lkw-walter", "ab-gebrueder-weiss", "ab-dachser", "ab-nagel-group",
                          "ab-hellmann", "ab-planzer", "ab-camion-transport", "ab-bertschi", "ab-verkehrsrundschau",
                          "ab-dvz", "ab-ralpin", "ab-gartner", "ab-dettendorfer", "ab-ansorge", "ab-willi-betz",
-                         "ab-krummen", "ab-ntg-road")},
+                         "ab-krummen", "ab-ntg-road", "ab-nothegger", "ab-ontour", "ab-amsel", "ab-fiege-ch")},
     **{i: "fr" for i in ("ab-fntr", "ab-otre", "ab-tlf", "ab-stef", "ab-officiel-transporteurs", "ab-perrenot",
                          "ab-heppner", "ab-delanchy")},   # FEBETRA: English, neutral between French and Dutch in Belgium
-    **{i: "es" for i in ("ab-astic", "ab-cetm", "ab-primafrio", "ab-grupo-sese", "ab-carreras", "ab-caliche")},
-    **{i: "it" for i in ("ab-hupac", "ab-rhenus", "ab-galliker", "ab-raben")},
+    **{i: "es" for i in ("ab-astic", "ab-cetm", "ab-primafrio", "ab-grupo-sese", "ab-carreras", "ab-caliche",
+                         "ab-vicente-tornero")},
+    **{i: "it" for i in ("ab-hupac", "ab-rhenus", "ab-galliker", "ab-raben", "ab-licaf", "ab-fattorini", "ab-cippa")},
 }
 
 SIGN = {"en": "Alikhan Bashpay · Bocconi University · zhol", "de": "Alikhan Bashpay · Universität Bocconi · zhol",

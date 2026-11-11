@@ -1,7 +1,7 @@
 # Письма за рубеж — шаблоны
 
 Собрано скриптом `scripts/letter_templates.py` из `scripts/abroad_letters.py`. Адресаты — `outreach/abroad_targets.csv`
-(56 организаций). Итальянские письма — `13-letter-templates.md`.
+(69 организаций). Итальянские письма — `13-letter-templates.md`.
 
 ## Промпт для другой ИИ
 
@@ -42,11 +42,11 @@
 
 ## Кому на каком языке
 
-- **Немецкий (24)** — ASTAG (CH, association); SPEDLOGSWISS (CH, association); BGL e.V. (DE, association); DSLV (DE, association); RAlpin (CH, intermodal); Kombiverkehr (DE, intermodal); Rail Cargo Group (AT, intermodal); TX Logistik (DE, intermodal); LKW Walter (AT, company); Gebrüder Weiss (AT, company); Dachser (DE, company); Nagel-Group (DE, company); Hellmann Worldwide Logistics (DE, company); Planzer (CH, company); Camion Transport (CH, company); Bertschi (CH, company); VerkehrsRundschau (DE, press); DVZ Deutsche Verkehrs-Zeitung (DE, press); Gartner KG (AT, company); Dettendorfer (DE, company); Ansorge Logistik (DE, company); Willi Betz (DE, company); Krummen Kerzers (CH, company); NTG Road (ex Gondrand) (DE, company)
+- **Немецкий (28)** — ASTAG (CH, association); SPEDLOGSWISS (CH, association); BGL e.V. (DE, association); DSLV (DE, association); RAlpin (CH, intermodal); Kombiverkehr (DE, intermodal); Rail Cargo Group (AT, intermodal); TX Logistik (DE, intermodal); LKW Walter (AT, company); Gebrüder Weiss (AT, company); Dachser (DE, company); Nagel-Group (DE, company); Hellmann Worldwide Logistics (DE, company); Planzer (CH, company); Camion Transport (CH, company); Bertschi (CH, company); VerkehrsRundschau (DE, press); DVZ Deutsche Verkehrs-Zeitung (DE, press); Gartner KG (AT, company); Dettendorfer (DE, company); Ansorge Logistik (DE, company); Willi Betz (DE, company); Krummen Kerzers (CH, company); NTG Road (ex Gondrand) (DE, company); Nothegger Transporte (AT, company); Ontour Transport Service (DE, company); Amsel Logistik (DE, company); Fiege Logistik Schweiz (CH, company)
 - **Французский (8)** — FNTR (FR, association); OTRE PACA (FR, association); Union TLF (FR, association); STEF (FR, company); L'Officiel des Transporteurs (FR, press); Groupe Jacky Perrenot (FR, company); Heppner (FR, company); Delanchy (FR, company)
-- **Испанский (6)** — ASTIC (ES, association); CETM (ES, association); Primafrio (ES, company); Grupo Sesé (ES, company); Grupo Carreras (ES, company); Grupo Caliche (ES, company)
-- **Итальянский (4)** — Hupac (CH, intermodal); Rhenus Gottardo Ruffoni (Rhenus, Chiasso) (DE, company); Galliker Italia (Melzo) (CH, company); Raben Italia (PL, company)
-- **Английский (14)** — CLECAT (EU, association); IRU (EU, association); Waberer's (HU, company); Girteka (LT, company); Ewals Cargo Care (NL, company); H.Essers (BE, company); Jan de Rijk Logistics (NL, company); Van den Bosch (NL, company); Intereuropa (SI, company); TLN Transport en Logistiek Nederland (NL, association); FEBETRA (BE, association); ZMPD (PL, association); ČESMAD BOHEMIA (CZ, association); UIRR (EU, association)
+- **Испанский (7)** — ASTIC (ES, association); CETM (ES, association); Primafrio (ES, company); Grupo Sesé (ES, company); Grupo Carreras (ES, company); Grupo Caliche (ES, company); Transportes Vicente Tornero (ES, company)
+- **Итальянский (7)** — Hupac (CH, intermodal); Rhenus Gottardo Ruffoni (Rhenus, Chiasso) (DE, company); Galliker Italia (Melzo) (CH, company); Raben Italia (PL, company); Licaf Spedizioni (CH, company); Fattorini Autotrasporti (CH, company); Cippa Trasporti (CH, company)
+- **Английский (19)** — CLECAT (EU, association); IRU (EU, association); Waberer's (HU, company); Girteka (LT, company); Ewals Cargo Care (NL, company); H.Essers (BE, company); Jan de Rijk Logistics (NL, company); Van den Bosch (NL, company); Intereuropa (SI, company); TLN Transport en Logistiek Nederland (NL, association); FEBETRA (BE, association); ZMPD (PL, association); ČESMAD BOHEMIA (CZ, association); UIRR (EU, association); Gooris Transport International (BE, company); CAT Express Transport (RO, company); Routier European Transport (RO, company); Transgor Logistik (RO, company); Easting Express (LT, company)
 
 ## Скелет
 
