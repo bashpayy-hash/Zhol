@@ -32,17 +32,17 @@
 ## 1. Итальянские компании
 
 **Порядок:** их собственные маршруты и свежий случай на их коридоре → просьба со ссылкой → кто мы → бесплатный
-радар → отписка.
+отписка. Радар без ссылки, он открывается в конце опроса.
 
 ### Темы (по событию в письме)
 
-- `kufstein` — Dosaggio a Kufstein e Brennero, quanto vi costano? Sondaggio Bocconi per un progetto AI
-- `montblanc` — Monte Bianco e Fréjus, quanto vi costano? Sondaggio Bocconi per un progetto AI
-- `swiss` — Divieti in Svizzera e code in dogana, quanto vi costano? Sondaggio Bocconi per un progetto AI
-- `genoa` — Code al porto di Genova, quanto vi costano? Sondaggio Bocconi per un progetto AI
-- `vittoria` — Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi per un progetto AI
-- `messaggero` — Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi per un progetto AI
-- по умолчанию — Divieti, code e scioperi, quanto vi costano? Sondaggio Bocconi per un progetto AI
+- `kufstein` — Progetto AI della Bocconi, quanto vi costano Kufstein e il Brennero?
+- `montblanc` — Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?
+- `swiss` — Progetto AI della Bocconi, quanto vi costano le code in dogana?
+- `genoa` — Progetto AI della Bocconi, quanto vi costano le code al porto di Genova?
+- `vittoria` — Progetto AI della Bocconi, quanto vi costano fermi e blocchi?
+- `messaggero` — Progetto AI della Bocconi, quanto vi costano fermi e blocchi?
+- по умолчанию — Progetto AI della Bocconi, quanto vi costano divieti, code e scioperi?
 
 ### Скелет
 
@@ -50,12 +50,10 @@
 Buongiorno,
 {строка про компанию}
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite.
+Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 {ссылка}
 
 Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
-
-Intanto il nostro radar è gratuito e aperto a tutti, zhol.live/it/radar, con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -73,8 +71,8 @@ Pensando ai vostri circa {N} mezzi con {груз} da {город} verso {стр�
 **События по коридору** (выбор: переходы → основной маршрут → регион):
 
 - `brenner` — «a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg resta a una corsia per anni» → «partire prima, passare da Tarvisio o mettere il semirimorchio sul treno» (источник `kufstein`)
-- `france` — «da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì» → «scegliere l'altro traforo o anticipare la partenza» (источник `montblanc`)
-- `swiss` — «in Svizzera i mezzi pesanti non viaggiano di notte né la domenica, e una coda alla dogana fa perdere la finestra» → «anticipare il passaggio in dogana o passare dal Brennero» (источник `swiss`)
+- `france` — «fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa» → «anticipare la partenza o scegliere per tempo il traforo aperto» (источник `montblanc`)
+- `swiss` — «in Svizzera i divieti di notte e la domenica lasciano già una finestra stretta, e basta una coda imprevista alla dogana di Chiasso o un cantiere sul percorso per perderla» → «anticipare il passaggio in dogana o avvisare per tempo il cliente» (источник `swiss`)
 - `sicily` — «a ottobre il fermo in Sicilia ha mostrato quanto conta l'autotrasporto, con il mercato di Vittoria a box vuoti per cinque giorni e 90–100 milioni di danni stimati da Coldiretti e Confcommercio Sicilia» → «spostare i carichi sulla nave da Palermo o Catania, o anticipare le consegne» (источник `vittoria`)
 - `south` — «a ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero» → «anticipare le consegne o cambiare porto» (источник `messaggero`)
 - `liguria` — «al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo» → «spostare l'orario d'ingresso al varco» (источник `genoa`)
@@ -82,18 +80,16 @@ Pensando ai vostri circa {N} mezzi con {груз} da {город} verso {стр�
 
 ### Пример — Бреннер (Autotrasporti Bommartini srl)
 
-**Тема:** Divieti in Svizzera e code in dogana, quanto vi costano? Sondaggio Bocconi per un progetto AI
+**Тема:** Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?
 
 ```text
 Buongiorno,
-Pensando ai vostri circa 90 mezzi da Soave verso Francia, Svizzera e Austria, ci torna in mente che in Svizzera i mezzi pesanti non viaggiano di notte né la domenica, e una coda alla dogana fa perdere la finestra. Saperlo la sera prima permette di anticipare il passaggio in dogana o passare dal Brennero, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Ho visto che lavorate da Soave verso Francia, Svizzera e Austria, con circa 90 mezzi. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite.
+Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-form
 
 Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
-
-Intanto il nostro radar è gratuito e aperto a tutti, zhol.live/it/radar, con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -102,18 +98,16 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ### Пример — Франция (Trasporti Boscaini srl)
 
-**Тема:** Monte Bianco e Fréjus, quanto vi costano? Sondaggio Bocconi per un progetto AI
+**Тема:** Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?
 
 ```text
 Buongiorno,
-Pensando ai vostri camion con trasporti eccezionali da Verona verso Francia, Germania e Belgio, ci torna in mente che da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus le code si spostano tutte lì. Saperlo la sera prima permette di scegliere l'altro traforo o anticipare la partenza, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Ho visto che lavorate da Verona verso Francia, Germania e Belgio, soprattutto trasporti eccezionali. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite.
+Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-form
 
 Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
-
-Intanto il nostro radar è gratuito e aperto a tutti, zhol.live/it/radar, con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -122,18 +116,16 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ### Пример — Юг (Michele Sole srl)
 
-**Тема:** Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi per un progetto AI
+**Тема:** Progetto AI della Bocconi, quanto vi costano fermi e blocchi?
 
 ```text
 Buongiorno,
-Pensando ai vostri camion con merce a temperatura controllata da Nocera Inferiore verso Germania, Austria e Svizzera, ci torna in mente che a ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo la sera prima permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Ho visto che lavorate da Nocera Inferiore verso Germania, Austria e Svizzera, soprattutto merce a temperatura controllata. A ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo la sera prima permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite.
+Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-email
 
 Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
-
-Intanto il nostro radar è gratuito e aperto a tutti, zhol.live/it/radar, con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -149,9 +141,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ### Темы по типу
 
-- `terminal` — Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per chi lavora nel vostro interporto (Bocconi, TEF Ignition)
-- `consortium` — Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri consorziati (Bocconi, TEF Ignition)
-- `industry` — Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per le imprese del vostro gruppo trasporti (Bocconi, TEF Ignition)
+- `terminal` — Avvisi AI su divieti e code, sondaggio Bocconi per il vostro interporto
+- `consortium` — Avvisi AI su divieti e code, sondaggio Bocconi per i vostri consorziati
+- `industry` — Avvisi AI su divieti e code, sondaggio Bocconi per il gruppo trasporti
 - остальные (перевозчики, ремесленники, экспедиторы) — Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri associati (Bocconi, TEF Ignition)
 
 ### Скелет
@@ -160,7 +152,7 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 Gentile segreteria di {name},
 vi scrivo per chiedervi {просьба по типу} un sondaggio anonimo di sette domande, un minuto.
 
-Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 {цифры региона} Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
@@ -191,8 +183,8 @@ Alikhan Bashpay · Università Bocconi · zhol
 - `liguria` — Al porto di Genova le code ai varchi sono arrivate a costare 120–180 € a viaggio, tanto da diventare un indennizzo, e per chi va in Francia da settembre a dicembre 2026 il Monte Bianco chiude di notte.
   - по-русски: В порту Генуи очереди у въездных ворот стали стоить 120–180 евро за рейс, настолько, что за них ввели компенсацию, а тем, кто едет во Францию, с сентября по декабрь 2026 года Монблан закрыт по ночам.
   - источник: `genoa`
-- `east` — Per chi va in Austria e in Slovenia, i divieti notturni e festivi austriaci decidono l'orario di partenza, e nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio.
-  - по-русски: Для тех, кто ездит в Австрию и Словению, австрийские ночные и праздничные запреты определяют время выезда, а в 2026 году перевозчики уже объявляли общенациональные остановки в апреле и мае.
+- `east` — Per chi va in Austria e in Slovenia gli orari sono già stretti dai divieti notturni e festivi austriaci, e basta un fermo o una chiusura imprevista per farli saltare. Nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio.
+  - по-русски: Для тех, кто ездит в Австрию и Словению, время и так зажато австрийскими ночными и праздничными запретами, и достаточно остановки или неожиданного закрытия, чтобы всё сорвалось. В 2026 году перевозчики уже объявляли общенациональные остановки в апреле и мае.
   - источник: `strikes`
 - `sicily` — A ottobre 2026 il fermo in Sicilia ha mostrato quanto conta l'autotrasporto. In cinque giorni il mercato di Vittoria, che di solito spedisce circa 100 camion al giorno, è rimasto con i box vuoti, e Coldiretti e Confcommercio Sicilia hanno stimato 90–100 milioni di euro di danni.
   - по-русски: Октябрьская остановка 2026 года на Сицилии показала, как много значат грузоперевозки. За пять дней рынок Виттории, откуда обычно уходит около 100 грузовиков в день, остался с пустыми боксами, а Coldiretti и Confcommercio Sicilia оценили ущерб в 90–100 млн евро.
@@ -209,13 +201,13 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример — Север, Бреннер (ALSEA)
 
-**Тема:** Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri associati (Bocconi, TEF Ignition)
+**Тема:** Avvisi AI su divieti e code, sondaggio Bocconi per i vostri associati
 
 ```text
 Gentile segreteria di ALSEA,
 vi scrivo per chiedervi di girare ai vostri associati spedizionieri e ai loro uffici traffico un sondaggio anonimo di sette domande, un minuto.
 
-Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
@@ -228,13 +220,13 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример — Юг (FAI Napoli)
 
-**Тема:** Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri associati (Bocconi, TEF Ignition)
+**Тема:** Avvisi AI su divieti e code, sondaggio Bocconi per i vostri associati
 
 ```text
 Gentile segreteria di FAI Napoli,
 vi scrivo per chiedervi di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere, un sondaggio anonimo di sette domande, un minuto.
 
-Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa 300 in Campania. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
@@ -247,13 +239,13 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример — интерпорт (Interporto Padova)
 
-**Тема:** Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per chi lavora nel vostro interporto (Bocconi, TEF Ignition)
+**Тема:** Avvisi AI su divieti e code, sondaggio Bocconi per il vostro interporto
 
 ```text
 Gentile segreteria di Interporto Padova,
 vi scrivo per chiedervi di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto un sondaggio anonimo di sette domande, un minuto.
 
-Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
@@ -273,9 +265,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Темы по типу издания
 
-- `trade` — Un radar AI per gli uffici traffico, quanto costano divieti, code e chiusure? Sondaggio Bocconi (TEF Ignition)
-- `ports` — Un radar AI di code ai porti, divieti e scioperi, un sondaggio Bocconi per gli uffici traffico (TEF Ignition)
-- `logistics` — Un radar AI di divieti, blocchi e consegne in ritardo, un sondaggio Bocconi per chi gestisce i trasporti (TEF Ignition)
+- `trade` — Radar AI su divieti e scioperi, sondaggio Bocconi sugli uffici traffico
+- `ports` — Radar AI su porti e scioperi, sondaggio Bocconi sugli uffici traffico
+- `logistics` — Radar AI su divieti e ritardi, sondaggio Bocconi per la logistica
 
 ### Цифры по типу издания
 
@@ -298,13 +290,13 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример (Uomini e Trasporti)
 
-**Тема:** Un radar AI per gli uffici traffico, quanto costano divieti, code e chiusure? Sondaggio Bocconi (TEF Ignition)
+**Тема:** Radar AI su divieti e scioperi, sondaggio Bocconi sugli uffici traffico
 
 ```text
 Gentile redazione di Uomini e Trasporti,
 vi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo per gli uffici traffico, sette domande, un minuto.
 
-Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 
@@ -324,7 +316,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 Пост только с разрешения администратора группы.
 
 ```text
-Buongiorno a tutti, con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio. Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €. Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.
+Buongiorno a tutti, con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio. Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli uffici di avvisarsi tra loro. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.
 
 Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
 

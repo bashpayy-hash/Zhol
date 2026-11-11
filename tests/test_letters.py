@@ -38,3 +38,25 @@ def test_professor_letters_have_no_colons_and_no_team_names():
         assert body.count("**") // 2 <= 3, subject
         assert any(l.startswith(("https://zhol.live/survey?", "https://zhol.live/it/sondaggio?")) for l in body.split("\n")), subject
         assert "you will have met" not in body and "avrà conosciuto" not in body
+
+
+def test_subjects_fit_a_phone_preview():
+    """AI and Bocconi stay visible: subjects of at most ~70 characters (review of 11 Nov 2026). The professors' letters
+    went out before this rule; the Facebook groups have a note instead of a subject."""
+    rows = json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))
+    rows = rows if isinstance(rows, list) else rows["rows"]
+    for r in rows:
+        if r["type"] in ("bocconi", "group") or not r.get("subject"):
+            continue
+        assert len(r["subject"]) <= 72, (r["id"], len(r["subject"]), r["subject"])
+
+
+def test_one_link_to_click_outside_the_press():
+    """The survey link is the only URL in letters that ask for answers; the radar URL is for the press only."""
+    rows = json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))
+    rows = rows if isinstance(rows, list) else rows["rows"]
+    for r in rows:
+        if r["type"] in ("company", "abroad", "association") and "press" not in r.get("region", "") and r.get("message"):
+            if r["type"] == "abroad" and r.get("fit") == "10":
+                continue
+            assert "zhol.live/radar" not in r["message"] and "zhol.live/it/radar" not in r["message"], r["id"]

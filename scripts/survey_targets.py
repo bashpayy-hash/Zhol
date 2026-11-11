@@ -41,11 +41,10 @@ SIGN = "Alikhan Bashpay · Università Bocconi · zhol"
 # is (the most reliable figure), what it means for this company (its lanes, its region, a recent event with a
 # source), the network of offices, the automation, the survey. Every figure has a public source (SOURCES).
 ASK_FIRST = "vi scrivo per chiedervi un minuto per un breve sondaggio di sette domande, anonimo."
-HOOK = ("Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, "
-        "è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €.")
-PLATFORM = ("Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche "
-            "di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code "
-            "e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.")
+HOOK = ("Sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima "
+        "avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero, e permette agli "
+        "uffici di avvisarsi tra loro.")
+PLATFORM = ("Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per nuove imprese tecnologiche.")
 SIZE = ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
         "2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
 BASELINE = ("Per ora vi chiediamo solo di rispondere. Stiamo raccogliendo i dati di partenza per capire a fondo il problema "
@@ -69,10 +68,12 @@ SOURCES = {
 EVENTS = {
     "brenner": ("a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg "
                 "resta a una corsia per anni", "partire prima, passare da Tarvisio o mettere il semirimorchio sul treno", "kufstein"),
-    "france": ("da settembre a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e quando si ferma il Fréjus "
-               "le code si spostano tutte lì", "scegliere l'altro traforo o anticipare la partenza", "montblanc"),
-    "swiss": ("in Svizzera i mezzi pesanti non viaggiano di notte né la domenica, e una coda alla dogana fa perdere la finestra",
-              "anticipare il passaggio in dogana o passare dal Brennero", "swiss"),
+    "france": ("fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al "
+               "Fréjus per lasciare i camion senza alternativa", "anticipare la partenza o scegliere per tempo il traforo aperto",
+               "montblanc"),
+    "swiss": ("in Svizzera i divieti di notte e la domenica lasciano già una finestra stretta, e basta una coda imprevista alla "
+              "dogana di Chiasso o un cantiere sul percorso per perderla", "anticipare il passaggio in dogana o avvisare per "
+              "tempo il cliente", "swiss"),
     "sicily": ("a ottobre il fermo in Sicilia ha mostrato quanto conta l'autotrasporto, con il mercato di Vittoria a box vuoti "
                "per cinque giorni e 90–100 milioni di danni stimati da Coldiretti e Confcommercio Sicilia",
                "spostare i carichi sulla nave da Palermo o Catania, o anticipare le consegne", "vittoria"),
@@ -133,13 +134,17 @@ def corridor(crossings: str, cs: list[str], region: str) -> str:
     """The corridor whose event goes in the letter: the crossings named first, then the main lane (the first country),
     then the region (Piemonte and Liguria look to France, Lombardy, the North-East and Emilia to the Brenner)."""
     c = (crossings or "").lower()
-    west = "fréjus" in c or "frejus" in c or "mont blanc" in c
-    if "brenner" in c and not west:
-        return "brenner"
-    if west and "brenner" not in c:
-        return "france"
     main = cs[0] if cs else ""
-    if "swiss" in c or main == "Svizzera":
+    named = [k for k, hit in (("france", "fréjus" in c or "frejus" in c or "mont blanc" in c), ("swiss", "swiss" in c),
+                              ("brenner", "brenner" in c)) if hit]
+    by_main = {"Francia": "france", "Spagna": "france", "Svizzera": "swiss"}.get(main) or (
+        "brenner" if main in ("Germania", "Austria", "Paesi Bassi", "Polonia", "Repubblica Ceca", "Scandinavia", "Ungheria",
+                              "Slovenia") else "")
+    if len(named) == 1:
+        return named[0]
+    if named:
+        return by_main if by_main in named else named[0]
+    if main == "Svizzera":
         return "swiss"
     if main in ("Francia", "Spagna") or ("Francia" in cs and region in ("Piemonte", "Liguria", "Valle d'Aosta")):
         return "france"
@@ -165,11 +170,13 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
     key = REGION_EVENT[region] if REGION_EVENT.get(region) in ("sicily", "south") else corridor(crossings, cs, region)
     event, alt, src = EVENTS[key]
     n, what = fleet(fleet_txt) or (facts.get("fleet") or ""), cargo(spec) or (facts.get("cargo") or "")
-    trucks = f"i vostri circa {n} mezzi" if n else "i vostri camion"
-    route = f" verso {join_it(cs[:3])}" if cs else ""
-    load = f" con {what}" if what else ""
     where = f" da {city}" if city and "[" not in city and city.lower() != "n/a" else ""
-    line = (f"Pensando {'ai' if trucks.startswith('i ') else 'a'} {trucks[2:] if trucks.startswith('i ') else trucks}{load}{where}{route}, ci torna in mente che {event}. "
+    route = f" verso {join_it(cs[:3])}" if cs else ""
+    fleet_part = f"con circa {n} mezzi" if n else ""
+    load = f"soprattutto {what}" if what else ""
+    tail = ", ".join(x for x in (fleet_part, load) if x)
+    seen = f"Ho visto che lavorate{where}{route}" + (f", {tail}" if tail else "") + ". " if (where or route or tail) else ""
+    line = (f"{seen}{event[0].upper() + event[1:]}. "
             f"Saperlo la sera prima permette di {alt}, e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
     return line, SOURCES[src]
 
@@ -178,22 +185,21 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
 # в композиции письма для компаний»). Their own lanes first, then the ask with the link, then who we are in one
 # paragraph (Bocconi, which every Italian office knows; TEF said in plain words), then something useful today.
 COMPANY_ASK = ("Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, "
-               "anonimo, senza registrazione e senza vendite.")
+               "anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, "
+               "chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.")
 COMPANY_WHO = ("Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per "
                "autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una "
                "chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per "
                "nuove imprese tecnologiche.")
-COMPANY_GIFT = ("Intanto il nostro radar è gratuito e aperto a tutti, zhol.live/it/radar, con divieti, chiusure e scioperi delle "
-                "prossime otto settimane e la probabilità di ognuno.")
 COMPANY_SUBJECT = {  # by the event in the letter; no TEF (companies do not know it), Bocconi (they do)
-    SOURCES["kufstein"]: "Dosaggio a Kufstein e Brennero, quanto vi costano? Sondaggio Bocconi per un progetto AI",
-    SOURCES["montblanc"]: "Monte Bianco e Fréjus, quanto vi costano? Sondaggio Bocconi per un progetto AI",
-    SOURCES["swiss"]: "Divieti in Svizzera e code in dogana, quanto vi costano? Sondaggio Bocconi per un progetto AI",
-    SOURCES["genoa"]: "Code al porto di Genova, quanto vi costano? Sondaggio Bocconi per un progetto AI",
-    SOURCES["vittoria"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi per un progetto AI",
-    SOURCES["messaggero"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi per un progetto AI",
+    SOURCES["kufstein"]: "Progetto AI della Bocconi, quanto vi costano Kufstein e il Brennero?",
+    SOURCES["montblanc"]: "Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?",
+    SOURCES["swiss"]: "Progetto AI della Bocconi, quanto vi costano le code in dogana?",
+    SOURCES["genoa"]: "Progetto AI della Bocconi, quanto vi costano le code al porto di Genova?",
+    SOURCES["vittoria"]: "Progetto AI della Bocconi, quanto vi costano fermi e blocchi?",
+    SOURCES["messaggero"]: "Progetto AI della Bocconi, quanto vi costano fermi e blocchi?",
 }
-COMPANY_SUBJECT_DEFAULT = "Divieti, code e scioperi, quanto vi costano? Sondaggio Bocconi per un progetto AI"
+COMPANY_SUBJECT_DEFAULT = "Progetto AI della Bocconi, quanto vi costano divieti, code e scioperi?"
 
 
 def company_subject(src: str) -> str:
@@ -201,7 +207,7 @@ def company_subject(src: str) -> str:
 
 
 def company_message(name: str, line: str, link: str, src: str = "") -> str:
-    return (f"Buongiorno,\n{line}\n\n{COMPANY_ASK}\n{link}\n\n{COMPANY_WHO}\n\n{COMPANY_GIFT}\n\n"
+    return (f"Buongiorno,\n{line}\n\n{COMPANY_ASK}\n{link}\n\n{COMPANY_WHO}\n\n"
             f"Grazie,\n{SIGN}\n{OPTOUT}")
 
 
@@ -247,10 +253,12 @@ WHY = {  # (Italian, Russian, source key), the figures closest to where the memb
                 "indennizzo, e per chi va in Francia da settembre a dicembre 2026 il Monte Bianco chiude di notte.",
                 "В порту Генуи очереди у въездных ворот стали стоить 120–180 евро за рейс, настолько, что за них ввели "
                 "компенсацию, а тем, кто едет во Францию, с сентября по декабрь 2026 года Монблан закрыт по ночам.", "genoa"),
-    "east": ("Per chi va in Austria e in Slovenia, i divieti notturni e festivi austriaci decidono l'orario di partenza, e nel "
-             "2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio.",
-             "Для тех, кто ездит в Австрию и Словению, австрийские ночные и праздничные запреты определяют время выезда, а в "
-             "2026 году перевозчики уже объявляли общенациональные остановки в апреле и мае.", "strikes"),
+    "east": ("Per chi va in Austria e in Slovenia gli orari sono già stretti dai divieti notturni e festivi austriaci, e basta un "
+             "fermo o una chiusura imprevista per farli saltare. Nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad "
+             "aprile e a maggio.",
+             "Для тех, кто ездит в Австрию и Словению, время и так зажато австрийскими ночными и праздничными запретами, и "
+             "достаточно остановки или неожиданного закрытия, чтобы всё сорвалось. В 2026 году перевозчики уже объявляли "
+             "общенациональные остановки в апреле и мае.", "strikes"),
     # the South: some of these associations led the October stoppage, so the figures say how much trucks matter,
     # never who is to blame
     "sicily": ("A ottobre 2026 il fermo in Sicilia ha mostrato quanto conta l'autotrasporto. In cinque giorni il mercato di "
@@ -276,11 +284,11 @@ WHY = {  # (Italian, Russian, source key), the figures closest to where the memb
                  "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а в октябре восемь дней блокад "
                  "дальнобойщиков на Юге принесли больше 400 млн евро ущерба.", "brenner"),
 }
-HOOK_RU = ("Меня зовут Алихан Башпай, я студент Боккони. zhol, логистический проект, который мы с командой развиваем, вошёл "
-           "в 100 отобранных из примерно 500 на TEF Ignition 2026 (Tech Europe Foundation) и получил грант 2 000 евро.")
-PLATFORM_RU = ("Мы хотим построить AI-платформу, которая объединит перевозчиков и отделы перевозок. Она следит за дорогами и "
-               "ночью, пока все спят, берёт на себя часть наблюдения и решений по запретам, закрытиям, пробкам и забастовкам "
-               "и даёт офисам обмениваться информацией.")
+HOOK_RU = ("Меня зовут Алихан Башпай, я студент Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая накануне "
+           "вечером предупреждает отдел перевозок, если завтрашнему грузу грозит запрет, закрытие или забастовка, и даёт "
+           "офисам предупреждать друг друга.")
+PLATFORM_RU = ("Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition, европейской программой для новых "
+               "технологических компаний.")
 
 
 def assoc_kind(name: str, about: str = "") -> str:
@@ -382,9 +390,9 @@ PRESS_ANGLE = {  # what the outlet covers, from its own homepage (10 Nov 2026); 
                          "порта вглубь страны."),
 }
 PRESS_SUBJECT = {
-    "trade": "Un radar AI per gli uffici traffico, quanto costano divieti, code e chiusure? Sondaggio Bocconi (TEF Ignition)",
-    "ports": "Un radar AI di code ai porti, divieti e scioperi, un sondaggio Bocconi per gli uffici traffico (TEF Ignition)",
-    "logistics": "Un radar AI di divieti, blocchi e consegne in ritardo, un sondaggio Bocconi per chi gestisce i trasporti (TEF Ignition)",
+    "trade": "Radar AI su divieti e scioperi, sondaggio Bocconi sugli uffici traffico",
+    "ports": "Radar AI su porti e scioperi, sondaggio Bocconi sugli uffici traffico",
+    "logistics": "Radar AI su divieti e ritardi, sondaggio Bocconi per la logistica",
 }
 
 
@@ -741,16 +749,16 @@ def abroad() -> list[dict]:
                      "about": r["about_ru"], "to": r["email"], "to_src": r["source"], "where": r["website"],
                      "search": google(r["name"] + " contact"), "subject": L["subject"], "message": L["message"],
                      "message_ru": L["message_ru"], "link": L["link"], "why": L["why"],
-                     "why_src": SOURCES["kufstein"] if r["country"] in ("DE", "AT") else
-                     SOURCES["montblanc"] if r["country"] in ("FR", "ES") else SOURCES["swiss"] if r["country"] == "CH" else SOURCES["brenner"],
+                     "why_src": L.get("why_src") or (SOURCES["kufstein"] if r["country"] in ("DE", "AT") else
+                     SOURCES["montblanc"] if r["country"] in ("FR", "ES") else SOURCES["swiss"] if r["country"] == "CH" else SOURCES["brenner"]),
                      "fit": {"association": "30", "intermodal": "25", "company": "20", "press": "10"}[r["kind"]]})
     return rows
 
 
 SUBJECT_BY_KIND = {
-    "terminal": "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per chi lavora nel vostro interporto (Bocconi, TEF Ignition)",
-    "consortium": "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri consorziati (Bocconi, TEF Ignition)",
-    "industry": "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per le imprese del vostro gruppo trasporti (Bocconi, TEF Ignition)",
+    "terminal": "Avvisi AI su divieti e code, sondaggio Bocconi per il vostro interporto",
+    "consortium": "Avvisi AI su divieti e code, sondaggio Bocconi per i vostri consorziati",
+    "industry": "Avvisi AI su divieti e code, sondaggio Bocconi per il gruppo trasporti",
 }
 
 
@@ -763,7 +771,7 @@ def association_letters(rows: list[dict]) -> list[dict]:
         kind = r.pop("kind_hint", "") or assoc_kind(r["name"], r.get("about", ""))
         region = assoc_region(r["name"], r.get("city", ""), r.get("region", ""), r.get("about", ""))
         r["message"], r["message_ru"], r["why"], r["why_src"] = association_message(r["name"], r["link"], kind, region)
-        r["subject"] = SUBJECT_BY_KIND.get(kind, "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri associati (Bocconi, TEF Ignition)")
+        r["subject"] = SUBJECT_BY_KIND.get(kind, "Avvisi AI su divieti e code, sondaggio Bocconi per i vostri associati")
         r["kind"], r["area"] = kind, region
     return rows
 
