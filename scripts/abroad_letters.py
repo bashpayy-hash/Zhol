@@ -214,18 +214,24 @@ def survey_link(oid: str, lang: str) -> str:
 # statements or the court case yet (owner: «проситься на 16-е апреля было бы пока что рановато»).
 BRENNER_SRC = "https://www.agi.it/economia/news/2026-05-30/brennero-traffico-limitazioni-danno-37305644/"
 BESPOKE = {
+    # The figures tell one story (owner, 11 Nov 2026: «этот дроп статистики нужно правильнее вписать в нарратив»):
+    # one truck and one surprise, what that adds up to for a country, what nobody has measured yet, and the survey
+    # that measures it, then the ask.
     "ab-iru": {
         "subject": "Bocconi AI project on Alpine bans, a 1-minute survey for IRU members",
-        "why": ("The cost of the restrictions on the lanes to Italy is known at country level. The Brenner restrictions alone "
-                "cost Italy €544 million a year, and in 2025 21 of the 57 dosing days at Kufstein came outside the published "
-                "calendar. What is still missing is the cost seen from a single traffic office, the minutes lost every day, "
-                "the loads moved and the price of the last surprise. By Italian law every hour a truck waits is worth €100."),
+        "why": ("Hauliers on the lanes to Italy plan around the bans they know, and lose money on the ones they do not. In "
+                "2025, 21 of the 57 dosing days at Kufstein came outside the published calendar, and by Italian law every "
+                "hour a truck waits is worth €100. Across the whole economy, the Brenner restrictions alone cost Italy €544 million "
+                "a year. "
+                "That figure exists for countries, but we have not found it measured for a single traffic office, the "
+                "minutes lost every day, the loads moved and the cost of the last surprise."),
         "why_src": BRENNER_SRC,
         "message": (
             "Dear IRU team,\n{who}\n\n"
-            "Could you share a one-minute, anonymous survey with the member associations whose hauliers run lanes to and "
-            "through Italy? We will send IRU the aggregated results, free to use in its work for road transport.\n\n"
             "{why}\n\n"
+            "That is what our one-minute, anonymous survey measures. Could you share it with the member associations whose "
+            "hauliers run lanes to and through Italy? We will send IRU the aggregated results, free to use in its work for "
+            "road transport.\n\n"
             "The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, "
             "closures and strikes of the next eight weeks and the chance of each.\n"
             "{link}\n\n"
@@ -233,19 +239,31 @@ BESPOKE = {
         "message_ru": (
             "Письмо на английском. Перевод для команды. Письмо написано только для IRU.\n\n"
             "Уважаемая команда IRU,\n{who_ru}\n\n"
-            "Не могли бы вы поделиться анонимным опросом на одну минуту с ассоциациями-членами, чьи перевозчики ездят в Италию "
-            "и через неё? IRU пришлём сводные результаты, их можно свободно использовать в работе для автоперевозок.\n\n"
-            "Цена ограничений на маршрутах в Италию известна на уровне стран. Одни только ограничения на Бреннере стоят Италии "
-            "544 млн евро в год, а в 2025 году 21 из 57 дней дозирования в Куфштайне пришёлся вне опубликованного календаря. "
-            "Не хватает цены, которую видит один отдел перевозок, то есть сколько минут теряется каждый день, сколько грузов "
-            "переносится и во что обошёлся последний сюрприз. По итальянскому закону каждый час ожидания грузовика стоит 100 "
-            "евро.\n\n"
+            "Перевозчики на маршрутах в Италию планируют вокруг запретов, о которых знают, и теряют деньги на тех, о которых "
+            "не знают. В 2025 году 21 из 57 дней дозирования в Куфштайне пришёлся вне опубликованного календаря, а по "
+            "итальянскому закону каждый час ожидания грузовика стоит 100 евро. По всей экономике одни только ограничения на Бреннере "
+            "стоят Италии 544 млн евро в год. Эта цифра есть для стран, но мы не нашли её измеренной для одного отдела "
+            "перевозок, то есть сколько минут теряется каждый день, сколько грузов переносится и во что обошёлся последний "
+            "сюрприз.\n\n"
+            "Именно это измеряет наш анонимный опрос на одну минуту. Не могли бы вы поделиться им с ассоциациями-членами, "
+            "чьи перевозчики ездят в Италию и через неё? IRU пришлём сводные результаты, их можно свободно использовать в "
+            "работе для автоперевозок.\n\n"
             "В опросе семь вопросов, больше он ничего не просит. В конце он показывает наш бесплатный AI-радар с запретами, "
             "закрытиями и забастовками на восемь недель вперёд и вероятностью каждого.\n"
             "{link}\n\n"
             "Спасибо,\n{sign}"),
     },
 }
+
+
+# Between the problem and the ask, for letters that ask to pass the survey on (owner, 11 Nov 2026: the figures belong
+# in the story, not dropped after the ask)
+BRIDGE = {"en": "We want to measure what this costs a single traffic office.",
+          "de": "Wir wollen messen, was das eine einzelne Disposition kostet.",
+          "fr": "Nous voulons mesurer ce que cela coûte à un seul service d'exploitation.",
+          "es": "Queremos medir cuánto le cuesta esto a una sola oficina de tráfico.",
+          "it": "Vogliamo misurare quanto costa questo a un singolo ufficio traffico.",
+          "ru": "Мы хотим измерить, во что это обходится одному отделу перевозок."}
 
 
 def _cap(t: str) -> str:
@@ -286,11 +304,13 @@ def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None
         head = head.replace(f" de {name}", f" d'{name}")
     # who we are first, with the grant (owner, 11 Nov 2026), then the request in its own paragraph
     greet, request = head.split("\n", 1)
-    text = (f"{greet}\n{_after_greeting(t['who'], lang)}\n\n{_cap(request)}\n\n{why}\n\n{t['ask'][ask_key]}\n{link}\n\n{gift}"
+    bridge = BRIDGE[lang] + " " if kind in ("association", "intermodal") else ""
+    text = (f"{greet}\n{_after_greeting(t['who'], lang)}\n\n{why}\n\n{bridge}{_cap(request)}\n\n{t['ask'][ask_key]}\n{link}\n\n{gift}"
             f"{t['thanks']}\n{SIGN[lang]}" + (f"\n{t['optout']}" if kind == "company" else ""))
     greet_ru, request_ru = RU["head"][kind].format(name=name).split("\n", 1)
     ru = (f"Письмо на {LANG_NAME_RU[lang]}. Перевод для команды.\n\n{greet_ru}\n{_after_greeting(RU['who'], 'ru')}\n\n"
-          f"{_cap(request_ru)}\n\n{reason_ru} {RU['law']}\n\n"
+          f"{reason_ru} {RU['law']}\n\n" + (BRIDGE["ru"] + " " if kind in ("association", "intermodal") else "") +
+          f"{_cap(request_ru)}\n\n"
           f"{RU['ask'][ask_key]}{note_ru}\n{link}\n\n{gift_ru}{RU['thanks']}\n{SIGN[lang]}"
           + (f"\n{RU['optout']}" if kind == "company" else ""))
     subject = t["subject"][kind]
