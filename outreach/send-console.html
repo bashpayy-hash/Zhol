@@ -22,6 +22,7 @@
   --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0; color-scheme: dark }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+.dup-warn { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fde8e4; color: #7a2412; font-size: 14px; line-height: 1.4; }
 .paste-note { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fff6dd; color: #5a4300; font-size: 14px; line-height: 1.4; }
 body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
@@ -266,6 +267,10 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   narrow.addEventListener("change", () => render());
 
   const stateOf = id => (status[id] && status[id].state) || "";
+  // letters already opened in Outlook from this browser, so a second send is caught before it happens
+  // (owner, 11 Nov 2026: «я отправил в два места случайно дважды»)
+  let opened = {}; try { opened = JSON.parse(store.get("zhol-opened") || "{}") || {}; } catch (e) { opened = {}; }
+  const hhmm = iso => { try { return new Date(iso).toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
   const ORDER = { "": 0, sent: 1, replied: 2, skip: 3 };
   const GROUP = { "": "Не отправлено", sent: "Отправлено", replied: "Ответили", skip: "Не писать" };
   const day = iso => { try { return new Date(iso).toLocaleDateString("ru-RU", { day: "numeric", month: "short" }); } catch (e) { return ""; } };
@@ -351,7 +356,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const mb = el("button", "btn main", "Скопировать письмо"); mb.type = "button"; mb.addEventListener("click", () => copy(sign(r.message), mb, box));
     // one click to a new letter in Outlook on the web with the address, subject and text already in place (owner, 11 Nov)
     const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
-    let note = null;
+    let note = null, warn = null;
     if (r.to && r.type !== "group") {
       // Outlook opened links of up to 4,027 characters with their text (the letters sent on 11 Nov 2026, Primafrio the
       // longest). Every letter is written to fit (tests keep it at most 4,000); the copy on click and the paste hint stay
@@ -374,15 +379,25 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
         a.addEventListener("click", () => {
           try { navigator.clipboard.writeText(plain(sign(r.message))).catch(() => {}); } catch (e) {}
           if (!fits) note.hidden = false;
+          opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened));
+          warn.textContent = "Открыто в Outlook в " + hhmm(opened[r.id]) + ". После отправки нажмите внизу «Отправлено», чтобы не отправить второй раз.";
+          warn.hidden = false;
         });
         return a;
       };
+      // already sent, or already opened in Outlook here: say so, and make the button the quiet one
+      const sentAt = stateOf(r.id) === "sent" && status[r.id] && status[r.id].at;
+      warn = el("div", "dup-warn"); warn.hidden = !(sentAt || opened[r.id]);
+      if (sentAt) warn.textContent = "Уже отправлено " + day(sentAt) + " в " + hhmm(sentAt) + ". Второй раз отправлять не нужно, сначала проверьте «Отправленные» в Outlook.";
+      else if (opened[r.id]) warn.textContent = "Уже открывали в Outlook " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ". Проверьте «Отправленные», прежде чем открыть снова.";
+      const again = !!(sentAt || opened[r.id]), label = again ? "Открыть в Outlook ещё раз" : "Открыть в Outlook";
       // on an iPad or iPhone the Outlook app opens the new letter itself; the web version stays one tap away (owner, 11 Nov)
-      if (APPLE_TOUCH) btns.append(link("Открыть в Outlook", "ms-outlook://compose?" + q, "btn"), link("Outlook в браузере", web, "btn small"));
-      else btns.append(link("Открыть в Outlook", web, "btn"));
+      if (APPLE_TOUCH) btns.append(link(label, "ms-outlook://compose?" + q, again ? "btn small" : "btn"), link("Outlook в браузере", web, "btn small"));
+      else btns.append(link(label, web, again ? "btn small" : "btn"));
     }
     btns.append(mb);
     ml.append(btns); mf.append(ml);
+    if (warn) mf.append(warn);
     if (note) mf.append(note);
     mf.append(letter(r)); box.append(mf);
     // for the team only: what the Italian letter says (never sent)
