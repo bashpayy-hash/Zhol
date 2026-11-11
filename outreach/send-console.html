@@ -22,6 +22,8 @@
   --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0; color-scheme: dark }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+.row .wa { color: #1a7f45; font-weight: 600; }
+.btn.wa-btn { background: #1f9d55; border-color: #1f9d55; color: #fff; }
 .dup-warn { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fde8e4; color: #7a2412; font-size: 14px; line-height: 1.4; }
 .paste-note { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fff6dd; color: #5a4300; font-size: 14px; line-height: 1.4; }
 body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
@@ -151,8 +153,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     <div>
       <span class="kicker">zhol · опрос офисов перевозок</span>
       <h1>Кому написать, что написать и кто уже отправил</h1>
-      <p>Каждое письмо сначала просит пройти опрос, потом говорит, кто мы (проект в логистике, 100 из ~500 в TEF, грант 2 000 €) и что строим: платформу, которая объединяет перевозчиков, следит за дорогами ночью, берёт на себя часть мониторинга и решений и даёт офисам обмениваться информацией. Просим только ответы: собираем исходные данные. Преподавателям Bocconi — на английском и итальянском, с просьбой переслать знакомым логистам.</p>
-      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook»: адрес, тема и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Не больше 40 писем в день с одного ящика</li></ul>
+      <p>Каждое письмо устроено одинаково: кто мы (студент Bocconi, AI-платформа zhol, 100 из ~500 в TEF Ignition 2026, грант 2 000 €), проблема и цифры, которые уже есть, «это лишь видимая часть, хотим уменьшить её с помощью ИИ», Италия — начало, цель — вся Европа, для начала измерить, просьба и одна ссылка на опрос. За рубеж — на языке адресата, ниже полный английский текст.</p>
+      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook» или «Написать в WhatsApp»: адрес и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Лучше в рабочие часы, вт–чт с 9 до 11 по Риму; не больше 40 писем в день с одного ящика</li></ul>
     </div>
     <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
       <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
@@ -170,7 +172,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <button type="button" data-v="posts" aria-pressed="false">Посты</button>
     </div>
     <div class="chips" role="group" aria-label="Статус" id="f-state">
-      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Не отправлено<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Отправлено<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button>
+      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Не отправлено<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Отправлено<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button><button type="button" data-v="wa" aria-pressed="false" id="chip-wa" hidden>WhatsApp<span class="n" id="c-wa"></span></button>
     </div>
     <input type="search" id="q" placeholder="Название, город или регион" aria-label="Поиск">
   </div>
@@ -283,6 +285,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (fState === "todo" && s) return false;
     if (fState === "sent" && s !== "sent") return false;
     if (fState === "replied" && s !== "replied") return false;
+    if (fState === "wa" && !r.wa) return false;
     return !q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q);
   }
 
@@ -344,6 +347,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const c = el("div", "contacts");
     if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "btn small", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b);
       if (r.to_src) { const s = el("a", null, "Где найден адрес"); s.href = r.to_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
+    if (r.wa) { c.append(el("code", null, "WhatsApp +" + r.wa));
+      if (r.wa_src) { const s = el("a", null, "Где найден WhatsApp"); s.href = r.wa_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
     if (/^https?:\/\//.test(r.where)) { const a = el("a", null, r.type === "company" ? "Сайт или форма контактов" : "Открыть сайт"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a); }
     else if (r.where && !r.to) c.append(el("span", null, r.where));
     const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
@@ -395,6 +400,21 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       if (APPLE_TOUCH) btns.append(link(label, "ms-outlook://compose?" + q, again ? "btn small" : "btn"), link("Outlook в браузере", web, "btn small"));
       else btns.append(link(label, web, again ? "btn small" : "btn"));
     }
+    // WhatsApp the company publishes on its own site: the same letter, opened in WhatsApp (owner, 11 Nov 2026:
+    // «найди ватсапы, я туда им напишу»)
+    if (r.wa) {
+      const w = el("a", "btn wa-btn", "Написать в WhatsApp");
+      w.href = "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(plain(sign(r.message)));
+      w.target = "_blank"; w.rel = "noopener";
+      w.title = "WhatsApp откроется с этим письмом. Проверьте и отправьте, затем отметьте здесь «Отправлено».";
+      w.addEventListener("click", () => {
+        opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened));
+        if (!warn) { warn = el("div", "dup-warn"); mf.insertBefore(warn, mf.children[1] || null); }
+        warn.textContent = "Открыто в WhatsApp в " + hhmm(opened[r.id]) + ". После отправки нажмите внизу «Отправлено».";
+        warn.hidden = false;
+      });
+      btns.prepend(w);
+    }
     btns.append(mb);
     ml.append(btns); mf.append(ml);
     if (warn) mf.append(warn);
@@ -439,6 +459,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $("c-todo").textContent = inTab.filter(r => !stateOf(r.id)).length;
     $("c-sent").textContent = inTab.filter(r => stateOf(r.id) === "sent").length;
     $("c-replied").textContent = inTab.filter(r => stateOf(r.id) === "replied").length;
+    // WhatsApp numbers exist only in the privately published copy (outreach/private/whatsapp.csv)
+    $("c-wa").textContent = inTab.filter(r => r.wa).length; $("chip-wa").hidden = !ROWS.some(r => r.wa);
 
     const isPosts = fType === "posts";
     $("posts").hidden = !isPosts; $("bench").hidden = isPosts; $("f-state").hidden = isPosts; $("q").hidden = isPosts;
@@ -459,7 +481,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       const b = el("button", "row " + stateOf(r.id)); b.type = "button";
       b.setAttribute("aria-current", String(r.id === pick));
       const sm = el("small", null, place(r) || KIND[r.type]);
-      if (!hasAddr(r) && r.type !== "group") { sm.append(" · "); sm.append(el("span", "noaddr", "адреса нет")); }
+      if (!hasAddr(r) && !r.wa && r.type !== "group") { sm.append(" · "); sm.append(el("span", "noaddr", "адреса нет")); }
+      if (r.wa) { sm.append(" · "); sm.append(el("span", "wa", "WhatsApp")); }
       const t = el("span"); t.append(el("b", null, r.name), sm);
       const st = status[r.id];
       const right = st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) : GROUP[st.state])
