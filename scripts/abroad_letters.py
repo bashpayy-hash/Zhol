@@ -74,16 +74,16 @@ T = {
         "who": ("je suis Alikhan Bashpay, étudiant à Bocconi. Mon équipe et moi développons zhol, une plateforme d'IA qui "
                 "prévient les transporteurs la veille au soir des interdictions, fermetures et grèves. Le projet, l'un des 100 "
                 "retenus par TEF Ignition 2026, a reçu 2 000 € de subvention."),
-        "reason": {"FR": "Le Mont-Blanc ferme la nuit jusqu'en décembre 2026, et un blocage au Fréjus laisse alors les camions sans passage. Selon la loi italienne, chaque heure d'attente vaut 100 €.",
+        "reason": {"FR": "Le Mont-Blanc ferme la nuit jusqu'en décembre 2026, et un blocage au Fréjus laisse les camions sans passage. Selon la loi italienne, chaque heure d'attente vaut 100 €.",
                    "": "Les seules restrictions au Brenner coûtent 544 millions d'euros par an à l'Italie, et selon la loi italienne chaque heure d'attente d'un camion vaut 100 €."},
         "main": "Ce n'est que la partie visible, que nous voulons aider à réduire avec l'IA.",
         "ask": {"association": "Pourriez-vous partager notre enquête anonyme d'une minute (en anglais) avec vos adhérents qui vont en Italie ? Vous recevrez les résultats agrégés.",
                 "intermodal": "Pourriez-vous partager notre enquête anonyme d'une minute (en anglais) avec les transporteurs qui réservent vos trains à travers les Alpes ? Vous recevrez les résultats agrégés.",
-                "company": "Combien cela coûte-t-il à votre service d'exploitation ? Notre enquête prend une minute, anonyme, en anglais, sans inscription ni démarche commerciale.",
+                "company": "Combien cela coûte-t-il à votre service d'exploitation ? L'enquête prend une minute, anonyme, en anglais, sans inscription ni vente.",
                 "press": "Pourriez-vous mentionner brièvement notre enquête anonyme d'une minute (en anglais) pour les services d'exploitation ? Notre radar zhol.live/radar est une source libre en citant zhol."},
         "end": "À la fin, l'enquête affiche notre radar IA gratuit.",
         "thanks": "Merci,",
-        "optout": "Si vous préférez ne plus recevoir de messages, répondez simplement « non ».",
+        "optout": "Pour ne plus recevoir de messages, répondez « non ».",
     },
     "es": {
         "subject": "Una solución de IA para el transporte por carretera, encuesta Bocconi",
@@ -193,7 +193,7 @@ EN_SHORT_WHO = ("I am Alikhan Bashpay, a Bocconi student. My team and I build zh
                 "2026, €2,000 grant).")
 EN_SHORT = {"association": "Could you share our one-minute, anonymous survey, link above, with your members who drive to Italy? We will send you the aggregated results.",
             "intermodal": "Could you share our one-minute, anonymous survey, link above, with the hauliers who book your trains across the Alps? We will send you the aggregated results.",
-            "company": "What do bans and queues on the lanes to Italy cost your traffic office? Our survey, link above, takes one minute, anonymous, no sign-up and no sales.",
+            "company": "What do bans and queues to Italy cost your traffic office? Our one-minute survey, link above, is anonymous, with no sign-up and no sales.",
             "press": "Could you briefly mention our one-minute, anonymous survey for traffic offices, link above? Our radar zhol.live/radar is a free source when citing zhol."}
 
 
