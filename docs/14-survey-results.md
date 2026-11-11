@@ -71,7 +71,7 @@ Answers from 2026-11-09T17:00 UTC on (the outreach began then; earlier rows were
 | 6–20 | 0 |
 | over 20 | 0 |
 
-## People who know the field (6 answers, from experience)
+## People who know the field (7 answers, from experience)
 
 Teachers, researchers, consultants and former staff answering about offices in general. Reported apart: they do not count towards the thresholds above.
 
@@ -80,7 +80,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | works around it (forwarding, association, consultancy) | 2 |
-| teaches or researches logistics | 4 |
+| teaches or researches logistics | 5 |
 | used to work in logistics | 0 |
 
 ### The part of transport they know best
@@ -90,7 +90,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | road haulage | 0 |
 | rail and intermodal | 1 |
 | ferries and ports | 1 |
-| shippers | 2 |
+| shippers | 3 |
 | several | 2 |
 
 ### Time an office spends checking each day
@@ -100,7 +100,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | under 10 min | 0 |
 | 10–20 min | 2 |
 | 20–40 min | 1 |
-| over 40 min | 2 |
+| over 40 min | 3 |
 | don’t know | 1 |
 
 ### Shipments abroad changed in a typical month, per 100
@@ -110,7 +110,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | under 2 | 0 |
 | 2–5 | 3 |
 | 5–10 | 1 |
-| over 10 | 2 |
+| over 10 | 3 |
 | don’t know | 0 |
 
 ### Typical cost to the carrier of a stopped shipment
@@ -119,7 +119,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 |---|---|
 | under €100 | 0 |
 | €100–300 | 1 |
-| €300–1,000 | 1 |
+| €300–1,000 | 2 |
 | over €1,000 (earlier option) | 2 |
 | €1,000–3,000 | 0 |
 | over €3,000 | 0 |
@@ -129,7 +129,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 
 | Answer | Count |
 |---|---|
-| most would | 2 |
+| most would | 3 |
 | some would | 2 |
 | few would | 2 |
 | don’t know | 0 |
@@ -138,7 +138,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 
 | Answer | Count |
 |---|---|
-| trusting the information | 1 |
+| trusting the information | 2 |
 | the price | 0 |
 | habits: phone, email, WhatsApp | 2 |
 | fitting it into their software | 3 |
@@ -152,14 +152,14 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | up to €5 | 1 |
 | €5–10 | 2 |
 | €10–20 | 1 |
-| over €20 | 0 |
+| over €20 | 1 |
 | don’t know | 2 |
 
 ## What they asked for
 
-- the results: 3
+- the results: 4
 - a place in the shared network: 1
-- contacts left: 4 (in the follow-up export only)
+- contacts left: 5 (in the follow-up export only)
 
 ## Where the answers came from
 
@@ -169,8 +169,9 @@ Teachers, researchers, consultants and former staff answering about offices in g
 - prof-baccelli: 1
 - prof-zamboni: 1
 - prof-senn: 1
+- prof-gallmann: 1
 
 ## Language
 
 - it: 5
-- en: 3
+- en: 4
