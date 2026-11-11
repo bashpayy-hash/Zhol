@@ -60,3 +60,18 @@ def test_one_link_to_click_outside_the_press():
             if r["type"] == "abroad" and r.get("fit") == "10":
                 continue
             assert "zhol.live/radar" not in r["message"] and "zhol.live/it/radar" not in r["message"], r["id"]
+
+
+def test_every_letter_fits_an_outlook_link():
+    """Outlook opens a compose link with its text only while the query stays under about 2,000 characters (11 Nov 2026,
+    the IRU link of 2,033 characters opened with its text, longer ones came empty). Professors' letters were sent."""
+    from urllib.parse import quote
+    rows = json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))
+    rows = rows if isinstance(rows, list) else rows["rows"]
+    q = lambda s: quote(s, safe="")
+    for r in rows:
+        if r["type"] in ("bocconi", "group") or not r.get("to") or not r.get("message"):
+            continue
+        body = r["message"].replace("**", "")
+        n = len("to=" + q(r["to"]) + "&subject=" + q(r["subject"]) + "&body=" + q(body))
+        assert n <= 1950, (r["id"], n)

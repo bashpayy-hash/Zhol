@@ -353,14 +353,14 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
     let note = null;
     if (r.to && r.type !== "group") {
-      // Outlook opened a ~2,400-character link with the text (the IRU letter, 11 Nov 2026) but not the much longer
-      // ones. So the click always copies the letter too; up to 2,800 characters the text rides in the link, the
-      // two-language letters abroad (4,000+) open with the address and subject and are pasted with Ctrl+V or Cmd+V
-      // (owner, 11 Nov 2026: «вот здесь пустое»).
+      // Outlook drops the text of a compose link whose query passes about 2,000 characters (the IRU link of 2,033
+      // characters opened with its text, longer ones came empty). Every letter is now written to fit (tests keep it
+      // so); the copy on click and the paste hint stay as a safety net for anything longer, like the professors' letters
+      // (owner, 11 Nov 2026: «измени эту проблему полностью»).
       const body = plain(sign(r.message));   // plain \n line breaks, as in the links that opened with the text
       const head = "to=" + encodeURIComponent(r.to) + "&subject=" + encodeURIComponent(r.subject);
       const full = head + "&body=" + encodeURIComponent(body);
-      const LIMIT = 2800, fits = ("https://outlook.office.com/mail/deeplink/compose?" + full).length <= LIMIT;
+      const LIMIT = 2030, fits = ("https://outlook.office.com/mail/deeplink/compose?" + full).length <= LIMIT;
       const q = fits ? full : head;
       const web = "https://outlook.office.com/mail/deeplink/compose?" + q;
       const tip = fits ? "Новое письмо в Outlook: адрес, тема и текст уже вставлены. Проверьте и нажмите «Отправить», затем отметьте здесь «Отправлено»."

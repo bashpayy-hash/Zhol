@@ -78,151 +78,161 @@
 
 ## Скелет
 
-Одинаковый на всех языках. `{reason}` выбирается по стране, `{ask}` и `{head}` — по типу организации.
+Одинаковый на всех языках. Каждое письмо должно влезать в ссылку Outlook: часть ссылки после «?» не длиннее ~1 950
+символов, иначе Outlook открывает письмо без текста. Это проверяет тест. Поэтому письма компактные, а английская
+версия под письмом на другом языке короткая.
 
 ```text
 {BELOW — только если язык не английский}
 
-{приветствие}
+{greet}
 {who — кто мы и грант}
 
-{reason} {law} {MAIN — «это лишь видимая часть, хотим уменьшить её с помощью ИИ»}
+{reason — проблема и цифры по стране} {main — «это лишь видимая часть, хотим уменьшить её с помощью ИИ»}
 
-{MEASURE — «для начала хотим измерить», ассоциациям} {head — просьба и что им с этого}
-
-{ask — опрос, «на английском», радар в конце опроса}
-{ссылка — единственная}
-
-{gift_press — радар со ссылкой, только прессе}
+{ask — просьба по типу организации} {end — радар в конце опроса, кроме прессы}
+{ссылка}
 
 {thanks}
 {подпись}
 {optout — только компаниям}
 
 — English version —
-
-{то же письмо по-английски}
+{коротко по-английски: кто мы + просьба, «link above»}
 ```
 
-## Темы: тип × язык
+## Тема (одна на язык)
 
-| Тип | Английский | Немецкий | Французский | Испанский | Итальянский |
-|---|---|---|---|---|---|
-| `association` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
-| `intermodal` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
-| `company` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
-| `press` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
+- **Английский:** An AI solution for road transport, a 1-minute survey from Bocconi
+- **Немецкий:** KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi
+- **Французский:** Solution d'IA pour le transport routier, enquête Bocconi d'une minute
+- **Испанский:** Una solución de IA para el transporte por carretera, encuesta Bocconi
+- **Итальянский:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ## Блоки на каждом языке
 
 ### Английский
 
-- **head · association:** Dear {name} team, / Could you share a one-minute, anonymous survey with your members who run lanes to and through Italy? We will send your association the aggregated results, to share with your members.
-- **head · intermodal:** Dear {name} team, / Could you share a one-minute, anonymous survey with the hauliers and forwarders who book trains with you across the Alps? We will send you the aggregated results, and every hour lost on the road is also a case for the train.
-- **head · press:** Dear {name} editors, / I am writing to ask for a short mention of an anonymous one-minute survey for traffic offices on the lanes to Italy.
-- **head · company:** Good morning, / What do unexpected queues and short-notice closures on your lanes to Italy really cost your traffic office? Could you give us one minute for an anonymous survey of seven questions, with no sign-up and no sales?
-- **reason · DE:** For hauliers crossing the Brenner, Tyrol's dosing days at Kufstein and the night bans change plans almost every week, and in 2025 21 of the 57 dosing days came outside the published calendar.
-- **reason · AT:** On the Brenner, Tyrol's dosing days at Kufstein and the night bans change plans almost every week, and in 2025 21 of the 57 dosing days came outside the published calendar.
-- **reason · CH:** On the lanes between Switzerland and Italy, the Swiss night and Sunday bans already leave a narrow window, and one unexpected queue at the border, a roadworks site or a strike in Italy is enough to miss it.
-- **reason · FR:** On the lanes into Italy, the Mont Blanc tunnel closes at night until December 2026, the queues then move to the Fréjus, and Italian holiday bans and strikes add to it.
-- **reason · ES:** On the lanes to Italy through France, the Mont Blanc tunnel closes at night until December 2026, the queues then move to the Fréjus, and Italian holiday bans and strikes add to it.
-- **reason · по умолчанию:** On the roads into Italy the Brenner restrictions alone cost Italy €544 million a year, and in October eight days of truck stoppages in the South caused more than €400 million of damage.
-- **law:** By Italian law every hour a truck waits is worth €100.
-- **ask · forward:** The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
-- **ask · company:** At the end of the survey you will see our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
-- **ask · press:** We are collecting baseline figures, minutes lost every day, shipments changed, the cost of the last incident, and how many offices would share information with each other.
-- **who:** I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
-- **gift · press:** For your pieces our radar can be a free source, zhol.live/radar, with the bans, closures and strikes of the next eight weeks, the chance of each and the sources, free to use when citing zhol.
-- **thanks / optout:** Thank you, / If you prefer not to receive further messages, just reply «no».
+- **greet · association:** Dear {name} team,
+- **greet · intermodal:** Dear {name} team,
+- **greet · press:** Dear {name} editors,
+- **greet · company:** Good morning,
+- **who:** I am Alikhan Bashpay, a Bocconi student. My team and I are building zhol, an AI platform that warns hauliers the evening before about bans, closures and strikes. It is one of 100 projects selected by TEF Ignition 2026 and received a €2,000 grant.
+- **reason · DE:** At Kufstein, 21 of the 57 dosing days of 2025 came outside the published calendar, and under Italian law every hour a truck waits costs €100.
+- **reason · AT:** At Kufstein, 21 of the 57 dosing days of 2025 came outside the published calendar, and under Italian law every hour a truck waits costs €100.
+- **reason · CH:** Swiss night and Sunday bans leave a narrow window, and one unexpected queue at the border is enough to miss it. Under Italian law every hour a truck waits costs €100.
+- **reason · FR:** The Mont Blanc tunnel closes at night until December 2026, so one block at the Fréjus leaves trucks with no way through. Under Italian law every hour a truck waits costs €100.
+- **reason · ES:** The Mont Blanc tunnel closes at night until December 2026, so one block at the Fréjus leaves trucks with no way through. Under Italian law every hour a truck waits costs €100.
+- **reason · по умолчанию:** The Brenner restrictions alone cost Italy €544 million a year, and under Italian law every hour a truck waits costs €100.
+- **main:** This is only the visible part, and we want to help shrink it with AI.
+- **ask · association:** Could you share our one-minute, anonymous survey with your members who drive to Italy? We will send you the aggregated results.
+- **ask · intermodal:** Could you share our one-minute, anonymous survey with the hauliers who book your trains across the Alps? We will send you the aggregated results.
+- **ask · company:** What does it cost your traffic office? Our survey takes one minute, anonymous, no sign-up and no sales.
+- **ask · press:** Could you briefly mention our one-minute, anonymous survey for traffic offices? Our radar zhol.live/radar is a free source when citing zhol.
+- **end:** At the end the survey shows our free AI radar.
+- **thanks / optout:** Thank you, / If you prefer no further messages, just reply «no».
 - **подпись:** Alikhan Bashpay · Bocconi University · zhol
 
 ### Немецкий
 
-- **первая строка:** (Die englische Fassung finden Sie unten.)
-- **head · association:** Sehr geehrtes Team von {name}, / könnten Sie eine anonyme Umfrage von einer Minute an Ihre Mitglieder weiterleiten, die nach Italien oder durch Italien fahren? Ihrem Verband senden wir die zusammengefassten Ergebnisse zur Weitergabe an die Mitglieder.
-- **head · intermodal:** Sehr geehrtes Team von {name}, / könnten Sie eine anonyme Umfrage von einer Minute an die Transportunternehmen und Spediteure weiterleiten, die bei Ihnen Stellplätze auf Zügen über die Alpen buchen? Wir senden Ihnen die zusammengefassten Ergebnisse, und jede Stunde, die auf der Straße verloren geht, spricht auch für die Schiene.
-- **head · press:** Sehr geehrte Redaktion von {name}, / ich schreibe Ihnen mit der Bitte um einen kurzen Hinweis auf eine anonyme Umfrage (eine Minute) für Disponenten im Italien-Verkehr.
-- **head · company:** Guten Tag, / was kosten unvorhergesehene Staus und kurzfristige Sperrungen im Italien-Verkehr Ihre Disposition wirklich? Hätten Sie eine Minute für eine anonyme Umfrage mit sieben Fragen, ohne Anmeldung und ohne Verkaufsabsicht? Die Umfrage ist auf Englisch.
-- **reason · DE:** Für Transportunternehmen, die über den Brenner fahren, ändern die Dosiertage in Kufstein und die Nachtfahrverbote in Tirol die Planung fast jede Woche, und 2025 lagen 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders.
-- **reason · AT:** Am Brenner ändern die Dosiertage in Kufstein und die Nachtfahrverbote in Tirol die Planung fast jede Woche, und 2025 lagen 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders.
-- **reason · CH:** Im Verkehr zwischen der Schweiz und Italien lassen die Schweizer Nacht- und Sonntagsfahrverbote nur ein enges Zeitfenster, und ein unerwarteter Stau an der Grenze, eine Baustelle oder ein Streik in Italien reicht, um es zu verpassen.
-- **reason · по умолчанию:** Allein die Einschränkungen am Brenner kosten Italien 544 Millionen Euro im Jahr, und im Oktober haben acht Tage Lkw-Stillstand im Süden mehr als 400 Millionen Euro Schaden verursacht.
-- **law:** Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert.
-- **ask · forward:** Die Umfrage hat sieben Fragen, ist auf Englisch und verlangt sonst nichts. Am Ende zeigt sie unseren kostenlosen KI-Radar mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und der Wahrscheinlichkeit jedes Ereignisses.
-- **ask · company:** Am Ende der Umfrage sehen Sie unseren kostenlosen KI-Radar mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und der Wahrscheinlichkeit jedes Ereignisses.
-- **ask · press:** Wir sammeln Ausgangsdaten, also verlorene Minuten pro Tag, geänderte Sendungen, die Kosten des letzten Vorfalls und wie viele Büros bereit wären, Informationen auszutauschen. Die Umfrage ist auf Englisch.
-- **who:** Ich bin Alikhan Bashpay, Student an der Universität Bocconi in Mailand. Mein Team und ich entwickeln zhol, eine KI-Plattform für Transportunternehmen, die die Disposition am Vorabend warnt, wenn eine Ladung von morgen von einem Verbot, einer Sperrung oder einem Streik betroffen sein könnte. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und hat einen Zuschuss von 2.000 € erhalten.
-- **gift · press:** Für Ihre Artikel kann unser Radar eine kostenlose Quelle sein, zhol.live/radar, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen, ihrer Wahrscheinlichkeit und den Quellen, frei nutzbar mit Hinweis auf zhol.
-- **thanks / optout:** Vielen Dank, / Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie einfach mit «nein».
+- **первая строка:** (Englische Fassung unten.)
+- **greet · association:** Sehr geehrtes Team von {name},
+- **greet · intermodal:** Sehr geehrtes Team von {name},
+- **greet · press:** Sehr geehrte Redaktion von {name},
+- **greet · company:** Guten Tag,
+- **who:** ich bin Alikhan Bashpay, Student der Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Transportunternehmen am Vorabend vor Verboten, Sperrungen und Streiks warnt. Das Projekt, eines von 100 bei TEF Ignition 2026, erhielt 2.000 € Förderung.
+- **reason · DE:** In Kufstein lagen 2025 21 der 57 Dosiertage außerhalb des Kalenders, und nach italienischem Recht kostet jede Stunde Wartezeit eines Lkw 100 €.
+- **reason · AT:** In Kufstein lagen 2025 21 der 57 Dosiertage außerhalb des Kalenders, und nach italienischem Recht kostet jede Stunde Wartezeit eines Lkw 100 €.
+- **reason · CH:** Die Schweizer Nacht- und Sonntagsfahrverbote lassen ein enges Zeitfenster, und ein unerwarteter Stau an der Grenze reicht, um es zu verpassen. Nach italienischem Recht kostet jede Stunde Wartezeit 100 €.
+- **reason · по умолчанию:** Allein die Brenner-Beschränkungen kosten Italien 544 Mio. € im Jahr, und nach italienischem Recht kostet jede Stunde Wartezeit eines Lkw 100 €.
+- **main:** Das ist nur der sichtbare Teil, und wir wollen helfen, ihn mit KI zu verkleinern.
+- **ask · association:** Könnten Sie unsere anonyme 1-Minuten-Umfrage (auf Englisch) an Ihre Mitglieder im Italien-Verkehr weiterleiten? Sie erhalten die zusammengefassten Ergebnisse.
+- **ask · intermodal:** Könnten Sie unsere anonyme 1-Minuten-Umfrage (auf Englisch) an die Unternehmen weiterleiten, die bei Ihnen Züge über die Alpen buchen? Sie erhalten die zusammengefassten Ergebnisse.
+- **ask · company:** Was kostet das Ihre Disposition? Unsere Umfrage dauert eine Minute, anonym, auf Englisch, ohne Anmeldung und ohne Verkauf.
+- **ask · press:** Könnten Sie kurz auf unsere anonyme 1-Minuten-Umfrage (auf Englisch) für Disponenten hinweisen? Unser Radar zhol.live/radar ist eine freie Quelle mit Hinweis auf zhol.
+- **end:** Am Ende zeigt die Umfrage unseren kostenlosen KI-Radar.
+- **thanks / optout:** Vielen Dank, / Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie einfach «nein».
 - **подпись:** Alikhan Bashpay · Universität Bocconi · zhol
 
 ### Французский
 
-- **первая строка:** (La version anglaise se trouve plus bas.)
-- **head · association:** Bonjour à l'équipe de {name}, / pourriez-vous partager une enquête anonyme d'une minute avec vos adhérents dont les camions vont en Italie ou la traversent ? Nous vous enverrons les résultats agrégés, à partager avec vos adhérents.
-- **head · intermodal:** Bonjour à l'équipe de {name}, / pourriez-vous partager une enquête anonyme d'une minute avec les transporteurs et commissionnaires qui réservent chez vous des places sur les trains à travers les Alpes ? Nous vous enverrons les résultats agrégés, et chaque heure perdue sur la route plaide aussi pour le train.
-- **head · press:** Bonjour à la rédaction de {name}, / je vous écris pour vous demander une brève mention d'une enquête anonyme d'une minute destinée aux services d'exploitation sur les axes vers l'Italie.
-- **head · company:** Bonjour, / combien les bouchons imprévus et les fermetures de dernière minute sur vos axes vers l'Italie coûtent-ils vraiment à votre service d'exploitation ? Pourriez-vous nous accorder une minute pour une enquête anonyme de sept questions, sans inscription et sans démarche commerciale ? L'enquête est en anglais.
-- **reason · FR:** Sur les axes vers l'Italie, le tunnel du Mont-Blanc ferme la nuit jusqu'en décembre 2026, les bouchons se reportent alors sur le Fréjus, et les interdictions de circuler les jours fériés et les grèves en Italie s'y ajoutent.
-- **reason · по умолчанию:** Les seules restrictions au Brenner coûtent à l'Italie 544 millions d'euros par an, et en octobre huit jours d'arrêt des poids lourds dans le Sud ont causé plus de 400 millions d'euros de dégâts.
-- **law:** Selon la loi italienne, chaque heure d'attente d'un camion vaut 100 €.
-- **ask · forward:** L'enquête compte sept questions, elle est en anglais et ne demande rien d'autre. À la fin, elle affiche notre radar IA gratuit avec les interdictions, fermetures et grèves des huit prochaines semaines et la probabilité de chacune.
-- **ask · company:** À la fin de l'enquête, vous verrez notre radar IA gratuit avec les interdictions, fermetures et grèves des huit prochaines semaines et la probabilité de chacune.
-- **ask · press:** Nous recueillons des données de départ, c'est-à-dire les minutes perdues chaque jour, les envois modifiés, le coût du dernier imprévu et le nombre de services prêts à échanger des informations. L'enquête est en anglais.
-- **who:** Je m'appelle Alikhan Bashpay et je suis étudiant à l'Université Bocconi de Milan. Mon équipe et moi développons zhol, une plateforme d'IA pour les transporteurs qui prévient le service d'exploitation la veille au soir si un chargement du lendemain risque une interdiction, une fermeture ou une grève. Le projet fait partie des 100 retenus sur environ 500 par TEF Ignition 2026, un programme européen pour les nouvelles entreprises technologiques, et a reçu une subvention de 2 000 €.
-- **gift · press:** Pour vos articles, notre radar peut être une source gratuite, zhol.live/radar, avec les interdictions, fermetures et grèves des huit prochaines semaines, leur probabilité et leurs sources, utilisable librement en citant zhol.
-- **thanks / optout:** Merci, / Si vous préférez ne plus recevoir de messages, il suffit de répondre « non ».
+- **первая строка:** (Version anglaise plus bas.)
+- **greet · association:** Bonjour à l'équipe de {name},
+- **greet · intermodal:** Bonjour à l'équipe de {name},
+- **greet · press:** Bonjour à la rédaction de {name},
+- **greet · company:** Bonjour,
+- **who:** je suis Alikhan Bashpay, étudiant à Bocconi. Mon équipe et moi développons zhol, une plateforme d'IA qui prévient les transporteurs la veille au soir des interdictions, fermetures et grèves. Le projet, l'un des 100 retenus par TEF Ignition 2026, a reçu 2 000 € de subvention.
+- **reason · FR:** Le Mont-Blanc ferme la nuit jusqu'en décembre 2026, et un blocage au Fréjus laisse alors les camions sans passage. Selon la loi italienne, chaque heure d'attente vaut 100 €.
+- **reason · по умолчанию:** Les seules restrictions au Brenner coûtent 544 millions d'euros par an à l'Italie, et selon la loi italienne chaque heure d'attente d'un camion vaut 100 €.
+- **main:** Ce n'est que la partie visible, que nous voulons aider à réduire avec l'IA.
+- **ask · association:** Pourriez-vous partager notre enquête anonyme d'une minute (en anglais) avec vos adhérents qui vont en Italie ? Vous recevrez les résultats agrégés.
+- **ask · intermodal:** Pourriez-vous partager notre enquête anonyme d'une minute (en anglais) avec les transporteurs qui réservent vos trains à travers les Alpes ? Vous recevrez les résultats agrégés.
+- **ask · company:** Combien cela coûte-t-il à votre service d'exploitation ? Notre enquête prend une minute, anonyme, en anglais, sans inscription ni démarche commerciale.
+- **ask · press:** Pourriez-vous mentionner brièvement notre enquête anonyme d'une minute (en anglais) pour les services d'exploitation ? Notre radar zhol.live/radar est une source libre en citant zhol.
+- **end:** À la fin, l'enquête affiche notre radar IA gratuit.
+- **thanks / optout:** Merci, / Si vous préférez ne plus recevoir de messages, répondez simplement « non ».
 - **подпись:** Alikhan Bashpay · Université Bocconi · zhol
 
 ### Испанский
 
-- **первая строка:** (La versión en inglés está más abajo.)
-- **head · association:** Estimado equipo de {name}, / ¿podrían compartir una encuesta anónima de un minuto con sus asociados que viajan a Italia o la atraviesan? Les enviaremos los resultados agregados, para compartirlos con sus asociados.
-- **head · intermodal:** Estimado equipo de {name}, / ¿podrían compartir una encuesta anónima de un minuto con los transportistas y transitarios que reservan con ustedes plazas en los trenes a través de los Alpes? Les enviaremos los resultados agregados, y cada hora perdida en la carretera es también un argumento a favor del tren.
-- **head · press:** Estimada redacción de {name}, / les escribo para pedirles una breve mención de una encuesta anónima de un minuto para las oficinas de tráfico en las rutas a Italia.
-- **head · company:** Buenos días, / ¿cuánto les cuestan de verdad a su oficina de tráfico las colas imprevistas y los cierres de última hora en sus rutas a Italia? ¿Podrían dedicarnos un minuto a una encuesta anónima de siete preguntas, sin registro y sin fines comerciales? La encuesta está en inglés.
-- **reason · ES:** En las rutas a Italia a través de Francia, el túnel del Mont Blanc cierra de noche hasta diciembre de 2026, las colas se trasladan entonces al Fréjus, y a ello se suman las prohibiciones de circulación en festivos y las huelgas en Italia.
-- **reason · по умолчанию:** Solo las restricciones en el Brennero le cuestan a Italia 544 millones de euros al año, y en octubre ocho días de paro de camiones en el Sur causaron más de 400 millones de euros de daños.
-- **law:** Según la ley italiana, cada hora que espera un camión vale 100 €.
-- **ask · forward:** La encuesta tiene siete preguntas, está en inglés y no pide nada más. Al final muestra nuestro radar con IA gratuito, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y la probabilidad de cada uno.
-- **ask · company:** Al final de la encuesta verán nuestro radar con IA gratuito, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y la probabilidad de cada uno.
-- **ask · press:** Recogemos datos de partida, es decir, los minutos perdidos cada día, los envíos modificados, el coste del último imprevisto y cuántas oficinas estarían dispuestas a intercambiar información. La encuesta está en inglés.
-- **who:** Me llamo Alikhan Bashpay y soy estudiante de la Universidad Bocconi de Milán. Mi equipo y yo desarrollamos zhol, una plataforma con IA para transportistas que avisa a la oficina de tráfico la noche anterior si una carga del día siguiente corre el riesgo de una prohibición, un cierre o una huelga. El proyecto es uno de los 100 seleccionados entre unos 500 por TEF Ignition 2026, un programa europeo para nuevas empresas tecnológicas, y ha recibido una subvención de 2.000 €.
-- **gift · press:** Para sus artículos, nuestro radar puede ser una fuente gratuita, zhol.live/radar, con las prohibiciones, cierres y huelgas de las próximas ocho semanas, su probabilidad y sus fuentes, de uso libre citando zhol.
-- **thanks / optout:** Gracias, / Si prefieren no recibir más mensajes, basta con responder «no».
+- **первая строка:** (Versión en inglés abajo.)
+- **greet · association:** Estimado equipo de {name},
+- **greet · intermodal:** Estimado equipo de {name},
+- **greet · press:** Estimada redacción de {name},
+- **greet · company:** Buenos días,
+- **who:** soy Alikhan Bashpay, estudiante de la Bocconi. Mi equipo y yo desarrollamos zhol, una plataforma de IA que avisa a los transportistas la noche anterior de prohibiciones, cierres y huelgas. El proyecto, uno de los 100 elegidos por TEF Ignition 2026, recibió 2.000 € de subvención.
+- **reason · ES:** El Mont Blanc cierra de noche hasta diciembre de 2026, y un bloqueo en el Fréjus deja a los camiones sin paso. Según la ley italiana, cada hora de espera de un camión vale 100 €.
+- **reason · по умолчанию:** Solo las restricciones del Brennero le cuestan a Italia 544 millones de euros al año, y según la ley italiana cada hora que espera un camión vale 100 €.
+- **main:** Es solo la parte visible, y queremos ayudar a reducirla con IA.
+- **ask · association:** ¿Podrían compartir nuestra encuesta anónima de un minuto (en inglés) con sus asociados que viajan a Italia? Les enviaremos los resultados agregados.
+- **ask · intermodal:** ¿Podrían compartir nuestra encuesta anónima de un minuto (en inglés) con los transportistas que reservan sus trenes a través de los Alpes? Les enviaremos los resultados agregados.
+- **ask · company:** ¿Cuánto le cuesta esto a su oficina de tráfico? La encuesta dura un minuto, anónima, en inglés, sin registro ni fines comerciales.
+- **ask · press:** ¿Podrían mencionar brevemente nuestra encuesta anónima de un minuto (en inglés) para oficinas de tráfico? Nuestro radar zhol.live/radar es una fuente libre citando zhol.
+- **end:** Al final la encuesta muestra nuestro radar de IA gratuito.
+- **thanks / optout:** Gracias, / Si no desean más mensajes, respondan «no».
 - **подпись:** Alikhan Bashpay · Universidad Bocconi · zhol
 
 ### Итальянский
 
-- **первая строка:** (La versione in inglese è più in basso.)
-- **head · association:** Gentile team di {name}, / potreste girare un sondaggio anonimo di un minuto ai vostri associati con linee da e per l'Italia? All'associazione mandiamo i risultati aggregati, da condividere con gli associati.
-- **head · intermodal:** Gentile team di {name}, / potreste girare un sondaggio anonimo di un minuto agli autotrasportatori e agli spedizionieri che prenotano con voi i treni attraverso le Alpi? Vi mandiamo i risultati aggregati, e ogni ora persa su strada è anche un argomento per il treno.
-- **head · press:** Gentile redazione di {name}, / vi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo di un minuto per gli uffici traffico.
-- **head · company:** Buongiorno, / quanto costano davvero al vostro ufficio traffico le code impreviste e le chiusure dell'ultimo momento sulle linee tra l'Italia e l'estero? Ci dedichereste un minuto per un sondaggio anonimo di sette domande, senza registrazione e senza vendite?
-- **reason · CH:** Sulle linee tra la Svizzera e l'Italia i divieti svizzeri di notte e la domenica lasciano già una finestra stretta, e basta una coda imprevista in dogana, un cantiere o uno sciopero in Italia per perderla.
-- **reason · по умолчанию:** Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno, e a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni.
-- **law:** Per la legge italiana ogni ora che un camion aspetta vale 100 €.
-- **ask · forward:** Il sondaggio ha sette domande e non chiede nient'altro. Alla fine mostra il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
-- **ask · company:** Alla fine del sondaggio vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
-- **ask · press:** Raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni.
-- **who:** Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
-- **gift · press:** Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar, con divieti, chiusure e scioperi delle prossime otto settimane, la probabilità e le fonti, utilizzabile liberamente citando zhol.
+- **первая строка:** (Versione inglese più in basso.)
+- **greet · association:** Gentile team di {name},
+- **greet · intermodal:** Gentile team di {name},
+- **greet · press:** Gentile redazione di {name},
+- **greet · company:** Buongiorno,
+- **who:** sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli autotrasportatori di divieti, chiusure e scioperi. Il progetto è tra i 100 scelti da TEF Ignition 2026 e ha ricevuto un grant di 2.000 €.
+- **reason · CH:** I divieti svizzeri di notte e la domenica lasciano una finestra stretta, e basta una coda imprevista in dogana per perderla. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+- **reason · по умолчанию:** Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+- **main:** Ed è solo la parte visibile, che vogliamo aiutare a ridurre con l'AI.
+- **ask · association:** Potreste girare il nostro sondaggio anonimo di un minuto ai vostri associati con linee per l'Italia? Vi mandiamo i risultati aggregati.
+- **ask · intermodal:** Potreste girare il nostro sondaggio anonimo di un minuto a chi prenota con voi i treni attraverso le Alpi? Vi mandiamo i risultati aggregati.
+- **ask · company:** Quanto costa al vostro ufficio traffico? Il sondaggio richiede un minuto, anonimo, senza registrazione e senza vendite.
+- **ask · press:** Potreste segnalare brevemente il nostro sondaggio anonimo di un minuto per gli uffici traffico? Il radar zhol.live/it/radar è una fonte libera citando zhol.
+- **end:** Alla fine il sondaggio mostra il nostro radar AI gratuito.
 - **thanks / optout:** Grazie, / Se preferite non ricevere altri messaggi, basta rispondere «no».
 - **подпись:** Alikhan Bashpay · Università Bocconi · zhol
 
+### Короткая английская версия под письмом на другом языке
+
+- **who:** I am Alikhan Bashpay, a Bocconi student. My team and I build zhol, an AI platform for hauliers (TEF Ignition 2026, €2,000 grant).
+- **association:** Could you share our one-minute, anonymous survey, link above, with your members who drive to Italy? We will send you the aggregated results.
+- **intermodal:** Could you share our one-minute, anonymous survey, link above, with the hauliers who book your trains across the Alps? We will send you the aggregated results.
+- **company:** What do bans and queues on the lanes to Italy cost your traffic office? Our survey, link above, takes one minute, anonymous, no sign-up and no sales.
+- **press:** Could you briefly mention our one-minute, anonymous survey for traffic offices, link above? Our radar zhol.live/radar is a free source when citing zhol.
+
 ### Русский перевод для команды (не отправляется)
 
-- **head · association:** Уважаемая команда {name}, / не могли бы вы переслать анонимный опрос на одну минуту вашим членам, которые ездят в Италию и через неё? Ассоциации пришлём сводные результаты, чтобы поделиться с членами.
-- **head · intermodal:** Уважаемая команда {name}, / не могли бы вы переслать анонимный опрос на одну минуту перевозчикам и экспедиторам, которые бронируют у вас места на поездах через Альпы? Пришлём вам сводные результаты, а каждый час, потерянный на дороге, это ещё и довод в пользу поезда.
-- **head · press:** Уважаемая редакция {name}, / пишу, чтобы попросить коротко упомянуть анонимный опрос на одну минуту для отделов перевозок на маршрутах в Италию.
-- **head · company:** Добрый день, / во что на самом деле обходятся вашему отделу перевозок неожиданные очереди и закрытия в последний момент на маршрутах в Италию? Не уделите ли минуту анонимному опросу из семи вопросов, без регистрации и без продаж?
-- **reason · DE:** Для тех, кто ездит через Бреннер, дни дозирования в Куфштайне и ночные запреты в Тироле меняют планы почти каждую неделю, а в 2025 году 21 из 57 дней дозирования пришёлся вне опубликованного календаря.
-- **reason · AT:** На Бреннере дни дозирования в Куфштайне и ночные запреты в Тироле меняют планы почти каждую неделю, а в 2025 году 21 из 57 дней дозирования пришёлся вне опубликованного календаря.
-- **reason · CH:** На маршрутах между Швейцарией и Италией швейцарские ночные и воскресные запреты и так оставляют узкое окно, и достаточно неожиданной очереди на границе, ремонта дороги или забастовки в Италии, чтобы его упустить.
-- **reason · FR:** На маршрутах в Италию тоннель Монблан закрыт по ночам до декабря 2026 года, очереди тогда переходят на Фрежюс, а к этому добавляются итальянские праздничные запреты и забастовки.
-- **reason · ES:** На маршрутах в Италию через Францию тоннель Монблан закрыт по ночам до декабря 2026 года, очереди тогда переходят на Фрежюс, а к этому добавляются итальянские праздничные запреты и забастовки.
-- **reason · по умолчанию:** Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а в октябре восемь дней остановки дальнобойщиков на Юге принесли больше 400 млн евро ущерба.
-- **who:** Меня зовут Алихан Башпай, я студент Университета Боккони в Милане. Мы с командой разрабатываем zhol, AI-платформу для перевозчиков, которая накануне вечером предупреждает отдел перевозок, если завтрашнему грузу грозит запрет, закрытие или забастовка. Проект вошёл в 100 отобранных из примерно 500 программой TEF Ignition 2026, европейской программой для новых технологических компаний, и получил грант 2 000 евро.
+- **who:** меня зовут Алихан Башпай, я студент Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая накануне вечером предупреждает перевозчиков о запретах, закрытиях и забастовках. Проект вошёл в 100 отобранных TEF Ignition 2026 и получил грант 2 000 евро.
+- **reason · DE:** В Куфштайне 21 из 57 дней дозирования в 2025 году пришёлся вне опубликованного календаря, а по итальянскому закону каждый час ожидания грузовика стоит 100 евро.
+- **reason · AT:** В Куфштайне 21 из 57 дней дозирования в 2025 году пришёлся вне опубликованного календаря, а по итальянскому закону каждый час ожидания грузовика стоит 100 евро.
+- **reason · CH:** Швейцарские ночные и воскресные запреты оставляют узкое окно, и достаточно неожиданной очереди на границе, чтобы его упустить. По итальянскому закону каждый час ожидания стоит 100 евро.
+- **reason · FR:** Тоннель Монблан закрыт по ночам до декабря 2026 года, и блокировка на Фрежюсе оставляет грузовики без проезда. По итальянскому закону каждый час ожидания стоит 100 евро.
+- **reason · ES:** Тоннель Монблан закрыт по ночам до декабря 2026 года, и блокировка на Фрежюсе оставляет грузовики без проезда. По итальянскому закону каждый час ожидания стоит 100 евро.
+- **reason · по умолчанию:** Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а по итальянскому закону каждый час ожидания грузовика стоит 100 евро.
+- **main:** И это лишь видимая часть, которую мы хотим помочь уменьшить с помощью ИИ.
+- **ask · association:** Не могли бы вы переслать наш анонимный опрос на одну минуту вашим членам, которые ездят в Италию? Пришлём вам сводные результаты.
+- **ask · intermodal:** Не могли бы вы переслать наш анонимный опрос на одну минуту перевозчикам, которые бронируют у вас поезда через Альпы? Пришлём вам сводные результаты.
+- **ask · company:** Во что это обходится вашему отделу перевозок? Опрос занимает минуту, анонимно, без регистрации и без продаж.
+- **ask · press:** Не могли бы вы коротко упомянуть наш анонимный опрос на одну минуту для отделов перевозок? Наш радар zhol.live/radar — свободный источник со ссылкой на zhol.
 
 ## IRU — отдельное письмо
 
@@ -232,13 +242,11 @@
 
 ```text
 Dear IRU team,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
+I am Alikhan Bashpay, a Bocconi student. My team and I are building zhol, an AI platform that warns hauliers the evening before about bans, closures and strikes. It is one of 100 projects selected by TEF Ignition 2026 and received a €2,000 grant.
 
-Bans, closures and strikes on the lanes to Italy cost hauliers time and money, and many of them come as a surprise. Some figures already exist. In 2025, 21 of the 57 dosing days at Kufstein came outside the published calendar, by Italian law every hour a truck waits is worth €100, and the Brenner restrictions alone cost Italy €544 million a year. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
+Bans, closures and strikes on the lanes to Italy cost hauliers time and money, and many come as a surprise. In 2025, 21 of the 57 dosing days at Kufstein came outside the published calendar, under Italian law every hour a truck waits costs €100, and the Brenner restrictions alone cost Italy €544 million a year. This is only the visible part, and we want to help shrink it with AI.
 
-To start, we want to measure what it costs a single traffic office, the minutes lost every day, the loads moved and the last-minute surprises. Could you share our one-minute, anonymous survey with the member associations whose hauliers run lanes to and through Italy? We will send IRU the aggregated results, free to use in its work for road transport.
-
-The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
+To start, we are measuring what it costs a single traffic office. Could you share our one-minute, anonymous survey with the member associations whose hauliers drive to Italy? We will send IRU the aggregated results. At the end the survey shows our free AI radar.
 https://zhol.live/survey?src=ab-iru
 
 Thank you,
@@ -253,13 +261,11 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ```text
 Dear CLECAT team,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
+I am Alikhan Bashpay, a Bocconi student. My team and I are building zhol, an AI platform that warns hauliers the evening before about bans, closures and strikes. It is one of 100 projects selected by TEF Ignition 2026 and received a €2,000 grant.
 
-On the roads into Italy the Brenner restrictions alone cost Italy €544 million a year, and in October eight days of truck stoppages in the South caused more than €400 million of damage. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
+The Brenner restrictions alone cost Italy €544 million a year, and under Italian law every hour a truck waits costs €100. This is only the visible part, and we want to help shrink it with AI.
 
-To start, we want to measure what it costs a single traffic office. Could you share a one-minute, anonymous survey with your members who run lanes to and through Italy? We will send your association the aggregated results, to share with your members.
-
-The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
+Could you share our one-minute, anonymous survey with your members who drive to Italy? We will send you the aggregated results. At the end the survey shows our free AI radar.
 https://zhol.live/survey?src=ab-clecat
 
 Thank you,
@@ -271,35 +277,21 @@ Alikhan Bashpay · Bocconi University · zhol
 **Тема:** KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi
 
 ```text
-(Die englische Fassung finden Sie unten.)
+(Englische Fassung unten.)
 
 Sehr geehrtes Team von BGL e.V.,
-ich bin Alikhan Bashpay, Student an der Universität Bocconi in Mailand. Mein Team und ich entwickeln zhol, eine KI-Plattform für Transportunternehmen, die die Disposition am Vorabend warnt, wenn eine Ladung von morgen von einem Verbot, einer Sperrung oder einem Streik betroffen sein könnte. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und hat einen Zuschuss von 2.000 € erhalten.
+ich bin Alikhan Bashpay, Student der Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Transportunternehmen am Vorabend vor Verboten, Sperrungen und Streiks warnt. Das Projekt, eines von 100 bei TEF Ignition 2026, erhielt 2.000 € Förderung.
 
-Für Transportunternehmen, die über den Brenner fahren, ändern die Dosiertage in Kufstein und die Nachtfahrverbote in Tirol die Planung fast jede Woche, und 2025 lagen 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders. Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert. Und das ist nur der sichtbare Teil des Problems. Wir wollen helfen, es mit neuen Werkzeugen wie KI zu verkleinern.
+In Kufstein lagen 2025 21 der 57 Dosiertage außerhalb des Kalenders, und nach italienischem Recht kostet jede Stunde Wartezeit eines Lkw 100 €. Das ist nur der sichtbare Teil, und wir wollen helfen, ihn mit KI zu verkleinern.
 
-Zuerst wollen wir messen, was es eine einzelne Disposition kostet. Könnten Sie eine anonyme Umfrage von einer Minute an Ihre Mitglieder weiterleiten, die nach Italien oder durch Italien fahren? Ihrem Verband senden wir die zusammengefassten Ergebnisse zur Weitergabe an die Mitglieder.
-
-Die Umfrage hat sieben Fragen, ist auf Englisch und verlangt sonst nichts. Am Ende zeigt sie unseren kostenlosen KI-Radar mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und der Wahrscheinlichkeit jedes Ereignisses.
+Könnten Sie unsere anonyme 1-Minuten-Umfrage (auf Englisch) an Ihre Mitglieder im Italien-Verkehr weiterleiten? Sie erhalten die zusammengefassten Ergebnisse. Am Ende zeigt die Umfrage unseren kostenlosen KI-Radar.
 https://zhol.live/survey?src=ab-bgl
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
 
 — English version —
-
-Dear BGL e.V. team,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
-
-For hauliers crossing the Brenner, Tyrol's dosing days at Kufstein and the night bans change plans almost every week, and in 2025 21 of the 57 dosing days came outside the published calendar. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
-
-To start, we want to measure what it costs a single traffic office. Could you share a one-minute, anonymous survey with your members who run lanes to and through Italy? We will send your association the aggregated results, to share with your members.
-
-The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
-https://zhol.live/survey?src=ab-bgl
-
-Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+I am Alikhan Bashpay, a Bocconi student. My team and I build zhol, an AI platform for hauliers (TEF Ignition 2026, €2,000 grant). Could you share our one-minute, anonymous survey, link above, with your members who drive to Italy? We will send you the aggregated results.
 ```
 
 ### Ассоциация, французский + английский (FNTR)
@@ -307,35 +299,21 @@ Alikhan Bashpay · Bocconi University · zhol
 **Тема:** Solution d'IA pour le transport routier, enquête Bocconi d'une minute
 
 ```text
-(La version anglaise se trouve plus bas.)
+(Version anglaise plus bas.)
 
 Bonjour à l'équipe de FNTR,
-je m'appelle Alikhan Bashpay et je suis étudiant à l'Université Bocconi de Milan. Mon équipe et moi développons zhol, une plateforme d'IA pour les transporteurs qui prévient le service d'exploitation la veille au soir si un chargement du lendemain risque une interdiction, une fermeture ou une grève. Le projet fait partie des 100 retenus sur environ 500 par TEF Ignition 2026, un programme européen pour les nouvelles entreprises technologiques, et a reçu une subvention de 2 000 €.
+je suis Alikhan Bashpay, étudiant à Bocconi. Mon équipe et moi développons zhol, une plateforme d'IA qui prévient les transporteurs la veille au soir des interdictions, fermetures et grèves. Le projet, l'un des 100 retenus par TEF Ignition 2026, a reçu 2 000 € de subvention.
 
-Sur les axes vers l'Italie, le tunnel du Mont-Blanc ferme la nuit jusqu'en décembre 2026, les bouchons se reportent alors sur le Fréjus, et les interdictions de circuler les jours fériés et les grèves en Italie s'y ajoutent. Selon la loi italienne, chaque heure d'attente d'un camion vaut 100 €. Et ce n'est que la partie visible du problème. Nous voulons aider à le réduire avec de nouveaux outils comme l'IA.
+Le Mont-Blanc ferme la nuit jusqu'en décembre 2026, et un blocage au Fréjus laisse alors les camions sans passage. Selon la loi italienne, chaque heure d'attente vaut 100 €. Ce n'est que la partie visible, que nous voulons aider à réduire avec l'IA.
 
-Pour commencer, nous voulons mesurer ce qu'il coûte à un seul service d'exploitation. Pourriez-vous partager une enquête anonyme d'une minute avec vos adhérents dont les camions vont en Italie ou la traversent ? Nous vous enverrons les résultats agrégés, à partager avec vos adhérents.
-
-L'enquête compte sept questions, elle est en anglais et ne demande rien d'autre. À la fin, elle affiche notre radar IA gratuit avec les interdictions, fermetures et grèves des huit prochaines semaines et la probabilité de chacune.
+Pourriez-vous partager notre enquête anonyme d'une minute (en anglais) avec vos adhérents qui vont en Italie ? Vous recevrez les résultats agrégés. À la fin, l'enquête affiche notre radar IA gratuit.
 https://zhol.live/survey?src=ab-fntr
 
 Merci,
 Alikhan Bashpay · Université Bocconi · zhol
 
 — English version —
-
-Dear FNTR team,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
-
-On the lanes into Italy, the Mont Blanc tunnel closes at night until December 2026, the queues then move to the Fréjus, and Italian holiday bans and strikes add to it. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
-
-To start, we want to measure what it costs a single traffic office. Could you share a one-minute, anonymous survey with your members who run lanes to and through Italy? We will send your association the aggregated results, to share with your members.
-
-The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
-https://zhol.live/survey?src=ab-fntr
-
-Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+I am Alikhan Bashpay, a Bocconi student. My team and I build zhol, an AI platform for hauliers (TEF Ignition 2026, €2,000 grant). Could you share our one-minute, anonymous survey, link above, with your members who drive to Italy? We will send you the aggregated results.
 ```
 
 ### Ассоциация, испанский + английский (ASTIC)
@@ -343,35 +321,21 @@ Alikhan Bashpay · Bocconi University · zhol
 **Тема:** Una solución de IA para el transporte por carretera, encuesta Bocconi
 
 ```text
-(La versión en inglés está más abajo.)
+(Versión en inglés abajo.)
 
 Estimado equipo de ASTIC,
-me llamo Alikhan Bashpay y soy estudiante de la Universidad Bocconi de Milán. Mi equipo y yo desarrollamos zhol, una plataforma con IA para transportistas que avisa a la oficina de tráfico la noche anterior si una carga del día siguiente corre el riesgo de una prohibición, un cierre o una huelga. El proyecto es uno de los 100 seleccionados entre unos 500 por TEF Ignition 2026, un programa europeo para nuevas empresas tecnológicas, y ha recibido una subvención de 2.000 €.
+soy Alikhan Bashpay, estudiante de la Bocconi. Mi equipo y yo desarrollamos zhol, una plataforma de IA que avisa a los transportistas la noche anterior de prohibiciones, cierres y huelgas. El proyecto, uno de los 100 elegidos por TEF Ignition 2026, recibió 2.000 € de subvención.
 
-En las rutas a Italia a través de Francia, el túnel del Mont Blanc cierra de noche hasta diciembre de 2026, las colas se trasladan entonces al Fréjus, y a ello se suman las prohibiciones de circulación en festivos y las huelgas en Italia. Según la ley italiana, cada hora que espera un camión vale 100 €. Y esto es solo la parte visible del problema. Queremos ayudar a reducirlo con nuevas herramientas como la IA.
+El Mont Blanc cierra de noche hasta diciembre de 2026, y un bloqueo en el Fréjus deja a los camiones sin paso. Según la ley italiana, cada hora de espera de un camión vale 100 €. Es solo la parte visible, y queremos ayudar a reducirla con IA.
 
-Para empezar, queremos medir cuánto le cuesta a una sola oficina de tráfico. ¿Podrían compartir una encuesta anónima de un minuto con sus asociados que viajan a Italia o la atraviesan? Les enviaremos los resultados agregados, para compartirlos con sus asociados.
-
-La encuesta tiene siete preguntas, está en inglés y no pide nada más. Al final muestra nuestro radar con IA gratuito, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y la probabilidad de cada uno.
+¿Podrían compartir nuestra encuesta anónima de un minuto (en inglés) con sus asociados que viajan a Italia? Les enviaremos los resultados agregados. Al final la encuesta muestra nuestro radar de IA gratuito.
 https://zhol.live/survey?src=ab-astic
 
 Gracias,
 Alikhan Bashpay · Universidad Bocconi · zhol
 
 — English version —
-
-Dear ASTIC team,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
-
-On the lanes to Italy through France, the Mont Blanc tunnel closes at night until December 2026, the queues then move to the Fréjus, and Italian holiday bans and strikes add to it. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
-
-To start, we want to measure what it costs a single traffic office. Could you share a one-minute, anonymous survey with your members who run lanes to and through Italy? We will send your association the aggregated results, to share with your members.
-
-The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
-https://zhol.live/survey?src=ab-astic
-
-Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+I am Alikhan Bashpay, a Bocconi student. My team and I build zhol, an AI platform for hauliers (TEF Ignition 2026, €2,000 grant). Could you share our one-minute, anonymous survey, link above, with your members who drive to Italy? We will send you the aggregated results.
 ```
 
 ### Интермодальный оператор, итальянский + английский (Hupac)
@@ -379,35 +343,21 @@ Alikhan Bashpay · Bocconi University · zhol
 **Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
-(La versione in inglese è più in basso.)
+(Versione inglese più in basso.)
 
 Gentile team di Hupac,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli autotrasportatori di divieti, chiusure e scioperi. Il progetto è tra i 100 scelti da TEF Ignition 2026 e ha ricevuto un grant di 2.000 €.
 
-Sulle linee tra la Svizzera e l'Italia i divieti svizzeri di notte e la domenica lasciano già una finestra stretta, e basta una coda imprevista in dogana, un cantiere o uno sciopero in Italia per perderla. Per la legge italiana ogni ora che un camion aspetta vale 100 €. E questa è solo la parte visibile del problema. Vogliamo aiutare a ridurlo con strumenti nuovi come l'AI.
+I divieti svizzeri di notte e la domenica lasciano una finestra stretta, e basta una coda imprevista in dogana per perderla. Per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile, che vogliamo aiutare a ridurre con l'AI.
 
-Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Potreste girare un sondaggio anonimo di un minuto agli autotrasportatori e agli spedizionieri che prenotano con voi i treni attraverso le Alpi? Vi mandiamo i risultati aggregati, e ogni ora persa su strada è anche un argomento per il treno.
-
-Il sondaggio ha sette domande e non chiede nient'altro. Alla fine mostra il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
+Potreste girare il nostro sondaggio anonimo di un minuto a chi prenota con voi i treni attraverso le Alpi? Vi mandiamo i risultati aggregati. Alla fine il sondaggio mostra il nostro radar AI gratuito.
 https://zhol.live/it/sondaggio?src=ab-hupac
 
 Grazie,
 Alikhan Bashpay · Università Bocconi · zhol
 
 — English version —
-
-Dear Hupac team,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
-
-On the lanes between Switzerland and Italy, the Swiss night and Sunday bans already leave a narrow window, and one unexpected queue at the border, a roadworks site or a strike in Italy is enough to miss it. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
-
-To start, we want to measure what it costs a single traffic office. Could you share a one-minute, anonymous survey with the hauliers and forwarders who book trains with you across the Alps? We will send you the aggregated results, and every hour lost on the road is also a case for the train.
-
-The survey has seven questions and asks for nothing else. At the end it shows our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
-https://zhol.live/survey?src=ab-hupac
-
-Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+I am Alikhan Bashpay, a Bocconi student. My team and I build zhol, an AI platform for hauliers (TEF Ignition 2026, €2,000 grant). Could you share our one-minute, anonymous survey, link above, with the hauliers who book your trains across the Alps? We will send you the aggregated results.
 ```
 
 ### Компания, английский (Girteka)
@@ -416,18 +366,16 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ```text
 Good morning,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
+I am Alikhan Bashpay, a Bocconi student. My team and I are building zhol, an AI platform that warns hauliers the evening before about bans, closures and strikes. It is one of 100 projects selected by TEF Ignition 2026 and received a €2,000 grant.
 
-On the roads into Italy the Brenner restrictions alone cost Italy €544 million a year, and in October eight days of truck stoppages in the South caused more than €400 million of damage. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
+The Brenner restrictions alone cost Italy €544 million a year, and under Italian law every hour a truck waits costs €100. This is only the visible part, and we want to help shrink it with AI.
 
-What do unexpected queues and short-notice closures on your lanes to Italy really cost your traffic office? Could you give us one minute for an anonymous survey of seven questions, with no sign-up and no sales?
-
-At the end of the survey you will see our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
+What does it cost your traffic office? Our survey takes one minute, anonymous, no sign-up and no sales. At the end the survey shows our free AI radar.
 https://zhol.live/survey?src=ab-girteka
 
 Thank you,
 Alikhan Bashpay · Bocconi University · zhol
-If you prefer not to receive further messages, just reply «no».
+If you prefer no further messages, just reply «no».
 ```
 
 ### Компания, немецкий + английский (Bertschi)
@@ -435,37 +383,22 @@ If you prefer not to receive further messages, just reply «no».
 **Тема:** KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi
 
 ```text
-(Die englische Fassung finden Sie unten.)
+(Englische Fassung unten.)
 
 Guten Tag,
-ich bin Alikhan Bashpay, Student an der Universität Bocconi in Mailand. Mein Team und ich entwickeln zhol, eine KI-Plattform für Transportunternehmen, die die Disposition am Vorabend warnt, wenn eine Ladung von morgen von einem Verbot, einer Sperrung oder einem Streik betroffen sein könnte. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und hat einen Zuschuss von 2.000 € erhalten.
+ich bin Alikhan Bashpay, Student der Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Transportunternehmen am Vorabend vor Verboten, Sperrungen und Streiks warnt. Das Projekt, eines von 100 bei TEF Ignition 2026, erhielt 2.000 € Förderung.
 
-Im Verkehr zwischen der Schweiz und Italien lassen die Schweizer Nacht- und Sonntagsfahrverbote nur ein enges Zeitfenster, und ein unerwarteter Stau an der Grenze, eine Baustelle oder ein Streik in Italien reicht, um es zu verpassen. Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert. Und das ist nur der sichtbare Teil des Problems. Wir wollen helfen, es mit neuen Werkzeugen wie KI zu verkleinern.
+Die Schweizer Nacht- und Sonntagsfahrverbote lassen ein enges Zeitfenster, und ein unerwarteter Stau an der Grenze reicht, um es zu verpassen. Nach italienischem Recht kostet jede Stunde Wartezeit 100 €. Das ist nur der sichtbare Teil, und wir wollen helfen, ihn mit KI zu verkleinern.
 
-Was kosten unvorhergesehene Staus und kurzfristige Sperrungen im Italien-Verkehr Ihre Disposition wirklich? Hätten Sie eine Minute für eine anonyme Umfrage mit sieben Fragen, ohne Anmeldung und ohne Verkaufsabsicht? Die Umfrage ist auf Englisch.
-
-Am Ende der Umfrage sehen Sie unseren kostenlosen KI-Radar mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und der Wahrscheinlichkeit jedes Ereignisses.
+Was kostet das Ihre Disposition? Unsere Umfrage dauert eine Minute, anonym, auf Englisch, ohne Anmeldung und ohne Verkauf. Am Ende zeigt die Umfrage unseren kostenlosen KI-Radar.
 https://zhol.live/survey?src=ab-bertschi
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
-Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie einfach mit «nein».
+Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie einfach «nein».
 
 — English version —
-
-Good morning,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
-
-On the lanes between Switzerland and Italy, the Swiss night and Sunday bans already leave a narrow window, and one unexpected queue at the border, a roadworks site or a strike in Italy is enough to miss it. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
-
-What do unexpected queues and short-notice closures on your lanes to Italy really cost your traffic office? Could you give us one minute for an anonymous survey of seven questions, with no sign-up and no sales?
-
-At the end of the survey you will see our free AI radar with the bans, closures and strikes of the next eight weeks and the chance of each.
-https://zhol.live/survey?src=ab-bertschi
-
-Thank you,
-Alikhan Bashpay · Bocconi University · zhol
-If you prefer not to receive further messages, just reply «no».
+I am Alikhan Bashpay, a Bocconi student. My team and I build zhol, an AI platform for hauliers (TEF Ignition 2026, €2,000 grant). What do bans and queues on the lanes to Italy cost your traffic office? Our survey, link above, takes one minute, anonymous, no sign-up and no sales.
 ```
 
 ### Издание (VerkehrsRundschau)
@@ -473,39 +406,21 @@ If you prefer not to receive further messages, just reply «no».
 **Тема:** KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi
 
 ```text
-(Die englische Fassung finden Sie unten.)
+(Englische Fassung unten.)
 
 Sehr geehrte Redaktion von VerkehrsRundschau,
-ich bin Alikhan Bashpay, Student an der Universität Bocconi in Mailand. Mein Team und ich entwickeln zhol, eine KI-Plattform für Transportunternehmen, die die Disposition am Vorabend warnt, wenn eine Ladung von morgen von einem Verbot, einer Sperrung oder einem Streik betroffen sein könnte. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und hat einen Zuschuss von 2.000 € erhalten.
+ich bin Alikhan Bashpay, Student der Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Transportunternehmen am Vorabend vor Verboten, Sperrungen und Streiks warnt. Das Projekt, eines von 100 bei TEF Ignition 2026, erhielt 2.000 € Förderung.
 
-Für Transportunternehmen, die über den Brenner fahren, ändern die Dosiertage in Kufstein und die Nachtfahrverbote in Tirol die Planung fast jede Woche, und 2025 lagen 21 der 57 Dosiertage außerhalb des veröffentlichten Kalenders. Nach italienischem Recht ist jede Stunde, die ein Lkw wartet, 100 € wert. Und das ist nur der sichtbare Teil des Problems. Wir wollen helfen, es mit neuen Werkzeugen wie KI zu verkleinern.
+In Kufstein lagen 2025 21 der 57 Dosiertage außerhalb des Kalenders, und nach italienischem Recht kostet jede Stunde Wartezeit eines Lkw 100 €. Das ist nur der sichtbare Teil, und wir wollen helfen, ihn mit KI zu verkleinern.
 
-Ich schreibe Ihnen mit der Bitte um einen kurzen Hinweis auf eine anonyme Umfrage (eine Minute) für Disponenten im Italien-Verkehr.
-
-Wir sammeln Ausgangsdaten, also verlorene Minuten pro Tag, geänderte Sendungen, die Kosten des letzten Vorfalls und wie viele Büros bereit wären, Informationen auszutauschen. Die Umfrage ist auf Englisch.
+Könnten Sie kurz auf unsere anonyme 1-Minuten-Umfrage (auf Englisch) für Disponenten hinweisen? Unser Radar zhol.live/radar ist eine freie Quelle mit Hinweis auf zhol.
 https://zhol.live/survey?src=ab-verkehrsrundschau
-
-Für Ihre Artikel kann unser Radar eine kostenlose Quelle sein, zhol.live/radar, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen, ihrer Wahrscheinlichkeit und den Quellen, frei nutzbar mit Hinweis auf zhol.
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
 
 — English version —
-
-Dear VerkehrsRundschau editors,
-I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a strike. The project is one of 100 selected from about 500 by TEF Ignition 2026, a European programme for new tech companies, and received a €2,000 grant.
-
-For hauliers crossing the Brenner, Tyrol's dosing days at Kufstein and the night bans change plans almost every week, and in 2025 21 of the 57 dosing days came outside the published calendar. By Italian law every hour a truck waits is worth €100. And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.
-
-I am writing to ask for a short mention of an anonymous one-minute survey for traffic offices on the lanes to Italy.
-
-We are collecting baseline figures, minutes lost every day, shipments changed, the cost of the last incident, and how many offices would share information with each other.
-https://zhol.live/survey?src=ab-verkehrsrundschau
-
-For your pieces our radar can be a free source, zhol.live/radar, with the bans, closures and strikes of the next eight weeks, the chance of each and the sources, free to use when citing zhol.
-
-Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+I am Alikhan Bashpay, a Bocconi student. My team and I build zhol, an AI platform for hauliers (TEF Ignition 2026, €2,000 grant). Could you briefly mention our one-minute, anonymous survey for traffic offices, link above? Our radar zhol.live/radar is a free source when citing zhol.
 ```
 
 ## Источники цифр

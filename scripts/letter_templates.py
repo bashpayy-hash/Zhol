@@ -290,21 +290,19 @@ def international() -> str:
     s.append("""
 ## Скелет
 
-Одинаковый на всех языках. `{reason}` выбирается по стране, `{ask}` и `{head}` — по типу организации.
+Одинаковый на всех языках. Каждое письмо должно влезать в ссылку Outlook: часть ссылки после «?» не длиннее ~1 950
+символов, иначе Outlook открывает письмо без текста. Это проверяет тест. Поэтому письма компактные, а английская
+версия под письмом на другом языке короткая.
 """)
-    s.append(block("{BELOW — только если язык не английский}\n\n{приветствие}\n{who — кто мы и грант}\n\n"
-                   "{reason} {law} {MAIN — «это лишь видимая часть, хотим уменьшить её с помощью ИИ»}\n\n"
-                   "{MEASURE — «для начала хотим измерить», ассоциациям} "
-                   "{head — просьба и что им с этого}\n\n"
-                   "{ask — опрос, «на английском», радар в конце опроса}\n{ссылка — единственная}\n\n"
-                   "{gift_press — радар со ссылкой, только прессе}\n\n{thanks}\n{подпись}\n{optout — только компаниям}\n\n"
-                   "— English version —\n\n{то же письмо по-английски}"))
+    s.append(block("{BELOW — только если язык не английский}\n\n{greet}\n{who — кто мы и грант}\n\n"
+                   "{reason — проблема и цифры по стране} {main — «это лишь видимая часть, хотим уменьшить её с помощью ИИ»}"
+                   "\n\n{ask — просьба по типу организации} {end — радар в конце опроса, кроме прессы}\n{ссылка}\n\n"
+                   "{thanks}\n{подпись}\n{optout — только компаниям}\n\n"
+                   "— English version —\n{коротко по-английски: кто мы + просьба, «link above»}"))
 
-    s.append("\n## Темы: тип × язык\n")
-    s.append("| Тип | " + " | ".join(lang_ru[l] for l in ("en", "de", "fr", "es", "it")) + " |")
-    s.append("|---|" + "---|" * 5)
-    for kind in ("association", "intermodal", "company", "press"):
-        s.append(f"| `{kind}` | " + " | ".join(AL.T[l]["subject"][kind] for l in ("en", "de", "fr", "es", "it")) + " |")
+    s.append("\n## Тема (одна на язык)\n")
+    for lang in ("en", "de", "fr", "es", "it"):
+        s.append(f"- **{lang_ru[lang]}:** {AL.T[lang]['subject']}")
 
     s.append("\n## Блоки на каждом языке\n")
     for lang in ("en", "de", "fr", "es", "it"):
@@ -312,24 +310,31 @@ def international() -> str:
         s.append(f"### {lang_ru[lang]}\n")
         if lang in AL.BELOW:
             s.append(f"- **первая строка:** {AL.BELOW[lang]}")
-        for k, v in t["head"].items():
-            s.append(f"- **head · {k}:** {v.replace(chr(10), ' / ')}")
+        for k, v in t["greet"].items():
+            s.append(f"- **greet · {k}:** {v}")
+        s.append(f"- **who:** {t['who']}")
         for k, v in t["reason"].items():
             s.append(f"- **reason · {k or 'по умолчанию'}:** {v}")
-        s.append(f"- **law:** {t['law']}")
+        s.append(f"- **main:** {t['main']}")
         for k, v in t["ask"].items():
             s.append(f"- **ask · {k}:** {v}")
-        s.append(f"- **who:** {t['who']}")
-        s.append(f"- **gift · press:** {t['gift_press']}")
+        s.append(f"- **end:** {t['end']}")
         s.append(f"- **thanks / optout:** {t['thanks']} / {t['optout']}")
         s.append(f"- **подпись:** {AL.SIGN[lang]}\n")
+    s.append("### Короткая английская версия под письмом на другом языке\n")
+    s.append(f"- **who:** {AL.EN_SHORT_WHO}")
+    for k, v in AL.EN_SHORT.items():
+        s.append(f"- **{k}:** {v}")
+    s.append("")
 
     s.append("### Русский перевод для команды (не отправляется)\n")
-    for k, v in AL.RU["head"].items():
-        s.append(f"- **head · {k}:** {v.replace(chr(10), ' / ')}")
+    s.append(f"- **who:** {AL.RU['who']}")
     for k, v in AL.RU["reason"].items():
         s.append(f"- **reason · {k or 'по умолчанию'}:** {v}")
-    s.append(f"- **who:** {AL.RU['who']}\n")
+    s.append(f"- **main:** {AL.RU['main']}")
+    for k, v in AL.RU["ask"].items():
+        s.append(f"- **ask · {k}:** {v}")
+    s.append("")
 
     b = AL.letter("ab-iru", "IRU", "association", "EU")
     s.append("## IRU — отдельное письмо\n\nЧлены IRU — национальные ассоциации, а не перевозчики. Поэтому просим "
