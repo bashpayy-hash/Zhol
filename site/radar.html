@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=2">
-<link rel="stylesheet" href="/assets/zhol.css?v=s26">
+<link rel="stylesheet" href="/assets/zhol.css?v=s27">
 <link rel="alternate" hreflang="en" href="https://zhol.live/radar">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/radar">
 </head>
@@ -42,7 +42,7 @@
       <div class="stack" style="gap:14px">
         <label class="field rd-route"><span class="small">Your route: the whole page shows only what touches it</span>
         <select id="rd-route"><option value="">All routes</option></select></label>
-        <p class="small"><a href="/report">Seen something on the road? Tell the radar</a></p>
+        <div class="rd-ask" data-assistant-launcher><a class="small" href="/report">Seen something on the road? Tell the radar</a></div>
         <p class="small muted" id="rd-status">Loading the latest radar…</p>
       </div>
       <ul class="brief" id="rd-brief" hidden></ul>
@@ -88,7 +88,7 @@
   </div>
 </section>
 
-<section data-tile data-tile-num="" data-tile-line="What the events cost one truck on a real trip, and what a plan saves" class="slide dark" id="money" hidden>
+<section data-tile data-tile-kicker="Cost and saving" data-tile-num="" data-tile-line="What the events cost one truck on a real trip, and what a plan saves" class="slide dark" id="money" hidden>
   <div class="wrap stack">
     <div class="qhead">
       <span class="kicker">What the next eight weeks cost, and what zhol saves</span>
@@ -211,7 +211,6 @@
   </div>
 </section>
 </main>
-<div data-assistant-launcher></div>
 
 <footer class="site"><div class="wrap">
   <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
@@ -222,7 +221,7 @@
 <script src="/assets/scene.js?v=q2" defer></script>
 <script src="/assets/map.js?v=a8" defer></script>
 <script src="/assets/outlook.js?v=t2" defer></script>
-<script src="/assets/assistant.js?v=1" defer></script>
+<script src="/assets/assistant.js?v=2" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t4" defer></script>
 <script src="/assets/lang.js?v=l3"></script>

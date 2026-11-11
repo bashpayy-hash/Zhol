@@ -41,6 +41,74 @@ COUNTRY_IT = {"IT": "Italia", "AT": "Austria", "DE": "Germania", "CH": "Svizzera
               "PL": "Polonia", "ES": "Spagna", "BE": "Belgio", "NL": "Paesi Bassi"}
 COUNTRY_NAME = {"IT": "Italy", "AT": "Austria", "DE": "Germany", "CH": "Switzerland", "FR": "France",
                 "SI": "Slovenia", "PL": "Poland", "ES": "Spain", "BE": "Belgium", "NL": "Netherlands"}
+# names of the passes in Italian, and how each language says "at the pass" (no English names in Italian sentences)
+CHOKE_IT = {
+    "brenner": ("Passo del Brennero (A22/A13)", "al Passo del Brennero"),
+    "luegbruecke": ("Ponte Lueg (A13, autostrada del Brennero)", "al ponte Lueg"),
+    "kufstein": ("Kufstein-Nord (A12/A93, confine DE-AT)", "a Kufstein-Nord"),
+    "inntal_a12": ("Autostrada della Valle dell'Inn A12 (Tirolo)", "sull'autostrada A12 della Valle dell'Inn"),
+    "tarvisio": ("Tarvisio / Arnoldstein (confine IT-AT, A23/A2)", "a Tarvisio"),
+    "tauern": ("Galleria dei Tauri (A10)", "alla galleria dei Tauri"),
+    "gotthard": ("Galleria stradale del San Gottardo (A2)", "alla galleria del San Gottardo"),
+    "san_bernardino": ("Galleria del San Bernardino (A13 CH)", "alla galleria del San Bernardino"),
+    "chiasso": ("Chiasso / Brogeda (confine IT-CH, A9/A2)", "a Chiasso-Brogeda"),
+    "basel": ("Basilea / Weil am Rhein (confine CH-DE)", "a Basilea"),
+    "st_margrethen": ("St. Margrethen / Lustenau (confine CH-AT)", "a St. Margrethen"),
+    "frejus": ("Traforo stradale del Fréjus (A32/A43)", "al traforo del Fréjus"),
+    "montblanc": ("Traforo del Monte Bianco", "al traforo del Monte Bianco"),
+    "ventimiglia": ("Ventimiglia / Mentone (confine IT-FR, A10/A8)", "a Ventimiglia"),
+    "fernetti": ("Fernetti / Fernetiči (confine IT-SI)", "a Fernetti"),
+    "karawanken": ("Galleria delle Caravanche (A11/A2 SI)", "alla galleria delle Caravanche"),
+    "messina_strait": ("Traghetti dello Stretto di Messina (Messina - Villa San Giovanni)", "sullo Stretto di Messina"),
+    "goerlitz": ("Görlitz / Zgorzelec (confine DE-PL, A4)", "a Görlitz"),
+}
+CHOKE_EN_AT = {
+    "brenner": "at the Brenner Pass", "luegbruecke": "on the Luegbrücke", "kufstein": "at Kufstein-Nord",
+    "inntal_a12": "on the Inntal motorway A12", "tarvisio": "at Tarvisio", "tauern": "at the Tauern tunnel",
+    "gotthard": "at the Gotthard road tunnel", "san_bernardino": "at the San Bernardino tunnel", "chiasso": "at Chiasso",
+    "basel": "at Basel", "st_margrethen": "at St. Margrethen", "frejus": "at the Fréjus road tunnel",
+    "montblanc": "at the Mont Blanc tunnel", "ventimiglia": "at Ventimiglia", "fernetti": "at Fernetti",
+    "karawanken": "at the Karawanken tunnel", "messina_strait": "on the Strait of Messina", "goerlitz": "at Görlitz",
+}
+REGION_EN = {"IT-Sicilia": "Sicily", "IT-Lombardia": "Lombardy", "IT-Piemonte": "Piedmont", "IT-Toscana": "Tuscany",
+             "IT-Sardegna": "Sardinia", "IT-Puglia": "Apulia", "IT-Trentino-Alto Adige": "Trentino-South Tyrol",
+             "IT-Valle d'Aosta": "Aosta Valley", "AT-Tirol": "Tyrol", "AT-Kärnten": "Carinthia", "AT-Wien": "Vienna",
+             "AT-Steiermark": "Styria", "DE-Bayern": "Bavaria", "DE-Sachsen": "Saxony", "CH-Graubünden": "Grisons",
+             "CH-Basel": "Basel", "IT-Friuli-Venezia Giulia": "Friuli-Venezia Giulia"}
+REGION_IT = {"AT-Tirol": "Tirolo", "AT-Kärnten": "Carinzia", "AT-Wien": "Vienna", "AT-Steiermark": "Stiria",
+             "AT-Salzburg": "Salisburgo", "DE-Bayern": "Baviera", "DE-Sachsen": "Sassonia", "DE-Baden-Württemberg": "Baden-Württemberg",
+             "CH-Graubünden": "Grigioni", "CH-Basel": "Basilea", "CH-Luzern": "Lucerna", "CH-St. Gallen": "San Gallo",
+             "FR-Auvergne-Rhône-Alpes": "Alvernia-Rodano-Alpi", "FR-Provence-Alpes-Côte d'Azur": "Provenza-Alpi-Costa Azzurra"}
+KIND_EN = {"strike": "Strike", "blockade": "Blockade", "protest": "Protest", "closure": "Closure", "dosing": "Truck dosing",
+           "weather": "Bad weather", "other": "Disruption"}
+KIND_IT = {"strike": "Sciopero", "blockade": "Blocco", "protest": "Protesta", "closure": "Chiusura", "dosing": "Dosaggio dei camion",
+           "weather": "Maltempo", "other": "Disagi"}
+
+
+def region_name(rid: str, it: bool = False) -> str:
+    native = rid.split("-", 1)[1] if "-" in rid else rid
+    return (REGION_IT.get(rid) if it else REGION_EN.get(rid)) or native
+
+
+def news_title(kind: str, stage: str, chokes: list[str], regions: list[str], countries: list[str]) -> tuple[str, str]:
+    """A plain title in English and Italian from what was read, when no model wrote a summary: the radar never shows a
+    French headline as the title of an English page; the headline itself stays below, in quotes."""
+    if chokes:
+        at_en, at_it = CHOKE_EN_AT.get(chokes[0], "at " + chokes[0]), CHOKE_IT.get(chokes[0], ("", "a " + chokes[0]))[1]
+    elif regions:
+        at_en, at_it = "in " + region_name(regions[0]), "in " + region_name(regions[0], it=True)
+    elif countries:
+        at_en, at_it = "in " + COUNTRY_NAME.get(countries[0], countries[0]), "in " + COUNTRY_IT.get(countries[0], countries[0])
+    else:
+        at_en, at_it = "in Europe", "in Europa"
+    en, it = KIND_EN.get(kind, "Disruption"), KIND_IT.get(kind, "Disagi")
+    if stage in ("tension", "threat"):
+        return f"Possible {en.lower()} {at_en}", f"{'Possibile' if it != 'Disagi' else 'Possibili'} {it.lower()} {at_it}"
+    if stage == "revoked":
+        return f"{en} {at_en} called off", f"{it} {at_it} revocat{'o' if it in ('Sciopero', 'Blocco', 'Dosaggio dei camion', 'Maltempo') else 'a'}"
+    return f"{en} {at_en}", f"{it} {at_it}"
+
+
 GROUP = {"strike": "action", "blockade": "action", "protest": "action", "closure": "closure",
          "dosing": "dosing", "weather": "weather", "other": "other"}
 
@@ -162,16 +230,17 @@ def weather_items(weather: dict, today: date, threshold: float = 0.2) -> list[di
             top = max(run, key=lambda r: r[4]["p"])
             d, snow, gust, lead, ch = top
             ferry = w["kind"] == "ferry"
-            title = f"Strong wind on the {w['name'].split(' (')[0]}" if ferry else f"Snow at {w['name'].split(' (')[0]}"
+            title = "Strong wind on the Strait of Messina" if ferry else f"Snow {CHOKE_EN_AT.get(cid, 'at ' + w['name'].split(' (')[0])}"
             detail = (f"Gusts up to {gust:.0f} km/h" if ferry else f"Up to {snow:.0f} cm of snow, gusts {gust:.0f} km/h") + \
                      f" on {d:%a %d %b}, {lead} days ahead."
-            title_it = (f"Vento forte sul {w['name'].split(' (')[0]}" if ferry else f"Neve a {w['name'].split(' (')[0]}")
+            title_it = ("Vento forte sullo Stretto di Messina" if ferry else f"Neve {CHOKE_IT.get(cid, ('', 'a ' + w['name']))[1]}")
             detail_it = (f"Raffiche fino a {gust:.0f} km/h" if ferry else f"Fino a {snow:.0f} cm di neve, raffiche {gust:.0f} km/h") + \
                 f", {lead} giorni prima."
             items.append(_item(
                 id=_id("wx", cid, run[0][0].isoformat()), group="forecast", kind="weather", title=title,
                 title_it=title_it, detail_it=detail_it,
-                where=w["name"], countries=[catalog.chokepoints()[cid]["country"]], places=[cid], snow_cm=round(snow),
+                where=w["name"], where_it=CHOKE_IT.get(cid, (w["name"],))[0],
+                countries=[catalog.chokepoints()[cid]["country"]], places=[cid], snow_cm=round(snow),
                 start=run[0][0].isoformat(), end=run[-1][0].isoformat(), p=ch["p"], basis="forecast", detail=detail,
                 factors=[{"label": f"forecast alone: {ch['p_forecast']:.0%}", "x": None},
                          {"label": f"weight {ch['weight']} for {lead} days ahead, rest from the season's {ch['season']:.0%}",
@@ -286,16 +355,21 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
             continue
         latest = max(c, key=lambda s: s.published or "")
         kinds = sorted({s.kind for s in c})
-        where_bits = ([catalog.chokepoints()[x]["name"] for x in {k for s in c for k in s.chokepoints}][:2]
-                      or sorted({r for s in c for r in s.regions})[:2]
-                      or [COUNTRY_NAME.get(x, x) for x in sorted({k for s in c for k in s.countries})][:3])
-        where_it = ([catalog.chokepoints()[x]["name"] for x in {k for s in c for k in s.chokepoints}][:2]
-                    or sorted({r for s in c for r in s.regions})[:2]
-                    or [COUNTRY_IT.get(x, x) for x in sorted({k for s in c for k in s.countries})][:3])
+        chokes = sorted({k for s in c for k in s.chokepoints})
+        regions = sorted({r for s in c for r in s.regions})
+        countries = sorted({k for s in c for k in s.countries})
+        where_bits = ([catalog.chokepoints()[x]["name"] for x in chokes][:2]
+                      or [region_name(r) for r in regions][:2]
+                      or [COUNTRY_NAME.get(x, x) for x in countries][:3])
+        where_it = ([CHOKE_IT.get(x, (catalog.chokepoints()[x]["name"],))[0] for x in chokes][:2]
+                    or [region_name(r, it=True) for r in regions][:2]
+                    or [COUNTRY_IT.get(x, x) for x in countries][:3])
+        plain_en, plain_it = news_title(latest.kind, stage, latest.chokepoints or chokes, latest.regions or regions,
+                                        latest.countries or countries)
         items.append(_item(
             id=_id("news", latest.title), group="news", kind=latest.kind if latest.kind in kinds else kinds[0],
-            title=latest.summary or latest.title, headline=latest.title, where=", ".join(where_bits) or "Europe",
-            title_it=latest.summary_it or latest.title, where_it=", ".join(where_it) or "Europa",
+            title=latest.summary or plain_en, headline=latest.title, where=", ".join(where_bits) or "Europe",
+            title_it=latest.summary_it or plain_it, where_it=", ".join(where_it) or "Europa",
             detail_it=f"{len(c)} articol{'i' if len(c) > 1 else 'o'} da {len(outlets)} testat{'e' if len(outlets) > 1 else 'a'}.",
             countries=sorted({k for s in c for k in s.countries}), start=start, end=end or start,
             places=sorted({k for s in c for k in s.chokepoints}), regions=sorted({r for s in c for r in s.regions}),

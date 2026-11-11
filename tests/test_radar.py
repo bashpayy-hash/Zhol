@@ -126,3 +126,18 @@ def test_lanes_for_respects_direction_and_country():
     assert "MUC-VR-BRENNER" in lanes and "MIL-MUC-BRENNER" not in lanes     # dosing is southbound only
     xmas = next(i for i in items if i["start"] == "2026-12-25")
     assert {"MIL-MUC-BRENNER", "MIL-LYO-FREJUS"} <= set(lanes_for(xmas))
+
+
+def test_news_titles_follow_the_page_language():
+    """Without a model summary the title is built from what was read: no French headline on an English page."""
+    from zhol.radar.outlook import news_title
+    assert news_title("closure", "announced", ["frejus"], [], ["FR"]) == ("Closure at the Fréjus road tunnel", "Chiusura al traforo del Fréjus")
+    assert news_title("strike", "threat", [], ["IT-Sicilia"], ["IT"]) == ("Possible strike in Sicily", "Possibile sciopero in Sicilia")
+    assert news_title("blockade", "revoked", [], [], ["FR"])[1] == "Blocco in Francia revocato"
+
+
+def test_italian_pages_name_the_passes_in_italian():
+    from zhol import catalog
+    from zhol.radar.outlook import CHOKE_EN_AT, CHOKE_IT
+    assert set(CHOKE_IT) == set(catalog.chokepoints()) == set(CHOKE_EN_AT)
+    assert all("Strait" not in v[0] and "tunnel" not in v[0] for v in CHOKE_IT.values())

@@ -246,7 +246,7 @@
     const btn = el("button", "asst-launch"); btn.type = "button";
     const face = el("img"); face.src = "/assets/img/mascot/face-128.webp"; face.alt = ""; face.width = 30; face.height = 30;
     btn.append(face, el("span", null, T("Ask zhol", "Chiedi a zhol")));
-    launch.append(btn);
+    launch.prepend(btn);
     const close = () => { dlg.classList.add("closing"); setTimeout(() => { dlg.classList.remove("closing"); dlg.close(); }, 190); };
     btn.addEventListener("click", () => { dlg.showModal(); api.focus(); });
     x.addEventListener("click", close);

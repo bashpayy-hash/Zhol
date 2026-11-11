@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=2">
-<link rel="stylesheet" href="/assets/zhol.css?v=s26">
+<link rel="stylesheet" href="/assets/zhol.css?v=s27">
 <link rel="alternate" hreflang="en" href="https://zhol.live/radar">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/radar">
 </head>
@@ -42,7 +42,7 @@
       <div class="stack" style="gap:14px">
         <label class="field rd-route"><span class="small">La vostra tratta: tutta la pagina mostra solo ciò che la riguarda</span>
         <select id="rd-route"><option value="">Tutte le tratte</option></select></label>
-        <p class="small"><a href="/it/segnala">Avete visto qualcosa sulla strada? Ditelo al radar</a></p>
+        <div class="rd-ask" data-assistant-launcher><a class="small" href="/it/segnala">Avete visto qualcosa sulla strada? Ditelo al radar</a></div>
         <p class="small muted" id="rd-status">Caricamento dell’ultimo radar…</p>
       </div>
       <ul class="brief" id="rd-brief" hidden></ul>
@@ -88,7 +88,7 @@
   </div>
 </section>
 
-<section data-tile data-tile-num="" data-tile-line="Quanto costano gli eventi a un camion su un viaggio reale, e cosa fa risparmiare un piano" class="slide dark" id="money" hidden>
+<section data-tile data-tile-kicker="Costi e risparmi" data-tile-num="" data-tile-line="Quanto costano gli eventi a un camion su un viaggio reale, e cosa fa risparmiare un piano" class="slide dark" id="money" hidden>
   <div class="wrap stack">
     <div class="qhead">
       <span class="kicker">Quanto costano le prossime otto settimane, e quanto fa risparmiare zhol</span>
@@ -211,7 +211,6 @@
   </div>
 </section>
 </main>
-<div data-assistant-launcher></div>
 
 <footer class="site"><div class="wrap">
   <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
@@ -222,7 +221,7 @@
 <script src="/assets/scene.js?v=q2" defer></script>
 <script src="/assets/map.js?v=a8" defer></script>
 <script src="/assets/outlook.js?v=t2" defer></script>
-<script src="/assets/assistant.js?v=1" defer></script>
+<script src="/assets/assistant.js?v=2" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t4" defer></script>
 <script src="/assets/lang.js?v=l3"></script>

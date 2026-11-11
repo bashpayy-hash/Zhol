@@ -695,8 +695,6 @@ details.backup[open] > summary { margin-bottom: 14px; }
 /* three steps, numbered (home: why not just have someone check) */
 .steps .card { position: relative; }
 .step-n { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--card); border: 1px solid #c4d2bd; color: var(--sage-ink); font-weight: 650; font-size: 16px; font-variant-numeric: tabular-nums; }
-.steps .card:last-child { border: 1.5px dashed #9fb596; background: transparent; }
-.steps .card:last-child .step-n { background: var(--sage-ink); border-color: var(--sage-ink); color: #fff; }
 .tag { align-self: flex-start; margin-top: auto; font-size: 13px; font-weight: 500; color: var(--sage-ink); background: var(--sage-card); border: 1px solid #c4d2bd; border-radius: 999px; padding: 4px 12px; }
 
 /* design audit, November 2026 (docs/16-design-audit.md) */
@@ -1194,9 +1192,9 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
 .asst-x { border: 0; background: transparent; font-size: 18px; line-height: 1; cursor: pointer; color: inherit; width: 44px; height: 44px; margin: -10px -6px -10px -6px; border-radius: 50%; }
 .asst-note { margin: 0; }
 .btn:disabled { opacity: .55; cursor: default; transform: none; }
-.asst-launch { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 40; display: flex; align-items: center; gap: 10px;
-  background: var(--ink); color: var(--paper); border: 0; border-radius: var(--r-pill); padding: 7px 18px 7px 7px; font: inherit; font-weight: 600; font-size: 15px;
-  box-shadow: 0 10px 28px -8px rgba(30, 22, 18, .45); cursor: pointer; transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease-color); }
+.rd-ask { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.asst-launch { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; background: var(--ink); color: var(--paper); border: 0; border-radius: var(--r-pill);
+  padding: 6px 18px 6px 6px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease-color); }
 .asst-launch img { width: 32px; height: 32px; border-radius: 50%; background: var(--sage-card); object-fit: cover; }
 .asst-launch:hover { background: #241b18; }
 .asst-launch:active { transform: scale(.97); }
@@ -1204,7 +1202,7 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
 @keyframes asst-in { from { opacity: 0; transform: translateY(6px); } }
 @keyframes asst-wait { from { opacity: .45; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .asst-msg, .asst-msg.wait p { animation: none; } }
-@media (max-width: 560px) { .asst-msg { max-width: 100%; } .asst-face { width: 30px; height: 30px; } .asst-launch span { font-size: 14px; } }
+@media (max-width: 560px) { .asst-msg { max-width: 100%; } .asst-face { width: 30px; height: 30px; } }
 /* the report page */
 .rp-hero .media img { width: 100%; max-width: 440px; margin-inline: auto; display: block; }
 .rp-chat { max-width: 760px; }
@@ -1214,6 +1212,17 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
 .lane-picks input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .lane-picks label:has(input:checked) { background: var(--sage-card); border-color: var(--sage-ink); color: var(--sage-ink); }
 .lane-picks label:has(input:focus-visible) { outline: 2px solid var(--red); outline-offset: 2px; }
-/* an office report on the radar */
-.rd-row.office { box-shadow: inset 4px 0 0 var(--sage-ink); }
 @media (max-width: 560px) { dialog.sheet.asst-sheet { width: 100vw; } }
+/* polish, 11 Nov 2026 (design critique) */
+.rp-hero { padding-bottom: 56px; }
+.rp-steps .card { gap: 12px; }
+@media (max-width: 560px) {
+  .rp-hero { padding-bottom: 40px; }
+  /* two tiles side by side: the label takes two lines in both, so the titles start on one line */
+  .tiles .tile:not(.wide) .kicker, .blocks.tiles-mode .block:not(.wide) > .kicker { min-height: 2.7em; }
+  /* answers: the next answer first, then the way back */
+  .answer-nav .step-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .answer-nav .step-row > span:empty { display: none; }
+  .answer-nav .step-row .btn:not(.ghost) { order: -2; }
+  .answer-nav .step-row .btn.ghost { order: -1; }
+}
