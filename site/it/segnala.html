@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f3ea">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Segnala al radar · zhol</title>
+<script>document.documentElement.classList.add("js")</script>
+<meta name="description" content="Avete visto una coda, una chiusura o un avviso di sciopero? Ditelo al radar zhol con parole vostre o con il documento. Va sul radar quando lo conferma un secondo ufficio o il nostro team.">
+<meta property="og:title" content="Segnala al radar · zhol">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s26">
+<link rel="alternate" hreflang="en" href="https://zhol.live/report">
+<link rel="alternate" hreflang="it" href="https://zhol.live/it/segnala">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sezioni"><a href="/it/">Risposte</a><a href="/it/radar">Radar</a><a href="/it/story">Storia</a><a href="/it/audience">Clienti</a><a href="/it/beta">Beta</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/report" lang="en" hreflang="en">EN</a><a href="/it/segnala" lang="it" hreflang="it" aria-current="true">IT</a></span>
+</div></header>
+
+<main>
+<section class="slide hero rp-hero">
+  <div class="wrap split center">
+    <div class="stack">
+      <span class="kicker">Passaparola · per uffici traffico e autisti</span>
+      <h1 class="title">Avete visto qualcosa sulla strada? Ditelo al radar.</h1>
+      <p class="lead">Una coda al confine, un tunnel chiuso, un avviso di sciopero, un’ordinanza della prefettura. Scrivetelo come a un collega, o allegate il documento. L’assistente lo legge e vi mostra cosa ha capito prima di inviare qualsiasi cosa.</p>
+      <div class="actions"><a class="btn" href="#tell">Segnala al radar</a><a href="#alerts">Ricevi avvisi su WhatsApp</a></div>
+    </div>
+    <div class="media"><img src="/assets/img/mascot/radio-560.webp" alt="Zholdas, la nostra mascotte di peluche con cappellino da camionista e gilet riflettente, parla alla radio e saluta" width="560" height="560"></div>
+  </div>
+</section>
+
+<section class="slide sage" id="tell">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">Segnala al radar</span>
+      <h2 class="title">Con parole vostre, o con il documento</h2>
+    </div>
+    <div class="rp-chat" data-assistant="report">
+      <noscript><p class="small">L’assistente richiede JavaScript. Potete anche scriverci dalla <a href="/it/beta#join">pagina beta</a>.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="how">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">Cosa succede dopo</span>
+      <h2 class="title">Una sola segnalazione non basta per andare sul radar</h2>
+    </div>
+    <div class="grid g3 steps">
+      <div class="card"><span class="step-n">1</span><h3>Lo raccontate</h3><p class="small">A parole, con un PDF o una foto. Anonimo: il radar non mostra mai chi l’ha inviato, e le vostre parole e i documenti restano al team zhol.</p></div>
+      <div class="card"><span class="step-n">2</span><h3>L’assistente lo legge</h3><p class="small">Trova cosa, dove e quando, lo collega ai valichi e alle tratte che zhol segue e vi chiede cosa manca.</p></div>
+      <div class="card"><span class="step-n">3</span><h3>Due uffici, o la nostra verifica</h3><p class="small">Va sul radar quando un secondo ufficio segnala lo stesso, o quando il nostro team l’ha verificato. Gli avvisi WhatsApp partono solo dopo la verifica di una persona.</p></div>
+    </div>
+    <p class="small muted">Quanto è sicuro il radar: due uffici 65%, ogni ufficio in più il 10% in più, fino all’85%; verificato dal nostro team 80%; con un documento ufficiale o una fonte 90%. Come ogni probabilità del radar, vengono controllate dopo la data e corrette.</p>
+  </div>
+</section>
+
+<section class="slide sage" id="alerts">
+  <div class="wrap split">
+    <div class="stack" style="gap:18px">
+      <div class="qhead">
+        <span class="kicker">Avvisi WhatsApp</span>
+        <h2 class="title">Un messaggio quando un evento verificato tocca le vostre tratte</h2>
+      </div>
+      <p class="lead">Solo eventi verificati da una persona, solo sulle tratte che scegliete. Niente pubblicità. Rispondete STOP quando volete.</p>
+    </div>
+    <form class="card" id="alerts-form" novalidate>
+      <div class="field"><label for="a-phone">Il vostro numero WhatsApp, con il prefisso</label><input id="a-phone" name="phone" type="tel" placeholder="+39 …" autocomplete="tel" required></div>
+      <fieldset class="field" style="border:0;padding:0;margin:0"><legend class="small muted" style="margin-bottom:8px">Le vostre tratte (nessuna scelta: tutte)</legend><div class="lane-picks" id="a-lanes"></div></fieldset>
+      <label class="asst-check"><input type="checkbox" id="a-consent" required><span class="small">Accetto di ricevere questi messaggi WhatsApp da zhol. Posso rispondere STOP per smettere.</span></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div><button class="btn" type="submit">Ricevi gli avvisi</button></div>
+      <p class="small asst-out" id="a-out" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan · Inkara · Tomiris · Università Bocconi · TEF Ignition 2026</span>
+  <span><a href="/it/">TEF risposte</a> · <a href="/it/radar">Radar</a> · <a href="/it/story">Storia</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/assistant.js?v=1" defer></script>
+<script src="/assets/report.js?v=1" defer></script>
+<script src="/assets/reveal.js?v=t1" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Проверка сообщений · zhol</title>
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s26">
+<style>
+  .rv { max-width: 980px; }
+  .rv-on { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rv-on .chip.ok { background: var(--sage-card); color: var(--sage-ink); }
+  .rv-on .chip.no { background: var(--red-track); color: var(--red); }
+  .rv-list { display: flex; flex-direction: column; gap: 14px; }
+  .rv-r { display: flex; flex-direction: column; gap: 10px; }
+  .rv-r.rejected { opacity: .55; }
+  .rv-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .rv-words { white-space: pre-wrap; background: var(--msg-box); border-radius: var(--r-field); padding: 10px 14px; margin: 0; font-size: 14.5px; }
+  .rv-acts { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .rv-out td { font-size: 13.5px; vertical-align: top; padding: 6px 10px 6px 0; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="/" aria-label="zhol"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a></div></header>
+<main>
+<section class="slide"><div class="wrap stack rv">
+  <div class="qhead">
+    <span class="kicker">Только для команды</span>
+    <h1 class="title">Сообщения офисов</h1>
+    <p class="lead">Одно сообщение на радар не попадает. Его ставит туда второй офис с тем же событием или ваша проверка. Рассылка в WhatsApp уходит только после «Проверено».</p>
+  </div>
+  <form id="login" class="card" hidden>
+    <label class="field"><span class="small">Ключ проверки</span><input id="tok" type="password" autocomplete="off"></label>
+    <div><button class="btn" type="submit">Войти</button></div>
+  </form>
+  <div id="app" hidden class="stack" style="gap:22px">
+    <div class="rv-on" id="on"></div>
+    <p class="small muted" id="subs"></p>
+    <div class="seg" role="tablist">
+      <button role="tab" aria-selected="true" data-f="open">Ждут проверки</button>
+      <button role="tab" aria-selected="false" data-f="all">Все</button>
+      <button role="tab" aria-selected="false" data-f="out">Исходящие WhatsApp</button>
+    </div>
+    <div class="rv-list" id="list"></div>
+  </div>
+</div></section>
+</main>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+  const KEY = "zhol-review";
+  const store = { get: () => { try { return sessionStorage.getItem(KEY) || ""; } catch (e) { return ""; } }, set: v => { try { sessionStorage.setItem(KEY, v); } catch (e) {} } };
+  const m = location.hash.match(/t=([\w-]+)/);
+  if (m) { store.set(m[1]); history.replaceState(null, "", location.pathname); }
+  let token = store.get(), data = null, filter = "open";
+  const STATUS = { new: "новое, одно", confirmed: "подтвердил второй офис", approved: "проверено", rejected: "отклонено" };
+  const KIND = { strike: "забастовка", blockade: "блокада", protest: "протест", closure: "закрытие", queue: "очередь", dosing: "дозирование", weather: "погода", accident: "авария", other: "другое" };
+  const api = (opt) => fetch("/api/review" + (opt && opt.q || ""), { method: opt && opt.body ? "POST" : "GET",
+    headers: Object.assign({ "x-zhol-review": token }, opt && opt.body ? { "content-type": "application/json" } : {}), body: opt && opt.body ? JSON.stringify(opt.body) : undefined });
+
+  async function load() {
+    const r = await api();
+    if (r.status === 401) { $("login").hidden = false; $("app").hidden = true; return; }
+    data = await r.json(); $("login").hidden = true; $("app").hidden = false; draw();
+  }
+  $("login").addEventListener("submit", e => { e.preventDefault(); token = $("tok").value.trim(); store.set(token); load(); });
+  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+    filter = b.dataset.f; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-selected", String(x === b))); draw();
+  }));
+
+  function draw() {
+    const on = $("on"); on.textContent = "";
+    const s = data.switched_on;
+    [["Помощник (Claude через Netlify)", s.assistant], ["WhatsApp: отправка", s.whatsapp], ["WhatsApp: ваш номер для уведомлений", s.reviewer],
+     ["WhatsApp: входящие (вебхук)", s.webhook], ["Шаблон рассылки", !!s.templates.alert]].forEach(([t, ok]) => on.append(el("span", "chip " + (ok ? "ok" : "no"), (ok ? "✓ " : "✗ ") + t)));
+    on.append(el("span", "chip", "модель: " + s.model));
+    $("subs").textContent = "Подписаны на рассылку: " + data.subscribers.total + " (на все маршруты: " + data.subscribers.every_route + ")";
+    const list = $("list"); list.textContent = "";
+    if (filter === "out") {
+      const t = el("table", "t rv-out"); const tb = el("tbody");
+      (data.outbox || []).forEach(o => { const tr = el("tr"); [new Date(o.at).toLocaleString("ru-RU"), o.to, o.kind, (o.mode === "outbox" ? "не отправлено (WhatsApp не подключён)" : o.ok ? "отправлено" : "ошибка: " + o.error), o.text].forEach(x => tr.append(el("td", null, x))); tb.append(tr); });
+      t.append(tb); list.append(data.outbox && data.outbox.length ? t : el("p", "small muted", "Пока ничего."));
+      return;
+    }
+    const rows = data.reports.filter(r => filter === "all" || r.status === "new" || r.status === "confirmed");
+    if (!rows.length) list.append(el("p", "small muted", filter === "open" ? "Нечего проверять." : "Сообщений пока нет."));
+    rows.forEach(r => {
+      const c = el("article", "card rv-r " + r.status);
+      const h = el("div", "rv-head");
+      h.append(el("span", "chip", STATUS[r.status] || r.status), el("span", "chip", KIND[r.event.kind] || r.event.kind), el("span", "chip", r.event.stage),
+               el("span", "small muted", new Date(r.created).toLocaleString("ru-RU") + " · " + (r.channel === "whatsapp" ? "WhatsApp" : "сайт") + " · " + (r.lang === "it" ? "IT" : "EN")));
+      c.append(h, el("b", null, r.event.title_en), el("span", "small", r.event.title_it));
+      const when = r.event.start ? (r.event.end && r.event.end !== r.event.start ? r.event.start + " – " + r.event.end : r.event.start) : "без даты";
+      c.append(el("p", "small", [r.event.where_en, when, r.event.direction, r.lanes.length + " маршр.", r.event.official_document ? "официальный документ" : null,
+        r.confirmed_by.length ? "совпадает ещё с " + r.confirmed_by.length : null, r.has_contact ? "оставил WhatsApp" : null].filter(Boolean).join(" · ")));
+      if (r.words) c.append(el("p", "rv-words", r.words));
+      const acts = el("div", "rv-acts");
+      if (r.event.source_url) { const a = el("a", null, "Источник"); a.href = r.event.source_url; a.target = "_blank"; a.rel = "noopener noreferrer"; acts.append(a); }
+      if (r.upload) {
+        const b = el("button", "btn ghost", "Открыть документ"); b.type = "button";
+        b.addEventListener("click", async () => { const x = await api({ q: "?upload=" + r.upload.id }); if (!x.ok) return; const u = URL.createObjectURL(await x.blob()); window.open(u, "_blank", "noopener"); });
+        acts.append(b);
+      }
+      if (r.status !== "approved") {
+        const ok = el("button", "btn", r.alerted ? "Проверено" : "Проверено: на радар и разослать"); ok.type = "button";
+        ok.addEventListener("click", async () => { ok.disabled = true; const x = await api({ body: { id: r.id, action: "approve" } }); const d = await x.json(); ok.textContent = x.ok ? "Готово, разослано " + d.offices : "Ошибка"; setTimeout(load, 900); });
+        acts.append(ok);
+      } else if (r.alerted) acts.append(el("span", "small muted", "разослано " + r.alerted.offices + " офисам"));
+      if (r.status !== "rejected") {
+        const no = el("button", "asst-fix", "Отклонить"); no.type = "button";
+        no.addEventListener("click", async () => { no.disabled = true; await api({ body: { id: r.id, action: "reject" } }); load(); });
+        acts.append(no);
+      }
+      c.append(acts); list.append(c);
+    });
+  }
+  if (token) load(); else $("login").hidden = false;
+})();
+</script>
+</body>
+</html>

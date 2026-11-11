@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f3ea">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tell the radar · zhol</title>
+<script>document.documentElement.classList.add("js")</script>
+<meta name="description" content="Seen a queue, a closure or a strike notice? Tell the zhol radar in your own words or with the document. It goes on the radar when a second office or our team confirms it.">
+<meta property="og:title" content="Tell the radar · zhol">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s26">
+<link rel="alternate" hreflang="en" href="https://zhol.live/report">
+<link rel="alternate" hreflang="it" href="https://zhol.live/it/segnala">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/" aria-label="zhol home"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sections"><a href="/">Answers</a><a href="/radar">Radar</a><a href="/story">Story</a><a href="/audience">Audience</a><a href="/beta">Beta</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/report" lang="en" hreflang="en" aria-current="true">EN</a><a href="/it/segnala" lang="it" hreflang="it">IT</a></span>
+</div></header>
+
+<main>
+<section class="slide hero rp-hero">
+  <div class="wrap split center">
+    <div class="stack">
+      <span class="kicker">Word of mouth · for traffic offices and drivers</span>
+      <h1 class="title">Seen something on the road? Tell the radar.</h1>
+      <p class="lead">A queue at a border, a closed tunnel, a strike notice, an ordinance from the prefecture. Write it as you would to a colleague, or attach the document. The assistant reads it and shows you what it understood before anything is sent.</p>
+      <div class="actions"><a class="btn" href="#tell">Tell the radar</a><a href="#alerts">Get WhatsApp alerts</a></div>
+    </div>
+    <div class="media"><img src="/assets/img/mascot/radio-560.webp" alt="Zholdas, our plush mascot in a trucker cap and a reflective vest, talking into a radio and waving" width="560" height="560"></div>
+  </div>
+</section>
+
+<section class="slide sage" id="tell">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">Tell the radar</span>
+      <h2 class="title">In your own words, or with the document</h2>
+    </div>
+    <div class="rp-chat" data-assistant="report">
+      <noscript><p class="small">The assistant needs JavaScript. You can also write to us from the <a href="/beta#join">beta page</a>.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="how">
+  <div class="wrap stack">
+    <div class="qhead">
+      <span class="kicker">What happens next</span>
+      <h2 class="title">Nothing goes on the radar on one report alone</h2>
+    </div>
+    <div class="grid g3 steps">
+      <div class="card"><span class="step-n">1</span><h3>You tell it</h3><p class="small">In words, with a PDF or a photo. Anonymous: the radar never shows who sent it, and your words and documents stay with the zhol team.</p></div>
+      <div class="card"><span class="step-n">2</span><h3>The assistant reads it</h3><p class="small">It finds what, where and when, matches it to the passes and routes zhol follows, and asks you if something is missing.</p></div>
+      <div class="card"><span class="step-n">3</span><h3>Two offices, or our check</h3><p class="small">It goes on the radar when a second office reports the same, or when our team has checked it. WhatsApp alerts go out only after a person has checked.</p></div>
+    </div>
+    <p class="small muted">How sure the radar is: two offices 65%, each further office 10% more, up to 85%; checked by our team 80%; with an official document or a source 90%. Like every chance on the radar, these are checked after the date and corrected.</p>
+  </div>
+</section>
+
+<section class="slide sage" id="alerts">
+  <div class="wrap split">
+    <div class="stack" style="gap:18px">
+      <div class="qhead">
+        <span class="kicker">WhatsApp alerts</span>
+        <h2 class="title">One message when something checked touches your routes</h2>
+      </div>
+      <p class="lead">Only events a person has checked, only on the routes you pick. No marketing. Reply STOP at any time.</p>
+    </div>
+    <form class="card" id="alerts-form" novalidate>
+      <div class="field"><label for="a-phone">Your WhatsApp number, with the country code</label><input id="a-phone" name="phone" type="tel" placeholder="+39 …" autocomplete="tel" required></div>
+      <fieldset class="field" style="border:0;padding:0;margin:0"><legend class="small muted" style="margin-bottom:8px">Your routes (pick none for every route)</legend><div class="lane-picks" id="a-lanes"></div></fieldset>
+      <label class="asst-check"><input type="checkbox" id="a-consent" required><span class="small">I agree to receive these WhatsApp messages from zhol. I can reply STOP to end them.</span></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div><button class="btn" type="submit">Get WhatsApp alerts</button></div>
+      <p class="small asst-out" id="a-out" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Alikhan · Inkara · Tomiris · Bocconi University · TEF Ignition 2026</span>
+  <span><a href="/">TEF answers</a> · <a href="/radar">Radar</a> · <a href="/story">Story</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/assistant.js?v=1" defer></script>
+<script src="/assets/report.js?v=1" defer></script>
+<script src="/assets/reveal.js?v=t1" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
+</body>
+</html>

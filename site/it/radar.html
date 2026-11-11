@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
 <link rel="preload" as="image" href="/assets/img/scenes/pass-poster.webp?v=2">
-<link rel="stylesheet" href="/assets/zhol.css?v=s25">
+<link rel="stylesheet" href="/assets/zhol.css?v=s26">
 <link rel="alternate" hreflang="en" href="https://zhol.live/radar">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/radar">
 </head>
@@ -42,6 +42,7 @@
       <div class="stack" style="gap:14px">
         <label class="field rd-route"><span class="small">La vostra tratta: tutta la pagina mostra solo ciò che la riguarda</span>
         <select id="rd-route"><option value="">Tutte le tratte</option></select></label>
+        <p class="small"><a href="/it/segnala">Avete visto qualcosa sulla strada? Ditelo al radar</a></p>
         <p class="small muted" id="rd-status">Caricamento dell’ultimo radar…</p>
       </div>
       <ul class="brief" id="rd-brief" hidden></ul>
@@ -130,6 +131,7 @@
         <button role="tab" aria-selected="false" data-f="news">Scioperi</button>
         <button role="tab" aria-selected="false" data-f="forecast">Meteo</button>
         <button role="tab" aria-selected="false" data-f="official">Divieti e dosaggio</button>
+        <button role="tab" aria-selected="false" data-f="office" hidden>Dagli uffici</button>
       </div>
       <div class="legend">
         <span><i style="background:var(--red)"></i>80% e oltre: molto probabile</span>
@@ -209,6 +211,7 @@
   </div>
 </section>
 </main>
+<div data-assistant-launcher></div>
 
 <footer class="site"><div class="wrap">
   <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
@@ -218,7 +221,8 @@
 <script src="/assets/from-survey.js?v=1" defer></script>
 <script src="/assets/scene.js?v=q2" defer></script>
 <script src="/assets/map.js?v=a8" defer></script>
-<script src="/assets/outlook.js?v=t1" defer></script>
+<script src="/assets/outlook.js?v=t2" defer></script>
+<script src="/assets/assistant.js?v=1" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t4" defer></script>
 <script src="/assets/lang.js?v=l3"></script>

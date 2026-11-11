@@ -8,6 +8,7 @@ Runs the real zhol engine at build time (Netlify runs this on every push):
   site/data/grid/<lane>.json - every lane x 14 days x every 2 hours: status, delay, best option
   site/assets/corridors.svg - map of the corridors and chokepoints from catalog coordinates
   site/data/outlook.json   - the radar: official bans and dosing, weather at the passes, news signals, each with a chance
+  site/data/places.json    - passes, regions and lanes, for the assistant and the office reports (netlify/functions)
 
 Usage: python scripts/build_site.py [--days 14] [--today YYYY-MM-DD]
 """
@@ -230,6 +231,22 @@ def build_map() -> str:
             f'<g>{"".join(paths)}</g><g>{"".join(city_svg)}</g><g>{"".join(choke_svg)}</g></svg>')
 
 
+def build_places() -> dict:
+    """What the assistant may name, and which lanes a place touches (same rule as zhol.radar.impact.lanes_for)."""
+    from zhol.radar.impact import lane_it
+    chokes = catalog.chokepoints()
+    lanes = []
+    for lid, ln in sorted(catalog.lanes().items()):
+        lanes.append({"id": lid, "name": ln.name.replace(" -> ", " – "), "name_it": lane_it(ln.name).replace(" -> ", " – "),
+                      "countries": sorted({w.country for w in ln.waypoints}),
+                      "regions": sorted({w.region for w in ln.waypoints if w.region}),
+                      "places": sorted({w.chokepoint for w in ln.waypoints if w.chokepoint})})
+    region = {w.chokepoint: w.region for ln in catalog.lanes().values() for w in ln.waypoints if w.chokepoint and w.region}
+    return {"places": {cid: {"name": c["name"], "country": c["country"], "region": region.get(cid), "kind": c.get("kind"),
+                             "aliases": c.get("aliases", [])} for cid, c in chokes.items()},
+            "regions": sorted({r for ln in lanes for r in ln["regions"]}), "lanes": lanes}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=14)
@@ -253,6 +270,7 @@ def main() -> None:
     for lid, g in grids.items():
         (DATA / "grid" / f"{lid}.json").write_text(json.dumps(g, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (SITE / "assets" / "corridors.svg").write_text(build_map(), encoding="utf-8")
+    dump("places.json", build_places() | built)
     try:
         outlook = build_outlook(today, horizon=60, fetch=not args.offline)
     except Exception as exc:  # the radar must never break the site build

@@ -1,6 +1,6 @@
 # 15. The shared watch: offices warn each other before the trucks leave
 
-Status: **concept**, not built. To test in the pilots (see the end). Owner's idea, 8 November 2026 (DESIGN.md).
+Status: **built** on the site on 11 November 2026: see docs/16-word-of-mouth.md. Owner’s idea, 8 November 2026 (DESIGN.md).
 
 ## 15.1 Why a person checking is not enough
 

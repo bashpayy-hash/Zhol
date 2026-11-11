@@ -1,0 +1,106 @@
+// Netlify Blobs for the office reports. Everything here is private: the public radar only ever sees
+// radarItems() from reports.mts. One key per object, no counters (Blobs is not a database).
+import { getStore } from "@netlify/blobs";
+import type { Report, Places } from "./reports.mts";
+
+const store = (name: string) => getStore({ name, consistency: "strong" });
+export const reports = () => store("zhol-reports");       // r/<id>        the report
+export const uploads = () => store("zhol-uploads");       // u/<id>        a document or photo, team only
+export const contacts = () => store("zhol-contacts");     // c/<report id> WhatsApp number of a reporter who asked for news
+export const subs = () => store("zhol-subscribers");      // s/<hash>      an office that wants alerts
+export const drafts = () => store("zhol-drafts");         // d/<hash>      a WhatsApp report waiting for "yes"
+export const outbox = () => store("zhol-outbox");         // o/<time>      every WhatsApp message, number masked
+
+export async function allReports(): Promise<Report[]> {
+  const st = reports();
+  const { blobs } = await st.list({ prefix: "r/" });
+  const got = await Promise.all(blobs.map(b => st.get(b.key, { type: "json" }) as Promise<Report | null>));
+  return got.filter((r): r is Report => !!r).sort((a, b) => b.created.localeCompare(a.created));
+}
+
+export const saveReport = (r: Report) => reports().setJSON("r/" + r.id, r);
+export const getReport = (id: string) => reports().get("r/" + id, { type: "json" }) as Promise<Report | null>;
+
+export function newId(): string {
+  const d = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  return d + "-" + crypto.randomUUID().slice(0, 8);
+}
+
+export async function sha(s: string): Promise<string> {
+  const h = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s));
+  return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+/** The salt is made by the site itself on first use and never leaves it (ZHOL_SALT overrides it if set). */
+let saltCache: string | null = null;
+async function salt(): Promise<string> {
+  if (saltCache) return saltCache;
+  const fromEnv = Netlify.env.get("ZHOL_SALT");
+  if (fromEnv) return (saltCache = fromEnv);
+  const st = store("zhol-config");
+  let s: string | null = await st.get("salt", { type: "text" });
+  if (!s) {
+    await st.set("salt", crypto.randomUUID() + crypto.randomUUID(), { onlyIfNew: true });   // two first calls at once: one wins
+    s = await st.get("salt", { type: "text" });
+  }
+  return (saltCache = s || "zhol");
+}
+
+/** A salted fingerprint: two reports from the same sender count once. Not reversible without the salt. */
+export async function fingerprint(parts: string[]): Promise<string> {
+  return (await sha((await salt()) + "|" + parts.join("|"))).slice(0, 24);
+}
+
+let placesCache: { at: number; data: Places } | null = null;
+let outlookCache: { at: number; data: any } | null = null;
+
+function siteUrl(req?: Request): string {
+  return Netlify.env.get("URL") || (req ? new URL(req.url).origin : "https://zhol.live");
+}
+
+export async function places(req?: Request): Promise<Places> {
+  if (placesCache && Date.now() - placesCache.at < 6 * 36e5) return placesCache.data;
+  const r = await fetch(siteUrl(req) + "/data/places.json");
+  if (!r.ok) throw new Error("places.json " + r.status);
+  placesCache = { at: Date.now(), data: await r.json() };
+  return placesCache.data;
+}
+
+export async function outlook(req?: Request): Promise<any> {
+  if (outlookCache && Date.now() - outlookCache.at < 15 * 6e4) return outlookCache.data;
+  const r = await fetch(siteUrl(req) + "/data/outlook.json");
+  if (!r.ok) throw new Error("outlook.json " + r.status);
+  outlookCache = { at: Date.now(), data: await r.json() };
+  return outlookCache.data;
+}
+
+export { siteUrl };
+
+export const json = (body: unknown, status = 200, headers: Record<string, string> = {}) =>
+  new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...headers } });
+
+/** Files we accept: PDF and photos, up to 4 MB once decoded. */
+export const FILE_TYPES = ["application/pdf", "image/jpeg", "image/png", "image/webp", "image/gif"];
+export const MAX_FILE = 4 * 1024 * 1024;
+
+export function decodeFile(f: any): { type: string; name: string; bytes: Uint8Array<ArrayBuffer>; b64: string } | null {
+  if (!f || typeof f.data !== "string" || !FILE_TYPES.includes(f.type)) return null;
+  const b64 = f.data.replace(/^data:[^,]*,/, "");
+  if (b64.length > Math.ceil(MAX_FILE / 3) * 4 + 8) return null;
+  let bytes: Uint8Array<ArrayBuffer>;
+  try { bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0)); } catch { return null; }
+  if (bytes.length > MAX_FILE) return null;
+  const pdf = bytes[0] === 0x25 && bytes[1] === 0x50 && bytes[2] === 0x44 && bytes[3] === 0x46;
+  const png = bytes[0] === 0x89 && bytes[1] === 0x50, jpg = bytes[0] === 0xff && bytes[1] === 0xd8;
+  const webp = bytes[8] === 0x57 && bytes[9] === 0x45, gif = bytes[0] === 0x47 && bytes[1] === 0x49;
+  const ok = { "application/pdf": pdf, "image/png": png, "image/jpeg": jpg, "image/webp": webp, "image/gif": gif }[f.type as string];
+  if (!ok) return null;   // the bytes must be what the type says
+  return { type: f.type, name: String(f.name || "document").replace(/[^\w.\- ]+/g, "_").slice(0, 80), bytes, b64 };
+}
+
+export async function saveUpload(file: { type: string; name: string; bytes: Uint8Array<ArrayBuffer> }): Promise<{ id: string; type: string; name: string; size: number }> {
+  const h = new Uint8Array(await crypto.subtle.digest("SHA-256", file.bytes));
+  const id = [...h].map(b => b.toString(16).padStart(2, "0")).join("").slice(0, 20);
+  await uploads().set("u/" + id, new Blob([file.bytes], { type: file.type }), { metadata: { type: file.type, name: file.name, at: Date.now() } });
+  return { id, type: file.type, name: file.name, size: file.bytes.length };
+}

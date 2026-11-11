@@ -12,8 +12,8 @@
   const range = it => !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
   const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
   const tone = p => p >= 0.8 ? "vl" : p >= 0.5 ? "l" : p >= 0.2 ? "po" : "un";
-  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie" }
-                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals" };
+  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici" }
+                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals", office: "Reported by offices" };
   const BAND_IT = { "very likely": "molto probabile", likely: "probabile", possible: "possibile", unlikely: "improbabile" };
   const STAGE_IT = { tension: "tensione", threat: "minaccia", announced: "annunciato", confirmed: "confermato", ongoing: "in corso", revoked: "revocato" };
   const band = b => IT ? (BAND_IT[b] || b) : b;
@@ -29,7 +29,7 @@
                   set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
 
   function row(it) {
-    const r = el("article", "rd-row " + tone(it.p));
+    const r = el("article", "rd-row " + tone(it.p) + (it.group === "office" ? " office" : ""));
     r.id = "rd-" + it.id;
     const when = el("div", "rd-when");
     when.append(el("b", null, range(it)), el("span", "small muted", BASIS[it.basis] || it.basis));
@@ -231,25 +231,34 @@
   }));
 
   // the map (map.js): same events, same route; "Plan and cost" jumps to the event in the list
-  const mapView = window.ZholMap && $("map") ? window.ZholMap($("map"), { show: id => {
+  function showItem(id) {
+    if (!data) return;
     if (filter !== "all") { filter = "all"; document.querySelectorAll(".rd-tools .seg button").forEach(x => x.setAttribute("aria-selected", String(x.dataset.f === "all"))); render(); }
     const r = $("rd-" + id); if (!r) return;
     if (window.zholSheet) window.zholSheet.reveal(r);              // the list lives in a tile: open it first
     r.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
     r.classList.add("flash"); setTimeout(() => r.classList.remove("flash"), 1600);
     const box = r.querySelector(".rd-plan"); if (box) box.open = true;
-  } }) : null;
+  }
+  window.zholRadarShow = showItem;
+  addEventListener("hashchange", () => { if (location.hash.startsWith("#rd-")) showItem(decodeURIComponent(location.hash.slice(4))); });
+  const mapView = window.ZholMap && $("map") ? window.ZholMap($("map"), { show: showItem }) : null;
   const renderMap = () => { if (mapView) mapView.update(data.items.filter(onRoute), data.today); };
 
-  fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)).then(d => {
+  const office = fetch("/api/reports").then(r => r.ok ? r.json() : { items: [] }).then(x => x.items || []).catch(() => []);
+  Promise.all([fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)), office]).then(([d, of]) => {
+    d.items = of.concat(d.items);
     data = d;
+    const offTab = document.querySelector('.rd-tools .seg button[data-f="office"]');
+    if (offTab) offTab.hidden = !of.length;
     const built = new Date(d.built_at).toLocaleString(LOC, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
     const news = d.items.filter(i => i.group === "news").length;
+    const offN = of.length ? (IT ? ", " + of.length + " dagli uffici" : ", " + of.length + " from offices") : "";
     $("rd-status").textContent = IT
-      ? "Aggiornato " + built + " · " + d.items.length + " voci, " + news + " dalle notizie · " +
+      ? "Aggiornato " + built + " · " + d.items.length + " voci, " + news + " dalle notizie" + offN + " · " +
         d.articles_read + " articoli letti " + (d.reader === "claude" ? "da Claude" : d.reader === "heuristic" ? "dal lettore a parole chiave" : "senza lettore") +
         " · " + d.sources_ok + " fonti su " + d.sources_total + " hanno risposto"
-      : "Updated " + built + " · " + d.items.length + " items, " + news + " from the news · " +
+      : "Updated " + built + " · " + d.items.length + " items, " + news + " from the news" + offN + " · " +
         d.articles_read + " articles read by " + (d.reader === "claude" ? "Claude" : d.reader === "heuristic" ? "the keyword reader" : "no reader") +
         " · " + d.sources_ok + " of " + d.sources_total + " sources answered";
     const sel = $("rd-route");
@@ -258,5 +267,6 @@
     if (saved && (d.lanes || []).some(l => l.id === saved)) { sel.value = saved; route = saved; }
     sel.addEventListener("change", () => { route = sel.value; store.set("zhol-route", route); renderFocus(); renderMoney(); render(); renderBrief(); renderMap(); });
     renderFocus(); renderMethod(); renderMoney(); render(); renderBrief(); renderMap();
+    if (location.hash.startsWith("#rd-")) setTimeout(() => showItem(decodeURIComponent(location.hash.slice(4))), 300);
   }).catch(() => { $("rd-status").textContent = T("The radar could not be loaded. Try again in a minute.", "Non è stato possibile caricare il radar. Riprova tra un minuto."); });
 })();
