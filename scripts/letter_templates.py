@@ -75,8 +75,8 @@ def sources_md() -> str:
 # ---------------------------------------------------------------- all letters (domestic)
 def all_letters(rs: list[dict]) -> str:
     co = first(rs, type="company")
-    co2 = next(r for r in rs if r["type"] == "company" and r is not co and "Monte Bianco" in r.get("subject", ""))
-    co3 = next(r for r in rs if r["type"] == "company" and "fermi e blocchi" in r.get("subject", ""))
+    co2 = next(r for r in rs if r["type"] == "company" and r is not co and "Monte Bianco" in r.get("message", ""))
+    co3 = next(r for r in rs if r["type"] == "company" and ("Vittoria" in r.get("message", "") or "al Sud" in r.get("message", "")))
     a_br = next(r for r in rs if r["type"] == "association" and r.get("area") == "brenner")
     a_s = next(r for r in rs if r["type"] == "association" and r.get("area") in ("sicily", "south", "campania"))
     a_t = next(r for r in rs if r["type"] == "association" and r.get("kind") == "terminal")
@@ -107,7 +107,7 @@ def all_letters(rs: list[dict]) -> str:
 **Порядок:** кто мы и грант → их собственные маршруты и свежий случай на их коридоре → просьба со ссылкой →
 отписка. Радар без ссылки, он открывается в конце опроса.
 
-### Темы (по событию в письме)
+### Тема (одна для всех, решение владельца 11 ноября 2026)
 """]
     for src, subj in ST.COMPANY_SUBJECT.items():
         key = next(k for k, v in ST.SOURCES.items() if v == src)

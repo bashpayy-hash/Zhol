@@ -108,10 +108,10 @@
 
 | Тип | Английский | Немецкий | Французский | Испанский | Итальянский |
 |---|---|---|---|---|---|
-| `association` | AI alerts for the lanes to Italy, a 1-minute Bocconi survey | KI-Warnungen für den Italien-Verkehr, 1-Minuten-Umfrage der Bocconi | Alertes IA sur les axes vers l'Italie, enquête Bocconi d'une minute | Alertas con IA en las rutas a Italia, encuesta Bocconi de 1 minuto | Avvisi AI sulle linee con l'Italia, sondaggio Bocconi di un minuto |
-| `intermodal` | AI alerts for the Brenner and the Alps, a 1-minute Bocconi survey | KI-Warnungen für Brenner und Alpen, 1-Minuten-Umfrage der Bocconi | Alertes IA sur le Brenner et les Alpes, enquête Bocconi d'une minute | Alertas con IA en el Brennero y los Alpes, encuesta Bocconi de 1 minuto | Avvisi AI su Brennero e Alpi, sondaggio Bocconi di un minuto |
-| `company` | AI project at Bocconi, what do bans and queues to Italy cost you? | KI-Projekt der Bocconi, was kosten Sie Verbote und Staus nach Italien? | Projet d'IA à Bocconi, que vous coûtent les bouchons vers l'Italie ? | Proyecto de IA de Bocconi, ¿cuánto les cuestan las colas hacia Italia? | Progetto AI della Bocconi, quanto vi costano divieti e code in dogana? |
-| `press` | AI radar of bans and strikes on Italy lanes, Bocconi field data | KI-Radar für Verbote und Streiks Richtung Italien, Daten der Bocconi | Radar IA des interdictions et grèves vers l'Italie, données Bocconi | Radar con IA de prohibiciones y huelgas hacia Italia, datos Bocconi | Radar AI di divieti e scioperi sulle linee con l'Italia, dati Bocconi |
+| `association` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
+| `intermodal` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
+| `company` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
+| `press` | An AI solution for road transport, a 1-minute survey from Bocconi | KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi | Solution d'IA pour le transport routier, enquête Bocconi d'une minute | Una solución de IA para el transporte por carretera, encuesta Bocconi | Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto |
 
 ## Блоки на каждом языке
 
@@ -228,7 +228,7 @@
 
 Члены IRU — национальные ассоциации, а не перевозчики. Поэтому просим поделиться опросом с ассоциациями-членами, чьи перевозчики ездят в Италию, и обещаем IRU сводные результаты. Позиции самого IRU по Бреннеру и дело в Суде ЕС пока не упоминаем: для первого письма это рановато (решение владельца, 11 ноября 2026). Опрос даёт то, чего нет в цифрах по странам: цену одного отдела перевозок.
 
-**Тема:** Bocconi AI project on Alpine bans, a 1-minute survey for IRU members
+**Тема:** An AI solution for road transport, a 1-minute survey from Bocconi
 
 ```text
 Dear IRU team,
@@ -249,7 +249,7 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ### Ассоциация ЕС, английский (CLECAT)
 
-**Тема:** AI alerts for the lanes to Italy, a 1-minute Bocconi survey
+**Тема:** An AI solution for road transport, a 1-minute survey from Bocconi
 
 ```text
 Dear CLECAT team,
@@ -268,7 +268,7 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ### Ассоциация, немецкий + английский (BGL)
 
-**Тема:** KI-Warnungen für den Italien-Verkehr, 1-Minuten-Umfrage der Bocconi
+**Тема:** KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi
 
 ```text
 (Die englische Fassung finden Sie unten.)
@@ -304,7 +304,7 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ### Ассоциация, французский + английский (FNTR)
 
-**Тема:** Alertes IA sur les axes vers l'Italie, enquête Bocconi d'une minute
+**Тема:** Solution d'IA pour le transport routier, enquête Bocconi d'une minute
 
 ```text
 (La version anglaise se trouve plus bas.)
@@ -340,7 +340,7 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ### Ассоциация, испанский + английский (ASTIC)
 
-**Тема:** Alertas con IA en las rutas a Italia, encuesta Bocconi de 1 minuto
+**Тема:** Una solución de IA para el transporte por carretera, encuesta Bocconi
 
 ```text
 (La versión en inglés está más abajo.)
@@ -376,7 +376,7 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ### Интермодальный оператор, итальянский + английский (Hupac)
 
-**Тема:** Avvisi AI su Brennero e Alpi, sondaggio Bocconi di un minuto
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 (La versione in inglese è più in basso.)
@@ -412,7 +412,7 @@ Alikhan Bashpay · Bocconi University · zhol
 
 ### Компания, английский (Girteka)
 
-**Тема:** AI project at Bocconi, what do bans and queues to Italy cost you?
+**Тема:** An AI solution for road transport, a 1-minute survey from Bocconi
 
 ```text
 Good morning,
@@ -432,7 +432,7 @@ If you prefer not to receive further messages, just reply «no».
 
 ### Компания, немецкий + английский (Bertschi)
 
-**Тема:** KI-Projekt der Bocconi, was kosten Sie Verbote und Staus nach Italien?
+**Тема:** KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi
 
 ```text
 (Die englische Fassung finden Sie unten.)
@@ -470,7 +470,7 @@ If you prefer not to receive further messages, just reply «no».
 
 ### Издание (VerkehrsRundschau)
 
-**Тема:** KI-Radar für Verbote und Streiks Richtung Italien, Daten der Bocconi
+**Тема:** KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi
 
 ```text
 (Die englische Fassung finden Sie unten.)

@@ -200,15 +200,11 @@ COMPANY_ASK = ("Per cominciare vorremmo capire quanto pesa davvero per voi. Per 
                "anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, "
                "chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.")
 COMPANY_WHO = HOOK
-COMPANY_SUBJECT = {  # by the event in the letter; no TEF (companies do not know it), Bocconi (they do)
-    SOURCES["kufstein"]: "Progetto AI della Bocconi, quanto vi costano Kufstein e il Brennero?",
-    SOURCES["montblanc"]: "Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?",
-    SOURCES["swiss"]: "Progetto AI della Bocconi, quanto vi costano le code in dogana?",
-    SOURCES["genoa"]: "Progetto AI della Bocconi, quanto vi costano le code al porto di Genova?",
-    SOURCES["vittoria"]: "Progetto AI della Bocconi, quanto vi costano fermi e blocchi?",
-    SOURCES["messaggero"]: "Progetto AI della Bocconi, quanto vi costano fermi e blocchi?",
-}
-COMPANY_SUBJECT_DEFAULT = "Progetto AI della Bocconi, quanto vi costano divieti, code e scioperi?"
+# One broad subject for every letter (owner, 11 Nov 2026: «не нужно специфаить до мельчайших деталей в теме, просто
+# ИИ-солюшн и более броад тема»); the details live in the letter.
+SUBJECT_IT = "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto"
+COMPANY_SUBJECT: dict[str, str] = {}
+COMPANY_SUBJECT_DEFAULT = SUBJECT_IT
 
 
 def company_subject(src: str) -> str:
@@ -401,11 +397,7 @@ PRESS_ANGLE = {  # what the outlet covers, from its own homepage (10 Nov 2026); 
                          "Shipping Italy каждый день пишет о портах и логистике, а опрос доходит и до тех, кто везёт контейнеры из "
                          "порта вглубь страны."),
 }
-PRESS_SUBJECT = {
-    "trade": "Radar AI su divieti e scioperi, sondaggio Bocconi sugli uffici traffico",
-    "ports": "Radar AI su porti e scioperi, sondaggio Bocconi sugli uffici traffico",
-    "logistics": "Radar AI su divieti e ritardi, sondaggio Bocconi per la logistica",
-}
+PRESS_SUBJECT = {"trade": SUBJECT_IT, "ports": SUBJECT_IT, "logistics": SUBJECT_IT}
 
 
 def press_message(outlet: str, link: str, pid: str = "") -> tuple[str, str, str, str, str]:
@@ -767,11 +759,7 @@ def abroad() -> list[dict]:
     return rows
 
 
-SUBJECT_BY_KIND = {
-    "terminal": "Avvisi AI su divieti e code, sondaggio Bocconi per il vostro interporto",
-    "consortium": "Avvisi AI su divieti e code, sondaggio Bocconi per i vostri consorziati",
-    "industry": "Avvisi AI su divieti e code, sondaggio Bocconi per il gruppo trasporti",
-}
+SUBJECT_BY_KIND: dict[str, str] = {}
 
 
 def association_letters(rows: list[dict]) -> list[dict]:
@@ -783,7 +771,7 @@ def association_letters(rows: list[dict]) -> list[dict]:
         kind = r.pop("kind_hint", "") or assoc_kind(r["name"], r.get("about", ""))
         region = assoc_region(r["name"], r.get("city", ""), r.get("region", ""), r.get("about", ""))
         r["message"], r["message_ru"], r["why"], r["why_src"] = association_message(r["name"], r["link"], kind, region)
-        r["subject"] = SUBJECT_BY_KIND.get(kind, "Avvisi AI su divieti e code, sondaggio Bocconi per i vostri associati")
+        r["subject"] = SUBJECT_BY_KIND.get(kind, SUBJECT_IT)
         r["kind"], r["area"] = kind, region
     return rows
 

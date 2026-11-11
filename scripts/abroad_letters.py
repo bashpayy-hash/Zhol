@@ -22,10 +22,10 @@ SIGN = {"en": "Alikhan Bashpay · Bocconi University · zhol", "de": "Alikhan Ba
 T = {
     "en": {
         "subject": {
-            "association": "AI alerts for the lanes to Italy, a 1-minute Bocconi survey",
-            "intermodal": "AI alerts for the Brenner and the Alps, a 1-minute Bocconi survey",
-            "company": "AI project at Bocconi, what do bans and queues to Italy cost you?",
-            "press": "AI radar of bans and strikes on Italy lanes, Bocconi field data",
+            "association": "An AI solution for road transport, a 1-minute survey from Bocconi",
+            "intermodal": "An AI solution for road transport, a 1-minute survey from Bocconi",
+            "company": "An AI solution for road transport, a 1-minute survey from Bocconi",
+            "press": "An AI solution for road transport, a 1-minute survey from Bocconi",
         },
         "head": {
             "association": "Dear {name} team,\nCould you share a one-minute, anonymous survey with your members who run lanes to and through Italy? We will send your association the aggregated results, to share with your members.",
@@ -54,10 +54,10 @@ T = {
     },
     "de": {
         "subject": {
-            "association": "KI-Warnungen für den Italien-Verkehr, 1-Minuten-Umfrage der Bocconi",
-            "intermodal": "KI-Warnungen für Brenner und Alpen, 1-Minuten-Umfrage der Bocconi",
-            "company": "KI-Projekt der Bocconi, was kosten Sie Verbote und Staus nach Italien?",
-            "press": "KI-Radar für Verbote und Streiks Richtung Italien, Daten der Bocconi",
+            "association": "KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi",
+            "intermodal": "KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi",
+            "company": "KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi",
+            "press": "KI-Lösung für den Straßengüterverkehr, 1-Minuten-Umfrage der Bocconi",
         },
         "head": {
             "association": "Sehr geehrtes Team von {name},\nkönnten Sie eine anonyme Umfrage von einer Minute an Ihre Mitglieder weiterleiten, die nach Italien oder durch Italien fahren? Ihrem Verband senden wir die zusammengefassten Ergebnisse zur Weitergabe an die Mitglieder.",
@@ -84,10 +84,10 @@ T = {
     },
     "fr": {
         "subject": {
-            "association": "Alertes IA sur les axes vers l'Italie, enquête Bocconi d'une minute",
-            "intermodal": "Alertes IA sur le Brenner et les Alpes, enquête Bocconi d'une minute",
-            "company": "Projet d'IA à Bocconi, que vous coûtent les bouchons vers l'Italie ?",
-            "press": "Radar IA des interdictions et grèves vers l'Italie, données Bocconi",
+            "association": "Solution d'IA pour le transport routier, enquête Bocconi d'une minute",
+            "intermodal": "Solution d'IA pour le transport routier, enquête Bocconi d'une minute",
+            "company": "Solution d'IA pour le transport routier, enquête Bocconi d'une minute",
+            "press": "Solution d'IA pour le transport routier, enquête Bocconi d'une minute",
         },
         "head": {
             "association": "Bonjour à l'équipe de {name},\npourriez-vous partager une enquête anonyme d'une minute avec vos adhérents dont les camions vont en Italie ou la traversent ? Nous vous enverrons les résultats agrégés, à partager avec vos adhérents.",
@@ -112,10 +112,10 @@ T = {
     },
     "es": {
         "subject": {
-            "association": "Alertas con IA en las rutas a Italia, encuesta Bocconi de 1 minuto",
-            "intermodal": "Alertas con IA en el Brennero y los Alpes, encuesta Bocconi de 1 minuto",
-            "company": "Proyecto de IA de Bocconi, ¿cuánto les cuestan las colas hacia Italia?",
-            "press": "Radar con IA de prohibiciones y huelgas hacia Italia, datos Bocconi",
+            "association": "Una solución de IA para el transporte por carretera, encuesta Bocconi",
+            "intermodal": "Una solución de IA para el transporte por carretera, encuesta Bocconi",
+            "company": "Una solución de IA para el transporte por carretera, encuesta Bocconi",
+            "press": "Una solución de IA para el transporte por carretera, encuesta Bocconi",
         },
         "head": {
             "association": "Estimado equipo de {name},\n¿podrían compartir una encuesta anónima de un minuto con sus asociados que viajan a Italia o la atraviesan? Les enviaremos los resultados agregados, para compartirlos con sus asociados.",
@@ -140,10 +140,10 @@ T = {
     },
     "it": {
         "subject": {
-            "association": "Avvisi AI sulle linee con l'Italia, sondaggio Bocconi di un minuto",
-            "intermodal": "Avvisi AI su Brennero e Alpi, sondaggio Bocconi di un minuto",
-            "company": "Progetto AI della Bocconi, quanto vi costano divieti e code in dogana?",
-            "press": "Radar AI di divieti e scioperi sulle linee con l'Italia, dati Bocconi",
+            "association": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
+            "intermodal": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
+            "company": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
+            "press": "Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto",
         },
         "head": {
             "association": "Gentile team di {name},\npotreste girare un sondaggio anonimo di un minuto ai vostri associati con linee da e per l'Italia? All'associazione mandiamo i risultati aggregati, da condividere con gli associati.",
@@ -236,7 +236,7 @@ BESPOKE = {
     # one truck and one surprise, what that adds up to for a country, what nobody has measured yet, and the survey
     # that measures it, then the ask.
     "ab-iru": {
-        "subject": "Bocconi AI project on Alpine bans, a 1-minute survey for IRU members",
+        "subject": "An AI solution for road transport, a 1-minute survey from Bocconi",
         "why": ("Bans, closures and strikes on the lanes to Italy cost hauliers time and money, and many of them come as a "
                 "surprise. Some figures already exist. In 2025, 21 of the 57 dosing days at Kufstein came outside the "
                 "published calendar, by Italian law every hour a truck waits is worth €100, and the Brenner restrictions alone "
@@ -321,7 +321,7 @@ def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None
           + (f"\n{RU['optout']}" if kind == "company" else ""))
     subject = t["subject"][kind]
     if lang == "it" and kind == "company" and country != "CH":     # an Italian branch whose lanes are not the Swiss ones
-        subject = "Progetto AI della Bocconi, quanto vi costano divieti, code e scioperi?"
+        subject = T["it"]["subject"]["company"]
     if own and lang != "en":
         en = letter(oid, name, kind, country, "en")
         text = f"{BELOW[lang]}\n\n{text}\n\n{EN_MARK}\n\n{en['message']}"

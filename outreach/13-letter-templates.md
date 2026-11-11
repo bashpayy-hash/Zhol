@@ -34,15 +34,9 @@
 **Порядок:** кто мы и грант → их собственные маршруты и свежий случай на их коридоре → просьба со ссылкой →
 отписка. Радар без ссылки, он открывается в конце опроса.
 
-### Темы (по событию в письме)
+### Тема (одна для всех, решение владельца 11 ноября 2026)
 
-- `kufstein` — Progetto AI della Bocconi, quanto vi costano Kufstein e il Brennero?
-- `montblanc` — Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?
-- `swiss` — Progetto AI della Bocconi, quanto vi costano le code in dogana?
-- `genoa` — Progetto AI della Bocconi, quanto vi costano le code al porto di Genova?
-- `vittoria` — Progetto AI della Bocconi, quanto vi costano fermi e blocchi?
-- `messaggero` — Progetto AI della Bocconi, quanto vi costano fermi e blocchi?
-- по умолчанию — Progetto AI della Bocconi, quanto vi costano divieti, code e scioperi?
+- по умолчанию — Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ### Скелет
 
@@ -80,7 +74,7 @@ Pensando ai vostri circa {N} mezzi con {груз} da {город} verso {стр�
 
 ### Пример — Бреннер (Autotrasporti Bommartini srl)
 
-**Тема:** Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 Buongiorno,
@@ -98,7 +92,7 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ### Пример — Франция (Trasporti Boscaini srl)
 
-**Тема:** Progetto AI della Bocconi, quanto vi costano Monte Bianco e Fréjus?
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 Buongiorno,
@@ -116,7 +110,7 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ### Пример — Юг (Michele Sole srl)
 
-**Тема:** Progetto AI della Bocconi, quanto vi costano fermi e blocchi?
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 Buongiorno,
@@ -141,9 +135,6 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ### Темы по типу
 
-- `terminal` — Avvisi AI su divieti e code, sondaggio Bocconi per il vostro interporto
-- `consortium` — Avvisi AI su divieti e code, sondaggio Bocconi per i vostri consorziati
-- `industry` — Avvisi AI su divieti e code, sondaggio Bocconi per il gruppo trasporti
 - остальные (перевозчики, ремесленники, экспедиторы) — Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri associati (Bocconi, TEF Ignition)
 
 ### Скелет
@@ -201,7 +192,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример — Север, Бреннер (ALSEA)
 
-**Тема:** Avvisi AI su divieti e code, sondaggio Bocconi per i vostri associati
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 Gentile segreteria di ALSEA,
@@ -220,7 +211,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример — Юг (FAI Napoli)
 
-**Тема:** Avvisi AI su divieti e code, sondaggio Bocconi per i vostri associati
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 Gentile segreteria di FAI Napoli,
@@ -239,7 +230,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример — интерпорт (Interporto Padova)
 
-**Тема:** Avvisi AI su divieti e code, sondaggio Bocconi per il vostro interporto
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 Gentile segreteria di Interporto Padova,
@@ -266,9 +257,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Темы по типу издания
 
-- `trade` — Radar AI su divieti e scioperi, sondaggio Bocconi sugli uffici traffico
-- `ports` — Radar AI su porti e scioperi, sondaggio Bocconi sugli uffici traffico
-- `logistics` — Radar AI su divieti e ritardi, sondaggio Bocconi per la logistica
+- `trade` — Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
+- `ports` — Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
+- `logistics` — Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ### Цифры по типу издания
 
@@ -291,7 +282,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ### Пример (Uomini e Trasporti)
 
-**Тема:** Radar AI su divieti e scioperi, sondaggio Bocconi sugli uffici traffico
+**Тема:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 ```text
 Gentile redazione di Uomini e Trasporti,
