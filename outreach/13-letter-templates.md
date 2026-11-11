@@ -50,9 +50,9 @@
 Buongiorno,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-{строка про компанию}
+{строка про компанию} E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
+Per cominciare vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 {ссылка}
 
 Grazie,
@@ -86,9 +86,9 @@ Pensando ai vostri circa {N} mezzi con {груз} da {город} verso {стр�
 Buongiorno,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Ho visto che lavorate da Soave verso Francia, Svizzera e Austria, con circa 90 mezzi. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Ho visto che lavorate da Soave verso Francia, Svizzera e Austria, con circa 90 mezzi. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
+Per cominciare vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-form
 
 Grazie,
@@ -104,9 +104,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 Buongiorno,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Ho visto che lavorate da Verona verso Francia, Germania e Belgio, soprattutto trasporti eccezionali. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Ho visto che lavorate da Verona verso Francia, Germania e Belgio, soprattutto trasporti eccezionali. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
+Per cominciare vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-form
 
 Grazie,
@@ -122,9 +122,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 Buongiorno,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Ho visto che lavorate da Nocera Inferiore verso Germania, Austria e Svizzera, soprattutto merce a temperatura controllata. A ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo la sera prima permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Ho visto che lavorate da Nocera Inferiore verso Germania, Austria e Svizzera, soprattutto merce a temperatura controllata. A ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo la sera prima permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
+Per cominciare vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, anonimo, senza registrazione e senza vendite. Alla fine vedrete il nostro radar AI gratuito con divieti, chiusure e scioperi delle prossime otto settimane e la probabilità di ognuno.
 https://zhol.live/it/sondaggio?src=co-email
 
 Grazie,
@@ -152,9 +152,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 Gentile segreteria di {name},
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-{цифры региона} Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+{цифры региона} Per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo {просьба по типу} un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
+Per cominciare vogliamo misurare cosa vuol dire per un singolo ufficio traffico. Per questo vi chiedo {просьба по типу} un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 {ссылка}
@@ -207,9 +207,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile segreteria di ALSEA,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo di girare ai vostri associati spedizionieri e ai loro uffici traffico un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
+Per cominciare vogliamo misurare cosa vuol dire per un singolo ufficio traffico. Per questo vi chiedo di girare ai vostri associati spedizionieri e ai loro uffici traffico un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-alsea
@@ -226,9 +226,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile segreteria di FAI Napoli,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa 300 in Campania. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa 300 in Campania. Per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere, un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
+Per cominciare vogliamo misurare cosa vuol dire per un singolo ufficio traffico. Per questo vi chiedo di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere, un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-fai-napoli
@@ -245,9 +245,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile segreteria di Interporto Padova,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto un sondaggio anonimo di sette domande, un minuto. Vi mandiamo i risultati aggregati, da condividere con chi vi lavora.
+Per cominciare vogliamo misurare cosa vuol dire per un singolo ufficio traffico. Per questo vi chiedo di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto un sondaggio anonimo di sette domande, un minuto. Vi mandiamo i risultati aggregati, da condividere con chi vi lavora.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-interporto-padova
@@ -297,9 +297,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile redazione di Uomini e Trasporti,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per la legge italiana ogni ora che un camion aspetta vale 100 €. Quanto pesino su un singolo ufficio traffico, però, non l'abbiamo trovato misurato da nessuna parte.
+Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Per questo raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni, con un sondaggio anonimo per gli uffici traffico, sette domande, un minuto. Vi chiederei una breve segnalazione.
+Per cominciare raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni, con un sondaggio anonimo per gli uffici traffico, sette domande, un minuto. Vi chiederei una breve segnalazione.
 https://zhol.live/it/sondaggio?src=press-uomini-e-trasporti
 
 Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar. Due volte al giorno mette in fila divieti, chiusure e scioperi delle prossime otto settimane, con la probabilità e le fonti, e potete usarlo liberamente citando zhol. Se la storia vi interessa, io e il mio team siamo disponibili per qualche domanda.
@@ -318,9 +318,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Buongiorno a tutti,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €. E questo è solo ciò che si vede. Divieti, chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi come l'AI.
 
-Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio.
+Per cominciare vogliamo misurare cosa vuol dire per un singolo ufficio traffico. Con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio.
 
 Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde.
 https://zhol.live/it/sondaggio?src=group-lega-trasporto-marmo

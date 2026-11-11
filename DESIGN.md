@@ -7,6 +7,30 @@
 
 ## Решения
 
+### 11 ноября 2026 · Одна история во всех письмах: проблема, цифры, видимая часть, ИИ
+
+> «в целом напиши что есть такая проблема, есть такие цифры уже и это уже малая часть, хотелось бы помочь
+> уменьшить ее скейл используя новые инструменты в виде ии»
+
+- Порядок во всех письмах, кроме профессорских (они уже отправлены):
+  1. кто мы и грант;
+  2. проблема и цифры, которые уже есть;
+  3. «и это лишь видимая часть, мы хотим помочь её уменьшить новыми инструментами вроде ИИ»;
+  4. «для начала хотим измерить, во что это обходится одному отделу перевозок»;
+  5. просьба.
+- Фраза про видимую часть и ИИ на каждом языке, в `scripts/abroad_letters.py` (`MAIN`, `MEASURE`):
+  - EN «And this is only the visible part of the problem. We want to help shrink it with new tools such as AI.»;
+  - DE «Und das ist nur der sichtbare Teil des Problems…»;
+  - FR «Et ce n'est que la partie visible du problème…»;
+  - ES «Y esto es solo la parte visible del problema…».
+- В итальянских письмах (`MAIN_IT` в `scripts/survey_targets.py`): «E questo è solo ciò che si vede. Divieti,
+  chiusure e code pesano ogni giorno sugli uffici traffico, e vogliamo aiutare a ridurne il peso con strumenti nuovi
+  come l'AI.»
+  - Забастовку «проблемой» не называем: часть южных ассоциаций сама вела октябрьскую остановку.
+- IRU: «Bans, closures and strikes on the lanes to Italy cost hauliers time and money, and many of them come as a
+  surprise. Some figures already exist…», дальше три цифры, видимая часть и ИИ, «To start, we want to measure…» и
+  просьба.
+
 ### 11 ноября 2026 · Цифры — часть истории, а не отдельный абзац
 
 > «я вижу здесь описана проблема с цифрами, но этот дроп статистики нужно правильнее вписать в нарратив»

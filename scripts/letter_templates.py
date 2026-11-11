@@ -116,7 +116,7 @@ def all_letters(rs: list[dict]) -> str:
     s.append("""
 ### Скелет
 """)
-    s.append(block("Buongiorno,\n" + ST.HOOK + "\n\n{строка про компанию}\n\n" + ST.COMPANY_ASK + "\n{ссылка}\n\n"
+    s.append(block("Buongiorno,\n" + ST.HOOK + "\n\n{строка про компанию} " + ST.MAIN_IT + "\n\n" + ST.COMPANY_ASK + "\n{ссылка}\n\n"
                    "Grazie,\n" + ST.SIGN + "\n" + ST.OPTOUT))
     s.append("""
 ### Строка про компанию
@@ -149,7 +149,7 @@ def all_letters(rs: list[dict]) -> str:
              "un minuto per i vostri associati (Bocconi, TEF Ignition)")
     s.append("\n### Скелет\n")
     s.append(block("Gentile segreteria di {name},\n" + ST.HOOK + "\n\n{цифры региона} Per la legge italiana ogni ora che un "
-                   "camion aspetta vale 100 €.\n\n" + ST.BRIDGE_IT + " Per questo vi chiedo {просьба по типу} un sondaggio "
+                   "camion aspetta vale 100 €. " + ST.MAIN_IT + "\n\n" + ST.BRIDGE_IT + " Per questo vi chiedo {просьба по типу} un sondaggio "
                    "anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con "
                    "i vostri associati.\n\nPer ora chiediamo solo risposte, per avere numeri concreti di partenza.\n{ссылка}"
                    "\n\nGrazie,\n" + ST.SIGN))
@@ -256,9 +256,9 @@ TECHNIQUES = """\
    календаря. CH — узкое окно и неожиданности. FR и ES — Монблан до декабря 2026 и Фрежюс. Для ЕС — Бреннер,
    544 млн € в год, и Юг, больше 400 млн €.
 8. **Цена часа.** «По итальянскому закону каждый час ожидания грузовика стоит 100 €».
-10. **Цифры — часть истории, а не отдельный абзац** (решение владельца, 11 ноября 2026). После «кто мы» идёт
-   проблема: что случается с одним грузовиком, во что это складывается для страны, чего не хватает (цены одного
-   отдела перевозок). Следом фраза «хотим это измерить» и просьба.
+10. **Одна история во всех письмах** (решение владельца, 11 ноября 2026). После «кто мы» идёт проблема и цифры,
+   которые уже есть, затем «и это лишь видимая часть, мы хотим помочь её уменьшить новыми инструментами вроде ИИ»,
+   затем «для начала хотим измерить, во что она обходится одному отделу перевозок» и просьба.
 9. **Сначала представиться и сказать про грант** (решение владельца, 11 ноября 2026). Сразу после приветствия
    во всех письмах: студент Bocconi, AI-платформа, которая накануне вечером предупреждает отдел перевозок, 100 из
    ~500 в TEF Ignition 2026 (объяснено словами) и грант 2 000 €. Просьба идёт следующим абзацем.
@@ -293,7 +293,8 @@ def international() -> str:
 Одинаковый на всех языках. `{reason}` выбирается по стране, `{ask}` и `{head}` — по типу организации.
 """)
     s.append(block("{BELOW — только если язык не английский}\n\n{приветствие}\n{who — кто мы и грант}\n\n"
-                   "{reason} {law} — проблема\n\n{bridge — «хотим измерить, во что это обходится одному отделу», ассоциациям} "
+                   "{reason} {law} {MAIN — «это лишь видимая часть, хотим уменьшить её с помощью ИИ»}\n\n"
+                   "{MEASURE — «для начала хотим измерить», ассоциациям} "
                    "{head — просьба и что им с этого}\n\n"
                    "{ask — опрос, «на английском», радар в конце опроса}\n{ссылка — единственная}\n\n"
                    "{gift_press — радар со ссылкой, только прессе}\n\n{thanks}\n{подпись}\n{optout — только компаниям}\n\n"
