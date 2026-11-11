@@ -136,8 +136,8 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ## 2. Итальянские ассоциации
 
-**Порядок:** кто мы и грант → просьба переслать (по типу организации) и сводные результаты ассоциации → цифры
-региона, где ездят их члены → закон про 100 € → «пока только ответы» → ссылка.
+**Порядок:** кто мы и грант → цифры региона, где ездят их члены, и закон про 100 € → «хотим измерить, что это
+значит для одного отдела» → просьба переслать (по типу организации) и сводные результаты → «пока только ответы» → ссылка.
 
 ### Темы по типу
 
@@ -152,9 +152,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 Gentile segreteria di {name},
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Vi scrivo per chiedervi {просьба по типу} un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
-
 {цифры региона} Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+
+Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo {просьба по типу} un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 {ссылка}
@@ -207,9 +207,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile segreteria di ALSEA,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Vi scrivo per chiedervi di girare ai vostri associati spedizionieri e ai loro uffici traffico un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
-
 Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+
+Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo di girare ai vostri associati spedizionieri e ai loro uffici traffico un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-alsea
@@ -226,9 +226,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile segreteria di FAI Napoli,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Vi scrivo per chiedervi di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere, un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
-
 A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa 300 in Campania. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+
+Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere, un sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-fai-napoli
@@ -245,9 +245,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile segreteria di Interporto Padova,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Vi scrivo per chiedervi di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto un sondaggio anonimo di sette domande, un minuto. Vi mandiamo i risultati aggregati, da condividere con chi vi lavora.
-
 Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €.
+
+Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Per questo vi chiedo di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto un sondaggio anonimo di sette domande, un minuto. Vi mandiamo i risultati aggregati, da condividere con chi vi lavora.
 
 Per ora chiediamo solo risposte, per avere numeri concreti di partenza.
 https://zhol.live/it/sondaggio?src=assoc-interporto-padova
@@ -260,8 +260,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ## 3. Отраслевая пресса
 
-**Порядок:** кто мы и грант → просьба коротко упомянуть опрос → цифры для их читателей → строка про то, о чём пишет издание
-(с их сайта) → что собираем → ссылка → радар как бесплатный источник и готовность ответить на вопросы.
+**Порядок:** кто мы и грант → цифры для их читателей → «для одного отдела перевозок это нигде не измерено» → что
+собираем → строка про то, о чём пишет издание (с их сайта) → просьба упомянуть → ссылка → радар как бесплатный
+источник и готовность ответить на вопросы.
 
 ### Темы по типу издания
 
@@ -296,11 +297,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Gentile redazione di Uomini e Trasporti,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Vi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo per gli uffici traffico, sette domande, un minuto.
+Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per la legge italiana ogni ora che un camion aspetta vale 100 €. Quanto pesino su un singolo ufficio traffico, però, non l'abbiamo trovato misurato da nessuna parte.
 
-Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
-
-Raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni.
+Per questo raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni, con un sondaggio anonimo per gli uffici traffico, sette domande, un minuto. Vi chiederei una breve segnalazione.
 https://zhol.live/it/sondaggio?src=press-uomini-e-trasporti
 
 Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar. Due volte al giorno mette in fila divieti, chiusure e scioperi delle prossime otto settimane, con la probabilità e le fonti, e potete usarlo liberamente citando zhol. Se la storia vi interessa, io e il mio team siamo disponibili per qualche domanda.
@@ -319,7 +318,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 Buongiorno a tutti,
 sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio. Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.
+
+Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico. Con il permesso degli amministratori vi chiedo un minuto per un breve sondaggio.
 
 Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde.
 https://zhol.live/it/sondaggio?src=group-lega-trasporto-marmo

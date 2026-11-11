@@ -305,6 +305,11 @@ def assoc_region(name: str, city: str, region: str = "", about: str = "") -> str
     return next((k for pat, k in REGION_RULES if re.search(pat, text)), "national")
 
 
+# between the figures and the ask; neutral, since some southern associations led the October stoppage
+BRIDGE_IT = "Vogliamo misurare cosa vuol dire tutto questo per un singolo ufficio traffico."
+BRIDGE_RU = "Мы хотим измерить, что всё это значит для одного отдела перевозок."
+
+
 def association_message(name: str, link: str, kind: str = "hauliers", region: str = "national") -> tuple[str, str, str, str]:
     """The letter in Italian, its Russian translation for the team, the reason line (highlighted in the console) and its source."""
     ask_it, ask_ru = ASK[kind]
@@ -313,11 +318,12 @@ def association_message(name: str, link: str, kind: str = "hauliers", region: st
         "All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati."
     back_ru = "Мы пришлём вам сводные результаты, чтобы поделиться с теми, кто у вас работает." if kind == "terminal" else \
         "Ассоциации пришлём сводные результаты, чтобы поделиться с вашими членами."
-    it = (f"Gentile segreteria di {name},\n{HOOK}\n\nVi scrivo per chiedervi {ask_it} un sondaggio anonimo di sette domande, "
-          f"un minuto. {back}\n\n{why_it} Per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\n"
+    # the figures lead to the ask (owner, 11 Nov 2026: «этот дроп статистики нужно правильнее вписать в нарратив»)
+    it = (f"Gentile segreteria di {name},\n{HOOK}\n\n{why_it} Per la legge italiana ogni ora che un camion aspetta vale 100 €.\n\n"
+          f"{BRIDGE_IT} Per questo vi chiedo {ask_it} un sondaggio anonimo di sette domande, un minuto. {back}\n\n"
           f"Per ora chiediamo solo risposte, per avere numeri concreti di partenza.\n{link}\n\nGrazie,\n{SIGN}")
-    ru = (f"Уважаемый секретариат {name},\n{HOOK_RU}\n\nПишу, чтобы попросить вас {ask_ru} анонимный опрос из семи вопросов на "
-          f"одну минуту. {back_ru}\n\n{why_ru} По итальянскому закону каждый час ожидания грузовика стоит 100 евро.\n\n"
+    ru = (f"Уважаемый секретариат {name},\n{HOOK_RU}\n\n{why_ru} По итальянскому закону каждый час ожидания грузовика стоит 100 "
+          f"евро.\n\n{BRIDGE_RU} Поэтому прошу вас {ask_ru} анонимный опрос из семи вопросов на одну минуту. {back_ru}\n\n"
           f"Пока мы просим только ответы, чтобы получить конкретные исходные цифры.\n{link}\n\nСпасибо,\n{SIGN}")
     if "autoparco" in name.lower():
         it, ru = it.replace("nel vostro interporto", "nel vostro autoparco"), ru.replace("на вашем терминале", "на вашей стоянке")
@@ -399,20 +405,22 @@ def press_message(outlet: str, link: str, pid: str = "") -> tuple[str, str, str,
     kind = PRESS_KIND.get(pid, "trade")
     fig_it, fig_ru, src = PRESS_FIGURES[kind]
     ang_it, ang_ru = PRESS_ANGLE.get(pid, ("", ""))
-    it = (f"Gentile redazione di {outlet},\n{HOOK}\n\nVi scrivo per chiedervi una breve segnalazione di un sondaggio anonimo "
-          f"per gli uffici traffico, sette domande, un minuto.\n\n{fig_it}\n\n"
-          + (ang_it + " " if ang_it else "")
-          + "Raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo imprevisto "
-          f"e quanti uffici sarebbero pronti a scambiarsi informazioni.\n{link}\n\n"
+    it = (f"Gentile redazione di {outlet},\n{HOOK}\n\n{fig_it} Quanto pesino su un singolo ufficio traffico, però, non "
+          "l'abbiamo trovato misurato da nessuna parte.\n\n"
+          "Per questo raccogliamo i dati di partenza, cioè minuti persi ogni giorno, spedizioni cambiate, costo dell'ultimo "
+          "imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni, con un sondaggio anonimo per gli uffici "
+          "traffico, sette domande, un minuto. " + (ang_it + " " if ang_it else "")
+          + f"Vi chiederei una breve segnalazione.\n{link}\n\n"
           "Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar. Due volte al giorno mette in fila "
           "divieti, chiusure e scioperi delle prossime otto settimane, con la probabilità e le fonti, e potete usarlo "
           "liberamente citando zhol. Se la storia vi interessa, io e il mio team siamo disponibili per qualche domanda."
           f"\n\nGrazie,\n{SIGN}")
-    ru = (f"Уважаемая редакция {outlet},\n{HOOK_RU}\n\nПишу, чтобы попросить вас коротко упомянуть анонимный опрос для "
-          f"отделов перевозок, семь вопросов, одна минута.\n\n{fig_ru}\n\n"
-          + (ang_ru + " " if ang_ru else "")
-          + "Мы собираем исходные данные, то есть сколько минут теряется каждый день, сколько отправок меняется, во что обошёлся "
-          f"последний непредвиденный случай и сколько офисов готовы обмениваться информацией.\n{link}\n\n"
+    ru = (f"Уважаемая редакция {outlet},\n{HOOK_RU}\n\n{fig_ru} Но сколько это весит для одного отдела перевозок, мы нигде "
+          "не нашли.\n\n"
+          "Поэтому мы собираем исходные данные анонимным опросом для отделов перевозок, семь вопросов, одна минута, то есть "
+          "сколько минут теряется каждый день, сколько отправок меняется, во что обошёлся последний непредвиденный случай и "
+          "сколько офисов готовы обмениваться информацией. " + (ang_ru + " " if ang_ru else "")
+          + f"Просим коротко упомянуть опрос.\n{link}\n\n"
           "Для ваших статей может пригодиться наш открытый радар, zhol.live/it/radar. Дважды в день он собирает запреты, "
           "закрытия и забастовки на ближайшие восемь недель, с вероятностью и источниками, и им можно свободно пользоваться "
           "со ссылкой на zhol. Если история вам интересна, мы с командой готовы ответить на вопросы."
@@ -484,8 +492,8 @@ def build() -> list[dict]:
 
 
 def group_message(link: str) -> str:
-    return ("Buongiorno a tutti,\n" + HOOK + "\n\nCon il permesso degli amministratori vi chiedo un minuto per un breve "
-            "sondaggio. " + SIZE + "\n\n"
+    return ("Buongiorno a tutti,\n" + HOOK + "\n\n" + SIZE + "\n\n" + BRIDGE_IT + " Con il permesso degli amministratori "
+            "vi chiedo un minuto per un breve sondaggio.\n\n"
             f"Sette domande, un minuto, anonimo, niente vendite, risultati condivisi con chi risponde.\n{link}\n\n"
             f"Grazie a chi ci dedica un minuto!\n{SIGN}")
 

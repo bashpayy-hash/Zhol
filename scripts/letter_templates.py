@@ -138,8 +138,8 @@ def all_letters(rs: list[dict]) -> str:
 
 ## 2. Итальянские ассоциации
 
-**Порядок:** кто мы и грант → просьба переслать (по типу организации) и сводные результаты ассоциации → цифры
-региона, где ездят их члены → закон про 100 € → «пока только ответы» → ссылка.
+**Порядок:** кто мы и грант → цифры региона, где ездят их члены, и закон про 100 € → «хотим измерить, что это
+значит для одного отдела» → просьба переслать (по типу организации) и сводные результаты → «пока только ответы» → ссылка.
 
 ### Темы по типу
 """)
@@ -148,10 +148,11 @@ def all_letters(rs: list[dict]) -> str:
     s.append("- остальные (перевозчики, ремесленники, экспедиторы) — Avvisi AI su divieti, code e scioperi, un sondaggio di "
              "un minuto per i vostri associati (Bocconi, TEF Ignition)")
     s.append("\n### Скелет\n")
-    s.append(block("Gentile segreteria di {name},\n" + ST.HOOK + "\n\nVi scrivo per chiedervi {просьба по типу} un sondaggio "
+    s.append(block("Gentile segreteria di {name},\n" + ST.HOOK + "\n\n{цифры региона} Per la legge italiana ogni ora che un "
+                   "camion aspetta vale 100 €.\n\n" + ST.BRIDGE_IT + " Per questo vi chiedo {просьба по типу} un sondaggio "
                    "anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con "
-                   "i vostri associati.\n\n{цифры региона} Per la legge italiana ogni ora che un camion aspetta vale 100 €."
-                   "\n\nPer ora chiediamo solo risposte, per avere numeri concreti di partenza.\n{ссылка}\n\nGrazie,\n" + ST.SIGN))
+                   "i vostri associati.\n\nPer ora chiediamo solo risposte, per avere numeri concreti di partenza.\n{ссылка}"
+                   "\n\nGrazie,\n" + ST.SIGN))
     s.append("\n### Просьба по типу организации\n")
     for k, (it, ru) in ST.ASK.items():
         s.append(f"- `{k}` — «{it}» ({ru})")
@@ -167,8 +168,9 @@ def all_letters(rs: list[dict]) -> str:
 
 ## 3. Отраслевая пресса
 
-**Порядок:** кто мы и грант → просьба коротко упомянуть опрос → цифры для их читателей → строка про то, о чём пишет издание
-(с их сайта) → что собираем → ссылка → радар как бесплатный источник и готовность ответить на вопросы.
+**Порядок:** кто мы и грант → цифры для их читателей → «для одного отдела перевозок это нигде не измерено» → что
+собираем → строка про то, о чём пишет издание (с их сайта) → просьба упомянуть → ссылка → радар как бесплатный
+источник и готовность ответить на вопросы.
 
 ### Темы по типу издания
 """)
