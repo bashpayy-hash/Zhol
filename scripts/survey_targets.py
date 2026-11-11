@@ -43,7 +43,7 @@ SIGN = "Alikhan Bashpay · Università Bocconi · zhol"
 ASK_FIRST = "vi scrivo per chiedervi un minuto per un breve sondaggio di sette domande, anonimo."
 HOOK = ("Sono Alikhan Bashpay, studente della Bocconi. zhol, il progetto di logistica che io e il mio team stiamo sviluppando, "
         "è tra i 100 selezionati su circa 500 per TEF Ignition 2026 (Tech Europe Foundation) e ha ricevuto un grant di 2.000 €.")
-PLATFORM = ("Vogliamo costruire una piattaforma che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche "
+PLATFORM = ("Vogliamo costruire una piattaforma AI che unisca autotrasportatori e uffici traffico. Tiene d'occhio le strade anche "
             "di notte, mentre tutti dormono, si prende una parte del monitoraggio e delle decisioni su divieti, chiusure, code "
             "e scioperi, e permette agli uffici di scambiarsi informazioni tra loro.")
 SIZE = ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
@@ -179,21 +179,21 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
 # paragraph (Bocconi, which every Italian office knows; TEF said in plain words), then something useful today.
 COMPANY_ASK = ("Vorremmo capire quanto pesa davvero per voi. Per questo vi chiedo un minuto per un sondaggio di sette domande, "
                "anonimo, senza registrazione e senza vendite.")
-COMPANY_WHO = ("Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma per "
+COMPANY_WHO = ("Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI per "
                "autotrasportatori che la sera prima avvisa l'ufficio traffico se un carico di domani rischia un divieto, una "
                "chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition, un programma europeo per "
                "nuove imprese tecnologiche.")
 COMPANY_GIFT = ("Intanto il nostro radar è gratuito e aperto a tutti, zhol.live/it/radar, con divieti, chiusure e scioperi delle "
                 "prossime otto settimane e la probabilità di ognuno.")
 COMPANY_SUBJECT = {  # by the event in the letter; no TEF (companies do not know it), Bocconi (they do)
-    SOURCES["kufstein"]: "Dosaggio a Kufstein e Brennero, quanto vi costano? Sondaggio Bocconi, un minuto",
-    SOURCES["montblanc"]: "Monte Bianco e Fréjus, quanto vi costano? Sondaggio Bocconi, un minuto",
-    SOURCES["swiss"]: "Divieti in Svizzera e code in dogana, quanto vi costano? Sondaggio Bocconi",
-    SOURCES["genoa"]: "Code al porto di Genova, quanto vi costano? Sondaggio Bocconi, un minuto",
-    SOURCES["vittoria"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi",
-    SOURCES["messaggero"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi",
+    SOURCES["kufstein"]: "Dosaggio a Kufstein e Brennero, quanto vi costano? Sondaggio Bocconi per un progetto AI",
+    SOURCES["montblanc"]: "Monte Bianco e Fréjus, quanto vi costano? Sondaggio Bocconi per un progetto AI",
+    SOURCES["swiss"]: "Divieti in Svizzera e code in dogana, quanto vi costano? Sondaggio Bocconi per un progetto AI",
+    SOURCES["genoa"]: "Code al porto di Genova, quanto vi costano? Sondaggio Bocconi per un progetto AI",
+    SOURCES["vittoria"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi per un progetto AI",
+    SOURCES["messaggero"]: "Fermi, blocchi e divieti, quanto pesano sul vostro lavoro? Sondaggio Bocconi per un progetto AI",
 }
-COMPANY_SUBJECT_DEFAULT = "Divieti, code e scioperi, quanto vi costano? Sondaggio Bocconi, un minuto"
+COMPANY_SUBJECT_DEFAULT = "Divieti, code e scioperi, quanto vi costano? Sondaggio Bocconi per un progetto AI"
 
 
 def company_subject(src: str) -> str:
@@ -278,7 +278,7 @@ WHY = {  # (Italian, Russian, source key), the figures closest to where the memb
 }
 HOOK_RU = ("Меня зовут Алихан Башпай, я студент Боккони. zhol, логистический проект, который мы с командой развиваем, вошёл "
            "в 100 отобранных из примерно 500 на TEF Ignition 2026 (Tech Europe Foundation) и получил грант 2 000 евро.")
-PLATFORM_RU = ("Мы хотим построить платформу, которая объединит перевозчиков и отделы перевозок. Она следит за дорогами и "
+PLATFORM_RU = ("Мы хотим построить AI-платформу, которая объединит перевозчиков и отделы перевозок. Она следит за дорогами и "
                "ночью, пока все спят, берёт на себя часть наблюдения и решений по запретам, закрытиям, пробкам и забастовкам "
                "и даёт офисам обмениваться информацией.")
 
@@ -382,9 +382,9 @@ PRESS_ANGLE = {  # what the outlet covers, from its own homepage (10 Nov 2026); 
                          "порта вглубь страны."),
 }
 PRESS_SUBJECT = {
-    "trade": "Quanto costano divieti, code e chiusure agli uffici traffico, un sondaggio Bocconi (TEF Ignition)",
-    "ports": "Code ai porti, divieti e scioperi, un sondaggio Bocconi per gli uffici traffico (TEF Ignition)",
-    "logistics": "Divieti, blocchi e consegne in ritardo, un sondaggio Bocconi per chi gestisce i trasporti (TEF Ignition)",
+    "trade": "Un radar AI per gli uffici traffico, quanto costano divieti, code e chiusure? Sondaggio Bocconi (TEF Ignition)",
+    "ports": "Un radar AI di code ai porti, divieti e scioperi, un sondaggio Bocconi per gli uffici traffico (TEF Ignition)",
+    "logistics": "Un radar AI di divieti, blocchi e consegne in ritardo, un sondaggio Bocconi per chi gestisce i trasporti (TEF Ignition)",
 }
 
 
@@ -689,7 +689,7 @@ ABROAD_REASON = {
 }
 ABROAD_REASON_DEFAULT = ("On the roads into Italy the Brenner restrictions alone cost Italy €544 million a year, and in October eight "
                          "days of truck stoppages in the South caused more than €400 million of damage.")
-ABROAD_WHO = ("I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, a platform for "
+ABROAD_WHO = ("I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for "
               "hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a "
               "strike. The project is one of 100 selected from about 500 by TEF Ignition, a European programme for new tech companies.")
 ABROAD_GIFT = ("In the meantime our radar is free and open to everyone, zhol.live/radar, with the bans, closures and strikes of "
@@ -748,9 +748,9 @@ def abroad() -> list[dict]:
 
 
 SUBJECT_BY_KIND = {
-    "terminal": "Un sondaggio di un minuto per chi lavora nel vostro interporto, su divieti, code e scioperi (Bocconi, TEF Ignition)",
-    "consortium": "Un sondaggio di un minuto per i vostri consorziati su divieti, code e scioperi (Bocconi, TEF Ignition)",
-    "industry": "Un sondaggio di un minuto per le imprese del vostro gruppo trasporti su divieti, code e scioperi (Bocconi, TEF Ignition)",
+    "terminal": "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per chi lavora nel vostro interporto (Bocconi, TEF Ignition)",
+    "consortium": "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri consorziati (Bocconi, TEF Ignition)",
+    "industry": "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per le imprese del vostro gruppo trasporti (Bocconi, TEF Ignition)",
 }
 
 
@@ -763,7 +763,7 @@ def association_letters(rows: list[dict]) -> list[dict]:
         kind = r.pop("kind_hint", "") or assoc_kind(r["name"], r.get("about", ""))
         region = assoc_region(r["name"], r.get("city", ""), r.get("region", ""), r.get("about", ""))
         r["message"], r["message_ru"], r["why"], r["why_src"] = association_message(r["name"], r["link"], kind, region)
-        r["subject"] = SUBJECT_BY_KIND.get(kind, "Un sondaggio di un minuto per i vostri associati su divieti, code e scioperi (Bocconi, TEF Ignition)")
+        r["subject"] = SUBJECT_BY_KIND.get(kind, "Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri associati (Bocconi, TEF Ignition)")
         r["kind"], r["area"] = kind, region
     return rows
 

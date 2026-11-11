@@ -7,6 +7,24 @@
 
 ## Решения
 
+### 11 ноября 2026 · В теме письма — что это AI-решение
+
+> «мне кажется в теме нужно упоминуть что это AI solution»
+
+- В теме каждого нового письма теперь есть «AI» (по-немецки «KI», по-французски и по-испански «IA»).
+  Это ассоциации, компании, пресса и зарубежные организации; файлы `scripts/survey_targets.py` и
+  `scripts/abroad_letters.py`.
+  - Ассоциации и пресса: «AI» в начале темы, чтобы оно было видно в списке писем, например
+    «AI alerts for bans, queues and strikes on the lanes to Italy, a 1-minute survey from Bocconi University»,
+    «Avvisi AI su divieti, code e scioperi, un sondaggio di un minuto per i vostri associati (Bocconi, TEF Ignition)»,
+    «Un radar AI per gli uffici traffico…».
+  - Компании: прежний крючок с вопросом остаётся первым, в конце добавлено «Sondaggio Bocconi per un
+    progetto AI». «Un minuto» из темы убрали, чтобы тема не стала длиннее: минута и так есть в тексте письма.
+- Чтобы тема совпадала с письмом, в строке о том, кто мы, zhol теперь «an AI platform» / «una piattaforma AI»
+  на всех языках, включая перевод для команды.
+- Это честно: на сайте написано «AI reads notices and news; one person approves every event».
+- Профессорам Bocconi все 9 писем уже ушли, их тему не меняли.
+
 ### 11 ноября 2026 · Письма за рубеж на языке адресата
 
 > «нужно ли добавлять перевод на их языках зарубежным компаниям?»
