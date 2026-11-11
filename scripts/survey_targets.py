@@ -729,17 +729,19 @@ def abroad_message(name: str, kind: str, country: str, link: str) -> tuple[str, 
 
 
 def abroad() -> list[dict]:
+    """Organisations abroad, each written to in its own language (scripts/abroad_letters.py)."""
+    from abroad_letters import letter
     path = OUT / "abroad_targets.csv"
     if not path.exists():
         return []
     rows = []
     for r in csv.DictReader(open(path, encoding="utf-8")):
-        link = f"https://zhol.live/survey?src={r['id']}"
-        msg, why = abroad_message(r["name"], r["kind"], r["country"], link)
-        rows.append({"id": r["id"], "type": "abroad", "name": r["name"], "city": "", "region": r["country"],
+        L = letter(r["id"], r["name"], r["kind"], r["country"])
+        rows.append({"id": r["id"], "type": "abroad", "name": r["name"], "city": "", "region": r["country"] + " · " + {"de": "письмо по-немецки", "fr": "письмо по-французски", "es": "письмо по-испански", "it": "письмо по-итальянски", "en": "письмо по-английски"}[L["lang"]],
                      "about": r["about_ru"], "to": r["email"], "to_src": r["source"], "where": r["website"],
-                     "search": google(r["name"] + " contact"), "subject": ABROAD_SUBJECT[r["kind"]], "message": msg,
-                     "link": link, "why": why, "why_src": SOURCES["kufstein"] if r["country"] in ("DE", "AT") else
+                     "search": google(r["name"] + " contact"), "subject": L["subject"], "message": L["message"],
+                     "message_ru": L["message_ru"], "link": L["link"], "why": L["why"],
+                     "why_src": SOURCES["kufstein"] if r["country"] in ("DE", "AT") else
                      SOURCES["montblanc"] if r["country"] in ("FR", "ES") else SOURCES["swiss"] if r["country"] == "CH" else SOURCES["brenner"],
                      "fit": {"association": "30", "intermodal": "25", "company": "20", "press": "10"}[r["kind"]]})
     return rows
