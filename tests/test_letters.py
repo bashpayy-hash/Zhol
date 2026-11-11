@@ -63,15 +63,35 @@ def test_one_link_to_click_outside_the_press():
 
 
 def test_every_letter_fits_an_outlook_link():
-    """Outlook opens a compose link with its text only while the query stays under about 2,000 characters (11 Nov 2026,
-    the IRU link of 2,033 characters opened with its text, longer ones came empty). Professors' letters were sent."""
+    """Outlook opened links of up to 4,027 characters with their text (the letters sent on 11 Nov 2026). Every letter, built
+    as the console builds its link, stays at most 4,000. Professors' letters were sent before."""
     from urllib.parse import quote
     rows = json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))
     rows = rows if isinstance(rows, list) else rows["rows"]
-    q = lambda s: quote(s, safe="")
+    enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
     for r in rows:
         if r["type"] in ("bocconi", "group") or not r.get("to") or not r.get("message"):
             continue
         body = r["message"].replace("**", "")
-        n = len("to=" + q(r["to"]) + "&subject=" + q(r["subject"]) + "&body=" + q(body))
-        assert n <= 1950, (r["id"], n)
+        n = len("https://outlook.office.com/mail/deeplink/compose?to=" + enc(r["to"]) + "&subject=" + enc(r["subject"])
+                + "&body=" + enc(body))
+        assert n <= 4000, (r["id"], n)
+
+
+def test_every_letter_follows_the_owners_principles():
+    """Who we are and the grant, the problem and the figures, the visible part and AI, Europe as the goal, the survey link
+    (owner, 11 Nov 2026: «все принципы касаются всех сообщений»)."""
+    rows = json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))
+    rows = rows if isinstance(rows, list) else rows["rows"]
+    grant = ("2.000 €", "2,000", "2 000 €")
+    europe = ("Europ",)
+    ai = (" AI", " IA", "KI")
+    for r in rows:
+        if r["type"] in ("bocconi",) or not r.get("message") or "сначала спросить" in r.get("subject", ""):
+            continue
+        m = r["message"]
+        assert any(g in m for g in grant), (r["id"], "grant")
+        assert any(e in m for e in europe), (r["id"], "Europe")
+        assert any(a in m for a in ai), (r["id"], "AI")
+        assert "TEF Ignition 2026" in m, (r["id"], "TEF")
+        assert "zhol.live/" in m and ("sondaggio?src=" in m or "survey?src=" in m), (r["id"], "link")

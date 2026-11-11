@@ -353,14 +353,16 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
     let note = null;
     if (r.to && r.type !== "group") {
-      // Outlook drops the text of a compose link whose query passes about 2,000 characters (the IRU link of 2,033
-      // characters opened with its text, longer ones came empty). Every letter is now written to fit (tests keep it
-      // so); the copy on click and the paste hint stay as a safety net for anything longer, like the professors' letters
-      // (owner, 11 Nov 2026: «измени эту проблему полностью»).
+      // Outlook opened links of up to 4,027 characters with their text (the letters sent on 11 Nov 2026, Primafrio the
+      // longest). Every letter is written to fit (tests keep it at most 4,000); the copy on click and the paste hint stay
+      // as a safety net for anything longer, like the professors' letters (owner, 11 Nov 2026: «сделай так, чтобы
+      // Outlook нормально отправлялся»).
       const body = plain(sign(r.message));   // plain \n line breaks, as in the links that opened with the text
-      const head = "to=" + encodeURIComponent(r.to) + "&subject=" + encodeURIComponent(r.subject);
-      const full = head + "&body=" + encodeURIComponent(body);
-      const LIMIT = 2030, fits = ("https://outlook.office.com/mail/deeplink/compose?" + full).length <= LIMIT;
+      // commas, slashes, question marks and @ are allowed as they are inside a link's query: a shorter link
+      const enc = x => encodeURIComponent(x).replace(/%2C/g, ",").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%40/g, "@");
+      const head = "to=" + enc(r.to) + "&subject=" + enc(r.subject);
+      const full = head + "&body=" + enc(body);
+      const LIMIT = 4027, fits = ("https://outlook.office.com/mail/deeplink/compose?" + full).length <= LIMIT;
       const q = fits ? full : head;
       const web = "https://outlook.office.com/mail/deeplink/compose?" + q;
       const tip = fits ? "Новое письмо в Outlook: адрес, тема и текст уже вставлены. Проверьте и нажмите «Отправить», затем отметьте здесь «Отправлено»."

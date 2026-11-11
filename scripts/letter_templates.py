@@ -2,11 +2,11 @@
 
     python scripts/letter_templates.py
 
-    outreach/13-letter-templates.md       all segments: Italian companies, associations, press, Facebook groups, professors
-    outreach/14-international-letters.md  organisations abroad: skeleton, blocks in every language, techniques, examples
+    outreach/13-letter-templates.md       Italian companies, associations, press, Facebook groups, professors
+    outreach/14-international-letters.md  organisations abroad: the blocks in every language and full examples
 
 Built from the same code that writes the send list (survey_targets.py, abroad_letters.py), so the files always match
-what goes out. No addresses: only the public names of organisations.
+what goes out. One set of principles for every letter. No addresses: only the public names of organisations.
 """
 from __future__ import annotations
 
@@ -36,21 +36,45 @@ def first(rs: list[dict], **kw) -> dict:
     return next(r for r in rs if all(r.get(k) == v for k, v in kw.items()))
 
 
-RULES = """\
-## Правила владельца для всех писем
+PRINCIPLES = """\
+## Принципы всех писем
 
-Это проверено и закреплено в DESIGN.md, менять только осознанно.
+Одни и те же для каждого письма, на любом языке и любому адресату (решения владельца, DESIGN.md).
 
-- Без двоеточий в теме и тексте (тест `tests/test_letters.py`).
-- «io e il mio team» / «my team and I». Имён команды в письмах нет.
-- Никакого бесплатного анализа и никаких 20-минутных созвонов, только опрос на минуту.
-- Прессе ничего заранее: ни результатов, ни эксклюзива. Взамен — открытый радар как бесплатный источник.
-- Ни одного выдуманного случая про конкретную компанию. Каждая цифра — с публичным источником (список ниже).
-- TEF Ignition компаниям объясняем словами («европейская программа для новых технологических компаний»),
-  в тему его не ставим. Bocconi знают все, она в теме.
-- В теме сказано, что это AI-решение (решение от 11 ноября 2026). Сайт пишет то же: «AI reads notices and
-  news; one person approves every event».
-- Опрос анонимный; результаты наружу только сводные.
+1. **Тема** одна на язык, общая. Это AI-решение и опрос Bocconi на минуту, без деталей
+   («Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto», «An AI solution for road transport,
+   a 1-minute survey from Bocconi»). До 70 символов, без двоеточий.
+2. **Тон** полный и вежливый, деловое письмо. Никаких рубленых фраз.
+3. **Сначала представиться.** Студент Bocconi, «io e il mio team» / «my team and I» (имён команды нет). zhol —
+   AI-платформа, которая накануне вечером предупреждает отдел перевозок о запрете, закрытии или забастовке.
+   Проект вошёл в 100 из ~500 в TEF Ignition 2026 (объяснено словами как европейская программа) и получил грант
+   2 000 €.
+4. **Проблема и цифры, которые уже есть.** Цифры подобраны по месту, где работает адресат, у каждой есть
+   публичный источник. Ни одного выдуманного случая про конкретную компанию.
+5. **Видимая часть и ИИ.** «Это лишь видимая часть проблемы, мы хотим помочь уменьшить её новыми инструментами,
+   такими как ИИ».
+6. **Италия — только начало, цель — вся Европа.** Международных адресатов спрашиваем про их маршруты по всей Европе.
+7. **Для начала измерить** — во что это обходится одному отделу перевозок.
+8. **Просьба.** Ассоциациям: переслать членам, им — сводные результаты. Компаниям: ответить самим. Прессе: коротко
+   упомянуть.
+9. **Опрос:** семь вопросов, минута, анонимно, без регистрации и продаж, в конце — бесплатный AI-радар. В письме
+   одна ссылка, на опрос; ссылка на радар — только у прессы, как бесплатный источник.
+10. **Язык адресата.** Ниже полный английский текст, первая строка об этом предупреждает.
+11. **Нельзя:** бесплатный анализ, созвоны, результаты или эксклюзив прессе заранее. Опрос анонимный, наружу
+    только сводные данные.
+12. **Каждое письмо открывается в Outlook с текстом.** Ссылка до 4 000 символов: письма длиной до 4 027 символов
+    уже ушли с полным текстом. Это проверяют тесты (`tests/test_letters.py`), как и все пункты выше.
+"""
+
+PROMPT = """\
+## Промпт для другой ИИ
+
+```text
+Ты редактор деловых писем в европейской логистике. Ниже письма студенческого проекта zhol (Университет Bocconi,
+Милан) перевозчикам, ассоциациям, интермодальным операторам и отраслевым изданиям в Италии и Европе. Цель —
+чтобы адресат ответил на анонимный опрос на одну минуту или переслал его членам. Улучши текст, сохранив все
+принципы из раздела «Принципы всех писем», все цифры как есть и длину письма (ссылка Outlook до 4 000 символов).
+```
 """
 
 
@@ -72,7 +96,6 @@ def sources_md() -> str:
     return "\n".join(out)
 
 
-# ---------------------------------------------------------------- all letters (domestic)
 def all_letters(rs: list[dict]) -> str:
     co = first(rs, type="company")
     co2 = next(r for r in rs if r["type"] == "company" and r is not co and "Monte Bianco" in r.get("message", ""))
@@ -85,186 +108,78 @@ def all_letters(rs: list[dict]) -> str:
     prof = first(rs, type="bocconi")
     counts = {t: sum(1 for r in rs if r["type"] == t) for t in ("company", "association", "press", "abroad", "bocconi", "group")}
 
-    s = [f"""# Шаблоны писем zhol — все сегменты
+    s = [f"""# Шаблоны писем zhol — Италия
 
-Собрано скриптом `scripts/letter_templates.py` из того же кода, что пишет список рассылки. Международные
-организации — отдельным файлом `14-international-letters.md`.
+Собрано скриптом `scripts/letter_templates.py` из того же кода, что пишет список рассылки. Письма за рубеж —
+`14-international-letters.md`.
 
-| Сегмент | Сколько | Язык | Чего просим |
-|---|---|---|---|
-| Итальянские компании | {counts['company']} | итальянский | ответить на опрос |
-| Итальянские ассоциации, интерпорты, консорциумы | {counts['association']} | итальянский | переслать членам |
-| Отраслевая пресса | {counts['press']} | итальянский | коротко упомянуть опрос |
-| За рубежом | {counts['abroad']} | язык адресата + английский ниже | переслать или ответить |
-| Профессора Bocconi | {counts['bocconi']} | английский + итальянский | ответить и переслать 1–2 знакомым |
-| Группы в Facebook | {counts['group']} | итальянский | пост с разрешения админа |
+| Сегмент | Сколько | Чего просим |
+|---|---|---|
+| Итальянские компании | {counts['company']} | ответить на опрос |
+| Итальянские ассоциации, интерпорты, консорциумы | {counts['association']} | переслать членам |
+| Отраслевая пресса | {counts['press']} | коротко упомянуть опрос |
+| Группы в Facebook | {counts['group']} | пост с разрешения админа |
+| Профессора Bocconi | {counts['bocconi']} | ответить и переслать 1–2 знакомым |
 
-{RULES}
+{PRINCIPLES}
+**Тема всех итальянских писем:** {ST.SUBJECT_IT}
+
+**Общие блоки**
+- кто мы: {ST.HOOK}
+- проблема: {ST.PROBLEM_IT}
+- видимая часть, ИИ, Европа: {ST.MAIN_IT}
+- для начала измерить: {ST.BRIDGE_IT}
+
 ---
 
-## 1. Итальянские компании
+## 1. Компании
 
-**Порядок:** кто мы и грант → их собственные маршруты и свежий случай на их коридоре → просьба со ссылкой →
-отписка. Радар без ссылки, он открывается в конце опроса.
-
-### Тема (одна для всех, решение владельца 11 ноября 2026)
-"""]
-    for src, subj in ST.COMPANY_SUBJECT.items():
-        key = next(k for k, v in ST.SOURCES.items() if v == src)
-        s.append(f"- `{key}` — {subj}")
-    s.append(f"- по умолчанию — {ST.COMPANY_SUBJECT_DEFAULT}")
-    s.append("""
 ### Скелет
-""")
-    s.append(block("Buongiorno,\n" + ST.HOOK + "\n\n{строка про компанию} " + ST.MAIN_IT + "\n\n" + ST.COMPANY_ASK + "\n{ссылка}\n\n"
-                   "Grazie,\n" + ST.SIGN + "\n" + ST.OPTOUT))
-    s.append("""
-### Строка про компанию
-
-Собирается из данных с их собственного сайта (`outreach/site_facts.json`): парк, груз, город, страны.
-""")
-    s.append(block("Pensando ai vostri circa {N} mezzi con {груз} da {город} verso {страны}, ci torna in mente che {событие}. "
-                   "Saperlo la sera prima permette di {что можно было сделать}, e per la legge italiana ogni ora che un camion "
-                   "aspetta vale 100 €."))
-    s.append("\n**События по коридору** (выбор: переходы → основной маршрут → регион):\n")
+"""]
+    s.append(block("Buongiorno,\n{кто мы}\n\nHo visto che lavorate da {город} verso {страны}, con circa {N} mezzi. {проблема} "
+                   "{событие на их коридоре}. Saperlo la sera prima permette di {что можно сделать}, e per la legge italiana "
+                   "ogni ora che un camion aspetta vale 100 €. {видимая часть, ИИ, Европа}\n\n{для начала измерить} "
+                   + ST.COMPANY_ASK + "\n{ссылка}\n\nGrazie,\n" + ST.SIGN + "\n" + ST.OPTOUT))
+    s.append("\nДанные о компании — с её собственного сайта (`outreach/site_facts.json`). **События по коридору**:\n")
     for k, (ev, alt, src) in ST.EVENTS.items():
         s.append(f"- `{k}` — «{ev}» → «{alt}» (источник `{src}`)")
-    for title, r in (("Пример — Бреннер", co), ("Пример — Франция", co2), ("Пример — Юг", co3)):
-        s.append(f"\n### {title} ({r['name']})\n\n**Тема:** {r['subject']}\n")
+    for title, r in (("Бреннер", co), ("Франция", co2), ("Юг", co3)):
+        s.append(f"\n### Пример — {title} ({r['name']})\n")
         s.append(block(r["message"]))
 
-    s.append("""
----
-
-## 2. Итальянские ассоциации
-
-**Порядок:** кто мы и грант → цифры региона, где ездят их члены, и закон про 100 € → «хотим измерить, что это
-значит для одного отдела» → просьба переслать (по типу организации) и сводные результаты → «пока только ответы» → ссылка.
-
-### Темы по типу
-""")
-    for k, v in ST.SUBJECT_BY_KIND.items():
-        s.append(f"- `{k}` — {v}")
-    s.append("- остальные (перевозчики, ремесленники, экспедиторы) — Avvisi AI su divieti, code e scioperi, un sondaggio di "
-             "un minuto per i vostri associati (Bocconi, TEF Ignition)")
-    s.append("\n### Скелет\n")
-    s.append(block("Gentile segreteria di {name},\n" + ST.HOOK + "\n\n{цифры региона} Per la legge italiana ogni ora che un "
-                   "camion aspetta vale 100 €. " + ST.MAIN_IT + "\n\n" + ST.BRIDGE_IT + " Per questo vi chiedo {просьба по типу} un sondaggio "
-                   "anonimo di sette domande, un minuto. All'associazione mandiamo i risultati aggregati, da condividere con "
-                   "i vostri associati.\n\nPer ora chiediamo solo risposte, per avere numeri concreti di partenza.\n{ссылка}"
-                   "\n\nGrazie,\n" + ST.SIGN))
-    s.append("\n### Просьба по типу организации\n")
+    s.append("\n---\n\n## 2. Ассоциации\n\n### Скелет\n")
+    s.append(block("Gentile segreteria di {name},\n{кто мы}\n\n{проблема} {цифры региона} Per la legge italiana ogni ora che "
+                   "un camion aspetta vale 100 €. {видимая часть, ИИ, Европа}\n\n{для начала измерить} Per questo vi chiedo "
+                   "{просьба по типу} il nostro sondaggio anonimo di sette domande, un minuto. All'associazione mandiamo i "
+                   "risultati aggregati, da condividere con i vostri associati. Il sondaggio non chiede nient'altro e si "
+                   "chiude con il nostro radar AI gratuito delle prossime otto settimane.\n{ссылка}\n\nGrazie,\n" + ST.SIGN))
+    s.append("\n**Просьба по типу организации**\n")
     for k, (it, ru) in ST.ASK.items():
-        s.append(f"- `{k}` — «{it}» ({ru})")
-    s.append("\n### Цифры по региону, где ездят члены\n")
+        s.append(f"- `{k}` — «{it}»")
+    s.append("\n**Цифры по региону, где ездят члены**\n")
     for k, (it, ru, src) in ST.WHY.items():
-        s.append(f"- `{k}` — {it}\n  - по-русски: {ru}\n  - источник: `{src}`")
-    for title, r in (("Пример — Север, Бреннер", a_br), ("Пример — Юг", a_s), ("Пример — интерпорт", a_t)):
-        s.append(f"\n### {title} ({r['name']})\n\n**Тема:** {r['subject']}\n")
+        s.append(f"- `{k}` — {it} (источник `{src}`)")
+    for title, r in (("Север, Бреннер", a_br), ("Юг", a_s), ("интерпорт", a_t)):
+        s.append(f"\n### Пример — {title} ({r['name']})\n")
         s.append(block(r["message"]))
 
-    s.append("""
----
-
-## 3. Отраслевая пресса
-
-**Порядок:** кто мы и грант → цифры для их читателей → «для одного отдела перевозок это нигде не измерено» → что
-собираем → строка про то, о чём пишет издание (с их сайта) → просьба упомянуть → ссылка → радар как бесплатный
-источник и готовность ответить на вопросы.
-
-### Темы по типу издания
-""")
-    for k, v in ST.PRESS_SUBJECT.items():
-        s.append(f"- `{k}` — {v}")
-    s.append("\n### Цифры по типу издания\n")
+    s.append("\n---\n\n## 3. Пресса\n\n**Цифры по типу издания**\n")
     for k, (it, ru, src) in ST.PRESS_FIGURES.items():
         s.append(f"- `{k}` — {it}")
-    s.append("\n### Строка про издание (с их сайта)\n")
+    s.append("\n**Строка про издание (с их сайта)**\n")
     for k, (it, ru) in ST.PRESS_ANGLE.items():
         s.append(f"- `{k}` — {it}")
-    s.append(f"\n### Пример ({pr['name']})\n\n**Тема:** {pr['subject']}\n")
+    s.append(f"\n### Пример ({pr['name']})\n")
     s.append(block(pr["message"]))
 
-    s.append(f"""
----
-
-## 4. Группы в Facebook
-
-Пост только с разрешения администратора группы.
-""")
+    s.append("\n---\n\n## 4. Группы в Facebook\n\nПост только с разрешения администратора группы.\n")
     s.append(block(gr["message"]))
 
-    s.append(f"""
----
-
-## 5. Профессора Bocconi
-
-Все девять писем уже отправлены. Каждое письмо личное: с чего начинается — с работы профессора (статья,
-выступление, курс). Полные тексты — `outreach/12-bocconi-professors.md`.
-
-### Пример ({prof['name']})
-
-**Тема:** {prof['subject']}
-""")
+    s.append(f"\n---\n\n## 5. Профессора Bocconi\n\nВсе девять писем отправлены, тексты — `outreach/12-bocconi-professors.md`.\n\n"
+             f"### Пример ({prof['name']})\n\n**Тема:** {prof['subject']}\n")
     s.append(block(prof["message"]))
     s.append("\n---\n\n" + sources_md() + "\n")
     return "\n".join(s)
-
-
-# ---------------------------------------------------------------- international
-PROMPT = """\
-## Промпт для другой ИИ
-
-Скопируйте целиком вместе с этим файлом.
-
-```text
-Ты редактор холодных писем B2B в европейской логистике. Ниже шаблоны писем студенческого стартапа zhol
-(Университет Bocconi, Милан) для международных организаций автоперевозчиков: ассоциаций, интермодальных
-операторов, крупных перевозчиков и отраслевых изданий в Германии, Австрии, Швейцарии, Франции, Испании и
-на уровне ЕС. Цель письма — чтобы организация переслала своим членам анонимный опрос на одну минуту (или,
-для компаний, ответила сама).
-
-Сделай одно «ультимативное» письмо для ассоциации и одно для компании:
-1. Тема до ~70 символов, в начале видно «AI» и Bocconi, без двоеточий.
-2. Первые две строки решают, откроют ли ссылку: что просим и почему это важно ИМ.
-3. Сохрани факты и цифры как есть (у каждой есть источник), ничего не выдумывай про конкретную компанию.
-4. Соблюдай правила владельца из раздела «Правила».
-5. Дай версию на английском и на немецком, отметь, что сократил и почему.
-```
-"""
-
-TECHNIQUES = """\
-## Приёмы (после разбора Gemini и Grok, 11 ноября 2026)
-
-1. **Одна ссылка, по которой надо кликнуть.** В письмах, где мы просим ответить, единственная ссылка — на опрос.
-   Радар без ссылки: «в конце опроса откроется наш бесплатный AI-радар». Ссылка на радар есть только у прессы,
-   ей он нужен как источник. Это проверяет тест.
-2. **Тема до 70 символов, AI и Bocconi в начале.** «AI alerts for the lanes to Italy, a 1-minute Bocconi survey»,
-   «KI-Projekt der Bocconi, was kosten Sie Verbote und Staus nach Italien?». Это тоже проверяет тест.
-3. **Что им с этого — в первом абзаце.** Ассоциациям обещаем сводные результаты, чтобы поделиться с членами.
-   Интермодальным операторам — сводные результаты и довод: «каждый час, потерянный на дороге, — это ещё и довод
-   в пользу поезда».
-4. **Компании — сразу вопрос.** «Во что на самом деле обходятся вашему отделу перевозок неожиданные очереди и
-   закрытия в последний момент?» Без пустого «пишу по поводу ваших маршрутов».
-5. **Неожиданное поверх известного.** Ночные и воскресные запреты в Швейцарии известны всем. Поэтому пишем: окно
-   и так узкое, а его срывает неожиданная очередь на таможне, ремонт дороги или забастовка. Так же для Австрии
-   и Монблана.
-6. **Язык адресата, английский ниже.** Первая строка предупреждает: «(Die englische Fassung finden Sie unten.)».
-   «Опрос на английском» стоит внутри фразы про опрос. В немецком после приветствия со строчной буквы — так
-   принято в деловых письмах (DIN 5008). В Германии и Австрии пишем «Italien-Verkehr», а не «Strecken».
-7. **Причина — по стране адресата**, с публичным источником. DE и AT — Куфштайн, 21 из 57 дней дозирования вне
-   календаря. CH — узкое окно и неожиданности. FR и ES — Монблан до декабря 2026 и Фрежюс. Для ЕС — Бреннер,
-   544 млн € в год, и Юг, больше 400 млн €.
-8. **Цена часа.** «По итальянскому закону каждый час ожидания грузовика стоит 100 €».
-10. **Одна история во всех письмах** (решение владельца, 11 ноября 2026). После «кто мы» идёт проблема и цифры,
-   которые уже есть, затем «и это лишь видимая часть, мы хотим помочь её уменьшить новыми инструментами вроде ИИ»,
-   затем «для начала хотим измерить, во что она обходится одному отделу перевозок» и просьба.
-9. **Сначала представиться и сказать про грант** (решение владельца, 11 ноября 2026). Сразу после приветствия
-   во всех письмах: студент Bocconi, AI-платформа, которая накануне вечером предупреждает отдел перевозок, 100 из
-   ~500 в TEF Ignition 2026 (объяснено словами) и грант 2 000 €. Просьба идёт следующим абзацем.
-10. **Самым важным — личное письмо.** IRU получает своё письмо, см. ниже.
-11. **Обращение к команде, подпись в одну строку, отписка у компаний.**
-"""
 
 
 def international() -> str:
@@ -274,33 +189,25 @@ def international() -> str:
         by_lang.setdefault(AL.LANG.get(t["id"], "en"), []).append(f"{t['name']} ({t['country']}, {t['kind']})")
     lang_ru = {"en": "Английский", "de": "Немецкий", "fr": "Французский", "es": "Испанский", "it": "Итальянский"}
 
-    s = [f"""# Письма международным организациям — шаблоны и приёмы
+    s = [f"""# Письма за рубеж — шаблоны
 
-Собрано скриптом `scripts/letter_templates.py` из `scripts/abroad_letters.py`. Список адресатов —
-`outreach/abroad_targets.csv` ({len(targets)} организаций). Остальные сегменты — `13-letter-templates.md`.
+Собрано скриптом `scripts/letter_templates.py` из `scripts/abroad_letters.py`. Адресаты — `outreach/abroad_targets.csv`
+({len(targets)} организаций). Итальянские письма — `13-letter-templates.md`.
 
 {PROMPT}
-{RULES}
-{TECHNIQUES}
+{PRINCIPLES}
 ## Кому на каком языке
 """]
     for lang in ("de", "fr", "es", "it", "en"):
         s.append(f"- **{lang_ru[lang]} ({len(by_lang.get(lang, []))})** — " + "; ".join(by_lang.get(lang, [])))
 
-    s.append("""
-## Скелет
+    s.append("\n## Скелет\n")
+    s.append(block("{первая строка — английский текст ниже; только если язык не английский}\n\n{greet}\n{who — кто мы и грант}"
+                   "\n\n{problem} {reason — цифры по стране} {law} {main — видимая часть, ИИ, Европа}\n\n{measure} {ask по типу} "
+                   "{survey}\n{ссылка}\n\n{thanks}\n{подпись}\n{optout — компаниям}\n\n— English version —\n\n"
+                   "{то же письмо полностью по-английски}"))
 
-Одинаковый на всех языках. Каждое письмо должно влезать в ссылку Outlook: часть ссылки после «?» не длиннее ~1 950
-символов, иначе Outlook открывает письмо без текста. Это проверяет тест. Поэтому письма компактные, а английская
-версия под письмом на другом языке короткая.
-""")
-    s.append(block("{BELOW — только если язык не английский}\n\n{greet}\n{who — кто мы и грант}\n\n"
-                   "{reason — проблема и цифры по стране} {main — «это лишь видимая часть, хотим уменьшить её с помощью ИИ»}"
-                   "\n\n{ask — просьба по типу организации} {end — радар в конце опроса, кроме прессы}\n{ссылка}\n\n"
-                   "{thanks}\n{подпись}\n{optout — только компаниям}\n\n"
-                   "— English version —\n{коротко по-английски: кто мы + просьба, «link above»}"))
-
-    s.append("\n## Тема (одна на язык)\n")
+    s.append("\n## Тема\n")
     for lang in ("en", "de", "fr", "es", "it"):
         s.append(f"- **{lang_ru[lang]}:** {AL.T[lang]['subject']}")
 
@@ -312,47 +219,26 @@ def international() -> str:
             s.append(f"- **первая строка:** {AL.BELOW[lang]}")
         for k, v in t["greet"].items():
             s.append(f"- **greet · {k}:** {v}")
-        s.append(f"- **who:** {t['who']}")
+        for key in ("who", "problem"):
+            s.append(f"- **{key}:** {t[key]}")
         for k, v in t["reason"].items():
             s.append(f"- **reason · {k or 'по умолчанию'}:** {v}")
-        s.append(f"- **main:** {t['main']}")
+        for key in ("law", "main", "measure"):
+            s.append(f"- **{key}:** {t[key]}")
         for k, v in t["ask"].items():
             s.append(f"- **ask · {k}:** {v}")
-        s.append(f"- **end:** {t['end']}")
-        s.append(f"- **thanks / optout:** {t['thanks']} / {t['optout']}")
+        for key in ("survey", "gift_press", "thanks", "optout"):
+            s.append(f"- **{key}:** {t[key]}")
         s.append(f"- **подпись:** {AL.SIGN[lang]}\n")
-    s.append("### Короткая английская версия под письмом на другом языке\n")
-    s.append(f"- **who:** {AL.EN_SHORT_WHO}")
-    for k, v in AL.EN_SHORT.items():
-        s.append(f"- **{k}:** {v}")
-    s.append("")
+    s.append(f"### IRU\n\nЧлены IRU — национальные ассоциации, поэтому своя только просьба: {AL.BESPOKE['ab-iru']['ask']}\n")
 
-    s.append("### Русский перевод для команды (не отправляется)\n")
-    s.append(f"- **who:** {AL.RU['who']}")
-    for k, v in AL.RU["reason"].items():
-        s.append(f"- **reason · {k or 'по умолчанию'}:** {v}")
-    s.append(f"- **main:** {AL.RU['main']}")
-    for k, v in AL.RU["ask"].items():
-        s.append(f"- **ask · {k}:** {v}")
-    s.append("")
-
-    b = AL.letter("ab-iru", "IRU", "association", "EU")
-    s.append("## IRU — отдельное письмо\n\nЧлены IRU — национальные ассоциации, а не перевозчики. Поэтому просим "
-             "поделиться опросом с ассоциациями-членами, чьи перевозчики ездят в Италию, и обещаем IRU сводные результаты. "
-             "Позиции самого IRU по Бреннеру и дело в Суде ЕС пока не упоминаем: для первого письма это рановато (решение "
-             "владельца, 11 ноября 2026). Опрос даёт то, чего нет в цифрах по странам: цену одного отдела перевозок.\n")
-    s.append(f"**Тема:** {b['subject']}\n")
-    s.append(block(b["message"]))
-    s.append("")
     s.append("## Полные письма — как они уходят\n")
-    picks = [("ab-clecat", "Ассоциация ЕС, английский (CLECAT)"), ("ab-bgl", "Ассоциация, немецкий + английский (BGL)"),
-             ("ab-fntr", "Ассоциация, французский + английский (FNTR)"), ("ab-astic", "Ассоциация, испанский + английский (ASTIC)"),
+    picks = [("ab-iru", "IRU, английский"), ("ab-clecat", "Ассоциация ЕС, английский (CLECAT)"),
+             ("ab-bgl", "Ассоциация, немецкий + английский (BGL)"), ("ab-fntr", "Ассоциация, французский + английский (FNTR)"),
+             ("ab-astic", "Ассоциация, испанский + английский (ASTIC)"),
              ("ab-hupac", "Интермодальный оператор, итальянский + английский (Hupac)"),
-             ("ab-girteka", "Компания, английский (Girteka)"),
-             ("ab-bertschi", "Компания, немецкий + английский (Bertschi)")]
-    press = next((t for t in targets if t["kind"] == "press"), None)
-    if press:
-        picks.append((press["id"], f"Издание ({press['name']})"))
+             ("ab-girteka", "Компания, английский (Girteka)"), ("ab-bertschi", "Компания, немецкий + английский (Bertschi)"),
+             ("ab-verkehrsrundschau", "Издание, немецкий + английский (VerkehrsRundschau)")]
     by_id = {t["id"]: t for t in targets}
     for oid, title in picks:
         t = by_id.get(oid)

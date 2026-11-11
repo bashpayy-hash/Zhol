@@ -43,9 +43,10 @@ SIGN = "Alikhan Bashpay · Università Bocconi · zhol"
 ASK_FIRST = "vi scrivo per chiedervi un minuto per un breve sondaggio di sette domande, anonimo."
 # Who we are comes first in every letter, with the grant (owner, 11 Nov 2026: «всё-таки стоит начать с того, чтобы
 # представиться, рассказать о гранте»). Lower case after the greeting comma, as Italian letters do.
-HOOK = ("sono Alikhan Bashpay, studente della Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera "
-        "prima avvisa l'ufficio traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto, tra i 100 "
-        "scelti dal programma europeo TEF Ignition 2026, ha ricevuto un grant di 2.000 €.")
+HOOK = ("sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la "
+        "sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra "
+        "i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un "
+        "grant di 2.000 €.")
 SIZE = ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
         "2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
 BASELINE = ("Per ora vi chiediamo solo di rispondere. Stiamo raccogliendo i dati di partenza per capire a fondo il problema "
@@ -177,7 +178,7 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
     load = f"soprattutto {what}" if what else ""
     tail = ", ".join(x for x in (fleet_part, load) if x)
     seen = f"Ho visto che lavorate{where}{route}" + (f", {tail}" if tail else "") + ". " if (where or route or tail) else ""
-    line = (f"{seen}{event[0].upper() + event[1:]}. "
+    line = (f"{seen}{PROBLEM_IT} {event[0].upper() + event[1:]}. "
             f"Saperlo la sera prima permette di {alt}, e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
     return line, SOURCES[src]
 
@@ -185,16 +186,20 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
 # The letter to a company (owner, 11 Nov 2026: «компании же не в курсе, что такое TEF Ignition… что можно усилить
 # в композиции письма для компаний»). Their own lanes first, then the ask with the link, then who we are in one
 # paragraph (Bocconi, which every Italian office knows; TEF said in plain words), then something useful today.
-# The story of every letter (owner, 11 Nov 2026: «есть такая проблема, есть такие цифры уже, и это уже малая часть,
-# хотелось бы помочь уменьшить её скейл, используя новые инструменты в виде ИИ»). Worded so that it never calls a
-# stoppage «the problem»: some southern associations led the October one.
-MAIN_IT = "Ed è solo la parte visibile, che vogliamo aiutare a ridurre con l'AI."
-MAIN_RU = "И это лишь видимая часть, которую мы хотим помочь уменьшить с помощью ИИ."
-BRIDGE_IT = "Per cominciare vogliamo misurare cosa vuol dire per un singolo ufficio traffico."
-BRIDGE_RU = "Для начала мы хотим измерить, что это значит для одного отдела перевозок."
+# The owner's principles for every letter (DESIGN.md, 11 Nov 2026): the problem with the figures that exist, only the
+# visible part, reduce it with AI, Italy first and the whole of Europe as the goal, measure first, then the ask.
+PROBLEM_IT = "Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già."
+PROBLEM_RU = "Запреты, закрытия и забастовки на дорогах Европы стоят перевозчикам времени и денег. Какие-то цифры уже есть."
+MAIN_IT = ("Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo "
+           "dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.")
+MAIN_RU = ("Это лишь видимая часть проблемы, и мы хотим помочь уменьшить её с помощью новых инструментов, таких как ИИ, начиная "
+           "с Италии и Альп и с целью охватить всю Европу.")
+BRIDGE_IT = "Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico."
+BRIDGE_RU = "Для начала мы хотим измерить, во что это обходится одному отделу перевозок."
 
-COMPANY_ASK = ("Per cominciare vorremmo capire quanto pesa per voi. Il sondaggio ha sette domande, richiede un minuto, è "
-               "anonimo, senza registrazione e senza vendite, e alla fine mostra il nostro radar AI gratuito.")
+COMPANY_ASK = ("Potreste dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee in Italia e in Europa? Ha sette "
+               "domande, senza registrazione e senza vendite, e si chiude con il nostro radar AI gratuito delle prossime otto "
+               "settimane.")
 COMPANY_WHO = HOOK
 # One broad subject for every letter (owner, 11 Nov 2026: «не нужно специфаить до мельчайших деталей в теме, просто
 # ИИ-солюшн и более броад тема»); the details live in the letter.
@@ -208,7 +213,7 @@ def company_subject(src: str) -> str:
 
 
 def company_message(name: str, line: str, link: str, src: str = "") -> str:
-    return (f"Buongiorno,\n{HOOK}\n\n{line} {MAIN_IT}\n\n{COMPANY_ASK}\n{link}\n\n"
+    return (f"Buongiorno,\n{HOOK}\n\n{line} {MAIN_IT}\n\n{BRIDGE_IT} {COMPANY_ASK}\n{link}\n\n"
             f"Grazie,\n{SIGN}\n{OPTOUT}")
 
 
@@ -224,8 +229,8 @@ KIND_RULES = [
     (r"confindustria|assolombarda|confcommercio|unione industriali|camera di commercio|legacoop", "industry"),
 ]
 ASK = {  # (Italian, Russian)
-    "hauliers": ("di girare ai vostri associati autotrasportatori, soprattutto a chi ha linee estere,", "переслать вашим членам-перевозчикам, особенно тем, кто ездит за границу,"),
-    "artisans": ("di girare alle imprese di autotrasporto della vostra categoria, soprattutto a chi lavora con l'estero,", "переслать транспортным предприятиям вашей категории, особенно тем, кто работает с заграницей,"),
+    "hauliers": ("di girare ai vostri associati autotrasportatori, soprattutto a chi lavora in Europa,", "переслать вашим членам-перевозчикам, особенно тем, кто работает по Европе,"),
+    "artisans": ("di girare alle imprese di autotrasporto della vostra categoria, soprattutto a chi lavora in Europa,", "переслать транспортным предприятиям вашей категории, особенно тем, кто работает по Европе,"),
     "forwarders": ("di girare ai vostri associati spedizionieri e ai loro uffici traffico", "переслать вашим членам-экспедиторам и их отделам перевозок"),
     "terminal": ("di girare alle aziende di autotrasporto e agli operatori che lavorano nel vostro interporto", "переслать перевозчикам и операторам, которые работают на вашем терминале,"),
     "consortium": ("di girare ai vostri consorziati e ai loro uffici traffico", "переслать участникам вашего консорциума и их отделам перевозок"),
@@ -285,9 +290,10 @@ WHY = {  # (Italian, Russian, source key), the figures closest to where the memb
                  "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, а в октябре восемь дней блокад "
                  "дальнобойщиков на Юге принесли больше 400 млн евро ущерба.", "brenner"),
 }
-HOOK_RU = ("меня зовут Алихан Башпай, я студент Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая накануне "
-           "вечером предупреждает отдел перевозок, если грузу грозит запрет, закрытие или забастовка. Проект, один из 100 "
-           "отобранных европейской программой TEF Ignition 2026, получил грант 2 000 евро.")
+HOOK_RU = ("меня зовут Алихан Башпай, я студент Университета Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая "
+           "накануне вечером предупреждает отделы перевозок, если грузу грозит запрет, закрытие или забастовка. Проект вошёл в "
+           "100 отобранных из примерно 500 программой TEF Ignition 2026, европейской программой для новых технологических "
+           "компаний, и получил грант 2 000 евро.")
 
 
 def assoc_kind(name: str, about: str = "") -> str:
@@ -312,13 +318,19 @@ def association_message(name: str, link: str, kind: str = "hauliers", region: st
     """The letter in Italian, its Russian translation for the team, the reason line (highlighted in the console) and its source."""
     ask_it, ask_ru = ASK[kind]
     why_it, why_ru, src = WHY[region]
-    back, back_ru = "Vi mandiamo i risultati aggregati.", "Пришлём вам сводные результаты."
+    back = "Vi mandiamo i risultati aggregati, da condividere con chi vi lavora." if kind == "terminal" else \
+        "All'associazione mandiamo i risultati aggregati, da condividere con i vostri associati."
+    back_ru = "Пришлём вам сводные результаты, чтобы поделиться с теми, кто у вас работает." if kind == "terminal" else \
+        "Ассоциации пришлём сводные результаты, чтобы поделиться с вашими членами."
     # the figures lead to the ask (owner, 11 Nov 2026: «этот дроп статистики нужно правильнее вписать в нарратив»)
-    it = (f"Gentile segreteria di {name},\n{HOOK}\n\n{why_it} Per la legge italiana ogni ora che un camion aspetta vale 100 €. "
-          f"{MAIN_IT}\n\n"
-          f"{BRIDGE_IT} Per questo vi chiedo {ask_it} un sondaggio anonimo di un minuto. {back}\n{link}\n\nGrazie,\n{SIGN}")
-    ru = (f"Уважаемый секретариат {name},\n{HOOK_RU}\n\n{why_ru} По итальянскому закону каждый час ожидания грузовика стоит 100 "
-          f"евро. {MAIN_RU}\n\n{BRIDGE_RU} Поэтому прошу вас {ask_ru} анонимный опрос на одну минуту. {back_ru}\n{link}\n\nСпасибо,\n{SIGN}")
+    it = (f"Gentile segreteria di {name},\n{HOOK}\n\n{PROBLEM_IT} {why_it} Per la legge italiana ogni ora che un camion aspetta "
+          f"vale 100 €. {MAIN_IT}\n\n{BRIDGE_IT} Per questo vi chiedo {ask_it} il nostro sondaggio anonimo di sette domande, un "
+          f"minuto. {back} Il sondaggio non chiede nient'altro e si chiude con il nostro radar AI gratuito delle prossime otto "
+          f"settimane.\n{link}\n\nGrazie,\n{SIGN}")
+    ru = (f"Уважаемый секретариат {name},\n{HOOK_RU}\n\n{PROBLEM_RU} {why_ru} По итальянскому закону каждый час ожидания "
+          f"грузовика стоит 100 евро. {MAIN_RU}\n\n{BRIDGE_RU} Поэтому прошу вас {ask_ru} наш анонимный опрос из семи вопросов на "
+          f"одну минуту. {back_ru} Больше опрос ничего не просит и в конце показывает наш бесплатный AI-радар на восемь недель "
+          f"вперёд.\n{link}\n\nСпасибо,\n{SIGN}")
     if "autoparco" in name.lower():
         it, ru = it.replace("nel vostro interporto", "nel vostro autoparco"), ru.replace("на вашем терминале", "на вашей стоянке")
     return it, ru, why_it, SOURCES[src]
@@ -336,9 +348,9 @@ PRESS_KIND = {
     "bp-logisticamente-it": "logistics", "bp-supply-chain-italy": "logistics",
 }
 PRESS_FIGURES = {  # (Italian, Russian, source key)
-    "trade": ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Unioncamere, 2026), a ottobre "
-              "otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per legge ogni ora "
-              "che un camion aspetta vale 100 €.",
+    "trade": ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
+              "2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per "
+              "la legge italiana ogni ora che un camion aspetta vale 100 €.",
               "Одни только ограничения на Бреннере стоят Италии 544 млн евро в год, в октябре восемь дней остановки "
               "дальнобойщиков на Юге принесли больше 400 млн евро ущерба, а по итальянскому закону каждый час ожидания "
               "грузовика стоит 100 евро.", "brenner"),
@@ -370,8 +382,8 @@ PRESS_ANGLE = {  # what the outlet covers, from its own homepage (10 Nov 2026); 
                               "costano agli uffici traffico.",
                               "Gazzetta Logistica писала и о ночных закрытиях на A1, а опрос как раз измеряет, во что они обходятся "
                               "отделам перевозок."),
-    "bp-transportonline": ("TransportOnline pubblica i bollettini sulla viabilità, e il sondaggio ne misura il costo per gli uffici "
-                           "traffico.",
+    "bp-transportonline": ("TransportOnline pubblica già i bollettini sulla viabilità, e il sondaggio misura quanto costano agli uffici "
+                           "traffico i divieti e le chiusure che vi si leggono.",
                            "TransportOnline уже публикует сводки о дорогах, а опрос измеряет, во что отделам перевозок обходятся "
                            "запреты и закрытия из этих сводок."),
     "bp-logisticamente-it": ("Logisticamente riunisce spesso chi gestisce la logistica, e i risultati potrebbero servire anche ai vostri incontri.",
@@ -395,18 +407,24 @@ def press_message(outlet: str, link: str, pid: str = "") -> tuple[str, str, str,
     kind = PRESS_KIND.get(pid, "trade")
     fig_it, fig_ru, src = PRESS_FIGURES[kind]
     ang_it, ang_ru = PRESS_ANGLE.get(pid, ("", ""))
-    it = (f"Gentile redazione di {outlet},\n{HOOK}\n\n{fig_it} {MAIN_IT}\n\n"
-          "Per cominciare misuriamo minuti persi, spedizioni cambiate e costo dell'ultimo imprevisto con un sondaggio anonimo "
-          "di un minuto per gli uffici traffico. " + (ang_it + " " if ang_it else "")
+    it = (f"Gentile redazione di {outlet},\n{HOOK}\n\n{PROBLEM_IT} {fig_it} {MAIN_IT}\n\n"
+          "Per cominciare raccogliamo i dati di partenza dagli uffici traffico, cioè minuti persi ogni giorno, spedizioni "
+          "cambiate, costo dell'ultimo imprevisto e quanti uffici sarebbero pronti a scambiarsi informazioni, con un sondaggio "
+          "anonimo di sette domande, un minuto. " + (ang_it + " " if ang_it else "")
           + f"Vi chiederei una breve segnalazione.\n{link}\n\n"
-          "Il nostro radar zhol.live/it/radar è una fonte libera per i vostri articoli, citando zhol, e io e il mio team siamo "
-          f"disponibili per qualche domanda.\n\nGrazie,\n{SIGN}")
-    ru = (f"Уважаемая редакция {outlet},\n{HOOK_RU}\n\n{fig_ru} {MAIN_RU}\n\n"
-          "Для начала мы измеряем потерянные минуты, изменённые отправки и цену последнего непредвиденного случая анонимным "
-          "опросом на одну минуту для отделов перевозок. " + (ang_ru + " " if ang_ru else "")
+          "Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar. Due volte al giorno mette in fila "
+          "divieti, chiusure e scioperi delle prossime otto settimane, con la probabilità e le fonti, e potete usarlo "
+          "liberamente citando zhol. Se la storia vi interessa, io e il mio team siamo disponibili per qualche domanda."
+          f"\n\nGrazie,\n{SIGN}")
+    ru = (f"Уважаемая редакция {outlet},\n{HOOK_RU}\n\n{PROBLEM_RU} {fig_ru} {MAIN_RU}\n\n"
+          "Для начала мы собираем исходные данные отделов перевозок, то есть сколько минут теряется каждый день, сколько "
+          "отправок меняется, во что обошёлся последний непредвиденный случай и сколько офисов готовы обмениваться "
+          "информацией, анонимным опросом из семи вопросов на одну минуту. " + (ang_ru + " " if ang_ru else "")
           + f"Просим коротко упомянуть опрос.\n{link}\n\n"
-          "Наш радар zhol.live/it/radar — свободный источник для ваших статей со ссылкой на zhol, и мы с командой готовы "
-          f"ответить на вопросы.\n\nСпасибо,\n{SIGN}")
+          "Для ваших статей может пригодиться наш открытый радар, zhol.live/it/radar. Дважды в день он собирает запреты, "
+          "закрытия и забастовки на ближайшие восемь недель, с вероятностью и источниками, и им можно свободно пользоваться "
+          "со ссылкой на zhol. Если история вам интересна, мы с командой готовы ответить на вопросы."
+          f"\n\nСпасибо,\n{SIGN}")
     return it, ru, (ang_it or fig_it), SOURCES[src], PRESS_SUBJECT[kind]
 
 
@@ -474,9 +492,9 @@ def build() -> list[dict]:
 
 
 def group_message(link: str) -> str:
-    return ("Buongiorno a tutti,\n" + HOOK + "\n\n" + SIZE + " " + MAIN_IT + "\n\n" + BRIDGE_IT + " Con il permesso degli amministratori "
-            "vi chiedo un minuto per un breve sondaggio anonimo, niente vendite.\n{link}\n\n"
-            f"Grazie a chi ci dedica un minuto!\n{SIGN}")
+    return ("Buongiorno a tutti,\n" + HOOK + "\n\n" + PROBLEM_IT + " " + SIZE + " " + MAIN_IT + "\n\n" + BRIDGE_IT
+            + " Con il permesso degli amministratori vi chiedo un minuto per il nostro sondaggio anonimo di sette domande, "
+            "niente vendite, con i risultati condivisi con chi risponde.\n" + link + "\n\nGrazie a chi ci dedica un minuto!\n" + SIGN)
 
 
 def broad(existing: list[dict]) -> list[dict]:
