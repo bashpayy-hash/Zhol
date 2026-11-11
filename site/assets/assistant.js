@@ -232,24 +232,53 @@
 
   document.querySelectorAll("[data-assistant]").forEach(n => mount(n, n.getAttribute("data-assistant")));
 
-  // the radar: a quiet button that opens the assistant in a sheet
-  const launch = document.querySelector("[data-assistant-launcher]");
-  if (launch) {
-    const dlg = el("dialog", "sheet asst-sheet"); dlg.setAttribute("aria-labelledby", "asst-title");
-    const bar = el("div", "sheet-bar"), head = el("div", "sheet-head");
-    head.append(el("span", "kicker", "zhol"), Object.assign(el("h2", "sheet-title", T("Ask the radar, or tell it", "Chiedete al radar, o raccontategli")), { id: "asst-title" }));
-    const x = el("button", "sheet-x"); x.type = "button"; x.setAttribute("aria-label", T("Close", "Chiudi")); x.innerHTML = '<span aria-hidden="true">×</span>';
-    bar.append(head, x);
-    const body = el("div", "sheet-body"); const box = el("div"); body.append(box);
-    dlg.append(bar, body); document.body.append(dlg);
-    const api = mount(box, "chat");
+  // the chat, on every page: a sheet over the page (on the report page, the chat already on the page)
+  let sheet = null;
+  function openChat() {
+    const inline = document.querySelector("[data-assistant] .asst-compose textarea");
+    if (inline) { inline.closest("[data-assistant]").scrollIntoView({ behavior: "smooth", block: "center" }); setTimeout(() => inline.focus(), 400); return; }
+    if (!sheet) {
+      const dlg = el("dialog", "sheet asst-sheet"); dlg.setAttribute("aria-labelledby", "asst-title");
+      const bar = el("div", "sheet-bar"), head = el("div", "sheet-head");
+      head.append(el("span", "kicker", T("zhol assistant", "Assistente zhol")), Object.assign(el("h2", "sheet-title", T("Ask the radar, or tell it", "Chiedete al radar, o raccontategli")), { id: "asst-title" }));
+      const x = el("button", "sheet-x"); x.type = "button"; x.setAttribute("aria-label", T("Close", "Chiudi")); x.innerHTML = '<span aria-hidden="true">×</span>';
+      bar.append(head, x);
+      const body = el("div", "sheet-body"); const box = el("div"); body.append(box);
+      dlg.append(bar, body); document.body.append(dlg);
+      const api = mount(box, "chat");
+      const close = () => { dlg.classList.add("closing"); setTimeout(() => { dlg.classList.remove("closing"); dlg.close(); }, 190); };
+      x.addEventListener("click", close);
+      dlg.addEventListener("click", e => { if (e.target === dlg) close(); });
+      sheet = { dlg, api };
+    }
+    sheet.dlg.showModal(); sheet.api.focus();
+  }
+  const face = () => { const f = el("img"); f.src = "/assets/img/mascot/face-128.webp"; f.alt = ""; f.width = 34; f.height = 34; return f; };
+
+  // a button inside a block, where a page asks for one
+  document.querySelectorAll("[data-assistant-launcher]").forEach(launch => {
     const btn = el("button", "asst-launch"); btn.type = "button";
-    const face = el("img"); face.src = "/assets/img/mascot/face-128.webp"; face.alt = ""; face.width = 30; face.height = 30;
-    btn.append(face, el("span", null, T("Ask zhol", "Chiedi a zhol")));
+    btn.append(face(), el("span", null, T("Ask zhol", "Chiedi a zhol")));
+    btn.addEventListener("click", openChat);
     launch.prepend(btn);
-    const close = () => { dlg.classList.add("closing"); setTimeout(() => { dlg.classList.remove("closing"); dlg.close(); }, 190); };
-    btn.addEventListener("click", () => { dlg.showModal(); api.focus(); });
-    x.addEventListener("click", close);
-    dlg.addEventListener("click", e => { if (e.target === dlg) close(); });
+  });
+
+  // and the chat button in the corner. On a phone it waits below the first screen and steps aside while you scroll,
+  // so it never sits on what you are reading
+  if (!document.querySelector("[data-no-chat]")) {
+    const bub = el("button", "asst-bubble"); bub.type = "button";
+    bub.setAttribute("aria-label", T("Ask zhol: the radar assistant", "Chiedi a zhol: l’assistente del radar"));
+    bub.append(face(), el("span", null, T("Ask zhol", "Chiedi a zhol")));
+    bub.addEventListener("click", openChat);
+    document.body.append(bub);
+    const phone = matchMedia("(max-width: 560px)");
+    let idle = null;
+    const place = moving => {
+      const below = scrollY > innerHeight * 0.6;
+      bub.classList.toggle("away", phone.matches && (!below || moving));
+    };
+    place(false);
+    addEventListener("scroll", () => { place(true); clearTimeout(idle); idle = setTimeout(() => place(false), 700); }, { passive: true });
+    phone.addEventListener("change", () => place(false));
   }
 })();

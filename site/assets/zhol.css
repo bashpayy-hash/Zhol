@@ -1230,3 +1230,19 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
 .word .word-media img { width: 100%; max-width: 420px; height: auto; margin-inline: auto; display: block;
   -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); }   /* the pose is cut at the waist: let it fade into the paper */
 @media (max-width: 560px) { .word .word-media img { max-width: 300px; } }
+/* the chat button in the corner, on every page (owner, 11 Nov 2026: "а где чат помощник?") */
+.asst-bubble { position: fixed; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); z-index: 40;
+  display: flex; align-items: center; gap: 10px; background: var(--ink); color: var(--paper); border: 0; border-radius: var(--r-pill);
+  padding: 7px 20px 7px 7px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 14px 32px -12px rgba(30, 22, 18, .55);
+  transition: transform var(--dur-card) var(--ease), opacity var(--dur-card) var(--ease-color), background-color var(--dur) var(--ease-color); }
+.asst-bubble img { width: 34px; height: 34px; border-radius: 50%; background: var(--sage-card); object-fit: cover; }
+.asst-bubble:hover { background: #241b18; }
+.asst-bubble:active { transform: scale(.96); }
+.asst-bubble.away { transform: translateY(150%); opacity: 0; pointer-events: none; }
+@media (max-width: 560px) {
+  .asst-bubble { padding: 5px; right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); }
+  .asst-bubble span { display: none; }
+  .asst-bubble img { width: 46px; height: 46px; }
+  footer.site { padding-bottom: 84px; }   /* the end of the page is never under the button */
+}
+@media (prefers-reduced-motion: reduce) { .asst-bubble { transition: none; } }
