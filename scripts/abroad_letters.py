@@ -9,9 +9,11 @@ LANG = {  # organisation id -> language of the letter
     **{i: "de" for i in ("ab-astag", "ab-spedlogswiss", "ab-bgl", "ab-dslv", "ab-kombiverkehr", "ab-rail-cargo-group",
                          "ab-tx-logistik", "ab-lkw-walter", "ab-gebrueder-weiss", "ab-dachser", "ab-nagel-group",
                          "ab-hellmann", "ab-planzer", "ab-camion-transport", "ab-bertschi", "ab-verkehrsrundschau",
-                         "ab-dvz", "ab-ralpin")},
-    **{i: "fr" for i in ("ab-fntr", "ab-otre", "ab-tlf", "ab-stef", "ab-officiel-transporteurs")},
-    **{i: "es" for i in ("ab-astic", "ab-cetm", "ab-primafrio", "ab-grupo-sese")},
+                         "ab-dvz", "ab-ralpin", "ab-gartner", "ab-dettendorfer", "ab-ansorge", "ab-willi-betz",
+                         "ab-krummen", "ab-ntg-road")},
+    **{i: "fr" for i in ("ab-fntr", "ab-otre", "ab-tlf", "ab-stef", "ab-officiel-transporteurs", "ab-perrenot",
+                         "ab-heppner", "ab-delanchy")},   # FEBETRA: English, neutral between French and Dutch in Belgium
+    **{i: "es" for i in ("ab-astic", "ab-cetm", "ab-primafrio", "ab-grupo-sese", "ab-carreras", "ab-caliche")},
     **{i: "it" for i in ("ab-hupac", "ab-rhenus", "ab-galliker", "ab-raben")},
 }
 
@@ -115,7 +117,7 @@ T = {
         "survey": "L'enquête compte sept questions, est en anglais, ne demande rien d'autre et se termine par notre radar IA gratuit des huit prochaines semaines.",
         "gift_press": "Pour vos articles, notre radar zhol.live/radar est une source gratuite, avec les interdictions, fermetures et grèves des huit prochaines semaines et leurs sources, en citant zhol.",
         "thanks": "Merci,",
-        "optout": "Pour ne plus recevoir de messages, répondez simplement « non ».",
+        "optout": "Pour ne plus recevoir de messages, répondez « non ».",
     },
     "es": {
         "subject": "Una solución de IA para el transporte por carretera, encuesta Bocconi",
