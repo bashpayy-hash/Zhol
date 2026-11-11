@@ -1226,3 +1226,7 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
   .answer-nav .step-row .btn:not(.ghost) { order: -2; }
   .answer-nav .step-row .btn.ghost { order: -1; }
 }
+/* home: the word-of-mouth block, visible without a tap (owner, 11 Nov 2026: "а вот это где?") */
+.word .word-media img { width: 100%; max-width: 420px; height: auto; margin-inline: auto; display: block;
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); }   /* the pose is cut at the waist: let it fade into the paper */
+@media (max-width: 560px) { .word .word-media img { max-width: 300px; } }
