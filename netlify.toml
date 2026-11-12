@@ -122,6 +122,14 @@
 
 # the team's review page: never indexed
 [[headers]]
+  for = "/d/*"
+  [headers.values]
+    # files to download (owner, 12 Nov 2026: «дай ссылку чтобы скачать»): saved, not opened, and kept out of search
+    Content-Disposition = "attachment"
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-cache"
+
+[[headers]]
   for = "/review"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
