@@ -25,6 +25,8 @@
 .row .wa { color: #1a7f45; font-weight: 600; }
 .btn.wa-btn { background: #1f9d55; border-color: #1f9d55; color: #fff; }
 .dup-warn { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fde8e4; color: #7a2412; font-size: 14px; line-height: 1.4; }
+.pill.remind { background: #fff1d6; color: #7a4b00; }
+.remind-box { border-top: 1px dashed var(--line); padding-top: 14px; }
 .paste-note { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fff6dd; color: #5a4300; font-size: 14px; line-height: 1.4; }
 body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
@@ -172,7 +174,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <button type="button" data-v="posts" aria-pressed="false">Посты</button>
     </div>
     <div class="chips" role="group" aria-label="Статус" id="f-state">
-      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Не отправлено<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Отправлено<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button><button type="button" data-v="wa" aria-pressed="false" id="chip-wa" hidden>WhatsApp<span class="n" id="c-wa"></span></button>
+      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Не отправлено<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Отправлено<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button><button type="button" data-v="wa" aria-pressed="false" id="chip-wa" hidden>WhatsApp<span class="n" id="c-wa"></span></button><button type="button" data-v="remind" aria-pressed="false">Пора напомнить<span class="n" id="c-remind"></span></button>
     </div>
     <input type="search" id="q" placeholder="Название, город или регион" aria-label="Поиск">
   </div>
@@ -276,6 +278,11 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const ORDER = { "": 0, sent: 1, replied: 2, skip: 3 };
   const GROUP = { "": "Не отправлено", sent: "Отправлено", replied: "Ответили", skip: "Не писать" };
   const day = iso => { try { return new Date(iso).toLocaleDateString("ru-RU", { day: "numeric", month: "short" }); } catch (e) { return ""; } };
+  // one reminder (owner, 12 Nov 2026: «теперь что дальше»): two working days after a letter, three after a WhatsApp
+  const viaWa = s => /whatsapp/i.test((s && s.note) || "");
+  const addWorkdays = (iso, n) => { const d = new Date(iso); while (n > 0) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) n--; } return d; };
+  const remindFrom = s => s && s.at ? addWorkdays(s.at, viaWa(s) ? 3 : 2) : null;
+  const remindDue = r => { const s = status[r.id]; return !!(r.followup && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
   const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
   const place = r => [r.city, r.region].filter(x => x && !/^n\/?a$/i.test(x.trim()) && !/^\[check/i.test(x.trim()))
     .map(x => x.replace(/\s*\[check[^\]]*\]/i, "").trim()).filter((x, k, a) => x && a.indexOf(x) === k).join(" · ");
@@ -286,6 +293,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (fState === "sent" && s !== "sent") return false;
     if (fState === "replied" && s !== "replied") return false;
     if (fState === "wa" && !r.wa) return false;
+    if (fState === "remind" && !remindDue(r)) return false;
     return !q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q);
   }
 
@@ -314,6 +322,41 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     } else {
       store.set("zhol-status", JSON.stringify(status));
     }
+  }
+
+  async function markReminded(r) {
+    const prev = status[r.id]; if (!prev) return;
+    const next = Object.assign({}, prev, { reminded: new Date().toISOString() });
+    status[r.id] = next; render();
+    if (shared && writable) { try { await db.collection("status").doc(r.id).set(next); } catch (e) { status[r.id] = prev; render(); } }
+    else store.set("zhol-status", JSON.stringify(status));
+  }
+
+  // the reminder, under the letter of someone already written to
+  function reminder(r) {
+    const s = status[r.id], f = r.followup, box = el("div", "field remind-box");
+    const lab = el("div", "lab"), from = remindFrom(s), wa = viaWa(s) && r.wa;
+    lab.append(el("span", null, s.reminded ? "Напоминание отправлено " + day(s.reminded)
+      : from > new Date() ? "Напоминание: можно с " + day(from.toISOString()) + (wa ? " (после WhatsApp ждём три рабочих дня)" : " (два рабочих дня после письма)")
+      : "Напоминание: пора, одно и последнее"));
+    const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
+    const body = plain(sign(f.message));
+    if (wa) {
+      const w = el("a", "btn wa-btn small", "Напомнить в WhatsApp"); w.href = "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(body);
+      w.target = "_blank"; w.rel = "noopener"; btns.append(w);
+    } else if (r.to) {
+      const enc = x => encodeURIComponent(x).replace(/%2C/g, ",").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%40/g, "@");
+      const q = "to=" + enc(r.to) + "&subject=" + enc(f.subject) + "&body=" + enc(body);
+      const a = el("a", "btn small", "Напомнить в Outlook");
+      a.href = (APPLE_TOUCH ? "ms-outlook://compose?" : "https://outlook.office.com/mail/deeplink/compose?") + q; a.target = "_blank"; a.rel = "noopener";
+      a.title = "Новое письмо с темой «Re: …» и текстом напоминания. Можно и ответить на своё первое письмо в «Отправленных», вставив этот текст.";
+      btns.append(a);
+    }
+    const c = el("button", "btn small", "Скопировать"); c.type = "button"; c.addEventListener("click", () => copy(body, c, box)); btns.append(c);
+    if (!s.reminded) { const m = el("button", "btn small", "Напоминание отправлено"); m.type = "button"; m.addEventListener("click", () => markReminded(r)); btns.append(m); }
+    lab.append(btns); box.append(lab, el("div", "subject", f.subject), el("pre", "msg", body));
+    if (f.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "О чём напоминание (для команды)"), el("pre", "msg", f.message_ru)); box.append(d); }
+    return box;
   }
 
   const fmt = iso => { try { return new Date(iso).toLocaleString("ru-RU", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
@@ -422,6 +465,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     mf.append(letter(r)); box.append(mf);
     // for the team only: what the Italian letter says (never sent)
     if (r.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "Перевод для команды (не отправляется)"), el("pre", "msg", r.message_ru)); mf.append(d); }
+    if (r.followup && stateOf(r.id) === "sent") box.append(reminder(r));
     const acts = el("div", "acts"), st = stateOf(r.id), s = status[r.id];
     [["sent", "Отправлено", ""], ["replied", "Ответили", " ok"], ["skip", "Не писать", ""]].forEach(([k, label, cls]) => {
       const b = el("button", "btn small" + cls + (st === k ? " on" : ""), label); b.type = "button";
@@ -461,6 +505,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $("c-replied").textContent = inTab.filter(r => stateOf(r.id) === "replied").length;
     // WhatsApp numbers exist only in the privately published copy (outreach/private/whatsapp.csv)
     $("c-wa").textContent = inTab.filter(r => r.wa).length; $("chip-wa").hidden = !ROWS.some(r => r.wa);
+    $("c-remind").textContent = inTab.filter(remindDue).length;
 
     const isPosts = fType === "posts";
     $("posts").hidden = !isPosts; $("bench").hidden = isPosts; $("f-state").hidden = isPosts; $("q").hidden = isPosts;
@@ -485,7 +530,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       if (r.wa) { sm.append(" · "); sm.append(el("span", "wa", "WhatsApp")); }
       const t = el("span"); t.append(el("b", null, r.name), sm);
       const st = status[r.id];
-      const right = st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) : GROUP[st.state])
+      const right = remindDue(r) ? el("span", "pill remind", "пора напомнить")
+                  : st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) + (st.reminded ? " · напомнили" : "") : GROUP[st.state])
                                    : el("span", "fit", r.fit && r.type === "company" ? "★ " + r.fit : "");
       b.append(el("span", "dot"), t, right);
       b.addEventListener("click", () => { pick = pick === r.id && narrow.matches ? null : r.id; render(); });

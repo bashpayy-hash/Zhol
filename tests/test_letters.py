@@ -96,3 +96,33 @@ def test_every_letter_follows_the_owners_principles():
         assert any(a in m for a in ai), (r["id"], "AI")
         assert "TEF Ignition 2026" in m, (r["id"], "TEF")
         assert "zhol.live/" in m and any(k in m for k in ("sondaggio?src=", "survey?src=", "umfrage?src=", "enquete?src=", "encuesta?src=")), (r["id"], "link")
+
+
+def test_every_reminder_follows_the_same_principles():
+    """The one reminder (owner, 12 Nov 2026: «теперь что дальше»): the same principles as every letter, the same survey
+    link as the first letter, a reply in the same thread, no colons, short enough for an Outlook link, and none for the
+    press or the lecturers."""
+    from urllib.parse import quote
+    rows = json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))
+    enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
+    n = 0
+    for r in rows:
+        f = r.get("followup")
+        if r["type"] in ("bocconi", "press", "group"):
+            assert not f, r["id"]
+            continue
+        if not f:
+            continue
+        n += 1
+        m = f["message"]
+        assert f["subject"] == "Re: " + r["subject"], r["id"]
+        assert r["link"] in m, (r["id"], "link")
+        assert any(g in m for g in ("2.000 €", "2,000", "2 000 €")), (r["id"], "grant")
+        assert "TEF Ignition 2026" in m and "Europ" in m and any(a in m for a in (" AI", " IA", "KI")), r["id"]
+        assert ":" not in _text(m) and ":" not in _text(f["subject"][4:]), r["id"]   # "Re:" is the mail client's own mark
+        assert not NAMES.search(m), r["id"]
+        if r.get("to"):
+            url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc(r["to"]) + "&subject=" + enc(f["subject"])
+                   + "&body=" + enc(m))
+            assert len(url) <= 4000, (r["id"], len(url))
+    assert n > 300

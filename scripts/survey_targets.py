@@ -783,6 +783,8 @@ def main() -> None:
         w = csv.DictWriter(f, fieldnames=["id", "type", "name", "city", "region", "about", "to", "to_src", "where", "search", "subject", "message", "link", "fit", "why", "why_src"], extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
+    from followups import attach   # one reminder each, for the console (not in the CSV)
+    attach(rows)
     (OUT / "survey_send_list.json").write_text(json.dumps(rows, ensure_ascii=False, indent=0), encoding="utf-8")
     from collections import Counter
     print(len(rows), dict(Counter(r["type"] for r in rows)))
