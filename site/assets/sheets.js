@@ -78,20 +78,31 @@
     });
   });
   // a link to #market opens that answer
-  const fromHash = () => { const b = location.hash && document.getElementById(location.hash.slice(1)); if (b && b.classList.contains("block")) { b.scrollIntoView({ block: "center" }); b.click(); } };
+  const fromHash = () => {
+    const b = location.hash && document.getElementById(location.hash.slice(1));
+    if (b && b.classList.contains("block")) { b.scrollIntoView({ block: "center" }); b.click(); }
+    else if (b && b._tile && !b._tile.hidden) { b._tile.scrollIntoView({ block: "center" }); b._tile.click(); }   // a link to /beta#demos opens that tile
+  };
   addEventListener("hashchange", fromHash);
 
-  // ---- 2. sections marked data-tile become a grid of tiles
+  // ---- 2. sections marked data-tile become a grid of tiles. Sections with the same data-tile-group share one
+  // grid, placed where the first of them was (the story has two chapters, each with its own grid; 12 Nov 2026)
   const marked = [...document.querySelectorAll("main > section[data-tile]")];
-  if (marked.length) {
+  const groups = new Map();
+  marked.forEach(s => { const g = s.dataset.tileGroup || ""; if (!groups.has(g)) groups.set(g, []); groups.get(g).push(s); });
+  let part = 0, gi = 0;
+  groups.forEach(list => {
     const grid = el("div", "tiles");
-    const wrap = el("section", "slide tiles-slide"); wrap.id = "more";
+    const wrap = el("section", "slide tiles-slide"); wrap.id = gi ? "more-" + (gi + 1) : "more";
     const inner = el("div", "wrap stack");
-    inner.append(el("p", "block-hint", T("Tap a tile to open it.", "Toccate un riquadro per aprirlo.")), grid);
+    if (!gi) inner.append(el("p", "block-hint", T("Tap a tile to open it.", "Toccate un riquadro per aprirlo.")));
+    inner.append(grid);
     wrap.append(inner);
-    marked[0].parentNode.insertBefore(wrap, marked[0]);
-    marked.forEach((s, i) => {
-      if (!s.id) s.id = "part-" + (i + 1);
+    list[0].parentNode.insertBefore(wrap, list[0]);
+    gi++;
+    list.forEach(s => {
+      part++;
+      if (!s.id) s.id = "part-" + part;
       const k = s.dataset.tileKicker || text(s.querySelector(".kicker")) || text(s.querySelector(".qhead .small"));
       const t = text(s.querySelector("h2, h3"));
       const num = s.dataset.tileNum === "" ? "" : (s.dataset.tileNum || text(s.querySelector(".big, .mid"))); // data-tile-num="" : no number (it is filled in later)
@@ -110,6 +121,7 @@
       tile.append(el("span", "tile-plus"));
       tile.addEventListener("click", () => { opener = tile; open(s, k, t || k, s.classList.contains("dark") ? "dark" : ""); });
       grid.append(tile);
+      s._tile = tile;
       // a section that shows only once its data is in (the radar's holidays and money) keeps its tile hidden till then;
       // the page script un-hides the section, we hide it again and show the tile instead
       let ready = !s.hidden;
@@ -121,7 +133,7 @@
         ready = true; tile.hidden = false; s.hidden = true;
       }).observe(s, { attributes: true, attributeFilter: ["hidden"] });
     });
-  }
+  });
 
   // the grid: as many columns as fit the count, and the first tile wider when the last row would be short
   function balance(grid, items) {

@@ -53,6 +53,18 @@
   status = 301
   force = true
 
+# the audience page is chapter two of the story now: four menu sections instead of six (owner, 12 Nov 2026)
+[[redirects]]
+  from = "/audience"
+  to = "/story#who"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/it/audience"
+  to = "/it/story#who"
+  status = 301
+  force = true
+
 # the TEF answers moved to the home page
 [[redirects]]
   from = "/answers"
