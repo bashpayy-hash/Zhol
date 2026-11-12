@@ -66,6 +66,21 @@
    },
    "crop": "1.5% off every edge (film border)",
    "replaces": "dusk (an evening sky over a ridge, without the road and the trucks)"
+  },
+  {
+   "files": [
+    "meadow-2000.webp",
+    "meadow-1000.webp"
+   ],
+   "where": "the join section on /beta and /it/beta, under the form",
+   "higgsfield_image_job": "05c64c51-ea16-404e-9c1b-88f8a48f550f",
+   "prompt": "Abstract background texture, no objects: a grainy analog film photograph that is completely out of focus, soft muted sage green blending into warm cream and pale sand, a gentle warm light glow in the top right corner, heavy fine film grain, faint paper fibres and speckles, risograph print feel, calm and even, low contrast, matte. No shapes, no text, no letters, no people, no objects.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "16:9",
+    "quality": "high",
+    "resolution": "2k"
+   }
   }
  ],
  "unused_variants": {

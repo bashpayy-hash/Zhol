@@ -324,26 +324,27 @@
    }
   },
   {
-   "name": "report-scene",
+   "name": "report-train",
    "files": [
-    "report-scene-1400.webp",
-    "report-scene-800.webp"
+    "report-train-1600.webp",
+    "report-train-900.webp"
    ],
-   "where": "the first screen of /report and /it/segnala, a scene on the ground instead of a floating figure (owner, 12 Nov 2026: «жолдас здесь просто летает в воздухе и очень awkward, сделай другую иллюстрацию которая тоже заигрывает с пространством»)",
-   "higgsfield_image_job": "2790b82c-b5cf-49bb-9a24-1cde65b572d4",
-   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, open happy smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A three-dimensional toy diorama on a rounded felt island: a grey felt road curves from the front to the back, where it disappears into a mountain tunnel portal; a long queue of small toy European trucks stands bumper to bumper along the curve, sage-green and brick-red felt cabs with plain cream box trailers. Zholdas stands on the roof of the nearest truck cab in the queue, sitting high above the jam, talking into a chunky brown felt walkie-talkie and waving with the other mitten, as if reporting the queue. A small felt traffic cone on the roadside and felt shrubs. Toy scale: the trucks are about as tall as he is. Soft warm daylight studio light, gentle contact shadows, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "where": "the first screen of /report and /it/segnala; the train and the trucks leave through the right edge of the screen (owner, 12 Nov 2026: «хотелось бы чтобы уже были поезда и они уезжали как бы за экран»)",
+   "higgsfield_image_job": "324e4373-9eb0-42c5-b244-ba06a3e1ab76",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, open happy smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A wide three-dimensional toy scene made of felt in the Alps: a felt railway track runs from the left and goes straight out through the right edge of the frame, cut off by the frame. A long toy freight train carries small toy European trucks on low flat wagons, sage-green and brick-red felt cabs with cream trailers, pulled by a brick-red felt locomotive that is already half out of the right edge of the frame, as if the train is leaving the picture. Beside the track a grey felt road runs the same way with two toy trucks driving off to the right. Zholdas stands on a felt platform on the left, talking into a chunky brown felt walkie-talkie and waving the train off with the other mitten. Felt grass, small felt mountains with cream snow behind on the left. The ground, the track and the road are cut off by the right and bottom edges of the frame; on the left the scene ends softly. Soft warm daylight studio light, gentle contact shadows, transparent background above the scene. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
    "settings": {
     "model": "gpt_image_2_6",
     "quality": "high",
     "resolution": "2k",
-    "aspect_ratio": "4:3",
+    "aspect_ratio": "16:9",
     "background": "transparent",
     "medias": "both references as image_references"
    },
-   "processing": "trimmed transparent margins, 1400 and 800 wide, WebP q82, alpha q90",
+   "processing": "trimmed the empty top, 1600 and 900 wide, WebP q82, alpha q90; on the page the left side fades out with a CSS mask",
    "alternatives_not_used": {
-    "1577ca58-c75d-4492-b4fd-0d909ab875e2": "on a hilltop by a radio mast, pointing at trucks stopped at a closed tunnel",
-    "4de103c7-7d9f-4d94-9b56-7c344f0670f7": "sitting on a crate by a radio set at a border, writing a note"
+    "cdce9076-053b-4175-b2e2-24a31e3f5dac": "on the verge of a motorway waving a convoy of trucks off the right edge",
+    "d9005076-1d47-456e-bc0d-52799db8f174": "on the roof of a booth, trucks come out of a tunnel and drive off the right edge towards the viewer",
+    "2790b82c-b5cf-49bb-9a24-1cde65b572d4": "the earlier version on this page: on the roof of a truck in a queue before a tunnel (replaced the same day)"
    }
   }
  ]
