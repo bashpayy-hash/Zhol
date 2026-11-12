@@ -346,6 +346,70 @@
     "d9005076-1d47-456e-bc0d-52799db8f174": "on the roof of a booth, trucks come out of a tunnel and drive off the right edge towards the viewer",
     "2790b82c-b5cf-49bb-9a24-1cde65b572d4": "the earlier version on this page: on the roof of a truck in a queue before a tunnel (replaced the same day)"
    }
+  },
+  {
+   "name": "deck-cover",
+   "files": [],
+   "where": "the Workshop 2 deck 'Early signals', slide 'cover': ticking off a queue of trucks on a clipboard by a motorway; a full-width strip that runs off both edges and sits on the bottom edge (owner's rule, 12 Nov 2026)",
+   "higgsfield_image_job": "799953cb-0133-4d83-916b-cf1b8299588e",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, focused smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A wide panoramic strip of a three-dimensional felt toy landscape that fills the whole width of the frame. A long two-lane felt motorway runs from the left edge of the frame to the right edge, slightly curving away; a long queue of small toy European trucks, sage-green and brick-red felt cabs with plain cream box trailers, stands bumper to bumper on it, entering from the left edge and disappearing beyond the right edge. Zholdas stands on the grass verge in front of the queue, a little right of centre, holding a small brown felt clipboard and ticking the trucks off with a red pencil. The left third of the strip is calm and low: grass, the road, a few small shrubs. The ground and the road are cut off by the left, right and bottom edges of the frame and continue beyond them, as if the land goes on forever: no island, no plinth, no border, no edge of a diorama anywhere. The landscape fills only the lower half of the frame, with low felt hills and soft snow-capped mountains on the horizon; above the horizon the background is fully transparent. Soft warm daylight, gentle contact shadows. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "quality": "high",
+    "resolution": "2k",
+    "aspect_ratio": "21:9",
+    "background": "transparent",
+    "medias": "both references as image_references"
+   },
+   "processing": "scaled to 1920 wide and cropped at the bottom so it ends on the slide's bottom edge; kept in the deck's asset store, not on the site"
+  },
+  {
+   "name": "deck-holdback",
+   "files": [],
+   "where": "the Workshop 2 deck 'Early signals', slide 'holdback': sitting on a crate by a lowered road barrier, thinking; a full-width strip that runs off both edges and sits on the bottom edge (owner's rule, 12 Nov 2026)",
+   "higgsfield_image_job": "53401103-4672-4a8b-8728-e45a2bf55827",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, puzzled small smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A wide panoramic strip of a three-dimensional felt toy landscape that fills the whole width of the frame. A felt country road runs from the left edge of the frame to the right edge. In the right half a red-and-cream striped barrier is lowered across the road and three small toy European trucks, sage-green and brick-red felt cabs with cream box trailers, wait in front of it; beyond the barrier the road goes on to the right edge. Zholdas sits on a small wooden crate at the roadside next to the barrier, one mitten under his chin, thinking. The left half is calm and low: grass, the empty road, a low wooden field fence and a few felt shrubs. The ground and the road are cut off by the left, right and bottom edges of the frame and continue beyond them, as if the land goes on forever: no island, no plinth, no border, no edge of a diorama anywhere. The landscape fills only the lower half of the frame, with low rolling felt hills on the horizon; above the horizon the background is fully transparent. Soft warm daylight, gentle contact shadows. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "quality": "high",
+    "resolution": "2k",
+    "aspect_ratio": "21:9",
+    "background": "transparent",
+    "medias": "both references as image_references"
+   },
+   "processing": "scaled to 1920 wide and cropped at the bottom so it ends on the slide's bottom edge; kept in the deck's asset store, not on the site"
+  },
+  {
+   "name": "deck-share",
+   "files": [],
+   "where": "the Workshop 2 deck 'Early signals', slide 'share': on a hill by a border crossing at dusk, talking into a walkie-talkie; a full-width strip that runs off both edges and sits on the bottom edge (owner's rule, 12 Nov 2026)",
+   "higgsfield_image_job": "fbb32ef3-78b8-460b-880e-23909b3041fc",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, open happy smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A wide panoramic strip of a three-dimensional felt toy landscape at dusk that fills the whole width of the frame. A felt motorway runs from the left edge of the frame to the right edge, towards a small border crossing with a cream booth and a red-and-cream barrier in the right third; a queue of small toy European trucks with tiny warm yellow headlights glowing waits along the road, entering from the left edge. Zholdas stands on a small grassy felt hill near the border, right of centre, talking into a chunky brown felt walkie-talkie and waving. Muted evening colours: dark olive and deep brown felt, warm lights, dark felt mountains on the horizon. The left third is calm and low. The ground and the road are cut off by the left, right and bottom edges of the frame and continue beyond them, as if the land goes on forever: no island, no plinth, no border, no edge of a diorama anywhere. The landscape fills only the lower half of the frame; above the mountains the background is fully transparent. Soft dusk light, gentle shadows. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "quality": "high",
+    "resolution": "2k",
+    "aspect_ratio": "21:9",
+    "background": "transparent",
+    "medias": "both references as image_references"
+   },
+   "processing": "scaled to 1920 wide and cropped at the bottom so it ends on the slide's bottom edge; kept in the deck's asset store, not on the site"
+  },
+  {
+   "name": "deck-next",
+   "files": [],
+   "where": "the Workshop 2 deck 'Early signals', slide 'next': on a station platform, sending off a freight train that carries trucks; a full-width strip that runs off both edges and sits on the bottom edge (owner's rule, 12 Nov 2026)",
+   "higgsfield_image_job": "d0aecd38-d274-45e4-8c4f-76b1bfabaf41",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, open happy smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A wide panoramic strip of a three-dimensional felt toy Alpine landscape that fills the whole width of the frame. A felt railway and, in front of it, a felt road both run from the left edge of the frame to the right edge. A long freight train of low flat wagons carrying small toy European trucks, sage-green and brick-red felt cabs with cream trailers, enters from the left edge and its brick-red felt locomotive leaves through the right edge; on the road two toy trucks drive towards the right edge. Zholdas stands on a small felt station platform right of centre, holding up a round green felt signal paddle like a station master, sending the train off. Felt meadows with tiny white flowers, a few felt pine trees, soft snow-capped mountains on the horizon. The ground, the rails and the road are cut off by the left, right and bottom edges of the frame and continue beyond them, as if the land goes on forever: no island, no plinth, no border, no edge of a diorama anywhere. The landscape fills only the lower half of the frame; above the mountains the background is fully transparent. Soft warm daylight, gentle contact shadows. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "quality": "high",
+    "resolution": "2k",
+    "aspect_ratio": "21:9",
+    "background": "transparent",
+    "medias": "both references as image_references"
+   },
+   "processing": "scaled to 1920 wide and cropped at the bottom so it ends on the slide's bottom edge; kept in the deck's asset store, not on the site"
   }
  ]
 }
