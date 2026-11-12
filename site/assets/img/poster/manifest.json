@@ -1,5 +1,5 @@
 {
- "what": "Grainy photographs for the posters on Story, Audience and Beta (owner, 12 Nov 2026, Boxer Shorts reference) and the photo in the home finale card. The grain on top is a CSS noise layer.",
+ "what": "Grainy photographs for the posters on Story, Audience and Beta (owner, 12 Nov 2026, Boxer Shorts reference) and the photo in the home finale card. Each shows what its headline says (owner, 12 Nov 2026). The grain on top is a CSS noise layer.",
  "images": [
   {
    "files": [
@@ -18,48 +18,59 @@
   },
   {
    "files": [
-    "sky-2000.webp",
-    "sky-1000.webp"
+    "yard-2000.webp",
+    "yard-1000.webp"
    ],
-   "where": "the poster on Story",
-   "higgsfield_image_job": "5be4fd58-902d-4332-901c-2446083582c6",
-   "prompt": "Grainy analog film photograph of a soft daytime sky full of large cumulus clouds over a low line of distant Alpine ridges at the very bottom edge, pale blue and warm cream tones, heavy visible film grain and slight halation, calm and airy, lots of empty sky in the middle for a headline. No text, no birds, no planes, nothing else.",
+   "where": "the poster on Story (EN and IT), under \"The evening before: which of tomorrow's loads a ban, a closure or a strike will hit\"",
+   "higgsfield_image_job": "e30f9df9-c54a-4767-aeb1-923766d9caa3",
+   "prompt": "Grainy analog film photograph, slightly elevated view, of a small road haulier's yard at the foot of the Alps in the early evening: three articulated trucks with plain loaded trailers parked side by side in the lower third, ready to leave tomorrow, a small office building with one warm lit window, a road leaving the yard towards a valley and distant mountain ridges, soft golden-hour haze, pale cream and peach sky taking the upper half of the frame, muted warm tones, heavy visible film grain and slight halation, calm, lots of empty sky in the middle for a headline. No text, no signs, no logos, no readable number plates, no people.",
    "settings": {
     "model": "gpt_image_2_6",
     "aspect_ratio": "16:9",
     "quality": "high",
     "resolution": "2k"
-   }
+   },
+   "crop": "1.5% off every edge (film border)",
+   "replaces": "sky (a daytime sky with clouds: no evening, no loads, no road)"
   },
   {
    "files": [
-    "plain-2000.webp",
-    "plain-1000.webp"
+    "crossing-2000.webp",
+    "crossing-1000.webp"
    ],
-   "where": "the poster on Audience",
-   "higgsfield_image_job": "b23b4603-d69e-4b3d-91ad-45d8bd6aa042",
-   "prompt": "Grainy analog aerial film photograph looking straight down on a misty plain at dawn: patchwork fields, rows of poplars and one long straight motorway crossing diagonally with a few tiny trucks, muted sage green, cream and soft brown tones, heavy visible film grain, quiet and textured, large calm areas. No text, no signs, no logos.",
+   "where": "the poster on Audience (EN and IT), under \"over the Alps, where every lane crosses a pass, a tunnel or a border\"",
+   "higgsfield_image_job": "55346df4-a70a-4e49-b5de-b599bd225eed",
+   "prompt": "Grainy analog aerial film photograph of an Alpine motorway climbing a narrow valley towards a high mountain pass at dawn: the dual carriageway runs on a long concrete viaduct along the valley side and disappears into a tunnel portal cut into the rock, a short line of articulated trucks with plain trailers on it, forested slopes, grey rock and snow on the high peaks, soft mist filling the valley floor, muted sage green, cream and soft brown tones, heavy visible film grain, quiet and textured, a large calm misty area in the middle of the frame. No text, no signs, no logos, no readable number plates, no flags.",
    "settings": {
     "model": "gpt_image_2_6",
     "aspect_ratio": "16:9",
     "quality": "high",
     "resolution": "2k"
-   }
+   },
+   "crop": "1.5% off every edge (film border), then the right 90% and the top 90%, so the tunnel sits below the headline; on the page object-position 85% 50% keeps the viaduct in frame on tablets and phones",
+   "replaces": "plain (a misty plain with a straight motorway: no Alps, pass, tunnel or border; owner, 12 Nov 2026)"
   },
   {
    "files": [
-    "dusk-2000.webp",
-    "dusk-1000.webp"
+    "tonight-2000.webp",
+    "tonight-1000.webp"
    ],
-   "where": "the poster on Beta",
-   "higgsfield_image_job": "56cc7269-e947-466e-a1ff-0637ff5e7f46",
-   "prompt": "Grainy analog film photograph of an evening sky at dusk above a dark mountain pass silhouette at the bottom edge, smooth gradient from deep blue at the top to warm apricot near the horizon, a few first stars, soft clouds, heavy visible film grain and slight halation, calm, lots of empty sky for a headline. No text, no planes, nothing else.",
+   "where": "the poster on Beta (EN and IT), under \"Tomorrow's loads, checked tonight at 17:30 and again at 20:00\"",
+   "higgsfield_image_job": "40d9b2ed-fbed-47cb-94ba-9ffa11380b72",
+   "prompt": "Grainy analog film photograph of an evening sky at dusk above an Alpine valley: smooth gradient from deep blue at the top to warm apricot near the horizon, a few first stars, soft clouds, a dark mountain pass silhouette along the bottom edge, and at the very bottom a motorway winding up the valley towards the pass with the small headlights and red tail lights of a few trucks, heavy visible film grain and slight halation, calm, lots of empty sky for a headline. No text, no signs, no logos, no planes.",
    "settings": {
     "model": "gpt_image_2_6",
     "aspect_ratio": "16:9",
     "quality": "high",
     "resolution": "2k"
-   }
+   },
+   "crop": "1.5% off every edge (film border)",
+   "replaces": "dusk (an evening sky over a ridge, without the road and the trucks)"
   }
- ]
+ ],
+ "unused_variants": {
+  "audience": "191ee3ed-c6f8-4c99-a2c6-c689f96e2f45 (same prompt, closer trucks, film border)",
+  "story": "4ce99875-2ac3-48eb-8c89-62ff75b5dbf5 (same prompt, trucks with headlights on)",
+  "beta": "ba111f4a-ca4c-4cef-a22a-4bb141cf344f (same prompt, a truck sits under the card)"
+ }
 }
