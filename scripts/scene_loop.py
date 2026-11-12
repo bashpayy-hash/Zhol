@@ -10,6 +10,9 @@ Why each step (the owner saw these go wrong before, see VISION.md 3.7 and brand/
 - RGB <-> YUV conversions use the BT.709 matrix and the files are tagged BT.709 with the sRGB curve,
   otherwise browsers show the video darker and warmer than the poster and the light jumps at start;
 - the poster is frame 0 of the processed loop, not the original still, for the same reason.
+- on the page the poster is a plain <img>, and the loop's frames are painted on a <canvas> over it
+  (site/assets/scene.js): a visible <video> goes through the driver's overlay and its light differs from
+  the picture's; check that poster and frame 0 match (PSNR 36 dB or more) before publishing a new loop.
 Needs ffmpeg with libx264 and libvpx-vp9, and numpy + Pillow.
 """
 from __future__ import annotations

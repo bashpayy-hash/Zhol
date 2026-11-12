@@ -534,7 +534,7 @@ details[open] > summary::before { content: "\2212"; }
 .sv-intro-text { display: flex; flex-direction: column; gap: 18px; }
 .sv-intro-text .actions { margin-top: 6px; }
 .sv-scene { margin: 0; border-radius: 28px; overflow: hidden; background: #e9e2d4; aspect-ratio: 4 / 3; }
-.sv-scene video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sv-scene .scene-layer { display: block; width: 100%; height: 100%; object-fit: cover; }
 .slide.sv#sv-steps { padding-top: 40px; }
 #sv-steps .sv-stage { margin-top: 0; max-width: 1040px; background: var(--card); border: 1px solid var(--card-line); border-radius: 28px; padding: 40px; }
 @media (max-width: 920px) {
@@ -546,7 +546,7 @@ details[open] > summary::before { content: "\2212"; }
 
 /* living scene in the home hero: Zholdas planning a route, framed like a photo */
 .hero .scene-frame { border-radius: 28px; overflow: hidden; background: #2b2a33; aspect-ratio: 4 / 3; }
-.hero .scene-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero .scene-frame .scene-layer { display: block; width: 100%; height: 100%; object-fit: cover; }
 .sv-intro .sv-title { font-size: clamp(36px, 4.2vw, 56px); }
 
 /* numbers first, as bullets; the dense backup folds behind one line (owner, 8 Nov) */
@@ -874,7 +874,7 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 /* home: the text sits on the scene itself (hero-full) */
 .hero-full .split { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(76vh, 700px); border-radius: 28px; overflow: hidden; background: #1d1a22; }
 .hero-full .split > .media { position: absolute; inset: 0; z-index: -2; border-radius: 0; aspect-ratio: auto; background: #1d1a22; }
-.hero-full .split > .media video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: scaleX(-1); }
+.hero-full .split > .media .scene-layer { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: scaleX(-1); }
 .hero-full .split::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: linear-gradient(90deg, rgba(22, 18, 26, .86) 0%, rgba(22, 18, 26, .7) 32%, rgba(22, 18, 26, .18) 58%, rgba(22, 18, 26, 0) 74%); }
 .hero-full .split > .stack { max-width: 620px; padding: 56px 56px 60px; }
@@ -885,7 +885,7 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 .hero-full .btn.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
 @media (max-width: 760px) {
   .hero-full .split { align-items: flex-end; min-height: 86vh; border-radius: 22px; }
-  .hero-full .split > .media video { object-position: 30% 35%; }
+  .hero-full .split > .media .scene-layer { object-position: 30% 35%; }
   .hero-full .split::before { background: linear-gradient(180deg, rgba(22, 18, 26, 0) 18%, rgba(22, 18, 26, .62) 46%, rgba(22, 18, 26, .9) 72%); }
   .hero-full .split > .stack { padding: 24px 22px 26px; gap: 14px !important; }
   .hero-full h1.title { font-size: 34px; }
@@ -904,7 +904,7 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 /* survey: the words sit on the scene, softly blurred, like the home page (sv-full) */
 .sv-full .sv-intro-grid { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(78vh, 720px); border-radius: 28px; overflow: hidden; background: #2a2420; padding-block: 56px; }
 .sv-full .sv-scene { position: absolute; inset: 0; z-index: -2; margin: 0; border-radius: 0; aspect-ratio: auto; background: #2a2420; }
-.sv-full .sv-scene video { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; filter: blur(5px) saturate(1.05) brightness(.95); transform: scale(-1.07, 1.07); }
+.sv-full .sv-scene .scene-layer { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; filter: blur(5px) saturate(1.05) brightness(.95); transform: scale(-1.07, 1.07); }
 .sv-full .sv-intro-grid::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: linear-gradient(90deg, rgba(28, 22, 18, .84) 0%, rgba(28, 22, 18, .64) 36%, rgba(28, 22, 18, .2) 64%, rgba(28, 22, 18, .04) 100%); }
 .sv-full .sv-intro-text { max-width: 620px; padding-inline: clamp(8px, 3.4vw, 44px); }
@@ -914,11 +914,11 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 .sv-full .actions .small.muted { color: rgba(255, 255, 255, .72); }
 @media (max-width: 760px) {
   .sv-full .sv-intro-grid { align-items: flex-end; min-height: 82vh; border-radius: 22px; padding-block: 24px; }
-  .sv-full .sv-scene video { object-position: 24% 40%; }
+  .sv-full .sv-scene .scene-layer { object-position: 24% 40%; }
   .sv-full .sv-intro-grid::before { background: linear-gradient(180deg, rgba(28, 22, 18, 0) 12%, rgba(28, 22, 18, .6) 44%, rgba(28, 22, 18, .9) 74%); }
   .sv-full .sv-intro-text { padding-inline: 4px; }
 }
-@media (prefers-reduced-motion: reduce) { .sv-full .sv-scene video { filter: blur(5px); } }
+@media (prefers-reduced-motion: reduce) { .sv-full .sv-scene .scene-layer { filter: blur(5px); } }
 .sv-full .sv-intro-grid { margin-inline: auto; width: calc(100% - 2 * max(20px, env(safe-area-inset-left, 0px))); max-width: calc(var(--wrap) - 40px); }
 .sv-full .sv-intro-grid { clip-path: inset(0 round 28px); }
 @media (max-width: 760px) { .sv-full .sv-intro-grid { clip-path: inset(0 round 22px); } }
@@ -1111,7 +1111,7 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
 .rd-hero { padding-top: 32px; }
 .rd-cover { position: relative; isolation: isolate; display: grid; place-items: center; min-height: min(74vh, 640px); border-radius: 28px; overflow: hidden; background: #3a3230; text-align: center; }
 .rd-cover > .media { position: absolute; inset: 0; z-index: -2; }
-.rd-cover > .media video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: blur(4px) saturate(1.05); transform: scale(1.05); }
+.rd-cover > .media .scene-layer { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: blur(4px) saturate(1.05); transform: scale(1.05); }
 .rd-cover::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: radial-gradient(ellipse 70% 62% at 50% 50%, rgba(28, 22, 20, .62), rgba(28, 22, 20, .38) 70%, rgba(28, 22, 20, .30)); }
 .rd-cover-text { display: flex; flex-direction: column; align-items: center; gap: 18px; max-width: 860px; padding: 64px 48px; }
@@ -1124,10 +1124,10 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
   .rd-cover { min-height: 78vh; border-radius: 22px; }
   .rd-cover-text { padding: 40px 22px; gap: 14px; }
   .rd-cover-text h1.title { font-size: 34px; }
-  .rd-cover > .media video { object-position: 38% 50%; filter: blur(3px); }
+  .rd-cover > .media .scene-layer { object-position: 38% 50%; filter: blur(3px); }
   .rd-below { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 24px; }
 }
-@media (prefers-reduced-motion: reduce) { .rd-cover > .media video { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .rd-cover > .media .scene-layer { transform: none; } }
 
 /* survey, last screen: under the map the schedule with chances and the news the radar read (owner, 10 Nov) */
 .sv-end-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; border-top: 1px solid var(--card-line); padding-top: 22px; }
@@ -1373,3 +1373,12 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
 @media (max-width: 385px) {
   .tabs { padding-right: 18px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
 }
+
+/* living scenes without a jump in the light (12 Nov 2026, the iitaly.net fix): the picture is on screen from the
+   first paint; the loop's frames are painted on a canvas on top of it, the same colour path as the picture; the
+   <video> is only a source of frames and never reaches the screen. All three share one layout class (.scene-layer),
+   so they match pixel for pixel. No transition: frame 0 of the loop is the picture. */
+.scene-frame, .sv-scene { position: relative; }
+.scene-source, .scene-paint { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.scene-paint[data-shown] { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .scene-source, .scene-paint { display: none !important; } }
