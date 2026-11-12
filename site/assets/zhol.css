@@ -1363,3 +1363,13 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
   .finale-text { padding: 26px 22px; }
   .finale-scene { width: 150%; margin-top: 4px; }
 }
+
+/* four menu sections (12 Nov 2026): on a phone they fit without scrolling, so no fade at the right edge;
+   only the narrowest phones still scroll the menu and keep the fade */
+@media (max-width: 560px) {
+  .tabs { gap: 10px; padding-right: 0; -webkit-mask-image: none; mask-image: none; }
+  .tabs a { font-size: 13.5px; }
+}
+@media (max-width: 385px) {
+  .tabs { padding-right: 18px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+}

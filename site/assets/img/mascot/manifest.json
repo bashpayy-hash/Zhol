@@ -350,9 +350,9 @@
   {
    "name": "deck-cover",
    "files": [],
-   "where": "the Workshop 2 deck 'Early signals', slide 'cover': by a motorway with a queue of trucks, holding a clipboard; looks at the viewer (cover). A corner scene that fills only the slide's empty space, grows from the right and bottom edges, a hill slope as its open edge (owner's rules, 12 Nov 2026)",
-   "higgsfield_image_job": "9d0418e9-7057-40ff-907e-a7cd7e47ad82",
-   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, warm smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A three-dimensional felt toy landscape that fills ONLY the lower-right part of the frame. The land is a soft felt hillside: its outline starts at the bottom edge of the frame a little left of the middle and rises gently to the right edge at about half the frame height; everything above and to the left of that outline is fully transparent and empty. On the hillside a felt motorway comes in from the right edge and curves down out of the bottom edge, with a long queue of small toy European trucks, sage-green and brick-red felt cabs with cream box trailers, along it. Zholdas stands on the grass verge beside the queue holding a brown felt clipboard and a red pencil, looking at the viewer with a friendly smile. The road and the land are cut off by the right and bottom edges and continue beyond them; no island, no plinth, no border. Soft warm daylight, gentle contact shadows. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "where": "the Workshop 2 deck 'Early signals', slide 'cover': on a slope above a small harbour, holding a clipboard; a truck drives onto a ferry and a freight train with containers runs along the quay, so the cover shows road, rail and sea (owner, 12 Nov 2026: all transport, not only trucks); looks at the viewer (cover). A corner scene that fills only the slide's empty space, grows from the right and bottom edges, a hill slope as its open edge",
+   "higgsfield_image_job": "f796fc99-712f-437c-b872-af7d0c8d85fc",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas) [...identity block as above...]. A three-dimensional felt toy harbour landscape that fills ONLY the lower-right part of the frame: a soft felt hillside from the bottom edge a little left of the middle to the right edge at about half height; a calm felt sea out through the right edge; a chunky cream and brick-red toy ro-ro ferry at a stone quay with its bow ramp down and one small sage-green truck driving onto it; stacked felt containers on the quay; a short freight train of container wagons along the quay and out through the right edge; a felt road out through the bottom edge. Zholdas on the grass slope with a brown felt clipboard and a red pencil, looking at the viewer. No helmet, no text, no logos, no flags.",
    "settings": {
     "model": "gpt_image_2_6",
     "quality": "high",
@@ -361,8 +361,11 @@
     "background": "transparent",
     "medias": "both references as image_references"
    },
-   "processing": "scaled to 80% (85% on the dark slide) and anchored to the bottom-right of a 1920x1080 transparent canvas; kept in the deck's asset store",
-   "replaced": "799953cb-0133-4d83-916b-cf1b8299588e"
+   "processing": "scaled to 80% of 1920 wide and anchored to the bottom-right of a 1920x1080 transparent canvas; kept in the deck's asset store as corner3-cover.webp",
+   "replaced": [
+    "799953cb-0133-4d83-916b-cf1b8299588e",
+    "9d0418e9-7057-40ff-907e-a7cd7e47ad82"
+   ]
   },
   {
    "name": "deck-holdback",

@@ -48,6 +48,18 @@ NEWS_QUERIES = [
     ("de", "Brenner Sperre Lkw"),
     ("en", "truck drivers strike Europe"),
     ("en", "Brenner pass trucks blockade"),
+    # not only trucks: rail, ports, ferries and air cargo stop freight too (owner, 8 and 12 Nov 2026)
+    ("it", "sciopero ferrovie merci"),
+    ("it", "sciopero porti portuali"),
+    ("it", "sciopero traghetti"),
+    ("it", "sciopero cargo aereo"),
+    ("fr", "grève SNCF fret"),
+    ("fr", "grève dockers ports"),
+    ("de", "Bahnstreik Güterverkehr"),
+    ("de", "Hafen Streik"),
+    ("en", "rail freight strike Europe"),
+    ("en", "port strike Europe dockers"),
+    ("en", "air cargo strike Europe"),
 ]
 GNEWS_LOCALE = {"it": ("it", "IT", "IT:it"), "fr": ("fr", "FR", "FR:fr"), "de": ("de", "AT", "AT:de"),
                 "en": ("en-GB", "GB", "GB:en")}

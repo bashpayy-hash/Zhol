@@ -23,7 +23,11 @@ FREIGHT = re.compile(
     r"\btir\b|camion|autotrasport|mezzi pesanti|trasporto merci|logistic|lkw|güterverkehr|frächter|"
     r"poids lourds|routiers|transporteurs|truck|haulier|freight|brennero|brenner|kufstein|fréjus|frejus|"
     r"monte bianco|mont-blanc|mont blanc|gottardo|gotthard|a22\b|a13\b|a12\b|autostrad|autobahn|autoroute|"
-    r"valico|frontiera|traghett|stretto di messina|trattori|tracteurs|traktoren|agricoltori|agriculteurs|bauern",
+    r"valico|frontiera|traghett|stretto di messina|trattori|tracteurs|traktoren|agricoltori|agriculteurs|bauern|"
+    # rail, ports, ferries and air cargo (owner, 8 and 12 Nov 2026: all transport, not only trucks)
+    r"ferrovi|treni merci|trasporto ferroviario|merci su rotaia|\bportual|\bporto di\b|\bporti\b|docker|hafen|"
+    r"güterzug|bahnstreik|\bfret\b|cheminot|rail freight|railway|rail strike|port strike|port workers|ferry|fähre|"
+    r"cargo aereo|air cargo|luftfracht",
     re.I)
 EXTRA_KINDS = [("blockade", r"bloqu|blockier|block the|blocking"), ("strike", r"grève|streik|walkout")]
 DISRUPTION = re.compile("|".join(p for _, p in KIND_WORDS + EXTRA_KINDS), re.I)

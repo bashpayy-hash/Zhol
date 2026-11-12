@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s34">
+<link rel="stylesheet" href="/assets/zhol.css?v=s35">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
@@ -67,7 +67,7 @@
 
 <section data-tile data-tile-kicker="Departure planner" data-tile-line="Every departure hour of the next 14 days, and the one that loses least" class="slide" id="when">
   <div class="wrap stack">
-    <h2 class="title">When should my truck leave?</h2>
+    <h2 class="title">When should my load leave by road?</h2>
     <p class="lead">Pick a corridor. Each cell is one departure time over the next 14 days: how much time the truck would lose to bans and dosing as planned, and what zhol would suggest. Click a cell for the details.</p>
     <div class="lanebar">
       <div class="field"><label for="lane">Corridor</label><select id="lane"></select></div>
@@ -112,7 +112,7 @@
         <div class="field"><label for="f-role">Role</label><select id="f-role" name="role"><option>Owner</option><option>Traffic office</option><option>Operations manager</option><option>Forwarder</option><option>Other</option></select></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
         <div class="field"><label for="f-wa">WhatsApp</label><input id="f-wa" name="whatsapp" type="tel" placeholder="+39 …" autocomplete="tel"></div>
-        <div class="field"><label for="f-trucks">Trucks</label><input id="f-trucks" name="trucks" type="number" min="1" step="1"></div>
+        <div class="field"><label for="f-trucks">Vehicles</label><input id="f-trucks" name="trucks" type="number" min="1" step="1"></div>
         <div class="field" style="grid-column:1/-1"><label for="f-lanes">Main lanes and crossings</label><input id="f-lanes" name="lanes" placeholder="e.g. Verona–München via Brennero, Milano–Lyon via Fréjus"></div>
         <div class="field" style="grid-column:1/-1"><label for="f-msg">The last disruption that cost you a day</label><textarea id="f-msg" name="last_disruption"></textarea></div>
       </div>
