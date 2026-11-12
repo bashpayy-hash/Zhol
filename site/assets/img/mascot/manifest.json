@@ -322,6 +322,29 @@
     "aa4d6e49-e392-4592-bd0b-2590c92bc1d0": "standing in the queue, ticking the trucks off on a clipboard",
     "2b40aa19-1bf2-4d1e-ad9c-8118d3cd1ef8": "lifting a border barrier to let the next truck through"
    }
+  },
+  {
+   "name": "report-scene",
+   "files": [
+    "report-scene-1400.webp",
+    "report-scene-800.webp"
+   ],
+   "where": "the first screen of /report and /it/segnala, a scene on the ground instead of a floating figure (owner, 12 Nov 2026: «жолдас здесь просто летает в воздухе и очень awkward, сделай другую иллюстрацию которая тоже заигрывает с пространством»)",
+   "higgsfield_image_job": "2790b82c-b5cf-49bb-9a24-1cde65b572d4",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, open happy smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A three-dimensional toy diorama on a rounded felt island: a grey felt road curves from the front to the back, where it disappears into a mountain tunnel portal; a long queue of small toy European trucks stands bumper to bumper along the curve, sage-green and brick-red felt cabs with plain cream box trailers. Zholdas stands on the roof of the nearest truck cab in the queue, sitting high above the jam, talking into a chunky brown felt walkie-talkie and waving with the other mitten, as if reporting the queue. A small felt traffic cone on the roadside and felt shrubs. Toy scale: the trucks are about as tall as he is. Soft warm daylight studio light, gentle contact shadows, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "quality": "high",
+    "resolution": "2k",
+    "aspect_ratio": "4:3",
+    "background": "transparent",
+    "medias": "both references as image_references"
+   },
+   "processing": "trimmed transparent margins, 1400 and 800 wide, WebP q82, alpha q90",
+   "alternatives_not_used": {
+    "1577ca58-c75d-4492-b4fd-0d909ab875e2": "on a hilltop by a radio mast, pointing at trucks stopped at a closed tunnel",
+    "4de103c7-7d9f-4d94-9b56-7c344f0670f7": "sitting on a crate by a radio set at a border, writing a note"
+   }
   }
  ]
 }
