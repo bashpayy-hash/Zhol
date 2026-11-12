@@ -126,3 +126,22 @@ def test_every_reminder_follows_the_same_principles():
                    + "&body=" + enc(m))
             assert len(url) <= 4000, (r["id"], len(url))
     assert n > 300
+
+
+def test_introduction_letters_follow_the_same_principles():
+    """The professors' introductions (owner, 12 Nov 2026): the same rules as every letter, one survey link each."""
+    md = (ROOT / "outreach" / "15-professor-intros.md").read_text(encoding="utf-8")
+    letters = md.split("\n## 1 ·", 1)[1]
+    assert not NAMES.search(md)
+    for line in letters.split("\n"):
+        if line.startswith(("**", "#", "|")):
+            continue
+        assert ":" not in _text(line), line
+    for block in letters.split("\n---"):
+        assert "My team and I" in block and "Io e il mio team" in block
+        for must in ("TEF Ignition 2026", "€2,000", "2.000 €", "AI platform", "intelligenza artificiale", "Europe", "Europa"):
+            assert must in block, must
+        links = [l for l in block.split("\n") if "https://zhol.live" in l]
+        assert len(links) == 1 and "/it/sondaggio?src=intro-" in links[0], links
+        subject = next(l for l in block.split("\n") if l.startswith("**Subject:**"))[len("**Subject:** "):]
+        assert len(subject.split()) <= 10, subject
