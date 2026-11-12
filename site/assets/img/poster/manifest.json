@@ -1,0 +1,65 @@
+{
+ "what": "Grainy photographs for the posters on Story, Audience and Beta (owner, 12 Nov 2026, Boxer Shorts reference) and the photo in the home finale card. The grain on top is a CSS noise layer.",
+ "images": [
+  {
+   "files": [
+    "pass-1200.webp",
+    "pass-700.webp"
+   ],
+   "where": "the finale card on the home page",
+   "higgsfield_image_job": "d646935f-9475-40b0-842e-bd5cc81f45c4",
+   "prompt": "Photorealistic golden-hour photograph of an Alpine mountain pass road winding up a green valley towards high peaks, an old stone viaduct, two small European trucks far away on the road, warm low sun, soft haze, detailed and calm, like a classic landscape painting turned photograph. No text, no signs, no logos, no people close up.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "4:3",
+    "quality": "high",
+    "resolution": "2k"
+   }
+  },
+  {
+   "files": [
+    "sky-2000.webp",
+    "sky-1000.webp"
+   ],
+   "where": "the poster on Story",
+   "higgsfield_image_job": "5be4fd58-902d-4332-901c-2446083582c6",
+   "prompt": "Grainy analog film photograph of a soft daytime sky full of large cumulus clouds over a low line of distant Alpine ridges at the very bottom edge, pale blue and warm cream tones, heavy visible film grain and slight halation, calm and airy, lots of empty sky in the middle for a headline. No text, no birds, no planes, nothing else.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "16:9",
+    "quality": "high",
+    "resolution": "2k"
+   }
+  },
+  {
+   "files": [
+    "plain-2000.webp",
+    "plain-1000.webp"
+   ],
+   "where": "the poster on Audience",
+   "higgsfield_image_job": "b23b4603-d69e-4b3d-91ad-45d8bd6aa042",
+   "prompt": "Grainy analog aerial film photograph looking straight down on a misty plain at dawn: patchwork fields, rows of poplars and one long straight motorway crossing diagonally with a few tiny trucks, muted sage green, cream and soft brown tones, heavy visible film grain, quiet and textured, large calm areas. No text, no signs, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "16:9",
+    "quality": "high",
+    "resolution": "2k"
+   }
+  },
+  {
+   "files": [
+    "dusk-2000.webp",
+    "dusk-1000.webp"
+   ],
+   "where": "the poster on Beta",
+   "higgsfield_image_job": "56cc7269-e947-466e-a1ff-0637ff5e7f46",
+   "prompt": "Grainy analog film photograph of an evening sky at dusk above a dark mountain pass silhouette at the bottom edge, smooth gradient from deep blue at the top to warm apricot near the horizon, a few first stars, soft clouds, heavy visible film grain and slight halation, calm, lots of empty sky for a headline. No text, no planes, nothing else.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "16:9",
+    "quality": "high",
+    "resolution": "2k"
+   }
+  }
+ ]
+}

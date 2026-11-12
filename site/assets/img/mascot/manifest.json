@@ -299,6 +299,29 @@
      "sha256": "a8bae6f27e8b03a7e99c1ceb153735c2646fe8e38bded517ca9edb8f6c07c7dc"
     }
    ]
+  },
+  {
+   "name": "giant",
+   "files": [
+    "giant-1600.webp",
+    "giant-900.webp"
+   ],
+   "where": "the finale of the home page (EN and IT), a scene across the page (owner, 12 Nov 2026: Renaissance reference, then «из траков длинная цепочка из траков... Жолдас среди них»)",
+   "higgsfield_image_job": "a1b3f7df-551f-4b34-a5f7-4ff5cded4d07",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, focused smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A wide three-dimensional toy diorama: a winding felt road with a long line of small toy European trucks curving across the whole frame, sage-green and brick-red felt cabs with plain cream box trailers. In the middle Zholdas gently pushes one truck forward with both mittens to move it into the free lane, like rearranging a traffic jam, a small felt traffic cone beside him. Toy scale: the trucks are about as tall as he is. Soft warm daylight studio light, gentle contact shadows, isolated on a transparent background. No helmet, no text, no letters, no numbers, no logos, no license plates, no other characters.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "quality": "high",
+    "resolution": "2k",
+    "aspect_ratio": "21:9",
+    "background": "transparent",
+    "medias": "both references as image_references"
+   },
+   "processing": "trimmed transparent margins, 1600x676 and 900x380, WebP q82, alpha q90",
+   "alternatives_not_used": {
+    "aa4d6e49-e392-4592-bd0b-2590c92bc1d0": "standing in the queue, ticking the trucks off on a clipboard",
+    "2b40aa19-1bf2-4d1e-ad9c-8118d3cd1ef8": "lifting a border barrier to let the next truck through"
+   }
   }
  ]
 }

@@ -1248,3 +1248,111 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
 @media (prefers-reduced-motion: reduce) { .asst-bubble { transition: none; } }
 /* the language switch on the surveys in German, French and Spanish: EN | DE and so on, the second one current */
 .lang-switch:has(a:last-child[aria-current]) i { transform: translateX(100%); }
+
+/* ===== 12 Nov 2026 · the owner's references: Lamosa (compact blocks, everything visible), Renaissance (the mascot
+   as a monumental scene), Boxer Shorts (a grainy texture with a bold composition). VISION colours and one typeface. */
+
+/* --- compact blocks: icon, a big number, one line in ink, the question underneath; a tap still opens the answer */
+.blocks.tiles-mode.bento { gap: 14px; }
+.blocks.tiles-mode .block.bento-b { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 22px 22px 54px; min-height: 0; border-radius: 26px;
+  background: var(--card); border: 1px solid var(--card-line); box-shadow: 0 1px 0 rgba(53, 43, 40, .03), 0 18px 40px -30px rgba(53, 43, 40, .35); }
+.bento-ic { order: 0; display: grid; place-items: center; width: 60px; height: 60px; border-radius: 18px; margin-bottom: 14px;
+  background: radial-gradient(circle at 50% 35%, #5c463a 0%, var(--espresso) 70%); box-shadow: 0 10px 22px -12px rgba(30, 22, 18, .7); }
+.bento-ic img { width: 46px; height: 46px; object-fit: contain; }
+.block.bento-b > .kicker { order: 1; font-size: 12.5px; }
+.bento-num { order: 2; margin: 2px 0 0; font-size: clamp(30px, 3vw, 40px); line-height: 1; font-weight: 650; letter-spacing: -0.035em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.blocks.tiles-mode .block.bento-b .block-line { order: 3; margin: 4px 0 0; font-size: 16px; line-height: 1.35; font-weight: 500; color: var(--ink); }
+.blocks.tiles-mode .block.bento-b h2 { order: 4; margin-top: 6px; font-size: 14px; line-height: 1.4; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+.blocks.tiles-mode .block.bento-b .block-q { min-height: 44px; align-items: center; color: inherit; font-weight: inherit; text-align: left; }
+.block.bento-b:hover .bento-ic { transform: translateY(-2px) rotate(-3deg); }
+.bento-ic { transition: transform var(--dur-card) var(--ease); }
+/* the card that asks, with a halftone texture (Lamosa's "Let's start building") */
+.bento-cta { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; padding: 24px; border-radius: 26px; position: relative; overflow: hidden;
+  background: var(--sage-card); border: 1px solid #c4d2bd; min-height: 220px; }
+.bento-cta::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+  background-image: radial-gradient(rgba(47, 95, 69, .55) 1.1px, transparent 1.3px); background-size: 9px 9px;
+  -webkit-mask-image: radial-gradient(120% 90% at 100% 100%, #000 10%, transparent 60%); mask-image: radial-gradient(120% 90% at 100% 100%, #000 10%, transparent 60%); }
+.bento-cta h3 { font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); position: relative; }
+.bento-cta p { margin: 8px 0 0; font-size: 15px; color: var(--ink-2); position: relative; max-width: 30ch; }
+.bento-cta .btn { align-self: flex-end; position: relative; }
+/* recognition: the big number and the badges (Lamosa's awards card) */
+.bento-wide { grid-column: span 3; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 20px 28px; align-items: end; padding: 24px; border-radius: 26px;
+  background: var(--card); border: 1px solid var(--card-line); box-shadow: 0 18px 40px -30px rgba(53, 43, 40, .35); }
+.bento-wide .bento-ic { margin-bottom: 18px; }
+.bento-wide .bento-num { font-size: clamp(34px, 3.4vw, 46px); }
+.bento-wide .cap { margin: 6px 0 0; font-size: 16px; font-weight: 500; color: var(--ink); }
+.badges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.badges li { display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border-radius: 999px; background: var(--paper); border: 1px solid var(--card-line); }
+.badges img { width: 34px; height: 34px; flex: none; }
+.badges b { display: block; font-size: 14px; color: var(--ink); font-weight: 600; line-height: 1.2; }
+.badges span { font-size: 12.5px; color: var(--muted); line-height: 1.2; }
+@media (max-width: 920px) { .bento-wide { grid-column: 1 / -1; } }
+@media (max-width: 560px) {
+  .blocks.tiles-mode.bento { grid-template-columns: minmax(0, 1fr) !important; gap: 12px; }
+  .blocks.tiles-mode .block.bento-b { padding: 18px 18px 48px; display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 14px; row-gap: 4px; align-items: start; }
+  .blocks.tiles-mode .block.bento-b > * { grid-column: 2; }
+  .blocks.tiles-mode .block.bento-b > .bento-ic { grid-column: 1; grid-row: 1 / span 4; width: 52px; height: 52px; border-radius: 15px; margin: 0; }
+  .bento-ic img { width: 40px; height: 40px; }
+  .bento-num { font-size: 30px; }
+  .blocks.tiles-mode .block.bento-b .block-line { font-size: 15px; }
+  .tiles .tile:not(.wide) .kicker, .blocks.tiles-mode .block.bento-b > .kicker { min-height: 0; }
+  .bento-wide { grid-template-columns: minmax(0, 1fr); }
+  .badges { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- the poster: a grainy photograph, a bold title, the names on an arc, one card and one pill (Boxer Shorts) */
+.poster-hero { padding-top: 24px; }
+.poster { position: relative; isolation: isolate; overflow: hidden; border-radius: 30px; min-height: clamp(520px, 70vh, 720px); display: grid; place-items: center; text-align: center; padding: 52px 24px 150px; color: var(--ink); }
+.poster-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); }
+.poster::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+.poster-text { position: relative; z-index: 1; max-width: 980px; }
+.poster-small { display: block; font-size: clamp(18px, 2vw, 26px); font-style: italic; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 6px; }
+.poster-title { margin: 0; font-size: clamp(48px, 9.4vw, 132px); line-height: .9; font-weight: 700; letter-spacing: -0.055em; color: var(--red); text-wrap: balance; }
+.poster-sub { display: block; margin: 18px auto 0; max-width: 34ch; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.4; font-weight: 500; }
+.poster-seal { position: absolute; left: 14px; bottom: -26px; z-index: 1; width: clamp(220px, 21vw, 290px); aspect-ratio: 1; display: grid; place-items: center; }
+.poster-arc { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.poster-arc text { font: 600 15px var(--font-sans); fill: currentColor; opacity: .85; }
+.poster-card { position: absolute; right: 22px; bottom: 22px; z-index: 1; width: min(330px, 46%); text-align: left; padding: 14px 16px; border-radius: 18px;
+  background: rgba(251, 249, 243, .92); color: var(--ink-2); box-shadow: 0 18px 40px -24px rgba(30, 22, 18, .6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.poster-card .kicker { font-size: 12px; }
+.poster-card p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.4; color: var(--ink); }
+.poster-pill { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 18px; border-radius: 999px;
+  background: var(--paper); color: var(--ink); font-size: 14px; font-weight: 600; box-shadow: 0 10px 26px -16px rgba(30, 22, 18, .6); }
+.poster-pill:hover { text-decoration: none; background: #fff; }
+.poster.on-dark { color: var(--on-dark); }
+.poster.on-dark .poster-title { color: #f6d7a8; }
+.poster.on-dark .poster-arc text { fill: #f3c79a; }
+.poster-below { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 20px 48px; align-items: end; padding-top: 34px; }
+.poster-below .lead { margin: 0; }
+@media (max-width: 760px) {
+  /* on a phone the card and the seal follow the title, so nothing ever lies over the words */
+  .poster { min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 44px 16px 18px; border-radius: 24px; }
+  .poster-card { position: relative; right: auto; bottom: auto; width: 100%; }
+  .poster-seal { position: relative; left: auto; bottom: auto; width: 228px; }
+  .poster-below { grid-template-columns: minmax(0, 1fr); padding-top: 24px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .poster-bg { animation: poster-drift 40s ease-in-out infinite alternate; }
+  .poster-arc { animation: poster-turn 90s linear infinite; }
+  @keyframes poster-turn { to { transform: rotate(360deg); } }
+  @keyframes poster-drift { from { transform: scale(1.04) translate(0, 0); } to { transform: scale(1.09) translate(-1.5%, -1%); } }
+}
+
+/* --- the finale: a card with a photograph, and the mascot as a scene across the page (Renaissance) */
+.finale { padding-block: 72px 0; overflow: hidden; }
+.finale-card { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0;
+  background: var(--card); border: 1px solid var(--card-line); border-radius: 28px; overflow: hidden; box-shadow: 0 30px 60px -40px rgba(30, 22, 18, .45); }
+.finale-text { padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.finale-text h2 { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.12; letter-spacing: -0.025em; color: var(--ink); }
+.finale-photo { margin: 0; min-height: 300px; }
+.finale-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.finale-scene { position: relative; z-index: 2; display: block; width: min(1320px, 112%); max-width: none; height: auto; margin: -44px auto 0; left: 50%; transform: translateX(-50%);
+  filter: drop-shadow(0 30px 30px rgba(53, 43, 40, .18)); }
+@media (max-width: 760px) {
+  .finale { padding-top: 48px; }
+  .finale-card { grid-template-columns: minmax(0, 1fr); }
+  .finale-photo { min-height: 200px; order: -1; }
+  .finale-text { padding: 26px 22px; }
+  .finale-scene { width: 150%; margin-top: 4px; }
+}

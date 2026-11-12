@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s30">
+<link rel="stylesheet" href="/assets/zhol.css?v=s31">
 <link rel="alternate" hreflang="en" href="https://zhol.live/audience">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/audience">
 </head>
@@ -25,15 +25,23 @@
 
 <main>
 <!-- 01 cover -->
-<section class="slide">
-  <div class="wrap split">
-    <div class="stack">
-      <span class="kicker">Audience · Who zhol is for</span>
-      <h1 class="title">The traffic offices on the roads over the Alps</h1>
-      <p class="lead">Owners and dispatchers of Italian hauliers and forwarders with 6 to 100 trucks and weekly lanes to Germany, Austria, Switzerland and France. We start in the provinces marked in red, a day trip from Milan, where every lane crosses a pass, a tunnel or a border.</p>
-      <div class="actions"><a class="btn" href="/beta#join">Is this you? Join the beta</a><a href="#people">Meet the people</a></div>
+<!-- the poster: a grainy photograph and a bold composition (owner, 12 Nov 2026, Boxer Shorts reference) -->
+<section class="slide poster-hero">
+  <div class="wrap">
+    <div class="poster">
+      <img class="poster-bg" src="/assets/img/poster/plain-2000.webp" srcset="/assets/img/poster/plain-1000.webp 1000w, /assets/img/poster/plain-2000.webp 2000w" sizes="(max-width: 1200px) 100vw, 1160px" alt="" width="2000" height="1131" fetchpriority="high">
+      <div class="poster-text"><span class="poster-small">The traffic offices on the roads</span><h1 class="poster-title">over the Alps</h1><span class="poster-sub">where every lane crosses a pass, a tunnel or a border</span></div>
+      <div class="poster-card"><span class="kicker">Registered</span><p>98,277 hauliers in the national register. We start with the first 200 offices.</p></div>
+      <div class="poster-seal"><svg class="poster-arc" viewBox="0 0 320 320" aria-hidden="true"><defs><path id="arc-audience" d="M 20 160 A 140 140 0 1 1 300 160 A 140 140 0 1 1 20 160"/></defs><text textLength="874" lengthAdjust="spacing" style="font-size:16.3px"><textPath href="#arc-audience">Milano · Bergamo · Brescia · Verona · Trento · Bolzano · Vicenza · Padova · Treviso · Modena · Torino · Cuneo · </textPath></text></svg><a class="poster-pill" href="/beta#join">Join the beta</a></div>
     </div>
-    <figure class="illus" style="margin:0"><img src="/assets/img/audience-map.svg" alt="Halftone map of Northern Italy and the Alps: twelve starting provinces in red, the main lanes to München, Stuttgart, Zürich, Wien and Lyon in black, and the crossings Brenner, Kufstein, Gotthard, San Bernardino, Mont Blanc, Fréjus and Tarvisio as red warning triangles" width="900" height="640"></figure>
+    <div class="poster-below">
+      <div class="stack" style="gap:18px">
+      <p class="lead">Owners and dispatchers of Italian hauliers and forwarders with 6 to 100 trucks and weekly lanes to Germany, Austria, Switzerland and France. We start in the provinces marked in red, a day trip from Milan.</p>
+      <div class="actions"><a class="btn" href="/beta#join">Is this you? Join the beta</a><a href="#people">Meet the people</a></div>
+    
+      </div>
+      <figure class="illus poster-map" style="margin:0"><img src="/assets/img/audience-map.svg" alt="Halftone map of Northern Italy and the Alps: twelve starting provinces in red, the main lanes to München, Stuttgart, Zürich, Wien and Lyon in black, and the crossings Brenner, Kufstein, Gotthard, San Bernardino, Mont Blanc, Fréjus and Tarvisio as red warning triangles" width="900" height="640"></figure>
+    </div>
   </div>
   <div class="wrap"><div class="foot"><span>Map drawn from Natural Earth and the corridors in the zhol prototype. Red dots: starting provinces. Triangles: crossings where restrictions concentrate.</span></div></div>
 </section>

@@ -1,0 +1,162 @@
+{
+ "what": "Objects from the world of transport for the compact blocks on the home page (owner, 12 Nov 2026, Lamosa reference). No flat icons (VISION). Every file, its Higgsfield job and exact prompt.",
+ "processing": "trimmed transparent margins, centred in a square with 6% margin, 160x160 WebP q85, alpha q90",
+ "icons": [
+  {
+   "file": "globe.webp",
+   "higgsfield_image_job": "4a6dd2f2-b923-439b-8267-88ca283fd4f6",
+   "prompt": "A small handmade felt and cotton toy object: a tiny globe of Europe on a short stand, soft felt continents in sage green on a cream sea, visible stitches and fine fibers, plush toy craft style, centered, three-quarter view, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "coin.webp",
+   "higgsfield_image_job": "ea87f08c-f528-4b53-a868-37474172270c",
+   "prompt": "A small handmade felt toy object: one thick round coin made of brass-coloured felt with a stitched rim and a blank embossed centre, standing slightly tilted, visible stitches and fine fibers, plush toy craft style, centered, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no symbols, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "ledger.webp",
+   "higgsfield_image_job": "36c1dd05-529d-40e7-af35-15de7080fd59",
+   "prompt": "A small handmade felt toy object: a short stack of three brass-coloured felt coins next to a tiny brick-red felt ledger book with a cream ribbon bookmark, visible stitches and fine fibers, plush toy craft style, centered, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no numbers, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "signpost.webp",
+   "higgsfield_image_job": "2f5b029d-4558-420a-ba32-574e7ae29c69",
+   "prompt": "A small handmade felt toy object: a wooden signpost with two blank cream felt arrow signs pointing in different directions, on a tiny round grass base, visible stitches and fine fibers, plush toy craft style, centered, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "walkie.webp",
+   "higgsfield_image_job": "edaca7a6-df13-41c9-b054-501225ee414f",
+   "prompt": "A small handmade felt toy object: a chunky walkie-talkie radio made of dark brown felt with a short antenna, a sage-green stitched speaker grille and one brass button, visible stitches and fine fibers, plush toy craft style, centered, three-quarter view, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "clipboard.webp",
+   "higgsfield_image_job": "d9586722-7188-492e-bf14-b3da571e0e26",
+   "prompt": "A small handmade felt toy object: a brown felt clipboard with a brass clip holding a cream felt sheet with three stitched check marks and blank stitched lines, visible stitches and fine fibers, plush toy craft style, centered, slight tilt, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "binoculars.webp",
+   "higgsfield_image_job": "c8c146d5-0546-4803-8407-924f8b376d5d",
+   "prompt": "A small handmade felt toy object: a pair of chunky binoculars made of dark brown felt with brass rings and a cream strap, visible stitches and fine fibers, plush toy craft style, centered, three-quarter view, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "compass.webp",
+   "higgsfield_image_job": "fb24d29e-8e69-4663-b79e-5e958a3073dc",
+   "prompt": "A small handmade felt toy object: a round brass-coloured felt compass with a cream face and a brick-red stitched needle, no markings, visible stitches and fine fibers, plush toy craft style, centered, slight tilt, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "clock.webp",
+   "higgsfield_image_job": "c27e6cb0-2fd3-4f89-813b-e6d56dcdf2ff",
+   "prompt": "A small handmade felt toy object: a round twin-bell alarm clock made of brick-red felt with a cream face and two brass bells, blank face with only two stitched hands, a tiny felt crescent moon leaning on it, visible stitches and fine fibers, plush toy craft style, centered, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no numbers, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "cone.webp",
+   "higgsfield_image_job": "33531d8d-2c66-40f0-bc23-8b5db076fd51",
+   "prompt": "A small handmade felt toy object: an orange-red felt traffic cone with two cream reflective stripes on a square base, visible stitches and fine fibers, plush toy craft style, centered, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "pins.webp",
+   "higgsfield_image_job": "60ce13e1-7eed-4c3d-abb2-b7ce793abab2",
+   "prompt": "A small handmade felt toy object: three small felt map pins standing in a row on a tiny folded cream felt map, the pins brick red, sage green and brass, visible stitches and fine fibers, plush toy craft style, centered, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "truck.webp",
+   "higgsfield_image_job": "68de32d5-399e-4fbb-a2c9-53889f6571b5",
+   "prompt": "A small handmade felt toy object: a little European truck made of felt, sage-green cab with a plain cream box trailer, round dark felt wheels, visible stitches and fine fibers, plush toy craft style, centered, three-quarter view, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no numbers, no logos, no license plates.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  },
+  {
+   "file": "medal.webp",
+   "higgsfield_image_job": "d57948aa-5c28-46de-b96e-dfb37e3c7c3f",
+   "prompt": "A small handmade felt toy object: a round brass-coloured felt medal with a cream centre and a short brick-red felt ribbon, no markings, visible stitches and fine fibers, plush toy craft style, centered, slight tilt, soft studio light, gentle contact shadow, isolated on a transparent background. No text, no letters, no numbers, no logos.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "aspect_ratio": "1:1",
+    "quality": "medium",
+    "resolution": "1k",
+    "background": "transparent"
+   }
+  }
+ ]
+}

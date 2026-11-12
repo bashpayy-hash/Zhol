@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s30">
+<link rel="stylesheet" href="/assets/zhol.css?v=s31">
 <link rel="alternate" hreflang="en" href="https://zhol.live/audience">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/audience">
 </head>
@@ -25,15 +25,23 @@
 
 <main>
 <!-- 01 cover -->
-<section class="slide">
-  <div class="wrap split">
-    <div class="stack">
-      <span class="kicker">Clienti · Per chi è zhol</span>
-      <h1 class="title">Gli uffici traffico sulle strade che attraversano le Alpi</h1>
-      <p class="lead">Titolari e traffichisti di autotrasportatori e spedizionieri italiani con 6-100 camion e tratte settimanali verso Germania, Austria, Svizzera e Francia. Partiamo dalle province segnate in rosso, raggiungibili in giornata da Milano, dove ogni tratta attraversa un valico, un tunnel o un confine.</p>
-      <div class="actions"><a class="btn" href="/it/beta#join">Vi riconoscete? Partecipate alla beta</a><a href="#people">Conosci le persone</a></div>
+<!-- the poster: a grainy photograph and a bold composition (owner, 12 Nov 2026, Boxer Shorts reference) -->
+<section class="slide poster-hero">
+  <div class="wrap">
+    <div class="poster">
+      <img class="poster-bg" src="/assets/img/poster/plain-2000.webp" srcset="/assets/img/poster/plain-1000.webp 1000w, /assets/img/poster/plain-2000.webp 2000w" sizes="(max-width: 1200px) 100vw, 1160px" alt="" width="2000" height="1131" fetchpriority="high">
+      <div class="poster-text"><span class="poster-small">Gli uffici traffico sulle strade</span><h1 class="poster-title">oltre le Alpi</h1><span class="poster-sub">dove ogni tratta attraversa un valico, un tunnel o un confine</span></div>
+      <div class="poster-card"><span class="kicker">Iscritti</span><p>98.277 imprese di autotrasporto all’Albo nazionale. Partiamo dai primi 200 uffici.</p></div>
+      <div class="poster-seal"><svg class="poster-arc" viewBox="0 0 320 320" aria-hidden="true"><defs><path id="arc-audience-it" d="M 20 160 A 140 140 0 1 1 300 160 A 140 140 0 1 1 20 160"/></defs><text textLength="874" lengthAdjust="spacing" style="font-size:16.3px"><textPath href="#arc-audience-it">Milano · Bergamo · Brescia · Verona · Trento · Bolzano · Vicenza · Padova · Treviso · Modena · Torino · Cuneo · </textPath></text></svg><a class="poster-pill" href="/it/beta#join">Partecipa alla beta</a></div>
     </div>
-    <figure class="illus" style="margin:0"><img src="/assets/img/audience-map.svg" alt="Mappa a retino del Nord Italia e delle Alpi: dodici province di partenza in rosso, le tratte principali verso München, Stuttgart, Zürich, Wien e Lyon in nero, e i valichi di Brennero, Kufstein, Gottardo, San Bernardino, Monte Bianco, Fréjus e Tarvisio come triangoli rossi di pericolo" width="900" height="640"></figure>
+    <div class="poster-below">
+      <div class="stack" style="gap:18px">
+      <p class="lead">Titolari e traffichisti di autotrasportatori e spedizionieri italiani con 6-100 camion e tratte settimanali verso Germania, Austria, Svizzera e Francia. Partiamo dalle province segnate in rosso, raggiungibili in giornata da Milano.</p>
+      <div class="actions"><a class="btn" href="/it/beta#join">Vi riconoscete? Partecipate alla beta</a><a href="#people">Conosci le persone</a></div>
+    
+      </div>
+      <figure class="illus poster-map" style="margin:0"><img src="/assets/img/audience-map.svg" alt="Mappa a retino del Nord Italia e delle Alpi: dodici province di partenza in rosso, le tratte principali verso München, Stuttgart, Zürich, Wien e Lyon in nero, e i valichi di Brennero, Kufstein, Gottardo, San Bernardino, Monte Bianco, Fréjus e Tarvisio come triangoli rossi di pericolo" width="900" height="640"></figure>
+    </div>
   </div>
   <div class="wrap"><div class="foot"><span>Mappa realizzata con Natural Earth e i corridoi del prototipo zhol. Punti rossi: province di partenza. Triangoli: valichi dove si concentrano le restrizioni.</span></div></div>
 </section>

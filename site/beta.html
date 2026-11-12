@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s30">
+<link rel="stylesheet" href="/assets/zhol.css?v=s31">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
@@ -24,17 +24,26 @@
 </div></header>
 
 <main>
-<section class="slide">
-  <div class="wrap split">
-    <div class="stack">
-      <span class="kicker">Beta · for traffic offices with lanes over the Alps</span>
-      <h1 class="title">Tomorrow’s loads, <span class="ans">checked against real rules</span></h1>
+<!-- the poster: a grainy photograph and a bold composition (owner, 12 Nov 2026, Boxer Shorts reference) -->
+<section class="slide poster-hero">
+  <div class="wrap">
+    <div class="poster on-dark">
+      <img class="poster-bg" src="/assets/img/poster/dusk-2000.webp" srcset="/assets/img/poster/dusk-1000.webp 1000w, /assets/img/poster/dusk-2000.webp 2000w" sizes="(max-width: 1200px) 100vw, 1160px" alt="" width="2000" height="1131" fetchpriority="high">
+      <div class="poster-text"><span class="poster-small">Tomorrow’s loads,</span><h1 class="poster-title">checked tonight</h1><span class="poster-sub">at 17:30 and again at 20:00, against the rules in force tomorrow</span></div>
+      <div class="poster-card"><span class="kicker">Only when it matters</span><p>One WhatsApp message, only when a load is hit, with the options and what each costs.</p></div>
+      <div class="poster-seal"><svg class="poster-arc" viewBox="0 0 320 320" aria-hidden="true"><defs><path id="arc-beta" d="M 20 160 A 140 140 0 1 1 300 160 A 140 140 0 1 1 20 160"/></defs><text textLength="874" lengthAdjust="spacing" style="font-size:16.8px"><textPath href="#arc-beta">16:00 loads in · 17:30 first check · 20:00 second check · one WhatsApp message · only when a load is hit · </textPath></text></svg><a class="poster-pill" href="#join">Join the beta</a></div>
+    </div>
+    <div class="poster-below">
+      <div class="stack" style="gap:18px">
       <p class="lead">Everything on this page is computed by the zhol engine from the official truck bans of seven countries and the official Tyrol dosing calendar. Loads are samples; the rules are real.</p>
       <p class="small muted" id="built">Data built from the engine on every deploy.</p>
       <div class="actions"><a class="btn" href="#join">Join the beta</a><a href="#when">Check a corridor</a></div>
+    
+      </div>
+      
     </div>
-    <div class="illus"><img src="/assets/img/map-route.webp" alt="Illustration: a folded map of Europe with a route, a warning triangle and a truck" width="1400" height="863"></div>
   </div>
+  
 </section>
 
 <section data-tile data-tile-line="Tonight’s sample loads, checked, and the WhatsApp alert they produce" class="slide sage" id="evening">
