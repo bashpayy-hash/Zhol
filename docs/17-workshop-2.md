@@ -61,3 +61,23 @@ eight work in road haulage, and no company has answered.
   restriction days.
 - **Stop rule unchanged.** If the offices' own answers miss the thresholds in `docs/10-feedback-round-2.md`, we narrow
   or move segment, as written there.
+
+## 5. Projection from the experts' answers onto offices (owner, 12 Nov 2026)
+
+The PDF deck `docs/workshop-2/zhol-early-signals.pdf` carries it on slides 6 and 7. The reference office is from
+`docs/03-business-model.md`: 20 trucks, half on lanes abroad, 20 one-way trips each, so 200 legs a month. An
+evening warning avoids half of the cost. Expert buckets are read at their midpoints, and "over €1,000" is read
+as €1,500.
+
+| Case | Changed per 100 legs | Cost each | Avoidable a month | Against the €240 subscription |
+|---|---|---|---|---|
+| Conservative (the lowest the experts gave) | 2 | €300 | €600 | 2.5× |
+| Our model (docs/03) | 4 | €300 (3 h × €100) | €1,200 | 5× |
+| The experts' median | 5.5 | €650 | €3,575 | ≈15× |
+
+Across ≈2,350 offices (range 1,170–3,500), the cost a warning could avoid is €17M a year in the conservative case,
+€34M in our model and €101M at the experts' median. The subscription pool at €8–12 per truck, with 20 trucks per
+office, is €4.5–6.8M a year. **Price check.** The experts' median fair price is €5–10, so the €8 founding price fits
+and the €12 standard price goes to the interviews.
+
+This is a projection: every input except the experts' answers is our assumption, and no office has measured it.
