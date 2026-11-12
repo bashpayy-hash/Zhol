@@ -64,7 +64,7 @@ eight work in road haulage, and no company has answered.
 
 ## 5. Projection from the experts' answers onto offices (owner, 12 Nov 2026)
 
-The PDF deck `docs/workshop-2/zhol-early-signals.pdf` carries it on slides 6 and 7. The reference office is from
+The PDF deck (sent to the owner as a file, not kept in the repository) carries it on slides 6 and 7. The reference office is from
 `docs/03-business-model.md`: 20 trucks, half on lanes abroad, 20 one-way trips each, so 200 legs a month. An
 evening warning avoids half of the cost. Expert buckets are read at their midpoints, and "over €1,000" is read
 as €1,500.
