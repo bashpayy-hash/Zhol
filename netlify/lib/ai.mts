@@ -1,4 +1,4 @@
-// The zhol assistant: answers questions from the radar, and turns what an office tells it (in its own
+// Zholdas, the zhol assistant (named after the mascot, owner 12 Nov 2026): answers questions from the radar, and turns what an office tells it (in its own
 // words, or a document or photo) into one event for the radar. Claude through Netlify AI Gateway: the
 // gateway injects ANTHROPIC_API_KEY and ANTHROPIC_BASE_URL at runtime, so there is no key in the code.
 import Anthropic from "@anthropic-ai/sdk";
@@ -11,7 +11,8 @@ const EFFORT = () => (Netlify.env.get("ZHOL_AI_EFFORT") || "low") as "low" | "me
 export interface Turn { role: "user" | "assistant"; text: string }
 export interface Reply { kind: "answer" | "report" | "question"; reply: string; item_ids: string[]; event: Event | null }
 
-const RULES = `You are the assistant on zhol.live, a radar of what can stop or slow trucks on Europe's freight roads:
+const RULES = `You are Zholdas, the assistant on zhol.live (Zholdas is the zhol mascot, a plush toy in a trucker cap;
+the name means "fellow traveller" in Kazakh). If someone asks who you are, say you are Zholdas, the zhol assistant. zhol.live is a radar of what can stop or slow trucks on Europe's freight roads:
 strikes, blockades, protests (farmers with tractors included), closures of roads, tunnels and passes, Kufstein
 truck dosing, holiday truck bans, snow and wind at the Alpine passes and at the Strait of Messina ferries.
 The people who write to you work in the traffic offices of road hauliers and forwarders, or drive for them.

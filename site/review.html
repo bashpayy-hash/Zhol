@@ -75,7 +75,7 @@
   function draw() {
     const on = $("on"); on.textContent = "";
     const s = data.switched_on;
-    [["Помощник (Claude через Netlify)", s.assistant], ["WhatsApp: отправка", s.whatsapp], ["WhatsApp: ваш номер для уведомлений", s.reviewer],
+    [["Жолдас, помощник (Claude через Netlify)", s.assistant], ["WhatsApp: отправка", s.whatsapp], ["WhatsApp: ваш номер для уведомлений", s.reviewer],
      ["WhatsApp: входящие (вебхук)", s.webhook], ["Шаблон рассылки", !!s.templates.alert]].forEach(([t, ok]) => on.append(el("span", "chip " + (ok ? "ok" : "no"), (ok ? "✓ " : "✗ ") + t)));
     on.append(el("span", "chip", "модель: " + s.model));
     $("subs").textContent = "Подписаны на рассылку: " + data.subscribers.total + " (на все маршруты: " + data.subscribers.every_route + ")";

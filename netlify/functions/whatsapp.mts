@@ -44,8 +44,8 @@ async function handle(m: Inbound, req: Request) {
     return;
   }
   if (!aiLive()) {
-    await sendText(m.from, T("zhol · thank you. Our assistant is offline right now: please tell us at zhol.live/report.",
-                             "zhol · grazie. Il nostro assistente ora non è attivo: segnalatelo su zhol.live/it/segnala."), "reply");
+    await sendText(m.from, T("zhol · thank you. Zholdas, our assistant, is offline right now: please tell us at zhol.live/report.",
+                             "zhol · grazie. Zholdas, il nostro assistente, ora non è attivo: segnalatelo su zhol.live/it/segnala."), "reply");
     return;
   }
   let file = null;

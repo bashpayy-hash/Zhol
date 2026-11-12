@@ -1,5 +1,5 @@
-/* zhol assistant: ask the radar, or tell it what you see (words, a document, a photo).
-   Two places: inline on /report (data-assistant="report"), and behind an "Ask zhol" button on the radar
+/* Zholdas, the zhol assistant (owner, 12 Nov 2026: the assistant is called Zholdas): ask the radar, or tell it what you see (words, a document, a photo).
+   Two places: inline on /report (data-assistant="report"), and behind an "Ask Zholdas" button on the radar
    (data-assistant-launcher). Everything the assistant or a person writes is inserted as text, never as HTML. */
 (function () {
   const IT = document.documentElement.lang === "it";
@@ -49,10 +49,10 @@
 
     const thread = el("div", "asst-thread"); thread.setAttribute("aria-live", "polite");
     const hello = mode === "report"
-      ? T("Tell me what you see or heard, in your own words: a queue, a closure, a strike notice. You can also attach the document or a photo.",
-          "Ditemi cosa vedete o avete sentito, con parole vostre: una coda, una chiusura, un avviso di sciopero. Potete anche allegare il documento o una foto.")
-      : T("Ask me what is coming on your route, or tell me something you see on the road.",
-          "Chiedetemi cosa arriva sulla vostra tratta, o raccontatemi qualcosa che vedete sulla strada.");
+      ? T("I am Zholdas. Tell me what you see or heard, in your own words: a queue, a closure, a strike notice. You can also attach the document or a photo.",
+          "Sono Zholdas. Ditemi cosa vedete o avete sentito, con parole vostre: una coda, una chiusura, un avviso di sciopero. Potete anche allegare il documento o una foto.")
+      : T("I am Zholdas. Ask me what is coming on your route, or tell me something you see on the road.",
+          "Sono Zholdas. Chiedetemi cosa arriva sulla vostra tratta, o raccontatemi qualcosa che vedete sulla strada.");
     thread.append(bubble("bot", hello));
 
     const form = el("form", "asst-compose");
@@ -119,7 +119,7 @@
       busy = false; send.disabled = false;
       if (!res.ok) {
         turns.pop();
-        if (data.error === "assistant_off") { thread.append(bubble("bot", T("The assistant is off right now. You can still send it: fill in these three lines.", "L’assistente ora non è attivo. Potete comunque inviarlo: compilate queste tre righe."), manual(text))); }
+        if (data.error === "assistant_off") { thread.append(bubble("bot", T("Zholdas is off right now. You can still send it: fill in these three lines.", "Zholdas ora non è attivo. Potete comunque inviarlo: compilate queste tre righe."), manual(text))); }
         else thread.append(bubble("bot", res.status === 429 ? T("Too many messages in a minute. Wait a moment and try again.", "Troppi messaggi in un minuto. Aspettate un momento e riprovate.")
           : T("Sorry, I could not read that. Try again in a minute.", "Scusate, non sono riuscito a leggerlo. Riprovate tra un minuto.")));
         scroll(); return;
@@ -240,7 +240,7 @@
     if (!sheet) {
       const dlg = el("dialog", "sheet asst-sheet"); dlg.setAttribute("aria-labelledby", "asst-title");
       const bar = el("div", "sheet-bar"), head = el("div", "sheet-head");
-      head.append(el("span", "kicker", T("zhol assistant", "Assistente zhol")), Object.assign(el("h2", "sheet-title", T("Ask the radar, or tell it", "Chiedete al radar, o raccontategli")), { id: "asst-title" }));
+      head.append(el("span", "kicker", T("Zholdas, the zhol assistant", "Zholdas, l’assistente di zhol")), Object.assign(el("h2", "sheet-title", T("Ask the radar, or tell it", "Chiedete al radar, o raccontategli")), { id: "asst-title" }));
       const x = el("button", "sheet-x"); x.type = "button"; x.setAttribute("aria-label", T("Close", "Chiudi")); x.innerHTML = '<span aria-hidden="true">×</span>';
       bar.append(head, x);
       const body = el("div", "sheet-body"); const box = el("div"); body.append(box);
@@ -258,7 +258,7 @@
   // a button inside a block, where a page asks for one
   document.querySelectorAll("[data-assistant-launcher]").forEach(launch => {
     const btn = el("button", "asst-launch"); btn.type = "button";
-    btn.append(face(), el("span", null, T("Ask zhol", "Chiedi a zhol")));
+    btn.append(face(), el("span", null, T("Ask Zholdas", "Chiedi a Zholdas")));
     btn.addEventListener("click", openChat);
     launch.prepend(btn);
   });
@@ -267,8 +267,8 @@
   // so it never sits on what you are reading
   if (!document.querySelector("[data-no-chat]")) {
     const bub = el("button", "asst-bubble"); bub.type = "button";
-    bub.setAttribute("aria-label", T("Ask zhol: the radar assistant", "Chiedi a zhol: l’assistente del radar"));
-    bub.append(face(), el("span", null, T("Ask zhol", "Chiedi a zhol")));
+    bub.setAttribute("aria-label", T("Ask Zholdas, the radar assistant", "Chiedi a Zholdas, l’assistente del radar"));
+    bub.append(face(), el("span", null, T("Ask Zholdas", "Chiedi a Zholdas")));
     bub.addEventListener("click", openChat);
     document.body.append(bub);
     const phone = matchMedia("(max-width: 560px)");
