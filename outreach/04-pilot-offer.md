@@ -64,7 +64,7 @@
 **Success criterion (agreed on day 1):** e.g. ≥ 3 useful alerts and ≥ €500 verified savings in 4 weeks, with fewer than 1 wrong alert in 5.
 
 **After the trial:**
-- founding-customer price of €8 per truck per month for 12 months (then €12), or the performance plan (€49 + 15% of verified savings, capped);
+- founding-customer price of €8 per vehicle per month for 12 months (then €12), or the performance plan (€49 + 15% of verified savings, capped);
 - cancel any time;
 - no commitment if the criterion is not met.
 

@@ -173,3 +173,21 @@ def test_linkedin_messages_follow_the_same_principles():
             if "· EN" not in title:
                 assert "— English version —" in text, title
     assert kinds["Заметка"] == kinds["Письмо"] == kinds["Напоминание"] >= 10, kinds
+
+
+def test_company_offer_letters_follow_the_same_principles():
+    """The offer after the survey (owner, 13 Nov 2026: «предложение о контакте с компаниями»): the same rules as every
+    letter, one link to the beta or the radar, every mode of transport, the price per vehicle, an English version."""
+    md = (ROOT / "outreach" / "17-company-offer.md").read_text(encoding="utf-8")
+    blocks = re.findall(r"^#### (Письмо[^\n]*)\n\n```text\n(.*?)\n```", md, re.S | re.M)
+    assert len(blocks) >= 3
+    for title, text in blocks:
+        assert ":" not in _text(text), (title, _text(text)[max(0, _text(text).find(":") - 40):][:80])
+        assert not NAMES.search(text), title
+        assert "Bocconi" in text and "TEF Ignition 2026" in text, title
+        assert any(g in text for g in ("2.000 €", "2,000", "2 000 €")), title
+        assert "Europ" in text and any(a in text for a in (" AI", " IA", "KI")), title
+        assert "My team and I" in text and "rail" in text and "sea" in text, title
+        assert "— English version —" in text, title
+        assert not re.search(r"per truck|per camion", text, re.I), title
+        assert re.findall(r"https://zhol\.live/(?:it/)?(?:beta|radar)\b", text), title

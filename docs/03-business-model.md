@@ -53,8 +53,8 @@ The jury asked this directly. Our answer: **anchor on savings, sell a simple sub
 |---|---|---|
 | **Pilot** | Free, 4 weeks, with savings ledger | every new office |
 | **Standard** | €12 per truck per month, minimum €99 | default |
-| **Performance** | €49 base + **15% of verified savings**, capped at €25 per truck per month | owners who want to pay for results |
-| **Founding customer** | €8 per truck for 12 months, in exchange for a case study and a reference call | the first 10 offices |
+| **Performance** | €49 base + **15% of verified savings**, capped at €25 per vehicle per month | owners who want to pay for results |
+| **Founding customer** | €8 per vehicle for 12 months, in exchange for a case study and a reference call | the first 10 offices |
 | **API / white-label** (later) | €3–5 per truck per month, wholesale | TMS, telematics, freight exchanges, associations |
 
 **Ledger rules** (what counts as a "verified saving", `zhol/savings.py::ledger`):
