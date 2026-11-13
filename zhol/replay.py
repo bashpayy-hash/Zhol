@@ -10,7 +10,7 @@ What it does:
    (zhol/data/history/*.json, each with a source).
 3. Prices each hit (EUR 100 per truck-hour, lateness, km, tolls), finds the best option, and splits the
    result into PUBLISHED events (in a calendar: plannable for free, never counted as a saving) and
-   UNPLANNED events (the ones an evening alert pays for).
+   UNPLANNED events (the ones an alert in advance pays for).
 4. Writes a report in Italian for the office, with a column for the dispatcher to mark each flag as
    right or wrong: that labelling is our precision measurement.
 
@@ -285,7 +285,7 @@ def render_html(result: dict, company: str, skipped: list[dict] | None = None, e
         lines = "\n\n".join(re.sub(r"\*([^*]+)\*", r"<b>\1</b>", e(r["line_it"])) for r in top_evening[1] if r["line_it"])
         n = len(top_evening[1])
         head = "1 carico di domani ha un problema sul percorso." if n == 1 else f"{n} carichi di domani hanno un problema sul percorso."
-        msg = (f"<div class='wa'><div class='wa-h'><b>zhol · WhatsApp</b><span>{d:%d/%m} sera</span></div>"
+        msg = (f"<div class='wa'><div class='wa-h'><b>zhol · WhatsApp</b><span>{d:%d/%m}</span></div>"
                f"<div class='box'><b>{head}</b>\n\n{lines}</div></div>")
     skipped_html = ""
     if skipped:
@@ -317,10 +317,10 @@ td{{border-bottom:1px solid var(--line);padding:8px 8px 8px 0;vertical-align:top
 </style></head><body><div class="wrap">
 <div class="logo">zhol</div>
 <span class="kicker">Analisi del mese passato · {e(company)} · {p0} – {p1}</span>
-<h1>Cosa avrebbe segnalato zhol la sera prima</h1>
+<h1>Cosa avrebbe segnalato zhol in anticipo</h1>
 {banner}
 <p>Abbiamo fatto passare i vostri {s['loads']} viaggi dal motore di zhol, con i divieti, i calendari e gli eventi che c'erano davvero in quei giorni.
-{s['hit']} viaggi avrebbero ricevuto un avviso la sera prima, in {s['evenings_with_alert']} serate.</p>
+{s['hit']} viaggi avrebbero ricevuto un avviso in anticipo, in {s['evenings_with_alert']} giorni diversi.</p>
 <div class="cards">
 <div class="card"><span class="kicker">Viaggi toccati</span><b>{s['hit']} / {s['loads']}</b><span class="note">{s['hit_unplanned']} da eventi imprevisti, {s['hit_published']} da divieti in calendario</span></div>
 <div class="card"><span class="kicker">Ore perse</span><b>{s['hours_lost']:.0f} h</b><span class="note">senza cambiare il piano</span></div>
@@ -331,8 +331,8 @@ td{{border-bottom:1px solid var(--line);padding:8px 8px 8px 0;vertical-align:top
 <p class="note">Nell'ultima colonna ci dite se l'avviso sarebbe stato giusto: è così che misuriamo la precisione di zhol.</p>
 <div class="tw"><table><thead><tr><th>Rif</th><th>Partenza</th><th>Tratta</th><th>Evento</th><th>Ore</th><th>Costo</th><th>Cosa avrebbe suggerito zhol</th><th>Risparmio</th><th>Giusto?</th></tr></thead>
 <tbody>{rows_html or "<tr><td colspan='9'>Nessun viaggio toccato in questo periodo.</td></tr>"}</tbody></table></div>
-<h2>Il messaggio che avreste ricevuto la sera più pesante</h2>
-{msg or "<p class='note'>Nessuna serata con avvisi.</p>"}
+<h2>Il messaggio che avreste ricevuto nel giorno più pesante</h2>
+{msg or "<p class='note'>Nessun giorno con avvisi.</p>"}
 {skipped_html}
 <h2>Come lo calcoliamo</h2>
 <p class="note">Ogni viaggio è simulato sul suo corridoio con le regole europee sui tempi di guida. Un camion fermo costa €100 l'ora (art. 6-bis D.Lgs. 286/2005),

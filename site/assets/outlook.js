@@ -79,7 +79,7 @@
     const max = Math.max(im.e_keep, im.e_now, im.e_alert, 1);
     const costs = el("div", "rd-costs");
     [[T("Keep the plan", "Lasciare il piano"), im.e_keep, "keep"], [T("Change it now", "Cambiarlo subito"), im.e_now, "now"],
-     [T("Decide on zhol's evening alert", "Decidere con l'avviso serale di zhol"), im.e_alert, "alert"]]
+     [T("Decide with zhol's alert", "Decidere con l'avviso di zhol"), im.e_alert, "alert"]]
       .forEach(([label, v, k]) => {
         const line = el("div", "rd-cost " + k); const b = el("div", "rd-cbar"); const f = el("i"); f.style.width = Math.max(2, v / max * 100) + "%"; b.append(f);
         line.append(el("span", null, label), b, el("b", null, eur(v)));
@@ -94,10 +94,10 @@
     const note = (IT && im.note_it) || im.note;
     inner.append(el("p", "small muted", IT
       ? "Se succede e non cambia nulla: " + String(im.wait_h).replace(".", ",") + " h di attesa, " + eur(im.loss) +
-        ". Conviene cambiare subito solo se la probabilità supera il " + Math.round(im.threshold * 100) + "%" + (im.act_now ? ": la supera, quindi agire ora." : ": non la supera, quindi aspettare l'avviso serale.") +
+        ". Conviene cambiare subito solo se la probabilità supera il " + Math.round(im.threshold * 100) + "%" + (im.act_now ? ": la supera, quindi agire ora." : ": non la supera, quindi aspettare l'avviso di zhol.") +
         (note ? " " + note : "") + " Viaggio di riferimento: " + laneName(im) + "."
       : "If it happens and nothing changes: " + im.wait_h + " h waiting, " + eur(im.loss) +
-        ". Change the plan now only if the chance is above " + Math.round(im.threshold * 100) + "%" + (im.act_now ? ": it is, so act now." : ": it is not, so wait for the evening alert.") +
+        ". Change the plan now only if the chance is above " + Math.round(im.threshold * 100) + "%" + (im.act_now ? ": it is, so act now." : ": it is not, so wait for zhol's alert.") +
         (note ? " " + note : "") + " Trip used: " + laneName(im) + "."));
     if (im.contacts && im.contacts.length) {
       const d = el("details", "rd-contacts"); d.append(el("summary", null, T("Who to contact, with the message ready (", "Chi contattare, con il messaggio pronto (") + im.contacts.length + ")"));
@@ -142,10 +142,10 @@
     if (!priced.length) return;
     const pool = priced.filter(i => i.group !== "official").length ? priced.filter(i => i.group !== "official") : priced;
     const top = pool.slice().sort((a, b) => b.impact.saving * b.p - a.impact.saving * a.p)[0], im = top.impact;
-    const g = el("div", "vs-col"); g.append(el("span", "kicker", T("Google Maps, the evening before", "Google Maps, la sera prima")), el("h3", null, laneName(im)),
+    const g = el("div", "vs-col"); g.append(el("span", "kicker", T("Google Maps, in advance", "Google Maps, in anticipo")), el("h3", null, laneName(im)),
       el("p", "small", T("A route and today's traffic. Nothing about what is planned for " + fmt(top.start) + ", what it would cost, or what to tell anyone.",
         "Un percorso e il traffico di oggi. Niente su cosa è previsto per " + fmt(top.start) + ", quanto costerebbe o a chi scrivere.")));
-    const z = el("div", "vs-col us"); z.append(el("span", "kicker", T("zhol, the evening before", "zhol, la sera prima")), el("h3", null, L(top, "title")),
+    const z = el("div", "vs-col us"); z.append(el("span", "kicker", T("zhol, in advance", "zhol, in anticipo")), el("h3", null, L(top, "title")),
       el("p", "small", Math.round(top.p * 100) + T("% chance · ", "% di probabilità · ") + eur(im.loss) + T(" if nothing changes", " se non cambia nulla")),
       el("p", "small", T("Plan: ", "Piano: ") + planName(im) + (viaName(im) ? " · " + viaName(im) : "")),
       el("p", "small", T("Messages ready for: ", "Messaggi pronti per: ") + im.contacts.map(c => ((IT && c.who_it) || c.who).toLowerCase()).join(", ")),

@@ -42,14 +42,14 @@
     </article>`;
   }
 
-  // ---- the evening (real rules)
+  // ---- sample loads, checked in advance (real rules)
   getJSON("/data/live.json").then(d => {
     const built = fmt(d.built_at, { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" });
     const target = fmt(d.target + "T12:00:00", { weekday: "long", day: "numeric", month: "long" });
     const need = d.summary.hit + d.summary.blocked;
     $("built").textContent = T(`Data built ${built} from the engine, with the rules in force.`, `Dati calcolati il ${built} dal motore, con le regole in vigore.`);
-    $("ev-kicker").textContent = T(`The evening before ${target}`, `La sera prima di ${target}`);
-    $("ev-title").textContent = T(`${need} of ${d.summary.assessed} loads need a decision tonight`, `${need} carichi su ${d.summary.assessed} richiedono una decisione stasera`);
+    $("ev-kicker").textContent = T(`Checked in advance for ${target}`, `Verificati in anticipo per ${target}`);
+    $("ev-title").textContent = T(`${need} of ${d.summary.assessed} loads need a decision before they leave`, `${need} carichi su ${d.summary.assessed} richiedono una decisione prima di partire`);
     $("ev-lead").textContent = T(`A sample office with six loads on the next official dosing day at Kufstein. Only real rules and the official calendar; no invented events. Estimated saving if the office follows zhol: ${eur(d.summary.saving_eur)}.`,
       `Un ufficio di esempio con sei carichi nel prossimo giorno di dosaggio ufficiale a Kufstein. Solo regole reali e calendario ufficiale, nessun evento inventato. Risparmio stimato se l'ufficio segue zhol: ${eur(d.summary.saving_eur)}.`);
     $("ev-loads").innerHTML = d.loads.map(loadCard).join("");
@@ -59,7 +59,7 @@
       $("ev-template").textContent = T(`Outside WhatsApp’s 24-hour window zhol first sends the approved template with: ${d.template_params.join(" · ")}. The dispatcher’s reply opens the window for this full message.`,
         `Fuori dalla finestra di 24 ore di WhatsApp zhol invia prima il modello approvato con: ${d.template_params.join(" · ")}. La risposta del responsabile del traffico apre la finestra per il messaggio completo.`);
     }
-  }).catch(e => { $("ev-loads").innerHTML = `<p class="small">${T("Could not load the evening data", "Impossibile caricare i dati della serata")} (${esc(e.message)}).</p>`; });
+  }).catch(e => { $("ev-loads").innerHTML = `<p class="small">${T("Could not load the sample data", "Impossibile caricare i dati di esempio")} (${esc(e.message)}).</p>`; });
 
   // ---- lane grid
   let lanes = [];

@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>zhol · Beta</title>
 <script>document.documentElement.classList.add("js")</script>
-<meta name="description" content="Try zhol on real roads: tomorrow’s loads checked against the official truck bans and dosing calendars of seven countries. Join the beta for traffic offices.">
+<meta name="description" content="Try zhol on real roads: your loads checked in advance against the official truck bans and dosing calendars of seven countries. Join the beta for traffic offices.">
 <meta property="og:title" content="zhol · Beta">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -29,7 +29,7 @@
   <div class="wrap">
     <div class="poster on-dark">
       <img class="poster-bg" src="/assets/img/poster/tonight-2000.webp" srcset="/assets/img/poster/tonight-1000.webp 1000w, /assets/img/poster/tonight-2000.webp 2000w" sizes="(max-width: 1200px) 100vw, 1160px" alt="" width="2000" height="1131" fetchpriority="high">
-      <div class="poster-text"><span class="poster-small">Tomorrow’s loads,</span><h1 class="poster-title">checked tonight</h1><span class="poster-sub">at 17:30 and again at 20:00, against the rules in force tomorrow</span></div>
+      <div class="poster-text"><span class="poster-small">Your loads,</span><h1 class="poster-title">checked in advance</h1><span class="poster-sub">the beta checks at 17:30 and again at 20:00, against the rules in force tomorrow</span></div>
       <div class="poster-card"><span class="kicker">Only when it matters</span><p>One WhatsApp message, only when a load is hit, with the options and what each costs.</p></div>
     </div>
     <div class="poster-below">
@@ -45,10 +45,10 @@
   
 </section>
 
-<section data-tile data-tile-line="Tonight’s sample loads, checked, and the WhatsApp alert they produce" class="slide sage" id="evening">
+<section data-tile data-tile-line="Sample loads, checked against real rules, and the WhatsApp alert they produce" class="slide sage" id="evening">
   <div class="wrap stack">
-    <span class="kicker green" id="ev-kicker">The evening before</span>
-    <h2 class="title" id="ev-title">One evening, real rules</h2>
+    <span class="kicker green" id="ev-kicker">Checked in advance</span>
+    <h2 class="title" id="ev-title">Sample loads, real rules</h2>
     <p class="lead" id="ev-lead"></p>
     <div class="split wide-left" style="align-items:start">
       <div class="grid g2" id="ev-loads"><p class="small muted">Loading…</p></div>
@@ -76,12 +76,12 @@
     <div class="gridwrap"><table class="lanegrid" id="grid"></table></div>
     <div class="card" id="cell"><p class="small muted">Click a cell to see what happens to a truck leaving at that time.</p></div>
   </div>
-  <div class="wrap"><div class="foot"><span>Average speed 68 km/h, EU driving-time rules (Reg. 561/2006), 40 t Euro VI truck, general cargo. Live traffic is not modelled: zhol plans the evening before.</span></div></div>
+  <div class="wrap"><div class="foot"><span>Average speed 68 km/h, EU driving-time rules (Reg. 561/2006), 40 t Euro VI truck, general cargo. The beta does not model live traffic yet: it plans in advance against the rules in force.</span></div></div>
 </section>
 
-<section data-tile data-tile-kicker="Real evenings, replayed" data-tile-line="Sicily on 18 October and the Brenner on 11 November, replayed" class="slide" id="demos">
+<section data-tile data-tile-kicker="Real disruptions, replayed" data-tile-line="Sicily on 18 October and the Brenner on 11 November, replayed" class="slide" id="demos">
   <div class="wrap stack">
-    <h2 class="title">Two demo evenings</h2>
+    <h2 class="title">Two demo scenarios</h2>
     <div class="seg" role="tablist" aria-label="Demo scenarios">
       <button role="tab" aria-selected="true" data-sc="sicily" id="tab-sicily">Sicily, 18 October</button>
       <button role="tab" aria-selected="false" data-sc="brenner" id="tab-brenner">Brenner, 11 November</button>
@@ -92,7 +92,7 @@
       <div class="wa"><div class="head"><img src="/assets/img/chat-icon.png" alt="" width="120" height="106"><b>zhol alert · WhatsApp</b><span class="when" id="demo-when"></span></div><div class="box" id="demo-msg"></div><span class="reply">Rispondi 1: conferma con gli autisti</span></div>
     </div>
   </div>
-  <div class="wrap"><div class="foot"><span>Demo events are labelled as demo: the Sicily stoppage is real, the loads are invented; the Brenner evening adds illustrative events to the real rules.</span></div></div>
+  <div class="wrap"><div class="foot"><span>Demo events are labelled as demo: the Sicily stoppage is real, the loads are invented; the Brenner scenario adds illustrative events to the real rules.</span></div></div>
 </section>
 
 <section class="slide sage textured" id="join">
@@ -133,7 +133,7 @@
       <input type="hidden" name="form-name" value="beta-feedback">
       <p class="hidden-field"><label>Do not fill this in: <input name="bot-field"></label></p>
       <div class="fields">
-        <div class="field"><label for="b-what">What did you look at?</label><select id="b-what" name="area"><option>The evening message</option><option>When to leave (corridor grid)</option><option>A demo evening</option><option>Something else</option></select></div>
+        <div class="field"><label for="b-what">What did you look at?</label><select id="b-what" name="area"><option>The WhatsApp alert</option><option>When to leave (corridor grid)</option><option>A demo scenario</option><option>Something else</option></select></div>
         <div class="field"><label for="b-verdict">Verdict</label><select id="b-verdict" name="verdict"><option>Useful</option><option>Wrong alert</option><option>Missed a problem</option><option>Unclear</option></select></div>
         <div class="field" style="grid-column:1/-1"><label for="b-msg">Details</label><textarea id="b-msg" name="details" required placeholder="e.g. Verona–München, Wed 18 Nov 06:00: the dosing at Kufstein does not apply northbound."></textarea></div>
         <div class="field" style="grid-column:1/-1"><label for="b-email">Email (optional, if you want an answer)</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
@@ -149,7 +149,7 @@
   <span>Alikhan · Inkara · Tomiris · Bocconi University · TEF Ignition 2026</span>
   <span><a href="/">TEF answers</a> · <a href="/story">Story</a> · <a href="/radar">Radar</a> · <a href="/report">Report</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
-<script src="/assets/beta.js?v=a3" defer></script>
+<script src="/assets/beta.js?v=a4" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/steps.js?v=s1" defer></script>
 <script src="/assets/sheets.js?v=t5" defer></script>

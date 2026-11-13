@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>zhol · Beta</title>
 <script>document.documentElement.classList.add("js")</script>
-<meta name="description" content="Provate zhol su strade reali: i carichi di domani verificati sui divieti di circolazione ufficiali per i mezzi pesanti e sui calendari del dosaggio di sette paesi. Partecipate alla beta per gli uffici traffico.">
+<meta name="description" content="Provate zhol su strade reali: i vostri carichi verificati in anticipo sui divieti di circolazione ufficiali per i mezzi pesanti e sui calendari del dosaggio di sette paesi. Partecipate alla beta per gli uffici traffico.">
 <meta property="og:title" content="zhol · Beta">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -29,7 +29,7 @@
   <div class="wrap">
     <div class="poster on-dark">
       <img class="poster-bg" src="/assets/img/poster/tonight-2000.webp" srcset="/assets/img/poster/tonight-1000.webp 1000w, /assets/img/poster/tonight-2000.webp 2000w" sizes="(max-width: 1200px) 100vw, 1160px" alt="" width="2000" height="1131" fetchpriority="high">
-      <div class="poster-text"><span class="poster-small">I carichi di domani,</span><h1 class="poster-title">verificati stasera</h1><span class="poster-sub">alle 17:30 e di nuovo alle 20:00, sulle regole in vigore domani</span></div>
+      <div class="poster-text"><span class="poster-small">I vostri carichi,</span><h1 class="poster-title">verificati in anticipo</h1><span class="poster-sub">la beta controlla alle 17:30 e di nuovo alle 20:00, sulle regole in vigore domani</span></div>
       <div class="poster-card"><span class="kicker">Solo quando serve</span><p>Un solo messaggio WhatsApp, solo quando un carico è colpito, con le alternative e quanto costa ognuna.</p></div>
     </div>
     <div class="poster-below">
@@ -45,10 +45,10 @@
   
 </section>
 
-<section data-tile data-tile-line="I carichi di esempio di stasera, verificati, e l’avviso WhatsApp che ne esce" class="slide sage" id="evening">
+<section data-tile data-tile-line="Carichi di esempio, verificati sulle regole reali, e l’avviso WhatsApp che ne esce" class="slide sage" id="evening">
   <div class="wrap stack">
-    <span class="kicker green" id="ev-kicker">La sera prima</span>
-    <h2 class="title" id="ev-title">Una serata, regole reali</h2>
+    <span class="kicker green" id="ev-kicker">Verificati in anticipo</span>
+    <h2 class="title" id="ev-title">Carichi di esempio, regole reali</h2>
     <p class="lead" id="ev-lead"></p>
     <div class="split wide-left" style="align-items:start">
       <div class="grid g2" id="ev-loads"><p class="small muted">Caricamento…</p></div>
@@ -76,12 +76,12 @@
     <div class="gridwrap"><table class="lanegrid" id="grid"></table></div>
     <div class="card" id="cell"><p class="small muted">Cliccate su una cella per vedere cosa succede a un camion che parte a quell’ora.</p></div>
   </div>
-  <div class="wrap"><div class="foot"><span>Velocità media 68 km/h, regole UE sui tempi di guida (Reg. 561/2006), camion da 40 t Euro VI, merce generica. Il traffico in tempo reale non è modellato: zhol pianifica la sera prima.</span></div></div>
+  <div class="wrap"><div class="foot"><span>Velocità media 68 km/h, regole UE sui tempi di guida (Reg. 561/2006), camion da 40 t Euro VI, merce generica. La beta non modella ancora il traffico in tempo reale: pianifica in anticipo sulle regole in vigore.</span></div></div>
 </section>
 
-<section data-tile data-tile-kicker="Serate reali, rivissute" data-tile-line="La Sicilia il 18 ottobre e il Brennero l’11 novembre, rivissuti" class="slide" id="demos">
+<section data-tile data-tile-kicker="Disagi reali, rivissuti" data-tile-line="La Sicilia il 18 ottobre e il Brennero l’11 novembre, rivissuti" class="slide" id="demos">
   <div class="wrap stack">
-    <h2 class="title">Due serate dimostrative</h2>
+    <h2 class="title">Due scenari dimostrativi</h2>
     <div class="seg" role="tablist" aria-label="Scenari dimostrativi">
       <button role="tab" aria-selected="true" data-sc="sicily" id="tab-sicily">Sicilia, 18 ottobre</button>
       <button role="tab" aria-selected="false" data-sc="brenner" id="tab-brenner">Brennero, 11 novembre</button>
@@ -92,7 +92,7 @@
       <div class="wa"><div class="head"><img src="/assets/img/chat-icon.png" alt="" width="120" height="106"><b>Avviso zhol · WhatsApp</b><span class="when" id="demo-when"></span></div><div class="box" id="demo-msg"></div><span class="reply">Rispondi 1: conferma con gli autisti</span></div>
     </div>
   </div>
-  <div class="wrap"><div class="foot"><span>Gli eventi demo sono indicati come tali: il fermo dell’autotrasporto in Sicilia è reale, i carichi sono inventati; la serata del Brennero aggiunge eventi illustrativi alle regole reali.</span></div></div>
+  <div class="wrap"><div class="foot"><span>Gli eventi demo sono indicati come tali: il fermo dell’autotrasporto in Sicilia è reale, i carichi sono inventati; lo scenario del Brennero aggiunge eventi illustrativi alle regole reali.</span></div></div>
 </section>
 
 <section class="slide sage textured" id="join">
@@ -134,7 +134,7 @@
       <input type="hidden" name="form-name" value="beta-feedback">
       <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
       <div class="fields">
-        <div class="field"><label for="b-what">Che cosa avete guardato?</label><select id="b-what" name="area"><option value="The evening message">L’avviso della sera prima</option><option value="When to leave (corridor grid)">Quando partire (griglia del corridoio)</option><option value="A demo evening">Una serata dimostrativa</option><option value="Something else">Altro</option></select></div>
+        <div class="field"><label for="b-what">Che cosa avete guardato?</label><select id="b-what" name="area"><option value="The WhatsApp alert">L’avviso WhatsApp</option><option value="When to leave (corridor grid)">Quando partire (griglia del corridoio)</option><option value="A demo scenario">Uno scenario dimostrativo</option><option value="Something else">Altro</option></select></div>
         <div class="field"><label for="b-verdict">Giudizio</label><select id="b-verdict" name="verdict"><option value="Useful">Utile</option><option value="Wrong alert">Avviso sbagliato</option><option value="Missed a problem">Problema non segnalato</option><option value="Unclear">Poco chiaro</option></select></div>
         <div class="field" style="grid-column:1/-1"><label for="b-msg">Dettagli</label><textarea id="b-msg" name="details" required placeholder="es. Verona–Monaco, mer 18 nov, 06:00: il dosaggio a Kufstein non vale in direzione nord."></textarea></div>
         <div class="field" style="grid-column:1/-1"><label for="b-email">Email (facoltativa, se volete una risposta)</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
@@ -150,7 +150,7 @@
   <span>Alikhan · Inkara · Tomiris · Università Bocconi · TEF Ignition 2026</span>
   <span><a href="/it/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/radar">Radar</a> · <a href="/it/segnala">Segnala</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
-<script src="/assets/beta.js?v=a3" defer></script>
+<script src="/assets/beta.js?v=a4" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/steps.js?v=s1" defer></script>
 <script src="/assets/sheets.js?v=t5" defer></script>
