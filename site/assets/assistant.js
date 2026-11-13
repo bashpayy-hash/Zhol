@@ -91,7 +91,7 @@
 
     function bubble(who, text, extra) {
       const b = el("div", "asst-msg " + who);
-      if (who === "bot") { const a = el("img", "asst-face"); a.src = "/assets/img/mascot/face-128.webp"; a.alt = ""; a.width = 36; a.height = 36; b.append(a); }
+      if (who === "bot") { const a = el("img", "asst-face"); a.src = "/assets/img/mascot/zholdas-icon-128.webp"; a.alt = ""; a.width = 36; a.height = 36; b.append(a); }
       const t = el("div", "asst-text"); t.append(el("p", null, text)); if (extra) t.append(extra); b.append(t);
       return b;
     }
@@ -253,7 +253,7 @@
     }
     sheet.dlg.showModal(); sheet.api.focus();
   }
-  const face = () => { const f = el("img"); f.src = "/assets/img/mascot/face-128.webp"; f.alt = ""; f.width = 34; f.height = 34; return f; };
+  const face = () => { const f = el("img"); f.src = "/assets/img/mascot/zholdas-icon-128.webp"; f.alt = ""; f.width = 34; f.height = 34; return f; };
 
   // a button inside a block, where a page asks for one
   document.querySelectorAll("[data-assistant-launcher]").forEach(launch => {

@@ -417,6 +417,20 @@
    },
    "processing": "scaled to 80% (85% on the dark slide) and anchored to the bottom-right of a 1920x1080 transparent canvas; kept in the deck's asset store",
    "replaced": "27c4016d-7240-4dd1-a1d4-f46abea63704"
+  },
+  {
+   "name": "icon",
+   "files": [
+    "zholdas-icon-128.webp",
+    "../favicon.png",
+    "../favicon-32.png",
+    "../apple-touch-icon.png",
+    "../../../favicon.ico"
+   ],
+   "where": "the chat button 'Ask Zholdas', the chat's own face, the browser tab and the phone's home screen. A dedicated icon (owner, 13 Nov 2026: the old face was a crop of the radio pose, crooked and cut off): the whole head and cap, front-facing, centred in a sage circle",
+   "source": "design/mascot/zholdas-reference-front.webp (Higgsfield 2a20bb83-5d2d-4aa3-be59-3efd48133274), no new generation",
+   "processing": "square crop centred on the head (442, 300) on #e3ebdd: side 620 px for the chat (128 px, circle), 580 px for the tab (64 and 32 px, circle; favicon.ico 16-64), 660 px full bleed for the home screen (180 px)",
+   "replaced": "face-128.webp (a crop of the radio pose)"
   }
  ]
 }
