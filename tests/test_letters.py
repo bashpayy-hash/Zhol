@@ -153,12 +153,15 @@ def test_linkedin_messages_follow_the_same_principles():
     are and the grant, Europe, AI, every mode of transport, one survey link tagged by group, no colons, no team names."""
     md = (ROOT / "outreach" / "16-linkedin.md").read_text(encoding="utf-8")
     blocks = re.findall(r"^#### (.+?)\n\n```text\n(.*?)\n```", md, re.S | re.M)
-    kinds = {"Заметка": 0, "Письмо": 0, "Напоминание": 0}
+    kinds = {"Тема": 0, "Заметка": 0, "Письмо": 0, "Напоминание": 0}
     for title, text in blocks:
         kind = title.split(" ", 1)[0]
         kinds[kind] += 1
         assert ":" not in _text(text), (title, text[max(0, _text(text).find(":") - 40):][:80])
         assert not NAMES.search(text), title
+        if kind == "Тема":          # InMail with Premium (owner, 13 Nov 2026): one broad subject, AI and Bocconi in view
+            assert len(text) <= 72 and "Bocconi" in text and any(a in text for a in ("AI", "KI")), (title, text)
+            continue
         assert "Bocconi" in text and "TEF Ignition 2026" in text, title
         if kind == "Заметка":
             assert len(text) <= 200, (title, len(text))
@@ -172,7 +175,7 @@ def test_linkedin_messages_follow_the_same_principles():
             assert "rail" in text and ("sea" in text), (title, "every mode of transport")
             if "· EN" not in title:
                 assert "— English version —" in text, title
-    assert kinds["Заметка"] == kinds["Письмо"] == kinds["Напоминание"] >= 10, kinds
+    assert kinds["Тема"] == kinds["Заметка"] == kinds["Письмо"] == kinds["Напоминание"] >= 10, kinds
 
 
 def test_company_offer_letters_follow_the_same_principles():
@@ -201,8 +204,10 @@ def test_linkedin_console_rows_follow_the_same_principles():
     assert len(rows) >= 13 and len({r["id"] for r in rows}) == len(rows)
     for r in rows:
         assert r["type"] == "linkedin" and r["where"].startswith("https://www.linkedin.com/"), r["id"]
-        assert len(r["note"]) <= 200 and r["note"] == r["subject"], (r["id"], len(r["note"]))
-        for t in (r["note"], r["message"], r["followup"]["message"]):
+        assert len(r["note"]) <= 200, (r["id"], len(r["note"]))
+        assert len(r["subject"]) <= 72 and "Bocconi" in r["subject"] and any(a in r["subject"] for a in ("AI", "KI")), r["id"]
+        assert not r["message"].lower().startswith(("grazie per aver accettato", "thank you for connecting")), r["id"]
+        for t in (r["subject"], r["note"], r["message"], r["followup"]["message"]):
             assert ":" not in _text(t), (r["id"], _text(t)[max(0, _text(t).find(":") - 40):][:80])
             assert not NAMES.search(t), r["id"]
         m = r["message"]

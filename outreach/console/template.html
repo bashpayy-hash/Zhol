@@ -403,11 +403,11 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     else if (r.where && !r.to) c.append(el("span", null, r.where));
     const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
     box.append(c);
-    const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : r.type === "linkedin" ? "Заметка к запросу в LinkedIn (" + r.subject.length + " из 200 знаков)" : "Тема письма"));
-    const sb = el("button", "btn small", r.type === "linkedin" ? "Скопировать заметку" : "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
-    if (r.type !== "group" && r.type !== "linkedin") sl.append(sb);
+    const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : r.type === "linkedin" ? "Тема сообщения в LinkedIn (InMail)" : "Тема письма"));
+    const sb = el("button", "btn small", "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
+    if (r.type !== "group") sl.append(sb);
     sf.append(sl, el("div", "subject", r.subject)); box.append(sf);
-    const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, r.type === "linkedin" ? "Письмо после того, как человек примет запрос" : "Письмо"));
+    const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, r.type === "linkedin" ? "Сообщение (InMail или после принятия запроса)" : "Письмо"));
     const mb = el("button", "btn main", "Скопировать письмо"); mb.type = "button"; mb.addEventListener("click", () => copy(sign(r.message), mb, box));
     // one click to a new letter in Outlook on the web with the address, subject and text already in place (owner, 11 Nov)
     const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
@@ -450,25 +450,31 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       if (APPLE_TOUCH) btns.append(link(label, "ms-outlook://compose?" + q, again ? "btn small" : "btn"), link("Outlook в браузере", web, "btn small"));
       else btns.append(link(label, web, again ? "btn small" : "btn"));
     }
-    // LinkedIn (owner, 13 Nov 2026: «сделай кнопку написать сразу в линкедин»): LinkedIn has no link that opens a request
-    // or a message with the text in place, so one click opens the person's profile (or a search for the name and the
-    // company) and copies the note; in LinkedIn: Connect, Add a note, paste. The full message goes after they accept.
+    // LinkedIn (owner, 13 Nov 2026: «сделай кнопку написать сразу в линкедин»; then «я ради сообщений купил линкедин
+    // премиум»): LinkedIn has no link that opens a message with the text in place, so one click opens the person's
+    // profile (or a search for the name and the company) and copies the message; in LinkedIn: Message, paste the
+    // subject and the text (InMail). The note below is for a connection request instead, when InMail credits run out.
+    let liNote = null;
     if (r.type === "linkedin") {
       const sentAt = stateOf(r.id) === "sent" && status[r.id] && status[r.id].at;
-      const liWarn = el("div", "dup-warn"); liWarn.hidden = !(sentAt || opened[r.id]);
-      if (sentAt) liWarn.textContent = "Запрос уже отправлен " + day(sentAt) + ". Когда человек примет его, отправьте письмо ниже.";
-      else if (opened[r.id]) liWarn.textContent = "LinkedIn уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ".";
-      const a = el("a", "btn li-btn", r.profile ? "Открыть профиль в LinkedIn" : "Найти в LinkedIn");
+      warn = el("div", "dup-warn"); warn.hidden = !(sentAt || opened[r.id]);
+      if (sentAt) warn.textContent = "Уже отправлено " + day(sentAt) + ". Если человек не ответит, ниже будет одно напоминание.";
+      else if (opened[r.id]) warn.textContent = "LinkedIn уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ". Проверьте переписку, прежде чем писать снова.";
+      const a = el("a", "btn li-btn", r.profile ? "Написать в LinkedIn" : "Найти и написать в LinkedIn");
       a.href = r.where; a.target = "_blank"; a.rel = "noopener";
-      a.title = "Откроется LinkedIn, заметка уже скопирована. Нажмите «Установить контакт» → «Добавить заметку», вставьте (Ctrl+V или Cmd+V) и отправьте. Потом отметьте здесь «Отправлено».";
+      a.title = "Откроется профиль, сообщение уже скопировано. Нажмите «Сообщение», вставьте текст, тему скопируйте кнопкой «Скопировать тему». Потом отметьте здесь «Отправлено».";
       a.addEventListener("click", () => {
-        try { navigator.clipboard.writeText(r.subject).catch(() => {}); } catch (e) {}
+        try { navigator.clipboard.writeText(plain(r.message)).catch(() => {}); } catch (e) {}
         opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened));
-        liWarn.textContent = "Заметка скопирована. В LinkedIn нажмите «Установить контакт» → «Добавить заметку» и вставьте её. После отправки отметьте здесь «Отправлено».";
-        liWarn.hidden = false;
+        warn.textContent = "Сообщение скопировано. В LinkedIn нажмите «Сообщение», вставьте текст (Ctrl+V или Cmd+V), тему возьмите кнопкой «Скопировать тему» выше. После отправки отметьте здесь «Отправлено».";
+        warn.hidden = false;
       });
-      const pair = el("div"); pair.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
-      pair.append(a, sb); sl.append(pair); sf.append(liWarn);
+      btns.append(a);
+      // without InMail credits: a connection request with the short note, the message after they accept
+      liNote = el("div", "field"); const nl = el("div", "lab");
+      nl.append(el("span", null, "Если без InMail: заметка к запросу «Установить контакт» (" + r.note.length + " из 200 знаков), сообщение — после принятия"));
+      const nb = el("button", "btn small", "Скопировать заметку"); nb.type = "button"; nb.addEventListener("click", () => copy(r.note, nb, box));
+      nl.append(nb); liNote.append(nl, el("div", "subject", r.note));
     }
     // WhatsApp the company publishes on its own site: the same letter, opened in WhatsApp (owner, 11 Nov 2026:
     // «найди ватсапы, я туда им напишу»)
@@ -490,6 +496,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (warn) mf.append(warn);
     if (note) mf.append(note);
     mf.append(letter(r)); box.append(mf);
+    if (liNote) box.append(liNote);
     // for the team only: what the Italian letter says (never sent)
     if (r.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "Перевод для команды (не отправляется)"), el("pre", "msg", r.message_ru)); mf.append(d); }
     if (r.followup && stateOf(r.id) === "sent") box.append(reminder(r));

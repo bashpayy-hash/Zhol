@@ -19,15 +19,15 @@ THANKS = {"it": "Grazie mille,", "en": "Thank you very much,", "de": "Vielen Dan
 ENGLISH_BELOW = {"it": "(La versione inglese è qui sotto.)", "de": "(Die englische Fassung finden Sie unten.)"}
 
 WHO = {
- "it": ("grazie per aver accettato il collegamento. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team "
+ "it": ("mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team "
         "sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su "
         "rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da "
         "TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €."),
- "en": ("thank you for connecting. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an "
+ "en": ("I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an "
         "AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, "
         "a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for "
         "new tech companies, and won a €2,000 grant."),
- "de": ("vielen Dank für die Vernetzung. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich "
+ "de": ("ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich "
         "entwickeln zhol, eine KI-Plattform, die Disponenten am Vorabend warnt, wenn einer Sendung auf Straße, Schiene oder "
         "See ein Verbot, eine Sperrung oder ein Streik droht. Das Projekt ist eines von 100, die TEF Ignition 2026, ein "
         "europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von "
@@ -152,6 +152,9 @@ REMIND = {
 }
 
 
+SUBJECT = {"it": "Una soluzione AI per le spedizioni, sondaggio Bocconi di un minuto",
+           "en": "An AI solution for freight shipments, a 1-minute Bocconi survey",
+           "de": "KI-Lösung für Sendungen in Europa, 1-Minuten-Umfrage der Bocconi"}
 BRIDGE = {"it": "Per questo le scrivo.", "en": "That is why I am writing to you.", "de": "Deshalb schreibe ich Ihnen."}
 
 
@@ -200,8 +203,9 @@ def texts(group: str, langs: list[str]) -> str:
     out = []
     for l in langs:
         note = NOTE.get((group, l), NOTE[l])
+        out.append(block(f"Тема сообщения InMail · {LANG[l]}", SUBJECT[l]))
         out.append(block(f"Заметка к запросу · {LANG[l]} · {len(note)} знаков", note))
-        out.append(block(f"Письмо после принятия · {LANG[l]}", message(group, l)))
+        out.append(block(f"Письмо · InMail или после принятия запроса · {LANG[l]}", message(group, l)))
         out.append(block(f"Напоминание через 5 дней, в той же переписке · {LANG[l]}", reminder(group, l)))
     return "\n".join(out)
 
@@ -395,7 +399,7 @@ def send_rows() -> list[dict]:
             "about": p["role"], "why": mine["local"], "why_ru": WHY_RU[p["name"]], "why_src": p.get("src", ""),
             "where": p.get("profile") or search, "profile": bool(p.get("profile")),
             "search": "https://www.google.com/search?q=" + quote(p["name"] + " " + p["org"] + " LinkedIn"),
-            "subject": note, "note": note,
+            "subject": SUBJECT[l], "note": note,
             "message": personal(message_personal(g, l, mine["local"], mine["en"]), p["name"], l),
             "link": LINK[l] + "li-" + g, "group": g, "lang": l,
             "followup": {"subject": "", "message": personal(reminder(g, l), p["name"], l)},
