@@ -1,4 +1,4 @@
-"""The evening run and the reply loop.
+"""The scheduled check and the reply loop (in the beta: at 17:30 and 20:00).
 
     17:30 and 20:00 local (configurable):
       1. refresh deterministic events (national bans, encoded calendars)
@@ -130,8 +130,8 @@ def handle_inbound(store: Store, wa: WhatsAppClient, phone: str, text: str, now:
     reply = None
     lang = company.language
     if alert is None:
-        reply = ("Nessun avviso attivo. Ti scrivo la sera prima se un carico di domani è a rischio."
-                 if lang == "it" else "No active alert. I message you the evening before if a load is at risk.")
+        reply = ("Nessun avviso attivo. Ti scrivo appena un tuo carico è a rischio e ti aggiorno se la situazione cambia."
+                 if lang == "it" else "No active alert. I will message you as soon as one of your loads is at risk, and update you if things change.")
     elif intent == "details":
         items = []
         for a in store.assessments(alert.run_id, company.id):
@@ -142,8 +142,8 @@ def handle_inbound(store: Store, wa: WhatsAppClient, phone: str, text: str, now:
     elif intent == "confirm":
         alert.status, alert.chosen_option, alert.feedback = "answered", "best", alert.feedback or "useful"
         _apply_best_options(store, company, alert)
-        reply = ("Confermato. Ho aggiornato i carichi; ti avviso se cambia qualcosa stanotte."
-                 if lang == "it" else "Confirmed. Loads updated; I'll tell you if anything changes tonight.")
+        reply = ("Confermato. Ho aggiornato i carichi; ti avviso appena cambia qualcosa."
+                 if lang == "it" else "Confirmed. Loads updated; I'll tell you as soon as anything changes.")
     elif intent == "false_alert":
         alert.status, alert.feedback = "answered", "false_alert"
         reply = ("Grazie: lo segno come avviso sbagliato e lo controlliamo." if lang == "it"

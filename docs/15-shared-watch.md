@@ -17,8 +17,8 @@ So the check is costly (the survey measures how many minutes a day: docs/10, thr
 ## 15.2 Two layers
 
 1. **The machine layer (built).** The radar reads the news and trade press in four languages, the official ban and dosing
-   calendars and the weather at the passes, every day, weekends included, and the evening message lands before the office
-   closes. It is useful from the first office on.
+   calendars and the weather at the passes, every day, weekends included: the warning lands in advance, as soon as an event is known, and an update follows
+   when it changes. It is useful from the first office on.
 2. **The exchange layer (concept).** Every office on zhol sees something first: a driver stuck at Kufstein at 04:00, a three-hour
    queue at the Messina ferries, a customer who says the port is on strike tomorrow. One tap on WhatsApp ("segnala") sends it.
    It goes out when it is confirmed by a second, independent report or by a source, and then reaches every office with loads

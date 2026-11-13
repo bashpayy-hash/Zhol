@@ -7,6 +7,34 @@
 Италия — только начало, цель zhol — вся Европа: международных адресатов спрашиваем про всю Европу. Принципы писем
 одни для всех сообщений (DESIGN.md, 11 ноября 2026), их проверяет tests/test_letters.py.
 
+## zhol — это не «накануне вечером» (владелец, 9 и 13 ноября 2026)
+«не night before» (9 ноября); «Joel — это не Evening Before… намного much more broader than Evening Before… и estimation,
+и заранее, и real-time updates» (13 ноября). Сначала широко: zhol оценивает риск, предупреждает заранее и обновляет
+в реальном времени. Потом детали:
+- **Оценка:** по каждой отправке — ударит ли запрет, закрытие или забастовка, на сколько задержит и сколько это стоит (p × C).
+- **Заранее:** предупреждение, как только событие объявлено или стало вероятным — за дни и недели, а не только накануне.
+- **В реальном времени:** обновления, пока груз в пути и ситуация меняется (забастовку отменили, перевал закрыли, паром
+  не вышел).
+- **Не пишем «the evening before / the night before / la sera prima / am Vorabend / накануне вечером», «evening alert /
+  avviso serale / evening check», «tonight / stasera / heute Abend»** — ни как описание zhol, ни как главный момент.
+  Вечер остаётся только в фактах о людях и событиях с источником, и то другими словами.
+- **Фраза «кто мы» в письмах:**
+  - IT: «una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una
+    chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale
+    quando la situazione cambia»;
+  - EN: «an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and
+    what it would cost, warns the people who plan it in advance and updates them in real time as things change»;
+  - DE: «eine KI-Plattform, die abschätzt, ob einer Sendung auf Straße, Schiene oder See ein Fahrverbot, eine Sperrung
+    oder ein Streik droht und was das kosten würde, die Disponenten frühzeitig warnt und sie in Echtzeit informiert,
+    wenn sich die Lage ändert».
+- **Короткая «кто мы» для длинных двуязычных писем** (ссылка Outlook ≤ 4 000 знаков): «an AI platform that estimates the
+  risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in
+  real time» (так же в IT/DE/FR/ES, `scripts/abroad_letters.py`).
+- **Коротко для заголовков:** «Estimates the risk, warns in advance, updates in real time» / «Stima il rischio, avvisa
+  in anticipo, aggiorna in tempo reale» / «Schätzt das Risiko, warnt frühzeitig, aktualisiert in Echtzeit».
+- **Про бету — честно:** что она умеет сейчас, говорим как есть (например, проверки в 17:30 и 20:00), но это деталь, а
+  не определение zhol. Проверяет tests/test_positioning.py.
+
 ## Маскот — Жолдас
 Маскот zhol — Жолдас (Zholdas; по-казахски «попутчик», от того же «жол» — дорога). Плюшевая игрушка
 ручной работы: кремовое тело, глаза-точки, румянец, руки-варежки, кирпично-красная фетровая кепка

@@ -20,7 +20,8 @@
    a 1-minute survey from Bocconi»). До 70 символов, без двоеточий.
 2. **Тон** полный и вежливый, деловое письмо. Никаких рубленых фраз.
 3. **Сначала представиться.** Студент Bocconi, «io e il mio team» / «my team and I» (имён команды нет). zhol —
-   AI-платформа, которая накануне вечером предупреждает отдел перевозок о запрете, закрытии или забастовке.
+   AI-платформа, которая оценивает риск запрета, закрытия или забастовки для каждой отправки (дорога, железная дорога,
+   море) и его цену, заранее предупреждает и обновляет в реальном времени (правило в CLAUDE.md).
    Проект вошёл в 100 из ~500 в TEF Ignition 2026 (объяснено словами как европейская программа) и получил грант
    2 000 €.
 4. **Проблема и цифры, которые уже есть.** Цифры подобраны по месту, где работает адресат, у каждой есть
@@ -42,7 +43,7 @@
 **Тема всех итальянских писем:** Una soluzione AI per l'autotrasporto, sondaggio Bocconi di un minuto
 
 **Общие блоки**
-- кто мы: sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+- кто мы: sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 - проблема: Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già.
 - видимая часть, ИИ, Европа: Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 - для начала измерить: Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico.
@@ -57,7 +58,7 @@
 Buongiorno,
 {кто мы}
 
-Ho visto che lavorate da {город} verso {страны}, con circa {N} mezzi. {проблема} {событие на их коридоре}. Saperlo la sera prima permette di {что можно сделать}, e per la legge italiana ogni ora che un camion aspetta vale 100 €. {видимая часть, ИИ, Европа}
+Ho visto che lavorate da {город} verso {страны}, con circa {N} mezzi. {проблема} {событие на их коридоре}. Saperlo in anticipo permette di {что можно сделать}, e per la legge italiana ogni ora che un camion aspetta vale 100 €. {видимая часть, ИИ, Европа}
 
 {для начала измерить} Potreste dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee in Italia e in Europa? Ha sette domande, senza registrazione e senza vendite, e si chiude con il nostro radar AI gratuito delle prossime otto settimane.
 {ссылка}
@@ -81,9 +82,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ```text
 Buongiorno,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Ho visto che lavorate da Soave verso Francia, Svizzera e Austria, con circa 90 mezzi. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
+Ho visto che lavorate da Soave verso Francia, Svizzera e Austria, con circa 90 mezzi. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo in anticipo permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 
 Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Potreste dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee in Italia e in Europa? Ha sette domande, senza registrazione e senza vendite, e si chiude con il nostro radar AI gratuito delle prossime otto settimane.
 https://zhol.live/it/sondaggio?src=co-form
@@ -97,9 +98,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ```text
 Buongiorno,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Ho visto che lavorate da Verona verso Francia, Germania e Belgio, soprattutto trasporti eccezionali. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo la sera prima permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
+Ho visto che lavorate da Verona verso Francia, Germania e Belgio, soprattutto trasporti eccezionali. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Fino a dicembre il traforo del Monte Bianco chiude di notte, dalle 22 alle 6, e basta un blocco imprevisto al Fréjus per lasciare i camion senza alternativa. Saperlo in anticipo permette di anticipare la partenza o scegliere per tempo il traforo aperto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 
 Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Potreste dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee in Italia e in Europa? Ha sette domande, senza registrazione e senza vendite, e si chiude con il nostro radar AI gratuito delle prossime otto settimane.
 https://zhol.live/it/sondaggio?src=co-form
@@ -113,9 +114,9 @@ Se preferite non ricevere altri messaggi, basta rispondere «no».
 
 ```text
 Buongiorno,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Ho visto che lavorate da Nocera Inferiore verso Germania, Austria e Svizzera, soprattutto merce a temperatura controllata. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. A ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo la sera prima permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
+Ho visto che lavorate da Nocera Inferiore verso Germania, Austria e Svizzera, soprattutto merce a temperatura controllata. Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. A ottobre i giorni di fermo, con la A1, la A30 e il porto di Napoli bloccati, hanno mostrato quanto conta l'autotrasporto, con oltre 400 milioni di danni al Sud secondo Il Messaggero. Saperlo in anticipo permette di anticipare le consegne o cambiare porto, e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 
 Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Potreste dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee in Italia e in Europa? Ha sette domande, senza registrazione e senza vendite, e si chiude con il nostro radar AI gratuito delle prossime otto settimane.
 https://zhol.live/it/sondaggio?src=co-email
@@ -161,14 +162,14 @@ Alikhan Bashpay · Università Bocconi · zhol
 - `east` — Per chi va in Austria e in Slovenia gli orari sono già stretti dai divieti notturni e festivi austriaci, e basta un fermo o una chiusura imprevista per farli saltare. Nel 2026 l'autotrasporto ha già annunciato fermi nazionali ad aprile e a maggio. (источник `strikes`)
 - `sicily` — A ottobre 2026 il fermo in Sicilia ha mostrato quanto conta l'autotrasporto. In cinque giorni il mercato di Vittoria, che di solito spedisce circa 100 camion al giorno, è rimasto con i box vuoti, e Coldiretti e Confcommercio Sicilia hanno stimato 90–100 milioni di euro di danni. (источник `vittoria`)
 - `campania` — A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa 300 in Campania. (источник `messaggero`)
-- `south` — A ottobre 2026 otto giorni di fermo dei tir al Sud hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni, e chi aveva camion in viaggio la sera prima non sapeva dove si sarebbero fermati. (источник `messaggero`)
+- `south` — A ottobre 2026 otto giorni di fermo dei tir al Sud hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni, e chi aveva camion in viaggio non sapeva dove si sarebbero fermati. (источник `messaggero`)
 - `national` — Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a ottobre otto giorni di blocchi dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero). (источник `brenner`)
 
 ### Пример — Север, Бреннер (ALSEA)
 
 ```text
 Gentile segreteria di ALSEA,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 
@@ -183,7 +184,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Gentile segreteria di FAI Napoli,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. A ottobre 2026 i giorni di protesta dei tir in Campania, con la A1, la A30 e il porto di Napoli fermi, hanno mostrato quanto conta l'autotrasporto. Il Messaggero stima oltre 400 milioni di euro di danni al Sud, circa 300 in Campania. Per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 
@@ -198,7 +199,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Gentile segreteria di Interporto Padova,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Per chi va in Germania e in Austria dal Brennero, solo le limitazioni costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e a Kufstein nel 2025 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 
@@ -228,7 +229,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 - `bp-gazzetta-logistica` — Gazzetta Logistica ha raccontato anche le chiusure notturne sulla A1, e il sondaggio misura proprio quanto costano agli uffici traffico.
 - `bp-transportonline` — TransportOnline pubblica già i bollettini sulla viabilità, e il sondaggio misura quanto costano agli uffici traffico i divieti e le chiusure che vi si leggono.
 - `bp-logisticamente-it` — Logisticamente riunisce spesso chi gestisce la logistica, e i risultati potrebbero servire anche ai vostri incontri.
-- `bp-supply-chain-italy` — Supply Chain Italy segue export e trasporti, e qui c'è il pezzo che manca spesso, cosa succede la sera prima in un ufficio traffico.
+- `bp-supply-chain-italy` — Supply Chain Italy segue export e trasporti, e qui c'è il pezzo che manca spesso, cosa succede in un ufficio traffico quando un divieto o uno sciopero cambia i piani.
 - `bp-ship2shore` — Ship2Shore segue porti e logistica, e il sondaggio arriva anche a chi porta i container dal porto all'interno.
 - `p-shipping-italy` — Shipping Italy racconta ogni giorno porti e logistica, e il sondaggio arriva anche a chi porta i container dal porto all'interno.
 
@@ -236,7 +237,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Gentile redazione di Uomini e Trasporti,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), a ottobre otto giorni di fermo dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero), e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 
@@ -257,7 +258,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 ```text
 Buongiorno a tutti,
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi sulle strade d'Europa costano tempo e denaro agli autotrasportatori. Alcuni numeri esistono già. Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, 2026), e per la legge italiana ogni ora che un camion aspetta vale 100 €. Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo.
 

@@ -43,8 +43,9 @@ SIGN = "Alikhan Bashpay · Università Bocconi · zhol"
 ASK_FIRST = "vi scrivo per chiedervi un minuto per un breve sondaggio di sette domande, anonimo."
 # Who we are comes first in every letter, with the grant (owner, 11 Nov 2026: «всё-таки стоит начать с того, чтобы
 # представиться, рассказать о гранте»). Lower case after the greeting comma, as Italian letters do.
-HOOK = ("sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la "
-        "sera prima avvisa gli uffici traffico se un carico rischia un divieto, una chiusura o uno sciopero. Il progetto è tra "
+HOOK = ("sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che "
+        "stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto "
+        "costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra "
         "i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un "
         "grant di 2.000 €.")
 SIZE = ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
@@ -66,7 +67,7 @@ SOURCES = {
     "messaggero": "https://www.ilmessaggero.it/economia/blocco_tir_danni_protesta_quali_sono_cosa_succede_ora_prezzi-9844541.html",
 }
 
-# one recent, sourced event per corridor or region, and what an evening warning would have let the office do
+# one recent, sourced event per corridor or region, and what an early warning would have let the office do
 EVENTS = {
     "brenner": ("a Kufstein, nel 2025, 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato, e il ponte Lueg "
                 "resta a una corsia per anni", "partire prima, passare da Tarvisio o mettere il semirimorchio sul treno", "kufstein"),
@@ -166,7 +167,7 @@ FACTS = json.loads(_FACTS_PATH.read_text(encoding="utf-8")) if _FACTS_PATH.exist
 def personal(name: str, city: str, region: str, cs: list[str], crossings: str = "", spec: str = "", fleet_txt: str = "",
              facts: dict | None = None) -> tuple[str, str]:
     """The paragraph about this company: its trucks, lanes and cargo, a recent event on its corridor or in its region
-    (with a source), and what an evening warning would have let the office do."""
+    (with a source), and what an early warning would have let the office do."""
     facts = facts or {}
     cs = cs or list(facts.get("countries") or [])
     key = REGION_EVENT[region] if REGION_EVENT.get(region) in ("sicily", "south") else corridor(crossings, cs, region)
@@ -179,7 +180,7 @@ def personal(name: str, city: str, region: str, cs: list[str], crossings: str = 
     tail = ", ".join(x for x in (fleet_part, load) if x)
     seen = f"Ho visto che lavorate{where}{route}" + (f", {tail}" if tail else "") + ". " if (where or route or tail) else ""
     line = (f"{seen}{PROBLEM_IT} {event[0].upper() + event[1:]}. "
-            f"Saperlo la sera prima permette di {alt}, e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
+            f"Saperlo in anticipo permette di {alt}, e per la legge italiana ogni ora che un camion aspetta vale 100 €.")
     return line, SOURCES[src]
 
 
@@ -280,10 +281,10 @@ WHY = {  # (Italian, Russian, source key), the figures closest to where the memb
                  "показали, как много значат грузоперевозки. Il Messaggero оценивает ущерб на Юге больше чем в 400 млн евро, "
                  "из них около 300 млн в Кампании.", "messaggero"),
     "south": ("A ottobre 2026 otto giorni di fermo dei tir al Sud hanno mostrato quanto conta l'autotrasporto. Il Messaggero "
-              "stima oltre 400 milioni di euro di danni, e chi aveva camion in viaggio la sera prima non sapeva dove si "
+              "stima oltre 400 milioni di euro di danni, e chi aveva camion in viaggio non sapeva dove si "
               "sarebbero fermati.",
               "Восемь дней остановки дальнобойщиков на Юге в октябре 2026 года показали, как много значат грузоперевозки. "
-              "Il Messaggero оценивает ущерб больше чем в 400 млн евро, а те, у кого машины были в пути, накануне вечером "
+              "Il Messaggero оценивает ущерб больше чем в 400 млн евро, а те, у кого машины были в пути, "
               "не знали, где они встанут.", "messaggero"),
     "national": ("Solo le limitazioni al Brennero costano all'Italia 544 milioni di euro l'anno (Uniontrasporti per Unioncamere, "
                  "2026), e a ottobre otto giorni di blocchi dei tir al Sud hanno fatto oltre 400 milioni di danni (Il Messaggero).",
@@ -291,7 +292,9 @@ WHY = {  # (Italian, Russian, source key), the figures closest to where the memb
                  "дальнобойщиков на Юге принесли больше 400 млн евро ущерба.", "brenner"),
 }
 HOOK_RU = ("меня зовут Алихан Башпай, я студент Университета Боккони. Мы с командой разрабатываем zhol, AI-платформу, которая "
-           "накануне вечером предупреждает отделы перевозок, если грузу грозит запрет, закрытие или забастовка. Проект вошёл в "
+           "оценивает, грозит ли отправке по дороге, железной дороге или морем запрет, закрытие или забастовка и во что это "
+           "обойдётся, заранее предупреждает тех, кто её планирует, и обновляет данные в реальном времени, когда ситуация "
+           "меняется. Проект вошёл в "
            "100 отобранных из примерно 500 программой TEF Ignition 2026, европейской программой для новых технологических "
            "компаний, и получил грант 2 000 евро.")
 
@@ -388,10 +391,10 @@ PRESS_ANGLE = {  # what the outlet covers, from its own homepage (10 Nov 2026); 
                            "запреты и закрытия из этих сводок."),
     "bp-logisticamente-it": ("Logisticamente riunisce spesso chi gestisce la logistica, e i risultati potrebbero servire anche ai vostri incontri.",
                              "Logisticamente часто собирает тех, кто управляет логистикой, и результаты могут пригодиться и на ваших встречах."),
-    "bp-supply-chain-italy": ("Supply Chain Italy segue export e trasporti, e qui c'è il pezzo che manca spesso, cosa succede la sera prima "
-                              "in un ufficio traffico.",
+    "bp-supply-chain-italy": ("Supply Chain Italy segue export e trasporti, e qui c'è il pezzo che manca spesso, cosa succede "
+                              "in un ufficio traffico quando un divieto o uno sciopero cambia i piani.",
                               "Supply Chain Italy пишет об экспорте и перевозках, а здесь то, чего часто не хватает, что происходит "
-                              "накануне вечером в отделе перевозок."),
+                              "в отделе перевозок, когда запрет или забастовка ломают планы."),
     "bp-ship2shore": ("Ship2Shore segue porti e logistica, e il sondaggio arriva anche a chi porta i container dal porto all'interno.",
                       "Ship2Shore пишет о портах и логистике, а опрос доходит и до тех, кто везёт контейнеры из порта вглубь страны."),
     "p-shipping-italy": ("Shipping Italy racconta ogni giorno porti e logistica, e il sondaggio arriva anche a chi porta i container dal "
@@ -702,9 +705,9 @@ ABROAD_REASON = {
 }
 ABROAD_REASON_DEFAULT = ("On the roads into Italy the Brenner restrictions alone cost Italy €544 million a year, and in October eight "
                          "days of truck stoppages in the South caused more than €400 million of damage.")
-ABROAD_WHO = ("I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform for "
-              "hauliers that warns the traffic office the evening before if one of tomorrow's loads risks a ban, a closure or a "
-              "strike. The project is one of 100 selected from about 500 by TEF Ignition, a European programme for new tech companies.")
+ABROAD_WHO = ("I am Alikhan Bashpay, a student at Bocconi University in Milan. My team and I are building zhol, an AI platform that "
+              "estimates the risk of bans, closures and strikes for each shipment by road, rail or sea, and its cost, warns in "
+              "advance and updates in real time. The project is one of 100 selected from about 500 by TEF Ignition, a European programme for new tech companies.")
 ABROAD_GIFT = ("In the meantime our radar is free and open to everyone, zhol.live/radar, with the bans, closures and strikes of "
                "the next eight weeks and the chance of each.")
 ABROAD_SUBJECT = {

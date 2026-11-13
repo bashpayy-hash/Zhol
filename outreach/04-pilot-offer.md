@@ -5,9 +5,9 @@
 **Per:** {Azienda} · **Referente:** {Nome} · **Data:** {data}
 
 **Cosa facciamo per 4 settimane, gratis**
-1. Ogni giorno entro le 16:00 ci inviate i carichi di domani (Excel, CSV o foto del piano) con: riferimento, partenza–destinazione, ora di partenza,
+1. Ci inviate le spedizioni dei prossimi giorni (Excel, CSV o foto del piano) con: riferimento, partenza–destinazione, ora di partenza,
    tipo di merce (deperibile sì/no), mezzo (peso, lärmarm sì/no).
-2. Alle 17:30 e alle 20:00 *zhol* controlla ogni carico contro divieti nazionali, dosaggi a Kufstein, Luegbrücke, chiusure di trafori e valichi,
+2. *zhol* stima il rischio di ogni spedizione appena arriva e la ricontrolla ogni volta che la situazione cambia, anche in viaggio, contro divieti nazionali, dosaggi a Kufstein, Luegbrücke, chiusure di trafori e valichi,
    scioperi, blocchi e manifestazioni lungo il percorso.
 3. Se un carico è a rischio, ricevete **un solo messaggio WhatsApp** con le opzioni (anticipare, posticipare, cambiare valico, trattenere) e il costo stimato.
    Se non c'è nulla, non vi scriviamo.
@@ -51,8 +51,8 @@
 ## English version (for the team)
 
 **What we do for 4 weeks, free:**
-- Every day by 16:00 you send tomorrow's loads (Excel, CSV or a photo of the plan).
-- At 17:30 and 20:00 zhol checks every load against national bans, Kufstein dosing, the Luegbrücke, tunnel and pass closures, strikes, blockades and protests.
+- You send the shipments of the coming days (Excel, CSV or a photo of the plan).
+- zhol estimates the risk of every shipment as soon as it arrives and checks it again whenever the situation changes, also on the way, against national bans, Kufstein dosing, the Luegbrücke, tunnel and pass closures, strikes, blockades and protests.
 - If a load is at risk you get **one WhatsApp message** with options and their estimated cost. If nothing is wrong, we don't write.
 - A person checks every event before it is sent, and every event cites its source.
 - Weekly report:

@@ -25,7 +25,8 @@ EN_MARK = "— English version —"
 T = {
     "it": {
         "intro": "vi scrivo di nuovo a proposito del mio messaggio di questi giorni su zhol, la piattaforma AI di studenti "
-                 "Bocconi che la sera prima avvisa gli uffici traffico di divieti, chiusure e scioperi. Il progetto è tra i 100 "
+                 "Bocconi che stima per ogni spedizione il rischio di divieti, chiusure e scioperi, avvisa in anticipo e "
+                 "aggiorna in tempo reale. Il progetto è tra i 100 "
                  "scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto "
                  "un grant di 2.000 €.",
         "why": "Finora le risposte arrivano soprattutto da docenti e consulenti, e ci mancano proprio gli uffici traffico. "
@@ -38,7 +39,7 @@ T = {
     },
     "en": {
         "intro": "I am writing again about my message earlier this week on zhol, an AI platform built by Bocconi students that "
-                 "warns traffic offices the evening before about bans, closures and strikes. The project is one of 100 selected "
+                 "estimates the risk of bans, closures and strikes for each shipment, warns in advance and updates in real time. The project is one of 100 selected "
                  "out of about 500 for TEF Ignition 2026, a European programme for new technology companies, and received a "
                  "€2,000 grant.",
         "why": "So far most answers come from lecturers and consultants, and we are missing exactly the traffic offices. We "
@@ -51,7 +52,8 @@ T = {
     },
     "de": {
         "intro": "ich schreibe Ihnen noch einmal zu meiner Nachricht von dieser Woche über zhol, eine KI-Plattform von "
-                 "Bocconi-Studierenden, die Dispositionen am Vorabend vor Fahrverboten, Sperrungen und Streiks warnt. Das "
+                 "Bocconi-Studierenden, die für jede Sendung das Risiko von Fahrverboten, Sperrungen und Streiks abschätzt, "
+                 "frühzeitig warnt und in Echtzeit aktualisiert. Das "
                  "Projekt gehört zu den 100 von rund 500 Bewerbungen, die TEF Ignition 2026, ein europäisches Programm für junge "
                  "Technologieunternehmen, ausgewählt hat, und erhielt eine Förderung von 2.000 €.",
         "why": "Bisher kommen die meisten Antworten von Dozenten und Beratern, und genau die Dispositionen fehlen uns. Wir "
@@ -64,8 +66,8 @@ T = {
     },
     "fr": {
         "intro": "je me permets de revenir vers vous au sujet de mon message de cette semaine sur zhol, une plateforme d'IA "
-                 "d'étudiants de Bocconi qui prévient la veille au soir les services d'exploitation des interdictions, des "
-                 "fermetures et des grèves. Le projet fait partie des 100 retenus sur environ 500 par TEF Ignition 2026, "
+                 "d'étudiants de Bocconi qui estime pour chaque envoi le risque d'interdictions, de fermetures et de grèves, "
+                 "prévient à l'avance et met à jour en temps réel. Le projet fait partie des 100 retenus sur environ 500 par TEF Ignition 2026, "
                  "programme européen pour les jeunes entreprises technologiques, et a reçu une subvention de 2 000 €.",
         "why": "Jusqu'ici, la plupart des réponses viennent d'enseignants et de consultants, et ce sont justement les services "
                "d'exploitation qui nous manquent. Nous voulons mesurer ce que coûtent vraiment ces perturbations dans toute "
@@ -78,7 +80,8 @@ T = {
     },
     "es": {
         "intro": "le escribo de nuevo sobre mi mensaje de esta semana acerca de zhol, una plataforma de IA de estudiantes de "
-                 "Bocconi que avisa la víspera a los departamentos de tráfico de prohibiciones, cierres y huelgas. El proyecto es "
+                 "Bocconi que estima para cada envío el riesgo de prohibiciones, cierres y huelgas, avisa con antelación y "
+                 "actualiza en tiempo real. El proyecto es "
                  "uno de los 100 seleccionados entre unos 500 por TEF Ignition 2026, programa europeo para nuevas empresas "
                  "tecnológicas, y recibió una subvención de 2.000 €.",
         "why": "Hasta ahora la mayoría de las respuestas viene de profesores y consultores, y nos faltan precisamente los "

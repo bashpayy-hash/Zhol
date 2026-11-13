@@ -4,9 +4,9 @@
 
 ## 3.1 The model in one paragraph
 
-zhol is a **B2B subscription** for traffic offices of road hauliers and forwarders. The office shares tomorrow's loads
-(CSV/Excel today, TMS later). Every evening zhol checks each load against every restriction on its route and sends **one
-WhatsApp message** only when a load is hit, with options. Price: **€12 per truck per month** (minimum €99).
+zhol is a **B2B subscription** for traffic offices of road hauliers and forwarders. The office shares its planned loads
+(CSV/Excel today, TMS later). zhol estimates for each load the risk and the cost of every restriction on its route, warns
+**on WhatsApp** in advance, only when a load is hit, with options, and updates while it moves. Price: **€12 per vehicle per month** (minimum €99).
 An optional **performance plan** charges a small base fee plus **15% of verified savings**. The first 4 weeks are a free pilot
 with a savings ledger, so the customer sees the money before paying.
 

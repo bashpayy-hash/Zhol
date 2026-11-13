@@ -1,5 +1,7 @@
 # 1. First-contact messages to traffic offices (Italian, with English translation)
 
+> **Архив.** Здесь старое позиционирование «накануне вечером». Так больше не пишем: zhol оценивает риск, предупреждает заранее и обновляет в реальном времени (правило в `CLAUDE.md`, 13 ноября 2026).
+
 Rules:
 - Write in Italian and personalise the first line: their lane, their province, a recent event.
 - Ask for 20 minutes, not a sale. Offer something useful: a free check of their next week's loads.

@@ -106,7 +106,7 @@ Contship в Мельцо, под Миланом), проходил курсы в
 - **Industry:** Transportation, Logistics, Supply Chain and Storage; Truck Transportation; Rail Transportation;
   Maritime Transportation; Freight and Package Transportation.
 
-**Просьба.** Минута на опрос и переслать его тому, кто в их компании планирует завтрашние отправки.
+**Просьба.** Минута на опрос и переслать его тому, кто в их компании планирует отправки.
 
 {{texts:alumni}}
 ## Группа 2 · Те, кто планирует отправки на наших маршрутах

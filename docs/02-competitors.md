@@ -4,7 +4,7 @@
 
 ## 2.1 The job we compete for
 
-*"Tonight, tell me which of tomorrow's loads will hit a restriction somewhere in Europe, and what I should do about it."*
+*"Tell me in advance which of my shipments will hit a restriction somewhere in Europe, what it will cost and what I should do about it, and keep me updated while they move."*
 
 Today the traffic office does this job by hand. A dispatcher opens 6–10 websites, an Austrian calendar PDF, two WhatsApp groups
 and the news, then re-plans by phone. Every product below solves **part** of that job.
@@ -15,7 +15,7 @@ and the news, then re-plans by phone. Every product below solves **part** of tha
 |---|---|---|---|---|---|
 | **Fleet telematics** | Webfleet (Bridgestone), Samsara, Geotab (took over Verizon Connect's EU business, Oct 2025), Targa Telematics / Viasat (IT) | Fleets of all sizes | **€10–35 per vehicle/month**; generic Italian trackers €9–17 | Live position, ETA; AI assistants (Geotab Ace, Samsara Agent Studio, Jun 2026) | Look at where trucks are *now*. Don't check tomorrow's plan against bans, strikes or protests |
 | **Freight exchanges** | TIMOCOM, Trans.eu, Teleroute (Alpega) | Carriers, forwarders | **€120–200 per user/month** (est.) | TIMOCOM runs a free truck-ban portal in 14 languages | Static calendars only, nothing per load, no strikes or dosing outside the calendar |
-| **Truck navigation & route planning** | Sygic Truck (€59.99/yr), TomTom GO Expert, CoPilot (Trimble), PTV Map&Guide (**€49 per user/month**) | Drivers, dispatchers | €5–49 per user/month | Routes around permanent restrictions | One route at a time, on request; no evening-before warning; no strikes or protests |
+| **Truck navigation & route planning** | Sygic Truck (€59.99/yr), TomTom GO Expert, CoPilot (Trimble), PTV Map&Guide (**€49 per user/month**) | Drivers, dispatchers | €5–49 per user/month | Routes around permanent restrictions | One route at a time, on request; no per-shipment warning in advance; no strikes or protests |
 | **Free ban apps / official apps** | Truck Bans (€14.99/yr), Transport-Yak, BGL map, ASFINAG app, My Way Truck (Polizia + Autostrade) | Drivers | Free to €3/month | The calendar layer | Single country or generic; not matched to loads |
 | **Real-time visibility** | Shippeo, project44 / LSP44, Transporeon Visibility Hub (ex-Sixfold), FourKites | Enterprise **shippers**; **free for carriers** | Enterprise quotes | Predicted arrival, exception alerts; AI agents (project44 Apr 2026, FourKites Loft Feb 2026) | React once a truck is already late; paid by the shipper, not the haulier |
 | **Supply-chain risk monitoring** | Everstream, Prewave, Resilinc, riskmethods (Sphera), Dataminr | Enterprise procurement | **$20 k+/year** (Dataminr First Alert reference) | Detect strikes, protests, disasters | Look at suppliers, not roads; ~100× too expensive for a 20-truck office |
@@ -30,10 +30,10 @@ It has to show more than that in avoided waits (doc 03).
 ## 2.3 Positioning
 
 ```
-                      decision for a specific load, tomorrow
+                      decision for a specific load, ahead and live
                                       ▲
                                       │                 zhol
-                                      │        (load-level, evening before,
+                                      │        (load-level, ahead + live,
                      Qargo / TMS      │         unplanned + calendar, WhatsApp)
                      (could add it)   │
   static calendars ───────────────────┼──────────────────── live, unplanned events

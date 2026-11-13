@@ -50,8 +50,8 @@ Already known and not repeated here: Albo Nazionale, 31 Mar 2025: **98,277** act
    about 700 to 3,100 active haulage firms. **Bolzano is the only province with strong growth (+36% in 10 years).**
 3. **The buyer is under cost pressure:** average age 55, margins below 3%, diesel up 30% in 2026. Pitch hard money (avoided waits, legal waiting
    compensation) and a 4-day payback, not "AI".
-4. **The user is a €28–36k dispatcher** who plans, assigns and re-plans in Excel, on the phone and on WhatsApp. No ad mentions evening work. Our
-   "evening-before" promise rests on a habit we have **not** yet verified: test it in the first five interviews.
+4. **The user is a €28–36k dispatcher** who plans, assigns and re-plans in Excel, on the phone and on WhatsApp. No ad mentions evening work. When and
+   how they plan ahead is a habit we have **not** yet verified: test it in the first five interviews.
 5. **Distribution runs through associations and their consortia** (Unatras members, Federtrasporti, Assotir/Transfrigoroute, Fedespedi/Alsea), through two
    trade fairs in spring 2027 (LetExpo, transport logistic), and through trade media that the owners already read.
 
@@ -219,7 +219,7 @@ cards are **hypotheses to check in interviews**.
 **Persona card: "Luca", 29, road operations, SME forwarder in Milan (ALSEA member)** (composite)
 - Sells transit times to shippers, buys trucks from 10–30 hauliers. Has no fleet of his own and no telematics on the subcontracted trucks.
 - Pain: learns about a blockade or dosing day from the carrier, after the slot is missed. Then calls the shipper.
-- Wants: per-shipment warning the evening before, in a form he can forward to the shipper.
+- Wants: per-shipment warning in advance, updated while the goods move, in a form he can forward to the shipper.
 
 ---
 
@@ -316,7 +316,7 @@ trans.info PL once segment C works.
 
 | Segment | Firms | Who buys | Who uses | Where to reach | First message hook |
 |---|---|---|---|---|---|
-| **A. Alpine-lane hauliers** (Lombardy, Veneto, Emilia-Romagna, Piemonte, Trentino-Alto Adige) | ~2,350 traffic offices (of ~11,700 hauliers with 6–100 trucks) | Owner (*titolare*) | Dispatcher (*ufficio traffico*) | FAI, CNA Fita, Confartigianato Trasporti, Federtrasporti consortia, LetExpo Verona (Mar 2027) | "Kufstein doses again tomorrow from 05:00. Which of your loads are in the window? You'll know tonight, on WhatsApp." |
-| **B. South–North long-haul** (Sicily, Campania, Puglia; fresh produce) | ~2,000 | Owner | Dispatcher | Sicilian hauliers' committee, Transfrigoroute Italia Assotir, ALIS Catania, Vittoria market | "The next blockade won't be in any calendar. Know the evening before which loads it stops, and what to do instead." |
-| **C. Austrian, German, Slovenian hauliers on Italian lanes** | ~2,000–4,000 | Geschäftsführer / owner | Disponent | WKO, BGL, GZS; transport logistic Munich (Apr 2027) | "Italienische Fahrverbote, Streiks, A22-Sperren: am Vorabend, pro Ladung, per WhatsApp." |
-| **D. SME freight forwarders** | ~800 (≈450 in the North) | Owner / operations manager | Road operations desk | Fedespedi, ALSEA, Shipping Italy | "Know tonight which of tomorrow's shipments will miss their slot, before your customer calls." |
+| **A. Alpine-lane hauliers** (Lombardy, Veneto, Emilia-Romagna, Piemonte, Trentino-Alto Adige) | ~2,350 traffic offices (of ~11,700 hauliers with 6–100 trucks) | Owner (*titolare*) | Dispatcher (*ufficio traffico*) | FAI, CNA Fita, Confartigianato Trasporti, Federtrasporti consortia, LetExpo Verona (Mar 2027) | "Kufstein doses again tomorrow from 05:00. Which of your loads are in the window? zhol tells you on WhatsApp, in advance." |
+| **B. South–North long-haul** (Sicily, Campania, Puglia; fresh produce) | ~2,000 | Owner | Dispatcher | Sicilian hauliers' committee, Transfrigoroute Italia Assotir, ALIS Catania, Vittoria market | "The next blockade won't be in any calendar. Know as soon as it is called which loads it stops, and what to do instead." |
+| **C. Austrian, German, Slovenian hauliers on Italian lanes** | ~2,000–4,000 | Geschäftsführer / owner | Disponent | WKO, BGL, GZS; transport logistic Munich (Apr 2027) | "Italienische Fahrverbote, Streiks, A22-Sperren: frühzeitig, pro Sendung, in Echtzeit, per WhatsApp." |
+| **D. SME freight forwarders** | ~800 (≈450 in the North) | Owner / operations manager | Road operations desk | Fedespedi, ALSEA, Shipping Italy | "Know in advance which shipments will miss their slot, with updates before your customer calls." |

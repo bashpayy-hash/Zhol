@@ -46,7 +46,7 @@ Code map:
 | Simulator + planner (matching, ETA, options, costs) | `zhol/engine.py` |
 | WhatsApp message composer, reply parsing | `zhol/composer.py` |
 | WhatsApp Cloud API client, webhook signature check | `zhol/channels/whatsapp.py` |
-| Evening run, reply loop | `zhol/pipeline.py` |
+| Scheduled check (`run_evening`), reply loop | `zhol/pipeline.py` |
 | Savings model, savings ledger | `zhol/savings.py` |
 | API + web console + webhook | `zhol/api.py`, `web/` |
 | Tests (31) | `tests/` |
@@ -193,7 +193,7 @@ zhol suggests leaving at 11:00 (arrives 21:10 the same day), saving €734 compa
 | Precision | useful / (useful + false alert) | ≥ 80% |
 | Missed problems | disruptions the dispatcher reports that zhol didn't flag | ≤ 1 per office per month |
 | Review time | median seconds per event | ≤ 90 s |
-| Dispatcher effort | minutes per evening checking sources, before vs. with zhol | −50% |
+| Dispatcher effort | minutes per day checking sources, before vs. with zhol | −50% |
 | Verified savings | ledger (doc 03) | ≥ 3× the price |
 
 These appear on the "Pilot" page and at `GET /api/metrics`.
@@ -216,14 +216,14 @@ These appear on the "Pilot" page and at `GET /api/metrics`.
 ## 4.11 Reliability
 
 - **The worst failure is silent:** a source stops updating and zhol says nothing.
-  - **(roadmap)** A source-health monitor marks a source stale (e.g. no update in 6 h) and the evening message states which
+  - **(roadmap)** A source-health monitor marks a source stale (e.g. no update in 6 h) and every alert states which
     sources were checked.
-  - **(roadmap)** An optional "all clear" message on quiet evenings.
+  - **(roadmap)** An optional "all clear" message on quiet days.
 - **Graceful degradation:**
   - LLM down → heuristics;
   - WhatsApp down → the alert stays in the console and email (roadmap);
   - routing API down → corridor model.
-- **Idempotent evening runs:** events are upserted by stable ids, so re-running is safe.
+- **Idempotent runs:** events are upserted by stable ids, so re-running is safe.
 
 ## 4.12 Stack and deployment
 
@@ -256,5 +256,6 @@ These appear on the "Pilot" page and at `GET /api/metrics`.
   - Italian derogations for Sicily and Sardinia ferries;
   - the A12 sectoral ban (list of goods);
   - the summer ADR ban.
-- No live traffic. zhol plans the evening before and does not navigate.
+- No live traffic. zhol does not navigate: it estimates each shipment against rules, strikes and closures, warns in advance
+  and re-checks at every scheduled run (17:30 and 20:00 in the MVP).
 - Demo events are illustrative and labelled as such. Real pilots use real sources only.

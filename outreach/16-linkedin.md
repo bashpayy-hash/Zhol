@@ -112,7 +112,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 
 Gentile [Nome],
 
-mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa, e alcuni numeri esistono già. In una settimana tipo da 14 a 17 paesi europei vietano la circolazione dei camion, ognuno con orari e festivi propri. Nel 2025 a Kufstein 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Otto giorni di blocchi nel Sud Italia, a ottobre 2026, sono costati oltre 400 milioni di euro. E otto dei nove esperti che finora hanno risposto al nostro sondaggio, tra committenti, ferrovie e porti, dicono che su 100 spedizioni all'estero ne cambiano almeno 2.
 
@@ -129,7 +129,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -180,7 +180,7 @@ Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, 
 ```text
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -217,7 +217,7 @@ Alikhan Bashpay · Bocconi University · zhol
 - **Industry:** Transportation, Logistics, Supply Chain and Storage; Truck Transportation; Rail Transportation;
   Maritime Transportation; Freight and Package Transportation.
 
-**Просьба.** Минута на опрос и переслать его тому, кто в их компании планирует завтрашние отправки.
+**Просьба.** Минута на опрос и переслать его тому, кто в их компании планирует отправки.
 
 #### Тема сообщения InMail · IT
 
@@ -238,7 +238,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 
 Gentile [Nome],
 
-mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa, e alcuni numeri esistono già. In una settimana tipo da 14 a 17 paesi europei vietano la circolazione dei camion, ognuno con orari e festivi propri. Nel 2025 a Kufstein 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Otto giorni di blocchi nel Sud Italia, a ottobre 2026, sono costati oltre 400 milioni di euro. E otto dei nove esperti che finora hanno risposto al nostro sondaggio, tra committenti, ferrovie e porti, dicono che su 100 spedizioni all'estero ne cambiano almeno 2.
 
@@ -255,7 +255,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -306,7 +306,7 @@ Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, 
 ```text
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -372,7 +372,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 
 Gentile [Nome],
 
-mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa, e alcuni numeri esistono già. In una settimana tipo da 14 a 17 paesi europei vietano la circolazione dei camion, ognuno con orari e festivi propri. Nel 2025 a Kufstein 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Otto giorni di blocchi nel Sud Italia, a ottobre 2026, sono costati oltre 400 milioni di euro. E otto dei nove esperti che finora hanno risposto al nostro sondaggio, tra committenti, ferrovie e porti, dicono che su 100 spedizioni all'estero ne cambiano almeno 2.
 
@@ -389,7 +389,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -442,7 +442,7 @@ Guten Tag, ich bin Alikhan, Student an der Bocconi. Mein Team und ich entwickeln
 
 Guten Tag [Name],
 
-ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Disponenten am Vorabend warnt, wenn einer Sendung auf Straße, Schiene oder See ein Verbot, eine Sperrung oder ein Streik droht. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
+ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die abschätzt, ob einer Sendung auf Straße, Schiene oder See ein Fahrverbot, eine Sperrung oder ein Streik droht und was das kosten würde, die Disponenten frühzeitig warnt und sie in Echtzeit informiert, wenn sich die Lage ändert. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
 
 Verbote, Sperrungen und Streiks kosten alle, die in Europa Güter bewegen, Zeit und Geld, und einige Zahlen gibt es bereits. In einer typischen Woche verbieten 14 bis 17 europäische Länder den Lkw-Verkehr, jedes mit eigenen Zeiten und Feiertagen. 2025 lagen in Kufstein 21 von 57 Dosiertagen außerhalb des veröffentlichten Kalenders. Acht Tage Blockaden in Süditalien kosteten im Oktober 2026 über 400 Millionen Euro. Und acht der neun Fachleute, die unsere Umfrage bisher beantwortet haben, aus der verladenden Wirtschaft, von der Bahn und aus Häfen, sagen, dass sich mindestens 2 von 100 Sendungen ins Ausland ändern müssen.
 
@@ -459,7 +459,7 @@ Alikhan Bashpay · Universität Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -525,7 +525,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 
 Gentile [Nome],
 
-mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa, e alcuni numeri esistono già. In una settimana tipo da 14 a 17 paesi europei vietano la circolazione dei camion, ognuno con orari e festivi propri. Nel 2025 a Kufstein 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Otto giorni di blocchi nel Sud Italia, a ottobre 2026, sono costati oltre 400 milioni di euro. E otto dei nove esperti che finora hanno risposto al nostro sondaggio, tra committenti, ferrovie e porti, dicono che su 100 spedizioni all'estero ne cambiano almeno 2.
 
@@ -542,7 +542,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -593,7 +593,7 @@ Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, 
 ```text
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -637,7 +637,7 @@ Guten Tag, ich bin Alikhan, Student an der Bocconi. Mein Team und ich entwickeln
 
 Guten Tag [Name],
 
-ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Disponenten am Vorabend warnt, wenn einer Sendung auf Straße, Schiene oder See ein Verbot, eine Sperrung oder ein Streik droht. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
+ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die abschätzt, ob einer Sendung auf Straße, Schiene oder See ein Fahrverbot, eine Sperrung oder ein Streik droht und was das kosten würde, die Disponenten frühzeitig warnt und sie in Echtzeit informiert, wenn sich die Lage ändert. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
 
 Verbote, Sperrungen und Streiks kosten alle, die in Europa Güter bewegen, Zeit und Geld, und einige Zahlen gibt es bereits. In einer typischen Woche verbieten 14 bis 17 europäische Länder den Lkw-Verkehr, jedes mit eigenen Zeiten und Feiertagen. 2025 lagen in Kufstein 21 von 57 Dosiertagen außerhalb des veröffentlichten Kalenders. Acht Tage Blockaden in Süditalien kosteten im Oktober 2026 über 400 Millionen Euro. Und acht der neun Fachleute, die unsere Umfrage bisher beantwortet haben, aus der verladenden Wirtschaft, von der Bahn und aus Häfen, sagen, dass sich mindestens 2 von 100 Sendungen ins Ausland ändern müssen.
 
@@ -654,7 +654,7 @@ Alikhan Bashpay · Universität Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -720,7 +720,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 
 Gentile [Nome],
 
-mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa, e alcuni numeri esistono già. In una settimana tipo da 14 a 17 paesi europei vietano la circolazione dei camion, ognuno con orari e festivi propri. Nel 2025 a Kufstein 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Otto giorni di blocchi nel Sud Italia, a ottobre 2026, sono costati oltre 400 milioni di euro. E otto dei nove esperti che finora hanno risposto al nostro sondaggio, tra committenti, ferrovie e porti, dicono che su 100 spedizioni all'estero ne cambiano almeno 2.
 
@@ -737,7 +737,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -790,7 +790,7 @@ Guten Tag, ich bin Alikhan, Student an der Bocconi. Mein Team und ich entwickeln
 
 Guten Tag [Name],
 
-ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Disponenten am Vorabend warnt, wenn einer Sendung auf Straße, Schiene oder See ein Verbot, eine Sperrung oder ein Streik droht. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
+ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die abschätzt, ob einer Sendung auf Straße, Schiene oder See ein Fahrverbot, eine Sperrung oder ein Streik droht und was das kosten würde, die Disponenten frühzeitig warnt und sie in Echtzeit informiert, wenn sich die Lage ändert. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
 
 Verbote, Sperrungen und Streiks kosten alle, die in Europa Güter bewegen, Zeit und Geld, und einige Zahlen gibt es bereits. In einer typischen Woche verbieten 14 bis 17 europäische Länder den Lkw-Verkehr, jedes mit eigenen Zeiten und Feiertagen. 2025 lagen in Kufstein 21 von 57 Dosiertagen außerhalb des veröffentlichten Kalenders. Acht Tage Blockaden in Süditalien kosteten im Oktober 2026 über 400 Millionen Euro. Und acht der neun Fachleute, die unsere Umfrage bisher beantwortet haben, aus der verladenden Wirtschaft, von der Bahn und aus Häfen, sagen, dass sich mindestens 2 von 100 Sendungen ins Ausland ändern müssen.
 
@@ -807,7 +807,7 @@ Alikhan Bashpay · Universität Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 
@@ -871,7 +871,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 
 Gentile [Nome],
 
-mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa, e alcuni numeri esistono già. In una settimana tipo da 14 a 17 paesi europei vietano la circolazione dei camion, ognuno con orari e festivi propri. Nel 2025 a Kufstein 21 giorni di dosaggio su 57 sono arrivati fuori dal calendario pubblicato. Otto giorni di blocchi nel Sud Italia, a ottobre 2026, sono costati oltre 400 milioni di euro. E otto dei nove esperti che finora hanno risposto al nostro sondaggio, tra committenti, ferrovie e porti, dicono che su 100 spedizioni all'estero ne cambiano almeno 2.
 
@@ -888,7 +888,7 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 Bans, closures and strikes cost time and money to everyone who moves goods in Europe, and some figures already exist. On a typical week 14 to 17 European countries ban trucks, each with its own hours and holidays. In 2025, 21 of 57 dosing days at Kufstein came outside the published calendar. Eight days of blockades in southern Italy, in October 2026, cost over €400 million. And eight of the nine experts who have answered our survey so far, from shippers, rail and ports, say that at least 2 in 100 shipments abroad have to change.
 

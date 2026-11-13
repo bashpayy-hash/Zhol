@@ -51,22 +51,22 @@ async function viewTonight() {
   const byId = Object.fromEntries(loads.map(l => [l.company_id + "/" + l.id, l]));
   const run = runs[0];
   const atRisk = assess.filter(a => a.status === "hit" || a.status === "blocked").length;
-  const headline = !run ? "Which of tomorrow’s loads will a restriction hit?"
-    : atRisk ? `${atRisk} of ${assess.length} loads need a decision tonight.` : `All ${assess.length} loads are clear for tomorrow.`;
-  const lead = !run ? "Load a demo or add tomorrow’s loads, then run the evening check. zhol reads bans, closures, dosing days, strikes and protests, and checks each one against every pass, tunnel, border and city on each route."
-    : `Evening check for ${run.target} · ${run.events} active events · estimated saving ${eur(run.saving_eur)} vs plan.`;
+  const headline = !run ? "Which of your loads will a restriction hit, and what will it cost?"
+    : atRisk ? `${atRisk} of ${assess.length} loads need a decision.` : `All ${assess.length} loads are clear.`;
+  const lead = !run ? "Load a demo or add your loads, then run the check. zhol reads bans, closures, dosing days, strikes and protests, and checks each one against every pass, tunnel, border and city on each route."
+    : `Check for ${run.target} · ${run.events} active events · estimated saving ${eur(run.saving_eur)} vs plan.`;
   const cards = assess.slice().sort((a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status]).map(a => card(a, byId[a.company_id + "/" + a.load_id])).join("");
   const alert = alerts.find(x => run && x.run_id === run.id);
   view.innerHTML = `
     <section class="section hero"><div class="wrap">
-      <div class="kicker">Evening check</div>
+      <div class="kicker">Risk check</div>
       <h1>${esc(headline)}</h1>
       <p class="lead">${esc(lead)}</p>
       <div class="cta"><a class="textlink" href="#review">Review queue ›</a><a class="textlink" href="#savings">What is it worth? ›</a></div>
     </div></section>
     <section class="section mist"><div class="wrap">
-      <div class="section-head"><h2>Tomorrow’s loads</h2><span class="sub">${run ? "Run " + esc(run.id) : "No run yet"}</span></div>
-      ${cards ? `<div class="grid two">${cards}</div>` : `<div class="empty">No assessments yet. Use “Load demo”, then “Run evening check”.</div>`}
+      <div class="section-head"><h2>Your loads</h2><span class="sub">${run ? "Run " + esc(run.id) : "No run yet"}</span></div>
+      ${cards ? `<div class="grid two">${cards}</div>` : `<div class="empty">No assessments yet. Use “Load demo”, then “Run the check”.</div>`}
     </div></section>
     <section class="section"><div class="wrap">
       <div class="section-head"><h2>The WhatsApp message</h2>${alert ? `<span class="status ${alert.status}">${esc(alert.status)}</span>` : ""}</div>
@@ -242,7 +242,7 @@ async function viewSavings() {
     ["dispatcher_minutes_per_day", "Dispatcher minutes per day checking", 30], ["big_events_per_year", "Blockade/strike days per year", 4],
     ["price_per_truck_month", "Price per truck per month (€)", 12]];
   view.innerHTML = `
-    <section class="section hero"><div class="wrap"><div class="kicker">Savings</div><h1>What is one evening message worth?</h1>
+    <section class="section hero"><div class="wrap"><div class="kicker">Savings</div><h1>What is one early warning worth?</h1>
       <p class="lead">Replace every number with the office’s own in the first meeting. Only disruptions that are not in a published calendar count.</p></div></section>
     <section class="section mist"><div class="wrap"><div class="grid two">
       <div class="card"><div class="form-grid">${fields.map(([k, l, v]) => `<div class="field"><label>${l}</label><input type="number" step="any" id="s-${k}" value="${v}"></div>`).join("")}</div>

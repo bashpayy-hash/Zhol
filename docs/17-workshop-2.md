@@ -66,7 +66,7 @@ eight work in road haulage, and no company has answered.
 
 The PDF deck (sent to the owner as a file, not kept in the repository) carries it on slides 6 and 7. The reference office is from
 `docs/03-business-model.md`: 20 vehicles, half on lanes abroad, 20 one-way trips each, so 200 legs a month. An
-evening warning avoids half of the cost. Expert buckets are read at their midpoints, and "over €1,000" is read
+early warning avoids half of the cost. Expert buckets are read at their midpoints, and "over €1,000" is read
 as €1,500.
 
 | Case | Changed per 100 legs | Cost each | Avoidable a month | Against the €240 subscription |

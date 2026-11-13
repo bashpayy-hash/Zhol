@@ -8,13 +8,14 @@
 ## Лестница
 
 1. **Минута — опрос.** Его мы и рассылаем сейчас, по почте и в LinkedIn (`16-linkedin.md`).
-2. **Двадцать минут — «ваш последний трудный вечер».** Разбираем один недавний сбой: что случилось, когда офис узнал и
-   во что это обошлось. Мы приносим, что zhol сказал бы в тот вечер. Ничего не продаём. Отсюда берутся настоящие цифры
+2. **Двадцать минут — «ваша последняя застрявшая отправка».** Разбираем один недавний сбой: что случилось, когда офис
+   узнал и во что это обошлось. Мы приносим, что zhol сказал бы и за сколько до события. Ничего не продаём. Отсюда берутся настоящие цифры
    для `03-interview-script.md`.
 3. **Четыре недели — пробный период на одном направлении или за одним столом.**
-   - Каждый день до 16.00 офис присылает завтрашние отправки: Excel, CSV или фото.
-   - В 17.30 и в 20.00 мы их проверяем. Если отправку заденет, приходит одно сообщение в WhatsApp с вариантами и их
-     ценой. Каждое событие перед отправкой проверяет человек.
+   - Офис присылает отправки на ближайшие дни: Excel, CSV или фото.
+   - Мы проверяем их сразу и снова каждый раз, когда ситуация меняется, в том числе когда груз уже в пути (оценка,
+     заранее, в реальном времени — правило в CLAUDE.md). Если отправку заденет, приходит сообщение в WhatsApp с
+     оценкой задержки, вариантами и их ценой. Каждое событие перед отправкой проверяет человек.
    - Журнал за четыре недели фиксирует для каждого предупреждения: знал ли офис сам и когда, какое решение поменялось,
      сколько сэкономили. Главная цифра — сколько предупреждений были новыми для офиса (слайд «A 200-vehicle pilot»).
    - **Критерий успеха** записываем в первый день. По умолчанию это минимум 3 полезных предупреждения, которых офис не
@@ -43,8 +44,8 @@
 ## Тексты
 
 **Когда отправлять письмо «Предложение».** Когда человек ответил на опрос и оставил контакт, ответил в LinkedIn или
-после разговора. Квадратные скобки заменяем перед отправкой. Ссылка ведёт на страницу Beta: там вечер с настоящими
-правилами и форма записи.
+после разговора. Квадратные скобки заменяем перед отправкой. Ссылка ведёт на страницу Beta: там zhol работает с настоящими
+правилами и есть форма записи.
 
 **Когда отправлять письмо «Партнёрство».** Железной дороге, интермодалу и портам.
 
@@ -55,19 +56,19 @@
 
 Buongiorno [Nome],
 
-grazie per la risposta. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+grazie per la risposta. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
 Le proponiamo tre passi, ognuno senza impegno.
 
-Primo, venti minuti al telefono sulla vostra ultima serata difficile. Cosa è successo, quando lo avete saputo e quanto è costato. Noi portiamo ciò che zhol avrebbe detto quella sera.
+Primo, venti minuti al telefono sull'ultima spedizione che vi si è bloccata. Cosa è successo, quando lo avete saputo e quanto è costato. Noi portiamo ciò che zhol avrebbe detto, e con quanto anticipo.
 
-Secondo, quattro settimane di prova gratuita su una sola linea o un solo desk. Ogni giorno entro le 16 ci mandate le spedizioni di domani in Excel o in foto. Alle 17.30 e alle 20 le controlliamo, e ricevete un solo messaggio WhatsApp quando una spedizione è a rischio, con le alternative e il loro costo. Una persona verifica ogni evento prima dell'invio.
+Secondo, quattro settimane di prova gratuita su una sola linea o un solo desk. Ci mandate le spedizioni dei prossimi giorni in Excel o in foto. Le controlliamo appena arrivano e di nuovo ogni volta che la situazione cambia, anche quando sono già in viaggio. Ricevete un messaggio WhatsApp solo quando una spedizione è a rischio, con la stima del ritardo, le alternative e il loro costo. Una persona verifica ogni evento prima dell'invio.
 
 Terzo, solo se la prova raggiunge il criterio che fissiamo insieme il primo giorno, il prezzo da cliente fondatore è di 8 € per mezzo al mese per dodici mesi.
 
-Usiamo solo riferimento, percorso, orari e tipo di merce, su server europei, e cancelliamo i dati 90 giorni dopo la consegna. Partiamo dall'Italia e dalle Alpi, con tutta l'Europa come obiettivo, e strumenti come l'AI servono proprio a controllare di notte ciò che oggi nessun ufficio riesce a seguire.
+Usiamo solo riferimento, percorso, orari e tipo di merce, su server europei, e cancelliamo i dati 90 giorni dopo la consegna. Partiamo dall'Italia e dalle Alpi, con tutta l'Europa come obiettivo, e strumenti come l'AI servono proprio a seguire giorno e notte ciò che oggi nessun ufficio riesce a seguire.
 
-Qui può vedere una serata con regole reali.
+Qui può vedere zhol al lavoro con regole reali.
 https://zhol.live/it/beta
 
 Quando le andrebbe bene sentirci per venti minuti?
@@ -79,19 +80,19 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-thank you for your reply. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+thank you for your reply. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 We would like to propose three steps, none of them binding.
 
-First, twenty minutes on the phone about your last difficult evening. What happened, when you found out and what it cost. We bring what zhol would have said that evening.
+First, twenty minutes on the phone about the last shipment that got stuck. What happened, when you found out and what it cost. We bring what zhol would have said, and how far ahead.
 
-Second, a free four-week trial on one lane or one desk. Every day by 4 pm you send us tomorrow's shipments as Excel or a photo. At 5.30 pm and 8 pm we check them, and you get one WhatsApp message only when a shipment is at risk, with the options and what each costs. A person checks every event before it is sent.
+Second, a free four-week trial on one lane or one desk. You send us the shipments of the coming days as Excel or a photo. We check them as soon as they arrive and again whenever the situation changes, also once they are on their way. You get a WhatsApp message only when a shipment is at risk, with the expected delay, the options and what each costs. A person checks every event before it is sent.
 
 Third, only if the trial meets the criterion we set together on the first day, the founding-customer price is €8 per vehicle a month for twelve months.
 
-We use only the reference, the route, the times and the type of goods, on European servers, and delete the data 90 days after delivery. We start with Italy and the Alps, with the whole of Europe as our goal, and tools such as AI are what make it possible to watch at night what no office can follow today.
+We use only the reference, the route, the times and the type of goods, on European servers, and delete the data 90 days after delivery. We start with Italy and the Alps, with the whole of Europe as our goal, and tools such as AI are what make it possible to watch, day and night, what no office can follow today.
 
-Here you can see an evening with real rules.
+Here you can see zhol at work with real rules.
 https://zhol.live/beta
 
 When would twenty minutes suit you?
@@ -107,19 +108,19 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Guten Tag [Name],
 
-vielen Dank für Ihre Antwort. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die Disponenten am Vorabend warnt, wenn einer Sendung auf Straße, Schiene oder See ein Verbot, eine Sperrung oder ein Streik droht. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
+vielen Dank für Ihre Antwort. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich entwickeln zhol, eine KI-Plattform, die abschätzt, ob einer Sendung auf Straße, Schiene oder See ein Fahrverbot, eine Sperrung oder ein Streik droht und was das kosten würde, die Disponenten frühzeitig warnt und sie in Echtzeit informiert, wenn sich die Lage ändert. Das Projekt ist eines von 100, die TEF Ignition 2026, ein europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von 2.000 €.
 
 Wir schlagen Ihnen drei Schritte vor, alle unverbindlich.
 
-Erstens zwanzig Minuten am Telefon über Ihren letzten schwierigen Abend. Was ist passiert, wann haben Sie es erfahren und was hat es gekostet. Wir bringen mit, was zhol an diesem Abend gesagt hätte.
+Erstens zwanzig Minuten am Telefon über die letzte Sendung, die festsaß. Was ist passiert, wann haben Sie es erfahren und was hat es gekostet. Wir bringen mit, was zhol gesagt hätte, und wie früh.
 
-Zweitens vier Wochen kostenloser Test auf einer Relation oder in einer Disposition. Jeden Tag bis 16 Uhr schicken Sie uns die Sendungen von morgen als Excel oder Foto. Um 17.30 und 20 Uhr prüfen wir sie, und Sie erhalten nur dann eine WhatsApp-Nachricht, wenn eine Sendung gefährdet ist, mit den Alternativen und ihren Kosten. Jedes Ereignis prüft vor dem Versand ein Mensch.
+Zweitens vier Wochen kostenloser Test auf einer Relation oder in einer Disposition. Sie schicken uns die Sendungen der nächsten Tage als Excel oder Foto. Wir prüfen sie, sobald sie ankommen, und erneut, wann immer sich die Lage ändert, auch wenn sie schon unterwegs sind. Sie erhalten nur dann eine WhatsApp-Nachricht, wenn eine Sendung gefährdet ist, mit der erwarteten Verspätung, den Alternativen und ihren Kosten. Jedes Ereignis prüft vor dem Versand ein Mensch.
 
 Drittens, nur wenn der Test das Kriterium erreicht, das wir am ersten Tag gemeinsam festlegen, beträgt der Gründerkundenpreis 8 € pro Fahrzeug und Monat für zwölf Monate.
 
-Wir nutzen nur Referenz, Route, Zeiten und Warenart, auf europäischen Servern, und löschen die Daten 90 Tage nach der Zustellung. Wir beginnen mit Italien und den Alpen, mit ganz Europa als Ziel, und Werkzeuge wie KI machen es möglich, nachts zu beobachten, was heute keine Disposition verfolgen kann.
+Wir nutzen nur Referenz, Route, Zeiten und Warenart, auf europäischen Servern, und löschen die Daten 90 Tage nach der Zustellung. Wir beginnen mit Italien und den Alpen, mit ganz Europa als Ziel, und Werkzeuge wie KI machen es möglich, Tag und Nacht zu beobachten, was heute keine Disposition verfolgen kann.
 
-Hier sehen Sie einen Abend mit echten Regeln.
+Hier sehen Sie zhol bei der Arbeit mit echten Regeln.
 https://zhol.live/beta
 
 Wann würden Ihnen zwanzig Minuten passen?
@@ -131,19 +132,19 @@ Alikhan Bashpay · Universität Bocconi · zhol
 
 Dear [Name],
 
-thank you for your reply. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+thank you for your reply. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
 We would like to propose three steps, none of them binding.
 
-First, twenty minutes on the phone about your last difficult evening. What happened, when you found out and what it cost. We bring what zhol would have said that evening.
+First, twenty minutes on the phone about the last shipment that got stuck. What happened, when you found out and what it cost. We bring what zhol would have said, and how far ahead.
 
-Second, a free four-week trial on one lane or one desk. Every day by 4 pm you send us tomorrow's shipments as Excel or a photo. At 5.30 pm and 8 pm we check them, and you get one WhatsApp message only when a shipment is at risk, with the options and what each costs. A person checks every event before it is sent.
+Second, a free four-week trial on one lane or one desk. You send us the shipments of the coming days as Excel or a photo. We check them as soon as they arrive and again whenever the situation changes, also once they are on their way. You get a WhatsApp message only when a shipment is at risk, with the expected delay, the options and what each costs. A person checks every event before it is sent.
 
 Third, only if the trial meets the criterion we set together on the first day, the founding-customer price is €8 per vehicle a month for twelve months.
 
-We use only the reference, the route, the times and the type of goods, on European servers, and delete the data 90 days after delivery. We start with Italy and the Alps, with the whole of Europe as our goal, and tools such as AI are what make it possible to watch at night what no office can follow today.
+We use only the reference, the route, the times and the type of goods, on European servers, and delete the data 90 days after delivery. We start with Italy and the Alps, with the whole of Europe as our goal, and tools such as AI are what make it possible to watch, day and night, what no office can follow today.
 
-Here you can see an evening with real rules.
+Here you can see zhol at work with real rules.
 https://zhol.live/beta
 
 When would twenty minutes suit you?
@@ -159,9 +160,9 @@ Alikhan Bashpay · Bocconi University · zhol
 
 Buongiorno [Nome],
 
-sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
+sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
-Vi proponiamo una collaborazione, non una vendita. Quando un treno salta, un terminal chiude o c'è uno sciopero annunciato, i vostri avvisi possono entrare nel nostro radar come fonte verificata. Gli uffici che pianificano le spedizioni dei vostri clienti lo sanno la sera prima, e voi avete un canale in più per informarli. Per entrambi è gratuito.
+Vi proponiamo una collaborazione, non una vendita. Quando un treno salta, un terminal chiude o c'è uno sciopero annunciato, i vostri avvisi possono entrare nel nostro radar come fonte verificata. Gli uffici che pianificano le spedizioni dei vostri clienti lo sanno in anticipo e in tempo reale, e voi avete un canale in più per informarli. Per entrambi è gratuito.
 
 Partiamo dall'Italia e dalle Alpi, con tutta l'Europa come obiettivo, e usiamo l'AI per leggere avvisi, calendari e notizie in quattro lingue, con una persona che controlla ogni evento.
 
@@ -177,9 +178,9 @@ Alikhan Bashpay · Università Bocconi · zhol
 
 Dear [Name],
 
-I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
+I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for new tech companies, and won a €2,000 grant.
 
-We would like to propose a partnership, not a sale. When a train is cancelled, a terminal closes or a strike is announced, your notices can enter our radar as a verified source. The offices that plan your customers' shipments learn about it the evening before, and you gain one more channel to inform them. It is free for both sides.
+We would like to propose a partnership, not a sale. When a train is cancelled, a terminal closes or a strike is announced, your notices can enter our radar as a verified source. The offices that plan your customers' shipments learn about it in advance and in real time, and you gain one more channel to inform them. It is free for both sides.
 
 We start with Italy and the Alps, with the whole of Europe as our goal, and we use AI to read notices, calendars and news in four languages, with a person checking every event.
 

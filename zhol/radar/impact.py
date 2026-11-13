@@ -14,9 +14,9 @@ value of information (Howard 1966).
 
     E[keep the plan]                 = p * L
     E[change the plan now]           = p * C_hit + (1 - p) * C_free
-    E[decide on the evening alert]   = p * C_hit         change only if it is confirmed the evening before
+    E[decide on zhol's alert]        = p * C_hit         change only once the event is confirmed
     change now only if  p > C_free / (L - C_hit + C_free)          the cost-loss threshold
-    saving per load = E[keep the plan] - min(E[change now], E[evening alert])
+    saving per load = E[keep the plan] - min(E[change now], E[zhol's alert])
 
 A long wait counts at most 10 productive hours per 24 hours (EU daily driving limit), so a
 multi-day stoppage is not priced as 24 lost hours a day.
@@ -199,7 +199,7 @@ def _contacts(code: str, item: dict, load: Load, opt, base_arrival: datetime, pl
         late_h = max(0, round((opt.arrival - base_arrival).total_seconds() / 3600))
         out.append({"who": "Customer or receiver", "why": "warn early about the delay",
                     "msg": f"Gentile cliente, il {when} è previsto {what} a {place}: possibile ritardo di circa "
-                           f"{late_h} ore, consegna prevista {arr:%d/%m alle %H:%M}. Vi aggiorniamo la sera prima."})
+                           f"{late_h} ore, consegna prevista {arr:%d/%m alle %H:%M}. Vi aggiorniamo appena la situazione cambia."})
     if item["kind"] in ("strike", "blockade", "protest"):
         out.append({"who": "Your association", "why": "exemptions for perishables and the latest on the stoppage",
                     "msg": "Ci sono esenzioni per i deperibili e corridoi garantiti? Quali strade restano aperte?"})

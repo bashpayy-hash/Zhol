@@ -234,7 +234,7 @@ EXTRACTION_SCHEMA = {
     },
 }
 
-SYSTEM_PROMPT = """You extract road-freight disruptions for zhol, a service that warns the traffic office of a small European haulier, the evening before, which of tomorrow's truck loads a restriction will hit.
+SYSTEM_PROMPT = """You extract road-freight disruptions for zhol, a service that estimates which of a European haulier's loads a restriction will hit and what it will cost, warns its traffic office in advance and updates it in real time.
 
 From one source text (any language: Italian, German, French, English), return exactly one JSON object matching the schema.
 

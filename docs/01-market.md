@@ -10,7 +10,7 @@
 | Role | Who | What they care about |
 |---|---|---|
 | **Buyer** | Owner (*titolare*) of an Italian road haulier or SME forwarder with **6–100 trucks** and **weekly lanes abroad** (DE, AT, CH, FR, PL) | Truck-days lost, penalties, customer complaints, driver overtime |
-| **User** | Dispatcher in the traffic office (*addetto ufficio traffico*) who plans tomorrow's loads the evening before | Not being surprised; one clear message with options; no new app |
+| **User** | Dispatcher in the traffic office (*addetto ufficio traffico*) who plans the loads of the next days and re-plans while they move | Not being surprised; one clear message with options; no new app |
 | **Beachhead** | Lombardy, Veneto, Emilia-Romagna, Piemonte, with Brenner / Alpine lanes | The Alpine crossings are where restrictions concentrate |
 
 ## 1.2 Bottom-up sizing (the numbers we defend)
@@ -101,8 +101,8 @@ It is reachable with founder-led sales plus two association partnerships (doc 05
 
 Why there is room:
 
-1. **No one does this job end to end.** We found no product that takes *tomorrow's specific loads*, checks them against bans,
-   dosing, strikes and protests *the evening before*, and gives the dispatcher options *on WhatsApp* (doc 02).
+1. **No one does this job end to end.** We found no product that takes *the office's own shipments*, estimates for each one the risk and the cost of bans,
+   dosing, strikes and protests, warns *in advance* and updates *in real time*, with options *on WhatsApp* (doc 02).
    Each piece exists somewhere; the combination does not.
 2. **Incumbents look elsewhere.**
    - Visibility platforms (Shippeo, project44, Transporeon) are paid by shippers and are free for carriers.

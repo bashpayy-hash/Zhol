@@ -15,7 +15,7 @@ contradict the survey; survey answers are self-reported and marked as such.
 
 | What we measure | How | Success threshold | If not |
 |---|---|---|---|
-| Minutes a day the office spends checking calendars, sites and groups | Interview 2.7, then timed on 3 pilot evenings | ≥ 20 min a day in 5 of 8 offices | Dispatcher time drops out of the value; price on avoided waits only |
+| Minutes a day the office spends checking calendars, sites and groups | Interview 2.7, then timed on 3 pilot days | ≥ 20 min a day in 5 of 8 offices | Dispatcher time drops out of the value; price on avoided waits only |
 | Re-plans per 100 trips abroad caused by restrictions | Interview 2.9, then the pilot load plans | ≥ 2 per 100 in 5 of 8 offices | Move to the South–North blockade segment (docs/06) |
 | Cost of the last incident, in euros, as they state it | Interview 2.10 | Median ≥ €300 | Sell time saved at a lower price |
 | When the decision is really taken | Interview 2.8 | Most decisions between 16:00 and 21:00 the day before | Move the alert to the moment they decide |
@@ -33,7 +33,7 @@ contradict the survey; survey answers are self-reported and marked as such.
 
 ## 10.3 Why us over what they use today, and why it lasts
 
-**Claim to test:** no tool they own tells them, the evening before, *which of tomorrow's loads* a restriction hits and what each option costs; zhol does it on WhatsApp, with a person checking every event and a source for every line.
+**Claim to test:** no tool they own estimates *which of their shipments* a restriction hits and what each option costs, warns in advance and updates in real time; zhol does it on WhatsApp, with a person checking every event and a source for every line.
 
 - Evidence wanted: in ≥ 6 of 8 interviews, current tools (TMS, telematics, TIMOCOM, WhatsApp groups) do not answer per load (3.7); ≥ 3 name something they would stop doing (3.6).
 - What can last against incumbents: the verified history of disruptions and their effect on real loads; the cost of each event shared across every office on the same roads; trust and distribution through hauliers' associations; an engine that explains each alert. A TMS can add alerts; it is unlikely to add verified, multilingual, unplanned events across seven countries for offices that have no TMS.

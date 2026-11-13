@@ -44,7 +44,7 @@ Rules:
 | 2.4 | Cosa avete fatto? Chi ha deciso? | What did you do? Who decided? |
 | 2.5 | Quanto è costato? Ore di attesa, km in più, slot di consegna persi, penali, merce rovinata, straordinari | What did it cost? Waiting hours, extra km, missed delivery slots, penalties, spoiled goods, overtime |
 | 2.6 | Quante volte succede in un mese normale? E in un mese brutto? | How often does this happen in a normal month? In a bad one? |
-| 2.7 ★ | Quanto tempo passa ogni sera l'ufficio a controllare siti, calendari e gruppi? Chi lo fa, e quanti siti guarda? | How much time does the office spend each evening checking sites, calendars and groups? Who does it, and how many sites? |
+| 2.7 ★ | Quanto tempo passa ogni giorno l'ufficio a controllare siti, calendari e gruppi? Chi lo fa, e quanti siti guarda? | How much time does the office spend each day checking sites, calendars and groups? Who does it, and how many sites? |
 | 2.8 ★ | A che ora decidete davvero se un carico parte, cambia valico o aspetta? La sera prima, la mattina, o quando l'autista è già in coda? | At what time do you actually decide whether a load leaves, changes pass or waits? The evening before, in the morning, or when the driver is already queuing? |
 | 2.9 ★ | Su 100 viaggi esteri in un mese, quanti ripianificate per un divieto, un dosaggio, una chiusura o uno sciopero? | Out of 100 trips abroad in a month, how many do you re-plan because of a ban, dosing, closure or strike? |
 | 2.10 ★ | Nell'ultimo caso: quante ore perse, quanti km in più, quale penale o slot perso? Se dovesse mettere un numero in euro? | In the last case: how many hours lost, how many extra km, which penalty or missed slot? If you had to put a euro figure on it? |
@@ -58,7 +58,7 @@ Rules:
 | 3.3 | Chi ha deciso l'ultimo acquisto di software? Come è andata la decisione? | Who decided on the last software purchase? How did that decision go? |
 | 3.4 | Avete chiesto i 100 €/ora di attesa previsti dalla legge? Li avete ottenuti? | Have you claimed the legal €100/hour waiting compensation? Did you get it? |
 | 3.5 ★ | Fino a quanto al mese può decidere da solo, senza chiedere a nessuno? Da quale voce di budget uscirebbe? | Up to how much a month can you decide alone, without asking anyone? Which budget line would it come from? |
-| 3.6 ★ | Oggi, cosa usate al posto di uno strumento così? Cosa smettereste di fare se arrivasse un messaggio la sera prima? | What do you use today instead of a tool like this? What would you stop doing if a message arrived the evening before? |
+| 3.6 ★ | Oggi, cosa usate al posto di uno strumento così? Cosa smettereste di fare se un avviso arrivasse in anticipo e si aggiornasse da solo mentre il carico viaggia? | What do you use today instead of a tool like this? What would you stop doing if a warning arrived in advance and updated itself while the load is moving? |
 | 3.7 ★ | Perché non basta il gestionale, la telematica, TIMOCOM o il gruppo WhatsApp dei colleghi? Cosa manca? | Why aren't your TMS, telematics, TIMOCOM or the colleagues' WhatsApp group enough? What is missing? |
 
 ## 4. Willingness to pay (4 min): only now show the WhatsApp example
@@ -74,7 +74,7 @@ Show the real message produced by the MVP for a similar lane (`python -m zhol de
 | 4.4 | A che prezzo sarebbe **troppo caro**? | At what price would it be **too expensive**? |
 | 4.5 | Preferireste un fisso al mese o una percentuale del risparmio dimostrato? Perché? | Would you prefer a monthly fee or a percentage of proven savings? Why? |
 | 4.6 ★ | Chi firmerebbe? Serve l'approvazione di qualcun altro? | Who would sign? Does anyone else need to approve? |
-| 4.7 ★ | Tra questi tre pacchetti, quale prendereste, e quale scartate subito? **A** solo avvisi la sera prima · **B** avvisi + alternative con il costo + registro delle attese per i 100 €/ora · **C** per spedizione, senza abbonamento | Of these three packages, which would you take, and which do you rule out? **A** evening alerts only · **B** alerts + options with their cost + a waiting log for the €100/hour claims · **C** per shipment, no subscription |
+| 4.7 ★ | Tra questi tre pacchetti, quale prendereste, e quale scartate subito? **A** solo avvisi in anticipo · **B** avvisi + alternative con il costo + registro delle attese per i 100 €/ora · **C** per spedizione, senza abbonamento | Of these three packages, which would you take, and which do you rule out? **A** advance alerts only · **B** alerts + options with their cost + a waiting log for the €100/hour claims · **C** per shipment, no subscription |
 | 4.8 ★ | Cosa dovrebbe vedere ogni mese per continuare a pagare? | What would you need to see every month to keep paying? |
 | 4.9 | Se a fine prova il risparmio verificato fosse X €, quanto sarebbe giusto pagare? | If at the end of the trial the verified saving were €X, what would be fair to pay? |
 

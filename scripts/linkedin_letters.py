@@ -20,16 +20,18 @@ ENGLISH_BELOW = {"it": "(La versione inglese è qui sotto.)", "de": "(Die englis
 
 WHO = {
  "it": ("mi permetto di scriverle qui su LinkedIn. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team "
-        "sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su "
-        "rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da "
+        "sviluppiamo zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, "
+        "una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo "
+        "reale quando la situazione cambia. Il progetto è tra i 100 scelti su circa 500 da "
         "TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €."),
  "en": ("I am writing to you here on LinkedIn. I am Alikhan Bashpay, a student at Bocconi University. My team and I are building zhol, an "
-        "AI platform that warns the people who plan shipments the evening before if a load, by road, rail or sea, risks a ban, "
-        "a closure or a strike. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for "
+        "AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it "
+        "would cost, warns the people who plan it in advance and updates them in real time as things change. The project is one of 100 chosen from about 500 by TEF Ignition 2026, a European programme for "
         "new tech companies, and won a €2,000 grant."),
  "de": ("ich erlaube mir, Ihnen hier auf LinkedIn zu schreiben. Ich bin Alikhan Bashpay, Student an der Universität Bocconi. Mein Team und ich "
-        "entwickeln zhol, eine KI-Plattform, die Disponenten am Vorabend warnt, wenn einer Sendung auf Straße, Schiene oder "
-        "See ein Verbot, eine Sperrung oder ein Streik droht. Das Projekt ist eines von 100, die TEF Ignition 2026, ein "
+        "entwickeln zhol, eine KI-Plattform, die abschätzt, ob einer Sendung auf Straße, Schiene oder See ein Fahrverbot, "
+        "eine Sperrung oder ein Streik droht und was das kosten würde, die Disponenten frühzeitig warnt und sie in "
+        "Echtzeit informiert, wenn sich die Lage ändert. Das Projekt ist eines von 100, die TEF Ignition 2026, ein "
         "europäisches Programm für neue Technologieunternehmen, aus rund 500 ausgewählt hat, und erhielt eine Förderung von "
         "2.000 €."),
 }
@@ -285,9 +287,9 @@ PERSONAL = {
  "Goran Susak": dict(topic="die Relationen nach Italien",
   local="Ihre Sicht wäre für uns besonders wertvoll, denn auf den Relationen zwischen Deutschland und Italien zeigt sich schnell, welche Störungen am stärksten treffen.",
   en="Your perspective would be especially valuable to us, because on the routes between Germany and Italy it soon shows which disruptions hit hardest."),
- "Lorenzo Bommartini": dict(topic="su come si pianifica il giorno dopo",
-  local="Ci interesserebbe molto il suo punto di vista, perché chi organizza ogni sera il giorno dopo, con linee verso Francia, Svizzera e Austria, sa meglio di chiunque quando un'informazione arriva troppo tardi.",
-  en="Your perspective would be especially valuable to us, because those who organise the next day every evening, with lines to France, Switzerland and Austria, know better than anyone when news arrives too late."),
+ "Lorenzo Bommartini": dict(topic="su come si pianificano i viaggi",
+  local="Ci interesserebbe molto il suo punto di vista, perché chi organizza ogni giorno i viaggi, con linee verso Francia, Svizzera e Austria, sa meglio di chiunque quando un'informazione arriva troppo tardi.",
+  en="Your perspective would be especially valuable to us, because those who organise trips every day, with lines to France, Switzerland and Austria, know better than anyone when news arrives too late."),
  "Mattia Bommartini": dict(topic="su quanto costa un giorno perso",
   local="Ci interesserebbe molto il suo punto di vista, perché chi guarda i dati di produttività e costi dei mezzi può dire quanto costa davvero un giorno perso per un divieto o un blocco.",
   en="Your perspective would be especially valuable to us, because whoever looks at the vehicles' productivity and cost data can tell what a day lost to a ban or a blockade really costs."),

@@ -1,5 +1,7 @@
 # 2. Associations, partners and TEF
 
+> **Архив.** Здесь старое позиционирование «накануне вечером». Так больше не пишем: zhol оценивает риск, предупреждает заранее и обновляет в реальном времени (правило в `CLAUDE.md`, 13 ноября 2026).
+
 ## A. Hauliers' associations (FAI Conftrasporto, CNA Fita, Confartigianato Trasporti, ANITA, Fedit, Assotir, Unatras; forwarders: Fedespedi)
 
 Goal: a member webinar, a newsletter mention, and introductions to 5–10 member companies with lanes abroad.
