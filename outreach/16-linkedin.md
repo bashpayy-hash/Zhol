@@ -44,6 +44,31 @@
 - **Квадратные скобки `[Nome]` / `[Name]` перед отправкой заменяем именем.** Ссылку не трогаем: в ней уже стоит метка
   группы.
 
+## Первые имена (найдены 13 ноября 2026, по открытым источникам)
+
+Должности взяты из пресс-релизов и отраслевой прессы. Перед отправкой проверяем, что человек на той же должности
+(профиль LinkedIn). Пометка [CHECK] — дата или роль подтверждены только одним источником.
+
+| Кто | Должность | Почему ему или ей | Группа · язык | Источник |
+|---|---|---|---|---|
+| Roberto Paciaroni | CEO Hupac SpA (Busto Arsizio), президент группы «Infrastrutture, Trasporti e Turismo» Confindustria Varese, переизбран в апреле 2026 | Интермодал рядом с Миланом. Как президент группы может переслать опрос 78 компаниям-членам | 3 и 5 · IT | [LegnanoNews, апр. 2026](https://www.legnanonews.com/altri/2026/04/17/confindustria-varese-roberto-paciaroni-confermato-presidente-infrastrutture-trasporti-e-turismo/1430719/?output=pdf), [Frontaliere Ticino](https://frontaliereticino.ch/en/cross-border-articles/confindustria-varese-paciaroni-2026/) |
+| Mirko De Giorgi | Sales & Operations Manager Italy, Nurminen Logistics (Interporto di Parma, поезд Örebro–Parma); раньше Collicare, несколько видов транспорта | Операционный уровень, новый в должности, железная дорога в Италии. Скорее всего ответит | 3 · IT | [Nurminen, янв. 2026](https://nurminenlogistics.com/newsroom/appoints-sales-operations-manager-in-italy) [CHECK дата] |
+| Ruby van der Sluis | единственный managing director Lokomotion (тяга грузовых поездов через Бреннер) с начала 2026 | Железная дорога на нашем главном коридоре | 3 · EN/DE | [Railmarket](https://zh.railmarket.com/news/business/48582-lokomotion-appoints-ruby-van-der-sluis-as-sole-managing-director) |
+| Emanuele Orlando | Head of Sales Division, GRUBER Logistics (больше 20 000 отправок в год по железной дороге через Бреннер, плюс дорога) | Крупный оператор с дорогой и рельсами на нашем коридоре | 4 · IT | [Gruber Logistics](https://www.gruber-logistics.com/en/wp-json/wp/v2/posts/7906) |
+| Francesco Caruso | президент Comitato Autotrasportatori Libera Concorrenza Stretto di Messina; в январе 2026 подал жалобу в Antitrust на паромы через пролив | Перевозчики, которые зависят от паромов: наша боль «паром не пошёл». Может свести с членами комитета | 5 · IT | [Shipping Italy, 30 янв. 2026](https://www.shippingitaly.it/2026/01/30/esposto-allantitrust-di-un-consorzio-di-autotrasportatori-contro-carontetourist/?output=pdf) |
+| Goran Susak | Managing Director Land Transport & Logistics Germany, Gebrüder Weiss, с 1 июля 2026 | Новый в должности, ведёт наземные перевозки в Германии, по нашему коридору | 4 · DE | [Logistik Heute](https://logistik-heute.de/news/personalie-goran-susak-wechselt-zu-gebrueder-weiss-264868.html) |
+| Silvio Damagini | AD Mercitalia Rail (группа FS), апрель 2026 | Крупнейший грузовой железнодорожный оператор Италии; ответ маловероятен, но переслать вниз может | 3 · IT | [Shipping Italy, апр. 2026](https://www.shippingitaly.it/2026/04/22/fs-logistix-fara-il-suo-ingresso-al-30-in-compagnia-ferroviaria-italiana/?output=pdf) |
+
+**Выпускники Bocconi (группа 1): имён в открытых источниках нет, но есть точный фильтр.**
+- **MEMIT** — магистерская программа Bocconi по транспорту, инфраструктуре и цепочкам поставок. В 2024–25 её закрыли,
+  а 90% её выпускников работают в транспорте и логистике
+  ([Bocconi, MEMIT](https://www.unibocconi.it/it/corsi-di-studio/master-universitari/memit-master-economia-e-management-dei-trasporti-delle-infrastrutture-e-della)).
+  - **Поиск в LinkedIn:** «MEMIT» в образовании.
+  - **Самый тёплый путь:** директором MEMIT был профессор Oliviero Baccelli. Его письмо уже принесло нам ответы
+    (`prof-baccelli`). Можно попросить его переслать опрос в сеть выпускников MEMIT.
+- **Партнёры MEMIT:** Rohlig Logistics, SEA Milano, STEF, Trenord. STEF уже открывала опрос по нашему письму, но не
+  ответила, — в LinkedIn стоит найти там выпускника MEMIT.
+
 ## Группа 1 · Выпускники Bocconi в перевозках
 
 **Кого искать.** Страница Università Bocconi в LinkedIn, вкладка «Alumni» (выпускники). Фильтры:
