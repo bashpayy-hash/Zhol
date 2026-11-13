@@ -14,7 +14,7 @@ MEMIT = "https://www.unibocconi.it/sites/default/files/Invito%20Consegna%20Diplo
 LINK = {"it": "https://zhol.live/it/sondaggio?src=", "en": "https://zhol.live/survey?src=", "de": "https://zhol.live/de/umfrage?src="}
 SIGN = {"it": "Alikhan Bashpay · Università Bocconi · zhol", "en": "Alikhan Bashpay · Bocconi University · zhol",
         "de": "Alikhan Bashpay · Universität Bocconi · zhol"}
-HELLO = {"it": "Buongiorno [Nome],", "en": "Dear [Name],", "de": "Guten Tag [Name],"}
+HELLO = {"it": "Gentile [Nome],", "en": "Dear [Name],", "de": "Guten Tag [Name],"}
 THANKS = {"it": "Grazie mille,", "en": "Thank you very much,", "de": "Vielen Dank,"}
 ENGLISH_BELOW = {"it": "(La versione inglese è qui sotto.)", "de": "(Die englische Fassung finden Sie unten.)"}
 
@@ -139,7 +139,7 @@ NOTE = {
         "Ignition 2026 zu Störungen im Güterverkehr in Europa. Darf ich Ihnen schreiben?"),
 }
 REMIND = {
- "it": ("Buongiorno [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da "
+ "it": ("Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da "
         "TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a "
         "chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?"),
  "en": ("Dear [Name], I am writing again about the one-minute survey of zhol, the AI project of Bocconi students chosen by TEF "
@@ -152,10 +152,23 @@ REMIND = {
 }
 
 
+BRIDGE = {"it": "Per questo le scrivo.", "en": "That is why I am writing to you.", "de": "Deshalb schreibe ich Ihnen."}
+
+
+def _letter(l: str, ask: str, mine: str = "") -> str:
+    paras = [HELLO[l], WHO[l], PROBLEM[l], MAIN[l]]
+    if mine:
+        paras.append(BRIDGE[l] + " " + mine)
+    # the ask, then what the survey is, then «and if you know someone…» last, so the survey's description follows its ask
+    m = re.search(r" (E se |And if |Und wenn )", ask)
+    first, forward = (ask[:m.start()], ask[m.start():]) if m else (ask, "")
+    paras += [first + " " + SURVEY[l] + forward, LINK[l], THANKS[l] + "\n" + SIGN[l]]
+    return "\n\n".join(paras)
+
+
 def message(group: str, lang: str) -> str:
     def one(l: str) -> str:
-        return "\n\n".join([HELLO[l], WHO[l], PROBLEM[l], MAIN[l], ASK[group][l], LINK[l] + "li-" + group, SURVEY[l],
-                            THANKS[l] + "\n" + SIGN[l]])
+        return _letter(l, ASK[group][l]).replace(LINK[l], LINK[l] + "li-" + group)
     if lang == "en":
         return one("en")
     return ENGLISH_BELOW[lang] + "\n\n" + one(lang) + "\n\n— English version —\n\n" + one("en")
@@ -297,30 +310,30 @@ PERSONAL = {
   en="Your perspective would be especially valuable to us, because a company that has worked the Brenner axis since 1954 knows exactly how dosing, bans and closures change the plan."),
 }
 
-# the same paragraph in Russian, for the team in the console (owner, 13 Nov 2026: «почему там на итальянском то»)
+# for the team in the console: who, why this person, what we ask (owner, 13 Nov 2026: «почему там на итальянском то», «ты туда написал письмо»)
 WHY_RU = {
- "Paolo Cornetto": "Нам очень интересно ваше мнение: тот, кто держит вместе порты, терминалы и железную дорогу, первым видит, где останавливаются грузы. Это была и тема конференции MEMIT об интермодальности в Bocconi.",
- "Piero Solcà": "Нам очень интересно ваше мнение: тот, кто каждый день ведёт интермодальные поезда через Альпы, хорошо знает, какие сбои сильнее всего бьют по грузоотправителям. Это была и тема конференции MEMIT в Bocconi.",
- "Nora Rossi": "Нам очень интересно ваше мнение: там, где встречаются судно и поезд, сразу видно, что происходит с отправками, когда встаёт порт или линия. Это была и тема конференции MEMIT в Bocconi.",
- "Vittorio Cascetta": "Нам очень интересно ваше мнение: тот, кто везёт контейнеры из портов вглубь материка по дороге и по рельсам, первым чувствует каждый сбой по пути. Это была и тема конференции MEMIT в Bocconi.",
- "Federica Montaresi": "Нам очень интересно ваше мнение: в порту вроде Специи встречаются судно, поезд и дорога, и каждый сбой отзывается по всей цепочке. Это была и тема конференции MEMIT в Bocconi.",
- "Mirko De Giorgi": "Нам очень интересно ваше мнение: с новым поездом Эребру — Парма вблизи видно, что на самом деле останавливает отправку между Скандинавией и Италией.",
- "Stefano Morelli": "Нам очень интересно ваше мнение: терминал вроде Rail Hub Milano, куда приходят поезда из Специи и Генуи, сразу чувствует каждый сбой на линии.",
- "Roberto Paciaroni": "Нам очень интересно ваше мнение и мнение транспортных компаний Confindustria Varese: под Миланом как раз пересекаются дорога, железная дорога и интермодал.",
- "Francesco Caruso": "Нам очень интересно мнение комитета: те, кто каждый день пересекает Мессинский пролив, знают, во что обходится паром, который не ушёл, или длинная очередь на посадку.",
- "Emanuele Orlando": "Нам очень интересно ваше мнение: на Бреннере, по дороге и по рельсам, клиенты первыми чувствуют блокады и дозирование, и тот, кто каждый день с ними говорит, это хорошо знает.",
- "Silvio Damagini": "Нам очень интересно ваше мнение: в грузовых перевозках по железной дороге забастовки, перерывы на линиях и закрытые переходы сразу бьют по клиентам.",
- "Ruby van der Sluis": "Нам очень интересно ваше мнение: грузовые поезда через Бреннер между Германией и Италией первыми чувствуют каждое закрытие и каждую забастовку на коридоре.",
- "Goran Susak": "Нам очень интересно ваше мнение: на направлениях между Германией и Италией быстро видно, какие сбои бьют сильнее всего.",
- "Lorenzo Bommartini": "Нам очень интересно ваше мнение: тот, кто каждый вечер планирует следующий день с рейсами во Францию, Швейцарию и Австрию, лучше всех знает, когда информация приходит слишком поздно.",
- "Mattia Bommartini": "Нам очень интересно ваше мнение: тот, кто смотрит данные о производительности и затратах машин, может сказать, во что на самом деле обходится день, потерянный из-за запрета или блокады.",
- "Stefano Pasinato": "Нам очень интересно ваше мнение: сборные грузы из Quadrante Europa в Германию и Австрию по дороге и по рельсам сразу чувствуют день дозирования в Куфштайне.",
- "Alberto Brizzi": "Нам очень интересно ваше мнение: тот, кто каждый день планирует рейсы в Германию и Австрию, знает, как и когда сегодня приходят новости о запретах и блокадах.",
- "Andrea Gottardi": "Нам очень интересно ваше мнение: на линиях во Францию, Австрию, Швейцарию и Германию запреты Тироля, ночной запрет Швейцарии и французские праздники ложатся на один и тот же парк.",
- "Carlo Mancini": "Нам очень интересно ваше мнение: сборные скоропортящиеся грузы в Великобританию идут через Францию, где первыми бьют запреты выходного дня и сбои в портах Ла-Манша.",
- "Marco Ghezzi": "Нам очень интересно ваше мнение: при ежедневных рейсах в главные города Европы и в Германию сразу видно, какие сбои обходятся дороже всего.",
- "Gianluca Sanitate": "Нам очень интересно ваше мнение: тот, кто везёт фрукты из района Салуццо в Париж и на юг Франции, хорошо знает, что бывает со скоропортящимся грузом, когда закрывается дорога или перевал.",
- "Gernot Günther": "Нам очень интересно ваше мнение: компания, которая с 1954 года работает на оси Бреннера, точно знает, как дозирование, запреты и закрытия меняют планы."
+ "Paolo Cornetto": "Кто: CEO FHP Group — порты, терминалы и железная дорога CFI в одной группе. Почему: видит, где застревают грузы между портом и рельсами; выступление на конференции MEMIT в Bocconi — тёплый повод. Просим: минуту на опрос и переслать тем, кто планирует отправки.",
+ "Piero Solcà": "Кто: председатель совета директоров Hupac, интермодальные поезда через Альпы [проверить]. Почему: знает, какие сбои бьют по грузоотправителям; выступление на MEMIT в Bocconi. Просим: опрос и пересылку.",
+ "Nora Rossi": "Кто: генеральный директор OceanoGate, стык судна и поезда, группа FS [проверить]. Почему: видит, что происходит с отправками, когда встаёт порт или линия; выступление на MEMIT в Bocconi. Просим: опрос и пересылку.",
+ "Vittorio Cascetta": "Кто: Medlog Italia, наземная логистика MSC — контейнеры из портов по дороге и рельсам [роль проверить]. Почему: первыми чувствуют каждый сбой по пути; выступление на MEMIT в Bocconi. Просим: опрос и пересылку.",
+ "Federica Montaresi": "Кто: администрация портов Специи и Каррары [роль проверить]. Почему: в порту сходятся судно, поезд и дорога, сбой отзывается по всей цепочке; выступление на MEMIT в Bocconi. Просим: опрос и пересылку.",
+ "Mirko De Giorgi": "Кто: Sales & Operations Manager Nurminen Logistics в Италии, с января 2026. Почему: новый поезд Эребру — Парма, операционный уровень, скорее всего ответит. Просим: опрос.",
+ "Stefano Morelli": "Кто: генеральный менеджер Rail Hub Milano, терминал Contship в Мельцо [проверить]; курсы в SDA Bocconi. Почему: туда приходят поезда из портов Специи и Генуи. Просим: опрос.",
+ "Roberto Paciaroni": "Кто: CEO Hupac SpA и президент транспортной группы Confindustria Varese (78 компаний). Почему: может переслать опрос компаниям группы. Просим: опрос и пересылку трём-четырём компаниям.",
+ "Francesco Caruso": "Кто: президент комитета перевозчиков Мессинского пролива; в январе 2026 подал жалобу в Antitrust на паромы. Почему: наша боль «паром не пошёл». Просим: опрос и пересылку членам комитета.",
+ "Emanuele Orlando": "Кто: руководитель продаж GRUBER Logistics — Бреннер, дорога и больше 20 000 отправок по рельсам в год. Почему: каждый день слышит от клиентов о блокадах и дозировании. Просим: опрос про одно направление.",
+ "Silvio Damagini": "Кто: генеральный директор Mercitalia Rail (FS), главный грузовой ж/д оператор Италии. Почему: ответ маловероятен, но может переслать вниз. Просим: опрос.",
+ "Ruby van der Sluis": "Кто: managing director Lokomotion — грузовые поезда через Бреннер, с 2026 единственный директор. Почему: наш главный коридор по рельсам. Просим: опрос. Письмо на английском.",
+ "Goran Susak": "Кто: глава наземных перевозок Gebrüder Weiss в Германии, с июля 2026. Почему: направления Германия — Италия, новый в должности. Просим: опрос про одно направление. Письмо на немецком.",
+ "Lorenzo Bommartini": "Кто: диспетчер Autotrasporti Bommartini (Соаве, около 90 тягачей), третье поколение. Почему: этот человек сам планирует завтрашние рейсы — наш пользователь; компания уже работает с данными. Просим: опрос.",
+ "Mattia Bommartini": "Кто: администрация и BI в Autotrasporti Bommartini. Почему: считает затраты, знает цену потерянного дня. Просим: опрос.",
+ "Stefano Pasinato": "Кто: CEO Prisma Logistics (Верона, Quadrante Europa). Почему: сборные грузы в Германию и Австрию по дороге и рельсам; подписывает расходы. Просим: опрос.",
+ "Alberto Brizzi": "Кто: национальный трафик в Prisma Logistics. Почему: офис, который планирует рейсы, — наш пользователь. Просим: опрос.",
+ "Andrea Gottardi": "Кто: генеральный директор Gottardi Autotrasporti (Тренто, с 1949). Почему: запреты Тироля, ночной запрет Швейцарии и праздники Франции ложатся на один парк. Просим: опрос.",
+ "Carlo Mancini": "Кто: планировщик перевозок в Великобританию, Benaco Trans (Брешиа). Почему: скоропортящиеся грузы через Францию и порты Ла-Манша. Просим: опрос.",
+ "Marco Ghezzi": "Кто: управляющий директор Farosped (Лишате, с 1958). Почему: экспедитор с ежедневными рейсами по Европе и в Германию. Просим: опрос.",
+ "Gianluca Sanitate": "Кто: руководство Pavisa Spedizioni (Кунео). Почему: фрукты в Париж и на юг Франции, склад в Германии — скоропортящиеся грузы. Просим: опрос.",
+ "Gernot Günther": "Кто: CEO Autotransporte Günther (Варна, у выезда A22 Бриксен-Норд, с 1954). Почему: компания прямо на Бреннере. Просим: опрос. Письмо на немецком."
 }
 
 NOTE_P = {
@@ -341,10 +354,9 @@ ASK_P["bocconi"] = {
 
 
 def message_personal(group: str, lang: str, local: str, en: str) -> str:
-    """The message with the person's own paragraph right before the ask: who they are, and why their view matters."""
+    """The letter with the person's own reason, right before the ask: why their view matters to us."""
     def one(l: str, mine: str) -> str:
-        return "\n\n".join([HELLO[l], WHO[l], PROBLEM[l], MAIN[l], mine + " " + ASK_P[group][l], LINK[l] + "li-" + group,
-                              SURVEY[l], THANKS[l] + "\n" + SIGN[l]])
+        return _letter(l, ASK_P[group][l], mine).replace(LINK[l], LINK[l] + "li-" + group)
     if lang == "en":
         return one("en", en)
     return ENGLISH_BELOW[lang] + "\n\n" + one(lang, local) + "\n\n— English version —\n\n" + one("en", en)

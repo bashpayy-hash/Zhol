@@ -103,7 +103,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 ```text
 (La versione inglese è qui sotto.)
 
-Buongiorno [Nome],
+Gentile [Nome],
 
 grazie per aver accettato il collegamento. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
@@ -111,11 +111,9 @@ Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa,
 
 Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo. Per cominciare vogliamo misurare quanto costa a un singolo ufficio che pianifica le spedizioni.
 
-Il convegno MEMIT della Bocconi su intermodalità e sostenibilità dei trasporti toccava proprio il punto in cui vediamo il problema, tra porti, ferrovie e strada. Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando ai porti, ai terminal o alle linee che conosce meglio? E se nella sua rete c'è chi pianifica le spedizioni di domani, ci aiuterebbe molto girarglielo.
+Il convegno MEMIT della Bocconi su intermodalità e sostenibilità dei trasporti toccava proprio il punto in cui vediamo il problema, tra porti, ferrovie e strada. Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando ai porti, ai terminal o alle linee che conosce meglio? Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane. E se nella sua rete c'è chi pianifica le spedizioni di domani, ci aiuterebbe molto girarglielo.
 
 https://zhol.live/it/sondaggio?src=li-bocconi
-
-Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 Grazie mille,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -130,11 +128,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Bocconi's MEMIT conference on intermodality and sustainable transport touched exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
+Bocconi's MEMIT conference on intermodality and sustainable transport touched exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks. And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
 
 https://zhol.live/survey?src=li-bocconi
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -143,7 +139,7 @@ Alikhan Bashpay · Bocconi University · zhol
 #### Напоминание через 5 дней, в той же переписке · IT
 
 ```text
-Buongiorno [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
+Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
 
 https://zhol.live/it/sondaggio?src=li-bocconi
 
@@ -177,11 +173,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Bocconi's MEMIT conference on intermodality and sustainable transport touched exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
+Bocconi's MEMIT conference on intermodality and sustainable transport touched exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks. And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
 
 https://zhol.live/survey?src=li-bocconi
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -223,7 +217,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 ```text
 (La versione inglese è qui sotto.)
 
-Buongiorno [Nome],
+Gentile [Nome],
 
 grazie per aver accettato il collegamento. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
@@ -231,11 +225,9 @@ Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa,
 
 Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo. Per cominciare vogliamo misurare quanto costa a un singolo ufficio che pianifica le spedizioni.
 
-Visto che anche lei viene dalla Bocconi e lavora nel settore, potrebbe dedicarci un minuto per il nostro sondaggio anonimo? E se nella sua azienda c'è chi pianifica le spedizioni di domani, ci aiuterebbe molto girarglielo.
+Visto che anche lei viene dalla Bocconi e lavora nel settore, potrebbe dedicarci un minuto per il nostro sondaggio anonimo? Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane. E se nella sua azienda c'è chi pianifica le spedizioni di domani, ci aiuterebbe molto girarglielo.
 
 https://zhol.live/it/sondaggio?src=li-alumni
-
-Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 Grazie mille,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -250,11 +242,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-As you also come from Bocconi and work in the field, could you give us one minute for our anonymous survey? And if someone in your company plans tomorrow's shipments, it would help us a lot if you passed it on.
+As you also come from Bocconi and work in the field, could you give us one minute for our anonymous survey? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks. And if someone in your company plans tomorrow's shipments, it would help us a lot if you passed it on.
 
 https://zhol.live/survey?src=li-alumni
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -263,7 +253,7 @@ Alikhan Bashpay · Bocconi University · zhol
 #### Напоминание через 5 дней, в той же переписке · IT
 
 ```text
-Buongiorno [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
+Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
 
 https://zhol.live/it/sondaggio?src=li-alumni
 
@@ -297,11 +287,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-As you also come from Bocconi and work in the field, could you give us one minute for our anonymous survey? And if someone in your company plans tomorrow's shipments, it would help us a lot if you passed it on.
+As you also come from Bocconi and work in the field, could you give us one minute for our anonymous survey? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks. And if someone in your company plans tomorrow's shipments, it would help us a lot if you passed it on.
 
 https://zhol.live/survey?src=li-alumni
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -351,7 +339,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 ```text
 (La versione inglese è qui sotto.)
 
-Buongiorno [Nome],
+Gentile [Nome],
 
 grazie per aver accettato il collegamento. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
@@ -359,11 +347,9 @@ Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa,
 
 Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo. Per cominciare vogliamo misurare quanto costa a un singolo ufficio che pianifica le spedizioni.
 
-Potrebbe dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee in Italia e in Europa?
+Potrebbe dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee in Italia e in Europa? Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 https://zhol.live/it/sondaggio?src=li-office
-
-Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 Grazie mille,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -378,11 +364,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey about your routes across Europe?
+Could you give us one minute for our anonymous survey about your routes across Europe? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 https://zhol.live/survey?src=li-office
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -391,7 +375,7 @@ Alikhan Bashpay · Bocconi University · zhol
 #### Напоминание через 5 дней, в той же переписке · IT
 
 ```text
-Buongiorno [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
+Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
 
 https://zhol.live/it/sondaggio?src=li-office
 
@@ -427,11 +411,9 @@ Verbote, Sperrungen und Streiks kosten alle, die in Europa Güter bewegen, Zeit 
 
 Und das ist nur der sichtbare Teil des Problems. Wir wollen helfen, ihn mit neuen Werkzeugen wie KI zu verkleinern, beginnend mit Italien und den Alpen und mit ganz Europa als Ziel. Zunächst wollen wir messen, was es eine einzelne Disposition kostet.
 
-Könnten Sie uns eine Minute für unsere anonyme Umfrage zu Ihren Relationen in Europa schenken?
+Könnten Sie uns eine Minute für unsere anonyme Umfrage zu Ihren Relationen in Europa schenken? Sie hat sieben Fragen, dauert eine Minute, ist anonym, ohne Anmeldung und ohne Verkauf, und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
 
 https://zhol.live/de/umfrage?src=li-office
-
-Sie hat sieben Fragen, dauert eine Minute, ist anonym, ohne Anmeldung und ohne Verkauf, und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
@@ -446,11 +428,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey about your routes across Europe?
+Could you give us one minute for our anonymous survey about your routes across Europe? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 https://zhol.live/survey?src=li-office
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -500,7 +480,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 ```text
 (La versione inglese è qui sotto.)
 
-Buongiorno [Nome],
+Gentile [Nome],
 
 grazie per aver accettato il collegamento. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
@@ -508,11 +488,9 @@ Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa,
 
 Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo. Per cominciare vogliamo misurare quanto costa a un singolo ufficio che pianifica le spedizioni.
 
-Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando alle linee ferroviarie, ai porti o ai traghetti che conosce meglio?
+Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando alle linee ferroviarie, ai porti o ai traghetti che conosce meglio? Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 https://zhol.live/it/sondaggio?src=li-rail
-
-Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 Grazie mille,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -527,11 +505,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey, thinking of the rail lines, ports or ferries you know best?
+Could you give us one minute for our anonymous survey, thinking of the rail lines, ports or ferries you know best? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 https://zhol.live/survey?src=li-rail
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -540,7 +516,7 @@ Alikhan Bashpay · Bocconi University · zhol
 #### Напоминание через 5 дней, в той же переписке · IT
 
 ```text
-Buongiorno [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
+Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
 
 https://zhol.live/it/sondaggio?src=li-rail
 
@@ -574,11 +550,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey, thinking of the rail lines, ports or ferries you know best?
+Could you give us one minute for our anonymous survey, thinking of the rail lines, ports or ferries you know best? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 https://zhol.live/survey?src=li-rail
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -614,11 +588,9 @@ Verbote, Sperrungen und Streiks kosten alle, die in Europa Güter bewegen, Zeit 
 
 Und das ist nur der sichtbare Teil des Problems. Wir wollen helfen, ihn mit neuen Werkzeugen wie KI zu verkleinern, beginnend mit Italien und den Alpen und mit ganz Europa als Ziel. Zunächst wollen wir messen, was es eine einzelne Disposition kostet.
 
-Könnten Sie uns eine Minute für unsere anonyme Umfrage schenken, mit Blick auf die Bahnstrecken, Häfen oder Fähren, die Sie am besten kennen?
+Könnten Sie uns eine Minute für unsere anonyme Umfrage schenken, mit Blick auf die Bahnstrecken, Häfen oder Fähren, die Sie am besten kennen? Sie hat sieben Fragen, dauert eine Minute, ist anonym, ohne Anmeldung und ohne Verkauf, und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
 
 https://zhol.live/de/umfrage?src=li-rail
-
-Sie hat sieben Fragen, dauert eine Minute, ist anonym, ohne Anmeldung und ohne Verkauf, und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
@@ -633,11 +605,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey, thinking of the rail lines, ports or ferries you know best?
+Could you give us one minute for our anonymous survey, thinking of the rail lines, ports or ferries you know best? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 https://zhol.live/survey?src=li-rail
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -687,7 +657,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 ```text
 (La versione inglese è qui sotto.)
 
-Buongiorno [Nome],
+Gentile [Nome],
 
 grazie per aver accettato il collegamento. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
@@ -695,11 +665,9 @@ Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa,
 
 Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo. Per cominciare vogliamo misurare quanto costa a un singolo ufficio che pianifica le spedizioni.
 
-Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando a una sola linea o a un solo desk che conosce bene?
+Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando a una sola linea o a un solo desk che conosce bene? Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 https://zhol.live/it/sondaggio?src=li-large
-
-Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 Grazie mille,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -714,11 +682,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey, thinking of one lane or one desk you know well?
+Could you give us one minute for our anonymous survey, thinking of one lane or one desk you know well? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 https://zhol.live/survey?src=li-large
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -727,7 +693,7 @@ Alikhan Bashpay · Bocconi University · zhol
 #### Напоминание через 5 дней, в той же переписке · IT
 
 ```text
-Buongiorno [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
+Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
 
 https://zhol.live/it/sondaggio?src=li-large
 
@@ -763,11 +729,9 @@ Verbote, Sperrungen und Streiks kosten alle, die in Europa Güter bewegen, Zeit 
 
 Und das ist nur der sichtbare Teil des Problems. Wir wollen helfen, ihn mit neuen Werkzeugen wie KI zu verkleinern, beginnend mit Italien und den Alpen und mit ganz Europa als Ziel. Zunächst wollen wir messen, was es eine einzelne Disposition kostet.
 
-Könnten Sie uns eine Minute für unsere anonyme Umfrage schenken, mit Blick auf eine Relation oder eine Disposition, die Sie gut kennen?
+Könnten Sie uns eine Minute für unsere anonyme Umfrage schenken, mit Blick auf eine Relation oder eine Disposition, die Sie gut kennen? Sie hat sieben Fragen, dauert eine Minute, ist anonym, ohne Anmeldung und ohne Verkauf, und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
 
 https://zhol.live/de/umfrage?src=li-large
-
-Sie hat sieben Fragen, dauert eine Minute, ist anonym, ohne Anmeldung und ohne Verkauf, und zeigt am Ende unseren kostenlosen KI-Radar der nächsten acht Wochen.
 
 Vielen Dank,
 Alikhan Bashpay · Universität Bocconi · zhol
@@ -782,11 +746,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey, thinking of one lane or one desk you know well?
+Could you give us one minute for our anonymous survey, thinking of one lane or one desk you know well? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 https://zhol.live/survey?src=li-large
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -834,7 +796,7 @@ Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, p
 ```text
 (La versione inglese è qui sotto.)
 
-Buongiorno [Nome],
+Gentile [Nome],
 
 grazie per aver accettato il collegamento. Sono Alikhan Bashpay, studente dell'Università Bocconi. Io e il mio team sviluppiamo zhol, una piattaforma AI che la sera prima avvisa chi pianifica le spedizioni se un carico, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero. Il progetto è tra i 100 scelti su circa 500 da TEF Ignition 2026, un programma europeo per nuove imprese tecnologiche, e ha ricevuto un grant di 2.000 €.
 
@@ -842,11 +804,9 @@ Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa,
 
 Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo. Per cominciare vogliamo misurare quanto costa a un singolo ufficio che pianifica le spedizioni.
 
-Potrebbe dedicarci un minuto per il nostro sondaggio anonimo? E se le vengono in mente tre o quattro associati o clienti con linee in Europa, ci aiuterebbe molto girarglielo.
+Potrebbe dedicarci un minuto per il nostro sondaggio anonimo? Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane. E se le vengono in mente tre o quattro associati o clienti con linee in Europa, ci aiuterebbe molto girarglielo.
 
 https://zhol.live/it/sondaggio?src=li-net
-
-Sono sette domande, un minuto, in forma anonima, senza registrazione e senza vendite. Alla fine c'è il nostro radar AI gratuito delle prossime otto settimane.
 
 Grazie mille,
 Alikhan Bashpay · Università Bocconi · zhol
@@ -861,11 +821,9 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Could you give us one minute for our anonymous survey? And if three or four of your members or customers with routes across Europe come to mind, it would help us a lot if you passed it on.
+Could you give us one minute for our anonymous survey? It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks. And if three or four of your members or customers with routes across Europe come to mind, it would help us a lot if you passed it on.
 
 https://zhol.live/survey?src=li-net
-
-It has seven questions, takes one minute, is anonymous, with no sign-up and no sales, and ends with our free AI radar of the next eight weeks.
 
 Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
@@ -874,7 +832,7 @@ Alikhan Bashpay · Bocconi University · zhol
 #### Напоминание через 5 дней, в той же переписке · IT
 
 ```text
-Buongiorno [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
+Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto AI di studenti Bocconi scelto da TEF Ignition 2026 e premiato con un grant di 2.000 €. Vogliamo misurare quanto costano divieti, chiusure e scioperi a chi pianifica spedizioni in Europa, su strada, rotaia o mare. Se non è la persona giusta, a chi potrei scrivere?
 
 https://zhol.live/it/sondaggio?src=li-net
 
