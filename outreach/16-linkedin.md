@@ -92,10 +92,10 @@ Contship в Мельцо, под Миланом), проходил курсы в
 
 **Как найти профиль.** В LinkedIn ищем имя и компанию, в заметке к запросу — их выступление в Bocconi.
 
-#### Заметка к запросу · IT · 194 знаков
+#### Заметка к запросу · IT · 174 знаков
 
 ```text
-Buongiorno, sono Alikhan, studente Bocconi. Ho visto il suo intervento al convegno MEMIT sull'intermodalità. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Posso scriverle?
+Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Il suo punto di vista sull'intermodalità ci sarebbe prezioso.
 ```
 
 #### Письмо после принятия · IT
@@ -111,7 +111,7 @@ Divieti, chiusure e scioperi costano tempo e denaro a chi muove merci in Europa,
 
 Ed è solo la parte visibile del problema, che vogliamo aiutare a ridurre con strumenti nuovi come l'AI, partendo dall'Italia e dalle Alpi e con tutta l'Europa come obiettivo. Per cominciare vogliamo misurare quanto costa a un singolo ufficio che pianifica le spedizioni.
 
-Il suo intervento al convegno MEMIT della Bocconi su intermodalità e sostenibilità dei trasporti tocca proprio il punto in cui vediamo il problema, tra porti, ferrovie e strada. Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando ai porti, ai terminal o alle linee che conosce meglio? E se nella sua rete c'è chi pianifica le spedizioni di domani, ci aiuterebbe molto girarglielo.
+Il convegno MEMIT della Bocconi su intermodalità e sostenibilità dei trasporti toccava proprio il punto in cui vediamo il problema, tra porti, ferrovie e strada. Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando ai porti, ai terminal o alle linee che conosce meglio? E se nella sua rete c'è chi pianifica le spedizioni di domani, ci aiuterebbe molto girarglielo.
 
 https://zhol.live/it/sondaggio?src=li-bocconi
 
@@ -130,7 +130,7 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Your talk at Bocconi's MEMIT conference on intermodality and sustainable transport touches exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
+Bocconi's MEMIT conference on intermodality and sustainable transport touched exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
 
 https://zhol.live/survey?src=li-bocconi
 
@@ -160,10 +160,10 @@ Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
 ```
 
-#### Заметка к запросу · EN · 193 знаков
+#### Заметка к запросу · EN · 166 знаков
 
 ```text
-Good morning, I am Alikhan, a Bocconi student. I saw your talk at the MEMIT conference on intermodality. My team and I are building zhol, an AI project in TEF Ignition 2026. May I write to you?
+Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, an AI project in TEF Ignition 2026. Your view on intermodality would mean a lot to us.
 ```
 
 #### Письмо после принятия · EN
@@ -177,7 +177,7 @@ Bans, closures and strikes cost time and money to everyone who moves goods in Eu
 
 This is only the visible part of the problem, and we want to help reduce it with new tools such as AI, starting with Italy and the Alps and with the whole of Europe as our goal. To start, we want to measure what it costs one office that plans shipments.
 
-Your talk at Bocconi's MEMIT conference on intermodality and sustainable transport touches exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
+Bocconi's MEMIT conference on intermodality and sustainable transport touched exactly where we see the problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? And if someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on.
 
 https://zhol.live/survey?src=li-bocconi
 
@@ -212,10 +212,10 @@ Alikhan Bashpay · Bocconi University · zhol
 
 **Просьба.** Минута на опрос и переслать его тому, кто в их компании планирует завтрашние отправки.
 
-#### Заметка к запросу · IT · 178 знаков
+#### Заметка к запросу · IT · 183 знаков
 
 ```text
-Buongiorno, sono Alikhan, studente Bocconi, e ho visto che anche lei ha studiato in Bocconi. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Posso scriverle?
+Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Il parere di chi conosce la Bocconi e i trasporti ci sarebbe prezioso.
 ```
 
 #### Письмо после принятия · IT
@@ -280,10 +280,10 @@ Thank you very much,
 Alikhan Bashpay · Bocconi University · zhol
 ```
 
-#### Заметка к запросу · EN · 168 знаков
+#### Заметка к запросу · EN · 191 знаков
 
 ```text
-Good morning, I am Alikhan, a Bocconi student, and I saw you studied there too. My team and I are building zhol, an AI project in TEF Ignition 2026. May I write to you?
+Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, an AI project in TEF Ignition 2026. The view of someone who knows Bocconi and transport would mean a lot to us.
 ```
 
 #### Письмо после принятия · EN

@@ -7,6 +7,24 @@
 
 ## Решения
 
+### 13 ноября 2026 · LinkedIn: без пересказа биографии; в консоли — по-русски
+
+> «You work at the Port System Authority… and you spoke at Bocconi's MEMIT conference. вот такие формулировки
+> максимально убери и поменяй, они слишком стрейтфорвард»
+> «и в разделе почему пишем почему там на итальянском то»
+
+- **Не пересказываем человеку его должность.** Убраны «Lei guida / Lei lavora / You lead / Sie leiten / you spoke
+  at…», «Ho visto che…», «I saw that…».
+  - **Теперь абзац говорит о теме, в которой человек разбирается, и почему поэтому ценно его мнение.** Пример:
+    «Ci interesserebbe molto il suo punto di vista, perché in un porto come quello della Spezia nave, treno e strada si
+    incontrano, e ogni interruzione si ripercuote su tutta la catena».
+  - **Конференция MEMIT упоминается как тема, а не как «вы выступали»:** «Era anche il tema del convegno MEMIT
+    sull'intermodalità in Bocconi».
+- **Заметка к запросу — тоже через тему:** «Il suo punto di vista sui treni intermodali attraverso le Alpi ci sarebbe
+  prezioso». Предлоги слиты с артиклями: sui, sul, sulle.
+- **В консоли блок «Почему пишем» — по-русски,** это перевод того же абзаца (`why_ru`). В самом письме абзац остаётся
+  на языке адресата и выделен.
+
 ### 13 ноября 2026 · LinkedIn: у каждого свой абзац «вы такой-то, поэтому нам важно ваше мнение»
 
 > «а ты уместно пресонализируй, типа вот ты такие то такие и по этому нам интересно ваше мнение»

@@ -101,16 +101,16 @@ ASK = {
          "die Sie gut kennen?"),
  },
  "bocconi": {
-  "it": ("Il suo intervento al convegno MEMIT della Bocconi su intermodalità e sostenibilità dei trasporti tocca proprio il "
-         "punto in cui vediamo il problema, tra porti, ferrovie e strada. Potrebbe dedicarci un minuto per il nostro sondaggio "
+  "it": ("Il convegno MEMIT della Bocconi su intermodalità e sostenibilità dei trasporti toccava proprio il punto in cui "
+         "vediamo il problema, tra porti, ferrovie e strada. Potrebbe dedicarci un minuto per il nostro sondaggio "
          "anonimo, pensando ai porti, ai terminal o alle linee che conosce meglio? E se nella sua rete c'è chi pianifica le "
          "spedizioni di domani, ci aiuterebbe molto girarglielo."),
-  "en": ("Your talk at Bocconi's MEMIT conference on intermodality and sustainable transport touches exactly where we see the "
-         "problem, between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, "
+  "en": ("Bocconi's MEMIT conference on intermodality and sustainable transport touched exactly where we see the problem, "
+         "between ports, rail and road. Could you give us one minute for our anonymous survey, thinking of the ports, "
          "terminals or lines you know best? And if someone in your network plans tomorrow's shipments, it would help us a lot "
          "if you passed it on."),
-  "de": ("Ihr Beitrag auf der MEMIT-Konferenz der Bocconi zu Intermodalität und nachhaltigem Verkehr trifft genau den Punkt, "
-         "an dem wir das Problem sehen, zwischen Häfen, Bahn und Straße. Könnten Sie uns eine Minute für unsere anonyme Umfrage "
+  "de": ("Die MEMIT-Konferenz der Bocconi zu Intermodalität und nachhaltigem Verkehr traf genau den Punkt, an dem wir das "
+         "Problem sehen, zwischen Häfen, Bahn und Straße. Könnten Sie uns eine Minute für unsere anonyme Umfrage "
          "schenken, mit Blick auf die Häfen, Terminals oder Strecken, die Sie am besten kennen?"),
  },
  "net": {
@@ -123,14 +123,14 @@ ASK = {
  },
 }
 NOTE = {
- ("alumni", "it"): ("Buongiorno, sono Alikhan, studente Bocconi, e ho visto che anche lei ha studiato in Bocconi. Io e il mio team "
-                    "sviluppiamo zhol, progetto AI di TEF Ignition 2026. Posso scriverle?"),
- ("alumni", "en"): ("Good morning, I am Alikhan, a Bocconi student, and I saw you studied there too. My team and I are building zhol, an "
-                    "AI project in TEF Ignition 2026. May I write to you?"),
- ("bocconi", "it"): ("Buongiorno, sono Alikhan, studente Bocconi. Ho visto il suo intervento al convegno MEMIT "
-                     "sull'intermodalità. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Posso scriverle?"),
- ("bocconi", "en"): ("Good morning, I am Alikhan, a Bocconi student. I saw your talk at the MEMIT conference on intermodality. "
-                     "My team and I are building zhol, an AI project in TEF Ignition 2026. May I write to you?"),
+ ("alumni", "it"): ("Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, progetto AI di TEF "
+                    "Ignition 2026. Il parere di chi conosce la Bocconi e i trasporti ci sarebbe prezioso."),
+ ("alumni", "en"): ("Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, an AI project in TEF "
+                    "Ignition 2026. The view of someone who knows Bocconi and transport would mean a lot to us."),
+ ("bocconi", "it"): ("Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, progetto AI di TEF "
+                     "Ignition 2026. Il suo punto di vista sull'intermodalità ci sarebbe prezioso."),
+ ("bocconi", "en"): ("Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, an AI project in TEF "
+                     "Ignition 2026. Your view on intermodality would mean a lot to us."),
  "it": ("Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026 sui "
         "blocchi delle merci in Europa. Posso scriverle?"),
  "en": ("Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, an AI project in TEF Ignition 2026 on "
@@ -223,82 +223,110 @@ PEOPLE = [
 ]
 
 
-# who each person is, and why their view matters to us (owner, 13 Nov 2026: «уместно персонализируй, типа вот ты
-# такие то такие и поэтому нам интересно ваше мнение»). Facts only from the sources in outreach/16-linkedin.md and
-# outreach/interview_targets_companies.csv; full names, no guessed gender.
+# why this person's view matters to us, said through the subject they know, not by reciting their job back to them
+# (owner, 13 Nov 2026: «вот такие формулировки максимально убери и поменяй, они слишком стрейтфорвард»).
+# Facts only from our sources; no «Lei lavora / You lead / Sie leiten», no «you spoke at…».
+MEMIT_IT = " Era anche il tema del convegno MEMIT sull'intermodalità in Bocconi."
+MEMIT_EN = " It was also the theme of the MEMIT conference on intermodality at Bocconi."
 PERSONAL = {
- "Paolo Cornetto": dict(
-  local="Lei guida FHP, che con porti, terminal e la ferrovia di CFI unisce proprio i modi di trasporto di cui ci occupiamo, e al convegno MEMIT della Bocconi ha parlato di intermodalità. Per questo ci interessa molto il suo parere su dove e perché le merci si fermano.",
-  en="You lead FHP, which brings together ports, terminals and the CFI railway, the very modes of transport we work on, and you spoke about intermodality at Bocconi's MEMIT conference. That is why your view on where and why freight stops matters a lot to us."),
- "Piero Solcà": dict(
-  local="Lei presiede Hupac, che ogni giorno porta treni intermodali attraverso le Alpi, e al convegno MEMIT della Bocconi ha parlato di intermodalità e sostenibilità. Per questo ci interessa molto il suo parere su quali interruzioni pesano di più su chi spedisce con i vostri treni.",
-  en="You chair Hupac, which runs intermodal trains across the Alps every day, and you spoke about intermodality and sustainability at Bocconi's MEMIT conference. That is why your view on which disruptions weigh most on those who ship with your trains matters a lot to us."),
- "Nora Rossi": dict(
-  local="Lei dirige OceanoGate, dove nave e treno si incontrano, e ha portato questa esperienza al convegno MEMIT della Bocconi. Per questo ci interessa molto il suo parere su cosa succede alle spedizioni quando un porto o una linea si fermano.",
-  en="You lead OceanoGate, where ship and train meet, and you brought this experience to Bocconi's MEMIT conference. That is why your view on what happens to shipments when a port or a line stops matters a lot to us."),
- "Vittorio Cascetta": dict(
-  local="Lei lavora in Medlog, che per il gruppo MSC porta i container dai porti all'entroterra su strada e su rotaia, e ha parlato al convegno MEMIT della Bocconi. Per questo ci interessa molto il suo parere su quali blocchi pesano di più sui trasporti dai porti verso l'Europa.",
-  en="You work at Medlog, which moves MSC's containers from the ports inland by road and rail, and you spoke at Bocconi's MEMIT conference. That is why your view on which disruptions weigh most on transport from the ports to Europe matters a lot to us."),
- "Federica Montaresi": dict(
-  local="Lei lavora all'Autorità di Sistema Portuale del Mar Ligure Orientale, dove le merci della Spezia proseguono in treno e su strada verso il Nord e l'Europa, e ha parlato al convegno MEMIT della Bocconi. Per questo ci interessa molto il suo sguardo su porto, ferrovia e strada insieme.",
-  en="You work at the Port System Authority of the Eastern Ligurian Sea, where goods from La Spezia go on by rail and road to the North and to Europe, and you spoke at Bocconi's MEMIT conference. That is why your view of port, rail and road together matters a lot to us."),
- "Mirko De Giorgi": dict(hook="Ho visto che segue Nurminen in Italia, con il treno Örebro–Parma",
-  local="Lei segue clienti e operazioni di Nurminen Logistics in Italia, con il nuovo treno tra Örebro e Parma, e prima in Collicare ha lavorato con più modi di trasporto. Per questo ci interessa molto il suo parere su cosa ferma davvero una spedizione tra la Scandinavia e l'Italia.",
-  en="You look after Nurminen Logistics' customers and operations in Italy, with the new train between Örebro and Parma, and at Collicare you worked across several modes of transport. That is why your view on what really stops a shipment between Scandinavia and Italy matters a lot to us."),
- "Stefano Morelli": dict(hook="Ho visto che guida Rail Hub Milano a Melzo",
-  local="Lei guida Rail Hub Milano a Melzo, dove arrivano i treni dai porti di La Spezia e Genova, e conosce la Bocconi dai corsi SDA. Per questo ci interessa molto il suo parere su quali interruzioni pesano di più su un terminal come il vostro.",
-  en="You lead Rail Hub Milano in Melzo, where trains from the ports of La Spezia and Genoa arrive, and you know Bocconi from SDA courses. That is why your view on which disruptions weigh most on a terminal like yours matters a lot to us."),
- "Roberto Paciaroni": dict(hook="Ho visto che guida Hupac e i trasporti di Confindustria Varese",
-  local="Lei guida Hupac SpA a Busto Arsizio e, da aprile per un nuovo mandato, il gruppo Infrastrutture, Trasporti e Turismo di Confindustria Varese, con 78 aziende. Per questo ci interessa molto il suo parere, e quello delle aziende del gruppo.",
-  en="You lead Hupac SpA in Busto Arsizio and, since April for a new term, the Infrastructure, Transport and Tourism group of Confindustria Varese, with 78 companies. That is why your view, and that of the group's companies, matters a lot to us."),
- "Francesco Caruso": dict(hook="Ho visto il lavoro del suo comitato sui traghetti dello Stretto",
-  local="Lei presiede il comitato degli autotrasportatori che attraversano lo Stretto di Messina, e da gennaio ha portato all'Antitrust il tema dei collegamenti in traghetto. Per questo ci interessa molto sapere quanto costa ai membri del comitato un traghetto che non parte o una lunga coda allo Stretto.",
-  en="You chair the committee of the hauliers who cross the Strait of Messina, and since January you have taken the ferry links to the competition authority. That is why we would very much like to know what a ferry that does not leave, or a long queue at the Strait, costs the committee's members."),
- "Emanuele Orlando": dict(hook="Ho visto che guida le vendite di GRUBER Logistics",
-  local="Lei guida le vendite di GRUBER Logistics, che sul Brennero muove ogni anno oltre 20.000 spedizioni su rotaia, oltre a quelle su strada. Per questo ci interessa molto il suo parere su come i vostri clienti vivono blocchi e dosaggi al Brennero.",
-  en="You lead sales at GRUBER Logistics, which moves more than 20,000 shipments a year by rail over the Brenner, besides those by road. That is why your view on how your customers live through blockades and dosing at the Brenner matters a lot to us."),
- "Silvio Damagini": dict(hook="Ho visto che guida Mercitalia Rail",
-  local="Lei guida Mercitalia Rail, il principale operatore ferroviario merci italiano. Per questo ci interessa molto il suo parere su quanto pesano sui vostri clienti scioperi, interruzioni di linea e chiusure ai valichi.",
-  en="You lead Mercitalia Rail, Italy's main rail freight operator. That is why your view on how much strikes, line closures and closed crossings weigh on your customers matters a lot to us."),
- "Ruby van der Sluis": dict(hook="I saw that you lead Lokomotion over the Brenner",
-  local="You lead Lokomotion, which runs freight trains over the Brenner between Germany and Italy, as sole managing director since the start of 2026. That is why your view on what stops freight on this corridor matters a lot to us.",
-  en="You lead Lokomotion, which runs freight trains over the Brenner between Germany and Italy, as sole managing director since the start of 2026. That is why your view on what stops freight on this corridor matters a lot to us."),
- "Goran Susak": dict(hook="Sie leiten den Landverkehr von Gebrüder Weiss",
-  local="Sie leiten seit Juli 2026 Landverkehr und Logistik von Gebrüder Weiss in Deutschland, nach Stationen bei Kühne+Nagel und Dachser. Deshalb interessiert uns sehr Ihre Sicht darauf, welche Störungen die Relationen zwischen Deutschland und Italien am stärksten treffen.",
-  en="Since July 2026 you have led land transport and logistics for Gebrüder Weiss in Germany, after Kühne+Nagel and Dachser. That is why your view on which disruptions hit the routes between Germany and Italy hardest matters a lot to us."),
- "Lorenzo Bommartini": dict(hook="Ho visto che pianifica ogni giorno i mezzi di Bommartini",
-  local="Lei pianifica ogni giorno i mezzi di Autotrasporti Bommartini, che da Soave lavora verso Francia, Svizzera e Austria, e la vostra azienda usa già i dati per capire dove va il mercato. Per questo ci interessa molto il parere di chi, come lei, organizza ogni sera il giorno dopo.",
-  en="You plan Autotrasporti Bommartini's vehicles every day, from Soave towards France, Switzerland and Austria, and your company already uses data to see where the market is going. That is why the view of someone who, like you, organises the next day every evening matters a lot to us."),
- "Mattia Bommartini": dict(hook="Ho visto che segue amministrazione e dati in Bommartini",
-  local="Lei segue l'amministrazione e il sistema di business intelligence di Autotrasporti Bommartini, che misura produttività e costi dei mezzi. Per questo ci interessa molto il suo parere su quanto costa davvero un giorno perso per un divieto o un blocco.",
-  en="You run administration and the business-intelligence system at Autotrasporti Bommartini, which tracks the vehicles' productivity and costs. That is why your view on what a day lost to a ban or a blockade really costs matters a lot to us."),
- "Stefano Pasinato": dict(hook="Ho visto che guida Prisma Logistics a Quadrante Europa",
-  local="Lei guida Prisma Logistics, che dall'Interporto Quadrante Europa di Verona porta groupage verso Germania e Austria su strada e su rotaia. Per questo ci interessa molto il suo parere su come un giorno di dosaggio a Kufstein cambia i vostri piani.",
-  en="You lead Prisma Logistics, which runs groupage from the Quadrante Europa freight village in Verona to Germany and Austria by road and rail. That is why your view on how a dosing day at Kufstein changes your plans matters a lot to us."),
- "Alberto Brizzi": dict(hook="Ho visto che lavora nel traffico di Prisma Logistics",
-  local="Lei lavora nell'ufficio traffico di Prisma Logistics, che da Verona porta groupage verso Germania e Austria. Per questo ci interessa molto il parere di chi pianifica davvero le tratte su come vi arrivano oggi le notizie di divieti e blocchi.",
-  en="You work in Prisma Logistics' traffic office, which runs groupage from Verona to Germany and Austria. That is why the view of someone who actually plans the legs, on how news of bans and blockades reaches you today, matters a lot to us."),
- "Andrea Gottardi": dict(hook="Ho visto che guida Gottardi Autotrasporti, a Trento dal 1949",
-  local="Lei guida Gottardi Autotrasporti, che da Trento lavora dal 1949 verso Francia, Austria, Svizzera e Germania, dove i divieti del Tirolo, il divieto notturno svizzero e i festivi francesi cadono sulla stessa flotta. Per questo ci interessa molto il suo parere.",
-  en="You lead Gottardi Autotrasporti, which has worked from Trento towards France, Austria, Switzerland and Germany since 1949, where Tyrol's bans, the Swiss night ban and French holidays all fall on the same fleet. That is why your view matters a lot to us."),
- "Carlo Mancini": dict(hook="Ho visto che pianifica il groupage di Benaco Trans per il Regno Unito",
-  local="Lei pianifica il groupage di prodotti deperibili di Benaco Trans verso il Regno Unito, che attraversa la Francia, dove i divieti del fine settimana e i blocchi ai porti della Manica colpiscono per primi i vostri carichi. Per questo ci interessa molto il suo parere.",
-  en="You plan Benaco Trans' groupage of perishables to the United Kingdom, which crosses France, where weekend bans and disruption at the Channel ports hit your loads first. That is why your view matters a lot to us."),
- "Marco Ghezzi": dict(hook="Ho visto che guida Farosped, a Liscate dal 1958",
-  local="Lei guida Farosped, spedizioniere e doganalista dal 1958, con collegamenti più volte al giorno verso le principali città europee e groupage quotidiano verso la Germania. Per questo ci interessa molto il suo parere su quali interruzioni vi costano di più.",
-  en="You lead Farosped, a forwarder and customs agent since 1958, with links several times a day to Europe's main cities and daily groupage to Germany. That is why your view on which disruptions cost you most matters a lot to us."),
- "Gianluca Sanitate": dict(hook="Ho visto che Pavisa porta la frutta del Saluzzese in Francia",
-  local="Lei guida Pavisa Spedizioni, che porta la frutta del Saluzzese con linee regolari verso Parigi e il Sud della Francia e ha un proprio magazzino in Germania. Per questo ci interessa molto il suo parere su cosa succede a un carico deperibile quando una strada o un valico si chiudono.",
-  en="You run Pavisa Spedizioni, which carries fruit from the Saluzzo area on regular runs to Paris and southern France and has its own warehouse in Germany. That is why your view on what happens to a perishable load when a road or a pass closes matters a lot to us."),
- "Gernot Günther": dict(hook="Sie leiten Autotransporte Günther am Brenner",
-  local="Sie leiten Autotransporte Günther, seit 1954 an der Brennerachse und mit Sitz direkt an der A22-Ausfahrt Brixen Nord. Deshalb interessiert uns sehr Ihre Sicht darauf, wie Blockabfertigung, Fahrverbote und Sperrungen am Brenner Ihre Planung verändern.",
-  en="You lead Autotransporte Günther, on the Brenner axis since 1954 and based right at the A22 exit Brixen Nord. That is why your view on how dosing, bans and closures at the Brenner change your planning matters a lot to us."),
+ "Paolo Cornetto": dict(topic="su porti, terminal e ferrovia insieme",
+  local="Ci interesserebbe molto il suo punto di vista, perché chi tiene insieme porti, terminal e ferrovia vede per primo dove le merci si fermano." + MEMIT_IT,
+  en="Your perspective would be especially valuable to us, because whoever brings ports, terminals and rail together is the first to see where freight stops." + MEMIT_EN),
+ "Piero Solcà": dict(topic="sui treni intermodali attraverso le Alpi",
+  local="Ci interesserebbe molto il suo punto di vista, perché chi porta ogni giorno treni intermodali attraverso le Alpi sa bene quali interruzioni pesano di più su chi spedisce." + MEMIT_IT,
+  en="Your perspective would be especially valuable to us, because those who run intermodal trains across the Alps every day know well which disruptions weigh most on shippers." + MEMIT_EN),
+ "Nora Rossi": dict(topic="sul passaggio tra nave e treno",
+  local="Ci interesserebbe molto il suo punto di vista, perché dove nave e treno si incontrano si vede subito cosa succede alle spedizioni quando un porto o una linea si fermano." + MEMIT_IT,
+  en="Your perspective would be especially valuable to us, because where ship and train meet you see at once what happens to shipments when a port or a line stops." + MEMIT_EN),
+ "Vittorio Cascetta": dict(topic="sui container dai porti all'entroterra",
+  local="Ci interesserebbe molto il suo punto di vista, perché chi porta i container dai porti all'entroterra, su strada e su rotaia, sente per primo ogni blocco lungo il percorso." + MEMIT_IT,
+  en="Your perspective would be especially valuable to us, because those who move containers from the ports inland, by road and rail, are the first to feel every disruption on the way." + MEMIT_EN),
+ "Federica Montaresi": dict(topic="su porto, ferrovia e strada alla Spezia",
+  local="Ci interesserebbe molto il suo punto di vista, perché in un porto come quello della Spezia nave, treno e strada si incontrano, e ogni interruzione si ripercuote su tutta la catena." + MEMIT_IT,
+  en="Your perspective would be especially valuable to us, because in a port like La Spezia ship, rail and road meet, and every disruption ripples through the whole chain." + MEMIT_EN),
+ "Mirko De Giorgi": dict(topic="sulle spedizioni tra Scandinavia e Italia",
+  local="Ci interesserebbe molto il suo punto di vista, perché con il nuovo treno tra Örebro e Parma si vede da vicino cosa ferma davvero una spedizione tra la Scandinavia e l'Italia.",
+  en="Your perspective would be especially valuable to us, because with the new train between Örebro and Parma one sees up close what really stops a shipment between Scandinavia and Italy."),
+ "Stefano Morelli": dict(topic="sui terminal ferroviari vicino a Milano",
+  local="Ci interesserebbe molto il suo punto di vista, perché un terminal come Rail Hub Milano, dove arrivano i treni da La Spezia e Genova, sente subito ogni interruzione lungo la linea.",
+  en="Your perspective would be especially valuable to us, because a terminal like Rail Hub Milano, where trains from La Spezia and Genoa arrive, feels every disruption along the line at once."),
+ "Roberto Paciaroni": dict(topic="sul trasporto intermodale in Lombardia",
+  local="Ci interesserebbe molto il suo punto di vista, e quello delle aziende di trasporto di Confindustria Varese, perché vicino a Milano si incrociano proprio strada, ferrovia e intermodale.",
+  en="Your perspective would be especially valuable to us, and so would that of the transport companies in Confindustria Varese, because road, rail and intermodal meet right there, near Milan."),
+ "Francesco Caruso": dict(topic="sui traghetti dello Stretto di Messina",
+  local="Ci interesserebbe molto il punto di vista del comitato, perché chi attraversa ogni giorno lo Stretto di Messina sa quanto costa un traghetto che non parte o una lunga coda all'imbarco.",
+  en="The committee's perspective would be especially valuable to us, because those who cross the Strait of Messina every day know what a ferry that does not leave, or a long queue at boarding, really costs."),
+ "Emanuele Orlando": dict(topic="sui blocchi e i dosaggi al Brennero",
+  local="Ci interesserebbe molto il suo punto di vista, perché sul Brennero, tra strada e rotaia, i clienti sentono per primi blocchi e dosaggi, e chi parla con loro ogni giorno lo sa bene.",
+  en="Your perspective would be especially valuable to us, because on the Brenner, by road and by rail, customers are the first to feel blockades and dosing, and those who talk to them every day know it well."),
+ "Silvio Damagini": dict(topic="sul trasporto merci su rotaia in Italia",
+  local="Ci interesserebbe molto il suo punto di vista, perché nel trasporto merci su rotaia scioperi, interruzioni di linea e chiusure ai valichi pesano subito sui clienti.",
+  en="Your perspective would be especially valuable to us, because in rail freight, strikes, line closures and closed crossings weigh on customers at once."),
+ "Ruby van der Sluis": dict(topic="freight trains over the Brenner",
+  local="Your perspective would be especially valuable to us, because freight trains over the Brenner between Germany and Italy feel every closure and every strike on the corridor first.",
+  en="Your perspective would be especially valuable to us, because freight trains over the Brenner between Germany and Italy feel every closure and every strike on the corridor first."),
+ "Goran Susak": dict(topic="die Relationen nach Italien",
+  local="Ihre Sicht wäre für uns besonders wertvoll, denn auf den Relationen zwischen Deutschland und Italien zeigt sich schnell, welche Störungen am stärksten treffen.",
+  en="Your perspective would be especially valuable to us, because on the routes between Germany and Italy it soon shows which disruptions hit hardest."),
+ "Lorenzo Bommartini": dict(topic="su come si pianifica il giorno dopo",
+  local="Ci interesserebbe molto il suo punto di vista, perché chi organizza ogni sera il giorno dopo, con linee verso Francia, Svizzera e Austria, sa meglio di chiunque quando un'informazione arriva troppo tardi.",
+  en="Your perspective would be especially valuable to us, because those who organise the next day every evening, with lines to France, Switzerland and Austria, know better than anyone when news arrives too late."),
+ "Mattia Bommartini": dict(topic="su quanto costa un giorno perso",
+  local="Ci interesserebbe molto il suo punto di vista, perché chi guarda i dati di produttività e costi dei mezzi può dire quanto costa davvero un giorno perso per un divieto o un blocco.",
+  en="Your perspective would be especially valuable to us, because whoever looks at the vehicles' productivity and cost data can tell what a day lost to a ban or a blockade really costs."),
+ "Stefano Pasinato": dict(topic="sul groupage verso Germania e Austria",
+  local="Ci interesserebbe molto il suo punto di vista, perché il groupage da Quadrante Europa verso Germania e Austria, su strada e su rotaia, sente subito un giorno di dosaggio a Kufstein.",
+  en="Your perspective would be especially valuable to us, because groupage from Quadrante Europa to Germany and Austria, by road and rail, feels a dosing day at Kufstein at once."),
+ "Alberto Brizzi": dict(topic="su come si pianificano le tratte estere",
+  local="Ci interesserebbe molto il suo punto di vista, perché chi pianifica ogni giorno le tratte verso Germania e Austria sa come e quando arrivano oggi le notizie di divieti e blocchi.",
+  en="Your perspective would be especially valuable to us, because those who plan the legs to Germany and Austria every day know how and when news of bans and blockades arrives today."),
+ "Andrea Gottardi": dict(topic="su divieti diversi sulla stessa flotta",
+  local="Ci interesserebbe molto il suo punto di vista, perché su linee verso Francia, Austria, Svizzera e Germania i divieti del Tirolo, il divieto notturno svizzero e i festivi francesi finiscono sulla stessa flotta.",
+  en="Your perspective would be especially valuable to us, because on lines to France, Austria, Switzerland and Germany, Tyrol's bans, the Swiss night ban and French holidays all land on the same fleet."),
+ "Carlo Mancini": dict(topic="sui deperibili verso il Regno Unito",
+  local="Ci interesserebbe molto il suo punto di vista, perché il groupage di deperibili verso il Regno Unito attraversa la Francia, dove i divieti del fine settimana e i blocchi ai porti della Manica colpiscono per primi.",
+  en="Your perspective would be especially valuable to us, because perishables groupage to the United Kingdom crosses France, where weekend bans and disruption at the Channel ports hit first."),
+ "Marco Ghezzi": dict(topic="sulle spedizioni verso la Germania",
+  local="Ci interesserebbe molto il suo punto di vista, perché con collegamenti quotidiani verso le principali città europee e la Germania si vede subito quali interruzioni costano di più.",
+  en="Your perspective would be especially valuable to us, because with daily links to Europe's main cities and to Germany it shows at once which disruptions cost most."),
+ "Gianluca Sanitate": dict(topic="sui carichi deperibili verso la Francia",
+  local="Ci interesserebbe molto il suo punto di vista, perché con la frutta del Saluzzese verso Parigi e il Sud della Francia si sa bene cosa succede a un carico deperibile quando una strada o un valico si chiudono.",
+  en="Your perspective would be especially valuable to us, because carrying fruit from the Saluzzo area to Paris and southern France, one knows well what happens to a perishable load when a road or a pass closes."),
+ "Gernot Günther": dict(topic="die Planung am Brenner",
+  local="Ihre Sicht wäre für uns besonders wertvoll, denn ein Unternehmen, das seit 1954 an der Brennerachse unterwegs ist, weiß genau, wie Blockabfertigung, Fahrverbote und Sperrungen die Planung verändern.",
+  en="Your perspective would be especially valuable to us, because a company that has worked the Brenner axis since 1954 knows exactly how dosing, bans and closures change the plan."),
+}
+
+# the same paragraph in Russian, for the team in the console (owner, 13 Nov 2026: «почему там на итальянском то»)
+WHY_RU = {
+ "Paolo Cornetto": "Нам очень интересно ваше мнение: тот, кто держит вместе порты, терминалы и железную дорогу, первым видит, где останавливаются грузы. Это была и тема конференции MEMIT об интермодальности в Bocconi.",
+ "Piero Solcà": "Нам очень интересно ваше мнение: тот, кто каждый день ведёт интермодальные поезда через Альпы, хорошо знает, какие сбои сильнее всего бьют по грузоотправителям. Это была и тема конференции MEMIT в Bocconi.",
+ "Nora Rossi": "Нам очень интересно ваше мнение: там, где встречаются судно и поезд, сразу видно, что происходит с отправками, когда встаёт порт или линия. Это была и тема конференции MEMIT в Bocconi.",
+ "Vittorio Cascetta": "Нам очень интересно ваше мнение: тот, кто везёт контейнеры из портов вглубь материка по дороге и по рельсам, первым чувствует каждый сбой по пути. Это была и тема конференции MEMIT в Bocconi.",
+ "Federica Montaresi": "Нам очень интересно ваше мнение: в порту вроде Специи встречаются судно, поезд и дорога, и каждый сбой отзывается по всей цепочке. Это была и тема конференции MEMIT в Bocconi.",
+ "Mirko De Giorgi": "Нам очень интересно ваше мнение: с новым поездом Эребру — Парма вблизи видно, что на самом деле останавливает отправку между Скандинавией и Италией.",
+ "Stefano Morelli": "Нам очень интересно ваше мнение: терминал вроде Rail Hub Milano, куда приходят поезда из Специи и Генуи, сразу чувствует каждый сбой на линии.",
+ "Roberto Paciaroni": "Нам очень интересно ваше мнение и мнение транспортных компаний Confindustria Varese: под Миланом как раз пересекаются дорога, железная дорога и интермодал.",
+ "Francesco Caruso": "Нам очень интересно мнение комитета: те, кто каждый день пересекает Мессинский пролив, знают, во что обходится паром, который не ушёл, или длинная очередь на посадку.",
+ "Emanuele Orlando": "Нам очень интересно ваше мнение: на Бреннере, по дороге и по рельсам, клиенты первыми чувствуют блокады и дозирование, и тот, кто каждый день с ними говорит, это хорошо знает.",
+ "Silvio Damagini": "Нам очень интересно ваше мнение: в грузовых перевозках по железной дороге забастовки, перерывы на линиях и закрытые переходы сразу бьют по клиентам.",
+ "Ruby van der Sluis": "Нам очень интересно ваше мнение: грузовые поезда через Бреннер между Германией и Италией первыми чувствуют каждое закрытие и каждую забастовку на коридоре.",
+ "Goran Susak": "Нам очень интересно ваше мнение: на направлениях между Германией и Италией быстро видно, какие сбои бьют сильнее всего.",
+ "Lorenzo Bommartini": "Нам очень интересно ваше мнение: тот, кто каждый вечер планирует следующий день с рейсами во Францию, Швейцарию и Австрию, лучше всех знает, когда информация приходит слишком поздно.",
+ "Mattia Bommartini": "Нам очень интересно ваше мнение: тот, кто смотрит данные о производительности и затратах машин, может сказать, во что на самом деле обходится день, потерянный из-за запрета или блокады.",
+ "Stefano Pasinato": "Нам очень интересно ваше мнение: сборные грузы из Quadrante Europa в Германию и Австрию по дороге и по рельсам сразу чувствуют день дозирования в Куфштайне.",
+ "Alberto Brizzi": "Нам очень интересно ваше мнение: тот, кто каждый день планирует рейсы в Германию и Австрию, знает, как и когда сегодня приходят новости о запретах и блокадах.",
+ "Andrea Gottardi": "Нам очень интересно ваше мнение: на линиях во Францию, Австрию, Швейцарию и Германию запреты Тироля, ночной запрет Швейцарии и французские праздники ложатся на один и тот же парк.",
+ "Carlo Mancini": "Нам очень интересно ваше мнение: сборные скоропортящиеся грузы в Великобританию идут через Францию, где первыми бьют запреты выходного дня и сбои в портах Ла-Манша.",
+ "Marco Ghezzi": "Нам очень интересно ваше мнение: при ежедневных рейсах в главные города Европы и в Германию сразу видно, какие сбои обходятся дороже всего.",
+ "Gianluca Sanitate": "Нам очень интересно ваше мнение: тот, кто везёт фрукты из района Салуццо в Париж и на юг Франции, хорошо знает, что бывает со скоропортящимся грузом, когда закрывается дорога или перевал.",
+ "Gernot Günther": "Нам очень интересно ваше мнение: компания, которая с 1954 года работает на оси Бреннера, точно знает, как дозирование, запреты и закрытия меняют планы."
 }
 
 NOTE_P = {
- "it": "Buongiorno, sono Alikhan, studente Bocconi. {hook}. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Posso scriverle?",
- "en": "Good morning, I am Alikhan, a Bocconi student. {hook}. My team and I are building zhol, an AI project in TEF Ignition 2026. May I write to you?",
- "de": "Guten Tag, ich bin Alikhan, Student an der Bocconi. {hook}. Mein Team und ich entwickeln zhol, ein KI-Projekt von TEF Ignition 2026. Darf ich schreiben?",
+ "it": "Buongiorno, sono Alikhan, studente Bocconi. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Il suo punto di vista {topic} ci sarebbe prezioso.",
+ "en": "Good morning, I am Alikhan, a Bocconi student. My team and I are building zhol, an AI project in TEF Ignition 2026. Your view on {topic} would mean a lot to us.",
+ "de": "Guten Tag, ich bin Alikhan, Student an der Bocconi. Mein Team und ich entwickeln zhol, ein KI-Projekt von TEF Ignition 2026. Ihre Sicht auf {topic} wäre uns wertvoll.",
 }
 # after a personal paragraph the ask stays short: the Bocconi group's ask loses its MEMIT sentence, which the paragraph says
 ASK_P = {g: dict(v) for g, v in ASK.items()}
@@ -348,11 +376,11 @@ def send_rows() -> list[dict]:
         g, l = p["group"], p["lang"]
         search = "https://www.linkedin.com/search/results/people/?keywords=" + quote(p["name"] + " " + p["org"])
         mine = PERSONAL[p["name"]]
-        note = NOTE_P[l].format(hook=mine["hook"]) if mine.get("hook") else NOTE.get((g, l), NOTE[l])
+        note = NOTE_P[l].format(topic=mine["topic"])
         rows.append({
             "id": "li-" + re.sub(r"[^a-z0-9]+", "-", (p["name"] + " " + p["org"]).lower()).strip("-")[:60],
             "type": "linkedin", "name": p["name"], "city": p["org"], "region": "", "fit": p["fit"],
-            "about": p["role"], "why": mine["local"], "why_src": p.get("src", ""),
+            "about": p["role"], "why": mine["local"], "why_ru": WHY_RU[p["name"]], "why_src": p.get("src", ""),
             "where": p.get("profile") or search, "profile": bool(p.get("profile")),
             "search": "https://www.google.com/search?q=" + quote(p["name"] + " " + p["org"] + " LinkedIn"),
             "subject": note, "note": note,

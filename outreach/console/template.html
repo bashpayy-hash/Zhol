@@ -386,7 +386,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     head.append(t, tag);
     box.append(head);
     if (r.why) {
-      const w = el("div", "why"); w.append(el("span", null, r.type === "bocconi" ? "Почему ему или ей" : r.type === "linkedin" ? "Почему пишем именно этому человеку (абзац в письме выделен)" : "Почему им (абзац в письме выделен)"), document.createTextNode(r.why + " "));
+      const w = el("div", "why"); w.append(el("span", null, r.type === "bocconi" ? "Почему ему или ей" : r.type === "linkedin" ? "Почему пишем именно этому человеку (по-русски; в письме этот абзац выделен)" : "Почему им (абзац в письме выделен)"), document.createTextNode((r.why_ru || r.why) + " "));
       if (r.why_src) { const a = el("a", null, "Источник"); a.href = r.why_src; a.target = "_blank"; a.rel = "noopener"; w.append(a); }
       box.append(w);
     }
