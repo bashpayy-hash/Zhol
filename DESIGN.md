@@ -7,6 +7,22 @@
 
 ## Решения
 
+### 13 ноября 2026 · LinkedIn: у каждого свой абзац «вы такой-то, поэтому нам важно ваше мнение»
+
+> «а ты уместно пресонализируй, типа вот ты такие то такие и по этому нам интересно ваше мнение»
+
+- **В каждом из 22 писем перед просьбой стоит абзац про самого человека.** Кто он, что делает его компания и почему
+  поэтому нам важно его мнение. Пример: «Lei guida Gottardi Autotrasporti, che da Trento lavora dal 1949 verso
+  Francia, Austria, Svizzera e Germania, dove i divieti del Tirolo, il divieto notturno svizzero e i festivi francesi
+  cadono sulla stessa flotta. Per questo ci interessa molto il suo parere.»
+  - **Абзац есть на языке письма и в английской части.**
+  - **Только факты из источников** (`interview_targets_companies.csv`, найденные публикации, конференция MEMIT).
+  - **Обращение** по полному имени и на «Lei / Sie / you», без угадывания пола.
+- **Заметка к запросу тоже личная** («Ho visto che guida Rail Hub Milano a Melzo»), до 200 знаков. Спикерам MEMIT —
+  их выступление в Bocconi.
+- **В консоли** этот абзац выделен в письме и подписан «Почему пишем именно этому человеку». Тексты — в
+  `PERSONAL` в `scripts/linkedin_letters.py`.
+
 ### 13 ноября 2026 · LinkedIn в консоли рассылки: вкладка и кнопка «открыть в LinkedIn»
 
 > «а ты их внеси в ту штуку которой раньше пользовались и по возможности сделай кнопку написать сразу в линкедин»

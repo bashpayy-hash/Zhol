@@ -223,6 +223,105 @@ PEOPLE = [
 ]
 
 
+# who each person is, and why their view matters to us (owner, 13 Nov 2026: «уместно персонализируй, типа вот ты
+# такие то такие и поэтому нам интересно ваше мнение»). Facts only from the sources in outreach/16-linkedin.md and
+# outreach/interview_targets_companies.csv; full names, no guessed gender.
+PERSONAL = {
+ "Paolo Cornetto": dict(
+  local="Lei guida FHP, che con porti, terminal e la ferrovia di CFI unisce proprio i modi di trasporto di cui ci occupiamo, e al convegno MEMIT della Bocconi ha parlato di intermodalità. Per questo ci interessa molto il suo parere su dove e perché le merci si fermano.",
+  en="You lead FHP, which brings together ports, terminals and the CFI railway, the very modes of transport we work on, and you spoke about intermodality at Bocconi's MEMIT conference. That is why your view on where and why freight stops matters a lot to us."),
+ "Piero Solcà": dict(
+  local="Lei presiede Hupac, che ogni giorno porta treni intermodali attraverso le Alpi, e al convegno MEMIT della Bocconi ha parlato di intermodalità e sostenibilità. Per questo ci interessa molto il suo parere su quali interruzioni pesano di più su chi spedisce con i vostri treni.",
+  en="You chair Hupac, which runs intermodal trains across the Alps every day, and you spoke about intermodality and sustainability at Bocconi's MEMIT conference. That is why your view on which disruptions weigh most on those who ship with your trains matters a lot to us."),
+ "Nora Rossi": dict(
+  local="Lei dirige OceanoGate, dove nave e treno si incontrano, e ha portato questa esperienza al convegno MEMIT della Bocconi. Per questo ci interessa molto il suo parere su cosa succede alle spedizioni quando un porto o una linea si fermano.",
+  en="You lead OceanoGate, where ship and train meet, and you brought this experience to Bocconi's MEMIT conference. That is why your view on what happens to shipments when a port or a line stops matters a lot to us."),
+ "Vittorio Cascetta": dict(
+  local="Lei lavora in Medlog, che per il gruppo MSC porta i container dai porti all'entroterra su strada e su rotaia, e ha parlato al convegno MEMIT della Bocconi. Per questo ci interessa molto il suo parere su quali blocchi pesano di più sui trasporti dai porti verso l'Europa.",
+  en="You work at Medlog, which moves MSC's containers from the ports inland by road and rail, and you spoke at Bocconi's MEMIT conference. That is why your view on which disruptions weigh most on transport from the ports to Europe matters a lot to us."),
+ "Federica Montaresi": dict(
+  local="Lei lavora all'Autorità di Sistema Portuale del Mar Ligure Orientale, dove le merci della Spezia proseguono in treno e su strada verso il Nord e l'Europa, e ha parlato al convegno MEMIT della Bocconi. Per questo ci interessa molto il suo sguardo su porto, ferrovia e strada insieme.",
+  en="You work at the Port System Authority of the Eastern Ligurian Sea, where goods from La Spezia go on by rail and road to the North and to Europe, and you spoke at Bocconi's MEMIT conference. That is why your view of port, rail and road together matters a lot to us."),
+ "Mirko De Giorgi": dict(hook="Ho visto che segue Nurminen in Italia, con il treno Örebro–Parma",
+  local="Lei segue clienti e operazioni di Nurminen Logistics in Italia, con il nuovo treno tra Örebro e Parma, e prima in Collicare ha lavorato con più modi di trasporto. Per questo ci interessa molto il suo parere su cosa ferma davvero una spedizione tra la Scandinavia e l'Italia.",
+  en="You look after Nurminen Logistics' customers and operations in Italy, with the new train between Örebro and Parma, and at Collicare you worked across several modes of transport. That is why your view on what really stops a shipment between Scandinavia and Italy matters a lot to us."),
+ "Stefano Morelli": dict(hook="Ho visto che guida Rail Hub Milano a Melzo",
+  local="Lei guida Rail Hub Milano a Melzo, dove arrivano i treni dai porti di La Spezia e Genova, e conosce la Bocconi dai corsi SDA. Per questo ci interessa molto il suo parere su quali interruzioni pesano di più su un terminal come il vostro.",
+  en="You lead Rail Hub Milano in Melzo, where trains from the ports of La Spezia and Genoa arrive, and you know Bocconi from SDA courses. That is why your view on which disruptions weigh most on a terminal like yours matters a lot to us."),
+ "Roberto Paciaroni": dict(hook="Ho visto che guida Hupac e i trasporti di Confindustria Varese",
+  local="Lei guida Hupac SpA a Busto Arsizio e, da aprile per un nuovo mandato, il gruppo Infrastrutture, Trasporti e Turismo di Confindustria Varese, con 78 aziende. Per questo ci interessa molto il suo parere, e quello delle aziende del gruppo.",
+  en="You lead Hupac SpA in Busto Arsizio and, since April for a new term, the Infrastructure, Transport and Tourism group of Confindustria Varese, with 78 companies. That is why your view, and that of the group's companies, matters a lot to us."),
+ "Francesco Caruso": dict(hook="Ho visto il lavoro del suo comitato sui traghetti dello Stretto",
+  local="Lei presiede il comitato degli autotrasportatori che attraversano lo Stretto di Messina, e da gennaio ha portato all'Antitrust il tema dei collegamenti in traghetto. Per questo ci interessa molto sapere quanto costa ai membri del comitato un traghetto che non parte o una lunga coda allo Stretto.",
+  en="You chair the committee of the hauliers who cross the Strait of Messina, and since January you have taken the ferry links to the competition authority. That is why we would very much like to know what a ferry that does not leave, or a long queue at the Strait, costs the committee's members."),
+ "Emanuele Orlando": dict(hook="Ho visto che guida le vendite di GRUBER Logistics",
+  local="Lei guida le vendite di GRUBER Logistics, che sul Brennero muove ogni anno oltre 20.000 spedizioni su rotaia, oltre a quelle su strada. Per questo ci interessa molto il suo parere su come i vostri clienti vivono blocchi e dosaggi al Brennero.",
+  en="You lead sales at GRUBER Logistics, which moves more than 20,000 shipments a year by rail over the Brenner, besides those by road. That is why your view on how your customers live through blockades and dosing at the Brenner matters a lot to us."),
+ "Silvio Damagini": dict(hook="Ho visto che guida Mercitalia Rail",
+  local="Lei guida Mercitalia Rail, il principale operatore ferroviario merci italiano. Per questo ci interessa molto il suo parere su quanto pesano sui vostri clienti scioperi, interruzioni di linea e chiusure ai valichi.",
+  en="You lead Mercitalia Rail, Italy's main rail freight operator. That is why your view on how much strikes, line closures and closed crossings weigh on your customers matters a lot to us."),
+ "Ruby van der Sluis": dict(hook="I saw that you lead Lokomotion over the Brenner",
+  local="You lead Lokomotion, which runs freight trains over the Brenner between Germany and Italy, as sole managing director since the start of 2026. That is why your view on what stops freight on this corridor matters a lot to us.",
+  en="You lead Lokomotion, which runs freight trains over the Brenner between Germany and Italy, as sole managing director since the start of 2026. That is why your view on what stops freight on this corridor matters a lot to us."),
+ "Goran Susak": dict(hook="Sie leiten den Landverkehr von Gebrüder Weiss",
+  local="Sie leiten seit Juli 2026 Landverkehr und Logistik von Gebrüder Weiss in Deutschland, nach Stationen bei Kühne+Nagel und Dachser. Deshalb interessiert uns sehr Ihre Sicht darauf, welche Störungen die Relationen zwischen Deutschland und Italien am stärksten treffen.",
+  en="Since July 2026 you have led land transport and logistics for Gebrüder Weiss in Germany, after Kühne+Nagel and Dachser. That is why your view on which disruptions hit the routes between Germany and Italy hardest matters a lot to us."),
+ "Lorenzo Bommartini": dict(hook="Ho visto che pianifica ogni giorno i mezzi di Bommartini",
+  local="Lei pianifica ogni giorno i mezzi di Autotrasporti Bommartini, che da Soave lavora verso Francia, Svizzera e Austria, e la vostra azienda usa già i dati per capire dove va il mercato. Per questo ci interessa molto il parere di chi, come lei, organizza ogni sera il giorno dopo.",
+  en="You plan Autotrasporti Bommartini's vehicles every day, from Soave towards France, Switzerland and Austria, and your company already uses data to see where the market is going. That is why the view of someone who, like you, organises the next day every evening matters a lot to us."),
+ "Mattia Bommartini": dict(hook="Ho visto che segue amministrazione e dati in Bommartini",
+  local="Lei segue l'amministrazione e il sistema di business intelligence di Autotrasporti Bommartini, che misura produttività e costi dei mezzi. Per questo ci interessa molto il suo parere su quanto costa davvero un giorno perso per un divieto o un blocco.",
+  en="You run administration and the business-intelligence system at Autotrasporti Bommartini, which tracks the vehicles' productivity and costs. That is why your view on what a day lost to a ban or a blockade really costs matters a lot to us."),
+ "Stefano Pasinato": dict(hook="Ho visto che guida Prisma Logistics a Quadrante Europa",
+  local="Lei guida Prisma Logistics, che dall'Interporto Quadrante Europa di Verona porta groupage verso Germania e Austria su strada e su rotaia. Per questo ci interessa molto il suo parere su come un giorno di dosaggio a Kufstein cambia i vostri piani.",
+  en="You lead Prisma Logistics, which runs groupage from the Quadrante Europa freight village in Verona to Germany and Austria by road and rail. That is why your view on how a dosing day at Kufstein changes your plans matters a lot to us."),
+ "Alberto Brizzi": dict(hook="Ho visto che lavora nel traffico di Prisma Logistics",
+  local="Lei lavora nell'ufficio traffico di Prisma Logistics, che da Verona porta groupage verso Germania e Austria. Per questo ci interessa molto il parere di chi pianifica davvero le tratte su come vi arrivano oggi le notizie di divieti e blocchi.",
+  en="You work in Prisma Logistics' traffic office, which runs groupage from Verona to Germany and Austria. That is why the view of someone who actually plans the legs, on how news of bans and blockades reaches you today, matters a lot to us."),
+ "Andrea Gottardi": dict(hook="Ho visto che guida Gottardi Autotrasporti, a Trento dal 1949",
+  local="Lei guida Gottardi Autotrasporti, che da Trento lavora dal 1949 verso Francia, Austria, Svizzera e Germania, dove i divieti del Tirolo, il divieto notturno svizzero e i festivi francesi cadono sulla stessa flotta. Per questo ci interessa molto il suo parere.",
+  en="You lead Gottardi Autotrasporti, which has worked from Trento towards France, Austria, Switzerland and Germany since 1949, where Tyrol's bans, the Swiss night ban and French holidays all fall on the same fleet. That is why your view matters a lot to us."),
+ "Carlo Mancini": dict(hook="Ho visto che pianifica il groupage di Benaco Trans per il Regno Unito",
+  local="Lei pianifica il groupage di prodotti deperibili di Benaco Trans verso il Regno Unito, che attraversa la Francia, dove i divieti del fine settimana e i blocchi ai porti della Manica colpiscono per primi i vostri carichi. Per questo ci interessa molto il suo parere.",
+  en="You plan Benaco Trans' groupage of perishables to the United Kingdom, which crosses France, where weekend bans and disruption at the Channel ports hit your loads first. That is why your view matters a lot to us."),
+ "Marco Ghezzi": dict(hook="Ho visto che guida Farosped, a Liscate dal 1958",
+  local="Lei guida Farosped, spedizioniere e doganalista dal 1958, con collegamenti più volte al giorno verso le principali città europee e groupage quotidiano verso la Germania. Per questo ci interessa molto il suo parere su quali interruzioni vi costano di più.",
+  en="You lead Farosped, a forwarder and customs agent since 1958, with links several times a day to Europe's main cities and daily groupage to Germany. That is why your view on which disruptions cost you most matters a lot to us."),
+ "Gianluca Sanitate": dict(hook="Ho visto che Pavisa porta la frutta del Saluzzese in Francia",
+  local="Lei guida Pavisa Spedizioni, che porta la frutta del Saluzzese con linee regolari verso Parigi e il Sud della Francia e ha un proprio magazzino in Germania. Per questo ci interessa molto il suo parere su cosa succede a un carico deperibile quando una strada o un valico si chiudono.",
+  en="You run Pavisa Spedizioni, which carries fruit from the Saluzzo area on regular runs to Paris and southern France and has its own warehouse in Germany. That is why your view on what happens to a perishable load when a road or a pass closes matters a lot to us."),
+ "Gernot Günther": dict(hook="Sie leiten Autotransporte Günther am Brenner",
+  local="Sie leiten Autotransporte Günther, seit 1954 an der Brennerachse und mit Sitz direkt an der A22-Ausfahrt Brixen Nord. Deshalb interessiert uns sehr Ihre Sicht darauf, wie Blockabfertigung, Fahrverbote und Sperrungen am Brenner Ihre Planung verändern.",
+  en="You lead Autotransporte Günther, on the Brenner axis since 1954 and based right at the A22 exit Brixen Nord. That is why your view on how dosing, bans and closures at the Brenner change your planning matters a lot to us."),
+}
+
+NOTE_P = {
+ "it": "Buongiorno, sono Alikhan, studente Bocconi. {hook}. Io e il mio team sviluppiamo zhol, progetto AI di TEF Ignition 2026. Posso scriverle?",
+ "en": "Good morning, I am Alikhan, a Bocconi student. {hook}. My team and I are building zhol, an AI project in TEF Ignition 2026. May I write to you?",
+ "de": "Guten Tag, ich bin Alikhan, Student an der Bocconi. {hook}. Mein Team und ich entwickeln zhol, ein KI-Projekt von TEF Ignition 2026. Darf ich schreiben?",
+}
+# after a personal paragraph the ask stays short: the Bocconi group's ask loses its MEMIT sentence, which the paragraph says
+ASK_P = {g: dict(v) for g, v in ASK.items()}
+ASK_P["bocconi"] = {
+ "it": ("Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando ai porti, ai terminal o alle linee che conosce "
+        "meglio? E se nella sua rete c'è chi pianifica le spedizioni di domani, ci aiuterebbe molto girarglielo."),
+ "en": ("Could you give us one minute for our anonymous survey, thinking of the ports, terminals or lines you know best? And if "
+        "someone in your network plans tomorrow's shipments, it would help us a lot if you passed it on."),
+ "de": ("Könnten Sie uns eine Minute für unsere anonyme Umfrage schenken, mit Blick auf die Häfen, Terminals oder Strecken, die "
+        "Sie am besten kennen?"),
+}
+
+
+def message_personal(group: str, lang: str, local: str, en: str) -> str:
+    """The message with the person's own paragraph right before the ask: who they are, and why their view matters."""
+    def one(l: str, mine: str) -> str:
+        return "\n\n".join([HELLO[l], WHO[l], PROBLEM[l], MAIN[l], mine + " " + ASK_P[group][l], LINK[l] + "li-" + group,
+                              SURVEY[l], THANKS[l] + "\n" + SIGN[l]])
+    if lang == "en":
+        return one("en", en)
+    return ENGLISH_BELOW[lang] + "\n\n" + one(lang, local) + "\n\n— English version —\n\n" + one("en", en)
+
+
 def office_people() -> list[dict]:
     """The beachhead's priority-A people whose best channel is LinkedIn (interview_targets_companies.csv)."""
     import csv, re
@@ -248,14 +347,16 @@ def send_rows() -> list[dict]:
     for p in PEOPLE + office_people():
         g, l = p["group"], p["lang"]
         search = "https://www.linkedin.com/search/results/people/?keywords=" + quote(p["name"] + " " + p["org"])
+        mine = PERSONAL[p["name"]]
+        note = NOTE_P[l].format(hook=mine["hook"]) if mine.get("hook") else NOTE.get((g, l), NOTE[l])
         rows.append({
             "id": "li-" + re.sub(r"[^a-z0-9]+", "-", (p["name"] + " " + p["org"]).lower()).strip("-")[:60],
             "type": "linkedin", "name": p["name"], "city": p["org"], "region": "", "fit": p["fit"],
-            "about": p["role"], "why": "", "why_src": p.get("src", ""),
+            "about": p["role"], "why": mine["local"], "why_src": p.get("src", ""),
             "where": p.get("profile") or search, "profile": bool(p.get("profile")),
             "search": "https://www.google.com/search?q=" + quote(p["name"] + " " + p["org"] + " LinkedIn"),
-            "subject": NOTE.get((g, l), NOTE[l]), "note": NOTE.get((g, l), NOTE[l]),
-            "message": personal(message(g, l), p["name"], l),
+            "subject": note, "note": note,
+            "message": personal(message_personal(g, l, mine["local"], mine["en"]), p["name"], l),
             "link": LINK[l] + "li-" + g, "group": g, "lang": l,
             "followup": {"subject": "", "message": personal(reminder(g, l), p["name"], l)},
         })
