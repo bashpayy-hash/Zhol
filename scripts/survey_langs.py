@@ -239,6 +239,13 @@ ROWS: list[tuple[str, str, str, str]] = [
      "Vous connaissez un autre service d’exploitation ? Chaque réponse en plus renforce les chiffres.",
      "¿Conoce otro departamento de tráfico? Cada respuesta más hace las cifras más sólidas."),
     ("Forward on WhatsApp", "Per WhatsApp weiterleiten", "Transférer sur WhatsApp", "Reenviar por WhatsApp"),
+    # after the survey, a way to the main site (owner, 13 Nov 2026: «в опроснике ещё дай ссылку на наш основной сайт
+    # после прохождения всего»); the main site is in English and Italian, so these pages link to the English one
+    ("<b>What is zhol?</b> An AI platform that estimates the risk for each shipment, by road, rail or sea, warns in advance and updates in real time.",
+     "<b>Was ist zhol?</b> Eine KI-Plattform, die für jede Sendung auf Straße, Schiene oder See das Risiko abschätzt, frühzeitig warnt und in Echtzeit aktualisiert.",
+     "<b>Qu’est-ce que zhol ?</b> Une plateforme d’IA qui estime le risque de chaque envoi, par route, rail ou mer, prévient à l’avance et met à jour en temps réel.",
+     "<b>¿Qué es zhol?</b> Una plataforma de IA que estima el riesgo de cada envío, por carretera, tren o mar, avisa con antelación y actualiza en tiempo real."),
+    ("Visit zhol.live", "Zu zhol.live (auf Englisch)", "Aller sur zhol.live (en anglais)", "Ir a zhol.live (en inglés)"),
     ("Copy the link", "Link kopieren", "Copier le lien", "Copiar el enlace"),
     ("From the radar, today", "Aus dem Radar, heute", "Du radar, aujourd’hui", "Del radar, hoy"),
     ("What is coming in the next weeks", "Was in den nächsten Wochen kommt", "Ce qui arrive dans les prochaines semaines", "Lo que viene en las próximas semanas"),

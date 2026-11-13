@@ -504,6 +504,9 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
 .sv-contact { max-width: 520px; }
 .sv-done { display: flex; flex-direction: column; gap: 14px; outline: none; max-width: 560px; }
 .sv-done p { margin: 0; font-size: 17px; color: var(--ink-2); }
+/* after the survey: a way to the main site (owner, 13 Nov 2026) */
+.sv-home { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 10px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.sv-home p { font-size: 16px; }
 .sv-privacy { margin-top: 40px; max-width: 720px; }
 @media (max-width: 760px) {
   .slide.sv { padding-top: 32px; }
