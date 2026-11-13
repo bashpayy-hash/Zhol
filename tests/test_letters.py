@@ -191,3 +191,21 @@ def test_company_offer_letters_follow_the_same_principles():
         assert "— English version —" in text, title
         assert not re.search(r"per truck|per camion", text, re.I), title
         assert re.findall(r"https://zhol\.live/(?:it/)?(?:beta|radar)\b", text), title
+
+
+def test_linkedin_console_rows_follow_the_same_principles():
+    """The LinkedIn tab of the send console (owner, 13 Nov 2026): every person has a note that fits 200 characters, the
+    full message addressed by their full name (no placeholder left), the same rules as every letter, and a link to their
+    profile or a LinkedIn search."""
+    rows = json.loads((ROOT / "outreach" / "linkedin_send_list.json").read_text(encoding="utf-8"))
+    assert len(rows) >= 13 and len({r["id"] for r in rows}) == len(rows)
+    for r in rows:
+        assert r["type"] == "linkedin" and r["where"].startswith("https://www.linkedin.com/"), r["id"]
+        assert len(r["note"]) <= 200 and r["note"] == r["subject"], (r["id"], len(r["note"]))
+        for t in (r["note"], r["message"], r["followup"]["message"]):
+            assert ":" not in _text(t), (r["id"], _text(t)[max(0, _text(t).find(":") - 40):][:80])
+            assert not NAMES.search(t), r["id"]
+        m = r["message"]
+        assert "[Nome]" not in m and "[Name]" not in m and r["name"] in m, r["id"]
+        assert "TEF Ignition 2026" in m and any(g in m for g in ("2.000 €", "2,000")) and "Europ" in m, r["id"]
+        assert r["link"] in m and "src=li-" in r["link"], r["id"]

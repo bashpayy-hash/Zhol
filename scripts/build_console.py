@@ -19,9 +19,16 @@ def enc(path: Path) -> str:
     return json.dumps(json.loads(path.read_text(encoding="utf-8")), ensure_ascii=False).replace("</", "<\\/")
 
 
+def rows_all() -> list:
+    """The survey letters and the LinkedIn people (scripts/linkedin_letters.py), one list for the console."""
+    rows = json.loads((OUT / "survey_send_list.json").read_text(encoding="utf-8"))
+    li = OUT / "linkedin_send_list.json"
+    return rows + (json.loads(li.read_text(encoding="utf-8")) if li.exists() else [])
+
+
 def main() -> None:
     page = (OUT / "console" / "template.html").read_text(encoding="utf-8")
-    page = page.replace("__DATA__", enc(OUT / "survey_send_list.json")).replace("__POSTS__", enc(OUT / "console" / "posts.json"))
+    page = page.replace("__DATA__", json.dumps(rows_all(), ensure_ascii=False).replace("</", "<\\/")).replace("__POSTS__", enc(OUT / "console" / "posts.json"))
     (OUT / "send-console.html").write_text(page, encoding="utf-8")
     print("wrote outreach/send-console.html")
     # addresses the companies gave us themselves (an auto-reply naming a new address) stay out of the repository:
@@ -33,7 +40,7 @@ def main() -> None:
         import csv
         fix = {r["id"]: r for r in csv.DictReader(open(over, encoding="utf-8")) if r.get("email")} if over.exists() else {}
         was = {r["id"]: r for r in csv.DictReader(open(wa, encoding="utf-8")) if r.get("whatsapp")} if wa.exists() else {}
-        rows = json.loads((OUT / "survey_send_list.json").read_text(encoding="utf-8"))
+        rows = rows_all()
         for r in rows:
             if r["id"] in fix:
                 r["to"], r["to_src"] = fix[r["id"]]["email"], ""

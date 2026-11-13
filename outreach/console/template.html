@@ -92,6 +92,8 @@ button { font: inherit; }
 .pill.skip { background: var(--line); color: var(--muted); }
 .row.sent b, .row.replied b, .row.skip b { color: var(--ink-2); font-weight: 500; }
 .row .noaddr { color: var(--red); }
+.btn.li-btn { background: #0a66c2; border-color: #0a66c2; color: #fff; }
+.btn.li-btn:hover { background: #004182; border-color: #004182; }
 .tabs button .n { font-weight: 500; }
 
 .detail { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 26px 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
@@ -166,6 +168,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   <div class="tools">
     <div class="tabs" role="group" aria-label="Кому" id="f-type">
       <button type="button" data-v="bocconi" aria-pressed="true">Bocconi<span class="n" id="n-bocconi"></span></button>
+      <button type="button" data-v="linkedin" aria-pressed="false">LinkedIn<span class="n" id="n-linkedin"></span></button>
       <button type="button" data-v="company" aria-pressed="false">Компании<span class="n" id="n-company"></span></button>
       <button type="button" data-v="association" aria-pressed="false">Ассоциации<span class="n" id="n-association"></span></button>
       <button type="button" data-v="press" aria-pressed="false">Издания<span class="n" id="n-press"></span></button>
@@ -196,7 +199,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
   const ROWS = JSON.parse($("data").textContent);
   const POSTS = JSON.parse($("posts-data").textContent);
-  const KIND = { bocconi: "преподаватель Bocconi", association: "ассоциация", press: "издание", group: "группа", company: "компания", abroad: "за рубежом" };
+  const KIND = { linkedin: "LinkedIn", bocconi: "преподаватель Bocconi", association: "ассоциация", press: "издание", group: "группа", company: "компания", abroad: "за рубежом" };
   ROWS.sort((a, b) => (Number(b.fit || 0) - Number(a.fit || 0)) || a.name.localeCompare(b.name));
   const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
                   set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
@@ -392,15 +395,19 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       if (r.to_src) { const s = el("a", null, "Где найден адрес"); s.href = r.to_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
     if (r.wa) { c.append(el("code", null, "WhatsApp +" + r.wa));
       if (r.wa_src) { const s = el("a", null, "Где найден WhatsApp"); s.href = r.wa_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
-    if (/^https?:\/\//.test(r.where)) { const a = el("a", null, r.type === "company" ? "Сайт или форма контактов" : "Открыть сайт"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a); }
+    if (r.type === "linkedin") {
+      const a = el("a", null, r.profile ? "Профиль в LinkedIn" : "Найти в LinkedIn по имени и компании"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a);
+      if (r.why_src) { const s = el("a", null, "Откуда должность"); s.href = r.why_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); }
+    }
+    else if (/^https?:\/\//.test(r.where)) { const a = el("a", null, r.type === "company" ? "Сайт или форма контактов" : "Открыть сайт"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a); }
     else if (r.where && !r.to) c.append(el("span", null, r.where));
     const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
     box.append(c);
-    const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : "Тема письма"));
-    const sb = el("button", "btn small", "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
-    if (r.type !== "group") sl.append(sb);
+    const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : r.type === "linkedin" ? "Заметка к запросу в LinkedIn (" + r.subject.length + " из 200 знаков)" : "Тема письма"));
+    const sb = el("button", "btn small", r.type === "linkedin" ? "Скопировать заметку" : "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
+    if (r.type !== "group" && r.type !== "linkedin") sl.append(sb);
     sf.append(sl, el("div", "subject", r.subject)); box.append(sf);
-    const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, "Письмо"));
+    const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, r.type === "linkedin" ? "Письмо после того, как человек примет запрос" : "Письмо"));
     const mb = el("button", "btn main", "Скопировать письмо"); mb.type = "button"; mb.addEventListener("click", () => copy(sign(r.message), mb, box));
     // one click to a new letter in Outlook on the web with the address, subject and text already in place (owner, 11 Nov)
     const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
@@ -442,6 +449,26 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       // on an iPad or iPhone the Outlook app opens the new letter itself; the web version stays one tap away (owner, 11 Nov)
       if (APPLE_TOUCH) btns.append(link(label, "ms-outlook://compose?" + q, again ? "btn small" : "btn"), link("Outlook в браузере", web, "btn small"));
       else btns.append(link(label, web, again ? "btn small" : "btn"));
+    }
+    // LinkedIn (owner, 13 Nov 2026: «сделай кнопку написать сразу в линкедин»): LinkedIn has no link that opens a request
+    // or a message with the text in place, so one click opens the person's profile (or a search for the name and the
+    // company) and copies the note; in LinkedIn: Connect, Add a note, paste. The full message goes after they accept.
+    if (r.type === "linkedin") {
+      const sentAt = stateOf(r.id) === "sent" && status[r.id] && status[r.id].at;
+      const liWarn = el("div", "dup-warn"); liWarn.hidden = !(sentAt || opened[r.id]);
+      if (sentAt) liWarn.textContent = "Запрос уже отправлен " + day(sentAt) + ". Когда человек примет его, отправьте письмо ниже.";
+      else if (opened[r.id]) liWarn.textContent = "LinkedIn уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ".";
+      const a = el("a", "btn li-btn", r.profile ? "Открыть профиль в LinkedIn" : "Найти в LinkedIn");
+      a.href = r.where; a.target = "_blank"; a.rel = "noopener";
+      a.title = "Откроется LinkedIn, заметка уже скопирована. Нажмите «Установить контакт» → «Добавить заметку», вставьте (Ctrl+V или Cmd+V) и отправьте. Потом отметьте здесь «Отправлено».";
+      a.addEventListener("click", () => {
+        try { navigator.clipboard.writeText(r.subject).catch(() => {}); } catch (e) {}
+        opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened));
+        liWarn.textContent = "Заметка скопирована. В LinkedIn нажмите «Установить контакт» → «Добавить заметку» и вставьте её. После отправки отметьте здесь «Отправлено».";
+        liWarn.hidden = false;
+      });
+      const pair = el("div"); pair.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
+      pair.append(a, sb); sl.append(pair); sf.append(liWarn);
     }
     // WhatsApp the company publishes on its own site: the same letter, opened in WhatsApp (owner, 11 Nov 2026:
     // «найди ватсапы, я туда им напишу»)
@@ -492,7 +519,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $("count").textContent = sent + " из " + ROWS.length + " отправлено · ответили " + replied;
     $("tr-r").style.width = (replied / ROWS.length * 100) + "%";
     $("tr-s").style.width = ((sent - replied) / ROWS.length * 100) + "%";
-    ["bocconi", "company", "association", "press", "group", "abroad"].forEach(k => {
+    ["bocconi", "linkedin", "company", "association", "press", "group", "abroad"].forEach(k => {
       const all = ROWS.filter(r => r.type === k), done = all.filter(r => stateOf(r.id) && stateOf(r.id) !== "skip").length;
       $("n-" + k).textContent = done + " из " + all.length;
       $("n-" + k).parentNode.title = "отправлено " + done + " из " + all.length;
