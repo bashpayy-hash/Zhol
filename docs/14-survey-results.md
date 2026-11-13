@@ -71,7 +71,7 @@ Answers from 2026-11-09T17:00 UTC on (the outreach began then; earlier rows were
 | 6–20 | 0 |
 | over 20 | 0 |
 
-## People who know the field (8 answers, from experience)
+## People who know the field (9 answers, from experience)
 
 Teachers, researchers, consultants and former staff answering about offices in general. Reported apart: they do not count towards the thresholds above.
 
@@ -79,7 +79,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 
 | Answer | Count |
 |---|---|
-| works around it (forwarding, association, consultancy) | 3 |
+| works around it (forwarding, association, consultancy) | 4 |
 | teaches or researches logistics | 5 |
 | used to work in logistics | 0 |
 
@@ -88,7 +88,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | road haulage | 0 |
-| rail and intermodal | 2 |
+| rail and intermodal | 3 |
 | ferries and ports | 1 |
 | shippers | 3 |
 | several | 2 |
@@ -98,7 +98,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | under 10 min | 1 |
-| 10–20 min | 2 |
+| 10–20 min | 3 |
 | 20–40 min | 1 |
 | over 40 min | 3 |
 | don’t know | 1 |
@@ -107,7 +107,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 
 | Answer | Count |
 |---|---|
-| under 2 | 0 |
+| under 2 | 1 |
 | 2–5 | 4 |
 | 5–10 | 1 |
 | over 10 | 3 |
@@ -118,7 +118,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | under €100 | 0 |
-| €100–300 | 2 |
+| €100–300 | 3 |
 | €300–1,000 | 2 |
 | over €1,000 (earlier option) | 2 |
 | €1,000–3,000 | 0 |
@@ -130,7 +130,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | Answer | Count |
 |---|---|
 | most would | 3 |
-| some would | 3 |
+| some would | 4 |
 | few would | 2 |
 | don’t know | 0 |
 
@@ -140,7 +140,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 |---|---|
 | trusting the information | 2 |
 | the price | 1 |
-| habits: phone, email, WhatsApp | 2 |
+| habits: phone, email, WhatsApp | 3 |
 | fitting it into their software | 3 |
 | sharing data near competitors | 0 |
 
@@ -151,7 +151,7 @@ Teachers, researchers, consultants and former staff answering about offices in g
 | nothing | 0 |
 | up to €5 | 2 |
 | €5–10 | 2 |
-| €10–20 | 1 |
+| €10–20 | 2 |
 | over €20 | 1 |
 | don’t know | 2 |
 
@@ -171,8 +171,9 @@ Teachers, researchers, consultants and former staff answering about offices in g
 - prof-senn: 1
 - prof-gallmann: 1
 - co-broad: 1
+- home: 1
 
 ## Language
 
 - it: 6
-- en: 4
+- en: 5
