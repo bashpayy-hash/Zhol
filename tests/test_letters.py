@@ -145,3 +145,31 @@ def test_introduction_letters_follow_the_same_principles():
         assert len(links) == 1 and "/it/sondaggio?src=intro-" in links[0], links
         subject = next(l for l in block.split("\n") if l.startswith("**Subject:**"))[len("**Subject:** "):]
         assert len(subject.split()) <= 10, subject
+
+
+def test_linkedin_messages_follow_the_same_principles():
+    """LinkedIn (owner, 13 Nov 2026: «А может начать писать по линкединам?»): the same rules as every letter. The note to a
+    connection request fits LinkedIn's 200 characters; the message after it and the one reminder carry everything: who we
+    are and the grant, Europe, AI, every mode of transport, one survey link tagged by group, no colons, no team names."""
+    md = (ROOT / "outreach" / "16-linkedin.md").read_text(encoding="utf-8")
+    blocks = re.findall(r"^#### (.+?)\n\n```text\n(.*?)\n```", md, re.S | re.M)
+    kinds = {"Заметка": 0, "Письмо": 0, "Напоминание": 0}
+    for title, text in blocks:
+        kind = title.split(" ", 1)[0]
+        kinds[kind] += 1
+        assert ":" not in _text(text), (title, text[max(0, _text(text).find(":") - 40):][:80])
+        assert not NAMES.search(text), title
+        assert "Bocconi" in text and "TEF Ignition 2026" in text, title
+        if kind == "Заметка":
+            assert len(text) <= 200, (title, len(text))
+            continue
+        assert any(g in text for g in ("2.000 €", "2,000", "2 000 €")), (title, "grant")
+        assert "Europ" in text and any(a in text for a in (" AI", " IA", "KI")), title
+        links = re.findall(r"https://zhol\.live/(?:survey|it/sondaggio|de/umfrage)\?src=li-[a-z]+", text)
+        assert links and len(set(l.split("src=")[1] for l in links)) == 1, (title, links)
+        if kind == "Письмо":
+            assert any(w in text for w in ("my team and I", "My team and I")), title
+            assert "rail" in text and ("sea" in text), (title, "every mode of transport")
+            if "· EN" not in title:
+                assert "— English version —" in text, title
+    assert kinds["Заметка"] == kinds["Письмо"] == kinds["Напоминание"] >= 10, kinds
