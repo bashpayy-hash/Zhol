@@ -17,11 +17,12 @@ export interface Reader {
 }
 export interface Article { title: string; url: string; outlet: string; lang: string; published: string }
 export interface Signal extends Article { kind: string; stage: string; mode: string; countries: string[]; regions: string[]; places: string[]; official: boolean; talks: boolean }
-export interface WireState { at: string; first: Record<string, string>; items: Record<string, unknown>[]; read: number; ok: number; total: number }
+export interface WireState { at: string; first: Record<string, string>; items: Record<string, unknown>[]; read: number; ok: number; total: number; v?: string }
 
 const HOUR = 3_600_000;
 export const FRESH_H = 36;          // an article older than this is the radar's job, not the wire's
 export const EVERY_MIN = 30;
+export const WIRE = "2";            // bump when the reading changes: what an older reader kept is not shown, the sources are read again
 const rx = (p: string) => new RegExp(p, "i");
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const unent = (s: string) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/<[^>]+>/g, "")
@@ -86,8 +87,10 @@ const KIND = { strike: ["Strike", "Sciopero"], blockade: ["Blockade", "Blocco"],
                dosing: ["Truck dosing", "Dosaggio dei camion"], weather: ["Bad weather", "Maltempo"] } as Record<string, string[]>;
 const MODE_STRIKE = { rail: ["Rail strike", "Sciopero ferroviario"], sea: ["Port or ferry strike", "Sciopero di porti o traghetti"],
                       air: ["Air transport strike", "Sciopero del trasporto aereo"] } as Record<string, string[]>;
-const STAGE = { ongoing: [" under way", " in corso"], confirmed: [" confirmed", " confermato"], announced: [" announced", " annunciato"],
-                threat: [" threatened", " minacciato"], revoked: [" called off", " revocato"] } as Record<string, string[]>;
+const STAGE = { ongoing: [" under way", " in corso"], confirmed: [" confirmed", " confermat"], announced: [" announced", " annunciat"],
+                threat: [" threatened", " minacciat"], revoked: [" called off", " revocat"] } as Record<string, string[]>;
+// Italian agrees with the noun: "Protesta annunciata", "Sciopero annunciato"
+const itStage = (kindIt: string, stem: string) => stem + (stem.endsWith("t") ? (/^(Protesta|Chiusura)/.test(kindIt) ? "a" : "o") : "");
 const COUNTRY = { IT: ["Italy", "Italia"], FR: ["France", "Francia"], AT: ["Austria", "Austria"], DE: ["Germany", "Germania"], CH: ["Switzerland", "Svizzera"],
                   SI: ["Slovenia", "Slovenia"], PL: ["Poland", "Polonia"], ES: ["Spain", "Spagna"], BE: ["Belgium", "Belgio"], NL: ["Netherlands", "Paesi Bassi"] } as Record<string, string[]>;
 
@@ -112,7 +115,7 @@ export function wireItems(signals: Signal[], R: Reader, P: Places, first: Record
     const hours = Math.max(1, Math.round((now - Date.parse(c[c.length - 1].published)) / HOUR));
     out.push({
       id: "w-" + key.replace(/[^a-z0-9]+/gi, "-").toLowerCase(), group: "wire", basis: "wire", kind: latest.kind, stage, mode: latest.mode,
-      title: kind[0] + st[0], title_it: kind[1] + st[1], headline: latest.title, where: names(0), where_it: names(1),
+      title: kind[0] + st[0], title_it: kind[1] + itStage(kind[1], st[1]), headline: latest.title, where: names(0), where_it: names(1),
       detail: `${c.length} article${c.length > 1 ? "s" : ""} from ${outlets} outlet${outlets > 1 ? "s" : ""} in the last ${hours} h. Not checked by a person yet.`,
       detail_it: `${c.length} articol${c.length > 1 ? "i" : "o"} da ${outlets} testat${outlets > 1 ? "e" : "a"} nelle ultime ${hours} ore. Non ancora verificato da una persona.`,
       countries, places, regions, lanes: lanesFor({ places, regions, countries }, P), start: null, end: null,
@@ -143,5 +146,5 @@ export async function sweep(R: Reader, P: Places, prev: WireState | null, get: (
   }
   const first = { ...(prev?.first || {}) };
   const items = wireItems(signals, R, P, first, now);
-  return { at: new Date(now).toISOString(), first, items, read: read_, ok: got.filter(g => g.status === "fulfilled").length, total: jobs.length };
+  return { at: new Date(now).toISOString(), first, items, read: read_, ok: got.filter(g => g.status === "fulfilled").length, total: jobs.length, v: WIRE };
 }

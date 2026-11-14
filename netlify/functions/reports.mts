@@ -7,7 +7,7 @@
 // If a scheduled run has not happened for a while, the first reader starts one in the background.
 import type { Config, Context } from "@netlify/functions";
 import { radarItems } from "../lib/reports.mts";
-import { EVERY_MIN } from "../lib/wire.mts";
+import { EVERY_MIN, WIRE } from "../lib/wire.mts";
 import { EVERY_H } from "../lib/docs.mts";
 import { allReports, docStates, json, refreshDocs, refreshWire, wireState } from "../lib/store.mts";
 
@@ -18,7 +18,8 @@ export default async (req: Request, context: Context) => {
   let items: unknown[] = [], wire: unknown[] = [], wire_at: string | null = null, wire_read = 0;
   try { items = radarItems(await allReports(), today); } catch (e) { console.error("reports failed", String(e).slice(0, 300)); }
   try {
-    const st = await wireState();
+    const kept = await wireState();
+    const st = kept && kept.v === WIRE ? kept : null;       // what an older reader kept is not shown: read again first
     if (st) { wire = st.items; wire_at = st.at; wire_read = st.read; }
     if (!st || Date.now() - Date.parse(st.at) > 2 * EVERY_MIN * 6e4) {
       const run = refreshWire(req).catch(e => console.error("wire failed", String(e).slice(0, 300)));

@@ -2,7 +2,7 @@
 // radarItems() from reports.mts. One key per object, no counters (Blobs is not a database).
 import { getStore } from "@netlify/blobs";
 import type { Report, Places } from "./reports.mts";
-import { EVERY_MIN, sweep } from "./wire.mts";
+import { EVERY_MIN, WIRE, sweep } from "./wire.mts";
 import type { Reader, WireState } from "./wire.mts";
 import { aiLive } from "./ai.mts";
 import { AGENT, EVERY_H, lookAt, readDoc } from "./docs.mts";
@@ -103,10 +103,10 @@ const getText = async (url: string) => {
 /** Read the sources once and keep the result. Returns the state it wrote, or the one in place if it is still fresh. */
 export async function refreshWire(req?: Request, force = false): Promise<WireState | null> {
   const prev = await wireState();
-  if (!force && prev && Date.now() - Date.parse(prev.at) < EVERY_MIN * 6e4) return prev;
+  if (!force && prev && prev.v === WIRE && Date.now() - Date.parse(prev.at) < EVERY_MIN * 6e4) return prev;
   const [R, P] = await Promise.all([reader(req), places(req)]);
   const next = await sweep(R, P, prev, getText);
-  if (next.ok === 0 && prev) return prev;         // every source failed: keep what we had
+  if (next.ok === 0 && prev && prev.v === WIRE) return prev;         // every source failed: keep what we had
   await wire().setJSON("state", next);
   console.log(JSON.stringify({ zhol: "wire", items: next.items.length, read: next.read, ok: next.ok, total: next.total }));
   return next;

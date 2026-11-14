@@ -55,6 +55,8 @@ test("fresh headlines become one item per event, newest first, and the first sig
   const it = items[0];
   assert.deepEqual([it.group, it.basis, it.stage, it.start], ["wire", "wire", "ongoing", null]);
   assert.equal(it.title, "Blockade under way"); assert.equal(it.title_it, "Blocco in corso"); assert.equal(it.where, "Sicilia");
+  const prot = wireItems([read(art("Protesta degli autotrasportatori annunciata in Calabria per lunedì"), R, P)], R, P, {}, now)[0];
+  assert.deepEqual([prot.title, prot.title_it], ["Protest announced", "Protesta annunciata"]);                 // Italian agrees with the noun
   assert.ok(it.p >= 0.97 && it.factors.some(f => f.key === "outlets_3") && it.sources.length === 3 && it.lanes.length > 0);
   assert.match(it.detail, /Not checked by a person yet/);
   const seen = first[clusterKey(sig[0])];
