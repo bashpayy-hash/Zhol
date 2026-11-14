@@ -1,8 +1,8 @@
 {
  "date": "2026-11-14",
- "built_at": "2026-11-14T05:16+01:00",
+ "built_at": "2026-11-14T14:17+01:00",
  "reader": "heuristic",
- "articles_read": 628,
+ "articles_read": 614,
  "items": [
   {
    "key": "ban|AT,IT|2026-12-08",
@@ -185,21 +185,6 @@
    "decide_h": 3.9
   },
   {
-   "key": "weather|tauern|2026-11-24",
-   "id": "ff19b599f4",
-   "group": "forecast",
-   "kind": "weather",
-   "title": "Snow at the Tauern tunnel",
-   "start": "2026-11-24",
-   "end": "2026-11-24",
-   "p": 0.266,
-   "stage": null,
-   "basis": "forecast",
-   "first_published": null,
-   "outlets": 1,
-   "decide_h": 9.4
-  },
-  {
    "key": "strike|IT|2026-11-20",
    "id": "st-rail-2026-11-20",
    "group": "news",
@@ -365,6 +350,21 @@
    "decide_h": 6.2
   },
   {
+   "key": "closure|IT-Lazio|2026-11-14",
+   "id": "d-trenitalia-info-closure-it-lazio-2026-11-14-2026-11-14",
+   "group": "official",
+   "kind": "closure",
+   "title": "Traffic suspended between Attigliano and Orte on the conventional Florence-Rome line for power line checks.",
+   "start": "2026-11-14",
+   "end": "2026-11-14",
+   "p": 0.995,
+   "stage": "ongoing",
+   "basis": "document",
+   "first_published": "2026-11-14",
+   "outlets": 1,
+   "decide_h": null
+  },
+  {
    "key": "closure|montblanc|2026-11-20",
    "id": "4dbceed3c0",
    "group": "news",
@@ -378,21 +378,6 @@
    "first_published": "2026-10-16",
    "outlets": 3,
    "decide_h": 5.9
-  },
-  {
-   "key": "strike|FR|undated",
-   "id": "a6c5641daa",
-   "group": "news",
-   "kind": "strike",
-   "title": "Possible strike in France",
-   "start": null,
-   "end": null,
-   "p": 0.361,
-   "stage": "threat",
-   "basis": "news",
-   "first_published": "2026-10-22",
-   "outlets": 5,
-   "decide_h": null
   },
   {
    "key": "strike|FR|undated",
@@ -456,7 +441,7 @@
   },
   {
    "key": "strike|FR|2026-11-17",
-   "id": "ee466fb57e",
+   "id": "8f98d6e51d",
    "group": "news",
    "kind": "strike",
    "title": "Possible port or ferry strike in France",
@@ -466,7 +451,7 @@
    "stage": "tension",
    "basis": "news",
    "first_published": "2026-11-10",
-   "outlets": 2,
+   "outlets": 1,
    "decide_h": null
   },
   {
