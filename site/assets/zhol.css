@@ -1399,3 +1399,4 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
   box-shadow: 0 1px 0 var(--card-line), 0 18px 44px rgba(53, 43, 40, .14); }
 .howto figcaption { max-width: 760px; }
 .sv-howto { margin-top: 8px; }
+.howto-v.upright { aspect-ratio: 390 / 844; width: min(100%, calc(84vh * 390 / 844)); margin: 0 auto; }

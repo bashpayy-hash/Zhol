@@ -7,8 +7,9 @@
    what the site shows at the moment of filming; the office report in step 6 is an example typed for the video and is
    never sent to the radar.
 
-   Usage: node scripts/how_it_works_video.js --lang en|it --out site/assets/video --work <scratch dir> [--base https://zhol.live]
-   Needs ffmpeg with libx264 and libwebp. Writes how-it-works-<lang>.mp4 and how-it-works-<lang>.webp (the poster). */
+   Usage: node scripts/how_it_works_video.js --lang en|it [--phone] --out site/assets/video --work <scratch dir> [--base https://zhol.live]
+   Needs ffmpeg with libx264 and libwebp. Writes how-it-works-<lang>.mp4 and how-it-works-<lang>.webp (the poster);
+   with --phone the same film upright, on the site as a phone shows it (390 x 844, 780 x 1688 pixels), named …-phone. */
 const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
@@ -18,8 +19,11 @@ const arg = k => { const i = process.argv.indexOf("--" + k); return i > 0 ? proc
 const LANG = arg("lang") || "en", IT = LANG === "it";
 const BASE = arg("base") || "https://zhol.live";
 const OUT = arg("out") || "site/assets/video";
-const WORK = path.resolve(arg("work") || "video-work", LANG);
+const WORK = path.resolve(arg("work") || "video-work", LANG + (process.argv.includes("--phone") ? "-phone" : ""));
 const FPS = 30, XFADE = 0.4;
+const PHONE = process.argv.includes("--phone");
+const VIEW = PHONE ? { width: 390, height: 844 } : { width: 1280, height: 720 }, DPR = PHONE ? 2 : 1.5;
+const OUTW = VIEW.width * DPR, OUTH = VIEW.height * DPR, NAME = `how-it-works-${LANG}${PHONE ? "-phone" : ""}`;
 const T = (en, it) => IT ? it : en;
 const U = p => BASE + (IT ? { "/survey": "/it/sondaggio", "/radar": "/it/radar", "/report": "/it/segnala" }[p] || p : p);
 
@@ -64,7 +68,7 @@ const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
 /** The caption, the step label and a spotlight on `sel`, drawn into the page with the site's type. The layer is a
  *  popover, so it sits in the top layer above the radar's sheet (a modal dialog) and is never covered by it. */
-async function overlay(page, { step, text, sel, opacity = 1, pad = 14, place = "bottom" }) {
+async function overlay(page, { step, text, sel, opacity = 1, pad = PHONE ? 8 : 14, place = "bottom" }) {
   await page.evaluate(({ step, text, sel, opacity, pad, place }) => {
     let o = document.getElementById("zv");
     if (!o) {
@@ -74,6 +78,8 @@ async function overlay(page, { step, text, sel, opacity = 1, pad = 14, place = "
       st.textContent = `#zv{position:fixed;inset:0;width:100vw;height:100vh;max-width:none;max-height:none;margin:0;padding:0;border:0;
           background:transparent;overflow:visible;pointer-events:none;font-family:var(--font-sans,system-ui)}
         #zv.top .zv-cap{bottom:auto;top:84px}
+        #zv.phone .zv-cap{bottom:18px;width:calc(100% - 24px);padding:12px 15px 14px;border-radius:16px;gap:4px}
+        #zv.phone.top .zv-cap{top:66px;bottom:auto} #zv.phone .zv-step{font-size:12.5px} #zv.phone .zv-text{font-size:17px;line-height:1.32}
         #zv .zv-spot{position:fixed;border-radius:18px;box-shadow:0 0 0 3px var(--red,#a2311e),0 0 0 9999px rgba(246,243,234,.62);transition:none}
         #zv .zv-cap{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);width:min(1000px,calc(100% - 64px));background:rgba(246,243,234,.97);
           border-radius:20px;padding:18px 26px 20px;box-shadow:0 14px 40px rgba(53,43,40,.20);display:flex;flex-direction:column;gap:6px}
@@ -86,6 +92,7 @@ async function overlay(page, { step, text, sel, opacity = 1, pad = 14, place = "
     if (o.matches(":popover-open")) { if (document.querySelector("dialog[open]") && !o.dataset.raised) { o.hidePopover(); o.showPopover(); o.dataset.raised = "1"; } }
     else o.showPopover();
     o.classList.toggle("top", place === "top");
+    o.classList.toggle("phone", innerWidth < 560);
     o.querySelector(".zv-step").textContent = step || "";
     o.querySelector(".zv-text").textContent = text || "";
     o.querySelector(".zv-cap").style.display = text ? "" : "none";
@@ -125,9 +132,10 @@ async function fade(page, opts, frames = 9) {
 }
 
 async function card(page, html) {
-  await page.setContent(`<!doctype html><html lang="${LANG}"><head><meta charset="utf-8"><link rel="stylesheet" href="${BASE}/assets/zhol.css">
+  await page.setContent(`<!doctype html><html lang="${LANG}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="${BASE}/assets/zhol.css">
     <style>html,body{margin:0;height:100%;background:var(--paper)}body{display:flex;align-items:center;justify-content:center}
     .c{max-width:1000px;padding:0 64px;display:flex;flex-direction:column;gap:22px;text-align:left}
+    @media (max-width:560px){.c{padding:0 28px;gap:16px} h1{font-size:38px!important;line-height:1.1!important} .s{font-size:18px!important} .u{font-size:24px!important} .k{font-size:14px!important} .logo{width:110px!important}}
     .k{font-size:17px;font-weight:650;color:var(--red)} h1{margin:0;font-size:64px;line-height:1.06;letter-spacing:-.02em;font-weight:680;color:var(--ink)}
     .s{margin:0;font-size:24px;line-height:1.4;color:var(--ink-2)} .u{font-size:30px;font-weight:650;color:var(--red)}
     .logo{width:150px;height:auto;margin-bottom:6px}</style></head><body><div class="c">${html}</div></body></html>`, { waitUntil: "networkidle" });
@@ -140,7 +148,7 @@ async function film() {
   fs.rmSync(WORK, { recursive: true, force: true }); fs.mkdirSync(WORK, { recursive: true });
   const proxy = process.env.HTTPS_PROXY ? { server: process.env.HTTPS_PROXY } : undefined;
   const browser = await chromium.launch({ proxy });
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5, ignoreHTTPSErrors: true,
+  const ctx = await browser.newContext({ viewport: VIEW, deviceScaleFactor: DPR, isMobile: PHONE, hasTouch: PHONE, ignoreHTTPSErrors: true,
                                          locale: IT ? "it-IT" : "en-GB", timezoneId: "Europe/Rome", reducedMotion: "no-preference" });
   await ctx.addInitScript(() => {
     const css = "html{scroll-behavior:auto!important}.asst-bubble,.asst-launch,[data-assistant-launcher]{visibility:hidden!important}";
@@ -160,8 +168,8 @@ async function film() {
   scene("reads");
   await go(U("/survey") + "?preview=end");
   await page.waitForSelector("#sv-now:not([hidden]) .sv-reads ul", { timeout: 30000 });
-  await glide(page, ".sv-reads", { frames: 36, top: 84 });
-  await fade(page, { step: S[0][0], text: S[0][1], sel: ".sv-reads ul" });
+  await glide(page, ".sv-reads", { frames: 36, top: PHONE ? 70 : 84 });
+  await fade(page, { step: S[0][0], text: S[0][1], sel: PHONE ? null : ".sv-reads ul" });       // on a phone the list is taller than the screen
   await hold(page, 5.4);
 
   // 2. the chance: a strike on the ministry's calendar, on the radar's list
@@ -169,7 +177,7 @@ async function film() {
   await go(U("/radar") + "#radar", 4500);
   const strike = await page.evaluate(() => { const r = [...document.querySelectorAll(".rd-row")].find(x => /strike calendar|calendario ufficiale degli scioperi/i.test(x.textContent)); return r ? "#" + CSS.escape(r.id) : null; });
   if (strike) {
-    await glide(page, strike, { frames: 30, top: 150 });
+    await glide(page, strike, { frames: 30, top: PHONE ? 130 : 150 });
     await fade(page, { step: S[1][0], text: S[1][1], sel: strike });
     await hold(page, 5.4);
   }
@@ -186,7 +194,7 @@ async function film() {
   });
   if (plan) {
     await page.waitForTimeout(300);
-    await glide(page, plan, { frames: 30, top: 108 });
+    await glide(page, plan, { frames: 30, top: PHONE ? 96 : 108 });
     await fade(page, { step: S[2][0], text: S[2][1], sel: plan + " .inner" , pad: 10 });
     await hold(page, 6);
   }
@@ -214,14 +222,14 @@ async function film() {
     return r ? "#" + CSS.escape(r.id) : null;
   });
   const sel5 = wire || "#rd-status";
-  await glide(page, sel5, { frames: 18, top: 150 });
+  await glide(page, sel5, { frames: 18, top: PHONE ? 130 : 150 });
   await fade(page, { step: S[4][0], text: S[4][1], sel: wire ? sel5 : null });
   await hold(page, 5.2);
 
   // 6. an office tells the radar: Zholdas reads it (a real answer; the report is never sent)
   scene("share");
   await go(U("/report"), 3000);
-  await page.evaluate(() => { const c = document.querySelector("[data-assistant]"); if (c) window.scrollTo(0, window.scrollY + c.getBoundingClientRect().top - 250); });
+  await page.evaluate(top => { const c = document.querySelector("[data-assistant]"); if (c) window.scrollTo(0, window.scrollY + c.getBoundingClientRect().top - top); }, PHONE ? 210 : 250);
   await page.waitForTimeout(500);
   const ta = await page.$("[data-assistant] textarea");
   if (ta) {
@@ -237,7 +245,7 @@ async function film() {
       document.querySelectorAll("[data-assistant] .asst-msg.bot").length > n, before, { timeout: 70000 }).catch(() => {});
     await page.waitForTimeout(900);
     // the answer and the card to check, above the caption
-    await page.evaluate(() => { const m = [...document.querySelectorAll("[data-assistant] .asst-msg.me")].pop(); if (m) window.scrollTo(0, window.scrollY + m.getBoundingClientRect().top - 236); });
+    await page.evaluate(top => { const m = [...document.querySelectorAll("[data-assistant] .asst-msg.me")].pop(); if (m) window.scrollTo(0, window.scrollY + m.getBoundingClientRect().top - top); }, PHONE ? 200 : 236);
     await page.waitForTimeout(400);
     await hold(page, 6.2);
   }
@@ -258,7 +266,7 @@ function cut() {
     const lines = sc.frames.flatMap(f => [`file '${f.file}'`, `duration ${Math.max(f.dur, 1 / FPS).toFixed(4)}`]);
     lines.push(`file '${sc.frames[sc.frames.length - 1].file}'`);
     fs.writeFileSync(list, lines.join("\n") + "\n");
-    execFileSync("ffmpeg", ["-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", list, "-vf", `fps=${FPS},scale=1920:1080:flags=lanczos,format=yuv420p`,
+    execFileSync("ffmpeg", ["-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", list, "-vf", `fps=${FPS},scale=${OUTW}:${OUTH}:flags=lanczos,format=yuv420p`,
       "-c:v", "libx264", "-preset", "medium", "-crf", "16", clip]);
     const dur = parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", clip]).toString());
     clips.push({ clip, dur });
@@ -273,12 +281,12 @@ function cut() {
     prev = out;
   }
   fs.mkdirSync(OUT, { recursive: true });
-  const mp4 = path.join(OUT, `how-it-works-${LANG}.mp4`);
+  const mp4 = path.join(OUT, `${NAME}.mp4`);
   execFileSync("ffmpeg", ["-y", "-v", "error", ...inputs, "-filter_complex", graph.replace(/;$/, ""), "-map", "[v]", "-r", String(FPS),
     "-c:v", "libx264", "-preset", "slow", "-crf", "27", "-tune", "stillimage", "-pix_fmt", "yuv420p", "-movflags", "+faststart", mp4]);
   // the poster: the title card
-  execFileSync("ffmpeg", ["-y", "-v", "error", "-i", scenes[0].frames[0].file, "-vf", "scale=1280:720:flags=lanczos", "-c:v", "libwebp", "-quality", "82",
-    path.join(OUT, `how-it-works-${LANG}.webp`)]);
+  execFileSync("ffmpeg", ["-y", "-v", "error", "-i", scenes[0].frames[0].file, "-vf", `scale=${Math.round(OUTW * 2 / 3 / 2) * 2}:-2:flags=lanczos`, "-c:v", "libwebp", "-quality", "82",
+    path.join(OUT, `${NAME}.webp`)]);
   const total = parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", mp4]).toString());
   console.log(`${mp4}: ${total.toFixed(1)} s, ${(fs.statSync(mp4).size / 1e6).toFixed(1)} MB; scenes ${scenes.map(s => s.name + " " + s.frames.length).join(", ")}`);
 }
