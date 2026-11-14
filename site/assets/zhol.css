@@ -1859,3 +1859,23 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .of-input { width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid var(--card-line); border-radius: var(--r-field); background: var(--paper); font: inherit; font-size: 15.5px; }
 .of-foot { margin-top: 6px; }
 @media (max-width: 560px) { .of-times { grid-template-columns: minmax(0, 1fr); } .of-arrow { display: none; } .of-card, .of-answer { padding: 20px; } }
+/* the office account on /check (owner, 14 Nov 2026) */
+.ck-accs { padding-top: 8px; padding-bottom: 8px; }
+.ck-acc { gap: 12px; padding: 26px; border-radius: 26px; background: var(--sage-card); border-color: #c4d2bd; }
+.ck-acc h2 { margin: 0; font-size: 22px; line-height: 1.2; color: var(--ink); }
+.ck-acc > .small { margin: 0; max-width: 78ch; line-height: 1.5; }
+.ck-acc-form { display: flex; flex-direction: column; gap: 12px; }
+.ck-acc-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, .6fr); gap: 10px 12px; }
+.ck-acc input, .ck-acc select { width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid #c4d2bd; border-radius: var(--r-field); background: var(--paper); font: inherit; font-size: 15.5px; color: var(--ink); }
+.ck-acc .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+.ck-acc .check input { width: 20px; min-height: 20px; margin-top: 2px; flex: none; }
+.ck-acc-form > .btn { align-self: flex-start; }
+.ck-acc-link { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: 16px; background: var(--paper); border: 1px solid #c4d2bd; font-size: 14.5px; color: var(--ink); }
+.ck-acc-link code { font-size: 13px; overflow-wrap: anywhere; color: var(--sage-ink); }
+.ck-acc-sub { margin: 4px 0 0; font-size: 16px; color: var(--ink); }
+.ck-news { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.ck-news b { color: var(--ink); } .ck-news small { color: var(--muted); }
+.ck-news .old { opacity: .6; }
+.ck-news-risk b { color: var(--red); }
+@media (max-width: 760px) { .ck-acc-grid { grid-template-columns: minmax(0, 1fr); } .ck-acc { padding: 20px; } }
+.tm-news { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }

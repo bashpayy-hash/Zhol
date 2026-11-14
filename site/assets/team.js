@@ -71,7 +71,8 @@
   function draw() {
     document.querySelectorAll(".tm-bar .seg button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
     const w = wireItems(), badge = $("tm-badge");
-    badge.hidden = !w.open.length; badge.textContent = String(w.open.length);
+    const due = (team.office_alerts || []).filter(a => a.status === "pending").length;
+    badge.hidden = !(w.open.length + due); badge.textContent = String(w.open.length + due);
     const v = $("tm-view"); v.textContent = "";
     ({ now: drawNow, check: drawCheck, feed: drawFeed, tasks: drawTasks })[tab](v, w);
   }
@@ -99,7 +100,8 @@
     g.append(tile("Агент документов", docs.length + " страниц", [dl], docs.some(d => d.error || (d.events > 0 && !d.items)) ? "warn" : ""));
     const go = el("button", "btn", "Проверить сейчас"); go.type = "button"; go.addEventListener("click", () => { tab = "check"; draw(); });
     const rv = el("a", null, "Сообщения офисов на проверке: " + (team.reports_waiting || 0)); rv.href = "/review";
-    const waitTile = tile("Ждут проверки", String(w.open.length + (team.reports_waiting || 0)), ["Новости и агент: " + w.open.length, rv, w.open.length ? go : null], w.open.length ? "act" : "");
+    const due = (team.office_alerts || []).filter(a => a.status === "pending").length;
+    const waitTile = tile("Ждут проверки", String(w.open.length + due + (team.reports_waiting || 0)), ["Новости и агент: " + w.open.length, "Предупреждения офисам: " + due, rv, w.open.length + due ? go : null], w.open.length + due ? "act" : "");
     g.append(waitTile);
     v.append(g);
 
@@ -123,7 +125,38 @@
   }
 
   // ---- check: each news or agent item, right or wrong; the radar follows our verdict
+  // what the office watch found on offices' saved plans: a person reads it, then it goes to the office's WhatsApp
+  function drawAlerts(v) {
+    const list = team.office_alerts || [];
+    if (!list.length) return;
+    v.append(el("h2", "tm-sub", "Предупреждения офисам"));
+    v.append(el("p", "tm-hint", "Сторож каждые 30 минут сверяет сохранённые планы офисов с радаром. Если что-то изменилось, предупреждение ждёт здесь: прочитайте и отправьте." +
+      (team.whatsapp_live ? "" : " WhatsApp пока не подключён: «Отправить» положит сообщение в исходящие на /review.")));
+    list.forEach(a => {
+      const card = el("article", "card tm-item" + (a.status === "pending" ? "" : " done"));
+      const head = el("div", "tm-item-head"); const t = el("div");
+      t.append(el("span", "kicker", "Офис · " + ago(a.at)), el("h3", null, a.company + " · WhatsApp " + a.whatsapp));
+      head.append(t); card.append(head);
+      const ul = el("ul", "tm-news");
+      (a.news || []).slice(0, 8).forEach(n => ul.append(el("li", null, n.ref + " · " + n.route + " · " + (n.kind === "risk" ? "новый риск: " + n.title + ", " + pct(n.p) : n.kind === "clear" ? "риск снят" : n.title + ": " + pct(n.p_from) + " → " + pct(n.p)))));
+      card.append(ul);
+      const acts = el("div", "tm-acts");
+      if (a.status === "pending") {
+        const send = el("button", "btn", "Отправить в WhatsApp"); send.type = "button";
+        const skip = el("button", "btn ghost", "Не отправлять"); skip.type = "button";
+        const act = async (action) => { const d = await send_({ kind: "office_alert", id: a.id, action, by: me }); if (d) { Object.assign(a, d.alert); draw(); } };
+        send.addEventListener("click", () => act("send")); skip.addEventListener("click", () => act("skip"));
+        acts.append(send, skip);
+      } else acts.append(el("span", "chip " + (a.status === "sent" || a.status === "outbox" ? "ok" : "no"),
+        ({ sent: "отправлено", outbox: "в исходящих (WhatsApp не подключён)", skipped: "не отправлено", failed: "ошибка" }[a.status] || a.status) + (a.by ? " · " + a.by : "")));
+      card.append(acts); v.append(card);
+    });
+    v.append(el("h2", "tm-sub", "Новости и агент"));
+  }
+  const send_ = body => send(body);
+
   function drawCheck(v, w) {
+    drawAlerts(v);
     v.append(el("p", "tm-hint", "Это то, что прочитал в новостях дозор и нашёл на официальных страницах агент. Пока никто не проверил, на радаре стоит «не проверено человеком». «Верно» — пометка меняется на «проверено командой». «Неверно» — событие уходит с радара."));
     if (!w.items.length && !w.wrong.length) { v.append(el("p", "small muted", "Сейчас проверять нечего.")); return; }
     const list = el("div", "tm-list");

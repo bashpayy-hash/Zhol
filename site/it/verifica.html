@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s50">
+<link rel="stylesheet" href="/assets/zhol.css?v=s51">
 <link rel="alternate" hreflang="en" href="https://zhol.live/check">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/verifica">
 </head>
@@ -29,7 +29,7 @@
   <div class="wrap stack" style="gap:16px">
     <span class="kicker">Verificate le vostre spedizioni · gratis, adesso</span>
     <h1 class="title">Quali delle vostre spedizioni si fermeranno?</h1>
-    <p class="lead">Caricate il piano o scrivete un viaggio. zhol verifica ogni spedizione con tutti i divieti, le chiusure e gli scioperi sul radar nelle prossime otto settimane, con quanto costerebbe e il piano migliore. <b>Il file resta in questo browser: non viene caricato da nessuna parte.</b></p>
+    <p class="lead">Caricate il piano o scrivete un viaggio. zhol verifica ogni spedizione con tutti i divieti, le chiusure e gli scioperi sul radar nelle prossime otto settimane, con quanto costerebbe e il piano migliore. <b>Senza account, il file resta in questo browser. Con un account dell’ufficio, il piano viene salvato e zhol continua a seguirlo.</b></p>
     <p class="small muted" id="ck-status">Carico il radar…</p>
   </div>
 </section>
@@ -61,6 +61,9 @@
   </div>
 </section>
 
+<!-- the office account: the plan saved and watched every 30 minutes (owner, 14 Nov 2026) -->
+<section class="slide ck-accs"><div class="wrap"><div class="card ck-acc" id="ck-acc"></div></div></section>
+
 <section class="slide ck-res" id="ck-results" hidden>
   <div class="wrap stack" style="gap:18px">
     <div class="ck-sum" id="ck-sum"></div>
@@ -84,7 +87,7 @@
   <span><a href="/it/risposte/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/radar">Radar</a> · <a href="/it/segnala">Segnala</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/explain.js?v=3" defer></script>
-<script type="module" src="/assets/check.js?v=3"></script>
+<script type="module" src="/assets/check.js?v=5"></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t6" defer></script>
 <script src="/assets/assistant.js?v=5" defer></script>

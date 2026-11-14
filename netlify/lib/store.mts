@@ -15,6 +15,7 @@ export const contacts = () => store("zhol-contacts");     // c/<report id> Whats
 export const subs = () => store("zhol-subscribers");      // s/<hash>      an office that wants alerts
 export const drafts = () => store("zhol-drafts");         // d/<hash>      a WhatsApp report waiting for "yes"
 export const outbox = () => store("zhol-outbox");         // o/<time>      every WhatsApp message, number masked
+export const offices = () => store("zhol-offices");      // o/<sha256 of the key>  an office's account and saved plan (lib/office.mts)
 export const offers = () => store("zhol-offers");        // x/<id>  a carrier's proposal to a receiver and the answer (lib/offer.mts)
 export const teamStore = () => store("zhol-team");        // n/<id> a note · t/<id> a task · c/<item id> the team's check (lib/team.mts)
 

@@ -6,6 +6,8 @@
 // Nothing here is public: the radar only ever sees a check's effect (lib/team.mts applyChecks in /api/reports).
 import type { Config } from "@netlify/functions";
 import { allReports, json, teamChecks, teamStore } from "../lib/store.mts";
+import { alertFor } from "../lib/office.mts";
+import { sendText, waLive } from "../lib/wa.mts";
 import { TEAM, isStatus, itemId, makeCheck, makeNote, makeTask, orderNotes, orderTasks } from "../lib/team.mts";
 import type { Note, Task } from "../lib/team.mts";
 
@@ -31,9 +33,14 @@ export default async (req: Request) => {
   const st = teamStore();
 
   if (req.method === "GET") {
-    const [notes, tasks, checks, reports] = await Promise.all([all<Note>("n/"), all<Task>("t/"), teamChecks(), allReports().catch(() => [])]);
+    const [notes, tasks, checks, reports, alerts] = await Promise.all([all<Note>("n/"), all<Task>("t/"), teamChecks(), allReports().catch(() => []), all<any>("a/")]);
     const waiting = reports.filter(r => r.status === "new" || r.status === "confirmed").length;
-    return json({ team: TEAM, notes: orderNotes(notes).slice(0, 150), tasks: orderTasks(tasks), checks, reports_waiting: waiting },
+    // what the office watch found for offices with a WhatsApp number: the pending ones, and the last 20 handled
+    const sorted = alerts.sort((a, b) => b.at.localeCompare(a.at));
+    const office_alerts = sorted.filter(a => a.status === "pending").concat(sorted.filter(a => a.status !== "pending").slice(0, 20))
+      .map(a => ({ ...a, whatsapp: String(a.whatsapp || "").slice(0, 3) + "…" + String(a.whatsapp || "").slice(-3) }));
+    return json({ team: TEAM, notes: orderNotes(notes).slice(0, 150), tasks: orderTasks(tasks), checks, reports_waiting: waiting,
+                  office_alerts, whatsapp_live: waLive() },
       200, { "cache-control": "private, no-store" });
   }
 
@@ -63,6 +70,19 @@ export default async (req: Request) => {
     if (kind === "check") {
       const c = makeCheck(body); if (!c) return json({ error: "bad_request" }, 400);
       await st.setJSON("c/" + c.id, c); return json({ ok: true, check: c });
+    }
+    if (kind === "office_alert") {
+      // an alert to an office goes out only once a person of the team has read it (CLAUDE.md)
+      const id = String(body?.id || ""); if (!/^[\w-]{10,80}$/.test(id)) return json({ error: "bad_request" }, 400);
+      const a: any = await st.get("a/" + id, { type: "json" }); if (!a) return json({ error: "not_found" }, 404);
+      const by = TEAM.includes(body?.by) ? body.by : null; if (!by) return json({ error: "bad_request" }, 400);
+      if (body.action === "skip") { a.status = "skipped"; a.by = by; a.done_at = new Date().toISOString(); await st.setJSON("a/" + id, a); return json({ ok: true, alert: a }); }
+      if (body.action !== "send" || a.status !== "pending") return json({ error: "bad_request" }, 400);
+      const link = "https://zhol.live" + (a.lang === "it" ? "/it/verifica" : "/check");
+      const res = await sendText(a.whatsapp, alertFor(a.company, a.news, a.lang, link), "office_alert");
+      a.status = res.ok ? (res.mode === "cloud" ? "sent" : "outbox") : "failed"; a.by = by; a.done_at = new Date().toISOString(); a.error = res.error || null;
+      await st.setJSON("a/" + id, a);
+      return json({ ok: res.ok, alert: { ...a, whatsapp: String(a.whatsapp).slice(0, 3) + "…" + String(a.whatsapp).slice(-3) } });
     }
     if (kind === "uncheck") {
       const id = itemId(body?.id); if (!id) return json({ error: "bad_request" }, 400);

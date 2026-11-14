@@ -41,7 +41,7 @@ async function readFile(f) {
       res = fromRows(rows);
     } else res = parseCSV(await f.text());
     sample = false;
-    plan = res.shipments; store.set(PLAN, plan);
+    plan = res.shipments; keep();
     note.textContent = T(res.shipments.length + " shipments read", res.shipments.length + " spedizioni lette") +
       (res.skipped.length ? T(", " + res.skipped.length + " rows skipped (rows " + res.skipped.map(s => s.row).join(", ") + ": no cities or no date)",
                              ", " + res.skipped.length + " righe saltate (righe " + res.skipped.map(s => s.row).join(", ") + ": senza città o senza data)") : "") + ".";
@@ -82,7 +82,7 @@ const routeOf = s => s.from + " – " + s.to + (s.via ? " · " + s.via : "");
 function render() {
   const box = $("ck-results"), list = $("ck-list"), sum = $("ck-sum");
   box.hidden = !plan.length;
-  $("ck-clear").hidden = !plan.length;
+  $("ck-clear").hidden = !plan.length || !!acct;
   list.textContent = ""; sum.textContent = "";
   if (!plan.length || !data) return;
   const res = check(plan, data), t = totals(res);
@@ -234,7 +234,7 @@ function addForm() {
     if (!g("from") || !g("to") || !when) return;
     if (sample) { plan = []; sample = false; }
     plan.push({ ref: g("ref") || "#" + (plan.length + 1), from: g("from"), to: g("to"), date: when.date, time: when.time, via: g("via"), receiver: g("receiver") });
-    store.set(PLAN, plan); f.reset(); render();
+    keep(); f.reset(); render();
     const hint = $("ck-route-hint"); hint.textContent = "";
     $("ck-results").scrollIntoView({ behavior: "smooth", block: "start" });
   });
@@ -252,9 +252,124 @@ const drop = $("ck-drop");
 ["dragleave", "drop"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove("over"); }));
 drop.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) readFile(f); });
 $("ck-sample").addEventListener("click", () => { plan = samplePlan(); sample = true; render(); $("ck-results").scrollIntoView({ behavior: "smooth", block: "start" }); });
-$("ck-clear").addEventListener("click", () => { plan = []; sample = false; store.set(PLAN, []); $("ck-file-note").textContent = ""; render(); });
+$("ck-clear").addEventListener("click", () => { plan = []; sample = false; keep(); $("ck-file-note").textContent = ""; render(); });
 
-loadRadar().then(d => {
+// ---- the office's account: the plan saved, watched every 30 minutes, what changed since the last visit
+// (owner, 14 Nov 2026: «сделай учетные записи и сохраненные планы»). The private link carries a 256-bit key in the
+// address after "#", which never reaches a server log; the server keeps only its hash.
+const KEY = "zhol-office-key";
+let acct = null, saveT = 0;
+const hk = location.hash.match(/k=([0-9a-f]{64})/);
+if (hk) { try { localStorage.setItem(KEY, hk[1]); } catch (e) { /* private mode */ } history.replaceState(null, "", location.pathname); }
+const key = () => { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } };
+const officeApi = (body) => fetch("/api/office", { method: body ? "POST" : "GET", cache: "no-store",
+  headers: Object.assign({ "x-zhol-office": key() }, body ? { "content-type": "application/json" } : {}), body: body ? JSON.stringify(body) : undefined });
+const linkOf = k => location.origin + (IT ? "/it/verifica" : "/check") + "#k=" + k;
+
+function keep() {
+  if (sample) return;
+  if (!acct) { store.set(PLAN, plan); return; }
+  clearTimeout(saveT);
+  const saving = $("ck-acc-saved"); if (saving) saving.textContent = T("Saving…", "Salvo…");
+  saveT = setTimeout(async () => {
+    const r = await officeApi({ kind: "plan", shipments: plan }).catch(() => null);
+    const d = r && r.ok ? await r.json() : null;
+    if (d) { acct = d.office; plan = acct.plan; drawAccount(); render(); }
+    else if ($("ck-acc-saved")) $("ck-acc-saved").textContent = T("Not saved: try again in a minute.", "Non salvato: riprovate tra un minuto.");
+  }, 600);
+}
+
+const ago = s => { if (!s) return ""; const m = Math.round((Date.now() - Date.parse(s)) / 6e4); return m < 1 ? T("just now", "adesso") : m < 60 ? m + T(" min ago", " min fa") : m < 1440 ? Math.round(m / 60) + T(" h ago", " h fa") : Math.round(m / 1440) + T(" days ago", " giorni fa"); };
+function newsLine(n) {
+  const li = el("li", "ck-news-" + n.kind + (acct.seen_at && n.at <= acct.seen_at ? " old" : ""));
+  const what = n.kind === "risk" ? T("new risk: ", "nuovo rischio: ") + (IT ? n.title_it : n.title) + (n.start ? ", " + day(n.start) : "") + ", " + pct(n.p)
+    : n.kind === "clear" ? T("clear: the risk is gone", "via libera: il rischio non c’è più")
+    : (IT ? n.title_it : n.title) + T(": now ", ": ora ") + pct(n.p) + T(" (was ", " (era ") + pct(n.p_from) + ")";
+  li.append(el("b", null, n.ref), document.createTextNode(" · " + n.route + " · " + what), el("small", null, " · " + ago(n.at)));
+  return li;
+}
+
+function drawAccount() {
+  const box = $("ck-acc"); box.textContent = "";
+  if (!acct) {
+    box.append(el("span", "kicker", T("Keep watching this plan", "Continuate a seguire questo piano")),
+      el("h2", null, T("An office account: zhol keeps watching your shipments", "Un account per l’ufficio: zhol continua a seguire le vostre spedizioni")),
+      el("p", "small", T("zhol saves the plan and checks it against the radar every 30 minutes. What changes, a new risk, a risk gone, a chance that moved, shows here; with a WhatsApp number, a person of our team sends it to you as well. Without an account the plan stays only in this browser.",
+                         "zhol salva il piano e lo verifica con il radar ogni 30 minuti. Quello che cambia, un nuovo rischio, un rischio sparito, una probabilità che si è mossa, compare qui; con un numero WhatsApp, una persona del nostro team ve lo manda anche lì. Senza account il piano resta solo in questo browser.")));
+    const f = el("form", "ck-acc-form");
+    const inp = (name, label, attrs) => { const l = el("label", "field"); const i = el("input"); i.name = name; Object.assign(i, attrs || {}); l.append(el("span", "small", label), i); return l; };
+    const lang = el("select"); lang.name = "lang"; [["it", "Italiano"], ["en", "English"]].forEach(([v, t]) => { const o = el("option", null, t); o.value = v; lang.append(o); }); lang.value = IT ? "it" : "en";
+    const ll = el("label", "field"); ll.append(el("span", "small", T("Alerts in", "Avvisi in")), lang);
+    const grid = el("div", "ck-acc-grid");
+    grid.append(inp("company", T("Company", "Azienda"), { required: true, maxLength: 80, value: store.get(ME, ""), autocomplete: "organization" }),
+                inp("whatsapp", T("WhatsApp for alerts (optional)", "WhatsApp per gli avvisi (facoltativo)"), { type: "tel", placeholder: "+39 …", autocomplete: "tel" }), ll);
+    const ok = el("label", "check"); const cb = el("input"); cb.type = "checkbox"; cb.required = true; cb.name = "consent";
+    ok.append(cb, document.createTextNode(T(" zhol keeps this plan in our account until we delete it. Only reference, cities, days, crossing and receiver are kept.", " zhol conserva questo piano nel nostro account finché non lo cancelliamo. Si conservano solo riferimento, città, giorni, valico e destinatario.")));
+    const go = el("button", "btn", T("Create the account and save the plan", "Crea l’account e salva il piano")); go.type = "submit";
+    const out = el("p", "small");
+    f.append(grid, ok, go, out);
+    f.addEventListener("submit", async e => {
+      e.preventDefault(); go.disabled = true; out.textContent = "";
+      const body = { kind: "create", company: f.elements.company.value, whatsapp: f.elements.whatsapp.value, lang: lang.value, consent: cb.checked };
+      const r = await fetch("/api/office", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }).catch(() => null);
+      const d = r && r.ok ? await r.json() : null;
+      if (!d) { go.disabled = false; out.textContent = r && r.status === 400 ? T("Check the company name and the WhatsApp number (with +39…).", "Controllate il nome dell’azienda e il numero WhatsApp (con +39…).") : T("It did not go through. Try again in a minute.", "Non è andato a buon fine. Riprovate tra un minuto."); return; }
+      try { localStorage.setItem(KEY, d.key); } catch (e2) { /* private mode */ }
+      store.set(ME, body.company);
+      acct = d.office; justMade = d.key;
+      if (sample) { plan = []; sample = false; }
+      keep(); drawAccount(); render();
+    });
+    box.append(f);
+    return;
+  }
+  const head = el("div", "ck-acc-head");
+  const t = el("div");
+  t.append(el("span", "kicker", T("Office account", "Account dell’ufficio")), el("h2", null, acct.company));
+  const meta = el("p", "small muted"); meta.id = "ck-acc-saved";
+  meta.textContent = (acct.plan_at ? T("Plan saved ", "Piano salvato ") + ago(acct.plan_at) + " · " + acct.plan.length + (acct.plan.length === 1 ? T(" shipment", " spedizione") : T(" shipments", " spedizioni")) : T("No plan saved yet: load one above.", "Nessun piano salvato: caricatene uno qui sopra.")) +
+    (acct.watched_at ? T(" · watched ", " · seguito ") + ago(acct.watched_at) : T(" · first watch within 30 minutes", " · primo controllo entro 30 minuti")) +
+    (acct.whatsapp ? " · WhatsApp " + acct.whatsapp : "");
+  t.append(meta);
+  head.append(t);
+  box.append(head);
+  if (justMade) {
+    const keepIt = el("div", "ck-acc-link");
+    keepIt.append(el("b", null, T("Your private link. Keep it: it opens this account on any device. Share it only inside your office.", "Il vostro link privato. Conservatelo: apre questo account su qualsiasi dispositivo. Condividetelo solo nel vostro ufficio.")),
+                  el("code", null, linkOf(justMade)));
+    box.append(keepIt);
+  }
+  const news = acct.news || [];
+  box.append(el("h3", "ck-acc-sub", news.length ? T("What changed", "Cosa è cambiato") : T("Nothing has changed yet", "Ancora nessun cambiamento")));
+  if (news.length) { const ul = el("ul", "ck-news"); news.slice(0, 12).forEach(n => ul.append(newsLine(n))); box.append(ul); }
+  const acts = el("div", "ck-acts");
+  const copy = el("button", "btn ghost", T("Copy the private link", "Copia il link privato")); copy.type = "button";
+  copy.addEventListener("click", () => navigator.clipboard && navigator.clipboard.writeText(linkOf(key())).then(() => { copy.textContent = T("Copied", "Copiato"); }));
+  const out = el("button", "asst-fix", T("Sign out on this device", "Esci su questo dispositivo")); out.type = "button";
+  out.addEventListener("click", () => { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } acct = null; justMade = null; plan = store.get(PLAN, []); drawAccount(); render(); });
+  const del = el("button", "asst-fix", T("Delete the account and the plan", "Cancella l’account e il piano")); del.type = "button";
+  del.addEventListener("click", async () => {
+    if (!confirm(T("Delete this office account and its saved plan? This cannot be undone.", "Cancellare l’account e il piano salvato? Non si può annullare."))) return;
+    const r = await officeApi({ kind: "delete" }).catch(() => null);
+    if (r && r.ok) { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } acct = null; justMade = null; plan = []; drawAccount(); render(); }
+  });
+  acts.append(copy, out, del);
+  box.append(acts);
+  if (news.length) officeApi({ kind: "seen" }).catch(() => {});
+}
+let justMade = null;
+
+async function loadAccount() {
+  if (!key()) return;
+  const r = await officeApi().catch(() => null);
+  if (!r || !r.ok) { if (r && r.status === 401) { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } } return; }
+  acct = (await r.json()).office;
+  plan = acct.plan;
+}
+
+const acctReady = loadAccount().then(drawAccount, drawAccount);      // the account box does not wait for the radar
+loadRadar().then(async d => {
+  await acctReady;
   data = d;
   $("ck-status").textContent = T("Radar updated ", "Radar aggiornato ") + stamp(d.built_at) + " · " + d.items.length + T(" events", " eventi");
   addForm(); render(); drawSent();
