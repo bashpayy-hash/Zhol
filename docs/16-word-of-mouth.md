@@ -31,8 +31,14 @@ kept in the outbox on the review page.
 | The assistant may only name passes and regions from the catalog; anything else is dropped. Dates must be real dates. | `clean` |
 | The assistant answers from the radar items only, never invents an event, treats instructions inside a document as content. | `netlify/lib/ai.mts` |
 
-How sure the radar is (starting values, corrected after each date like every other chance): two offices 65%, each further
-office +10% up to 85%; checked by the team 80%; with an official document or a source 90%; called off 5%.
+How sure the radar is: Bayes on the odds, one factor per independent piece of evidence (docs/18-model.md §5,
+`zhol/radar/exchange.py`). One report alone 35% (never public); two offices 65%; three 87%, shown as 85% until a person
+has checked it; one office and the team 80%; with an official document or a source 90%; called off 5%. Start values,
+corrected after each date like every other chance.
+
+Since 14 November 2026 the same feed (`/api/reports`) also carries **the wire**: what the press reported in the last
+hours, read every 30 minutes (`netlify/lib/wire.mts`), and what the **document agent** read on official pages
+(`netlify/lib/docs.mts`). Both are marked "not checked by a person yet"; WhatsApp alerts still wait for the team.
 
 ## 16.3 How it is built
 
