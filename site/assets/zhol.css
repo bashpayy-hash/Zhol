@@ -1681,7 +1681,7 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
    отметит, что zhol полноценный продукт, ответы поставь на второй-третий план») */
 .landing-hero { padding-top: 28px; }
 .landing-hero.hero-full .split { min-height: min(86vh, 820px); }
-.landing-hero.hero-full .split > .stack { max-width: 660px; padding: 64px 60px 64px; }
+.landing-hero.hero-full .split > .stack { max-width: 740px; padding: 64px 60px 64px; }
 .landing-hero.hero-full h1.title { font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -0.04em; }
 .landing-hero .lead { max-width: 560px; }
 .hero-proof { margin: 4px 0 0; font-size: 14px; line-height: 1.4; color: rgba(255, 255, 255, .72); }
@@ -1728,3 +1728,8 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .price-beta { margin: 6px 0 4px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.5; color: var(--ink-2); }
 .price-beta b { color: var(--ink); }
 @media (max-width: 920px) { .price-card { position: static; } }
+/* the TEF answers, a page of their own (owner, 14 Nov 2026) */
+.answers-head { padding-block: 64px 8px; }
+.answers-head h1.title { font-size: clamp(36px, 4.6vw, 60px); max-width: 18ch; }
+.answers-head + #answers { padding-top: 32px; }
+@media (max-width: 560px) { .answers-head { padding-top: 40px; } .answers-head h1.title { font-size: 34px; } }

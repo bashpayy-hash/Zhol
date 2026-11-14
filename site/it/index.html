@@ -5,16 +5,16 @@
 <meta name="theme-color" content="#f6f3ea">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>zhol · Sapere cosa fermerà le vostre merci, prima che succeda</title>
+<title>zhol · Sapere cosa fermerà le vostre merci, e risparmiare</title>
 <script>document.documentElement.classList.add("js")</script>
 <meta name="description" content="zhol è una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia.">
-<meta property="og:title" content="zhol · Sapere cosa fermerà le vostre merci, prima che succeda">
+<meta property="og:title" content="zhol · Sapere cosa fermerà le vostre merci, e risparmiare">
 <meta property="og:description" content="Un radar dal vivo di divieti, chiusure e scioperi in Europa, il costo per ogni spedizione, un solo messaggio WhatsApp quando serve. Quattro settimane gratis per gli uffici traffico.">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s46">
+<link rel="stylesheet" href="/assets/zhol.css?v=s47">
 <link rel="alternate" hreflang="en" href="https://zhol.live/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -22,7 +22,7 @@
 <body>
 <header class="top"><div class="wrap">
   <a class="logo" href="/it/" aria-label="Home page di zhol"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
-  <nav class="tabs" aria-label="Sezioni"><a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/story">Storia</a><a href="/it/#answers">Risposte</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/" lang="en" hreflang="en">EN</a><a href="/it/" lang="it" hreflang="it" aria-current="true">IT</a></span>
+  <nav class="tabs" aria-label="Sezioni"><a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/risposte/">Risposte</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/" lang="en" hreflang="en">EN</a><a href="/it/" lang="it" hreflang="it" aria-current="true">IT</a></span>
 </div></header>
 
 <main>
@@ -33,8 +33,8 @@
     <div class="split center">
       <div class="stack" style="gap:22px">
         <span class="kicker">Strada, ferrovia e mare · in tutta Europa</span>
-        <h1 class="title">Sapere cosa fermerà le vostre merci, prima che succeda.</h1>
-        <p class="lead">Una piattaforma AI che stima per ogni spedizione, su strada, su rotaia o via mare, il rischio di divieti, chiusure e scioperi e il suo costo, avvisa in anticipo e aggiorna in tempo reale.</p>
+        <h1 class="title">Sapere cosa fermerà le vostre merci prima che succeda, e risparmiare.</h1>
+        <p class="lead">Una piattaforma AI che stima per ogni spedizione, su strada, su rotaia o via mare, il rischio di divieti, chiusure e scioperi e il suo costo, avvisa in anticipo e aggiorna in tempo reale, così cambiate il piano prima che vi costi.</p>
         <div class="actions"><a class="btn" href="/it/beta">Provatelo sulle vostre spedizioni</a><a class="btn ghost" href="#radar">Guardate il radar dal vivo</a></div>
         <p class="hero-proof">Selezionati per TEF Ignition 2026 · 100 progetti su ~500 · Università Bocconi</p>
       </div>
@@ -71,7 +71,7 @@
       <noscript><p><a class="btn" href="/it/radar">Aprite il radar</a></p></noscript>
       <div class="rc-cta">
         <div class="actions"><a class="btn" href="/it/segnala#alerts">Ricevete questi avvisi per le vostre tratte</a><a class="btn ghost" href="/it/beta">Provatelo sui vostri viaggi</a></div>
-        <p class="small muted">TEF Ignition 2026 · Università Bocconi. <a href="#answers">Le otto domande della giuria, con le risposte più in basso</a></p>
+        <p class="small muted">TEF Ignition 2026 · Università Bocconi. <a href="/it/risposte/">Le otto domande della giuria, con le risposte</a></p>
       </div>
     </div>
   </div>
@@ -209,136 +209,6 @@
   </div>
 </section>
 
-<!-- the TEF jury's eight questions, answered: below the product (owner, 14 Nov 2026) -->
-<section class="slide" id="answers">
-  <div class="wrap stack">
-    <div class="stack" style="gap:10px"><span class="kicker">TEF Ignition 2026</span><h2 class="title">Le otto domande della giuria, con le risposte</h2></div>
-    <p class="block-hint">Toccate una domanda per vedere i suoi tre numeri. Ogni numero ha una fonte; ciò che è ancora un’ipotesi è indicato.</p>
-    <div class="blocks bento">
-      <article class="block bento-b" id="market">
-        <span class="kicker">Domanda 1 · Mercato</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="market-more">Calcolo di TAM SAM SOM<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">€230 mln</p>
-        <p class="block-line">L’anno: quanto pagherebbero i 78.000 uffici traffico d’Europa</p>
-        <div class="block-more" id="market-more"><div>
-        <ul class="brief">
-          <li><b>€230 mln</b> all’anno: 78.000 uffici traffico in UE, SEE e Svizzera, a €12 per mezzo</li>
-          <li><b>€18,6 mln</b> servibili dall’Italia: 6.050 uffici con tratte settimanali all’estero</li>
-          <li><b>€0,77 mln</b> all’anno entro il terzo anno: 250 uffici paganti, circa il 4%</li>
-          <li><b>10%</b> vorrebbe dire circa €1,9 mln all’anno in Italia e circa €24 mln in Europa</li>
-        </ul>
-        <a class="open" href="/it/risposte/market">Apri la risposta completa</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="pricing">
-        <span class="kicker">Domanda 2 · Prezzi</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="pricing-more">Modello di prezzo: una percentuale del denaro risparmiato dall’azienda? Stimate i risparmi<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">€12</p>
-        <p class="block-line">A mezzo al mese: il 14% di quanto fa risparmiare</p>
-        <div class="block-more" id="pricing-more"><div>
-        <ul class="brief">
-          <li><b>€1.740</b> al mese: quanto risparmia un ufficio con 20 mezzi, all’ora da €100 fissata dalla legge italiana</li>
-          <li><b>14%</b> di quel risparmio è il nostro prezzo: €12 per mezzo al mese, minimo €99</li>
-          <li><b>€8</b> per mezzo per i primi 10 uffici, 12 mesi, in cambio di 15 minuti di feedback a settimana</li>
-        </ul>
-        <a class="open" href="/it/risposte/pricing">Apri la risposta completa</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="model">
-        <span class="kicker">Domanda 3 · Modello</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="model-more">Modello di business chiaro<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">92%</p>
-        <p class="block-line">Di margine lordo con 100 uffici</p>
-        <div class="block-more" id="model-more"><div>
-        <ul class="brief">
-          <li><b>92%</b> di margine lordo con 100 uffici: gli uffici sulle stesse strade condividono gli stessi eventi</li>
-          <li><b>€155 mila</b> di finanziamento per il pareggio, a maggio 2029</li>
-          <li><b>€771 mila</b> di ricavi nel terzo anno, da €35 mila nel primo</li>
-        </ul>
-        <a class="open" href="/it/risposte/model">Apri la risposta completa</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="gtm">
-        <span class="kicker">Domanda 4 · Go-to-market</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="gtm-more">Una strategia GTM chiara<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">≈2.350</p>
-        <p class="block-line">Uffici al Nord, in giornata da Milano</p>
-        <div class="block-more" id="gtm-more"><div>
-        <ul class="brief">
-          <li><b>≈2.350</b> uffici al Nord per cominciare: in giornata da Milano, vendita in italiano</li>
-          <li><b>92</b> aziende e <b>87</b> persone già individuate da fonti pubbliche</li>
-          <li><b>4</b> prove pilota di quattro settimane, misurate contro il processo attuale dell’ufficio</li>
-        </ul>
-        <a class="open" href="/it/risposte/gtm">Apri la risposta completa</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="tech">
-        <span class="kicker">Domanda 5 · Tecnologia</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="tech-more">Più dettagli sulla parte tecnica<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">7</p>
-        <p class="block-line">Paesi con le regole dei divieti già nel codice</p>
-        <div class="block-more" id="tech-more"><div>
-        <ul class="brief">
-          <li><b>7</b> paesi con le regole dei divieti nel codice, più il calendario ufficiale del dosaggio tirolese</li>
-          <li><b>L’AI</b> legge comunicati e notizie; <b>una persona</b> approva ogni evento prima dell’invio</li>
-          <li><b>1</b> messaggio WhatsApp per ufficio quando una spedizione è a rischio, con il costo di ogni opzione, e un aggiornamento quando la situazione cambia</li>
-        </ul>
-        <a class="open" href="/it/risposte/tech">Apri la risposta completa</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="evidence">
-        <span class="kicker">Domanda 6 · Evidenze</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="evidence-more">Prima verificate il mercato, poi la tecnologia<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">10</p>
-        <p class="block-line">Risposte al sondaggio finora; le interviste partono con le presentazioni</p>
-        <div class="block-more" id="evidence-more"><div>
-        <ul class="brief">
-          <li><b>10</b> risposte al sondaggio dal 9 novembre: 2 uffici traffico, 8 persone che conoscono il settore</li>
-          <li><b>8 su 8</b> esperti dicono che cambiano 2 o più spedizioni all’estero su 100; un carico fermo costa €300–1.000, il prezzo giusto è €5–10 a mezzo. Lavorano per committenti, ferrovie e porti, nessuno nell’autotrasporto</li>
-          <li><b>8</b> interviste con uffici traffico, tramite le presentazioni dei professori, su sette ipotesi con criteri di stop</li>
-          <li><b>2</b> uffici condividono i carichi del mese scorso; ricostruiamo cosa avrebbe segnalato zhol</li>
-          <li><b>2</b> test dal vivo in giornate con restrizioni reali, con il giudizio del traffichista</li>
-        </ul>
-        <a class="open" href="/it/risposte/evidence">Apri la risposta completa</a>
-        <a class="open" href="/d/zhol-early-signals.pdf">Early signals, la presentazione del Workshop 2 (PDF, in inglese)</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="competition">
-        <span class="kicker">Domanda 7 · Concorrenza</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="competition-more">Analisi dei potenziali concorrenti, soluzioni diverse che potrebbero nascere in futuro<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">0</p>
-        <p class="block-line">Strumenti oggi stimano in anticipo il rischio di ogni spedizione e lo tengono aggiornato</p>
-        <div class="block-more" id="competition-more"><div>
-        <ul class="brief">
-          <li><b>6</b> categorie di strumenti, ognuna copre un pezzo: TMS, telematica, borse carichi, visibilità, piattaforme di rischio, associazioni</li>
-          <li><b>0</b> di loro stima in anticipo il rischio per ogni spedizione e lo aggiorna in tempo reale</li>
-          <li><b>Google Maps</b> e Waze mostrano all’autista il traffico adesso; zhol dice all’ufficio, giorni prima, quali spedizioni saranno colpite da un divieto, uno sciopero o una chiusura, e lo aggiorna quando la situazione cambia</li>
-          <li><b>€10–35</b> per mezzo al mese costa oggi la telematica; noi ci aggiungiamo, non la sostituiamo</li>
-        </ul>
-        <a class="open" href="/it/risposte/competition">Apri la risposta completa</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="room">
-        <span class="kicker">Domanda 8 · Spazio</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="room-more">C’è abbastanza spazio nel mercato per noi?<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">2–3</p>
-        <p class="block-line">Anni di finestra per un ingresso mirato</p>
-        <div class="block-more" id="room-more"><div>
-        <ul class="brief">
-          <li><b>2–3</b> anni di finestra per un ingresso mirato in un mercato frammentato</li>
-          <li><b>Cosa dura:</b> lo storico verificato degli eventi e le notizie che gli uffici si scambiano: quello che vedono i loro autisti, che online non c’è</li>
-          <li><b>Chi potrebbe seguire:</b> un TMS può aggiungere avvisi, non eventi verificati e multilingue in sette paesi</li>
-        </ul>
-        <a class="open" href="/it/risposte/room">Apri la risposta completa</a>
-        </div></div>
-      </article>
-      <div class="bento-cta">
-        <div><h3>Provatelo sulle vostre linee</h3><p>Mandateci i vostri carichi: stimiamo quali saranno colpiti da una restrizione e vi avvisiamo in anticipo, con il costo di ogni opzione. Quattro settimane, gratis.</p></div>
-        <a class="btn" href="/it/beta#join">Unitevi alla beta</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- the finale: the ask, and Zholdas as a scene across the page among a long queue of trucks (owner, 12 Nov 2026) -->
 <section class="slide finale" id="finale">

@@ -65,11 +65,7 @@
   status = 301
   force = true
 
-# the TEF answers moved to the home page
-[[redirects]]
-  from = "/answers"
-  to = "/"
-  status = 301
+# the TEF answers have a page of their own again (owner, 14 Nov 2026): /answers/ and /it/risposte/
 
 # the survey: readable addresses, served directly (no redirect, it cost ~0.5 s): /survey in English, /it/sondaggio in
 # Italian (owner, 9 Nov 2026). The first short links /q and /q/it keep working the same way, with their ?src=.
