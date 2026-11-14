@@ -17,7 +17,7 @@ export interface DocState { id: string; hash: string; read_at: string; changed_a
 const MODEL = () => Netlify.env.get("ZHOL_AI_MODEL") || "claude-opus-5-5";
 export const EVERY_H = 3;          // each page is looked at again after this many hours
 const CAP = 9000;                  // characters of the page the agent reads
-export const AGENT = "3";          // bump when the agent's reading changes: every page is then read again
+export const AGENT = "4";          // bump when the agent's reading changes: every page is then read again
 
 /** The page as text, and of a long page only what stands around the words that matter. */
 export function extract(html: string, words: string, cap = CAP): string {
@@ -38,6 +38,9 @@ const RULES = `You read one official web page for zhol.live, a radar of what can
 rail and sea. Return every disruption the page states with its dates: closures of tunnels, passes and roads, truck
 dosing days, strikes, blockades. Today is {today}; the page is from {issuer} ({url}) and is about {about}.
 - Only what the page says. No event without a date. Skip events that ended before today.
+- Only what can stop or delay freight: strikes of transport staff, closures of tunnels, passes, motorways, ports and
+  of rail lines that carry freight. Skip what touches only local passenger services (one regional line, a branch line,
+  replacement buses, a station).
 - One event per separate period: a page that lists five nights gives five events. kind and stage from the lists; a published closure or dosing day is "announced",
   a strike the page says is called is "announced", one it says is confirmed or under way is "confirmed" or "ongoing",
   one called off is "revoked".

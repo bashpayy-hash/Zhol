@@ -194,10 +194,12 @@
                                                 "Hoy: " + d.articles_read + " artículos de " + d.sources_ok + " fuentes, " + d.signals + " señales.");
     // under the map, again: the schedule with chances and what the news says (owner, 10 Nov 2026)
     const u = upcoming(d);
-    const a = fillSched($("sv-sched-end"), u.items, u.today, 8), b = fillNews($("sv-news"), d.items, 5);
+    const a = fillSched($("sv-sched-end"), u.items, u.today, 8, true), b = fillNews($("sv-news"), d.items, 5);
+    const w = $("sv-wire") ? fillNews($("sv-wire"), d.live || [], 4, true) : 0;
+    if (w) $("sv-wire-box").hidden = false;              // what the press reported in the last hours, not checked yet
     if (a) $("sv-sched-box").hidden = false;
     if (b) $("sv-news-box").hidden = false;
-    if (a || b) $("sv-now").hidden = false;              // its own card under the map (owner, 10 Nov: map, then schedule and radar)
+    if (a || b || w) $("sv-now").hidden = false;         // its own card under the map (owner, 10 Nov: map, then schedule and radar)
     if (!a || !b) $("sv-now").classList.add("one");      // a day without news: the schedule takes the whole card, no empty half
   }
 
@@ -236,7 +238,10 @@
     const today = d.today > local ? d.today : local, from = add(today, -dow(today)), to = add(from, 56);
     return { today, from, items: d.items.filter(i => i.start && (i.end || i.start) >= today && i.start < to) };
   }
-  function fillSched(list, items, today, n) {
+  const MODE = () => ({ rail: T("rail", "ferrovia", "Bahn", "rail", "ferrocarril"), sea: T("sea and ports", "mare e porti", "See und Häfen", "mer et ports", "mar y puertos"),
+                        air: T("air", "aereo", "Luftverkehr", "aérien", "aéreo"), all: T("all transport", "tutti i trasporti", "alle Verkehrsträger", "tous les transports", "todo el transporte") });
+  const byWhen = s => new Date(s).toLocaleString(LOCALE, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome" });
+  function fillSched(list, items, today, n, deadlines) {
     const loc = LOCALE, seen = new Set();   // one line per kind of event: Kufstein's weekly dosing shows once
     items.slice().sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p)
       .filter(it => { const k = it.title.replace(/:.*$/, "") + "|" + (it.where || ""); if (it.kind !== "ban" && seen.has(k)) return false; seen.add(k); return true; })
@@ -249,8 +254,14 @@
                                      when.toLocaleDateString(loc, { day: "numeric", month: "short", timeZone: "UTC" }));
       const title = it["title_" + LG] || it.title;     // "Holiday truck bans: Christmas" reads "Truck ban: Christmas" here
       ti.className = "ti"; ti.textContent = it.kind === "ban" && title.includes(": ") ? T("Truck ban: ", "Divieto camion: ", "LKW-Fahrverbot: ", "Interdiction poids lourds : ", "Prohibición de camiones: ") + title.slice(title.indexOf(": ") + 2) : title;
-      wh.className = "wh"; wh.textContent = it["where_" + LG] || it.where || "";
+      wh.className = "wh"; wh.textContent = [it["where_" + LG] || it.where || "", MODE()[it.mode] || ""].filter(Boolean).join(" · ");
       tx.append(ti, wh);
+      const lead = it.impact && it.impact.lead;
+      if (deadlines && lead && lead.decide_by && lead.decide_by >= new Date().toISOString().slice(0, 10)) {
+        const by = document.createElement("span");
+        by.className = "by"; by.textContent = T("Decide by ", "Decidere entro ", "Entscheiden bis ", "Décider avant ", "Decidir antes de ") + byWhen(lead.decide_by);
+        tx.append(by);
+      }
       pc.className = "pc"; pc.textContent = Math.round((it.p || 0) * 100) + "%";
       bar.className = "bar"; bar.setAttribute("aria-hidden", "true"); fill.style.setProperty("--p", (it.p || 0).toFixed(2)); bar.append(fill);
       li.append(dt, tx, pc, bar); list.append(li);
@@ -258,16 +269,18 @@
     return list.children.length;
   }
   // the news the radar read: each story with its place, date, chance and the outlets that carried it (links only to http/https)
-  function fillNews(list, items, n) {
+  function fillNews(list, items, n, live) {
     const loc = LOCALE, safe = u => /^https?:\/\//i.test(u || "");
-    items.filter(i => i.group === "news").sort((a, b) => (b.p || 0) - (a.p || 0)).slice(0, n).forEach(it => {
+    // the press only: the ministry's strike calendar and the operators' pages are in the schedule beside it
+    (live ? items : items.filter(i => i.group === "news" && (i.basis || "news") === "news").sort((a, b) => (b.p || 0) - (a.p || 0))).slice(0, n).forEach(it => {
       const li = document.createElement("li"), meta = document.createElement("span"), b = document.createElement("b"),
             when = document.createElement("span"), p = document.createElement("p"), src = document.createElement("span");
       meta.className = "meta"; b.textContent = it["where_" + LG] || it.where || "";
-      when.textContent = (it.start ? D(it.start).toLocaleDateString(loc, { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : T("date not set", "data da definire", "Datum offen", "date à définir", "fecha por definir"))
+      when.textContent = (live ? T("last hours", "ultime ore", "letzte Stunden", "dernières heures", "últimas horas")
+        : it.start ? D(it.start).toLocaleDateString(loc, { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }) : T("date not set", "data da definire", "Datum offen", "date à définir", "fecha por definir"))
         + " · " + Math.round((it.p || 0) * 100) + "%";
       meta.append(b, when);
-      p.textContent = it.headline || it["title_" + LG] || it.title;
+      p.textContent = live ? (it["title_" + LG] || it.title) + ": " + (it.headline || "") : (it.headline || it["title_" + LG] || it.title);
       src.className = "src";
       const ss = (it.sources || []).filter(x => x.outlet);
       ss.slice(0, 3).forEach((x, k) => {
@@ -285,7 +298,24 @@
 
   // the radar, read once: the intro shows what is on the roads now, the last screen the whole map
   let radarP = null;
-  const radarLoad = () => radarP || (radarP = fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)));
+  // the radar is rebuilt twice a day; /api/reports adds what came in between (netlify/functions/reports.mts): the wire,
+  // read every 30 minutes and not checked by a person yet, and the offices' reports. Same rules as the radar page.
+  const RANK = { tension: 0, threat: 1, announced: 2, confirmed: 3, ongoing: 4, revoked: 5 }, STOP = { strike: "stop", blockade: "stop", protest: "stop" };
+  const fam = i => STOP[i.kind] || i.kind;
+  const spot = x => (x.places && x.places.length ? x.places : x.regions && x.regions.length ? x.regions : x.countries || []);
+  const sameWhere = (a, b) => spot(a).some(v => spot(b).includes(v));
+  function merge(d, fd) {
+    const have = new Set(d.items.map(i => i.id));
+    const wire = (fd.wire || []).filter(w => !have.has(w.id) && w.stage !== "revoked" && (w.p || 0) >= 0.2 &&
+      !d.items.some(n => (n.group === "news" || n.basis === "document") && fam(n) === fam(w) && (n.mode || "road") === (w.mode || "road") &&
+                         sameWhere(w, n) && (RANK[n.stage] || 0) >= (RANK[w.stage] || 0)));
+    d.items = wire.concat(fd.items || [], d.items);
+    d.live = wire.filter(w => !w.start).sort((a, b) => String(b.reported || "").localeCompare(String(a.reported || "")));
+    return d;
+  }
+  const feed = () => fetch("/api/reports").then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  const radarLoad = () => radarP || (radarP = Promise.all([fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)), feed()])
+    .then(([d, fd]) => merge(d, fd)));
   const radar = { then: (a, b) => radarLoad().then(a, b) };
   // the intro's pitch (VISION.md: one point per card): when trouble comes, the radar's schedule with chances,
   // and the agents that come next. The first two are drawn from the radar and stay hidden if it cannot load.
@@ -330,6 +360,13 @@
     const list = $("sv-sched"), c2 = $("sv-c2");
     if (list && c2) {
       fillSched(list, items, today, 4);
+      const now = $("sv-wire-now"), top = (d.live || [])[0];
+      if (now && top) {
+        const b = document.createElement("b");
+        b.textContent = T("Now", "Ora", "Jetzt", "Maintenant", "Ahora");
+        now.append(b, " " + (top["title_" + LG] || top.title) + ", " + (top["where_" + LG] || top.where || "") + " · " + Math.round((top.p || 0) * 100) + "%");
+        now.hidden = false;
+      }
       c2.hidden = false; watch(c2);
       // the map of the same events: comes in behind its sweep when it scrolls into view (assets/map.js)
       const m = c2.querySelector(".sv-radar-map");

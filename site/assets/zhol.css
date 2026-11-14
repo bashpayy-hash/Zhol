@@ -1146,6 +1146,13 @@ main > section.slide:first-of-type .lead { text-wrap: pretty; max-width: 34em; }
 .sv-news .src a { color: var(--red); }
 @media (max-width: 920px) { .sv-end-grid { grid-template-columns: minmax(0, 1fr); } }
 .sv-end-col .sv-sched .ti { -webkit-line-clamp: 3; }
+/* the radar on the survey, updated 14 Nov 2026: by when to decide, the wire of the last hours, what is happening now */
+.sv-sched .by { display: block; margin-top: 3px; font-size: 12.5px; line-height: 1.35; font-weight: 600; color: var(--sage-ink); }
+.sv-wire-col { grid-column: 1 / -1; }
+.sv-wire-col .sv-news { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 920px) { .sv-wire-col .sv-news { grid-template-columns: minmax(0, 1fr); } }
+.sv-now-line { margin: 0; padding: 9px 12px; border-radius: var(--r-field); background: var(--sage-card); color: var(--ink); font-size: 14px; line-height: 1.4; }
+.sv-now-line b { color: var(--sage-ink); margin-right: 4px; }
 /* the schedule and the news in their own card above the map; the list beside the map scrolls inside on a computer */
 .sv-now .sv-end-grid { border-top: 0; padding-top: 0; }
 .sv-map + .sv-now, .sv-now + .sv-map { margin-top: 20px; }

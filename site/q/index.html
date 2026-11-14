@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s37">
+<link rel="stylesheet" href="/assets/zhol.css?v=s38">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
@@ -53,9 +53,10 @@
       </div>
       <div class="sv-radar-side">
         <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Working prototype</span>
-        <h3>The radar: what is coming on Europe’s roads, with the chance of each event.</h3>
+        <h3>The radar: what can stop freight in Europe, by road, rail and sea, and how likely.</h3>
+        <p class="sv-now-line" id="sv-wire-now" hidden></p>
         <ul class="sv-sched" id="sv-sched"></ul>
-        <p class="sv-card-foot">Every day zhol reads the bans, closures and strike notices and gives each one its chance. <a href="/radar">Open the full radar</a></p>
+        <p class="sv-card-foot">zhol reads official calendars, operators’ pages and the press every 30 minutes, and gives each event its chance. <a href="/radar">Open the full radar</a></p>
       </div>
     </article>
     <div class="sv-cards">
@@ -320,6 +321,11 @@
         <h2 class="sv-q-title" id="sv-now-h">What is coming in the next weeks</h2>
       </div>
       <div class="sv-end-grid">
+        <div class="sv-end-col sv-wire-col" id="sv-wire-box" hidden>
+          <h3>In the last hours</h3>
+          <p class="small muted">The press, read again every 30 minutes. Not checked by a person yet.</p>
+          <ol class="sv-news" id="sv-wire"></ol>
+        </div>
         <div class="sv-end-col" id="sv-sched-box" hidden>
           <h3>The next weeks, with the chance of each</h3>
           <ul class="sv-sched" id="sv-sched-end"></ul>
@@ -334,9 +340,11 @@
         <h3>What the radar reads</h3>
         <ul>
           <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Holiday truck bans</b> set by law in seven countries.</p></li>
-          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Official calendars</b> Tyrol’s dosing at Kufstein, tunnel closures.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Official calendars and operators’ pages</b> Tyrol’s dosing at Kufstein, the Fréjus tunnel, Trenitalia, read by an agent.</p></li>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Italy’s official strike calendar</b> rail, ports, air and hauliers; the chance is how often such strikes really took place.</p></li>
           <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Weather at the passes</b> and on the Messina ferry, 16 days ahead.</p></li>
-          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>News and trade press</b> in four languages: strikes, blockades, protests, closures. <span id="sv-reads-n"></span></p></li>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>News and trade press</b> in four languages, read again every 30 minutes: strikes, blockades, protests, closures. <span id="sv-reads-n"></span></p></li>
+          <li class="is-live"><span class="sv-reads-st">Live</span><p><b>Offices’ reports</b> on the radar once a second office or our team confirms them.</p></li>
           <li class="is-next"><span class="sv-reads-st">Next</span><p><b>Social media</b> drivers’ groups, unions’ and farmers’ channels: the mood before a protest.</p></li>
           <li class="is-next"><span class="sv-reads-st">Next</span><p><b>Politics</b> elections, a change of government, budget votes that bring strikes.</p></li>
           <li class="is-next"><span class="sv-reads-st">Next</span><p><b>Big events and unrest</b> summits, matches, riots that close roads and borders.</p></li>
@@ -356,8 +364,8 @@
   <span>zhol team · Bocconi University · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=c1" defer></script>
-<script src="/assets/map.js?v=a8" defer></script>
-<script src="/assets/survey.js?v=q22" defer></script>
+<script src="/assets/map.js?v=a9" defer></script>
+<script src="/assets/survey.js?v=q23" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

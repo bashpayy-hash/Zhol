@@ -256,7 +256,8 @@ window.ZholMap = function (root, opts) {
   function eventLine(it) {
     const li = el("li", "map-ev " + tone(it.p));
     const t = el("div");
-    t.append(el("b", null, it.start ? fmt(it.start) : T("No date yet", "Senza data")), el("span", null, L(it, "title")));
+    // the wire of the last hours has no date: say when it was seen (netlify/lib/wire.mts)
+    t.append(el("b", null, it.start ? fmt(it.start) : it.group === "wire" ? T("Last hours", "Ultime ore") : T("No date yet", "Senza data")), el("span", null, L(it, "title")));
     if (opts.detail) {
       const where = L(it, "where"); if (where) t.append(el("span", "small muted", where));
       // why this chance: where it comes from, the starting point and every factor that moved it

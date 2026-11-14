@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s37">
+<link rel="stylesheet" href="/assets/zhol.css?v=s38">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
@@ -54,9 +54,10 @@
       </div>
       <div class="sv-radar-side">
         <span class="sv-proto"><span class="sv-live-dot" aria-hidden="true"></span>Prototype en service</span>
-        <h3>Le radar : ce qui arrive sur les routes d’Europe, avec la probabilité de chaque événement.</h3>
+        <h3>Le radar : ce qui peut arrêter le fret en Europe, par la route, le rail et la mer, et avec quelle probabilité.</h3>
+        <p class="sv-now-line" id="sv-wire-now" hidden></p>
         <ul class="sv-sched" id="sv-sched"></ul>
-        <p class="sv-card-foot">Chaque jour, zhol lit les interdictions, les fermetures et les préavis de grève et donne à chacun sa probabilité. <a href="/radar">Ouvrir le radar complet, en anglais</a></p>
+        <p class="sv-card-foot">zhol lit toutes les 30 minutes les calendriers officiels, les pages des exploitants et la presse, et donne à chaque événement sa probabilité. <a href="/radar">Ouvrir le radar complet, en anglais</a></p>
       </div>
     </article>
     <div class="sv-cards">
@@ -294,6 +295,11 @@
         <h2 class="sv-q-title" id="sv-now-h">Ce qui arrive dans les prochaines semaines</h2>
       </div>
       <div class="sv-end-grid">
+        <div class="sv-end-col sv-wire-col" id="sv-wire-box" hidden>
+          <h3>Ces dernières heures</h3>
+          <p class="small muted">La presse, relue toutes les 30 minutes. Pas encore vérifié par une personne.</p>
+          <ol class="sv-news" id="sv-wire"></ol>
+        </div>
         <div class="sv-end-col" id="sv-sched-box" hidden>
           <h3>Les prochaines semaines, avec la probabilité de chaque événement</h3>
           <ul class="sv-sched" id="sv-sched-end"></ul>
@@ -308,9 +314,11 @@
         <h3>Ce que lit le radar</h3>
         <ul>
           <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Interdictions des jours fériés</b> fixées par la loi dans sept pays.</p></li>
-          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Calendriers officiels</b> régulation du Tyrol à Kufstein, fermetures de tunnels.</p></li>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Calendriers officiels et pages des exploitants</b> régulation du Tyrol à Kufstein, le tunnel du Fréjus, Trenitalia, lus par un agent.</p></li>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Le calendrier officiel des grèves en Italie</b> rail, ports, aérien et transporteurs ; la probabilité est la part de ces grèves qui ont vraiment eu lieu.</p></li>
           <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Météo aux cols</b> et sur le ferry de Messine, 16 jours à l’avance.</p></li>
-          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Actualité et presse spécialisée</b> en quatre langues : grèves, blocages, manifestations, fermetures. <span id="sv-reads-n"></span></p></li>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Actualité et presse spécialisée</b> en quatre langues, relues toutes les 30 minutes : grèves, blocages, manifestations, fermetures. <span id="sv-reads-n"></span></p></li>
+          <li class="is-live"><span class="sv-reads-st">En service</span><p><b>Signalements des bureaux</b> sur le radar dès qu’un second bureau ou notre équipe les confirme.</p></li>
           <li class="is-next"><span class="sv-reads-st">Bientôt</span><p><b>Réseaux sociaux</b> groupes de chauffeurs, canaux des syndicats et des agriculteurs : l’ambiance avant une manifestation.</p></li>
           <li class="is-next"><span class="sv-reads-st">Bientôt</span><p><b>Politique</b> élections, changement de gouvernement, votes du budget qui entraînent des grèves.</p></li>
           <li class="is-next"><span class="sv-reads-st">Bientôt</span><p><b>Grands événements et troubles</b> sommets, matchs, émeutes qui ferment routes et frontières.</p></li>
@@ -330,8 +338,8 @@
   <span>Équipe zhol · Université Bocconi · TEF Ignition 2026</span>
 </div></footer>
 <script src="/assets/scene.js?v=c1" defer></script>
-<script src="/assets/map.js?v=a8" defer></script>
-<script src="/assets/survey.js?v=q22" defer></script>
+<script src="/assets/map.js?v=a9" defer></script>
+<script src="/assets/survey.js?v=q23" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

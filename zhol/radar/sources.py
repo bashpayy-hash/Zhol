@@ -83,7 +83,7 @@ OFFICIAL_DOCS = [
      "words": "dosier|blockabfertigung|kufstein", "places": ["kufstein"]},
     {"id": "trenitalia-info", "issuer": "Trenitalia Infomobilità",
      "url": "https://www.trenitalia.com/it/informazioni/Infomobilita/notizie-infomobilita.html", "lang": "it",
-     "about": "rail strikes in Italy and lines closed", "words": "sciopero|linea (interrotta|sospesa)|circolazione sospesa",
+     "about": "national rail strikes in Italy and closures of main lines", "words": "sciopero|linea (interrotta|sospesa)|circolazione sospesa",
      "countries": ["IT"]},
 ]
 
