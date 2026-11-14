@@ -1,0 +1,4 @@
+reference,from,to,departure,crossing,receiver
+A-101,Milano,Lyon,2026-11-20 18:30,Fréjus,Example receiver Lyon
+A-102,Verona,München,2026-12-07 22:00,Brenner,Example receiver München
+A-103,Padova,Wien,2026-11-26 06:00,Tarvisio,

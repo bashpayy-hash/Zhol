@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f3ea">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Verificate le vostre spedizioni</title>
+<script>document.documentElement.classList.add("js")</script>
+<meta name="description" content="Caricate il vostro piano in Excel o CSV e vedete quali spedizioni colpirà un divieto, una chiusura o uno sciopero, quanto costerebbe e il piano migliore. Il file resta nel vostro browser.">
+<meta property="og:title" content="zhol · Verificate le vostre spedizioni">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s50">
+<link rel="alternate" hreflang="en" href="https://zhol.live/check">
+<link rel="alternate" hreflang="it" href="https://zhol.live/it/verifica">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sezioni"><a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/risposte/">Risposte</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/check" lang="en" hreflang="en">EN</a><a href="/it/verifica" lang="it" hreflang="it" aria-current="true">IT</a></span>
+</div></header>
+
+<main>
+<!-- verificate le vostre spedizioni: il piano resta nel browser (owner, 14 Nov 2026) -->
+<section class="slide ck-hero">
+  <div class="wrap stack" style="gap:16px">
+    <span class="kicker">Verificate le vostre spedizioni · gratis, adesso</span>
+    <h1 class="title">Quali delle vostre spedizioni si fermeranno?</h1>
+    <p class="lead">Caricate il piano o scrivete un viaggio. zhol verifica ogni spedizione con tutti i divieti, le chiusure e gli scioperi sul radar nelle prossime otto settimane, con quanto costerebbe e il piano migliore. <b>Il file resta in questo browser: non viene caricato da nessuna parte.</b></p>
+    <p class="small muted" id="ck-status">Carico il radar…</p>
+  </div>
+</section>
+
+<section class="slide ck-in" id="plan">
+  <div class="wrap ck-grid">
+    <div class="card ck-drop" id="ck-drop">
+      <span class="kicker">Il vostro piano</span>
+      <h2>Trascinate qui un file Excel o CSV</h2>
+      <p class="small">Colonne: riferimento, origine, destinazione, data e ora di partenza, valico, destinatario. Intestazioni in italiano o in inglese. <a href="/d/zhol-shipments-template.csv">Scaricate il modello</a></p>
+      <div class="ck-acts"><label class="btn ck-pick">Scegliete un file<input type="file" id="ck-file" accept=".csv,.xlsx,.xls,text/csv"></label><button class="btn ghost" type="button" id="ck-sample">Provate un piano di esempio</button></div>
+      <p class="small muted" id="ck-file-note"></p>
+    </div>
+    <form class="card ck-add" id="ck-add" autocomplete="off">
+      <span class="kicker">Oppure scrivete un viaggio</span>
+      <div class="ck-add-grid">
+        <label class="field"><span class="small">Da</span><input name="from" list="ck-cities" required placeholder="Milano"></label>
+        <label class="field"><span class="small">A</span><input name="to" list="ck-cities" required placeholder="Lione"></label>
+        <label class="field"><span class="small">Giorno di partenza</span><input name="date" type="date" required></label>
+        <label class="field"><span class="small">Ora</span><input name="time" type="time"></label>
+        <label class="field"><span class="small">Valico (facoltativo)</span><input name="via" placeholder="Fréjus, Brennero…"></label>
+        <label class="field"><span class="small">Riferimento (facoltativo)</span><input name="ref"></label>
+        <label class="field ck-wide"><span class="small">Destinatario (facoltativo)</span><input name="receiver"></label>
+      </div>
+      <datalist id="ck-cities"></datalist>
+      <p class="small muted" id="ck-route-hint"></p>
+      <div><button class="btn" type="submit">Verificate questo viaggio</button></div>
+    </form>
+  </div>
+</section>
+
+<section class="slide ck-res" id="ck-results" hidden>
+  <div class="wrap stack" style="gap:18px">
+    <div class="ck-sum" id="ck-sum"></div>
+    <div class="ck-list" id="ck-list"></div>
+    <p class="small muted">Come si verifica: ogni spedizione è abbinata alle tratte del radar per le due città e il valico; un evento conta se cade nel giorno di partenza o nel successivo. I costi sono per un camion sul viaggio di riferimento del radar su quella tratta. <button class="asst-fix" type="button" id="ck-clear" hidden>Cancellate il piano da questo dispositivo</button></p>
+  </div>
+</section>
+
+<section class="slide sage ck-sent" id="ck-sent" hidden>
+  <div class="wrap stack" style="gap:14px">
+    <span class="kicker green">Proposte che avete inviato</span>
+    <h2 class="title">Cosa hanno risposto i destinatari</h2>
+    <div id="ck-sent-list" class="ck-sent-list"></div>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Oyu team · Università Bocconi · TEF Ignition 2026</span>
+  <span><a href="/it/risposte/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/radar">Radar</a> · <a href="/it/segnala">Segnala</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+</div></footer>
+<script src="/assets/explain.js?v=3" defer></script>
+<script type="module" src="/assets/check.js?v=2"></script>
+<script src="/assets/reveal.js?v=t1" defer></script>
+<script src="/assets/sheets.js?v=t6" defer></script>
+<script src="/assets/assistant.js?v=5" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
+</body>
+</html>
