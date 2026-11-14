@@ -14,7 +14,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s40">
+<link rel="stylesheet" href="/assets/zhol.css?v=s42">
 <link rel="alternate" hreflang="en" href="https://zhol.live/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -26,22 +26,35 @@
 </div></header>
 
 <main>
-<!-- the questions first -->
-<section class="slide hero hero-full" id="top">
+<!-- il radar per primo: ogni evento con la sua probabilità, quanto costa a un viaggio, il piano migliore e l’ora entro cui
+     decidere; un tocco per la tratta, un tocco per il piano, niente si apre su un’altra pagina (owner, 14 Nov 2026) -->
+<section class="slide hero rc-hero" id="top">
   <div class="wrap">
-    <div class="split center">
-      <div class="stack" style="gap:22px">
-        <span class="kicker">TEF Ignition 2026 · Università Bocconi</span>
-        <h1 class="title">La giuria ha fatto otto domande. <span class="ans">Ecco le nostre risposte.</span></h1>
-        <p class="lead">Ogni paese europeo ferma le merci con le sue regole: divieti per i camion, scioperi di treni e porti, traghetti che restano in porto. zhol stima quali spedizioni, su strada, rotaia o mare, saranno colpite, quanto costerà e cosa fare, avvisa in anticipo e aggiorna in tempo reale quando la situazione cambia. Su WhatsApp. Partiamo dal Nord Italia.</p>
-        <div class="actions"><a class="btn" href="#answers">Vedi le risposte</a><a class="btn ghost" href="/it/beta">Prova la beta</a></div>
+    <div class="rc" data-console>
+      <div class="rc-head">
+        <span class="kicker rc-live"><span class="sv-live-dot" aria-hidden="true"></span><span class="rc-status">radar zhol · in tempo reale</span></span>
+        <h1 class="title">Cosa può fermare le vostre merci nelle prossime otto settimane</h1>
+        <p class="lead">Ogni evento con la sua probabilità, quanto costa a un viaggio, il piano migliore e l’ora entro cui decidere. Su strada, rotaia e mare.</p>
       </div>
-      <div class="media scene-frame">
-        <img class="scene-layer" src="/assets/img/scenes/desk-poster.webp?v=1" alt="Zholdas, la nostra mascotte di peluche con cappellino da camionista e gilet ad alta visibilità, traccia il percorso di domani sulle Alpi su una carta, alla scrivania di un ufficio traffico la sera" width="1280" height="960" fetchpriority="high"><video class="scene-layer scene-source" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="960"></video>
+      <div class="rc-routes" role="group" aria-label="La vostra tratta"></div>
+      <div class="rc-grid">
+        <div class="rc-main">
+          <article class="rc-next card" hidden aria-live="polite"></article>
+          <p class="rc-count small muted"></p>
+          <p class="rc-hint small" hidden>Toccate un evento per il piano e l’ora entro cui decidere.</p>
+          <ol class="rc-list"></ol>
+          <button class="btn ghost rc-more" type="button" hidden>Mostra tutti gli eventi</button>
+        </div>
+        <div class="rc-side" aria-hidden="true">
+          <div class="map-frame"></div>
+        </div>
+      </div>
+      <noscript><p><a class="btn" href="/it/radar">Aprite il radar</a></p></noscript>
+      <div class="rc-cta">
+        <div class="actions"><a class="btn" href="/it/segnala#alerts">Ricevete questi avvisi per le vostre tratte</a><a class="btn ghost" href="/it/beta">Provatelo sui vostri viaggi</a></div>
+        <p class="small muted">TEF Ignition 2026 · Università Bocconi. <a href="#answers">Le otto domande della giuria, con le risposte qui sotto</a></p>
       </div>
     </div>
-
-    
   </div>
 </section>
 
@@ -186,39 +199,8 @@
 </section>
 
 
-<!-- il radar, dal vivo -->
-<section class="slide sage" id="radar">
-  <div class="wrap stack">
-    <div class="qhead">
-      <span class="kicker green">Il radar</span>
-      <h2 class="title">Cosa arriva sulle rotte delle merci in Europa, e con quale probabilità</h2>
-    </div>
-    <div class="now card" data-now hidden>
-      <div class="now-grid">
-        <div class="map-frame" role="img" aria-label="Mappa d’Europa con gli eventi che zhol prevede nelle prossime otto settimane"></div>
-        <ul class="now-list"></ul>
-      </div>
-      <div class="actions"><a class="btn" href="/it/radar">Apri il radar</a><a class="btn ghost" href="/it/radar#map">Guarda la mappa</a></div>
-    </div>
-  </div>
-</section>
-
 <!-- tutto il resto, un blocco alla volta -->
 <!-- passaparola: gli uffici segnalano al radar, l'assistente legge, avvisi WhatsApp (owner, 11 Nov 2026) -->
-<!-- come funziona, in un video girato sul sito (owner, 14 Nov 2026) -->
-<section class="slide" id="how">
-  <div class="wrap stack">
-    <div class="qhead">
-      <span class="kicker">Come funziona</span>
-      <h2 class="title">Un minuto, girato sul prototipo funzionante</h2>
-    </div>
-    <figure class="howto">
-      <video class="howto-v" controls playsinline preload="none" poster="/assets/video/how-it-works-it.webp?v=2" data-poster-phone="/assets/video/how-it-works-it-phone.webp?v=1" width="1920" height="1080" aria-label="Come funziona zhol: un video di un minuto"><source src="/assets/video/how-it-works-it.mp4?v=2" type="video/mp4" media="(min-width: 561px)"><source src="/assets/video/how-it-works-it-phone.mp4?v=1" type="video/mp4"></video>
-      <figcaption class="small muted">Cosa legge, come stima la probabilità, il piano con l’ora entro cui decidere, la mappa, gli aggiornamenti in tempo reale e le segnalazioni degli uffici. Il radar, la mappa e Zholdas come sono oggi.</figcaption>
-    </figure>
-  </div>
-</section>
-
 <section class="slide word" id="word">
   <div class="wrap split center">
     <div class="stack" style="gap:18px">
@@ -315,11 +297,10 @@
 <script src="/assets/scene.js?v=c1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
 <script src="/assets/map.js?v=b1" defer></script>
-<script src="/assets/now.js?v=n1" defer></script>
+<script src="/assets/console.js?v=1" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t5" defer></script>
 <script src="/assets/assistant.js?v=5" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
-<script src="/assets/howto.js?v=1" defer></script>
 </body>
 </html>
