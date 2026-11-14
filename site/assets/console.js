@@ -80,6 +80,19 @@
     return open.find(i => i.p >= 0.5) || open[0] || list.find(i => i.impact) || null;
   }
 
+  // "why this chance": opens right here, the event on its own, explained (explain.js); the link still works without it
+  function whyLink(it) {
+    const a = el("a", "rc-link", T("Why " + pct(it.p) + ", the sources, every step", "Perché " + pct(it.p) + ", le fonti, ogni passaggio")); a.href = RADAR + "#rd-" + encodeURIComponent(it.id);
+    a.addEventListener("click", e => {
+      if (!window.ZholExplain || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      e.preventDefault();
+      const list = live().concat(upcoming()), i = list.indexOf(it);
+      window.ZholExplain.open(i >= 0 ? list : [it], Math.max(0, i), { from: a.closest(".rc-next, .rc-item") || a, today: data.today, method: data.method, radar: RADAR,
+        sourceOf: x => { const n = root.querySelector('[data-ev="' + CSS.escape(x.id) + '"]'); return n; } });
+    });
+    return a;
+  }
+
   // ---- the plan for one event: what it costs, the best plan, by when to decide, the message ready to send
   function plan(it) {
     const box = el("div", "rc-plan"), im = it.impact;
@@ -88,6 +101,7 @@
         ? T("A strike of trains, ships or planes: zhol warns the offices whose shipments use them. The truck plan is for road events.",
             "Uno sciopero di treni, navi o aerei: zhol avvisa gli uffici le cui spedizioni li usano. Il piano per il camion è per gli eventi su strada.")
         : T("No cost yet for this one: it has no date or no place on a route.", "Per questo non c’è ancora un costo: manca la data o il luogo su una tratta.")));
+      const acts = el("div", "rc-acts"); acts.append(whyLink(it)); box.append(acts);
     } else {
       const cal = it.group === "official";
       const nums = el("div", "rc-nums");
@@ -121,8 +135,7 @@
         });
         acts.append(b);
       }
-      const a = el("a", "rc-link", T("Sources and why this chance", "Fonti e perché questa probabilità")); a.href = RADAR + "#rd-" + encodeURIComponent(it.id);
-      acts.append(a);
+      acts.append(whyLink(it));
       box.append(acts);
     }
     return box;
@@ -149,12 +162,13 @@
     ch.append(el("b", null, pct(it.p)), el("span", null, BAND[tone(it.p)]));
     head.append(t, ch);
     box.append(label, head, plan(it));
+    box.dataset.ev = it.id;
     box.hidden = false;
   }
 
   // ---- every other event: one row, the plan opens in place
   function row(it, isLive) {
-    const li = el("li", "rc-item" + (isLive ? " live" : ""));
+    const li = el("li", "rc-item" + (isLive ? " live" : "")); li.dataset.ev = it.id;
     const btn = el("button", "rc-row"); btn.type = "button"; btn.setAttribute("aria-expanded", "false");
     const d = el("span", "rc-d", isLive ? T("Now", "Ora") : day(it.start));
     const mid = el("span", "rc-t");
@@ -235,4 +249,30 @@
     render();
     root.classList.add("ready");
   }).catch(() => { root.classList.add("failed"); });
+})();
+
+/* Recognition, its own band on the home page: "100" counts up once it comes into view and the four badges rise in
+   (owner, 14 Nov 2026: «прям отдельным, чтобы стандаут было»). Reduced motion: the final number, no movement. */
+(function () {
+  const band = document.querySelector(".recog");
+  if (!band) return;
+  const num = band.querySelector("[data-count]");
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const show = () => {
+    band.classList.add("seen");
+    if (!num || reduce) return;
+    const end = parseInt(num.dataset.count, 10) || 0, t0 = performance.now(), dur = 1100;
+    const step = now => {
+      const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      num.textContent = Math.round(end * e);
+      if (k < 1) requestAnimationFrame(step);
+    };
+    num.textContent = "0";
+    requestAnimationFrame(step);
+  };
+  if (!("IntersectionObserver" in window)) { band.classList.add("seen"); return; }
+  const io = new IntersectionObserver(es => {
+    if (es.some(e => e.isIntersecting)) { io.disconnect(); show(); }
+  }, { threshold: 0.35 });
+  io.observe(band);
 })();

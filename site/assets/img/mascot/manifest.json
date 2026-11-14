@@ -427,6 +427,28 @@
    "source": "design/mascot/zholdas-reference-front.webp (Higgsfield 2a20bb83-5d2d-4aa3-be59-3efd48133274), no new generation",
    "processing": "square crop centred on the head (442, 300) on #e3ebdd, side 620 px, 128 px, circle",
    "replaced": "face-128.webp (a crop of the radio pose)"
+  },
+  {
+   "name": "word-radar",
+   "files": [
+    "word-radar-1600.webp",
+    "word-radar-900.webp"
+   ],
+   "where": "the home page block 'Seen something on the road? Tell the radar.' (/ and /it/), instead of the phone pose that floated in the air (owner, 14 Nov 2026: «желдас, который просто в воздухе летает, ну так нельзя… нарисуй то, что он типа чертит путь… обязательно с радаром»). He looks at his map, not at the viewer (a middle frame of the page). The scene grows from the right edge of the screen and from the next section, the left side ends in a hill slope; the text keeps its place",
+   "higgsfield_image_job": "42323b3d-b332-4545-9928-a11b472b60b1",
+   "prompt": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references: big rounded-square head, short soft body, short arms and legs. Almost smooth cream cotton body with fine fibers, tiny embroidered black dot eyes, small pink cheeks, gentle smile, round mitten hands without fingers, soft brick-red felt trucker cap with a cream front panel and a short curved brim, sage-green felt safety vest with two horizontal cream reflective stripes and a tiny brass zipper pull, small sand suede boots. A wide three-dimensional felt toy landscape that grows from the right and bottom edges of the frame and fills the right three quarters and the lower two thirds of it. On a soft felt hilltop in the middle stands a tiny radar station: a little sage-green felt hut with a round brick-red radar dish on a short mast. In front of the hut a small wooden desk with a big round glowing green radar screen built into it, soft concentric rings and a sweep line on the glass, three small glowing amber blips. Zholdas stands at the desk, leaning over a large unrolled cream paper map beside the radar screen, drawing a route line on the map with a big brick-red pencil held in both mittens, looking down at the map, concentrating, side three-quarter view. The red route line runs off the edge of the map and continues into the felt landscape below the hill as a real route: a grey felt road with one small sage-green toy truck, a felt railway with a short freight train of container wagons, and a calm blue felt sea strait with a small cream and brick-red toy ferry, all running out through the right and bottom edges of the frame. The land, the road, the rails and the sea are cut off by the right and bottom edges and continue beyond them; the open left side of the scene ends in a natural grassy hill slope that starts at the bottom edge; everything above the hills and to the left is fully transparent and empty. Soft warm daylight, gentle contact shadows. No helmet, no text, no letters, no numbers, no logos, no license plates, no flags, no other characters.",
+   "settings": {
+    "model": "gpt_image_2_6",
+    "quality": "high",
+    "resolution": "2k",
+    "aspect_ratio": "3:2",
+    "background": "transparent",
+    "medias": "both references as image_references"
+   },
+   "processing": "trimmed 4 px of empty top, 1600 and 900 wide, WebP q82, alpha q90; on the page the left and bottom edges fade into the paper with a CSS mask",
+   "alternatives_not_used": {
+    "878c1e16-d347-4631-82f5-d5fc0a19163b": "the same scene with fewer hills and no trees: the world ended sooner on the right"
+   }
   }
  ]
 }

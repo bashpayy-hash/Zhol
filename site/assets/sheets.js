@@ -145,7 +145,7 @@
     if (extra && shown[0]) { shown[0].style.gridColumn = "span " + (extra + 1); shown[0].classList.add("wide"); }
   }
   document.querySelectorAll(".tiles").forEach(g => { const items = [...g.children]; balance(g, items); new MutationObserver(() => balance(g, items)).observe(g, { subtree: true, attributes: true, attributeFilter: ["hidden"] }); });
-  document.querySelectorAll(".blocks.tiles-mode").forEach(g => balance(g, [...g.querySelectorAll(":scope > .block")]));
+  document.querySelectorAll(".blocks.tiles-mode").forEach(g => balance(g, [...g.querySelectorAll(":scope > .block, :scope > .bento-cta")]));
 
   // other scripts can bring an element into view, opening its sheet first (the radar map's "Plan and cost")
   window.zholSheet = {

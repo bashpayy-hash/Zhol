@@ -199,7 +199,11 @@ window.ZholMap = function (root, opts) {
     const W = geo.vb[2];
     spots.forEach(s => {
       const b = el(mini ? "span" : "button", "map-pin" + (s.type === "c" ? " wide" : ""));
-      if (!mini) { b.type = "button"; b.addEventListener("click", () => pick(selected === s.key ? null : s.key)); }
+      if (!mini) { b.type = "button"; b.addEventListener("click", () => {
+        // with opts.open (the radar page) the place's events come out on their own, explained (explain.js, 14 Nov 2026)
+        if (opts.open) { pick(s.key); opts.open(s.now.list.length ? s.now.list : s.list, b); return; }
+        pick(selected === s.key ? null : s.key);
+      }); }
       else b.setAttribute("aria-hidden", "true");
       b.style.setProperty("--d", Math.round(500 + s.x / W * 1000) + "ms");
       const dot = el("i"); s.dot = dot; const size = mini ? 9 + 2 * Math.min(3, s.list.length - 1) : 14 + 4 * Math.min(3, s.list.length - 1); dot.style.width = dot.style.height = size + "px";
@@ -283,9 +287,9 @@ window.ZholMap = function (root, opts) {
         t.append(src);
       }
     }
-    const a = el("a", "small", T("Plan and cost", "Piano e costo"));
+    const a = el("a", "small", opts.open ? T("Why " + pct(it.p) + " and what to do", "Perché " + pct(it.p) + " e cosa fare") : T("Plan and cost", "Piano e costo"));
     a.href = "#rd-" + it.id;
-    a.addEventListener("click", e => { if (opts.show) { e.preventDefault(); opts.show(it.id); } });
+    a.addEventListener("click", e => { if (opts.show) { e.preventDefault(); opts.show(it.id, a); } });
     t.append(a);
     li.append(t, el("span", "map-p", pct(it.p)));
     return li;
@@ -342,7 +346,7 @@ window.ZholMap = function (root, opts) {
       const txt = el("span"); txt.append(el("b", null, x.name), el("span", "small muted",
         (x.now.next.start ? T("next ", "prossimo ") + fmt(x.now.next.start) : T("no date yet", "senza data")) + " · " + n(x.now.list.length, "event", "events", "evento", "eventi")));
       b.append(el("i"), txt, el("span", "map-p", pct(x.now.top)));
-      b.addEventListener("click", () => pick(x.key, "list"));
+      b.addEventListener("click", () => { if (opts.open) opts.open(x.now.list.length ? x.now.list : x.list, b); pick(x.key, "list"); });
       li.append(b); ul.append(li);
     });
     panel.append(head, ul);

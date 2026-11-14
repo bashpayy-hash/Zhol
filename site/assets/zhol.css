@@ -1482,3 +1482,179 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
   .rc-more-in { padding: 0 2px 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .rc.ready .rc-next { animation: none; } .rc-pm::before, .rc-pm::after { transition: none; } }
+
+/* ===== 14 Nov 2026 · the owner's feedback on the radar home («ты вот эту анимацию просто убрал»; Recognition «прям
+   отдельным, чтобы стандаут было»; Zholdas «в воздухе летает, так нельзя… чертит путь… обязательно с радаром») */
+
+/* the living desk scene is back on the first screen: a window next to the headline, the same column as the map below */
+.rc-top { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 32px; align-items: stretch; }
+.rc-scene { position: relative; margin: 0; min-height: 230px; border-radius: var(--r-card); overflow: hidden; background: #2b2a33;
+  box-shadow: 0 16px 40px rgba(53, 43, 40, .12); }
+.rc-scene .scene-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 34% 58%; display: block; }
+@media (max-width: 860px) {
+  .rc-top { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .rc-scene { min-height: 0; aspect-ratio: 2 / 1; }
+}
+@media (max-width: 560px) { .rc-scene { aspect-ratio: 16 / 9; border-radius: 20px; } .rc-scene .scene-layer { object-position: 30% 62%; } }
+
+/* the answers: eight questions and the beta card, three by three */
+@media (max-width: 920px) { .blocks.bento > .bento-cta { grid-column: 1 / -1; min-height: 0; } }
+
+/* recognition: its own dark band between the answers and word of mouth, the number counts up once */
+.recog { padding-block: 76px; background: radial-gradient(110% 90% at 0% 0%, var(--espresso-2) 0%, var(--espresso) 58%); }
+.recog-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 32px 56px; align-items: end; }
+.recog-main { display: flex; flex-direction: column; gap: 8px; }
+.recog-num { margin: 10px 0 0; font-size: clamp(56px, 6.6vw, 96px); line-height: .92; font-weight: 680; letter-spacing: -0.045em;
+  color: var(--on-dark-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.recog-num b { color: var(--on-dark); font-weight: 700; }
+.recog-cap { margin: 10px 0 0; max-width: 34ch; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.4; font-weight: 500; color: var(--on-dark); }
+.recog .badges { align-self: end; }
+.recog .badges li { padding: 16px 18px; border-radius: 18px; background: rgba(255, 255, 255, .04); border-color: #5b463a; }
+.recog .badges b { color: var(--on-dark); font-size: 16px; }
+.recog .badges span { color: var(--on-dark-2); font-size: 13.5px; }
+.js .recog:not(.seen) .badges li { opacity: 0; transform: translateY(10px); }
+.recog .badges li { transition: opacity var(--dur-in) var(--ease), transform var(--dur-in) var(--ease); }
+.recog .badges li:nth-child(2) { transition-delay: 80ms; } .recog .badges li:nth-child(3) { transition-delay: 160ms; } .recog .badges li:nth-child(4) { transition-delay: 240ms; }
+@media (max-width: 920px) { .recog { padding-block: 60px; } .recog-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .recog { padding-block: 48px; } .recog .badges { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .recog .badges li { padding: 12px 13px; } .recog .badges b { font-size: 14.5px; } .recog .badges span { font-size: 12.5px; } }
+@media (prefers-reduced-motion: reduce) { .js .recog:not(.seen) .badges li { opacity: 1; transform: none; } .recog .badges li { transition: none; } }
+
+/* word of mouth: Zholdas at a radar station plots a route that runs on into the road, the railway and the strait;
+   the scene grows from the right edge of the screen and from the next section, the text keeps its place */
+.word { overflow-x: clip; }
+.word .word-media img.word-scene { display: block; max-width: none; height: auto; margin: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%), linear-gradient(0deg, transparent 0, #000 7%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%), linear-gradient(0deg, transparent 0, #000 7%);
+  -webkit-mask-composite: source-in; mask-composite: intersect; }
+@media (min-width: 921px) {
+  .word .word-media { position: relative; align-self: stretch; min-height: 340px; }
+  .word .word-media img.word-scene { position: absolute; bottom: -40px; right: calc(-1 * max(20px, 50vw - 560px));
+    width: min(calc(100% + max(20px, 50vw - 560px) + 24px), 720px); }
+}
+@media (max-width: 920px) {
+  .word .word-media { margin: 4px calc(-1 * max(20px, env(safe-area-inset-right, 0px))) -32px calc(-1 * max(20px, env(safe-area-inset-left, 0px))); }
+  .word .word-media img.word-scene { width: 100%; }
+}
+
+/* ===== one event on its own, explained (explain.js; owner, 14 Nov 2026): the card grows out of what was tapped, the
+   page behind goes quiet, the words rise in one block after another */
+html.ex-open { overflow: hidden; }
+dialog.ex { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 16px; border: 0;
+  background: transparent; overflow: hidden; color: var(--ink-2); }
+dialog.ex[open] { display: flex; align-items: center; justify-content: center; }
+dialog.ex::backdrop { background: rgba(30, 22, 18, .46); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); animation: sheet-fade 360ms var(--ease-color) both; }
+dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reverse both; }
+.ex-card { position: relative; display: flex; flex-direction: column; width: min(680px, 100%); max-height: min(90vh, 940px); border-radius: 28px;
+  background: var(--paper); box-shadow: 0 40px 90px -30px rgba(20, 14, 10, .55); overflow: hidden; transform-origin: 0 0; will-change: transform; }
+.ex-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px 0 22px; min-height: 56px; }
+.ex-pager { display: flex; align-items: center; gap: 6px; }
+.ex-pager[hidden] { display: none; }
+.ex-count { min-width: 64px; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ex-nav, .ex-close { position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--card-line); background: var(--card); cursor: pointer;
+  transition: background-color var(--dur) var(--ease-color), transform var(--dur) var(--ease), opacity var(--dur) var(--ease-color); }
+.ex-nav:hover:not(:disabled), .ex-close:hover { background: #fff; }
+.ex-nav:active:not(:disabled), .ex-close:active { transform: scale(.94); }
+.ex-nav:disabled { opacity: .35; cursor: default; }
+.ex-nav::before { content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; border: solid var(--ink); border-width: 2px 2px 0 0; }
+.ex-nav.prev::before { transform: translate(-30%, -50%) rotate(-135deg); }
+.ex-nav.next::before { transform: translate(-70%, -50%) rotate(45deg); }
+.ex-close { margin-left: auto; }
+.ex-close::before, .ex-close::after { content: ""; position: absolute; left: 50%; top: 50%; width: 16px; height: 2px; margin: -1px 0 0 -8px; border-radius: 1px; background: var(--ink); transform: rotate(45deg); }
+.ex-close::after { transform: rotate(-45deg); }
+.ex-scroll { overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.ex-in { display: flex; flex-direction: column; gap: 4px; padding: 4px 30px 30px; }
+.ex-card:not(.shown) .ex-in { opacity: 0; transition: opacity 120ms ease-in; }
+.ex-card.shown .ex-in > * { animation: ex-rise 460ms var(--ease) both; animation-delay: calc(var(--i, 0) * 55ms); }
+@keyframes ex-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.ex-s { padding: 16px 0; border-top: 1px solid var(--rule); }
+.ex-s.ex-head { border-top: 0; padding-top: 6px; }
+.ex-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: start; }
+.ex-kicker { margin: 0 0 6px; font-size: 13px; font-weight: 650; color: var(--red); }
+.ex-head h2 { margin: 0; font-size: clamp(23px, 2.6vw, 30px); line-height: 1.16; letter-spacing: -0.015em; font-weight: 650; color: var(--ink); outline: none; }
+.ex-where { margin: 6px 0 0; font-size: 15px; color: var(--muted); }
+.ex-chance { min-width: 112px; text-align: right; }
+.ex-chance b { display: block; font-size: clamp(38px, 4.4vw, 52px); line-height: .95; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ex-chance.vl b, .ex-chance.l b { color: var(--red); }
+.ex-chance span { display: block; margin-top: 4px; font-size: 13.5px; color: var(--muted); }
+.ex-pbar { height: 6px; margin-top: 10px; border-radius: 3px; background: rgba(53, 43, 40, .1); overflow: hidden; }
+.ex-pbar i, .ex-cbar i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--ink); transition: width 900ms var(--ease); }
+.ex-chance.vl .ex-pbar i, .ex-chance.l .ex-pbar i { background: var(--red); }
+.ex-card.shown .ex-pbar i { width: var(--w); transition-delay: 260ms; }
+.ex-flag { display: inline-block; margin: 12px 0 0; padding: 4px 11px; border-radius: var(--r-pill); background: #f3e3c8; color: #6b4a14; font-size: 13px; font-weight: 600; }
+.ex-gist { margin: 14px 0 0; font-size: 17.5px; line-height: 1.5; color: var(--ink); font-weight: 500; }
+.ex-p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+.ex-p > b { color: var(--ink); font-weight: 650; }
+.ex-small { margin: 10px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.ex-chips { margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ex-quote { margin: 12px 0 0; padding: 10px 14px; border-left: 3px solid var(--card-line); background: var(--card); border-radius: 0 12px 12px 0;
+  font-family: var(--font-serif); font-size: 15px; line-height: 1.5; color: var(--ink-2); overflow-wrap: anywhere; }
+.ex-quote cite { font-family: var(--font-sans); font-style: normal; font-size: 13px; color: var(--muted); }
+/* the arithmetic of the chance, one step per tile */
+.ex-math { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; }
+.ex-math li { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 9px 12px; min-width: 84px; max-width: 200px; border-radius: 14px; background: var(--card); border: 1px solid var(--card-line); }
+.ex-math li b { font-size: 19px; font-weight: 680; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ex-math li small { font-size: 12.5px; line-height: 1.3; color: var(--muted); }
+.ex-math li.end { background: var(--ink); border-color: var(--ink); } .ex-math li.end b { color: var(--paper); } .ex-math li.end small { color: var(--on-dark-2); }
+.ex-card.shown .ex-math li { animation: ex-rise 420ms var(--ease) both; }
+.ex-card.shown .ex-math li:nth-child(2) { animation-delay: 380ms; } .ex-card.shown .ex-math li:nth-child(3) { animation-delay: 460ms; }
+.ex-card.shown .ex-math li:nth-child(4) { animation-delay: 540ms; } .ex-card.shown .ex-math li:nth-child(5) { animation-delay: 620ms; }
+.ex-card.shown .ex-math li:nth-child(n+6) { animation-delay: 700ms; }
+.ex-list { margin: 10px 0 0; padding-left: 20px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+/* what it costs: three bars that grow to their value */
+.ex-bars { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.ex-barrow { display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr) auto; gap: 12px; align-items: center; font-size: 14.5px; color: var(--ink-2); }
+.ex-barrow b { font-variant-numeric: tabular-nums; color: var(--ink); }
+.ex-cbar { height: 10px; border-radius: 5px; background: rgba(53, 43, 40, .08); overflow: hidden; }
+.ex-barrow i { background: #b6a99b; }
+.ex-barrow.best i { background: var(--sage-ink); } .ex-barrow.best b { color: var(--sage-ink); }
+.ex-card.shown .ex-cbar i { width: var(--w); transition-delay: calc(420ms + var(--k, 0) * 120ms); }
+/* by when: what a warning still saves, as small columns */
+.ex-curve { display: flex; align-items: flex-end; gap: 8px; height: 104px; margin-top: 12px; }
+.ex-curve span { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%; }
+.ex-curve span::before { content: ""; order: 2; width: 100%; max-width: 54px; height: 0; border-radius: 8px 8px 3px 3px; background: var(--sage-card); border: 1px solid #c4d2bd; transition: height 700ms var(--ease); }
+.ex-card.shown .ex-curve span::before { height: var(--h); transition-delay: 380ms; }
+.ex-curve b { order: 1; font-size: 13.5px; color: var(--sage-ink); font-variant-numeric: tabular-nums; }
+.ex-curve small { order: 3; font-size: 12.5px; color: var(--muted); }
+.ex-msg { margin-top: 12px; padding: 14px 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--card-line); display: flex; flex-direction: column; gap: 8px; }
+.ex-who { margin: 0; font-size: 14.5px; color: var(--muted); } .ex-who b { color: var(--ink); }
+.ex-msgtext { margin: 0; padding: 10px 12px; border-radius: 12px; background: var(--msg-box); font-size: 15px; line-height: 1.45; color: var(--ink-2); white-space: pre-wrap; overflow-wrap: anywhere; }
+.ex-copy { align-self: flex-start; }
+.ex-src { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ex-src li { display: flex; flex-direction: column; gap: 1px; font-size: 15px; line-height: 1.4; overflow-wrap: anywhere; }
+.ex-src small { font-size: 13px; color: var(--muted); }
+.ex-foot { padding-bottom: 0; }
+.ex-more { font-weight: 600; }
+/* what was tapped stays in its place, quiet, while it is open */
+.ex-source { opacity: .25; transition: opacity 240ms var(--ease-color); }
+@media (max-width: 640px) {
+  dialog.ex { padding: 0; }
+  dialog.ex[open] { align-items: flex-end; }
+  .ex-card { width: 100%; max-height: 92vh; max-height: 92dvh; border-radius: 24px 24px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .ex-bar { padding: 10px 10px 0 14px; }
+  .ex-in { padding: 0 18px 24px; }
+  .ex-top { gap: 12px; }
+  .ex-chance { min-width: 84px; }
+  .ex-gist { font-size: 16.5px; }
+  .ex-p { font-size: 15.5px; }
+  .ex-barrow { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; }
+  .ex-barrow .ex-cbar { grid-column: 1 / -1; grid-row: 2; }
+  .ex-math li { min-width: 72px; padding: 8px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.ex::backdrop, dialog.ex.closing::backdrop { animation: none; }
+  .ex-card.shown .ex-in > *, .ex-card.shown .ex-math li { animation: none; }
+  .ex-pbar i, .ex-cbar i, .ex-curve span::before, .ex-source { transition: none; }
+}
+/* the radar list: every row opens its event on its own; the numbers stay visible, the rest is one tap away */
+.rd-row { cursor: pointer; transition: box-shadow var(--dur-card) var(--ease), transform var(--dur-card) var(--ease), opacity 240ms var(--ease-color); }
+@media (hover: hover) { .rd-row:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -20px rgba(53, 43, 40, .5); } }
+.rd-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; border-top: 1px dashed #b9c9b2; padding-top: 10px; }
+.rd-nums { margin: 0; font-size: 14px; color: var(--ink-2); }
+.rd-nums .save { color: var(--sage-ink); }
+.rd-open { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-left: auto; padding: 0 18px; border-radius: var(--r-pill);
+  border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: inherit; font-size: 14.5px; font-weight: 600; cursor: pointer;
+  transition: background-color var(--dur) var(--ease-color), transform var(--dur) var(--ease); }
+.rd-open::after { content: ""; width: 7px; height: 7px; border: solid currentColor; border-width: 2px 2px 0 0; transform: rotate(45deg); }
+.rd-open:hover { background: #241b18; }
+.rd-open:active { transform: scale(.97); }
+@media (max-width: 560px) { .rd-open { width: 100%; justify-content: center; margin-left: 0; } }

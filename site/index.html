@@ -14,7 +14,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s42">
+<link rel="stylesheet" href="/assets/zhol.css?v=s43">
 <link rel="alternate" hreflang="en" href="https://zhol.live/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -31,10 +31,15 @@
 <section class="slide hero rc-hero" id="top">
   <div class="wrap">
     <div class="rc" data-console>
-      <div class="rc-head">
-        <span class="kicker rc-live"><span class="sv-live-dot" aria-hidden="true"></span><span class="rc-status">zhol radar · live</span></span>
-        <h1 class="title">What can stop your freight in the next eight weeks</h1>
-        <p class="lead">Every event with its chance, what it costs a trip, the best plan and the hour by which to decide. By road, rail and sea.</p>
+      <div class="rc-top">
+        <div class="rc-head">
+          <span class="kicker rc-live"><span class="sv-live-dot" aria-hidden="true"></span><span class="rc-status">zhol radar · live</span></span>
+          <h1 class="title">What can stop your freight in the next eight weeks</h1>
+          <p class="lead">Every event with its chance, what it costs a trip, the best plan and the hour by which to decide. By road, rail and sea.</p>
+        </div>
+        <figure class="rc-scene">
+          <img class="scene-layer" src="/assets/img/scenes/desk-poster.webp?v=1" alt="Zholdas, our plush mascot in a trucker cap and a safety vest, drawing a route over the Alps with a red pencil on a paper map at a traffic office desk, motorway lights outside the window" width="1280" height="960" fetchpriority="high"><video class="scene-layer scene-source" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="960"></video>
+        </figure>
       </div>
       <div class="rc-routes" role="group" aria-label="Your route"></div>
       <div class="rc-grid">
@@ -106,10 +111,6 @@
         <a class="open" href="/answers/model">Open the full answer</a>
         </div></div>
       </article>
-      <div class="bento-cta">
-        <div><h3>Try it on your own lanes</h3><p>Send us your loads: we estimate which ones a restriction will hit and warn you in advance, with each option priced. Four weeks, free.</p></div>
-        <a class="btn" href="/beta#join">Join the beta</a>
-      </div>
       <article class="block bento-b" id="gtm">
         <span class="kicker">Question 4 · Go-to-market</span>
         <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="gtm-more">A clear GTM strategy<span class="pm" aria-hidden="true"></span></button></h2>
@@ -184,17 +185,28 @@
         <a class="open" href="/answers/room">Open the full answer</a>
         </div></div>
       </article>
-      <div class="bento-wide">
-        <div><span class="kicker">Recognition</span>
-          <p class="bento-num">100 of ~500</p><p class="cap">projects selected for TEF Ignition 2026 by the Tech Europe Foundation</p></div>
-        <ul class="badges">
-          <li><b>Grant €2,000</b><span>Tech Europe Foundation</span></li>
-          <li><b>Bocconi University</b><span>a student team in Milan</span></li>
-          <li><b>Radar live</b><span>400+ articles a day</span></li>
-          <li><b>Survey open</b><span>7 questions, 5 languages</span></li>
-        </ul>
+      <div class="bento-cta">
+        <div><h3>Try it on your own lanes</h3><p>Send us your loads: we estimate which ones a restriction will hit and warn you in advance, with each option priced. Four weeks, free.</p></div>
+        <a class="btn" href="/beta#join">Join the beta</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- recognition on its own, so it stands out (owner, 14 Nov 2026) -->
+<section class="slide dark recog" id="recognition">
+  <div class="wrap recog-grid">
+    <div class="recog-main">
+      <span class="kicker">Recognition</span>
+      <p class="recog-num"><b data-count="100">100</b> of ~500</p>
+      <p class="recog-cap">projects selected for TEF Ignition 2026 by the Tech Europe Foundation</p>
+    </div>
+    <ul class="badges">
+      <li><b>Grant €2,000</b><span>Tech Europe Foundation</span></li>
+      <li><b>Bocconi University</b><span>a student team in Milan</span></li>
+      <li><b>Radar live</b><span>400+ articles a day</span></li>
+      <li><b>Survey open</b><span>7 questions, 5 languages</span></li>
+    </ul>
   </div>
 </section>
 
@@ -208,7 +220,7 @@
       <p class="lead">Write it in your own words or send the document: a strike notice, an ordinance, a queue at the border. Zholdas, our assistant, reads it, and it goes on the radar once a second office or our team confirms it. Offices on that route get one WhatsApp message.</p>
       <div class="actions"><a class="btn" href="/report">Tell the radar</a><a href="/report#alerts">Get WhatsApp alerts</a></div>
     </div>
-    <div class="media word-media"><img src="/assets/img/mascot/phone-560.webp" alt="Zholdas, our plush mascot in a trucker cap and a reflective vest, reading a message on a phone" width="560" height="448" loading="lazy"></div>
+    <div class="media word-media"><img class="word-scene" src="/assets/img/mascot/word-radar-1600.webp" srcset="/assets/img/mascot/word-radar-900.webp 900w, /assets/img/mascot/word-radar-1600.webp 1600w" sizes="(max-width: 920px) 100vw, 56vw" alt="Zholdas, our plush mascot, at a small radar station on a felt hill: he draws a route on a paper map next to a glowing radar screen, and the red route runs on into the landscape below, along a road with a truck, a railway with a freight train and a sea strait with a ferry, out of the picture" width="1600" height="1059" loading="lazy"></div>
   </div>
 </section>
 
@@ -296,10 +308,11 @@
 </div></footer>
 <script src="/assets/scene.js?v=c1" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
-<script src="/assets/map.js?v=b1" defer></script>
-<script src="/assets/console.js?v=1" defer></script>
+<script src="/assets/map.js?v=b2" defer></script>
+<script src="/assets/explain.js?v=1" defer></script>
+<script src="/assets/console.js?v=2" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
-<script src="/assets/sheets.js?v=t5" defer></script>
+<script src="/assets/sheets.js?v=t6" defer></script>
 <script src="/assets/assistant.js?v=5" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
