@@ -33,7 +33,7 @@ EXTRA_KINDS = [("blockade", r"bloqu|blockier|block the|blocking"), ("strike", r"
 DISRUPTION = re.compile("|".join(p for _, p in KIND_WORDS + EXTRA_KINDS), re.I)
 
 STAGE_RE = [
-    ("revoked", r"revoc|sospes[oi]\b|sospens|annullat|rinviat|differit|aufgehoben|abgesagt|verschoben|annul|"
+    ("revoked", r"revoc|sospes[oi]\b|sospens|sospend|annullat|rinviat|differit|aufgehoben|abgesagt|verschoben|annul|"
                 r"report[ée]|levée|called off|postpon|suspend"),
     ("ended", r"terminat|si è concluso|si sono conclus|ritorno alla normalit|fine del (fermo|blocco|presidio)|"
               r"beendet|fin de la grève|is over|have ended"),
@@ -70,7 +70,7 @@ COUNTRY_WORDS = {
 }
 LANG_COUNTRY = {"it": "IT", "fr": "FR", "de": "AT", "en": None}
 ACCIDENT = re.compile(r"incident|scontro|tamponament|ribaltat|accident|unfall|crash|collision|carambol", re.I)
-NON_EUROPE = re.compile(r"\b(chile|cile|argentin|brasil|brazil|usa|stati uniti|united states|états-unis|canada|"
+NON_EUROPE = re.compile(r"\b(chile|cile|chili\b|chilen|camioneros|südamerika|lateinamerika|amérique latine|america latina|argentin|brasil|brazil|usa|stati uniti|united states|états-unis|canada|"
                         r"messico|mexico|mexique|india|inde|cina|china|chine|australia|sud ?africa|south africa|"
                         r"nigeria|per[uù]|colombia|corea|korea|giappone|japan|japon|turchia|turkey|israele|israel|"
                         r"iran|pakistan|bangladesh|kenya|marocco|morocco)", re.I)

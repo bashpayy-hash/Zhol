@@ -56,6 +56,9 @@ test("Claude is asked only when the page changed, and a failure keeps the last r
   assert.equal(d.items.length, 1); assert.match(d.error, /503/);                                                // the site is down: keep what we had
   const e = await lookAt(doc, d, R, P, async () => page, reader, now + 12 * 36e5);
   assert.equal(e.items.length, 1);                                                                              // re-read after an error
+  const wall = await lookAt(doc, null, R, P, async () => "<html><body>" + "Please accept cookies to continue. ".repeat(5) + "</body></html>", reader, now);
+  assert.match(wall.error, /does not mention/); assert.equal(reads, 3); assert.ok(wall.peek.startsWith("Please accept"));     // a consent wall is not a quiet page
+  assert.deepEqual([a.events, a.chars > 80], [1, true]);
   const late = await lookAt(doc, a, R, P, async () => { throw new Error("x"); }, reader, now + 5 * 864e5);
   assert.equal(late.items.length, 0);                                                                           // a past event leaves the wire
 });

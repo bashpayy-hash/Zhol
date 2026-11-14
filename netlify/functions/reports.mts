@@ -28,7 +28,8 @@ export default async (req: Request, context: Context) => {
   try {
     const states = await docStates();
     wire = [...states.flatMap(d => d.items.filter(i => String(i.end || i.start) >= today)), ...wire];
-    docs = states.map(d => ({ id: d.id, read_at: d.read_at, changed_at: d.changed_at, items: d.items.length, error: d.error }));
+    docs = states.map(d => ({ id: d.id, read_at: d.read_at, changed_at: d.changed_at, items: d.items.length, error: d.error,
+      chars: d.chars, events: d.events, peek: d.peek }));
     const newest = Math.max(0, ...states.map(d => Date.parse(d.read_at)));
     if (Date.now() - newest > 2 * EVERY_H * 36e5) context.waitUntil(refreshDocs(req).catch(e => console.error("docs failed", String(e).slice(0, 300))));
   } catch (e) { console.error("docs failed", String(e).slice(0, 300)); }

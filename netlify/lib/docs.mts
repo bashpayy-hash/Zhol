@@ -9,11 +9,13 @@ import { estimate, type Reader } from "./wire.mts";
 
 export interface Doc { id: string; issuer: string; url: string; lang: string; about: string; words: string }
 export interface DocEvent extends Event { hours: string | null; quote: string; mode?: string }
-export interface DocState { id: string; hash: string; read_at: string; changed_at: string | null; items: Record<string, unknown>[]; error: string | null }
+export interface DocState { id: string; hash: string; read_at: string; changed_at: string | null; items: Record<string, unknown>[]; error: string | null;
+  chars?: number; events?: number; peek?: string }     // what the agent saw, to tell a blocked page from a quiet one
 
 const MODEL = () => Netlify.env.get("ZHOL_AI_MODEL") || "claude-opus-5-5";
 export const EVERY_H = 3;          // each page is looked at again after this many hours
 const CAP = 9000;                  // characters of the page the agent reads
+const AGENT = "2";                 // bump when the agent's reading changes: every page is then read again
 
 /** The page as text, and of a long page only what stands around the words that matter. */
 export function extract(html: string, words: string, cap = CAP): string {
@@ -109,15 +111,18 @@ export function docItems(doc: Doc, events: DocEvent[], R: Reader, P: Places, tod
 export async function lookAt(doc: Doc, prev: DocState | null, R: Reader, P: Places, get: (url: string) => Promise<string>,
                              reader: (doc: Doc, text: string) => Promise<DocEvent[]>, now = Date.now()): Promise<DocState> {
   const at = new Date(now).toISOString(), today = new Date(now).toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" });
-  const keep = (error: string | null): DocState => ({ id: doc.id, hash: prev?.hash || "", read_at: at, changed_at: prev?.changed_at || null,
-    items: (prev?.items || []).filter(i => String(i.end || i.start) >= today), error });
+  const keep = (error: string | null, seen: Partial<DocState> = {}): DocState => ({ id: doc.id, hash: prev?.hash || "", read_at: at, changed_at: prev?.changed_at || null,
+    items: (prev?.items || []).filter(i => String(i.end || i.start) >= today), error,
+    chars: prev?.chars, events: prev?.events, peek: prev?.peek, ...seen });
   try {
     const text = extract(await get(doc.url), doc.words);
-    if (text.length < 80) return keep("page has no text");
-    const hash = await hashOf(text);
-    if (prev && prev.hash === hash && !prev.error) return keep(null);
+    const seen = { chars: text.length, peek: text.slice(0, 160) };
+    if (text.length < 80) return keep("page has no text", seen);
+    if (!new RegExp(doc.words, "i").test(text)) return keep("page does not mention " + doc.about, seen);    // a consent wall or a block page
+    const hash = await hashOf(AGENT + text);
+    if (prev && prev.hash === hash && !prev.error) return keep(null, seen);
     const events = await reader(doc, text);
-    return { id: doc.id, hash, read_at: at, changed_at: at, items: docItems(doc, events, R, P, today, at), error: null };
+    return { id: doc.id, hash, read_at: at, changed_at: at, items: docItems(doc, events, R, P, today, at), error: null, ...seen, events: events.length };
   } catch (e) {
     return keep(String(e).slice(0, 160));
   }

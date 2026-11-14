@@ -61,7 +61,7 @@ export function read(a: Article, R: Reader, P: Places): Signal | null {
   const places = Object.entries(P.places).filter(([, p]) => p.aliases.some(al => al.length > 3 && new RegExp("\\b" + esc(al.toLowerCase()) + "\\b").test(low))).map(([id]) => id).sort();
   const countries = new Set<string>([...regions.map(r => r.split("-")[0]), ...places.map(id => P.places[id].country)]);
   for (const [cc, p] of Object.entries(R.countries)) if (rx(p).test(low)) countries.add(cc);
-  if (!countries.size && R.lang_country[a.lang]) countries.add(R.lang_country[a.lang] as string);
+  // the wire says where: a headline that names no country, region or pass is left to the radar's own reading
   if (!countries.size || (rx(R.non_europe).test(text) && !regions.length && !places.length)) return null;
   // which transport stops: road words win (hauliers at a port are a road stoppage), as in mode_of() in signals.py
   const mode = rx(R.road).test(text) ? "road" : (R.modes.find(([, p]) => rx(p).test(text)) || ["road"])[0];
