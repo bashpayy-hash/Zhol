@@ -235,6 +235,20 @@
 
   $(".rc-more").addEventListener("click", () => { showAll = true; render(); });
 
+  // the landing's three cards ("what zhol does"): one fact each from the radar as it is now, whatever route is picked
+  function liveFacts() {
+    const put = (k, t) => { const n = document.querySelector('[data-live="' + k + '"] span:last-child'); if (n && t) n.textContent = t; };
+    const twoWeeks = new Date(Date.parse(data.today + "T12:00:00") + 14 * 864e5).toISOString().slice(0, 10);
+    const all = data.items.filter(i => i.start && (i.end || i.start) >= data.today);
+    const hit = all.filter(i => i.impact && i.p >= 0.5).sort((a, b) => a.start.localeCompare(b.start))[0];
+    if (hit) put("estimate", T("Now on the radar: " + L(hit, "title") + ", " + pct(hit.p) + ", " + eur(hit.impact.loss) + " for one truck if it happens.",
+                               "Ora sul radar: " + L(hit, "title") + ", " + pct(hit.p) + ", " + eur(hit.impact.loss) + " per un camion se succede."));
+    const far = all.filter(i => i.start > twoWeeks).length;
+    if (all.length) put("advance", T(all.length + " events already known for the next eight weeks, " + far + " of them more than two weeks ahead.",
+                                     all.length + " eventi già noti per le prossime otto settimane, " + far + " a più di due settimane."));
+    if (data.wireAt) put("realtime", T("News read again at " + hhmm(data.wireAt) + ", every 30 minutes.", "Notizie rilette alle " + hhmm(data.wireAt) + ", ogni 30 minuti."));
+  }
+
   const feed = fetch("/api/reports").then(r => r.ok ? r.json() : {}).catch(() => ({}));
   Promise.all([fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)), feed]).then(([d, fd]) => {
     data = merge(d, fd);
@@ -247,6 +261,7 @@
     const fresh = [data.built_at, data.wireAt].filter(Boolean).map(s => Date.parse(s)).sort().pop();
     $(".rc-status").textContent = T("Live radar · updated ", "Radar in tempo reale · aggiornato ") + hhmm(new Date(fresh).toISOString());
     render();
+    liveFacts();
     root.classList.add("ready");
   }).catch(() => { root.classList.add("failed"); });
 })();

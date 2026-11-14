@@ -1676,3 +1676,55 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .beta-try b { color: var(--ink); }
 @media (max-width: 920px) { .beta-after { position: static; } }
 @media (max-width: 560px) { .beta-how { padding-top: 40px; } .beta-steps p { font-size: 15.5px; } .beta-steps li { gap: 12px; padding: 15px 0; } .beta-after { padding: 22px 20px; } }
+
+/* ===== the home page as a product landing (owner, 14 Nov 2026: «увеличь [анимацию]… сделай полноценный лендинг, который
+   отметит, что zhol полноценный продукт, ответы поставь на второй-третий план») */
+.landing-hero { padding-top: 28px; }
+.landing-hero.hero-full .split { min-height: min(86vh, 820px); }
+.landing-hero.hero-full .split > .stack { max-width: 660px; padding: 64px 60px 64px; }
+.landing-hero.hero-full h1.title { font-size: clamp(40px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -0.04em; }
+.landing-hero .lead { max-width: 560px; }
+.hero-proof { margin: 4px 0 0; font-size: 14px; line-height: 1.4; color: rgba(255, 255, 255, .72); }
+@media (max-width: 760px) {
+  .landing-hero { padding-top: 16px; }
+  .landing-hero.hero-full .split > .stack { padding: 26px 22px 28px; }
+  .landing-hero.hero-full h1.title { font-size: 36px; }
+  .landing-hero .lead { font-size: 16.5px; }
+  /* on a phone the scene sits on top, whole, and fades into the dark under the words: no words over his face */
+  .landing-hero.hero-full .split { display: flex; flex-direction: column; align-items: stretch; min-height: 0; background: #1d1a22; }
+  .landing-hero.hero-full .split::before { display: none; }
+  .landing-hero.hero-full .split > .media { order: -1; position: relative; inset: auto; z-index: 0; aspect-ratio: 1 / 1; }
+  .landing-hero.hero-full .split > .media::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38%; z-index: 2; pointer-events: none;
+    background: linear-gradient(180deg, rgba(29, 26, 34, 0) 0%, #1d1a22 100%); }
+  .landing-hero.hero-full .split > .media .scene-layer { object-position: 26% 50%; }
+  .landing-hero.hero-full .split > .stack { position: relative; z-index: 1; margin-top: -48px; padding: 0 22px 28px; }
+  .landing-hero .actions { gap: 10px 14px; }
+  .hero-proof { font-size: 13px; }
+}
+/* in-page links land below the sticky header */
+#radar, #what, #how, #answers, #recognition { scroll-margin-top: 72px; }
+/* the live radar is now the second block */
+.rc-hero { padding-block: 72px 28px; }
+.rc-head h2.title { font-size: clamp(30px, 3.6vw, 48px); line-height: 1.06; letter-spacing: -0.03em; }
+@media (max-width: 560px) { .rc-hero { padding-top: 48px; } .rc-head h2.title { font-size: 29px; } }
+/* what zhol does: three cards, a fact from the live radar at the bottom of each */
+.what { padding-top: 64px; }
+.what-grid { gap: 16px; }
+.what-card { gap: 12px; padding: 28px 26px 24px; border-radius: 28px; min-height: 300px; }
+.what-card h3 { margin: 0; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 650; color: var(--ink); }
+.what-card > p { margin: 0; font-size: 16.5px; line-height: 1.5; color: var(--ink-2); }
+.what-card .what-live { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule); display: flex; gap: 10px; align-items: baseline;
+  font-size: 14px; line-height: 1.45; color: var(--sage-ink); font-weight: 600; }
+.what-live .sv-live-dot { flex: none; background: var(--sage-ink); box-shadow: none; animation: none; transform: translateY(-1px); }
+@media (max-width: 920px) { .what-grid { grid-template-columns: minmax(0, 1fr); } .what-card { min-height: 0; } }
+/* how it works for an office, and the price */
+.how-office .split { align-items: start; gap: 32px 56px; }
+.how-office .beta-steps { border-top-color: #c4d2bd; }
+.how-office .beta-steps li { border-bottom-color: #c4d2bd; }
+.price-card { position: sticky; top: 96px; gap: 10px; padding: 28px 26px; border-radius: 28px; }
+.price-big { margin: 4px 0 0; font-size: clamp(56px, 6vw, 76px); line-height: 1; font-weight: 700; letter-spacing: -0.04em; color: var(--ink); }
+.price-big span { display: block; margin-top: 8px; font-size: 16px; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+.price-line { margin: 2px 0 0; font-size: 17px; font-weight: 600; color: var(--sage-ink); }
+.price-beta { margin: 6px 0 4px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.price-beta b { color: var(--ink); }
+@media (max-width: 920px) { .price-card { position: static; } }

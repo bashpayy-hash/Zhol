@@ -5,16 +5,16 @@
 <meta name="theme-color" content="#f6f3ea">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>zhol · Le otto domande della giuria TEF e le nostre risposte</title>
+<title>zhol · Sapere cosa fermerà le vostre merci, prima che succeda</title>
 <script>document.documentElement.classList.add("js")</script>
-<meta name="description" content="zhol stima quali spedizioni, su strada, rotaia o mare, saranno colpite da un divieto, un giorno di dosaggio, una chiusura o uno sciopero e quanto costerà, avvisa in anticipo chi le pianifica e lo aggiorna in tempo reale. Le nostre risposte alla giuria di TEF Ignition: mercato, prezzi, modello di business, go-to-market, tecnologia, evidenze, concorrenza e spazio nel mercato.">
-<meta property="og:title" content="zhol · Le otto domande della giuria TEF e le nostre risposte">
-<meta property="og:description" content="Mercato, prezzi, modello di business, go-to-market, tecnologia, evidenze, concorrenza e spazio nel mercato, ciascuno con le sue fonti.">
+<meta name="description" content="zhol è una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia.">
+<meta property="og:title" content="zhol · Sapere cosa fermerà le vostre merci, prima che succeda">
+<meta property="og:description" content="Un radar dal vivo di divieti, chiusure e scioperi in Europa, il costo per ogni spedizione, un solo messaggio WhatsApp quando serve. Quattro settimane gratis per gli uffici traffico.">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s45">
+<link rel="stylesheet" href="/assets/zhol.css?v=s46">
 <link rel="alternate" hreflang="en" href="https://zhol.live/">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/">
 <link rel="preload" as="image" href="/assets/img/scenes/desk-poster.webp?v=1">
@@ -22,24 +22,38 @@
 <body>
 <header class="top"><div class="wrap">
   <a class="logo" href="/it/" aria-label="Home page di zhol"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
-  <nav class="tabs" aria-label="Sezioni"><a href="/it/" aria-current="page">Risposte</a><a href="/it/radar">Radar</a><a href="/it/story">Storia</a><a href="/it/beta">Beta</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/" lang="en" hreflang="en">EN</a><a href="/it/" lang="it" hreflang="it" aria-current="true">IT</a></span>
+  <nav class="tabs" aria-label="Sezioni"><a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/story">Storia</a><a href="/it/#answers">Risposte</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/" lang="en" hreflang="en">EN</a><a href="/it/" lang="it" hreflang="it" aria-current="true">IT</a></span>
 </div></header>
 
 <main>
+<!-- the welcome: the living scene, big, with what zhol is and one action (owner, 14 Nov 2026: «зачем ты сделал эту
+     анимацию такой маленькой, увеличь… сделай полноценный лендинг, который отметит, что zhol полноценный продукт») -->
+<section class="slide hero hero-full landing-hero" id="top">
+  <div class="wrap">
+    <div class="split center">
+      <div class="stack" style="gap:22px">
+        <span class="kicker">Strada, ferrovia e mare · in tutta Europa</span>
+        <h1 class="title">Sapere cosa fermerà le vostre merci, prima che succeda.</h1>
+        <p class="lead">Una piattaforma AI che stima per ogni spedizione, su strada, su rotaia o via mare, il rischio di divieti, chiusure e scioperi e il suo costo, avvisa in anticipo e aggiorna in tempo reale.</p>
+        <div class="actions"><a class="btn" href="/it/beta">Provatelo sulle vostre spedizioni</a><a class="btn ghost" href="#radar">Guardate il radar dal vivo</a></div>
+        <p class="hero-proof">Selezionati per TEF Ignition 2026 · 100 progetti su ~500 · Università Bocconi</p>
+      </div>
+      <div class="media scene-frame">
+        <img class="scene-layer" src="/assets/img/scenes/desk-poster.webp?v=1" alt="Zholdas, la nostra mascotte di peluche con cappellino da camionista e gilet ad alta visibilità, traccia con una matita rossa un percorso sulle Alpi su una carta, alla scrivania di un ufficio traffico, con le luci dell’autostrada fuori dalla finestra" width="1280" height="960" fetchpriority="high"><video class="scene-layer scene-source" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="960"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- il radar per primo: ogni evento con la sua probabilità, quanto costa a un viaggio, il piano migliore e l’ora entro cui
      decidere; un tocco per la tratta, un tocco per il piano, niente si apre su un’altra pagina (owner, 14 Nov 2026) -->
-<section class="slide hero rc-hero" id="top">
+<section class="slide rc-hero" id="radar">
   <div class="wrap">
     <div class="rc" data-console>
-      <div class="rc-top">
-        <div class="rc-head">
-          <span class="kicker rc-live"><span class="sv-live-dot" aria-hidden="true"></span><span class="rc-status">radar zhol · in tempo reale</span></span>
-          <h1 class="title">Cosa può fermare le vostre merci nelle prossime otto settimane</h1>
-          <p class="lead">Ogni evento con la sua probabilità, quanto costa a un viaggio, il piano migliore e l’ora entro cui decidere. Su strada, rotaia e mare.</p>
-        </div>
-        <figure class="rc-scene">
-          <img class="scene-layer" src="/assets/img/scenes/desk-poster.webp?v=1" alt="Zholdas, la nostra mascotte di peluche con cappellino da camionista e gilet ad alta visibilità, traccia con una matita rossa un percorso sulle Alpi su una carta, alla scrivania di un ufficio traffico, con le luci dell’autostrada fuori dalla finestra" width="1280" height="960" fetchpriority="high"><video class="scene-layer scene-source" data-scene="/assets/img/scenes/desk" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="960"></video>
-        </figure>
+      <div class="rc-head">
+        <span class="kicker rc-live"><span class="sv-live-dot" aria-hidden="true"></span><span class="rc-status">radar zhol · in tempo reale</span></span>
+        <h2 class="title">Cosa può fermare le vostre merci nelle prossime otto settimane</h2>
+        <p class="lead">Ogni evento con la sua probabilità, quanto costa a un viaggio, il piano migliore e l’ora entro cui decidere. Su strada, rotaia e mare.</p>
       </div>
       <div class="rc-routes" role="group" aria-label="La vostra tratta"></div>
       <div class="rc-grid">
@@ -57,15 +71,148 @@
       <noscript><p><a class="btn" href="/it/radar">Aprite il radar</a></p></noscript>
       <div class="rc-cta">
         <div class="actions"><a class="btn" href="/it/segnala#alerts">Ricevete questi avvisi per le vostre tratte</a><a class="btn ghost" href="/it/beta">Provatelo sui vostri viaggi</a></div>
-        <p class="small muted">TEF Ignition 2026 · Università Bocconi. <a href="#answers">Le otto domande della giuria, con le risposte qui sotto</a></p>
+        <p class="small muted">TEF Ignition 2026 · Università Bocconi. <a href="#answers">Le otto domande della giuria, con le risposte più in basso</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 1 market -->
+<!-- what zhol does, in three cards; the facts at the bottom come from the live radar (console.js) -->
+<section class="slide what" id="what">
+  <div class="wrap stack" style="gap:22px">
+    <div class="stack" style="gap:10px"><span class="kicker">Cosa fa zhol</span><h2 class="title">Stima il rischio, avvisa in anticipo, aggiorna in tempo reale</h2></div>
+    <div class="grid g3 what-grid">
+      <article class="card what-card">
+        <span class="kicker">Stima</span>
+        <h3>Ogni spedizione, in euro</h3>
+        <p>Se la colpirà un divieto, una chiusura o uno sciopero, quante ore perderebbe e quanto costa: la probabilità per il costo.</p>
+        <p class="what-live" data-live="estimate"><span class="sv-live-dot" aria-hidden="true"></span><span>Ogni evento sul radar ha la sua probabilità e il suo costo per un viaggio.</span></p>
+      </article>
+      <article class="card what-card">
+        <span class="kicker">Avvisa in anticipo</span>
+        <h3>Giorni e settimane prima</h3>
+        <p>Appena un evento è annunciato o diventa probabile, con il piano migliore e l’ora entro cui decidere.</p>
+        <p class="what-live" data-live="advance"><span class="sv-live-dot" aria-hidden="true"></span><span>Divieti festivi, giorni di dosaggio e scioperi si conoscono settimane prima.</span></p>
+      </article>
+      <article class="card what-card">
+        <span class="kicker">Aggiorna in tempo reale</span>
+        <h3>Mentre è in viaggio</h3>
+        <p>Uno sciopero revocato, un valico chiuso, un traghetto che non è partito: un nuovo messaggio, prima verificato da una persona.</p>
+        <p class="what-live" data-live="realtime"><span class="sv-live-dot" aria-hidden="true"></span><span>Le notizie vengono rilette ogni 30 minuti.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- how it works for an office, and the price (outreach/04-pilot-offer.md, answers/pricing) -->
+<section class="slide sage how-office" id="how">
+  <div class="wrap split wide-left">
+    <div class="stack" style="gap:16px">
+      <span class="kicker green">Come funziona per il vostro ufficio</span>
+      <h2 class="title">Il vostro piano dentro, un messaggio fuori</h2>
+      <ol class="beta-steps">
+        <li><span class="step-n">1</span><p><b>Ci mandate il piano.</b> Le spedizioni dei prossimi giorni, in Excel, CSV o foto del piano. Non servono i nomi degli autisti.</p></li>
+        <li><span class="step-n">2</span><p><b>zhol stima ogni spedizione.</b> Appena arriva il piano, e di nuovo ogni volta che qualcosa cambia sul percorso.</p></li>
+        <li><span class="step-n">3</span><p><b>Un solo WhatsApp, solo quando serve.</b> Le opzioni, anticipare, posticipare, cambiare valico o trattenere, e il costo di ognuna. Se non c’è nulla, non vi scriviamo.</p></li>
+        <li><span class="step-n">4</span><p><b>Decidete in un minuto.</b> I messaggi per l’autista e per il cliente sono pronti da copiare. Ogni evento è verificato da una persona e cita la fonte.</p></li>
+      </ol>
+    </div>
+    <aside class="card price-card">
+      <span class="kicker">Prezzo</span>
+      <p class="price-big">€12 <span>per mezzo al mese</span></p>
+      <p class="price-line">Circa il 14% di quanto fa risparmiare.</p>
+      <p class="price-beta"><b>Uffici della beta:</b> quattro settimane gratis, poi 8 € per mezzo al mese per i primi 12 mesi.</p>
+      <div class="actions"><a class="btn" href="/it/beta#join">Partecipa alla beta</a><a href="/it/beta#how">Come funziona la beta</a></div>
+    </aside>
+  </div>
+</section>
+
+
+
+<!-- passaparola: gli uffici segnalano al radar, l'assistente legge, avvisi WhatsApp (owner, 11 Nov 2026) -->
+<section class="slide word" id="word">
+  <div class="wrap split center">
+    <div class="stack" style="gap:18px">
+      <span class="kicker">Passaparola · novità</span>
+      <h2 class="title">Avete visto qualcosa sulla strada? Ditelo al radar.</h2>
+      <p class="lead">Scrivetelo con parole vostre o mandate il documento: un avviso di sciopero, un’ordinanza, una coda al confine. Zholdas, il nostro assistente, lo legge, e va sul radar quando lo conferma un secondo ufficio o il nostro team. Gli uffici su quella tratta ricevono un messaggio WhatsApp.</p>
+      <div class="actions"><a class="btn" href="/it/segnala">Segnala al radar</a><a href="/it/segnala#alerts">Ricevi avvisi su WhatsApp</a></div>
+    </div>
+    <div class="media word-media"><img class="word-scene" src="/assets/img/mascot/word-radar-1600.webp" srcset="/assets/img/mascot/word-radar-900.webp 900w, /assets/img/mascot/word-radar-1600.webp 1600w" sizes="(max-width: 920px) 100vw, 56vw" alt="Zholdas, la nostra mascotte di peluche, in una piccola stazione radar su una collina di feltro: traccia un percorso su una carta accanto a uno schermo radar acceso, e la linea rossa prosegue nel paesaggio, lungo una strada con un camion, una ferrovia con un treno merci e uno stretto con un traghetto, fino a uscire dall’immagine" width="1600" height="1059" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- tutto il resto, un blocco alla volta -->
+<section class="slide" id="more">
+  <div class="wrap stack">
+    <p class="block-hint">Perché zhol, e chi lo costruisce: toccate un blocco.</p>
+    <div class="blocks wide bento">
+      <article class="block bento-b" id="watch">
+        <span class="kicker">Perché non basta che qualcuno controlli?</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="watch-more">Le persone controllano in orario d’ufficio. I disagi no.<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="bento-num">3</p>
+        <p class="block-line">Passi: una persona ogni tanto, zhol ogni giorno, poi gli uffici che si avvisano tra loro</p>
+        <div class="block-more" id="watch-more"><div>
+        <div class="grid g3 steps">
+      <div class="card"><span class="step-n">1</span><h3>Oggi: una persona, ogni tanto</h3><p class="small">Qualcuno controlla notizie e calendari dei divieti tra un lavoro e l’altro, in orario d’ufficio. Gli scioperi si annunciano fuori orario, le chiusure partono alle 5, i traghetti si fermano di notte.</p></div>
+      <div class="card"><span class="step-n">2</span><h3>zhol: tutti i giorni, anche nel weekend</h3><p class="small">Il radar legge le notizie in quattro lingue, i calendari ufficiali e il meteo ai valichi, avvisa appena qualcosa viene annunciato e aggiorna l’avviso quando cambia.</p></div>
+      <div class="card"><span class="step-n">3</span><h3>Ora: gli uffici si avvisano tra loro</h3><p class="small">Un autista fermo a Kufstein alle 4, un avviso di sciopero di un sindacato: ditelo al radar con parole vostre o con il documento. Lo conferma un secondo ufficio o il nostro team, e lo sa ogni ufficio con carichi lì. Anonimo. Più uffici, prima lo sanno tutti.</p><a class="tag" href="/it/segnala">Segnala al radar</a></div>
+    </div>
+        </div></div>
+      </article>
+      <article class="block bento-b" id="story">
+        <span class="kicker">Perché l’Europa</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="story-more">Ogni paese europeo ferma le merci con le sue regole<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="bento-num">14–17</p>
+        <p class="block-line">Paesi vietano i camion in una settimana tipo; si fermano anche treni, porti e traghetti</p>
+        <div class="block-more" id="story-more"><div>
+        <div class="grid g3">
+      <div class="card"><span class="big">14–17</span><p class="small">paesi vietano i camion in una settimana tipo, ognuno con orari, limiti di peso e festivi propri (monitoraggio europeo dei divieti, 2026)</p></div>
+      <div class="card"><span class="big">21 su 57</span><p class="small">giorni di dosaggio a Kufstein nel 2025 sono arrivati fuori dal calendario pubblicato (Land Tirol, ADAC)</p></div>
+      <div class="card"><span class="big">€400 mln+</span><p class="small">persi in otto giorni di blocchi nel Sud Italia, ottobre 2026 (conteggio da stime regionali)</p></div>
+    </div>
+        <p>I camion sono solo una parte: scioperi di treni e porti, traghetti fermi per il maltempo e valichi chiusi bloccano anche le spedizioni via treno e via mare. Le informazioni esistono, ma sono sparse tra paesi e lingue e cambiano di notte, quando gli uffici sono chiusi. Partiamo dal Nord Italia, a un giorno da Milano, e seguiamo le tratte dei nostri uffici verso Austria, Germania, Svizzera e Francia.</p>
+        <a class="open" href="/it/story">Il fermo in Sicilia, la trappola di Kufstein e il messaggio che avrebbe aiutato</a>
+        </div></div>
+      </article>
+      <article class="block bento-b" id="team">
+        <span class="kicker">Il team</span>
+        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="team-more">Una squadra, dal Kazakistan, a Milano<span class="pm" aria-hidden="true"></span></button></h2>
+        <p class="block-line">Alikhan, Inkara e Tomiris · Università Bocconi</p>
+        <div class="block-more" id="team-more"><div>
+        <p class="lead">Alikhan, Inkara e Tomiris, amici dal primo anno in Bocconi. Ora a Milano, vicini agli uffici a cui ci rivolgiamo. <span lang="kk">Zhol</span> vuol dire strada.</p>
+        <div class="grid g3">
+      <div class="card"><h3>Alikhan</h3><span class="kicker">Ascolto dei clienti</span><p class="small">Intervista traffichisti e titolari. Recluta i primi uffici.</p></div>
+      <div class="card"><h3>Inkara</h3><span class="kicker">Flusso di lavoro e prototipo</span><p class="small">Abbina gli eventi ai carichi. Progetta revisione e conferma.</p></div>
+      <div class="card"><h3>Tomiris</h3><span class="kicker">Prove pilota e misurazione</span><p class="small">Gestisce i casi supervisionati. Misura risultati, tempi e costi.</p></div>
+    </div>
+        </div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- recognition on its own, so it stands out (owner, 14 Nov 2026) -->
+<section class="slide dark recog" id="recognition">
+  <div class="wrap recog-grid">
+    <div class="recog-main">
+      <span class="kicker">Riconoscimenti</span>
+      <p class="recog-num"><b>100</b> su ~500</p>
+      <p class="recog-cap">progetti scelti per TEF Ignition 2026 dalla Tech Europe Foundation</p>
+    </div>
+    <ul class="badges">
+      <li><b>Grant di 2.000 €</b><span>Tech Europe Foundation</span></li>
+      <li><b>Università Bocconi</b><span>un team di studenti a Milano</span></li>
+      <li><b>Radar attivo</b><span>oltre 400 articoli al giorno</span></li>
+      <li><b>Sondaggio aperto</b><span>7 domande, 5 lingue</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- the TEF jury's eight questions, answered: below the product (owner, 14 Nov 2026) -->
 <section class="slide" id="answers">
   <div class="wrap stack">
+    <div class="stack" style="gap:10px"><span class="kicker">TEF Ignition 2026</span><h2 class="title">Le otto domande della giuria, con le risposte</h2></div>
     <p class="block-hint">Toccate una domanda per vedere i suoi tre numeri. Ogni numero ha una fonte; ciò che è ancora un’ipotesi è indicato.</p>
     <div class="blocks bento">
       <article class="block bento-b" id="market">
@@ -193,97 +340,6 @@
   </div>
 </section>
 
-<!-- recognition on its own, so it stands out (owner, 14 Nov 2026) -->
-<section class="slide dark recog" id="recognition">
-  <div class="wrap recog-grid">
-    <div class="recog-main">
-      <span class="kicker">Riconoscimenti</span>
-      <p class="recog-num"><b>100</b> su ~500</p>
-      <p class="recog-cap">progetti scelti per TEF Ignition 2026 dalla Tech Europe Foundation</p>
-    </div>
-    <ul class="badges">
-      <li><b>Grant di 2.000 €</b><span>Tech Europe Foundation</span></li>
-      <li><b>Università Bocconi</b><span>un team di studenti a Milano</span></li>
-      <li><b>Radar attivo</b><span>oltre 400 articoli al giorno</span></li>
-      <li><b>Sondaggio aperto</b><span>7 domande, 5 lingue</span></li>
-    </ul>
-  </div>
-</section>
-
-
-<!-- tutto il resto, un blocco alla volta -->
-<!-- passaparola: gli uffici segnalano al radar, l'assistente legge, avvisi WhatsApp (owner, 11 Nov 2026) -->
-<section class="slide word" id="word">
-  <div class="wrap split center">
-    <div class="stack" style="gap:18px">
-      <span class="kicker">Passaparola · novità</span>
-      <h2 class="title">Avete visto qualcosa sulla strada? Ditelo al radar.</h2>
-      <p class="lead">Scrivetelo con parole vostre o mandate il documento: un avviso di sciopero, un’ordinanza, una coda al confine. Zholdas, il nostro assistente, lo legge, e va sul radar quando lo conferma un secondo ufficio o il nostro team. Gli uffici su quella tratta ricevono un messaggio WhatsApp.</p>
-      <div class="actions"><a class="btn" href="/it/segnala">Segnala al radar</a><a href="/it/segnala#alerts">Ricevi avvisi su WhatsApp</a></div>
-    </div>
-    <div class="media word-media"><img class="word-scene" src="/assets/img/mascot/word-radar-1600.webp" srcset="/assets/img/mascot/word-radar-900.webp 900w, /assets/img/mascot/word-radar-1600.webp 1600w" sizes="(max-width: 920px) 100vw, 56vw" alt="Zholdas, la nostra mascotte di peluche, in una piccola stazione radar su una collina di feltro: traccia un percorso su una carta accanto a uno schermo radar acceso, e la linea rossa prosegue nel paesaggio, lungo una strada con un camion, una ferrovia con un treno merci e uno stretto con un traghetto, fino a uscire dall’immagine" width="1600" height="1059" loading="lazy"></div>
-  </div>
-</section>
-
-<section class="slide" id="more">
-  <div class="wrap stack">
-    <p class="block-hint">Altro, se vi interessa: toccate un blocco.</p>
-    <div class="blocks wide bento">
-      <article class="block bento-b" id="watch">
-        <span class="kicker">Perché non basta che qualcuno controlli?</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="watch-more">Le persone controllano in orario d’ufficio. I disagi no.<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">3</p>
-        <p class="block-line">Passi: una persona ogni tanto, zhol ogni giorno, poi gli uffici che si avvisano tra loro</p>
-        <div class="block-more" id="watch-more"><div>
-        <div class="grid g3 steps">
-      <div class="card"><span class="step-n">1</span><h3>Oggi: una persona, ogni tanto</h3><p class="small">Qualcuno controlla notizie e calendari dei divieti tra un lavoro e l’altro, in orario d’ufficio. Gli scioperi si annunciano fuori orario, le chiusure partono alle 5, i traghetti si fermano di notte.</p></div>
-      <div class="card"><span class="step-n">2</span><h3>zhol: tutti i giorni, anche nel weekend</h3><p class="small">Il radar legge le notizie in quattro lingue, i calendari ufficiali e il meteo ai valichi, avvisa appena qualcosa viene annunciato e aggiorna l’avviso quando cambia.</p></div>
-      <div class="card"><span class="step-n">3</span><h3>Ora: gli uffici si avvisano tra loro</h3><p class="small">Un autista fermo a Kufstein alle 4, un avviso di sciopero di un sindacato: ditelo al radar con parole vostre o con il documento. Lo conferma un secondo ufficio o il nostro team, e lo sa ogni ufficio con carichi lì. Anonimo. Più uffici, prima lo sanno tutti.</p><a class="tag" href="/it/segnala">Segnala al radar</a></div>
-    </div>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="story">
-        <span class="kicker">Perché l’Europa</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="story-more">Ogni paese europeo ferma le merci con le sue regole<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">14–17</p>
-        <p class="block-line">Paesi vietano i camion in una settimana tipo; si fermano anche treni, porti e traghetti</p>
-        <div class="block-more" id="story-more"><div>
-        <div class="grid g3">
-      <div class="card"><span class="big">14–17</span><p class="small">paesi vietano i camion in una settimana tipo, ognuno con orari, limiti di peso e festivi propri (monitoraggio europeo dei divieti, 2026)</p></div>
-      <div class="card"><span class="big">21 su 57</span><p class="small">giorni di dosaggio a Kufstein nel 2025 sono arrivati fuori dal calendario pubblicato (Land Tirol, ADAC)</p></div>
-      <div class="card"><span class="big">€400 mln+</span><p class="small">persi in otto giorni di blocchi nel Sud Italia, ottobre 2026 (conteggio da stime regionali)</p></div>
-    </div>
-        <p>I camion sono solo una parte: scioperi di treni e porti, traghetti fermi per il maltempo e valichi chiusi bloccano anche le spedizioni via treno e via mare. Le informazioni esistono, ma sono sparse tra paesi e lingue e cambiano di notte, quando gli uffici sono chiusi. Partiamo dal Nord Italia, a un giorno da Milano, e seguiamo le tratte dei nostri uffici verso Austria, Germania, Svizzera e Francia.</p>
-        <a class="open" href="/it/story">Il fermo in Sicilia, la trappola di Kufstein e il messaggio che avrebbe aiutato</a>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="team">
-        <span class="kicker">Il team</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="team-more">Una squadra, dal Kazakistan, a Milano<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="block-line">Alikhan, Inkara e Tomiris · Università Bocconi</p>
-        <div class="block-more" id="team-more"><div>
-        <p class="lead">Alikhan, Inkara e Tomiris, amici dal primo anno in Bocconi. Ora a Milano, vicini agli uffici a cui ci rivolgiamo. <span lang="kk">Zhol</span> vuol dire strada.</p>
-        <div class="grid g3">
-      <div class="card"><h3>Alikhan</h3><span class="kicker">Ascolto dei clienti</span><p class="small">Intervista traffichisti e titolari. Recluta i primi uffici.</p></div>
-      <div class="card"><h3>Inkara</h3><span class="kicker">Flusso di lavoro e prototipo</span><p class="small">Abbina gli eventi ai carichi. Progetta revisione e conferma.</p></div>
-      <div class="card"><h3>Tomiris</h3><span class="kicker">Prove pilota e misurazione</span><p class="small">Gestisce i casi supervisionati. Misura risultati, tempi e costi.</p></div>
-    </div>
-        </div></div>
-      </article>
-      <article class="block bento-b" id="beta">
-        <span class="kicker">La beta è aperta</span>
-        <h2><button type="button" class="block-q" aria-expanded="true" aria-controls="beta-more">Mandateci i vostri carichi. Vi diciamo in anticipo quali saranno colpiti da una restrizione.<span class="pm" aria-hidden="true"></span></button></h2>
-        <p class="bento-num">4</p>
-        <p class="block-line">Settimane, gratis, per gli uffici traffico con linee oltre le Alpi</p>
-        <div class="block-more" id="beta-more"><div>
-        <p>Quattro settimane, gratis, per gli uffici traffico con tratte oltre le Alpi. Ogni avviso è controllato da una persona e cita la sua fonte.</p>
-        <div class="actions"><a class="btn" href="/it/beta#join">Partecipa alla beta</a><a class="btn ghost" href="/it/beta">Guardalo su strade vere</a></div>
-        </div></div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- the finale: the ask, and Zholdas as a scene across the page among a long queue of trucks (owner, 12 Nov 2026) -->
 <section class="slide finale" id="finale">
   <div class="wrap">
@@ -310,7 +366,7 @@
 <script src="/assets/site.js?v=vz1" defer></script>
 <script src="/assets/map.js?v=b2" defer></script>
 <script src="/assets/explain.js?v=2" defer></script>
-<script src="/assets/console.js?v=3" defer></script>
+<script src="/assets/console.js?v=4" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t6" defer></script>
 <script src="/assets/assistant.js?v=5" defer></script>
