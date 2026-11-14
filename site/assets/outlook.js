@@ -45,20 +45,19 @@
     const ch = el("div", "rd-chance");
     ch.append(el("span", "rd-p", pct(it.p)), el("span", "small", band(it.band)));
     const bar = el("div", "rd-bar"); const fill = el("i"); fill.style.width = pct(it.p); bar.append(fill); ch.append(bar);
+    // one tap and the event comes out on its own, explained in plain words (explain.js; owner, 14 Nov 2026). The link sits
+    // under the event's own lines, like the map's, not on a strip of its own (owner, 14 Nov: «здесь кнопка кривая»)
+    const open = el("button", "rd-open", it.impact ? T("Why " + pct(it.p) + " and what to do", "Perché " + pct(it.p) + " e cosa fare") : T("Why " + pct(it.p) + ", in plain words", "Perché " + pct(it.p) + ", in parole semplici"));
+    open.type = "button";
+    open.addEventListener("click", e => { e.stopPropagation(); explain(it, r); });
+    body.append(open);
     r.append(when, body, ch);
-    // one tap and the event comes out on its own, explained in plain words (explain.js; owner, 14 Nov 2026)
-    const foot = el("div", "rd-foot");
     if (it.impact) {
       const im = it.impact, nums = el("p", "small rd-nums");
       nums.append(document.createTextNode(T("Keep the plan ", "Senza cambiare ") + eur(im.e_keep) + " · " + T("With zhol ", "Con zhol ") + eur(Math.min(im.e_now, im.e_alert)) + " · "),
         el("b", "save", saves(it) + eur(im.saving)));
-      foot.append(nums);
+      r.append(nums);
     }
-    const open = el("button", "rd-open", it.impact ? T("Why " + pct(it.p) + " and what to do", "Perché " + pct(it.p) + " e cosa fare") : T("Why " + pct(it.p) + ", in plain words", "Perché " + pct(it.p) + ", in parole semplici"));
-    open.type = "button";
-    open.addEventListener("click", e => { e.stopPropagation(); explain(it, r); });
-    foot.append(open);
-    r.append(foot);
     r.addEventListener("click", e => {
       if (e.target.closest("a, button, summary, details, select, input")) return;
       const sel = window.getSelection && String(window.getSelection()); if (sel) return;     // selecting text is not a tap

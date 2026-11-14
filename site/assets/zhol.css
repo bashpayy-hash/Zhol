@@ -1648,13 +1648,31 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 /* the radar list: every row opens its event on its own; the numbers stay visible, the rest is one tap away */
 .rd-row { cursor: pointer; transition: box-shadow var(--dur-card) var(--ease), transform var(--dur-card) var(--ease), opacity 240ms var(--ease-color); }
 @media (hover: hover) { .rd-row:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -20px rgba(53, 43, 40, .5); } }
-.rd-foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; border-top: 1px dashed #b9c9b2; padding-top: 10px; }
-.rd-nums { margin: 0; font-size: 14px; color: var(--ink-2); }
+.rd-nums { grid-column: 1 / -1; margin: 0; padding-top: 10px; border-top: 1px dashed #b9c9b2; font-size: 14px; color: var(--ink-2); }
 .rd-nums .save { color: var(--sage-ink); }
-.rd-open { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-left: auto; padding: 0 18px; border-radius: var(--r-pill);
-  border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: inherit; font-size: 14.5px; font-weight: 600; cursor: pointer;
-  transition: background-color var(--dur) var(--ease-color), transform var(--dur) var(--ease); }
-.rd-open::after { content: ""; width: 7px; height: 7px; border: solid currentColor; border-width: 2px 2px 0 0; transform: rotate(45deg); }
-.rd-open:hover { background: #241b18; }
-.rd-open:active { transform: scale(.97); }
-@media (max-width: 560px) { .rd-open { width: 100%; justify-content: center; margin-left: 0; } }
+/* the way into the explained card: a link under the event's lines, the same as on the map's panel */
+.rd-open { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin: -2px 0 -6px; padding: 0; border: 0; background: none;
+  color: var(--red); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; text-align: left; }
+.rd-open::after { content: ""; flex: none; width: 7px; height: 7px; border: solid currentColor; border-width: 2px 2px 0 0; transform: rotate(45deg); transition: transform var(--dur) var(--ease); }
+.rd-open:hover { text-decoration: underline; text-underline-offset: 3px; }
+.rd-open:hover::after { transform: translateX(3px) rotate(45deg); }
+.rd-open:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 4px; }
+
+/* /beta: what happens in the beta, step by step (owner, 14 Nov 2026: «я так и не понял что происходит в бете»);
+   the steps from outreach/04-pilot-offer.md, broad first, each with a bold start */
+.beta-how { padding-top: 56px; }
+.beta-how .split { align-items: start; gap: 32px 56px; }
+.beta-steps { list-style: none; margin: 6px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.beta-steps li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 16px; align-items: start; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.beta-steps p { margin: 5px 0 0; font-size: 16.5px; line-height: 1.55; color: var(--ink-2); }
+.beta-steps b { color: var(--ink); font-weight: 650; }
+.beta-after { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 18px; padding: 26px 26px 28px; }
+.beta-after .kicker { color: var(--red-on-dark); }
+.beta-after p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--on-dark-2); }
+.beta-after b { color: var(--on-dark); }
+.beta-after > div + div { padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .12); }
+.beta-after .btn { align-self: flex-start; margin-top: 4px; }
+.beta-try { margin: 28px 0 0; max-width: 78ch; font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+.beta-try b { color: var(--ink); }
+@media (max-width: 920px) { .beta-after { position: static; } }
+@media (max-width: 560px) { .beta-how { padding-top: 40px; } .beta-steps p { font-size: 15.5px; } .beta-steps li { gap: 12px; padding: 15px 0; } .beta-after { padding: 22px 20px; } }
