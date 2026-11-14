@@ -34,6 +34,8 @@ from zhol.ingest.feeds import load_all_calendars  # noqa: E402
 from zhol.models import Assessment, Company, CostModel, Load  # noqa: E402
 from zhol.pipeline import run_evening  # noqa: E402
 from zhol.radar.outlook import build_outlook  # noqa: E402
+from zhol.radar import programme, verify  # noqa: E402
+from zhol.radar.signals import reader_spec  # noqa: E402
 from zhol.rules import generate_ban_events  # noqa: E402
 from zhol.store import Store  # noqa: E402
 
@@ -277,6 +279,10 @@ def main() -> None:
         print(f"radar failed ({type(exc).__name__}: {exc}); building it from official data only")
         outlook = build_outlook(today, horizon=60, fetch=False)
     dump("outlook.json", outlook)
+    # the keyword reader as data for the live wire, and the radar's record so far (zhol/radar/verify.py)
+    dump("reader.json", reader_spec())
+    log = verify.load_log()
+    dump("track.json", verify.scorecard(log, verify.load_outcomes(), today) | {"classes": programme.classes_table()})
     print(f"radar: {len(outlook['items'])} items, {outlook['articles_read']} articles, "
           f"{outlook['sources_ok']}/{outlook['sources_total']} sources ok, reader={outlook['reader']}")
     print(f"site data built for {today} in {time.time() - t0:.0f}s")

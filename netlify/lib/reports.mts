@@ -118,25 +118,34 @@ export function confirming(r: Report, others: Report[], now = Date.now()): Repor
 
 export const isPublic = (r: Report) => r.status === "confirmed" || r.status === "approved";
 
-/** The chance shown on the radar. Starting values, checked after each date like the rest of the radar. */
+/** The chance shown on the radar: Bayes on the odds, one factor per independent piece of evidence
+ *  (zhol/radar/exchange.py has the same numbers and the reasoning; docs/18-model.md).
+ *    odds = odds(P1) x LR_OFFICE^(offices - 1) [x LR_TEAM] [x LR_DOCUMENT]
+ *  One report alone 35% (never public), two offices 65%, three 87% capped at 85% until a person has checked it,
+ *  one office and the team 80%, with a document 90%. Start values, corrected after each date like the rest of the radar. */
+export const EXCHANGE = { P1: 0.35, LR_OFFICE: 3.45, LR_TEAM: 7.43, LR_DOCUMENT: 2.25, CAP_UNCHECKED: 0.85, CAP: 0.98, REVOKED: 0.05 };
+
 export function chance(cluster: Report[]): { p: number; factors: { key: string; x: number | null; label: string; label_it: string }[] } {
   const offices = new Set(cluster.map(r => r.fp)).size;
   const approved = cluster.some(r => r.status === "approved");
   const official = cluster.some(r => r.event.official_document || r.event.source_url);
   const revoked = cluster.some(r => r.event.stage === "revoked");
-  const factors = [];
-  let p: number;
+  const E = EXCHANGE, factors = [];
+  let odds = E.P1 / (1 - E.P1) * Math.pow(E.LR_OFFICE, Math.max(0, offices - 1));
+  factors.push({ key: "offices", x: offices > 1 ? Math.round(Math.pow(E.LR_OFFICE, offices - 1) * 100) / 100 : null,
+                 label: offices === 1 ? "reported by one office" : `reported by ${offices} independent offices`,
+                 label_it: offices === 1 ? "segnalato da un ufficio" : `segnalato da ${offices} uffici indipendenti` });
   if (approved) {
-    p = official ? 0.9 : 0.8;
-    factors.push({ key: "checked", x: null, label: "checked by the zhol team", label_it: "verificato dal team zhol" });
-    if (official) factors.push({ key: "document", x: null, label: "with a document or a source", label_it: "con un documento o una fonte" });
-  } else {
-    p = Math.min(0.85, 0.65 + 0.1 * Math.max(0, offices - 2));
+    odds *= E.LR_TEAM;
+    factors.push({ key: "checked", x: E.LR_TEAM, label: "checked by the zhol team", label_it: "verificato dal team zhol" });
+    if (official) {
+      odds *= E.LR_DOCUMENT;
+      factors.push({ key: "document", x: E.LR_DOCUMENT, label: "with a document or a source", label_it: "con un documento o una fonte" });
+    }
   }
-  factors.unshift({ key: "offices", x: null, label: offices === 1 ? "reported by one office" : `reported by ${offices} offices`,
-                    label_it: offices === 1 ? "segnalato da un ufficio" : `segnalato da ${offices} uffici` });
-  if (revoked) p = 0.05;
-  return { p: Math.round(p * 1000) / 1000, factors };
+  let p = Math.min(odds / (1 + odds), approved ? E.CAP : E.CAP_UNCHECKED);
+  if (revoked) p = E.REVOKED;
+  return { p: Math.round(p * 100) / 100, factors };
 }
 
 /** A public id for an event that does not reveal the report ids (FNV-1a). */

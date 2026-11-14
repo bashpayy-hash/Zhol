@@ -35,6 +35,7 @@ from ..engine import _free_flow_arrival, _option, assess, event_touches_waypoint
 from ..ingest.feeds import load_all_calendars
 from ..models import CostModel, Event, EventScope, Load, Source, Window
 from ..rules import generate_ban_events
+from . import leadtime
 
 TZ = ZoneInfo("Europe/Rome")
 
@@ -271,7 +272,13 @@ def impact(item: dict, costs: CostModel | None = None) -> dict | None:
     threshold = c_free / denom if denom > 0 else 1.0
     lane_name = lane.name
     alt_lane = catalog.lane(best.lane_id).name if best.lane_id != lane_id else None
+    # when the warning has to arrive for each plan, and what is still avoidable later (zhol/radar/leadtime.py)
+    try:
+        lead = leadtime.lead(load, events, costs, c0, loss, CHANGE_COST_EUR, full=hit)
+    except Exception:       # the deadlines are an extra: a bad one must not take the cost figures with it
+        lead = None
     return {
+        "lead": lead,
         "lane": lane_name, "lane_it": lane_it(lane_name), "at": place, "departure": departure.isoformat(), "note": note,
         "wait_h": round(wait_h, 1), "productive_h": round(_productive_hours(wait_h), 1),
         "loss": loss, "c_hit": c_hit, "c_free": c_free,

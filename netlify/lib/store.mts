@@ -2,6 +2,8 @@
 // radarItems() from reports.mts. One key per object, no counters (Blobs is not a database).
 import { getStore } from "@netlify/blobs";
 import type { Report, Places } from "./reports.mts";
+import { EVERY_MIN, sweep } from "./wire.mts";
+import type { Reader, WireState } from "./wire.mts";
 
 const store = (name: string) => getStore({ name, consistency: "strong" });
 export const reports = () => store("zhol-reports");       // r/<id>        the report
@@ -75,6 +77,37 @@ export async function outlook(req?: Request): Promise<any> {
 }
 
 export { siteUrl };
+
+// ---- the live wire (netlify/lib/wire.mts): one object, replaced on every sweep
+export const wire = () => store("zhol-wire");
+export const wireState = () => wire().get("state", { type: "json" }) as Promise<WireState | null>;
+
+let readerCache: { at: number; data: Reader } | null = null;
+async function reader(req?: Request): Promise<Reader> {
+  if (readerCache && Date.now() - readerCache.at < 6 * 36e5) return readerCache.data;
+  const r = await fetch(siteUrl(req) + "/data/reader.json");
+  if (!r.ok) throw new Error("reader.json " + r.status);
+  readerCache = { at: Date.now(), data: await r.json() };
+  return readerCache.data;
+}
+
+const getText = async (url: string) => {
+  const r = await fetch(url, { signal: AbortSignal.timeout(9000), headers: { "user-agent": "zhol-radar/0.1 (+https://zhol.live)" } });
+  if (!r.ok) throw new Error(String(r.status));
+  return r.text();
+};
+
+/** Read the sources once and keep the result. Returns the state it wrote, or the one in place if it is still fresh. */
+export async function refreshWire(req?: Request, force = false): Promise<WireState | null> {
+  const prev = await wireState();
+  if (!force && prev && Date.now() - Date.parse(prev.at) < EVERY_MIN * 6e4) return prev;
+  const [R, P] = await Promise.all([reader(req), places(req)]);
+  const next = await sweep(R, P, prev, getText);
+  if (next.ok === 0 && prev) return prev;         // every source failed: keep what we had
+  await wire().setJSON("state", next);
+  console.log(JSON.stringify({ zhol: "wire", items: next.items.length, read: next.read, ok: next.ok, total: next.total }));
+  return next;
+}
 
 export const json = (body: unknown, status = 200, headers: Record<string, string> = {}) =>
   new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...headers } });

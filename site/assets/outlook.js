@@ -9,11 +9,11 @@
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
   const pct = p => Math.round(p * 100) + "%";
   const fmt = (s, opt) => new Date(s + "T12:00:00").toLocaleDateString(LOC, opt || { weekday: "short", day: "numeric", month: "short" });
-  const range = it => !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
+  const range = it => it.group === "wire" ? T("Last hours", "Ultime ore") : !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
   const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
   const tone = p => p >= 0.8 ? "vl" : p >= 0.5 ? "l" : p >= 0.2 ? "po" : "un";
-  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici" }
-                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals", office: "Reported by offices" };
+  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici", wire: "Ultime ore, non verificato" }
+                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals", office: "Reported by offices", wire: "Last hours, not checked" };
   const BAND_IT = { "very likely": "molto probabile", likely: "probabile", possible: "possibile", unlikely: "improbabile" };
   const STAGE_IT = { tension: "tensione", threat: "minaccia", announced: "annunciato", confirmed: "confermato", ongoing: "in corso", revoked: "revocato" };
   const band = b => IT ? (BAND_IT[b] || b) : b;
@@ -29,7 +29,7 @@
                   set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } } };
 
   function row(it) {
-    const r = el("article", "rd-row " + tone(it.p) + (it.group === "office" ? " office" : ""));
+    const r = el("article", "rd-row " + tone(it.p) + (it.group === "office" ? " office" : it.group === "wire" ? " office wire" : ""));
     r.id = "rd-" + it.id;
     const when = el("div", "rd-when");
     when.append(el("b", null, range(it)), el("span", "small muted", BASIS[it.basis] || it.basis));
@@ -91,6 +91,19 @@
       el("b", "save", saves(it) + eur(im.saving) + T(" per truck", " per camion")));
     if (it.group === "official") p1.append(document.createTextNode(T(" (in a published calendar: not counted as a zhol saving)", " (è in un calendario pubblicato: non lo contiamo come risparmio di zhol)")));
     inner.append(p1);
+    const ld = im.lead;
+    if (ld && ld.decide_by) {
+      const why = { before_new_departure: T("the truck has to be ready for the new departure", "il camion va preparato per la nuova partenza"),
+                    before_departure: T("after that the truck has left", "dopo il camion è partito"),
+                    before_fork: T("after that the truck has passed ", "dopo il camion ha superato ") + (ld.decide_by_place || "") }[ld.decide_by_why] || "";
+      const when = new Date(ld.decide_by).toLocaleString(LOC, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome" });
+      const pts = ld.curve.filter(c => [48, 24, 12, 6, 3].includes(c.h));
+      const p2 = el("p", "small");
+      p2.append(el("b", null, T("Decide by ", "Decidere entro ") + when), document.createTextNode(": " + why + ". " +
+        T("What a warning still saves, by hours before the truck meets it: ", "Quanto fa ancora risparmiare un avviso, per ore prima che il camion lo incontri: ") +
+        pts.map(c => c.h + " h " + Math.round(c.share * 100) + "%").join(" · ") + "."));
+      inner.append(p2);
+    }
     const note = (IT && im.note_it) || im.note;
     inner.append(el("p", "small muted", IT
       ? "Se succede e non cambia nulla: " + String(im.wait_h).replace(".", ",") + " h di attesa, " + eur(im.loss) +
@@ -163,7 +176,12 @@
     const list = $("rd-list"); list.textContent = "";
     const items = data.items.filter(i => (filter === "all" || i.group === filter) && onRoute(i));
     const dated = items.filter(i => i.start).sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p);
-    const undated = items.filter(i => !i.start).sort((a, b) => b.p - a.p);
+    const live = items.filter(i => i.group === "wire");
+    const undated = items.filter(i => !i.start && i.group !== "wire").sort((a, b) => b.p - a.p);
+    if (live.length) {      // what the press reported in the last hours comes first: it is happening now
+      list.append(el("h3", "rd-week", T("In the last hours", "Nelle ultime ore")));
+      const g = el("div", "rd-group"); live.forEach(it => g.append(row(it))); list.append(g);
+    }
     let current = null, box = null;
     dated.forEach(it => {
       const wk = weekKey(it.start);
@@ -245,15 +263,26 @@
   const mapView = window.ZholMap && $("map") ? window.ZholMap($("map"), { show: showItem }) : null;
   const renderMap = () => { if (mapView) mapView.update(data.items.filter(onRoute), data.today); };
 
-  const office = fetch("/api/reports").then(r => r.ok ? r.json() : { items: [] }).then(x => x.items || []).catch(() => []);
-  Promise.all([fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)), office]).then(([d, of]) => {
-    d.items = of.concat(d.items);
+  // what reached the radar between two builds: office reports, and the wire of the last hours (netlify/lib/wire.mts)
+  const feed = fetch("/api/reports").then(r => r.ok ? r.json() : {}).catch(() => ({}));
+  const RANK = { tension: 0, threat: 1, announced: 2, confirmed: 3, ongoing: 4, revoked: 5 }, STOP = { strike: "stop", blockade: "stop", protest: "stop" };
+  const sameWhere = (a, b) => { const k = x => (x.places && x.places.length ? x.places : x.regions && x.regions.length ? x.regions : x.countries || []); return k(a).some(v => k(b).includes(v)); };
+  // a wire item only shows when it says more than the radar already does: a new event, or one that moved on
+  const fresher = (w, items) => !items.some(n => n.group === "news" && (STOP[n.kind] || n.kind) === (STOP[w.kind] || w.kind) && sameWhere(w, n) && (RANK[n.stage] || 0) >= (RANK[w.stage] || 0));
+  Promise.all([fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)), feed]).then(([d, fd]) => {
+    const of = fd.items || [], wire = (fd.wire || []).filter(w => fresher(w, d.items));
+    d.items = wire.concat(of, d.items);
+    const wireTab = document.querySelector('.rd-tools .seg button[data-f="wire"]');
+    if (wireTab) wireTab.hidden = !wire.length;
     data = d;
     const offTab = document.querySelector('.rd-tools .seg button[data-f="office"]');
     if (offTab) offTab.hidden = !of.length;
     const built = new Date(d.built_at).toLocaleString(LOC, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
     const news = d.items.filter(i => i.group === "news").length;
-    const offN = of.length ? (IT ? ", " + of.length + " dagli uffici" : ", " + of.length + " from offices") : "";
+    const hhmm = fd.wire_at ? new Date(fd.wire_at).toLocaleTimeString(LOC, { hour: "2-digit", minute: "2-digit" }) : "";
+    const offN = (of.length ? (IT ? ", " + of.length + " dagli uffici" : ", " + of.length + " from offices") : "") +
+      (hhmm ? (IT ? " · notizie rilette alle " + hhmm + " (ogni " + (fd.wire_every_min || 30) + " min" + (wire.length ? ", " + wire.length + " nuove" : "") + ")"
+                  : " · news read again at " + hhmm + " (every " + (fd.wire_every_min || 30) + " min" + (wire.length ? ", " + wire.length + " new" : "") + ")") : "");
     $("rd-status").textContent = IT
       ? "Aggiornato " + built + " · " + d.items.length + " voci, " + news + " dalle notizie" + offN + " · " +
         d.articles_read + " articoli letti " + (d.reader === "claude" ? "da Claude" : d.reader === "heuristic" ? "dal lettore a parole chiave" : "senza lettore") +

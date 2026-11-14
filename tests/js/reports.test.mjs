@@ -85,7 +85,7 @@ test("past events and rejected reports drop out", () => {
 
 test("chance grows with offices and stops below a checked event", () => {
   const e = ev({ places: ["brenner"] });
-  assert.equal(chance([rep(e, "a"), rep(e, "b"), rep(e, "c")]).p, 0.75);
+  assert.equal(chance([rep(e, "a"), rep(e, "b"), rep(e, "c")]).p, 0.85);   // 87% by the formula, capped until a person checks
   assert.ok(chance([rep(e, "a"), rep(e, "b"), rep(e, "c"), rep(e, "d"), rep(e, "e")]).p <= 0.85);
 });
 

@@ -167,6 +167,27 @@ def heuristic_signal(item: dict, today: date) -> Signal | None:
     )
 
 
+def reader_spec() -> dict:
+    """The keyword reader as data, for the live wire that runs between two builds (netlify/lib/wire.mts): the same
+    words and the same numbers, written once here. The patterns are plain alternations, valid in JavaScript too."""
+    from . import model
+    from .sources import GNEWS_LOCALE, NEWS_QUERIES, TRADE_FEEDS
+    return {
+        "queries": [{"lang": lang, "q": q} for lang, q in NEWS_QUERIES],
+        "locale": {k: list(v) for k, v in GNEWS_LOCALE.items()},
+        "feeds": [{"name": n, "url": u} for n, u in TRADE_FEEDS],
+        "freight": FREIGHT.pattern, "disruption": DISRUPTION.pattern,
+        "kinds": [[k, pat] for k, pat in KIND_WORDS + EXTRA_KINDS],
+        "kind_as": {"ferry": "closure", "roadworks": "closure", "border_check": "closure"},
+        "stages": [[st, pat] for st, pat in STAGE_RE], "stage_order": STAGE_ORDER,
+        "official": OFFICIAL.pattern, "talks": TALKS.pattern, "accident": ACCIDENT.pattern, "non_europe": NON_EUROPE.pattern,
+        "countries": COUNTRY_WORDS, "lang_country": LANG_COUNTRY, "regions": REGIONS,
+        "stage_prior": model.STAGE_PRIOR,
+        "multipliers": {k: {"x": x, "label": label, "label_it": model.MULTIPLIERS_IT[k]} for k, (x, label) in model.MULTIPLIERS.items()},
+        "cap": 0.98,
+    }
+
+
 # ---------------------------------------------------------------- Claude, in batches
 
 BATCH_SCHEMA = {
