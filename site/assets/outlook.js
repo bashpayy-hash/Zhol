@@ -34,7 +34,7 @@
     const r = el("article", "rd-row " + tone(it.p) + (it.group === "office" ? " office" : it.group === "wire" ? " office wire" : ""));
     r.id = "rd-" + it.id;
     const when = el("div", "rd-when");
-    when.append(el("b", null, range(it)), el("span", "small muted", BASIS[it.basis] || it.basis));
+    when.append(el("b", null, range(it)), el("span", "small muted", it.checked && (it.group === "wire" || it.basis === "document") ? T("Checked by the zhol team", "Verificato dal team di zhol") : (BASIS[it.basis] || it.basis)));
     const body = el("div", "rd-body");
     body.append(el("h3", null, L(it, "title")));
     if (it.headline && it.headline !== L(it, "title")) body.append(el("p", "small serif rd-head", "“" + it.headline + "”"));

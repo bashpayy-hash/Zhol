@@ -1733,3 +1733,63 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .answers-head h1.title { font-size: clamp(36px, 4.6vw, 60px); max-width: 18ch; }
 .answers-head + #answers { padding-top: 32px; }
 @media (max-width: 560px) { .answers-head { padding-top: 40px; } .answers-head h1.title { font-size: 34px; } }
+
+/* ===== the team room (/team): what is happening, what to check, notes, tasks (owner, 14 Nov 2026) */
+.tm .wrap { max-width: 1160px; }
+.tm-login, .tm-who { max-width: 520px; gap: 14px; }
+.tm-q { margin: 0; font-size: 17px; color: var(--ink); font-weight: 600; }
+.tm-names { display: flex; flex-wrap: wrap; gap: 10px; }
+.tm-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.tm-badge { display: inline-grid; place-items: center; min-width: 22px; height: 22px; margin-left: 6px; padding: 0 6px; border-radius: 11px; background: var(--red); color: #fff; font-size: 12.5px; font-weight: 700; }
+.tm-me { min-height: 44px; padding: 0 14px; border: 1px solid var(--card-line); border-radius: var(--r-pill); background: var(--card); color: var(--ink-2); font: inherit; font-size: 14px; cursor: pointer; }
+.tm-view { display: flex; flex-direction: column; gap: 18px; }
+.tm-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.tm-tile { gap: 6px; padding: 20px 20px 22px; border-radius: 24px; }
+.tm-tile.warn { border-color: #e6c48f; background: #fbf3e4; }
+.tm-tile.act { border-color: #c4d2bd; background: var(--sage-card); }
+.tm-big { margin: 2px 0 4px; font-size: 26px; line-height: 1.1; font-weight: 680; letter-spacing: -0.02em; color: var(--ink); }
+.tm-line { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.tm-tile .btn { align-self: flex-start; margin-top: 8px; }
+.tm-docs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; }
+.tm-docs li { display: flex; flex-direction: column; } .tm-docs li b { color: var(--ink); font-weight: 600; } .tm-docs li span { color: var(--muted); }
+.tm-docs li.bad span { color: var(--red); }
+.tm-two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.tm-panel { gap: 12px; border-radius: 24px; }
+.tm-panel h2, .tm-col h2, .tm-sub { margin: 0; font-size: 18px; font-weight: 650; color: var(--ink); }
+.tm-panel .btn { align-self: flex-start; }
+.tm-hint { margin: 0; max-width: 74ch; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+.tm-list { display: flex; flex-direction: column; gap: 12px; }
+.tm-item { gap: 10px; border-radius: 22px; }
+.tm-item.done { opacity: .72; }
+.tm-item-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: start; }
+.tm-item h3 { margin: 4px 0 0; font-size: 17px; line-height: 1.3; color: var(--ink); overflow-wrap: anywhere; }
+.tm-p { font-size: 24px; font-weight: 680; color: var(--ink); font-variant-numeric: tabular-nums; }
+.tm-quote { margin: 0; padding: 8px 12px; border-left: 3px solid var(--card-line); background: var(--paper); border-radius: 0 10px 10px 0; font-size: 14.5px; color: var(--ink-2); overflow-wrap: anywhere; }
+.tm-src { margin: 0; } .tm-src a { color: var(--sage-ink); }
+.tm-acts { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.tm-acts .chip.ok { background: var(--sage-card); color: var(--sage-ink); } .tm-acts .chip.no { background: var(--red-track); color: var(--red); }
+.tm-note { flex: 1 1 220px; min-height: 44px; padding: 0 12px; border: 1px solid var(--card-line); border-radius: var(--r-field); background: var(--paper); font: inherit; font-size: 14.5px; }
+.tm-wrong { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 14px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 14.5px; color: var(--ink-2); }
+.tm-compose { gap: 10px; border-radius: 22px; }
+.tm-compose textarea { width: 100%; min-height: 84px; padding: 12px 14px; border: 1px solid var(--card-line); border-radius: var(--r-field); background: var(--paper); font: inherit; font-size: 16px; line-height: 1.45; resize: vertical; }
+.tm-compose-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.tm-feed { display: flex; flex-direction: column; }
+.tm-note-row { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.tm-note-row.pin { background: linear-gradient(90deg, var(--sage-card), transparent 70%); border-radius: 14px; padding-left: 8px; }
+.tm-av { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--paper); font-weight: 700; font-size: 15px; }
+.tm-meta { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13.5px; color: var(--muted); }
+.tm-meta b { color: var(--ink); } .tm-meta.late { color: var(--red); }
+.tm-text { margin: 4px 0 2px; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); white-space: pre-wrap; overflow-wrap: anywhere; }
+.tm-taskform { display: grid; grid-template-columns: minmax(0, 1fr) 170px 160px auto; align-items: center; }
+.tm-taskform input, .tm-taskform select { min-height: 44px; padding: 0 12px; border: 1px solid var(--card-line); border-radius: var(--r-field); background: var(--paper); font: inherit; font-size: 15px; }
+.tm-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.tm-col { display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 22px; background: var(--card); border: 1px solid var(--card-line); }
+.tm-task { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 14px; background: var(--paper); border: 1px solid var(--card-line); }
+.tm-task.done .tm-task-title { color: var(--muted); text-decoration: line-through; }
+.tm-task-title { margin: 0; font-size: 15.5px; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+@media (max-width: 1000px) { .tm-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .tm-two, .tm-cols { grid-template-columns: minmax(0, 1fr); }
+  .tm-taskform { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .tm-taskform input:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) { .tm-tiles { grid-template-columns: minmax(0, 1fr); } .tm-bar .seg { width: 100%; overflow-x: auto; } }

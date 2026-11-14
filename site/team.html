@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#f6f3ea">
+<title>Комната команды · zhol</title>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s48">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="/" aria-label="zhol"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Команда"><a href="/team" aria-current="page">Команда</a><a href="/review">Сообщения офисов</a><a href="/radar">Радар</a></nav></div></header>
+<main>
+<!-- the team room: what is happening, what to check, notes to each other, tasks (owner, 14 Nov 2026: «нужны теперь
+     инструменты внутренней коммуникации»). Behind the same key as /review; never indexed. -->
+<section class="slide tm"><div class="wrap stack" style="gap:22px">
+  <div class="stack" style="gap:10px">
+    <span class="kicker">Только для команды</span>
+    <h1 class="title">Комната команды</h1>
+    <p class="lead">Что происходит с радаром, что нужно проверить, что мы решили и кто что делает. Всё в одном месте, для всех троих.</p>
+  </div>
+
+  <form id="tm-login" class="card tm-login" hidden>
+    <label class="field"><span class="small">Ключ команды (тот же, что для проверки сообщений)</span><input id="tm-key" type="password" autocomplete="off"></label>
+    <div><button class="btn" type="submit">Войти</button></div>
+  </form>
+
+  <div id="tm-who" class="card tm-who" hidden>
+    <p class="tm-q">Кто вы? Так команда увидит, кто написал или проверил.</p>
+    <div class="tm-names" id="tm-names"></div>
+  </div>
+
+  <div id="tm-app" hidden class="stack" style="gap:20px">
+    <div class="tm-bar">
+      <div class="seg" role="tablist" aria-label="Разделы">
+        <button role="tab" aria-selected="true" data-tab="now">Сейчас</button>
+        <button role="tab" aria-selected="false" data-tab="check">Проверить <span class="tm-badge" id="tm-badge" hidden></span></button>
+        <button role="tab" aria-selected="false" data-tab="feed">Лента</button>
+        <button role="tab" aria-selected="false" data-tab="tasks">Задачи</button>
+      </div>
+      <button class="tm-me" id="tm-me" type="button" title="Сменить имя"></button>
+    </div>
+    <div id="tm-view" class="tm-view" aria-live="polite"></div>
+  </div>
+</div></section>
+</main>
+<script src="/assets/team.js?v=1" defer></script>
+</body>
+</html>

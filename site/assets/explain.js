@@ -74,7 +74,9 @@ window.ZholExplain = (function () {
     if (!it.start) return it.group === "wire" ? T("Last hours", "Ultime ore") : T("No date yet", "Senza data");
     return it.end && it.end !== it.start ? fmt(it.start) + " – " + fmt(it.end) : fmt(it.start);
   }
-  const unchecked = it => it.group === "wire" || it.group === "office" || it.basis === "document";
+  const unchecked = it => !it.checked && (it.group === "wire" || it.group === "office" || it.basis === "document");
+  // checked on /team: the basis says so instead of «not checked yet»
+  const basisOf = it => it.checked && (it.group === "wire" || it.basis === "document") ? T("Checked by the zhol team", "Verificato dal team di zhol") : (BASIS[it.basis] || it.basis || "");
   const planName = im => (IT && im.plan.it) || im.plan.en;
   const viaName = im => arrow((IT && im.plan.via_it) || im.plan.via);
   const laneName = im => arrow((IT && im.lane_it) || im.lane);
@@ -109,7 +111,7 @@ window.ZholExplain = (function () {
 
   function head(it) {
     const s = section("ex-head");
-    const k = el("p", "ex-kicker", (BASIS[it.basis] || it.basis || "") + " · " + range(it));
+    const k = el("p", "ex-kicker", basisOf(it) + " · " + range(it));
     const h = el("h2", null, L(it, "title")); h.id = "ex-title"; h.tabIndex = -1;
     const meta = [L(it, "where"), MODE[it.mode] && it.mode !== "road" ? MODE[it.mode] : null].filter(Boolean).join(" · ");
     const top = el("div", "ex-top");
@@ -161,7 +163,7 @@ window.ZholExplain = (function () {
              "Dalle notizie. Il radar parte da quanto spesso un evento a questo stadio succede davvero, poi ogni segnale lo rende più o meno probabile:"),
       document: T("Our agent read it on an official page: " + outlet + ". The radar starts from how often an event at this stage really happens, then each signal makes it more or less likely:",
              "Il nostro agente l’ha letto su una pagina ufficiale: " + outlet + ". Il radar parte da quanto spesso un evento a questo stadio succede davvero, poi ogni segnale lo rende più o meno probabile:"),
-      wire: T("From the news of the last hours. The radar starts from how often an event at this stage really happens, then each signal makes it more or less likely:",
+      wire: (it.checked ? T("Checked by the zhol team. ", "Verificato dal team di zhol. ") : "") + T("From the news of the last hours. The radar starts from how often an event at this stage really happens, then each signal makes it more or less likely:",
              "Dalle notizie delle ultime ore. Il radar parte da quanto spesso un evento a questo stadio succede davvero, poi ogni segnale lo rende più o meno probabile:"),
       office: T("An office reported it. It counts in full once a second office or our team confirms it.",
              "L’ha segnalato un ufficio. Conta del tutto quando lo conferma un secondo ufficio o il nostro team.")

@@ -15,6 +15,17 @@ export const contacts = () => store("zhol-contacts");     // c/<report id> Whats
 export const subs = () => store("zhol-subscribers");      // s/<hash>      an office that wants alerts
 export const drafts = () => store("zhol-drafts");         // d/<hash>      a WhatsApp report waiting for "yes"
 export const outbox = () => store("zhol-outbox");         // o/<time>      every WhatsApp message, number masked
+export const teamStore = () => store("zhol-team");        // n/<id> a note · t/<id> a task · c/<item id> the team's check (lib/team.mts)
+
+/** The team's checks of news and agent items, by item id (the public radar applies them, lib/team.mts applyChecks). */
+export async function teamChecks(): Promise<Record<string, any>> {
+  const st = teamStore();
+  const { blobs } = await st.list({ prefix: "c/" });
+  const got = await Promise.all(blobs.map(b => st.get(b.key, { type: "json" })));
+  const out: Record<string, any> = {};
+  for (const c of got) if (c && (c as any).id) out[(c as any).id] = c;
+  return out;
+}
 
 export async function allReports(): Promise<Report[]> {
   const st = reports();

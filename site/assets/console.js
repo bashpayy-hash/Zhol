@@ -176,7 +176,7 @@
     const sub = [meta(it)];
     const ld = it.impact && it.impact.lead;
     if (ld && ld.decide_by && ahead(ld.decide_by)) sub.push(T("decide by ", "decidere entro ") + when(ld.decide_by));
-    if (isLive) sub.push(T("not checked by a person yet", "non ancora verificato da una persona"));
+    if (isLive) sub.push(it.checked ? T("checked by the zhol team", "verificato dal team di zhol") : T("not checked by a person yet", "non ancora verificato da una persona"));
     mid.append(el("small", null, sub.filter(Boolean).join(" · ")));
     const right = el("span", "rc-r");
     right.append(el("b", "rc-p " + tone(it.p), pct(it.p)));

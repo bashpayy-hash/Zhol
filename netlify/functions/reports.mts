@@ -2,14 +2,16 @@
 //   items  the office reports confirmed by a second office or checked by the team. Only the event: no words,
 //          no documents, no senders.
 //   wire   what the press reported in the last hours, read every 30 minutes (netlify/lib/wire.mts), and what the
-//          document agent read on the official pages (netlify/lib/docs.mts); not checked by a person.
+//          document agent read on the official pages (netlify/lib/docs.mts); not checked by a person until the team
+//          checks it on /team: then it is marked as checked, or it leaves the radar if it was wrong.
 //   docs   when each official page was last looked at, and whether the reading failed.
 // If a scheduled run has not happened for a while, the first reader starts one in the background.
 import type { Config, Context } from "@netlify/functions";
 import { radarItems } from "../lib/reports.mts";
 import { EVERY_MIN, WIRE } from "../lib/wire.mts";
 import { EVERY_H } from "../lib/docs.mts";
-import { allReports, docStates, json, refreshDocs, refreshWire, wireState } from "../lib/store.mts";
+import { allReports, docStates, json, refreshDocs, refreshWire, teamChecks, wireState } from "../lib/store.mts";
+import { applyChecks } from "../lib/team.mts";
 
 let lastNew = 0;
 
@@ -41,6 +43,8 @@ export default async (req: Request, context: Context) => {
       context.waitUntil(refreshDocs(req, false, true).catch(fail));
     }
   } catch (e) { console.error("docs failed", String(e).slice(0, 300)); }
+  // the team's check (/team): an item found wrong leaves the radar, one found right says it was checked
+  try { wire = applyChecks(wire as any[], await teamChecks()); } catch (e) { console.error("checks failed", String(e).slice(0, 300)); }
   return json({ items, wire, wire_at, wire_read, wire_every_min: EVERY_MIN, docs }, 200, { "cache-control": "public, max-age=60" });
 };
 

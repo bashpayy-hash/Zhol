@@ -142,3 +142,10 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store"
+
+# the team room (owner, 14 Nov 2026): never indexed, never cached
+[[headers]]
+  for = "/team"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
