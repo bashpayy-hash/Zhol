@@ -34,7 +34,7 @@ test("the reader finds what, how far along and where; other news is dropped", ()
   assert.equal(read(art("Truck drivers strike in Chile blocks the ports"), R, P), null);         // not Europe
   assert.equal(read(art("Au Chili, le gouvernement face à la grève des camionneurs", 1, "Le Monde", "fr"), R, P), null);
   assert.equal(read(art("Grève des routiers: blocages annoncés lundi", 1, "Le Figaro", "fr"), R, P), null);   // no place named
-  assert.equal(read(art("Fedralog sospende il fermo degli autotrasportatori in Calabria"), R, P).stage, "revoked");
+  assert.equal(read(art("Fedralog sospende la protesta e il fermo degli autotrasportatori in Calabria"), R, P).stage, "revoked");
   assert.equal(read(art("Incidente sulla A22: camion ribaltato, chiusura"), R, P), null);        // an accident is over when it is reported
 });
 
