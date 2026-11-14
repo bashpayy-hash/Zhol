@@ -14,8 +14,8 @@
   const range = it => going(it) ? T("Until ", "Fino al ") + fmt(it.end || it.start) : it.group === "wire" && !it.start ? T("Last hours", "Ultime ore") : !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
   const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
   const tone = p => p >= 0.8 ? "vl" : p >= 0.5 ? "l" : p >= 0.2 ? "po" : "un";
-  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici", wire: "Ultime ore, non verificato", document: "Pagina ufficiale, letta dall’agente", "official strikes": "Calendario ufficiale degli scioperi" }
-                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals", office: "Reported by offices", wire: "Last hours, not checked", document: "Official page, read by the agent", "official strikes": "Official strike calendar" };
+  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici", wire: "Notizie, non ancora verificate", document: "Pagina ufficiale, letta dall’agente", "official strikes": "Calendario ufficiale degli scioperi" }
+                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals", office: "Reported by offices", wire: "News, not checked yet", document: "Official page, read by the agent", "official strikes": "Official strike calendar" };
   const BAND_IT = { "very likely": "molto probabile", likely: "probabile", possible: "possibile", unlikely: "improbabile" };
   const STAGE_IT = { tension: "tensione", threat: "minaccia", announced: "annunciato", confirmed: "confermato", ongoing: "in corso", revoked: "revocato" };
   const band = b => IT ? (BAND_IT[b] || b) : b;
