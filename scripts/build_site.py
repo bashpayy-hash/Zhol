@@ -282,7 +282,10 @@ def main() -> None:
     # the keyword reader as data for the live wire, and the radar's record so far (zhol/radar/verify.py)
     dump("reader.json", reader_spec())
     log = verify.load_log()
-    dump("track.json", verify.scorecard(log, verify.load_outcomes(), today) | {"classes": programme.classes_table()})
+    dump("track.json", verify.scorecard(log, verify.load_outcomes(), today) | {
+        "classes": programme.classes_table(outlook.get("strikes")), "layers_h": programme.LAYERS, "strikes": outlook.get("strikes"),
+        "no_notice": {"eight_days": programme.no_notice(192), "four_days": programme.no_notice(90), "four_hours": programme.no_notice(4, 1.5)},
+        "programme": {str(w): programme.programme(w) for w in (0.1, 0.3, 0.5)}})
     print(f"radar: {len(outlook['items'])} items, {outlook['articles_read']} articles, "
           f"{outlook['sources_ok']}/{outlook['sources_total']} sources ok, reader={outlook['reader']}")
     print(f"site data built for {today} in {time.time() - t0:.0f}s")

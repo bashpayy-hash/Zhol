@@ -29,6 +29,8 @@ test("the reader finds what, how far along and where; other news is dropped", ()
   const b = read(art("Brenner: Lkw-Blockade angekündigt, Frächter drohen", 1, "ORF", "de"), R, P);
   assert.equal(b.stage, "announced"); assert.ok(b.places.includes("brenner"));
   assert.equal(read(art("Sciopero dei treni regionali revocato"), R, P), null);                  // not freight
+  assert.equal(read(art("Sciopero dei treni merci confermato per venerdì in Italia"), R, P).mode, "rail");
+  assert.equal(read(art("Tir fermi al porto di Napoli: blocco dei camionisti in corso"), R, P).mode, "road");   // hauliers at a port
   assert.equal(read(art("Truck drivers strike in Chile blocks the ports"), R, P), null);         // not Europe
   assert.equal(read(art("Incidente sulla A22: camion ribaltato, chiusura"), R, P), null);        // an accident is over when it is reported
 });

@@ -94,11 +94,15 @@ def _events_for(item: dict) -> tuple[list[Event], str | None, str]:
         delay = (WIND_FERRY_DELAY_MIN if ferry else SNOW_DELAY_MIN) // 60
         return [ev], places[0], f"Assumes about {delay} hours of chains, queues or short closures on the day."
     if kind == "closure" and places:
-        a, b = NIGHT_CLOSURE
-        wins = [Window(start=datetime.combine(d, a, TZ), end=datetime.combine(d + timedelta(days=1), b, TZ)) for d in days]
+        read = _hours(item.get("hours"))
+        a, b = read or NIGHT_CLOSURE
+        nights = b <= a
+        if read and nights and d1 > d0:        # "the 14th at 22:00 to the 15th at 02:00" is one night, not two
+            days = days[:-1]
+        wins = [Window(start=datetime.combine(d, a, TZ), end=datetime.combine(d + timedelta(days=1 if nights else 0), b, TZ)) for d in days]
         ev = Event(id=f"cl-{places[0]}", kind="closure", title=item["title"], scope=EventScope(chokepoints=places[:1]),
                    windows=wins, severity="full_stop", source=_src("news"), status="approved", origin="feed")
-        return [ev], places[0], "Night hours assumed 22:00–06:00 until the operator's notice is read."
+        return [ev], places[0], ("Hours from the operator's page." if read else "Night hours assumed 22:00–06:00 until the operator's notice is read.")
     if kind in ("strike", "blockade", "protest") and item.get("countries"):
         regions = [r for r in item.get("regions", []) if r.startswith(tuple(item["countries"]))]
         wins = [Window(start=datetime.combine(d0, time(0, 0), TZ), end=datetime.combine(d1 + timedelta(days=1), time(0, 0), TZ))]
@@ -107,6 +111,18 @@ def _events_for(item: dict) -> tuple[list[Event], str | None, str]:
                    scope=scope, windows=wins, severity="full_stop", source=_src("news"), status="approved", origin="feed")
         return [ev], places[0] if places else None, "Assumes trucks are stopped for the whole announced period."
     return [], None, ""
+
+
+def _hours(text: str | None) -> tuple[time, time] | None:
+    """'22:00-06:00' or '22h00 - 2h00' -> (22:00, 02:00)."""
+    import re
+    m = re.findall(r"(\d{1,2})[:.h](\d{2})?", text or "")
+    if len(m) < 2:
+        return None
+    try:
+        return time(int(m[0][0]) % 24, int(m[0][1] or 0)), time(int(m[1][0]) % 24, int(m[1][1] or 0))
+    except ValueError:
+        return None
 
 
 def _lane_for(item: dict, target: str | None, events: list[Event]) -> str | None:
@@ -165,6 +181,7 @@ WHY_IT = {"new departure time": "nuovo orario di partenza", "earlier arrival, sa
 NOTE_IT = {
     "Night hours assumed 22:00–06:00 until the operator's notice is read.": "Orario notturno ipotizzato 22:00-06:00 finché non leggiamo l'avviso del gestore.",
     "Assumes trucks are stopped for the whole announced period.": "Ipotizza camion fermi per tutto il periodo annunciato.",
+    "Hours from the operator's page.": "Orari dalla pagina del gestore.",
 }
 
 
@@ -228,6 +245,11 @@ def lane_it(name: str | None) -> str | None:
 
 def impact(item: dict, costs: CostModel | None = None) -> dict | None:
     if not item.get("start"):
+        return None
+    # the engine prices a truck. A rail, sea or air strike stops the train, the ship or the plane, not the truck;
+    # the one exception on our corridors is the Messina ferry, which the truck needs to cross.
+    if item.get("mode", "road") != "road" and item.get("kind") in ("strike", "blockade", "protest") \
+            and "messina_strait" not in item.get("places", []):
         return None
     costs = costs or CostModel()
     events, target, note = _events_for(item)

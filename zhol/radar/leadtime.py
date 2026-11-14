@@ -138,6 +138,7 @@ def caught_share(duration_h: float, commit_h: float, detect_h: float) -> float:
     """Share of the affected trips that were already past their last decision when the alert went out."""
     if duration_h <= 0:
         return 1.0
+    # detect_h below zero is an event announced that many hours before its start
     return round(min(1.0, max(0.0, (commit_h + detect_h) / duration_h)), 3)
 
 

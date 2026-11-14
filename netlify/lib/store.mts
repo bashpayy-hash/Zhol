@@ -4,6 +4,9 @@ import { getStore } from "@netlify/blobs";
 import type { Report, Places } from "./reports.mts";
 import { EVERY_MIN, sweep } from "./wire.mts";
 import type { Reader, WireState } from "./wire.mts";
+import { aiLive } from "./ai.mts";
+import { EVERY_H, lookAt, readDoc } from "./docs.mts";
+import type { DocState } from "./docs.mts";
 
 const store = (name: string) => getStore({ name, consistency: "strong" });
 export const reports = () => store("zhol-reports");       // r/<id>        the report
@@ -136,4 +139,26 @@ export async function saveUpload(file: { type: string; name: string; bytes: Uint
   const id = [...h].map(b => b.toString(16).padStart(2, "0")).join("").slice(0, 20);
   await uploads().set("u/" + id, new Blob([file.bytes], { type: file.type }), { metadata: { type: file.type, name: file.name, at: Date.now() } });
   return { id, type: file.type, name: file.name, size: file.bytes.length };
+}
+
+// ---- the document agent (netlify/lib/docs.mts): one object per official page
+export async function docStates(): Promise<DocState[]> {
+  const st = wire(), { blobs } = await st.list({ prefix: "doc/" });
+  const got = await Promise.all(blobs.map(b => st.get(b.key, { type: "json" }) as Promise<DocState | null>));
+  return got.filter((d): d is DocState => !!d);
+}
+
+/** Look at the page that has waited longest, if any has waited long enough. Returns its new state or null. */
+export async function refreshDocs(req?: Request, force = false): Promise<DocState | null> {
+  if (!aiLive()) return null;
+  const [R, P, states] = await Promise.all([reader(req), places(req), docStates()]);
+  const by = new Map(states.map(d => [d.id, d]));
+  const due = (R.documents || []).map(d => ({ d, at: by.get(d.id) ? Date.parse(by.get(d.id)!.read_at) : 0 }))
+    .filter(x => force || Date.now() - x.at > EVERY_H * 36e5).sort((a, b) => a.at - b.at)[0];
+  if (!due) return null;
+  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" });
+  const next = await lookAt(due.d, by.get(due.d.id) || null, R, P, getText, (doc, text) => readDoc(doc, text, P, today));
+  await wire().setJSON("doc/" + due.d.id, next);
+  console.log(JSON.stringify({ zhol: "doc", id: next.id, items: next.items.length, changed: next.changed_at === next.read_at, error: next.error }));
+  return next;
 }

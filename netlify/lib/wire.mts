@@ -8,13 +8,15 @@ import { lanesFor, band } from "./reports.mts";
 
 export interface Reader {
   queries: { lang: string; q: string }[]; locale: Record<string, string[]>; feeds: { name: string; url: string }[];
+  documents?: { id: string; issuer: string; url: string; lang: string; about: string; words: string }[];
   freight: string; disruption: string; kinds: [string, string][]; kind_as: Record<string, string>;
   stages: [string, string][]; stage_order: string[]; official: string; talks: string; accident: string; non_europe: string;
   countries: Record<string, string>; lang_country: Record<string, string | null>; regions: Record<string, string>;
+  road: string; modes: [string, string][];
   stage_prior: Record<string, number>; multipliers: Record<string, { x: number; label: string; label_it: string }>; cap: number;
 }
 export interface Article { title: string; url: string; outlet: string; lang: string; published: string }
-export interface Signal extends Article { kind: string; stage: string; countries: string[]; regions: string[]; places: string[]; official: boolean; talks: boolean }
+export interface Signal extends Article { kind: string; stage: string; mode: string; countries: string[]; regions: string[]; places: string[]; official: boolean; talks: boolean }
 export interface WireState { at: string; first: Record<string, string>; items: Record<string, unknown>[]; read: number; ok: number; total: number }
 
 const HOUR = 3_600_000;
@@ -61,7 +63,9 @@ export function read(a: Article, R: Reader, P: Places): Signal | null {
   for (const [cc, p] of Object.entries(R.countries)) if (rx(p).test(low)) countries.add(cc);
   if (!countries.size && R.lang_country[a.lang]) countries.add(R.lang_country[a.lang] as string);
   if (!countries.size || (rx(R.non_europe).test(text) && !regions.length && !places.length)) return null;
-  return { ...a, kind, stage, countries: [...countries].sort(), regions, places, official: rx(R.official).test(text), talks: rx(R.talks).test(text) };
+  // which transport stops: road words win (hauliers at a port are a road stoppage), as in mode_of() in signals.py
+  const mode = rx(R.road).test(text) ? "road" : (R.modes.find(([, p]) => rx(p).test(text)) || ["road"])[0];
+  return { ...a, kind, stage, mode, countries: [...countries].sort(), regions, places, official: rx(R.official).test(text), talks: rx(R.talks).test(text) };
 }
 
 /** prior by stage x one multiplier per piece of evidence, on the odds (zhol/radar/model.py). */
@@ -76,10 +80,12 @@ export function estimate(stage: string, evidence: string[], R: Reader) {
 
 const GROUP: Record<string, string> = { strike: "stop", blockade: "stop", protest: "stop" };
 const where = (s: Signal) => (s.places.length ? s.places : s.regions.length ? s.regions : s.countries).join(",");
-export const clusterKey = (s: Signal) => (GROUP[s.kind] || s.kind) + "|" + where(s);
+export const clusterKey = (s: Signal) => (GROUP[s.kind] || s.kind) + "|" + where(s) + (s.mode !== "road" ? "|" + s.mode : "");
 
 const KIND = { strike: ["Strike", "Sciopero"], blockade: ["Blockade", "Blocco"], protest: ["Protest", "Protesta"], closure: ["Closure", "Chiusura"],
                dosing: ["Truck dosing", "Dosaggio dei camion"], weather: ["Bad weather", "Maltempo"] } as Record<string, string[]>;
+const MODE_STRIKE = { rail: ["Rail strike", "Sciopero ferroviario"], sea: ["Port or ferry strike", "Sciopero di porti o traghetti"],
+                      air: ["Air transport strike", "Sciopero del trasporto aereo"] } as Record<string, string[]>;
 const STAGE = { ongoing: [" under way", " in corso"], confirmed: [" confirmed", " confermato"], announced: [" announced", " annunciato"],
                 threat: [" threatened", " minacciato"], revoked: [" called off", " revocato"] } as Record<string, string[]>;
 const COUNTRY = { IT: ["Italy", "Italia"], FR: ["France", "Francia"], AT: ["Austria", "Austria"], DE: ["Germany", "Germania"], CH: ["Switzerland", "Svizzera"],
@@ -101,11 +107,11 @@ export function wireItems(signals: Signal[], R: Reader, P: Places, first: Record
     const places = [...new Set(c.flatMap(s => s.places))], regions = [...new Set(c.flatMap(s => s.regions))], countries = [...new Set(c.flatMap(s => s.countries))];
     const names = (i: number) => places.length ? places.map(id => P.places[id].name).join(", ")
       : regions.length ? regions.map(r => r.split("-").slice(1).join("-")).join(", ") : countries.map(cc => (COUNTRY[cc] || [cc, cc])[i]).join(", ");
-    const kind = KIND[latest.kind] || ["Disruption", "Disagio"], st = STAGE[stage] || ["", ""];
+    const kind = (latest.kind === "strike" && MODE_STRIKE[latest.mode]) || KIND[latest.kind] || ["Disruption", "Disagio"], st = STAGE[stage] || ["", ""];
     first[key] = first[key] || new Date(now).toISOString();
     const hours = Math.max(1, Math.round((now - Date.parse(c[c.length - 1].published)) / HOUR));
     out.push({
-      id: "w-" + key.replace(/[^a-z0-9]+/gi, "-").toLowerCase(), group: "wire", basis: "wire", kind: latest.kind, stage,
+      id: "w-" + key.replace(/[^a-z0-9]+/gi, "-").toLowerCase(), group: "wire", basis: "wire", kind: latest.kind, stage, mode: latest.mode,
       title: kind[0] + st[0], title_it: kind[1] + st[1], headline: latest.title, where: names(0), where_it: names(1),
       detail: `${c.length} article${c.length > 1 ? "s" : ""} from ${outlets} outlet${outlets > 1 ? "s" : ""} in the last ${hours} h. Not checked by a person yet.`,
       detail_it: `${c.length} articol${c.length > 1 ? "i" : "o"} da ${outlets} testat${outlets > 1 ? "e" : "a"} nelle ultime ${hours} ore. Non ancora verificato da una persona.`,

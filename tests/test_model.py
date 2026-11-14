@@ -158,3 +158,58 @@ def test_the_reader_is_written_once_and_the_wire_gets_all_of_it():
         _re.compile(pat)
     wire = (ROOT / "netlify" / "lib" / "wire.mts").read_text(encoding="utf-8")
     assert "stage_prior" in wire and "0.7" not in wire and "0.22" not in wire      # no number of the formula is copied there
+
+
+# ---------------------------------------------------------------- the official strike calendar
+
+CSV = """stato,inizio,fine,sindacati,settore,categoria,modalita,rilevanza,note,data_proclamazione,regione,provincia,data_ricezione,inizio_iso,fine_iso
+In Programma,20/11/2026,21/11/2026,X,Ferroviario,PERSONALE DEL GRUPPO FS,23 ORE: DALLE 21.00,Nazionale,,05/11/2026,Italia,,05/11/2026,2026-11-20,2026-11-21
+In Programma,20/11/2026,21/11/2026,X,Plurisettoriale,PERSONALE IMPRESE CHE SVOLGONO ATTIVITA' FERROVIARIA,24 ORE,Nazionale,,07/10/2026,Italia,,07/10/2026,2026-11-20,2026-11-21
+In Programma,20/11/2026,20/11/2026,X,Generale,SCIOPERO GENERALE CON ESCLUSIONE SETTORE TRASPORTI,INTERA GIORNATA,Nazionale,,09/11/2026,Italia,,09/11/2026,2026-11-20,2026-11-20
+In Programma,16/11/2026,16/11/2026,X,Trasporto pubblico locale,PERSONALE ANM NAPOLI,4 ORE,Locale,,14/10/2026,Campania,,14/10/2026,2026-11-16,2026-11-16
+In Programma,22/11/2026,22/11/2026,X,Aereo,PERSONALE SICURITALIA VENEZIA,24 ORE,Interregionale,,05/10/2026,Italia,,05/10/2026,2026-11-22,2026-11-22
+In Programma,25/11/2026,29/11/2026,X,Trasporto merci,FERMO NAZIONALE SERVIZI AUTOTRASPORTO MERCI,5 GIORNI,Nazionale,,30/10/2026,Italia,,30/10/2026,2026-11-25,2026-11-29
+"""
+CSV += "".join(f"Effettuato,0{d}/03/2026,0{d}/03/2026,X,Ferroviario,PERSONALE FS,8 ORE,Nazionale,,0{d}/02/2026,Italia,,,2026-03-0{d},2026-03-0{d}\n" for d in range(1, 8)) * 3
+CSV += "".join(f"Revocato (include le azioni di revoca),1{d}/03/2026,1{d}/03/2026,X,Ferroviario,PERSONALE FS,8 ORE,Nazionale,,1{d}/02/2026,Italia,,,2026-03-1{d},2026-03-1{d}\n" for d in range(0, 9))
+
+
+def test_the_strike_calendar_gives_a_measured_chance_and_a_measured_notice():
+    from zhol.radar import strikes
+    rows = strikes.parse(CSV)
+    assert all(r["sector"] != "Trasporto pubblico locale" for r in rows)                 # buses and metro are not freight
+    rates = strikes.base_rates(rows)
+    assert rates[("Ferroviario", True)] == {"p": 0.7, "n": 30}                           # 21 took place, 9 were revoked
+    items = {i["id"]: i for i in strikes.items(rows, date(2026, 11, 14))}
+    rail = items["st-rail-2026-11-20"]
+    assert rail["mode"] == "rail" and rail["end"] == "2026-11-21" and rail["basis"] == "official strikes"
+    assert len([f for f in rail["factors"] if f["key"] == "notices"]) == 1               # the FS notice and the rail companies' one
+    assert 0.7 < rail["p"] <= 0.95 and "44 days ahead" in rail["detail"]                # the earliest call: 7 October
+    assert "st-all-2026-11-20" not in items                                             # a general strike that leaves transport out
+    assert "st-air-2026-11-22" not in items                                             # one airport's security staff: not national
+    assert items["st-road-2026-11-25"]["title"] == "Road hauliers' stoppage in Italy"
+    n = strikes.notice(rows)
+    assert n["total"]["n"] == len(rows) and n["rail"]["median"] >= 28 and "general" not in n
+
+
+def test_a_train_strike_is_not_priced_as_a_truck_that_waits_and_official_dates_replace_a_guess():
+    from zhol.radar import strikes
+    from zhol.radar.outlook import covered, document_items, news_title
+    from zhol.radar.signals import mode_of
+    assert mode_of("Sciopero dei treni merci venerdì") == "rail" and mode_of("Sciopero dei portuali a Genova") == "sea"
+    assert mode_of("Tir fermi al porto di Napoli: blocco dei camionisti") == "road"      # hauliers at a port: a road stoppage
+    assert mode_of("Sciopero cargo aereo a Malpensa") == "air" and mode_of("Chiusura notturna del traforo") == "road"
+    rail = strikes.items(strikes.parse(CSV), date(2026, 11, 14))[0]
+    assert impact(rail) is None                                                          # the train stops, the truck does not
+    road = dict(rail, mode="road", id="x")
+    assert impact(road) is not None
+    assert news_title("strike", "threat", [], [], ["IT"], "rail") == ("Possible rail strike in Italy", "Possibile sciopero ferroviario in Italia")
+    guess = {"group": "news", "basis": "news", "kind": "strike", "mode": "rail", "countries": ["IT"], "places": [], "start": "2026-11-20"}
+    assert covered(guess, [rail]) and not covered(dict(guess, mode="road"), [rail]) and not covered(dict(guess, start="2026-12-20"), [rail])
+    doc = {"id": "d-1", "group": "wire", "basis": "document", "kind": "closure", "stage": "announced", "title": "Fréjus closed at night",
+           "places": ["frejus"], "countries": ["FR"], "regions": [], "start": "2026-11-14", "end": "2026-11-15", "hours": "22h00 - 2h00", "p": 0.933}
+    item = document_items([doc, dict(doc, start="2026-11-01", end="2026-11-02")], date(2026, 11, 14))
+    assert len(item) == 1 and item[0]["group"] == "official" and item[0]["basis"] == "document"
+    im = impact(item[0])
+    assert im["note"] == "Hours from the operator's page." and im["wait_h"] <= 4.1       # one night of four hours, not eight
+    assert covered({"group": "news", "basis": "news", "kind": "closure", "places": ["frejus"], "countries": ["FR"], "start": "2026-11-14"}, item)

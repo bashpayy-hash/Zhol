@@ -9,11 +9,11 @@
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
   const pct = p => Math.round(p * 100) + "%";
   const fmt = (s, opt) => new Date(s + "T12:00:00").toLocaleDateString(LOC, opt || { weekday: "short", day: "numeric", month: "short" });
-  const range = it => it.group === "wire" ? T("Last hours", "Ultime ore") : !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
+  const range = it => it.group === "wire" && !it.start ? T("Last hours", "Ultime ore") : !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
   const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
   const tone = p => p >= 0.8 ? "vl" : p >= 0.5 ? "l" : p >= 0.2 ? "po" : "un";
-  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici", wire: "Ultime ore, non verificato" }
-                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals", office: "Reported by offices", wire: "Last hours, not checked" };
+  const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici", wire: "Ultime ore, non verificato", document: "Pagina ufficiale, letta dall’agente", "official strikes": "Calendario ufficiale degli scioperi" }
+                   : { law: "Law in force", "official calendar": "Official calendar", forecast: "Weather forecast", news: "News signals", office: "Reported by offices", wire: "Last hours, not checked", document: "Official page, read by the agent", "official strikes": "Official strike calendar" };
   const BAND_IT = { "very likely": "molto probabile", likely: "probabile", possible: "possibile", unlikely: "improbabile" };
   const STAGE_IT = { tension: "tensione", threat: "minaccia", announced: "annunciato", confirmed: "confermato", ongoing: "in corso", revoked: "revocato" };
   const band = b => IT ? (BAND_IT[b] || b) : b;
@@ -37,11 +37,14 @@
     body.append(el("h3", null, L(it, "title")));
     if (it.headline && it.headline !== L(it, "title")) body.append(el("p", "small serif rd-head", "“" + it.headline + "”"));
     body.append(el("p", "small", [L(it, "where"), L(it, "detail")].filter(Boolean).join(" · ")));
-    if (it.factors && it.factors.length) {
+    // which transport it stops, when it is not the road (owner, 8 and 12 Nov 2026: all transport, not only trucks)
+    const MODE = { rail: T("Rail", "Ferrovia"), sea: T("Sea and ports", "Mare e porti"), air: T("Air", "Aereo"), all: T("All transport", "Tutti i trasporti") }[it.mode];
+    if ((it.factors && it.factors.length) || MODE) {
       const f = el("div", "rd-factors");
+      if (MODE) f.append(el("span", "chip", MODE));
       if (it.prior != null) f.append(el("span", "chip", T("start: ", "partenza: ") + stage(it.stage) + " " + pct(it.prior)));
       const mult = (data.method && data.method.multipliers) || {};
-      it.factors.forEach(x => f.append(el("span", "chip", (x.x != null ? "×" + x.x + " " : "") +
+      (it.factors || []).forEach(x => f.append(el("span", "chip", (x.x != null ? "×" + x.x + " " : "") +
         (IT ? (x.key && mult[x.key] ? mult[x.key].label_it : (x.label_it || factorIt(x.label))) : x.label))));
       body.append(f);
     }
@@ -176,7 +179,7 @@
     const list = $("rd-list"); list.textContent = "";
     const items = data.items.filter(i => (filter === "all" || i.group === filter) && onRoute(i));
     const dated = items.filter(i => i.start).sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p);
-    const live = items.filter(i => i.group === "wire");
+    const live = items.filter(i => i.group === "wire" && !i.start);
     const undated = items.filter(i => !i.start && i.group !== "wire").sort((a, b) => b.p - a.p);
     if (live.length) {      // what the press reported in the last hours comes first: it is happening now
       list.append(el("h3", "rd-week", T("In the last hours", "Nelle ultime ore")));
@@ -270,7 +273,12 @@
   // a wire item only shows when it says more than the radar already does: a new event, or one that moved on
   const fresher = (w, items) => !items.some(n => n.group === "news" && (STOP[n.kind] || n.kind) === (STOP[w.kind] || w.kind) && sameWhere(w, n) && (RANK[n.stage] || 0) >= (RANK[w.stage] || 0));
   Promise.all([fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)), feed]).then(([d, fd]) => {
-    const of = fd.items || [], wire = (fd.wire || []).filter(w => fresher(w, d.items));
+    const have = new Set(d.items.map(i => i.id));
+    const of = fd.items || [], wire = (fd.wire || []).filter(w => !have.has(w.id) && fresher(w, d.items));
+    // an official page with the dates replaces the weaker guess the radar made from the press about the same event
+    const near = (a, b) => !a.start || !b.start || Math.abs(new Date(a.start) - new Date(b.start)) <= 2 * 864e5;
+    const docs = wire.filter(w => w.basis === "document");
+    d.items = d.items.filter(n => !(n.group === "news" && docs.some(w => (STOP[n.kind] || n.kind) === (STOP[w.kind] || w.kind) && sameWhere(w, n) && near(w, n))));
     d.items = wire.concat(of, d.items);
     const wireTab = document.querySelector('.rd-tools .seg button[data-f="wire"]');
     if (wireTab) wireTab.hidden = !wire.length;

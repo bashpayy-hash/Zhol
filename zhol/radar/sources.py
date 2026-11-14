@@ -71,6 +71,20 @@ TRADE_FEEDS = [
     ("trans.info IT", "https://trans.info/it/rss"),
 ]
 
+# Official pages the document agent reads (netlify/lib/docs.mts): operators and authorities publish their closures,
+# dosing days and strikes here before the press does, with the exact hours. Each was opened from a cloud address on
+# 14 Nov 2026 and gives its dates as plain text. "words": what marks the part of a long page that matters.
+OFFICIAL_DOCS = [
+    {"id": "sftrf-frejus", "issuer": "SFTRF (Fréjus tunnel)", "url": "https://www.sftrf.fr/", "lang": "fr",
+     "about": "night closures of the Fréjus road tunnel, by direction", "words": "fermeture|ferm[ée]|travaux"},
+    {"id": "tirol-dosing", "issuer": "Land Tirol", "url": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
+     "lang": "de", "about": "truck dosing days at Kufstein towards the south, planned and added at short notice",
+     "words": "dosier|blockabfertigung|kufstein"},
+    {"id": "trenitalia-info", "issuer": "Trenitalia Infomobilità",
+     "url": "https://www.trenitalia.com/it/informazioni/Infomobilita/notizie-infomobilita.html", "lang": "it",
+     "about": "rail strikes in Italy and lines closed", "words": "sciopero|linea (interrotta|sospesa)|circolazione sospesa"},
+]
+
 # Passes and tunnels whose approaches close or need chains in snow; the ferry is wind-driven.
 WEATHER_POINTS = {
     "brenner": {"elevation": 1370, "kind": "pass"},
@@ -162,3 +176,29 @@ def fetch_weather(http: httpx.Client) -> tuple[dict, dict]:
         except Exception as exc:
             status[f"weather:{cid}"] = f"failed: {type(exc).__name__}"
     return out, status
+
+
+def fetch_strikes(http: httpx.Client) -> tuple[str, dict]:
+    """Italy's official strike calendar, from the open copy (zhol/radar/strikes.py)."""
+    from .strikes import URL
+    try:
+        r = http.get(URL)
+        r.raise_for_status()
+        return r.text, {"official:strikes-it": "ok"}
+    except Exception as exc:
+        return "", {"official:strikes-it": f"failed: {type(exc).__name__}"}
+
+
+FEED = "https://zhol.live/api/reports"
+
+
+def fetch_documents(http: httpx.Client) -> tuple[list[dict], dict]:
+    """What the document agent read on the official pages since the last build (netlify/lib/docs.mts), from the
+    site's own feed: the build gives each of them its cost, its plan and its deadline."""
+    try:
+        r = http.get(FEED)
+        r.raise_for_status()
+        docs = [i for i in r.json().get("wire", []) if i.get("basis") == "document" and i.get("start")]
+        return docs, {"official:documents": "ok"}
+    except Exception as exc:
+        return [], {"official:documents": f"failed: {type(exc).__name__}"}

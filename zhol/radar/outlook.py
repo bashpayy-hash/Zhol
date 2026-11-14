@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 from .. import catalog
 from ..ingest.feeds import load_all_calendars
 from ..rules import generate_ban_events
-from . import model
+from . import model, strikes
 from .impact import attach, lane_it
 from .langs import add_languages
 from .signals import STAGE_ORDER, Signal, read_signals
@@ -91,7 +91,11 @@ def region_name(rid: str, it: bool = False) -> str:
     return (REGION_IT.get(rid) if it else REGION_EN.get(rid)) or native
 
 
-def news_title(kind: str, stage: str, chokes: list[str], regions: list[str], countries: list[str]) -> tuple[str, str]:
+MODE_KIND_EN = {"rail": "Rail strike", "sea": "Port or ferry strike", "air": "Air transport strike"}
+MODE_KIND_IT = {"rail": "Sciopero ferroviario", "sea": "Sciopero di porti o traghetti", "air": "Sciopero del trasporto aereo"}
+
+
+def news_title(kind: str, stage: str, chokes: list[str], regions: list[str], countries: list[str], mode: str = "road") -> tuple[str, str]:
     """A plain title in English and Italian from what was read, when no model wrote a summary: the radar never shows a
     French headline as the title of an English page; the headline itself stays below, in quotes."""
     if chokes:
@@ -103,10 +107,12 @@ def news_title(kind: str, stage: str, chokes: list[str], regions: list[str], cou
     else:
         at_en, at_it = "in Europe", "in Europa"
     en, it = KIND_EN.get(kind, "Disruption"), KIND_IT.get(kind, "Disagi")
+    if kind == "strike" and mode in MODE_KIND_EN:       # say which transport stops: a train strike is not a truck stoppage
+        en, it = MODE_KIND_EN[mode], MODE_KIND_IT[mode]
     if stage in ("tension", "threat"):
         return f"Possible {en.lower()} {at_en}", f"{'Possibile' if it != 'Disagi' else 'Possibili'} {it.lower()} {at_it}"
     if stage == "revoked":
-        return f"{en} {at_en} called off", f"{it} {at_it} revocat{'o' if it in ('Sciopero', 'Blocco', 'Dosaggio dei camion', 'Maltempo') else 'a'}"
+        return f"{en} {at_en} called off", f"{it} {at_it} revocat{'o' if it.split()[0] in ('Sciopero', 'Blocco', 'Dosaggio', 'Maltempo') else 'a'}"
     return f"{en} {at_en}", f"{it} {at_it}"
 
 
@@ -277,7 +283,7 @@ def cluster(signals: list[Signal]) -> list[list[Signal]]:
         home = None
         for c in clusters:
             h = c[0]
-            if GROUP.get(h.kind, "other") != g:
+            if GROUP.get(h.kind, "other") != g or h.mode != s.mode:
                 continue
             same_place = _place(h) == place
             ds = [x.start for x in c if x.start]
@@ -366,7 +372,7 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
                     or [region_name(r, it=True) for r in regions][:2]
                     or [COUNTRY_IT.get(x, x) for x in countries][:3])
         plain_en, plain_it = news_title(latest.kind, stage, latest.chokepoints or chokes, latest.regions or regions,
-                                        latest.countries or countries)
+                                        latest.countries or countries, latest.mode)
         items.append(_item(
             id=_id("news", latest.title), group="news", kind=latest.kind if latest.kind in kinds else kinds[0],
             title=latest.summary or plain_en, headline=latest.title, where=", ".join(where_bits) or "Europe",
@@ -374,7 +380,7 @@ def news_items(signals: list[Signal], today: date, keep: int = 30) -> list[dict]
             detail_it=f"{len(c)} articol{'i' if len(c) > 1 else 'o'} da {len(outlets)} testat{'e' if len(outlets) > 1 else 'a'}.",
             countries=sorted({k for s in c for k in s.countries}), start=start, end=end or start,
             places=sorted({k for s in c for k in s.chokepoints}), regions=sorted({r for s in c for r in s.regions}),
-            p=est.p, basis="news", stage=stage, prior=est.prior, factors=est.factors,
+            p=est.p, basis="news", stage=stage, prior=est.prior, factors=est.factors, mode=latest.mode,
             detail=f"{len(c)} article{'s' if len(c) > 1 else ''} from {len(outlets)} outlet{'s' if len(outlets) > 1 else ''}.",
             sources=[{"outlet": s.outlet, "url": s.url, "title": s.title, "published": s.published}
                      for s in sorted(c, key=lambda s: s.published or "", reverse=True)[:5]],
@@ -393,17 +399,52 @@ def focus_window(today: date) -> dict | None:
     return None
 
 
+def document_items(docs: list[dict], today: date) -> list[dict]:
+    """What the document agent read on official pages (netlify/lib/docs.mts), as radar items the build can price.
+    A closure or a dosing day an operator publishes is a calendar like the others: it is planned for free, so it is
+    not counted as a zhol saving (docs/12). A strike notice stays with the strikes."""
+    out = []
+    for d in docs:
+        if not d.get("start") or (d.get("end") or d["start"]) < today.isoformat():
+            continue
+        out.append({**d, "group": "official" if d.get("kind") in ("closure", "dosing") else "news", "basis": "document",
+                    "band": model.band(d["p"])})
+    return out
+
+
+def covered(n: dict, officials: list[dict]) -> bool:
+    """A guess from the press about an event an official source already states with its dates."""
+    if n.get("group") != "news" or n.get("basis") != "news":
+        return False
+    fam = GROUP.get(n["kind"], "other")
+    for o in officials:
+        if GROUP.get(o["kind"], "other") != fam:
+            continue
+        same_place = bool(set(n.get("places", [])) & set(o.get("places", []))) or \
+            (not n.get("places") and not o.get("places") and bool(set(n.get("countries", [])) & set(o.get("countries", []))))
+        near = not n.get("start") or abs((date.fromisoformat(n["start"]) - date.fromisoformat(o["start"])).days) <= 2
+        same_mode = n.get("mode", "road") == o.get("mode", "road") or o.get("mode") == "all"
+        if same_place and near and (fam != "action" or same_mode):
+            return True
+    return False
+
+
 def build_outlook(today: date, horizon: int = 60, fetch: bool = True) -> dict:
     status: dict[str, str] = {}
-    weather, articles = {}, []
+    weather, articles, strike_rows, docs = {}, [], [], []
     if fetch:
-        from .sources import client, fetch_news, fetch_weather
+        from .sources import client, fetch_documents, fetch_news, fetch_strikes, fetch_weather
         with client() as http:
             articles, s1 = fetch_news(http, today)
             weather, s2 = fetch_weather(http)
-        status = s1 | s2
+            text, s3 = fetch_strikes(http)
+            docs, s4 = fetch_documents(http)
+        strike_rows = strikes.parse(text) if text else []
+        status = s1 | s2 | s3 | s4
     signals, mode = read_signals(articles, today) if articles else ([], "none")
-    items = official_items(today, horizon) + weather_items(weather, today) + news_items(signals, today)
+    official = strikes.items(strike_rows, today, horizon) + document_items(docs, today)
+    news = [n for n in news_items(signals, today) if not covered(n, official)]
+    items = official_items(today, horizon) + weather_items(weather, today) + official + news
     end = (today + timedelta(days=horizon)).isoformat()
     items = [i for i in items if not i.get("start") or i["start"] <= end]
     attach(items)
@@ -414,6 +455,7 @@ def build_outlook(today: date, horizon: int = 60, fetch: bool = True) -> dict:
         "horizon_days": horizon, "reader": mode, "articles_read": len(articles), "signals": len(signals),
         "sources_ok": ok, "sources_total": len(status), "sources": status,
         "focus": focus_window(today), "items": items,
+        "strikes": strikes.summary(strike_rows) if strike_rows else None,
         "lanes": [{"id": lid, "name": ln.name.replace(" -> ", " – "),
                    "name_it": lane_it(ln.name).replace(" -> ", " – ")} for lid, ln in sorted(catalog.lanes().items(),
                                                                                         key=lambda x: x[1].name)],

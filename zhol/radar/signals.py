@@ -76,6 +76,24 @@ NON_EUROPE = re.compile(r"\b(chile|cile|argentin|brasil|brazil|usa|stati uniti|u
                         r"iran|pakistan|bangladesh|kenya|marocco|morocco)", re.I)
 
 
+# Which transport the disruption stops (owner, 8 and 12 Nov 2026: all transport, not only trucks). A train strike does
+# not stop a truck: only road events are priced as a truck's loss (zhol/radar/impact.py). Road words win, because a
+# stoppage of hauliers at a port is still a road stoppage.
+ROAD = re.compile(r"\btir\b|camion|autotrasport|mezzi pesanti|lkw|frächter|poids lourds|routiers|truck|haulier|"
+                  r"trattori|tracteurs|traktoren|agricoltori|agriculteurs|bauern|autostrad|autobahn|autoroute|\ba\d{1,2}\b", re.I)
+MODES = [
+    ("rail", r"ferrovi|\btren[oi]\b|trenitalia|\brfi\b|sncf|cheminot|\bfret\b|bahn|güterzug|\brail|railway|su rotaia|su ferro"),
+    ("sea", r"\bport[oi]\b|portual|docker|hafen|traghett|ferry|fähre|marittim|shipping|\bports?\b"),
+    ("air", r"\baere[oi]\b|aeroport|luftfracht|air cargo|flughafen|airport|cargo aereo"),
+]
+
+
+def mode_of(text: str) -> str:
+    if ROAD.search(text):
+        return "road"
+    return next((m for m, pat in MODES if re.search(pat, text, re.I)), "road")
+
+
 @dataclass
 class Signal:
     title: str
@@ -95,6 +113,7 @@ class Signal:
     talks: bool = False
     summary: str | None = None
     summary_it: str | None = None
+    mode: str = "road"
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -163,7 +182,7 @@ def heuristic_signal(item: dict, today: date) -> Signal | None:
         lang=item.get("lang", "it"), kind=kind, stage=_stage(text), countries=countries, regions=regions,
         chokepoints=chokes, start=dates[0].isoformat() if dates else None,
         end=dates[-1].isoformat() if dates else None, organisation=bool(ORGS.search(text)),
-        official=bool(OFFICIAL.search(text)), talks=bool(TALKS.search(text)),
+        official=bool(OFFICIAL.search(text)), talks=bool(TALKS.search(text)), mode=mode_of(text),
     )
 
 
@@ -171,17 +190,19 @@ def reader_spec() -> dict:
     """The keyword reader as data, for the live wire that runs between two builds (netlify/lib/wire.mts): the same
     words and the same numbers, written once here. The patterns are plain alternations, valid in JavaScript too."""
     from . import model
-    from .sources import GNEWS_LOCALE, NEWS_QUERIES, TRADE_FEEDS
+    from .sources import GNEWS_LOCALE, NEWS_QUERIES, OFFICIAL_DOCS, TRADE_FEEDS
     return {
         "queries": [{"lang": lang, "q": q} for lang, q in NEWS_QUERIES],
         "locale": {k: list(v) for k, v in GNEWS_LOCALE.items()},
         "feeds": [{"name": n, "url": u} for n, u in TRADE_FEEDS],
+        "documents": OFFICIAL_DOCS,
         "freight": FREIGHT.pattern, "disruption": DISRUPTION.pattern,
         "kinds": [[k, pat] for k, pat in KIND_WORDS + EXTRA_KINDS],
         "kind_as": {"ferry": "closure", "roadworks": "closure", "border_check": "closure"},
         "stages": [[st, pat] for st, pat in STAGE_RE], "stage_order": STAGE_ORDER,
         "official": OFFICIAL.pattern, "talks": TALKS.pattern, "accident": ACCIDENT.pattern, "non_europe": NON_EUROPE.pattern,
         "countries": COUNTRY_WORDS, "lang_country": LANG_COUNTRY, "regions": REGIONS,
+        "road": ROAD.pattern, "modes": [[m, pat] for m, pat in MODES],
         "stage_prior": model.STAGE_PRIOR,
         "multipliers": {k: {"x": x, "label": label, "label_it": model.MULTIPLIERS_IT[k]} for k, (x, label) in model.MULTIPLIERS.items()},
         "cap": 0.98,

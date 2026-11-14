@@ -1,12 +1,15 @@
 // GET /api/reports: what reached the radar between two builds, shaped like radar items.
 //   items  the office reports confirmed by a second office or checked by the team. Only the event: no words,
 //          no documents, no senders.
-//   wire   what the press reported in the last hours, read every 30 minutes (netlify/lib/wire.mts); not checked.
-// If the scheduled sweep has not run for a while, the first reader starts one in the background.
+//   wire   what the press reported in the last hours, read every 30 minutes (netlify/lib/wire.mts), and what the
+//          document agent read on the official pages (netlify/lib/docs.mts); not checked by a person.
+//   docs   when each official page was last looked at, and whether the reading failed.
+// If a scheduled run has not happened for a while, the first reader starts one in the background.
 import type { Config, Context } from "@netlify/functions";
 import { radarItems } from "../lib/reports.mts";
 import { EVERY_MIN } from "../lib/wire.mts";
-import { allReports, json, refreshWire, wireState } from "../lib/store.mts";
+import { EVERY_H } from "../lib/docs.mts";
+import { allReports, docStates, json, refreshDocs, refreshWire, wireState } from "../lib/store.mts";
 
 export default async (req: Request, context: Context) => {
   const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" });
@@ -21,7 +24,15 @@ export default async (req: Request, context: Context) => {
       else { const first = await run; if (first) { wire = first.items; wire_at = first.at; wire_read = first.read; } }
     }
   } catch (e) { console.error("wire failed", String(e).slice(0, 300)); }
-  return json({ items, wire, wire_at, wire_read, wire_every_min: EVERY_MIN }, 200, { "cache-control": "public, max-age=60" });
+  let docs: unknown[] = [];
+  try {
+    const states = await docStates();
+    wire = [...states.flatMap(d => d.items.filter(i => String(i.end || i.start) >= today)), ...wire];
+    docs = states.map(d => ({ id: d.id, read_at: d.read_at, changed_at: d.changed_at, items: d.items.length, error: d.error }));
+    const newest = Math.max(0, ...states.map(d => Date.parse(d.read_at)));
+    if (Date.now() - newest > 2 * EVERY_H * 36e5) context.waitUntil(refreshDocs(req).catch(e => console.error("docs failed", String(e).slice(0, 300))));
+  } catch (e) { console.error("docs failed", String(e).slice(0, 300)); }
+  return json({ items, wire, wire_at, wire_read, wire_every_min: EVERY_MIN, docs }, 200, { "cache-control": "public, max-age=60" });
 };
 
 export const config: Config = { path: "/api/reports", method: "GET" };
