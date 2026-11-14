@@ -7,16 +7,17 @@ import Anthropic from "@anthropic-ai/sdk";
 import { KINDS, STAGES, band, clean, lanesFor, type Event, type Places } from "./reports.mts";
 import { estimate, type Reader } from "./wire.mts";
 
-export interface Doc { id: string; issuer: string; url: string; lang: string; about: string; words: string }
+export interface Doc { id: string; issuer: string; url: string; lang: string; about: string; words: string; places?: string[]; countries?: string[] }
 export interface DocEvent extends Event { hours: string | null; quote: string; mode?: string }
 export interface DocState { id: string; hash: string; read_at: string; changed_at: string | null; items: Record<string, unknown>[]; error: string | null;
   chars?: number; events?: number; peek?: string;      // what the agent saw, to tell a blocked page from a quiet one
-  agent?: string }                                      // which version of the agent wrote this
+  agent?: string;                                       // which version of the agent wrote this
+  raw?: string }                                        // the first events as the agent returned them, when none of them reached the radar
 
 const MODEL = () => Netlify.env.get("ZHOL_AI_MODEL") || "claude-opus-5-5";
 export const EVERY_H = 3;          // each page is looked at again after this many hours
 const CAP = 9000;                  // characters of the page the agent reads
-export const AGENT = "2";          // bump when the agent's reading changes: every page is then read again
+export const AGENT = "3";          // bump when the agent's reading changes: every page is then read again
 
 /** The page as text, and of a long page only what stands around the words that matter. */
 export function extract(html: string, words: string, cap = CAP): string {
@@ -37,7 +38,7 @@ const RULES = `You read one official web page for zhol.live, a radar of what can
 rail and sea. Return every disruption the page states with its dates: closures of tunnels, passes and roads, truck
 dosing days, strikes, blockades. Today is {today}; the page is from {issuer} ({url}) and is about {about}.
 - Only what the page says. No event without a date. Skip events that ended before today.
-- One event per separate period. kind and stage from the lists; a published closure or dosing day is "announced",
+- One event per separate period: a page that lists five nights gives five events. kind and stage from the lists; a published closure or dosing day is "announced",
   a strike the page says is called is "announced", one it says is confirmed or under way is "confirmed" or "ongoing",
   one called off is "revoked".
 - title_en and title_it: one short neutral sentence. where_en and where_it: the place in a few words.
@@ -85,7 +86,11 @@ const hashOf = async (s: string) => [...new Uint8Array(await crypto.subtle.diges
 export function docItems(doc: Doc, events: DocEvent[], R: Reader, P: Places, today: string, readAt: string): Record<string, unknown>[] {
   const out = [], seen = new Set<string>();
   for (const raw of events) {
-    const ev = clean({ ...raw, official_document: true, source_url: doc.url }, P);
+    const d10 = (x: unknown) => (typeof x === "string" ? x.trim().slice(0, 10) : null);        // "2026-11-14T22:00" is the 14th
+    const named = (raw.places || []).some(x => x in P.places) || (raw.regions || []).some(x => P.regions.includes(x));
+    const ev = clean({ ...raw, start: d10(raw.start), end: d10(raw.end), official_document: true, source_url: doc.url,
+      // the page is about one place: an event that names none from the catalog is there
+      places: named ? raw.places : (doc.places || []), countries: (raw.countries || []).length || named ? raw.countries : (doc.countries || []) }, P);
     if (!ev.start || (ev.end || ev.start) < today || !(ev.places.length || ev.regions.length || ev.countries.length)) continue;
     const key = [ev.kind, ev.places.join(",") || ev.regions.join(",") || ev.countries.join(","), ev.start, ev.end].join("|");
     if (seen.has(key)) continue;
@@ -123,7 +128,9 @@ export async function lookAt(doc: Doc, prev: DocState | null, R: Reader, P: Plac
     const hash = await hashOf(AGENT + text);
     if (prev && prev.hash === hash && !prev.error) return keep(null, seen);
     const events = await reader(doc, text);
-    return { id: doc.id, hash, read_at: at, changed_at: at, items: docItems(doc, events, R, P, today, at), error: null, ...seen, events: events.length, agent: AGENT };
+    const items = docItems(doc, events, R, P, today, at);
+    const raw = events.length && !items.length ? JSON.stringify(events.slice(0, 2)).slice(0, 500) : undefined;
+    return { id: doc.id, hash, read_at: at, changed_at: at, items, error: null, ...seen, events: events.length, agent: AGENT, raw };
   } catch (e) {
     return keep(String(e).slice(0, 160));
   }

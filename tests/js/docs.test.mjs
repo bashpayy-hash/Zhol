@@ -41,6 +41,9 @@ test("what the agent read becomes radar items with the source, the hours and the
   assert.equal(it.sources[0].url, doc.url); assert.match(it.detail, /official page of SFTRF.*Not checked by a person yet/);
   assert.ok(it.lanes.includes("MIL-LYO-FREJUS"));
   assert.equal(docItems(doc, [ev({ stage: "revoked" })], R, P, "2026-11-14", "x")[0].p, 0.04);
+  // a date with its time, and an event that names no place from the catalog on a page about one place
+  const loose = docItems(doc, [ev({ start: "2026-11-20T22:00", end: "2026-11-21 06:00", places: [], countries: [] })], R, P, "2026-11-14", "x");
+  assert.deepEqual([loose.length, loose[0].start, loose[0].end, loose[0].places], [1, "2026-11-20", "2026-11-21", ["frejus"]]);
 });
 
 test("Claude is asked only when the page changed, and a failure keeps the last reading", async () => {
@@ -59,6 +62,8 @@ test("Claude is asked only when the page changed, and a failure keeps the last r
   const wall = await lookAt(doc, null, R, P, async () => "<html><body>" + "Please accept cookies to continue. ".repeat(5) + "</body></html>", reader, now);
   assert.match(wall.error, /does not mention/); assert.equal(reads, 3); assert.ok(wall.peek.startsWith("Please accept"));     // a consent wall is not a quiet page
   assert.deepEqual([a.events, a.chars > 80], [1, true]);
+  const lost = await lookAt(doc, null, R, P, async () => page, async () => [ev({ start: "next week", end: null })], now);
+  assert.equal(lost.items.length, 0); assert.match(lost.raw, /next week/);                                    // nothing reached the radar: keep what the agent said
   const late = await lookAt(doc, a, R, P, async () => { throw new Error("x"); }, reader, now + 5 * 864e5);
   assert.equal(late.items.length, 0);                                                                           // a past event leaves the wire
 });

@@ -74,15 +74,17 @@ TRADE_FEEDS = [
 # Official pages the document agent reads (netlify/lib/docs.mts): operators and authorities publish their closures,
 # dosing days and strikes here before the press does, with the exact hours. Each was opened from a cloud address on
 # 14 Nov 2026 and gives its dates as plain text. "words": what marks the part of a long page that matters.
+# "places" / "countries": where the page's events are when the agent names no place from the catalog.
 OFFICIAL_DOCS = [
     {"id": "sftrf-frejus", "issuer": "SFTRF (Fréjus tunnel)", "url": "https://www.sftrf.fr/", "lang": "fr",
-     "about": "night closures of the Fréjus road tunnel, by direction", "words": "fermeture|ferm[ée]|travaux"},
+     "about": "night closures of the Fréjus road tunnel, by direction", "words": "fermeture|ferm[ée]|travaux", "places": ["frejus"]},
     {"id": "tirol-dosing", "issuer": "Land Tirol", "url": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
      "lang": "de", "about": "truck dosing days at Kufstein towards the south, planned and added at short notice",
-     "words": "dosier|blockabfertigung|kufstein"},
+     "words": "dosier|blockabfertigung|kufstein", "places": ["kufstein"]},
     {"id": "trenitalia-info", "issuer": "Trenitalia Infomobilità",
      "url": "https://www.trenitalia.com/it/informazioni/Infomobilita/notizie-infomobilita.html", "lang": "it",
-     "about": "rail strikes in Italy and lines closed", "words": "sciopero|linea (interrotta|sospesa)|circolazione sospesa"},
+     "about": "rail strikes in Italy and lines closed", "words": "sciopero|linea (interrotta|sospesa)|circolazione sospesa",
+     "countries": ["IT"]},
 ]
 
 # Passes and tunnels whose approaches close or need chains in snow; the ferry is wind-driven.
