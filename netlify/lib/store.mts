@@ -5,7 +5,7 @@ import type { Report, Places } from "./reports.mts";
 import { EVERY_MIN, sweep } from "./wire.mts";
 import type { Reader, WireState } from "./wire.mts";
 import { aiLive } from "./ai.mts";
-import { EVERY_H, lookAt, readDoc } from "./docs.mts";
+import { AGENT, EVERY_H, lookAt, readDoc } from "./docs.mts";
 import type { DocState } from "./docs.mts";
 
 const store = (name: string) => getStore({ name, consistency: "strong" });
@@ -148,13 +148,14 @@ export async function docStates(): Promise<DocState[]> {
   return got.filter((d): d is DocState => !!d);
 }
 
-/** Look at the page that has waited longest, if any has waited long enough. Returns its new state or null. */
-export async function refreshDocs(req?: Request, force = false): Promise<DocState | null> {
+/** Look at the page that has waited longest, if any has waited long enough. Returns its new state or null.
+ *  onlyNew: only a page this version of the agent has never read (right after a deploy, without waiting for the hour). */
+export async function refreshDocs(req?: Request, force = false, onlyNew = false): Promise<DocState | null> {
   if (!aiLive()) return null;
   const [R, P, states] = await Promise.all([reader(req), places(req), docStates()]);
   const by = new Map(states.map(d => [d.id, d]));
   const due = (R.documents || []).map(d => ({ d, at: by.get(d.id) ? Date.parse(by.get(d.id)!.read_at) : 0 }))
-    .filter(x => force || Date.now() - x.at > EVERY_H * 36e5).sort((a, b) => a.at - b.at)[0];
+    .filter(x => onlyNew ? by.get(x.d.id)?.agent !== AGENT : (force || Date.now() - x.at > EVERY_H * 36e5)).sort((a, b) => a.at - b.at)[0];
   if (!due) return null;
   const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" });
   const next = await lookAt(due.d, by.get(due.d.id) || null, R, P, getText, (doc, text) => readDoc(doc, text, P, today));

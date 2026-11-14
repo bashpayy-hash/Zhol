@@ -11,6 +11,8 @@ import { EVERY_MIN } from "../lib/wire.mts";
 import { EVERY_H } from "../lib/docs.mts";
 import { allReports, docStates, json, refreshDocs, refreshWire, wireState } from "../lib/store.mts";
 
+let lastNew = 0;
+
 export default async (req: Request, context: Context) => {
   const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" });
   let items: unknown[] = [], wire: unknown[] = [], wire_at: string | null = null, wire_read = 0;
@@ -29,9 +31,14 @@ export default async (req: Request, context: Context) => {
     const states = await docStates();
     wire = [...states.flatMap(d => d.items.filter(i => String(i.end || i.start) >= today)), ...wire];
     docs = states.map(d => ({ id: d.id, read_at: d.read_at, changed_at: d.changed_at, items: d.items.length, error: d.error,
-      chars: d.chars, events: d.events, peek: d.peek }));
+      chars: d.chars, events: d.events, peek: d.peek, agent: d.agent }));
     const newest = Math.max(0, ...states.map(d => Date.parse(d.read_at)));
-    if (Date.now() - newest > 2 * EVERY_H * 36e5) context.waitUntil(refreshDocs(req).catch(e => console.error("docs failed", String(e).slice(0, 300))));
+    const fail = (e: unknown) => console.error("docs failed", String(e).slice(0, 300));
+    if (Date.now() - newest > 2 * EVERY_H * 36e5) context.waitUntil(refreshDocs(req).catch(fail));
+    else if (Date.now() - lastNew > 90_000) {      // after a deploy: a page this agent has never read, one at a time
+      lastNew = Date.now();
+      context.waitUntil(refreshDocs(req, false, true).catch(fail));
+    }
   } catch (e) { console.error("docs failed", String(e).slice(0, 300)); }
   return json({ items, wire, wire_at, wire_read, wire_every_min: EVERY_MIN, docs }, 200, { "cache-control": "public, max-age=60" });
 };
