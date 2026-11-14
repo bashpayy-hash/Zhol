@@ -2,6 +2,7 @@
 
     python scripts/professor_letters.py   # if the professors' letters changed
     python scripts/survey_targets.py      # refreshes outreach/survey_send_list.json
+    python scripts/lane_links.py          # the call and the link to each company's lanes (live radar)
     python scripts/build_console.py
 
 The page is published as a private claude.ai artifact (https://claude.ai/artifact/9uv2W3txr1GgrJAf6VJh3J), where the
@@ -22,6 +23,12 @@ def enc(path: Path) -> str:
 def rows_all() -> list:
     """The survey letters and the LinkedIn people (scripts/linkedin_letters.py), one list for the console."""
     rows = json.loads((OUT / "survey_send_list.json").read_text(encoding="utf-8"))
+    # a call first and the link to the company's own lanes (scripts/lane_links.py, owner 14 Nov 2026)
+    calls = OUT / "lane_links.json"
+    calls = json.loads(calls.read_text(encoding="utf-8")) if calls.exists() else {}
+    for r in rows:
+        if r["id"] in calls:
+            r["call"] = calls[r["id"]]
     li = OUT / "linkedin_send_list.json"
     return rows + (json.loads(li.read_text(encoding="utf-8")) if li.exists() else [])
 

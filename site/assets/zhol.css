@@ -1813,6 +1813,7 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .ck-num { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: 22px; background: var(--card); border: 1px solid var(--card-line); }
 .ck-num b { font-size: clamp(26px, 2.6vw, 34px); line-height: 1; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
 .ck-num span { font-size: 14px; color: var(--muted); }
+.ck-noprice { grid-column: 2 / -1; align-self: center; margin: 0; max-width: 560px; }
 .ck-num.risk b { color: var(--red); } .ck-num.save { background: var(--sage-card); border-color: #c4d2bd; } .ck-num.save b { color: var(--sage-ink); }
 .ck-sample-note { margin: 0; padding: 10px 14px; border-radius: 14px; background: #fbf3e4; color: #6b4a14; font-size: 14.5px; }
 .ck-list { display: flex; flex-direction: column; gap: 12px; }
@@ -1835,7 +1836,7 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .ck-msg { margin: 0; padding: 12px 14px; border-radius: 14px; background: var(--msg-box); font-size: 15px; line-height: 1.45; color: var(--ink-2); overflow-wrap: anywhere; }
 .ck-sent-list { display: flex; flex-direction: column; }
 .ck-sent-row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid #c4d2bd; }
-@media (max-width: 920px) { .ck-grid, .ck-offer-grid { grid-template-columns: minmax(0, 1fr); } .ck-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 920px) { .ck-grid, .ck-offer-grid { grid-template-columns: minmax(0, 1fr); } .ck-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ck-noprice { grid-column: 1 / -1; } }
 @media (max-width: 480px) { .ck-add-grid { grid-template-columns: minmax(0, 1fr); } .ck-head { grid-template-columns: minmax(0, 1fr); } }
 
 /* /offer: the receiver's page */

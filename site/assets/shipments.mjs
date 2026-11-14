@@ -133,6 +133,44 @@ export function parseCSV(text) {
 // ---- the check
 const addDays = (date, n) => new Date(Date.parse(date + "T12:00:00Z") + n * 864e5).toISOString().slice(0, 10);
 const sameLane = (a, b) => norm(String(a).replace(/->/g, "–")) === norm(String(b).replace(/->/g, "–"));
+const forRoad = i => !i.mode || i.mode === "road";
+
+/** Example trips on an office's own lanes, for a personal link (/check#lanes=VR-MUC-BRENNER,MUC-VR-BRENNER; owner,
+ *  14 Nov 2026: «что исправить… чтобы выиграть TEF»). One trip for each different road event the radar has on those
+ *  lanes in the next five weeks, timed to reach it, then one ordinary day. The trips are hypothetical and the page
+ *  says so; the events and their sources are the radar's. */
+export function lanePlan(data, ids, it = false, days = 35, max = 5) {
+  const lanes = (data.lanes || []).filter(l => ids.includes(l.id));
+  if (!lanes.length) return [];
+  const until = addDays(data.today, days);
+  const trip = (l, date, time) => {
+    const [ends, via = ""] = ((it && l.name_it) || l.name).split(" via ");
+    const [a, b] = ends.split(/\s+(?:–|-|->)\s+/);
+    return { ref: (it ? "ES-" : "EX-") + (out.length + 1), from: a, to: b, date, time, via: via.split(/ and | e /)[0], receiver: "" };
+  };
+  const out = [], seen = new Set();
+  const events = (data.items || [])
+    .filter(i => i.start && i.start >= data.today && i.start <= until && i.stage !== "revoked" && (i.p || 0) >= 0.5 && (forRoad(i) || i.impact))
+    .sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p);
+  for (const i of events) {
+    const l = lanes.find(x => (i.lanes || []).includes(x.id) && i.impact && sameLane(x.name, i.impact.lane)) || lanes.find(x => (i.lanes || []).includes(x.id));
+    const key = l && l.id + "|" + norm(i.title);
+    if (!l || seen.has(key)) continue;
+    seen.add(key);
+    // reach the event: a morning one is met by leaving the evening before, a later one by leaving that afternoon
+    const hit = i.impact && i.impact.lead && i.impact.lead.hit_at;
+    const morning = hit ? Number(String(hit).slice(11, 13)) < 12 : false;
+    const date = morning && addDays(i.start, -1) >= data.today ? addDays(i.start, -1) : i.start;
+    out.push(trip(l, date, morning ? "20:00" : "14:00"));
+    if (out.length === max - 1) break;
+  }
+  let quiet = addDays(data.today, 2);
+  // an ordinary day has nothing at all on the lane, of any mode, that the check would show
+  const busy = d => (data.items || []).some(i => i.start && i.stage !== "revoked" && (i.p || 0) >= 0.2 && (i.lanes || []).includes(lanes[0].id) && i.start <= addDays(d, 1) && (i.end || i.start) >= d);
+  while (busy(quiet) && quiet < until) quiet = addDays(quiet, 1);
+  out.push(trip(lanes[0], quiet, "07:00"));
+  return out;
+}
 
 /** What the radar says about each shipment: the events on its lanes on its days, the cost for one truck when the
  *  radar priced that event on the same lane, and the best plan. Revoked events and chances under 20% are left out,
@@ -152,8 +190,10 @@ export function check(shipments, data) {
         return { item: i, p: i.p, impact: im };
       })
       .sort((a, b) => b.p - a.p);
-    const top = hits[0];
-    const status = !top ? "clear" : top.p >= 0.5 ? "risk" : "watch";
+    // an event has its mode of transport (CLAUDE.md, 14 Nov 2026): a rail, air or general strike is worth watching on
+    // a road trip, but only a road event, or one the radar priced on this lane, puts the trip at risk
+    const top = hits.filter(h => forRoad(h.item) || h.impact)[0];
+    const status = top && top.p >= 0.5 ? "risk" : hits.length ? "watch" : "clear";
     const priced = hits.filter(h => h.impact).sort((a, b) => b.impact.e_keep - a.impact.e_keep)[0] || null;
     return { ship: s, status, lanes: on, hits, priced };
   });

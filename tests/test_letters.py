@@ -214,3 +214,32 @@ def test_linkedin_console_rows_follow_the_same_principles():
         assert "[Nome]" not in m and "[Name]" not in m and r["name"] in m, r["id"]
         assert "TEF Ignition 2026" in m and any(g in m for g in ("2.000 €", "2,000")) and "Europ" in m, r["id"]
         assert r["link"] in m and "src=li-" in r["link"], r["id"]
+
+
+def test_calls_and_lane_links_follow_the_same_principles():
+    """A call first, then the link to the company's own lanes (owner, 14 Nov 2026: «что теперь исправить… чтобы
+    выиграть TEF»; scripts/lane_links.py). The message after the call keeps every rule of a letter: who we are and the
+    grant, Europe, AI, every mode of transport, «io e il mio team», no colons, no team names, one link and it is the
+    company's own page; the call itself has no colons either, and every event it names has its source."""
+    from urllib.parse import quote
+    from test_positioning import BANNED
+    calls = json.loads((ROOT / "outreach" / "lane_links.json").read_text(encoding="utf-8"))
+    rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
+    assert len(calls) >= 200
+    for cid, k in calls.items():
+        m = k["message"]
+        assert ":" not in _text(m) and ":" not in _text(k["call_it"]) and ":" not in k["subject"], cid
+        assert len(k["subject"].split()) <= 10, cid
+        assert not NAMES.search(m + k["call_it"]) and not BANNED.search(m + k["call_it"]), cid
+        for must in ("Bocconi", "TEF Ignition 2026", "2.000 €", "Europa", " AI ", "Io e il mio team", "su rotaia", "via mare",
+                     "stima", "in anticipo", "tempo reale"):
+            assert must in m, (cid, must)
+        links = re.findall(r"https?://\S+", m)
+        assert links == [k["link"]] and k["link"].startswith("https://zhol.live/it/verifica#lanes="), (cid, links)
+        assert m.count("**") // 2 <= 3 and not re.search(r"per truck|per camion", m, re.I), cid
+        assert k["events"] and all(e["url"].startswith("https://") and e["source_it"] for e in k["events"]), cid
+        to = rows[cid].get("to")
+        if to:
+            enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
+            url = "https://outlook.office.com/mail/deeplink/compose?to=" + enc(to) + "&subject=" + enc(k["subject"]) + "&body=" + enc(m)
+            assert len(url) <= 4000, (cid, len(url))

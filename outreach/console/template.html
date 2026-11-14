@@ -27,6 +27,11 @@
 .dup-warn { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fde8e4; color: #7a2412; font-size: 14px; line-height: 1.4; }
 .pill.remind { background: #fff1d6; color: #7a4b00; }
 .remind-box { border-top: 1px dashed var(--line); padding-top: 14px; }
+/* a call first, then the link to the company's own lanes (scripts/lane_links.py; owner, 14 Nov 2026) */
+.call-box { background: var(--sage); border-radius: 16px; padding: 14px 16px; display: grid; gap: 10px; }
+.call-box .lab > span:first-child { color: var(--sage-ink); font-weight: 600; }
+.call-box .msg { background: var(--card); }
+.call-box .events { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
 .paste-note { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fff6dd; color: #5a4300; font-size: 14px; line-height: 1.4; }
 body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
@@ -362,6 +367,39 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     return box;
   }
 
+  // a call first, then the message with the link to the company's own lanes: it gives before it asks
+  // (owner, 14 Nov 2026: «что теперь исправить… чтобы выиграть TEF»; scripts/lane_links.py)
+  function callBox(r) {
+    const k = r.call, box = el("div", "call-box");
+    const l1 = el("div", "lab"); l1.append(el("span", null, "Сначала позвонить: 30 секунд по-итальянски, номер на сайте компании"));
+    const b1 = el("div"); b1.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
+    const open = el("a", "btn small", "Открыть их страницу"); open.href = k.link; open.target = "_blank"; open.rel = "noopener";
+    const cl = el("button", "btn small", "Скопировать ссылку"); cl.type = "button"; cl.addEventListener("click", () => copy(k.link, cl, box));
+    b1.append(open, cl); l1.append(b1); box.append(l1, el("pre", "msg", k.call_it));
+    const d1 = el("details", "ru"); d1.append(el("summary", null, "Перевод звонка (для команды)"), el("pre", "msg", k.call_ru)); box.append(d1);
+    if (k.events && k.events.length) {
+      const ul = el("ul", "events");
+      k.events.forEach(e => { const li = el("li", null, day(e.date) + " · " + e.what_en + " · "); const a = el("a", null, e.source_ru); a.href = e.url; a.target = "_blank"; a.rel = "noopener"; li.append(a); ul.append(li); });
+      box.append(el("div", "small", "События на их направлениях (радар на " + day(k.radar_day) + ", ссылка всегда показывает свежие):"), ul);
+    }
+    const l2 = el("div", "lab"); l2.append(el("span", null, "После звонка: сообщение со ссылкой (или вместо звонка, если не дозвонились)"));
+    const b2 = el("div"); b2.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
+    const body = plain(sign(k.message));
+    if (r.wa) { const w = el("a", "btn wa-btn small", "Отправить в WhatsApp"); w.href = "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(body); w.target = "_blank"; w.rel = "noopener"; b2.append(w); }
+    if (r.to) {
+      const enc = x => encodeURIComponent(x).replace(/%2C/g, ",").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%40/g, "@");
+      const a = el("a", "btn small", "Открыть в Outlook");
+      a.href = (APPLE_TOUCH ? "ms-outlook://compose?" : "https://outlook.office.com/mail/deeplink/compose?") + "to=" + enc(r.to) + "&subject=" + enc(k.subject) + "&body=" + enc(body);
+      a.target = "_blank"; a.rel = "noopener"; b2.append(a);
+    }
+    const cm = el("button", "btn small", "Скопировать сообщение"); cm.type = "button"; cm.addEventListener("click", () => copy(sign(k.message), cm, box)); b2.append(cm);
+    l2.append(b2); box.append(l2, el("div", "subject", k.subject));
+    const pre = el("pre", "msg"); rich(pre, sign(k.message)); box.append(pre);
+    const d2 = el("details", "ru"); d2.append(el("summary", null, "О чём сообщение (для команды)"), el("pre", "msg", k.message_ru)); box.append(d2);
+    box.append(el("div", "small", "Ответили или поговорили: отметьте внизу «Ответили» и запишите разговор в outreach/interview_log.csv."));
+    return box;
+  }
+
   const fmt = iso => { try { return new Date(iso).toLocaleString("ru-RU", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
 
   // the letter, with the part written for this company highlighted
@@ -403,6 +441,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     else if (r.where && !r.to) c.append(el("span", null, r.where));
     const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
     box.append(c);
+    if (r.call) box.append(callBox(r));
     const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : r.type === "linkedin" ? "Тема сообщения в LinkedIn (InMail)" : "Тема письма"));
     const sb = el("button", "btn small", "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
     if (r.type !== "group") sl.append(sb);

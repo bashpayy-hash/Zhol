@@ -2,7 +2,7 @@
    through zhol (owner, 14 Nov 2026). The plan never leaves the browser: it is read and matched here
    (assets/shipments.mjs) and kept only on this device. Only a proposal the office decides to send goes to the server
    (/api/offer), with the reference, the route, the times and the event, nothing else. */
-import { check, cities, fromRows, lanesFor, parseCSV, parseWhen, totals } from "/assets/shipments.mjs?v=1";
+import { check, cities, fromRows, lanePlan, lanesFor, parseCSV, parseWhen, totals } from "/assets/shipments.mjs?v=2";
 
 const IT = document.documentElement.lang === "it";
 const T = (en, it) => IT ? it : en;
@@ -18,6 +18,14 @@ const store = { get: (k, d) => { try { return JSON.parse(localStorage.getItem(k)
 const PLAN = "zhol-plan", SENT = "zhol-offers", ME = "zhol-company";
 
 let data = null, plan = store.get(PLAN, []), sample = false;
+
+// a personal link to an office's own lanes, /it/verifica#lanes=VR-MUC-BRENNER,MUC-VR-BRENNER&for=Rossi (owner, 14 Nov
+// 2026: «что исправить… чтобы выиграть TEF»): the page opens on example trips on those lanes. After "#", so the lanes
+// and the name never reach a server log.
+const LINK = new URLSearchParams(location.hash.slice(1));
+const linkLanes = (LINK.get("lanes") || "").split(",").filter(x => /^[A-Z]{2,4}(-[A-Z]{2,12}){1,3}$/.test(x)).slice(0, 4);
+const linkFor = (LINK.get("for") || "").replace(/\s+/g, " ").trim().slice(0, 60);
+let onLanes = false;
 
 // ---- the radar as it is now: the build plus what came in since (the same rules as the home page)
 async function loadRadar() {
@@ -87,11 +95,17 @@ function render() {
   if (!plan.length || !data) return;
   const res = check(plan, data), t = totals(res);
   const big = (n, label, cls) => { const d = el("div", "ck-num " + (cls || "")); d.append(el("b", null, n), el("span", null, label)); return d; };
-  sum.append(big(t.risk + T(" of ", " su ") + t.n, T("shipments at risk", "spedizioni a rischio"), t.risk ? "risk" : ""),
-             big(eur(t.keep), T("expected cost if nothing changes", "costo atteso se non cambia nulla")),
+  sum.append(big(t.risk + T(" of ", " su ") + t.n, T("shipments at risk", "spedizioni a rischio"), t.risk ? "risk" : ""));
+  // money only where the radar priced an event on these lanes: no row of €0 that reads as "nothing to lose"
+  if (t.keep) sum.append(big(eur(t.keep), T("expected cost if nothing changes", "costo atteso se non cambia nulla")),
              big(eur(t.zhol), T("with zhol's plans", "con i piani di zhol")),
              big(eur(t.saves), T("you can save", "potete risparmiare"), "save"));
-  if (sample) list.append(el("p", "ck-sample-note", T("Sample plan: the trips are invented, the events are today's radar.", "Piano di esempio: i viaggi sono inventati, gli eventi sono quelli del radar di oggi.")));
+  else if (t.risk) sum.append(el("p", "small muted ck-noprice", T("No price yet on these lanes: the radar prices an event where it has a reference trip, and adds lanes with the offices that ask for them.",
+    "Ancora nessun prezzo su queste tratte: il radar calcola il costo dove ha un viaggio di riferimento e aggiunge tratte con gli uffici che le chiedono.")));
+  const old = document.getElementById("ck-lanes-note"); if (old) old.remove();
+  if (sample && onLanes) sum.before(Object.assign(el("p", "ck-sample-note ck-lanes-note", T("Example on your lanes" + (linkFor ? ", " + linkFor : "") + ". The trips are hypothetical, the events and their sources are today's radar. Load your plan to see your real trips.",
+    "Esempio sulle vostre tratte" + (linkFor ? ", " + linkFor : "") + ". I viaggi sono ipotetici, gli eventi e le loro fonti sono quelli del radar di oggi. Caricate il vostro piano per vedere i viaggi veri.")), { id: "ck-lanes-note" }));
+  else if (sample) list.append(el("p", "ck-sample-note", T("Sample plan: the trips are invented, the events are today's radar.", "Piano di esempio: i viaggi sono inventati, gli eventi sono quelli del radar di oggi.")));
   const order = { risk: 0, watch: 1, clear: 2, unknown: 3, past: 4 };
   res.slice().sort((a, b) => order[a.status] - order[b.status] || a.ship.date.localeCompare(b.ship.date)).forEach(r => list.append(card(r)));
 }
@@ -251,7 +265,7 @@ const drop = $("ck-drop");
 ["dragenter", "dragover"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add("over"); }));
 ["dragleave", "drop"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove("over"); }));
 drop.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) readFile(f); });
-$("ck-sample").addEventListener("click", () => { plan = samplePlan(); sample = true; render(); $("ck-results").scrollIntoView({ behavior: "smooth", block: "start" }); });
+$("ck-sample").addEventListener("click", () => { plan = samplePlan(); sample = true; onLanes = false; render(); $("ck-results").scrollIntoView({ behavior: "smooth", block: "start" }); });
 $("ck-clear").addEventListener("click", () => { plan = []; sample = false; keep(); $("ck-file-note").textContent = ""; render(); });
 
 // ---- the office's account: the plan saved, watched every 30 minutes, what changed since the last visit
@@ -379,5 +393,9 @@ loadRadar().then(async d => {
   await acctReady;
   data = d;
   $("ck-status").textContent = T("Radar updated ", "Radar aggiornato ") + stamp(d.built_at) + " · " + d.items.length + T(" events", " eventi");
-  addForm(); render(); drawSent();
+  addForm();
+  const lp = linkLanes.length && !(acct && plan.length) ? lanePlan(d, linkLanes, IT) : [];
+  if (lp.length) { plan = lp; sample = onLanes = true; }
+  render(); drawSent();
+  if (lp.length) { const n = $("ck-lanes-note"), top = n.getBoundingClientRect().top + window.scrollY - (document.querySelector("header.top") || { offsetHeight: 70 }).offsetHeight - 16; window.scrollTo({ top, behavior: "smooth" }); }
 }).catch(() => { $("ck-status").textContent = T("The radar could not be loaded. Try again in a minute.", "Non riesco a caricare il radar. Riprovate tra un minuto."); });

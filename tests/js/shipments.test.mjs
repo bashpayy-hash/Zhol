@@ -1,7 +1,7 @@
 // Checking an office's own shipments against the radar (site/assets/shipments.mjs), all in the browser.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { check, cities, fromRows, lanesFor, parseCSV, parseWhen, totals } from "../../site/assets/shipments.mjs";
+import { check, cities, fromRows, lanePlan, lanesFor, parseCSV, parseWhen, totals } from "../../site/assets/shipments.mjs";
 
 const lanes = [
   { id: "MIL-LYO-FREJUS", name: "Milano – Lyon via Fréjus", name_it: "Milano – Lione via Fréjus" },
@@ -65,8 +65,9 @@ test("the check: events on the shipment's lanes and days; cost only where the ra
   assert.equal(r[0].status, "risk");
   assert.deepEqual(r[0].hits.map(h => h.item.id), ["strike", "frejus"]);
   assert.equal(r[0].priced.item.id, "frejus");
-  // leaving the day before: the trip reaches the crossing the next day, the strike is on it; the weak and revoked ones are not
-  assert.equal(r[1].status, "risk");
+  // leaving the day before: the trip reaches the crossing the next day, the strike is on it; the weak and revoked ones are
+  // not. A rail strike is worth watching on a road trip, it does not put it at risk (an event has its mode, CLAUDE.md)
+  assert.equal(r[1].status, "watch");
   assert.deepEqual(r[1].hits.map(h => h.item.id), ["strike"]);
   assert.equal(r[1].priced, null, "a rail strike puts no truck cost on a road trip");
   assert.equal(r[2].priced.item.id, "brenner", "the reverse lane counts too");
@@ -74,5 +75,27 @@ test("the check: events on the shipment's lanes and days; cost only where the ra
   assert.equal(r[4].status, "unknown");
   assert.equal(r[5].status, "past");
   const t = totals(r);
-  assert.deepEqual([t.n, t.risk, t.clear, t.unknown, t.keep, t.zhol, t.saves], [6, 3, 1, 1, 294 + 2735, 37 + 40, 294 + 2735 - 77]);
+  assert.deepEqual([t.n, t.risk, t.clear, t.unknown, t.keep, t.zhol, t.saves], [6, 2, 1, 1, 294 + 2735, 37 + 40, 294 + 2735 - 77]);
+});
+
+test("a personal link: example trips on the office's own lanes, timed to reach each different road event, then a quiet day", () => {
+  const more = items.concat([
+    { id: "dosing", title: "Truck dosing at Kufstein, southbound", start: "2026-11-18", p: 0.95, stage: "confirmed", lanes: ["MUC-VR-BRENNER"],
+      impact: Object.assign(impact("München -> Verona via Brenner", 80, 0, 0), { lead: { hit_at: "2026-11-18T06:00:00+01:00" } }) },
+    { id: "dosing2", title: "Truck dosing at Kufstein, southbound", start: "2026-11-25", p: 0.95, stage: "confirmed", lanes: ["MUC-VR-BRENNER"] },
+    { id: "rail", title: "Rail strike", start: "2026-11-20", p: 0.94, stage: "announced", lanes: ["VR-MUC-BRENNER"], mode: "rail" },
+    { id: "far", title: "Far away", start: "2027-03-01", p: 0.99, stage: "confirmed", lanes: ["VR-MUC-BRENNER"] },
+  ]);
+  more.find(i => i.id === "brenner").title = "Holiday truck bans";
+  const plan = lanePlan({ lanes, items: more, today: "2026-11-14" }, ["VR-MUC-BRENNER", "MUC-VR-BRENNER"], true);
+  // the dosing at 6 in the morning is met by leaving the evening before; the second dosing day repeats the first and is
+  // left out; a rail strike and an event beyond five weeks are not road trips' examples
+  assert.deepEqual(plan.map(s => [s.ref, s.from, s.to, s.date, s.time, s.via]), [
+    ["ES-1", "Monaco", "Verona", "2026-11-17", "20:00", "Brennero"],
+    ["ES-2", "Verona", "Monaco", "2026-12-08", "14:00", "Brennero"],
+    ["ES-3", "Verona", "Monaco", "2026-11-16", "07:00", "Brennero"],
+  ]);
+  const r = check(plan, { lanes, items: more, today: "2026-11-14" });
+  assert.deepEqual(r.map(x => x.status), ["risk", "risk", "clear"]);
+  assert.deepEqual(lanePlan({ lanes, items: more, today: "2026-11-14" }, ["NOPE"]), []);
 });
