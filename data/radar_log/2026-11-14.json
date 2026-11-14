@@ -1,8 +1,8 @@
 {
  "date": "2026-11-14",
- "built_at": "2026-11-14T02:39+01:00",
+ "built_at": "2026-11-14T05:16+01:00",
  "reader": "heuristic",
- "articles_read": 634,
+ "articles_read": 628,
  "items": [
   {
    "key": "ban|AT,IT|2026-12-08",
@@ -185,21 +185,6 @@
    "decide_h": 3.9
   },
   {
-   "key": "weather|montblanc|2026-11-17",
-   "id": "215202ab0c",
-   "group": "forecast",
-   "kind": "weather",
-   "title": "Snow at the Mont Blanc tunnel",
-   "start": "2026-11-17",
-   "end": "2026-11-17",
-   "p": 0.372,
-   "stage": null,
-   "basis": "forecast",
-   "first_published": null,
-   "outlets": 1,
-   "decide_h": 5.9
-  },
-  {
    "key": "weather|tauern|2026-11-24",
    "id": "ff19b599f4",
    "group": "forecast",
@@ -305,6 +290,81 @@
    "decide_h": null
   },
   {
+   "key": "closure|frejus|2026-11-20",
+   "id": "d-sftrf-frejus-closure-frejus-2026-11-20-2026-11-21",
+   "group": "official",
+   "kind": "closure",
+   "title": "Night closure of the Fréjus road tunnel towards Italy.",
+   "start": "2026-11-20",
+   "end": "2026-11-21",
+   "p": 0.933,
+   "stage": "announced",
+   "basis": "document",
+   "first_published": "2026-11-14",
+   "outlets": 1,
+   "decide_h": 6.2
+  },
+  {
+   "key": "closure|frejus|2026-11-21",
+   "id": "d-sftrf-frejus-closure-frejus-2026-11-21-2026-11-22",
+   "group": "official",
+   "kind": "closure",
+   "title": "Night closure of the Fréjus road tunnel towards Italy.",
+   "start": "2026-11-21",
+   "end": "2026-11-22",
+   "p": 0.933,
+   "stage": "announced",
+   "basis": "document",
+   "first_published": "2026-11-14",
+   "outlets": 1,
+   "decide_h": 6.2
+  },
+  {
+   "key": "closure|frejus|2026-11-14",
+   "id": "d-sftrf-frejus-closure-frejus-2026-11-14-2026-11-15",
+   "group": "official",
+   "kind": "closure",
+   "title": "Night closure of the Fréjus road tunnel in both directions.",
+   "start": "2026-11-14",
+   "end": "2026-11-15",
+   "p": 0.933,
+   "stage": "announced",
+   "basis": "document",
+   "first_published": "2026-11-14",
+   "outlets": 1,
+   "decide_h": 6.2
+  },
+  {
+   "key": "closure|frejus|2026-11-23",
+   "id": "d-sftrf-frejus-closure-frejus-2026-11-23-2026-11-24",
+   "group": "official",
+   "kind": "closure",
+   "title": "Night closure of the Fréjus road tunnel in both directions.",
+   "start": "2026-11-23",
+   "end": "2026-11-24",
+   "p": 0.933,
+   "stage": "announced",
+   "basis": "document",
+   "first_published": "2026-11-14",
+   "outlets": 1,
+   "decide_h": 6.2
+  },
+  {
+   "key": "closure|frejus|2026-11-30",
+   "id": "d-sftrf-frejus-closure-frejus-2026-11-30-2026-12-01",
+   "group": "official",
+   "kind": "closure",
+   "title": "Night closure of the Fréjus road tunnel in both directions.",
+   "start": "2026-11-30",
+   "end": "2026-12-01",
+   "p": 0.933,
+   "stage": "announced",
+   "basis": "document",
+   "first_published": "2026-11-14",
+   "outlets": 1,
+   "decide_h": 6.2
+  },
+  {
    "key": "closure|montblanc|2026-11-20",
    "id": "4dbceed3c0",
    "group": "news",
@@ -393,21 +453,6 @@
    "first_published": "2026-10-30",
    "outlets": 1,
    "decide_h": null
-  },
-  {
-   "key": "closure|frejus|2026-11-14",
-   "id": "fc467d76f3",
-   "group": "news",
-   "kind": "closure",
-   "title": "Possible closure at the Fréjus road tunnel",
-   "start": "2026-11-14",
-   "end": "2026-11-14",
-   "p": 0.113,
-   "stage": "tension",
-   "basis": "news",
-   "first_published": "2026-11-07",
-   "outlets": 1,
-   "decide_h": 6.2
   },
   {
    "key": "strike|FR|2026-11-17",
