@@ -58,14 +58,14 @@ function samplePlan() {
     const lane = lanes.find(l => i.lanes.includes(l.id) && l.name === String(i.impact.lane).replace(/ -> /, " – ")) || lanes.find(l => i.lanes.includes(l.id));
     if (!lane || used.has(lane.id)) continue;
     used.add(lane.id);
-    const [ends, via] = lane.name.split(" via ");
+    const [ends, via] = (IT && lane.name_it ? lane.name_it : lane.name).split(" via ");
     const [a, b] = ends.split(" – ");
-    out.push({ ref: "SAMPLE-" + (out.length + 1), from: a, to: b, date: i.start, time: "18:30", via: (via || "").split(" and ")[0], receiver: T("Receiver ", "Destinatario ") + (out.length + 1) });
+    out.push({ ref: "SAMPLE-" + (out.length + 1), from: a, to: b, date: i.start, time: "18:30", via: (via || "").split(/ and | e /)[0], receiver: T("Receiver ", "Destinatario ") + (out.length + 1) });
     if (out.length === 3) break;
   }
   const quiet = lanes.find(l => !used.has(l.id));
   if (quiet) {
-    const [ends] = quiet.name.split(" via "); const [a, b] = ends.split(" – ");
+    const [ends] = (IT && quiet.name_it ? quiet.name_it : quiet.name).split(" via "); const [a, b] = ends.split(" – ");
     out.push({ ref: "SAMPLE-" + (out.length + 1), from: a, to: b, date: new Date(Date.parse(data.today + "T12:00:00Z") + 9 * 864e5).toISOString().slice(0, 10), time: "07:00", via: "", receiver: "" });
   }
   out.push({ ref: "SAMPLE-" + (out.length + 1), from: "Roma", to: "Paris", date: data.today, time: "09:00", via: "", receiver: "" });
