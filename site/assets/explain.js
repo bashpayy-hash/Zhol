@@ -94,6 +94,8 @@ window.ZholExplain = (function () {
   // the one sentence that says what it means for a shipment
   function gist(it) {
     const im = it.impact;
+    if (it.stage === "revoked") return T("Called off: there is nothing to change. It is shown so that whoever planned around it knows.",
+                                         "Revocato: non c’è niente da cambiare. Lo mostriamo perché lo sappia chi aveva già cambiato i piani.");
     const span = it.end && it.start && it.end !== it.start;
     if (im) return T("If one of your trucks passes " + im.at + (span ? " on those days" : " that day") + " and nothing changes, it waits about " + dec(im.wait_h) + " h: " + eur(im.loss) + ". The best plan: " + planName(im).replace(/^./, c => c.toLowerCase()) + ".",
                      "Se un vostro camion passa da " + im.at + (span ? " in quei giorni" : " quel giorno") + " e non cambia nulla, aspetta circa " + dec(im.wait_h) + " ore: " + eur(im.loss) + ". Il piano migliore: " + planName(im).replace(/^./, c => c.toLowerCase()) + ".");
