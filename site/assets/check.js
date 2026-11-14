@@ -129,7 +129,7 @@ function card(r) {
     c.append(el("p", "small muted", T("It stops trains or ships, not trucks: no truck cost.", "Ferma treni o navi, non i camion: nessun costo per il camion.")));
   }
   const acts = el("div", "ck-acts");
-  const why = el("button", "btn ghost", T("Why, and what to do", "Perché, e cosa fare")); why.type = "button";
+  const why = el("button", "btn ghost", T("Why " + pct(r.hits[0].p) + " and what to do", "Perché " + pct(r.hits[0].p) + " e cosa fare")); why.type = "button";
   why.addEventListener("click", () => window.ZholExplain && window.ZholExplain.open(r.hits.map(h => h.item), 0, { from: c, today: data.today, method: data.method, radar: IT ? "/it/radar" : "/radar" }));
   const ask = el("button", "btn", T("Propose a new time to the receiver", "Proponete un nuovo orario al destinatario")); ask.type = "button";
   ask.addEventListener("click", () => { if (!c.querySelector(".ck-offer")) c.append(offerForm(r)); ask.hidden = true; });
@@ -289,9 +289,16 @@ function newsLine(n) {
   return li;
 }
 
+function placeAccount() {
+  const sec = $("ck-acc").closest("section");
+  if (acct) $("plan").before(sec); else $("ck-results").after(sec);
+}
+
 function drawAccount() {
   const box = $("ck-acc"); box.textContent = "";
+  placeAccount();
   if (!acct) {
+    if (notice) { box.append(el("p", "ck-acc-notice", notice)); notice = ""; }
     box.append(el("span", "kicker", T("Keep watching this plan", "Continuate a seguire questo piano")),
       el("h2", null, T("An office account: zhol keeps watching your shipments", "Un account per l’ufficio: zhol continua a seguire le vostre spedizioni")),
       el("p", "small", T("zhol saves the plan and checks it against the radar every 30 minutes. What changes, a new risk, a risk gone, a chance that moved, shows here; with a WhatsApp number, a person of our team sends it to you as well. Without an account the plan stays only in this browser.",
@@ -351,18 +358,18 @@ function drawAccount() {
   del.addEventListener("click", async () => {
     if (!confirm(T("Delete this office account and its saved plan? This cannot be undone.", "Cancellare l’account e il piano salvato? Non si può annullare."))) return;
     const r = await officeApi({ kind: "delete" }).catch(() => null);
-    if (r && r.ok) { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } acct = null; justMade = null; plan = []; drawAccount(); render(); }
+    if (r && r.ok) { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } acct = null; justMade = null; plan = []; notice = T("The account and its plan are deleted.", "L’account e il piano sono cancellati."); drawAccount(); render(); }
   });
   acts.append(copy, out, del);
   box.append(acts);
   if (news.length) officeApi({ kind: "seen" }).catch(() => {});
 }
-let justMade = null;
+let justMade = null, notice = "";
 
 async function loadAccount() {
   if (!key()) return;
   const r = await officeApi().catch(() => null);
-  if (!r || !r.ok) { if (r && r.status === 401) { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } } return; }
+  if (!r || !r.ok) { if (r && r.status === 401) { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } notice = T("This private link no longer opens an account: it was deleted or copied incompletely. You can create a new one below.", "Questo link privato non apre più un account: è stato cancellato o copiato a metà. Potete crearne uno nuovo qui sotto."); } return; }
   acct = (await r.json()).office;
   plan = acct.plan;
 }

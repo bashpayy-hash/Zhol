@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s51">
+<link rel="stylesheet" href="/assets/zhol.css?v=s52">
 <link rel="alternate" hreflang="en" href="https://zhol.live/check">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/verifica">
 </head>
@@ -30,7 +30,8 @@
   <div class="wrap stack" style="gap:16px">
     <span class="kicker">Check your shipments · free, now</span>
     <h1 class="title">Which of your shipments will something stop?</h1>
-    <p class="lead">Load your plan or type a trip. zhol checks each shipment against every ban, closure and strike on the radar for the next eight weeks, with what it would cost and the best plan. <b>Without an account, your file stays in this browser. With an office account, the plan is saved so zhol keeps watching it.</b></p>
+    <p class="lead">zhol checks each of your shipments against every ban, closure and strike on the radar for the next eight weeks, with the cost and the best plan.</p>
+    <div class="actions"><a class="btn" href="#plan">Load your plan</a><button class="btn ghost" type="button" id="ck-sample">Try a sample plan</button></div>
     <p class="small muted" id="ck-status">Loading the radar…</p>
   </div>
 </section>
@@ -41,7 +42,8 @@
       <span class="kicker">Your plan</span>
       <h2>Drop an Excel or CSV file here</h2>
       <p class="small">Columns: reference, from, to, departure date and time, crossing, receiver. Italian or English headers both work. <a href="/d/zhol-shipments-template.csv">Download the template</a></p>
-      <div class="ck-acts"><label class="btn ck-pick">Choose a file<input type="file" id="ck-file" accept=".csv,.xlsx,.xls,text/csv"></label><button class="btn ghost" type="button" id="ck-sample">Try a sample plan</button></div>
+      <div class="ck-acts"><label class="btn ck-pick">Choose a file<input type="file" id="ck-file" accept=".csv,.xlsx,.xls,text/csv"></label></div>
+      <p class="small muted">Without an account, the file stays in this browser: nothing is uploaded.</p>
       <p class="small muted" id="ck-file-note"></p>
     </div>
     <form class="card ck-add" id="ck-add" autocomplete="off">
@@ -88,7 +90,7 @@
   <span><a href="/answers/">TEF answers</a> · <a href="/story">Story</a> · <a href="/radar">Radar</a> · <a href="/report">Report</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/explain.js?v=3" defer></script>
-<script type="module" src="/assets/check.js?v=5"></script>
+<script type="module" src="/assets/check.js?v=6"></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t6" defer></script>
 <script src="/assets/assistant.js?v=5" defer></script>

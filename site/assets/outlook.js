@@ -47,7 +47,8 @@
     const bar = el("div", "rd-bar"); const fill = el("i"); fill.style.width = pct(it.p); bar.append(fill); ch.append(bar);
     // one tap and the event comes out on its own, explained in plain words (explain.js; owner, 14 Nov 2026). The link sits
     // under the event's own lines, like the map's, not on a strip of its own (owner, 14 Nov: «здесь кнопка кривая»)
-    const open = el("button", "rd-open", it.impact ? T("Why " + pct(it.p) + " and what to do", "Perché " + pct(it.p) + " e cosa fare") : T("Why " + pct(it.p) + ", in plain words", "Perché " + pct(it.p) + ", in parole semplici"));
+    // one name for this action everywhere: radar, map, home, /check (UX audit, 14 Nov 2026)
+    const open = el("button", "rd-open", T("Why " + pct(it.p) + " and what to do", "Perché " + pct(it.p) + " e cosa fare"));
     open.type = "button";
     open.addEventListener("click", e => { e.stopPropagation(); explain(it, r); });
     body.append(open);

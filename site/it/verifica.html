@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s51">
+<link rel="stylesheet" href="/assets/zhol.css?v=s52">
 <link rel="alternate" hreflang="en" href="https://zhol.live/check">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/verifica">
 </head>
@@ -29,7 +29,8 @@
   <div class="wrap stack" style="gap:16px">
     <span class="kicker">Verificate le vostre spedizioni · gratis, adesso</span>
     <h1 class="title">Quali delle vostre spedizioni si fermeranno?</h1>
-    <p class="lead">Caricate il piano o scrivete un viaggio. zhol verifica ogni spedizione con tutti i divieti, le chiusure e gli scioperi sul radar nelle prossime otto settimane, con quanto costerebbe e il piano migliore. <b>Senza account, il file resta in questo browser. Con un account dell’ufficio, il piano viene salvato e zhol continua a seguirlo.</b></p>
+    <p class="lead">zhol verifica ogni vostra spedizione con tutti i divieti, le chiusure e gli scioperi sul radar nelle prossime otto settimane, con il costo e il piano migliore.</p>
+    <div class="actions"><a class="btn" href="#plan">Caricate il piano</a><button class="btn ghost" type="button" id="ck-sample">Provate un piano di esempio</button></div>
     <p class="small muted" id="ck-status">Carico il radar…</p>
   </div>
 </section>
@@ -40,7 +41,8 @@
       <span class="kicker">Il vostro piano</span>
       <h2>Trascinate qui un file Excel o CSV</h2>
       <p class="small">Colonne: riferimento, origine, destinazione, data e ora di partenza, valico, destinatario. Intestazioni in italiano o in inglese. <a href="/d/zhol-shipments-template.csv">Scaricate il modello</a></p>
-      <div class="ck-acts"><label class="btn ck-pick">Scegliete un file<input type="file" id="ck-file" accept=".csv,.xlsx,.xls,text/csv"></label><button class="btn ghost" type="button" id="ck-sample">Provate un piano di esempio</button></div>
+      <div class="ck-acts"><label class="btn ck-pick">Scegliete un file<input type="file" id="ck-file" accept=".csv,.xlsx,.xls,text/csv"></label></div>
+      <p class="small muted">Senza account il file resta in questo browser: non viene caricato da nessuna parte.</p>
       <p class="small muted" id="ck-file-note"></p>
     </div>
     <form class="card ck-add" id="ck-add" autocomplete="off">
@@ -87,7 +89,7 @@
   <span><a href="/it/risposte/">TEF risposte</a> · <a href="/it/story">Storia</a> · <a href="/it/radar">Radar</a> · <a href="/it/segnala">Segnala</a> · <a href="/it/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/explain.js?v=3" defer></script>
-<script type="module" src="/assets/check.js?v=5"></script>
+<script type="module" src="/assets/check.js?v=6"></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
 <script src="/assets/sheets.js?v=t6" defer></script>
 <script src="/assets/assistant.js?v=5" defer></script>

@@ -1879,3 +1879,19 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .ck-news-risk b { color: var(--red); }
 @media (max-width: 760px) { .ck-acc-grid { grid-template-columns: minmax(0, 1fr); } .ck-acc { padding: 20px; } }
 .tm-news { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+
+/* ===== UX audit (gotalab/uxaudit), 14 Nov 2026: fixes */
+/* radar: a shorter cover, one sentence on top, the sources in a small line; the events start on the first screen */
+.rd-cover { min-height: min(54vh, 500px); }
+.rd-cover-text { gap: 14px; padding: 48px 40px; }
+.rd-cover-small { margin: 0; max-width: 62ch; font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, .78); text-shadow: 0 1px 10px rgba(20, 15, 14, .4); }
+@media (max-width: 560px) { .rd-cover-text { padding: 36px 20px; } .rd-cover-small { font-size: 12.5px; } }
+/* /check: the first screen leads to the value (load, or a sample); a dead private link or a deleted account says so */
+.ck-hero .actions { margin-top: 4px; }
+.ck-acc-notice { margin: 0 0 4px; padding: 10px 14px; border-radius: 14px; background: #fbf3e4; color: #6b4a14; font-size: 14.5px; line-height: 1.45; }
+/* the TEF answers page: the jury looks for its question, so the question leads each card (and the type scale holds:
+   h2 ≥ 1.1 × body, uxaudit accessibility/font-hierarchy) */
+.answers-head + #answers .blocks.tiles-mode .block.bento-b h2 { order: 2; margin-top: 2px; font-size: 19px; line-height: 1.3; font-weight: 600; color: var(--ink); }
+.answers-head + #answers .bento-num { order: 3; margin-top: 8px; }
+.answers-head + #answers .blocks.tiles-mode .block.bento-b .block-line { order: 4; }
+@media (max-width: 560px) { .answers-head + #answers .blocks.tiles-mode .block.bento-b h2 { font-size: 18px; } }

@@ -82,7 +82,7 @@
 
   // "why this chance": opens right here, the event on its own, explained (explain.js); the link still works without it
   function whyLink(it) {
-    const a = el("a", "rc-link", T("Why " + pct(it.p) + ", the sources, every step", "Perché " + pct(it.p) + ", le fonti, ogni passaggio")); a.href = RADAR + "#rd-" + encodeURIComponent(it.id);
+    const a = el("a", "rc-link", T("Why " + pct(it.p) + " and what to do", "Perché " + pct(it.p) + " e cosa fare")); a.href = RADAR + "#rd-" + encodeURIComponent(it.id);
     a.addEventListener("click", e => {
       if (!window.ZholExplain || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
       e.preventDefault();
