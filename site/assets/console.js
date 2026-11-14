@@ -251,28 +251,14 @@
   }).catch(() => { root.classList.add("failed"); });
 })();
 
-/* Recognition, its own band on the home page: "100" counts up once it comes into view and the four badges rise in
-   (owner, 14 Nov 2026: «прям отдельным, чтобы стандаут было»). Reduced motion: the final number, no movement. */
+/* Recognition, its own band on the home page: the four badges rise in once it comes into view. The number is always
+   the real one, 100: no count-up through 94, 97… (owner, 14 Nov 2026: «Почему 94? Их же 100… Не надо так»). */
 (function () {
   const band = document.querySelector(".recog");
   if (!band) return;
-  const num = band.querySelector("[data-count]");
-  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const show = () => {
-    band.classList.add("seen");
-    if (!num || reduce) return;
-    const end = parseInt(num.dataset.count, 10) || 0, t0 = performance.now(), dur = 1100;
-    const step = now => {
-      const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-      num.textContent = Math.round(end * e);
-      if (k < 1) requestAnimationFrame(step);
-    };
-    num.textContent = "0";
-    requestAnimationFrame(step);
-  };
   if (!("IntersectionObserver" in window)) { band.classList.add("seen"); return; }
   const io = new IntersectionObserver(es => {
-    if (es.some(e => e.isIntersecting)) { io.disconnect(); show(); }
+    if (es.some(e => e.isIntersecting)) { io.disconnect(); band.classList.add("seen"); }
   }, { threshold: 0.35 });
   io.observe(band);
 })();
