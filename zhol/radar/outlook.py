@@ -442,7 +442,10 @@ def build_outlook(today: date, horizon: int = 60, fetch: bool = True) -> dict:
         strike_rows = strikes.parse(text) if text else []
         status = s1 | s2 | s3 | s4
     signals, mode = read_signals(articles, today) if articles else ([], "none")
-    official = strikes.items(strike_rows, today, horizon) + document_items(docs, today)
+    called = strikes.items(strike_rows, today, horizon)
+    # a strike an operator's page announces is the one the ministry's calendar already lists: keep the calendar's
+    read = [d for d in document_items(docs, today) if not covered(d | {"basis": "news"}, called)]
+    official = called + read
     news = [n for n in news_items(signals, today) if not covered(n, official)]
     items = official_items(today, horizon) + weather_items(weather, today) + official + news
     end = (today + timedelta(days=horizon)).isoformat()

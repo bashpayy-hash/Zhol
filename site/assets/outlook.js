@@ -9,7 +9,9 @@
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
   const pct = p => Math.round(p * 100) + "%";
   const fmt = (s, opt) => new Date(s + "T12:00:00").toLocaleDateString(LOC, opt || { weekday: "short", day: "numeric", month: "short" });
-  const range = it => it.group === "wire" && !it.start ? T("Last hours", "Ultime ore") : !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
+  // something that began before today and is still on: say until when, not a date in the past
+  const going = it => it.start && data && it.start < data.today && (it.end || it.start) >= data.today;
+  const range = it => going(it) ? T("Until ", "Fino al ") + fmt(it.end || it.start) : it.group === "wire" && !it.start ? T("Last hours", "Ultime ore") : !it.start ? T("No date yet", "Senza data") : (it.end && it.end !== it.start ? fmt(it.start, { day: "numeric", month: "short" }) + " – " + fmt(it.end, { day: "numeric", month: "short" }) : fmt(it.start));
   const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
   const tone = p => p >= 0.8 ? "vl" : p >= 0.5 ? "l" : p >= 0.2 ? "po" : "un";
   const BASIS = IT ? { law: "Norma in vigore", "official calendar": "Calendario ufficiale", forecast: "Previsioni meteo", news: "Segnali dalle notizie", office: "Segnalato dagli uffici", wire: "Ultime ore, non verificato", document: "Pagina ufficiale, letta dall’agente", "official strikes": "Calendario ufficiale degli scioperi" }
@@ -178,7 +180,8 @@
     openedOne = false;
     const list = $("rd-list"); list.textContent = "";
     const items = data.items.filter(i => (filter === "all" || i.group === filter) && onRoute(i));
-    const dated = items.filter(i => i.start).sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p);
+    const from = i => going(i) ? data.today : i.start;
+    const dated = items.filter(i => i.start).sort((a, b) => from(a).localeCompare(from(b)) || b.p - a.p);
     const live = items.filter(i => i.group === "wire" && !i.start);
     const undated = items.filter(i => !i.start && i.group !== "wire").sort((a, b) => b.p - a.p);
     if (live.length) {      // what the press reported in the last hours comes first: it is happening now
@@ -187,7 +190,7 @@
     }
     let current = null, box = null;
     dated.forEach(it => {
-      const wk = weekKey(it.start);
+      const wk = weekKey(from(it));
       if (wk !== current) {
         current = wk;
         list.append(el("h3", "rd-week", T("Week of ", "Settimana del ") + fmt(wk, { day: "numeric", month: "long" })));

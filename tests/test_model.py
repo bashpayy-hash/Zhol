@@ -213,3 +213,6 @@ def test_a_train_strike_is_not_priced_as_a_truck_that_waits_and_official_dates_r
     im = impact(item[0])
     assert im["note"] == "Hours from the operator's page." and im["wait_h"] <= 4.1       # one night of four hours, not eight
     assert covered({"group": "news", "basis": "news", "kind": "closure", "places": ["frejus"], "countries": ["FR"], "start": "2026-11-14"}, item)
+    # the same strike on an operator's page and on the ministry's calendar is one event
+    notice = {"group": "news", "basis": "document", "kind": "strike", "mode": "rail", "countries": ["IT"], "places": [], "start": "2026-11-20"}
+    assert covered(notice | {"basis": "news"}, [rail])
