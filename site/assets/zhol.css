@@ -1392,3 +1392,10 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
 .scene-source, .scene-paint { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
 .scene-paint[data-shown] { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .scene-source, .scene-paint { display: none !important; } }
+
+/* how it works, as a video filmed on the site (owner, 14 Nov 2026): plays only when asked, the poster first */
+.howto { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.howto-v { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: var(--r-card); background: var(--paper);
+  box-shadow: 0 1px 0 var(--card-line), 0 18px 44px rgba(53, 43, 40, .14); }
+.howto figcaption { max-width: 760px; }
+.sv-howto { margin-top: 8px; }
