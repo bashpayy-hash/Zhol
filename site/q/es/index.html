@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s53">
+<link rel="stylesheet" href="/assets/zhol.css?v=s54">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
@@ -38,6 +38,7 @@
       <h1 class="title sv-title">Siete preguntas. Un minuto.</h1>
       <p class="lead">¿Cuánto cuestan las prohibiciones, las colas, los cierres y las huelgas a quienes mueven mercancías por carretera, tren o ferry? Responda desde su propio puesto o desde lo que sabe del sector. Un toque por respuesta, anónimo, y no vendemos nada.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Empezar</a><a class="sv-more" href="#sv-pitch">Lo que estamos construyendo</a></div>
+      <a class="sv-pilot-pill" href="#sv-steps" data-pilot><span>Piloto gratuito</span>Pruebe zhol con sus propios envíos durante 4 semanas</a>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <img class="scene-layer" src="/assets/img/scenes/dock-poster.webp?v=1" alt="" width="1280" height="960" fetchpriority="high"><video class="scene-layer scene-source" data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="960"></video>
@@ -83,7 +84,7 @@
         <p class="sv-card-foot">Los agentes se pasan los avisos en segundos, de día y de noche. Sin esperar un correo, la pausa de la comida o el lunes.</p>
       </article>
     </div>
-    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Responder a las siete preguntas</a><span class="small muted">Sus cifras deciden qué construimos primero.</span></div>
+    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Responder a las siete preguntas</a><span class="small muted">Sus cifras deciden qué construimos primero.</span><a class="sv-link" href="#sv-steps" data-pilot>O pruébelo con sus propios envíos, gratis durante 4 semanas</a></div>
   </div>
 </section>
 
@@ -258,26 +259,44 @@
           <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Atrás</button><button class="btn" type="button" id="sv-next" hidden>Siguiente</button><button class="btn" type="submit" id="sv-send">Enviar mis respuestas</button></div>
         </form>
 
-        <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <form class="survey sv-follow sv-pilot" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
           <input type="hidden" name="form-name" value="survey-followup">
           <input type="hidden" name="lang" value="es">
           <input type="hidden" name="rid" value="">
+          <input type="hidden" name="followup" value="pilot">
           <p class="hidden-field"><label>Deje este campo vacío: <input name="bot-field"></label></p>
-          <span class="sv-label ok">¡Listo, gracias!</span>
-          <h2 class="sv-q-title">¿Quiere algo a cambio? Opcional.</h2>
-          <div class="opts tall multi">
-            <label><input type="checkbox" name="followup" value="results"><span>Los resultados de la encuesta</span></label>
-            <label><input type="checkbox" name="followup" value="network"><span>Un lugar entre las primeras oficinas de la red compartida</span></label>
+          <span class="sv-label ok" id="sv-follow-ok">¡Listo, gracias!</span>
+          <h2 class="sv-q-title">Pruébelo con sus propios envíos, gratis durante 4 semanas</h2>
+          <p class="sv-pilot-lead">Un piloto en una o dos de sus rutas. Nada que instalar, sin compromiso.</p>
+          <ol class="sv-pilot-steps" aria-label="Cómo funciona el piloto">
+            <li><b>Usted envía su plan</b><span>Excel, CSV o una foto, como se lo envía a los conductores.</span></li>
+            <li><b>Le avisamos</b><span>Un mensaje de WhatsApp cuando un envío está en riesgo, con el coste y qué hacer. Una persona revisa cada evento.</span></li>
+            <li><b>Un informe cada viernes</b><span>Avisos enviados, correctos y equivocados, y el dinero ahorrado.</span></li>
+            <li><b>Usted decide</b><span>8 € al mes por vehículo, solo si se alcanza el ahorro acordado. Si no, nada.</span></li>
+          </ol>
+          <fieldset class="sv-pilot-lanes"><legend>Sus pasos (opcional)</legend>
+          <div class="opts">
+            <label><input type="checkbox" name="lanes" value="brenner"><span>Brenner</span></label>
+            <label><input type="checkbox" name="lanes" value="frejus-montblanc"><span>Fréjus · Mont Blanc</span></label>
+            <label><input type="checkbox" name="lanes" value="swiss"><span>San Gotardo · Suiza</span></label>
+            <label><input type="checkbox" name="lanes" value="tarvisio"><span>Tarvisio · Eslovenia</span></label>
+            <label><input type="checkbox" name="lanes" value="ventimiglia"><span>Ventimiglia</span></label>
+            <label><input type="checkbox" name="lanes" value="messina"><span>Estrecho de Mesina</span></label>
           </div>
-          <div class="field sv-contact"><label for="sv-contact">Correo de trabajo o teléfono</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          </fieldset>
+          <div class="sv-pilot-fields">
+            <div class="field"><label for="sv-company">Empresa (opcional)</label><input id="sv-company" name="company" autocomplete="organization"></div>
+            <div class="field"><label for="sv-contact">Correo de trabajo o teléfono</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          </div>
           <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> Pueden usar este contacto solo para lo que he elegido.</label>
           <p class="sv-error" id="sv-error2" role="alert" hidden></p>
-          <div class="sv-nav"><button class="btn" type="submit">Enviar</button><button class="sv-link" type="button" id="sv-skip">No, gracias</button></div>
+          <div class="sv-nav"><button class="btn" type="submit" data-want="pilot">Unirse al piloto gratuito</button><button class="sv-link" type="submit" data-want="results" id="sv-results">Envíenme solo los resultados de la encuesta</button><button class="sv-link" type="button" id="sv-skip">No, gracias</button></div>
         </form>
 
         <div class="sv-done" id="sv-done" hidden tabindex="-1">
           <span class="sv-label ok">Recibido</span>
           <h2 class="sv-q-title">¡Gracias! Nos ayuda mucho.</h2>
+          <p class="sv-done-pilot" id="sv-done-pilot" hidden><b>Su piloto.</b> Le escribiremos en los próximos dos días laborables para elegir sus rutas y el primer día.</p>
           <p>¿Conoce otro departamento de tráfico? Cada respuesta más hace las cifras más sólidas.</p>
           <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Reenviar por WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copiar el enlace</button></div>
           <div class="sv-home">
@@ -339,7 +358,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=c1" defer></script>
 <script src="/assets/map.js?v=b2" defer></script>
-<script src="/assets/survey.js?v=q23" defer></script>
+<script src="/assets/survey.js?v=q24" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

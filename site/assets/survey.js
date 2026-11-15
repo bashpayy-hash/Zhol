@@ -71,6 +71,31 @@
       window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
       focusStep(steps[at]);
     }));
+    // the free pilot without the questions (owner, 15 Nov 2026: «добавь это на страницу сервей, типа вот на бету
+    // добавься… максимально интуитивно»): the same card that follows the answers, opened straight from the welcome
+    document.querySelectorAll("[data-pilot]").forEach(b => b.addEventListener("click", e => {
+      e.preventDefault();
+      intro.hidden = true;
+      stepsBox.hidden = false;
+      openPilot(false);
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+    }));
+  }
+
+  // the pilot card: after the answers it thanks and also offers the results; opened from the welcome it leads back
+  // to the questions instead
+  let pilotOnly = false;
+  function openPilot(afterAnswers) {
+    pilotOnly = !afterAnswers;
+    form.hidden = true;
+    follow.hidden = false;
+    $("sv-follow-ok").hidden = pilotOnly;
+    $("sv-results").hidden = pilotOnly;
+    $("sv-skip").textContent = pilotOnly ? T("Answer the seven questions instead", "Rispondete invece alle sette domande", "Lieber die sieben Fragen beantworten", "Répondre plutôt aux sept questions", "Mejor responder a las siete preguntas")
+                                         : T("No, thanks", "No, grazie", "Nein, danke", "Non, merci", "No, gracias");
+    const stage = document.querySelector(".sv-stage"); if (stage) stage.classList.add("end");
+    setPose(pilotOnly ? "phone" : "celebrate");
+    const h = follow.querySelector(".sv-q-title"); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
   }
 
   let at = 0;
@@ -146,37 +171,41 @@
     road.style.transform = "scaleX(1)";
     if (scene) scene.style.setProperty("--p", "1.15");
     post(form).then(() => {
-      form.hidden = true;
-      follow.hidden = false;
       // the last screens are short: Zholdas stops following the scroll and sits in the middle of the card
-      const stage = document.querySelector(".sv-stage"); if (stage) stage.classList.add("end");
-      setPose("celebrate");
+      openPilot(true);
       live.textContent = T("Answers sent. Thank you.", "Risposte inviate. Grazie.", "Antworten gesendet. Vielen Dank.", "Réponses envoyées. Merci.", "Respuestas enviadas. Gracias.");
-      const h = follow.querySelector(".sv-q-title"); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
     }).catch(() => { form.noValidate = false; HTMLFormElement.prototype.submit.call(form); });
   }
   form.addEventListener("submit", e => { e.preventDefault(); submit(); });
 
-  // optional contact: consent only when a contact is given
+  // the pilot, or only the results: the button pressed says which; a contact and the consent either way
   const contact = follow.elements.contact, consent = $("sv-consent");
   follow.noValidate = true;
   follow.addEventListener("submit", e => {
     e.preventDefault();
     const err = $("sv-error2");
-    const wants = follow.querySelectorAll('input[name="followup"]:checked').length > 0;
+    follow.elements.followup.value = (e.submitter && e.submitter.dataset.want) || "pilot";
     if (!contact.value.trim()) {
-      if (wants) { err.textContent = T("Leave an email or a phone number so we can send it.", "Lasciate un’email o un telefono per potervelo mandare.", "Hinterlassen Sie eine E-Mail oder eine Telefonnummer, damit wir es Ihnen schicken können.", "Laissez un e-mail ou un téléphone pour que nous puissions vous l’envoyer.", "Deje un correo o un teléfono para que podamos enviárselo."); err.hidden = false; contact.focus(); return; }
-      return finish();
+      err.textContent = T("Leave an email or a phone number so we can reach you.", "Lasciate un’email o un telefono per potervi contattare.", "Hinterlassen Sie eine E-Mail oder eine Telefonnummer, damit wir Sie erreichen können.", "Laissez un e-mail ou un téléphone pour que nous puissions vous joindre.", "Deje un correo o un teléfono para que podamos contactarle.");
+      err.hidden = false; contact.focus(); return;
     }
     if (!consent.checked) { err.textContent = T("Tick the box so we may use this contact.", "Spuntate la casella per permetterci di usare il contatto.", "Bitte setzen Sie das Häkchen, damit wir diesen Kontakt nutzen dürfen.", "Cochez la case pour que nous puissions utiliser ce contact.", "Marque la casilla para que podamos usar este contacto."); err.hidden = false; consent.focus(); return; }
     err.hidden = true;
-    post(follow).then(finish).catch(() => { follow.noValidate = false; HTMLFormElement.prototype.submit.call(follow); });
+    post(follow).then(() => finish(follow.elements.followup.value === "pilot")).catch(() => { follow.noValidate = false; HTMLFormElement.prototype.submit.call(follow); });
   });
-  $("sv-skip").addEventListener("click", finish);
+  $("sv-skip").addEventListener("click", () => {
+    if (!pilotOnly) return finish();
+    pilotOnly = false;                      // opened from the welcome: back to the questions
+    follow.hidden = true;
+    form.hidden = false;
+    const stage = document.querySelector(".sv-stage"); if (stage) stage.classList.remove("end");
+    show(at, true);
+  });
 
-  function finish() {
+  function finish(pilot) {
     follow.hidden = true;
     done.hidden = false;
+    $("sv-done-pilot").hidden = pilot !== true;
     setPose("encourage");
     done.focus({ preventScroll: true });
     showMap();

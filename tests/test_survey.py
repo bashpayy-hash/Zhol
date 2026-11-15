@@ -134,3 +134,21 @@ def test_cost_has_two_top_buckets_and_reads_the_earlier_one(tmp_path):
     answers, _ = ss.read([_write(tmp_path, "survey.csv", ANSWER_FIELDS, rows)])
     cost = ss.summarise(answers)["cost"]
     assert cost["over €3,000"] == 1 and cost["€1,000–3,000"] == 1 and cost["over €1,000 (earlier option)"] == 1
+
+
+def test_every_survey_page_offers_the_free_pilot():
+    """The free pilot on the survey (owner, 15 Nov 2026: «добавь это на страницу сервей, типа вот на бету добавься…
+    максимально интуитивно»): in all five languages, after the answers and from the welcome scene, four steps, the
+    price per vehicle and only if the agreed saving is reached, the crossings as optional chips, one main button."""
+    import re
+    from pathlib import Path
+    root = Path(__file__).parents[1] / "site" / "q"
+    for page in ("index.html", "it/index.html", "de/index.html", "fr/index.html", "es/index.html"):
+        html = (root / page).read_text(encoding="utf-8")
+        form = re.search(r'<form class="survey sv-follow sv-pilot" id="sv-follow" name="survey-followup".*?</form>', html, re.S)
+        assert form, page
+        f = form.group(0)
+        assert f.count("<li>") == 4 and f.count('name="lanes"') == 6, page
+        assert 'name="followup" value="pilot"' in f and 'data-want="pilot"' in f and 'data-want="results"' in f, page
+        assert re.search(r"8 €|€8", f) and not re.search(r"per truck|per camion|pro LKW|par camion|por camión", f, re.I), page
+        assert html.count("data-pilot") == 2 and 'class="sv-pilot-pill"' in html and 'id="sv-done-pilot"' in html, page

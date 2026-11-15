@@ -501,6 +501,23 @@ figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; line-height
 .survey.stepping .sv-nav { min-height: 48px; }
 .sv-error { margin: 0; padding: 12px 16px; border-radius: var(--r-field); background: var(--card); color: var(--red); font-size: 15px; max-width: 520px; }
 .sv-follow { display: flex; flex-direction: column; gap: 16px; }
+/* the pilot card after the answers (owner, 15 Nov 2026): four steps in plain words, the crossings as chips, one button */
+.sv-pilot .sv-q-title { margin-bottom: 0; }
+.sv-pilot-lead { margin: -6px 0 0; font-size: 17px; line-height: 1.45; color: var(--ink-2); max-width: 560px; }
+.sv-pilot-steps { list-style: none; margin: 4px 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; counter-reset: pilot; }
+.sv-pilot-steps li { counter-increment: pilot; display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: 12px; row-gap: 3px; align-content: start;
+  padding: 14px 16px; border-radius: 18px; background: var(--card); border: 1px solid var(--card-line); }
+.sv-pilot-steps li::before { content: counter(pilot); grid-row: span 2; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--sage-card); color: var(--sage-ink); font-weight: 700; font-size: 15px; }
+.sv-pilot-steps li:last-child { background: var(--sage-card); border-color: #c4d2bd; }
+.sv-pilot-steps li:last-child::before { background: var(--paper); }
+.sv-pilot-steps b { font-size: 16px; color: var(--ink); }
+.sv-pilot-steps span { font-size: 14.5px; line-height: 1.4; color: var(--ink-2); }
+.sv-pilot-lanes { border: 0; margin: 0; padding: 0; min-width: 0; }
+.sv-pilot-lanes legend { padding: 0; margin-bottom: 10px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.sv-pilot-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 640px; }
+.sv-done-pilot { padding: 12px 16px; border-radius: 16px; background: var(--sage-card); color: var(--ink); }
+@media (max-width: 760px) { .sv-pilot-steps, .sv-pilot-fields { grid-template-columns: minmax(0, 1fr); } .sv-pilot-steps li { padding: 12px 14px; } }
 .sv-contact { max-width: 520px; }
 .sv-done { display: flex; flex-direction: column; gap: 14px; outline: none; max-width: 560px; }
 .sv-done p { margin: 0; font-size: 17px; color: var(--ink-2); }
@@ -915,6 +932,13 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 .sv-full h1.sv-title { color: #fff; }
 .sv-full .lead { color: rgba(255, 255, 255, .88); }
 .sv-full .actions .small.muted { color: rgba(255, 255, 255, .72); }
+/* the free pilot from the welcome screen (owner, 15 Nov 2026: «типа вот на бету добавься… максимально интуитивно») */
+.sv-pilot-pill { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 5px 16px 5px 5px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .28); background: rgba(255, 255, 255, .1); color: #fff; font-size: 15px; line-height: 1.3; text-decoration: none;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background var(--dur) var(--ease-color), border-color var(--dur) var(--ease-color); }
+.sv-pilot-pill span { flex: none; padding: 6px 11px; border-radius: 999px; background: var(--sage-card); color: var(--sage-ink); font-size: 13px; font-weight: 650; }
+.sv-pilot-pill:hover { background: rgba(255, 255, 255, .18); border-color: rgba(255, 255, 255, .5); }
+.sv-pilot-pill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 @media (max-width: 760px) {
   .sv-full .sv-intro-grid { align-items: flex-end; min-height: 82vh; border-radius: 22px; padding-block: 24px; }
   .sv-full .sv-scene .scene-layer { object-position: 24% 40%; }

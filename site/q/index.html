@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s53">
+<link rel="stylesheet" href="/assets/zhol.css?v=s54">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
@@ -37,6 +37,7 @@
       <h1 class="title sv-title">Seven questions. One minute.</h1>
       <p class="lead">What do bans, queues, closures and strikes cost the people who move freight by road, rail or ferry? Answer from your own desk or from what you know of the field. One tap per answer, anonymous, and we sell nothing.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Start</a><a class="sv-more" href="#sv-pitch">See what we are building</a></div>
+      <a class="sv-pilot-pill" href="#sv-steps" data-pilot><span>Free pilot</span>Try zhol on your own shipments for 4 weeks</a>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <img class="scene-layer" src="/assets/img/scenes/dock-poster.webp?v=1" alt="" width="1280" height="960" fetchpriority="high"><video class="scene-layer scene-source" data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="960"></video>
@@ -82,7 +83,7 @@
         <p class="sv-card-foot">Agents pass warnings to each other in seconds, day and night. No waiting for an email, a lunch break or Monday.</p>
       </article>
     </div>
-    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Answer the seven questions</a><span class="small muted">Your numbers decide what we build first.</span></div>
+    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Answer the seven questions</a><span class="small muted">Your numbers decide what we build first.</span><a class="sv-link" href="#sv-steps" data-pilot>Or try it on your own shipments, free for 4 weeks</a></div>
   </div>
 </section>
 
@@ -257,26 +258,44 @@
           <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Back</button><button class="btn" type="button" id="sv-next" hidden>Next</button><button class="btn" type="submit" id="sv-send">Send my answers</button></div>
         </form>
 
-        <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <form class="survey sv-follow sv-pilot" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
           <input type="hidden" name="form-name" value="survey-followup">
           <input type="hidden" name="lang" value="en">
           <input type="hidden" name="rid" value="">
+          <input type="hidden" name="followup" value="pilot">
           <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
-          <span class="sv-label ok">Done, thank you!</span>
-          <h2 class="sv-q-title">Would you like something back? Optional.</h2>
-          <div class="opts tall multi">
-            <label><input type="checkbox" name="followup" value="results"><span>The survey results</span></label>
-            <label><input type="checkbox" name="followup" value="network"><span>A place among the first offices in the shared network</span></label>
+          <span class="sv-label ok" id="sv-follow-ok">Done, thank you!</span>
+          <h2 class="sv-q-title">See it on your own shipments, free for 4 weeks</h2>
+          <p class="sv-pilot-lead">A pilot on one or two of your lanes. Nothing to install, no commitment.</p>
+          <ol class="sv-pilot-steps" aria-label="How the pilot works">
+            <li><b>You send your plan</b><span>Excel, CSV or a photo, as you send it to drivers.</span></li>
+            <li><b>We warn you</b><span>One WhatsApp message when a shipment is at risk, with the cost and what to do. A person checks every event.</span></li>
+            <li><b>A report every Friday</b><span>Alerts sent, right and wrong, and the money saved.</span></li>
+            <li><b>You decide</b><span>€8 a month per vehicle, only if the saving we agreed on is reached. Otherwise nothing.</span></li>
+          </ol>
+          <fieldset class="sv-pilot-lanes"><legend>Your crossings (optional)</legend>
+          <div class="opts">
+            <label><input type="checkbox" name="lanes" value="brenner"><span>Brenner</span></label>
+            <label><input type="checkbox" name="lanes" value="frejus-montblanc"><span>Fréjus · Mont Blanc</span></label>
+            <label><input type="checkbox" name="lanes" value="swiss"><span>Gotthard · Switzerland</span></label>
+            <label><input type="checkbox" name="lanes" value="tarvisio"><span>Tarvisio · Slovenia</span></label>
+            <label><input type="checkbox" name="lanes" value="ventimiglia"><span>Ventimiglia</span></label>
+            <label><input type="checkbox" name="lanes" value="messina"><span>Strait of Messina</span></label>
           </div>
-          <div class="field sv-contact"><label for="sv-contact">Work email or phone</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          </fieldset>
+          <div class="sv-pilot-fields">
+            <div class="field"><label for="sv-company">Company (optional)</label><input id="sv-company" name="company" autocomplete="organization"></div>
+            <div class="field"><label for="sv-contact">Work email or phone</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          </div>
           <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> You may use this contact only for what I chose.</label>
           <p class="sv-error" id="sv-error2" role="alert" hidden></p>
-          <div class="sv-nav"><button class="btn" type="submit">Send</button><button class="sv-link" type="button" id="sv-skip">No, thanks</button></div>
+          <div class="sv-nav"><button class="btn" type="submit" data-want="pilot">Join the free pilot</button><button class="sv-link" type="submit" data-want="results" id="sv-results">Only send me the survey results</button><button class="sv-link" type="button" id="sv-skip">No, thanks</button></div>
         </form>
 
         <div class="sv-done" id="sv-done" hidden tabindex="-1">
           <span class="sv-label ok">Received</span>
           <h2 class="sv-q-title">Thank you! That helps a lot.</h2>
+          <p class="sv-done-pilot" id="sv-done-pilot" hidden><b>Your pilot.</b> We will write to you in the next two working days to choose your lanes and the first day.</p>
           <p>Know another traffic office? Every extra answer makes the numbers stronger.</p>
           <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Forward on WhatsApp</a><button class="sv-link" type="button" id="sv-copy">Copy the link</button></div>
           <div class="sv-home">
@@ -365,7 +384,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=c1" defer></script>
 <script src="/assets/map.js?v=b2" defer></script>
-<script src="/assets/survey.js?v=q23" defer></script>
+<script src="/assets/survey.js?v=q24" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

@@ -47,7 +47,7 @@ X_SHARE = [("most", "most would"), ("some", "some would"), ("few", "few would")]
 X_OBSTACLE = [("trust", "trusting the information"), ("price", "the price"), ("habit", "habits: phone, email, WhatsApp"),
               ("integration", "fitting it into their software"), ("competitors", "sharing data near competitors")]
 FOLLOWUP = {"results": "the results", "analysis": "a free past-month analysis (no longer offered)", "interview": "a 20-minute chat (no longer offered)",
-            "network": "a place in the shared network"}
+            "network": "a place in the shared network", "pilot": "a free 4-week pilot"}
 
 # The Google Form (outreach/google-form.gs) exports question titles as headers and choice labels as values.
 # Map them to the same codes as the site form, so both can be read together.

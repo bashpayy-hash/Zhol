@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s53">
+<link rel="stylesheet" href="/assets/zhol.css?v=s54">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
@@ -38,6 +38,7 @@
       <h1 class="title sv-title">Sieben Fragen. Eine Minute.</h1>
       <p class="lead">Was kosten Fahrverbote, Staus, Sperrungen und Streiks die Menschen, die Güter auf Straße, Schiene oder Fähre bewegen? Antworten Sie aus Ihrer eigenen Disposition oder aus dem, was Sie über die Branche wissen. Ein Tipp pro Antwort, anonym, und wir verkaufen nichts.</p>
       <div class="actions"><a class="btn sv-start" href="#sv-steps" id="sv-start">Starten</a><a class="sv-more" href="#sv-pitch">Was wir bauen</a></div>
+      <a class="sv-pilot-pill" href="#sv-steps" data-pilot><span>Kostenloser Pilot</span>Testen Sie zhol 4 Wochen mit Ihren eigenen Sendungen</a>
     </div>
     <div class="sv-scene" aria-hidden="true">
       <img class="scene-layer" src="/assets/img/scenes/dock-poster.webp?v=1" alt="" width="1280" height="960" fetchpriority="high"><video class="scene-layer scene-source" data-scene="/assets/img/scenes/dock" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="1280" height="960"></video>
@@ -83,7 +84,7 @@
         <p class="sv-card-foot">Agenten geben Warnungen in Sekunden weiter, Tag und Nacht. Kein Warten auf eine E-Mail, eine Mittagspause oder den Montag.</p>
       </article>
     </div>
-    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Die sieben Fragen beantworten</a><span class="small muted">Ihre Zahlen entscheiden, was wir zuerst bauen.</span></div>
+    <div class="sv-pitch-cta"><a class="btn" href="#sv-steps" data-start>Die sieben Fragen beantworten</a><span class="small muted">Ihre Zahlen entscheiden, was wir zuerst bauen.</span><a class="sv-link" href="#sv-steps" data-pilot>Oder testen Sie es mit Ihren eigenen Sendungen, 4 Wochen kostenlos</a></div>
   </div>
 </section>
 
@@ -258,26 +259,44 @@
           <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Zurück</button><button class="btn" type="button" id="sv-next" hidden>Weiter</button><button class="btn" type="submit" id="sv-send">Antworten senden</button></div>
         </form>
 
-        <form class="survey sv-follow" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <form class="survey sv-follow sv-pilot" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
           <input type="hidden" name="form-name" value="survey-followup">
           <input type="hidden" name="lang" value="de">
           <input type="hidden" name="rid" value="">
+          <input type="hidden" name="followup" value="pilot">
           <p class="hidden-field"><label>Dieses Feld leer lassen: <input name="bot-field"></label></p>
-          <span class="sv-label ok">Fertig, danke!</span>
-          <h2 class="sv-q-title">Möchten Sie etwas zurück? Freiwillig.</h2>
-          <div class="opts tall multi">
-            <label><input type="checkbox" name="followup" value="results"><span>Die Ergebnisse der Umfrage</span></label>
-            <label><input type="checkbox" name="followup" value="network"><span>Einen Platz unter den ersten Dispositionen im gemeinsamen Netz</span></label>
+          <span class="sv-label ok" id="sv-follow-ok">Fertig, danke!</span>
+          <h2 class="sv-q-title">Testen Sie es mit Ihren eigenen Sendungen, 4 Wochen kostenlos</h2>
+          <p class="sv-pilot-lead">Ein Pilot auf ein oder zwei Ihrer Relationen. Nichts zu installieren, keine Verpflichtung.</p>
+          <ol class="sv-pilot-steps" aria-label="So funktioniert der Pilot">
+            <li><b>Sie schicken Ihren Plan</b><span>Excel, CSV oder ein Foto, so wie Sie ihn den Fahrern schicken.</span></li>
+            <li><b>Wir warnen Sie</b><span>Eine WhatsApp-Nachricht, wenn eine Sendung gefährdet ist, mit den Kosten und was zu tun ist. Jedes Ereignis prüft ein Mensch.</span></li>
+            <li><b>Jeden Freitag ein Bericht</b><span>Gesendete Warnungen, richtige und falsche, und das gesparte Geld.</span></li>
+            <li><b>Sie entscheiden</b><span>8 € pro Fahrzeug und Monat, nur wenn die vereinbarte Ersparnis erreicht ist. Sonst nichts.</span></li>
+          </ol>
+          <fieldset class="sv-pilot-lanes"><legend>Ihre Übergänge (optional)</legend>
+          <div class="opts">
+            <label><input type="checkbox" name="lanes" value="brenner"><span>Brenner</span></label>
+            <label><input type="checkbox" name="lanes" value="frejus-montblanc"><span>Fréjus · Mont Blanc</span></label>
+            <label><input type="checkbox" name="lanes" value="swiss"><span>Gotthard · Schweiz</span></label>
+            <label><input type="checkbox" name="lanes" value="tarvisio"><span>Tarvisio · Slowenien</span></label>
+            <label><input type="checkbox" name="lanes" value="ventimiglia"><span>Ventimiglia</span></label>
+            <label><input type="checkbox" name="lanes" value="messina"><span>Straße von Messina</span></label>
           </div>
-          <div class="field sv-contact"><label for="sv-contact">Geschäftliche E-Mail oder Telefon</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          </fieldset>
+          <div class="sv-pilot-fields">
+            <div class="field"><label for="sv-company">Unternehmen (optional)</label><input id="sv-company" name="company" autocomplete="organization"></div>
+            <div class="field"><label for="sv-contact">Geschäftliche E-Mail oder Telefon</label><input id="sv-contact" name="contact" autocomplete="email"></div>
+          </div>
           <label class="check"><input type="checkbox" name="consent" value="yes" id="sv-consent"> Sie dürfen diesen Kontakt nur für das nutzen, was ich gewählt habe.</label>
           <p class="sv-error" id="sv-error2" role="alert" hidden></p>
-          <div class="sv-nav"><button class="btn" type="submit">Senden</button><button class="sv-link" type="button" id="sv-skip">Nein, danke</button></div>
+          <div class="sv-nav"><button class="btn" type="submit" data-want="pilot">Am kostenlosen Pilot teilnehmen</button><button class="sv-link" type="submit" data-want="results" id="sv-results">Schicken Sie mir nur die Ergebnisse der Umfrage</button><button class="sv-link" type="button" id="sv-skip">Nein, danke</button></div>
         </form>
 
         <div class="sv-done" id="sv-done" hidden tabindex="-1">
           <span class="sv-label ok">Erhalten</span>
           <h2 class="sv-q-title">Vielen Dank! Das hilft sehr.</h2>
+          <p class="sv-done-pilot" id="sv-done-pilot" hidden><b>Ihr Pilot.</b> Wir schreiben Ihnen in den nächsten zwei Werktagen, um Ihre Relationen und den ersten Tag festzulegen.</p>
           <p>Kennen Sie eine andere Disposition? Jede weitere Antwort macht die Zahlen stärker.</p>
           <div class="sv-nav"><a class="btn" id="sv-wa" href="https://wa.me/?text=" target="_blank" rel="noopener">Per WhatsApp weiterleiten</a><button class="sv-link" type="button" id="sv-copy">Link kopieren</button></div>
           <div class="sv-home">
@@ -339,7 +358,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=c1" defer></script>
 <script src="/assets/map.js?v=b2" defer></script>
-<script src="/assets/survey.js?v=q23" defer></script>
+<script src="/assets/survey.js?v=q24" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

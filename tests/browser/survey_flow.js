@@ -78,21 +78,27 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
         await pick(...ANSWERS[i]);
         if (i === 3) await shot("after-step4");
       }
-      check(await page.isVisible("#sv-follow"), `${tag}: optional contact step after the last answer`);
+      check(await page.isVisible("#sv-follow"), `${tag}: the free pilot after the last answer`);
       check((await pose()).includes("celebrate"), `${tag}: celebrate pose after sending`);
+      // the pilot card (owner, 15 Nov 2026): four steps, the crossings as chips, one main button, the results as a second choice
+      check((await page.$$eval(".sv-pilot-steps li", l => l.length)) === 4 && await page.isVisible("#sv-follow-ok") && await page.isVisible("#sv-results"),
+            `${tag}: four steps, the thanks and the results choice after the answers`);
       await shot("follow");
-      await page.click('input[name="followup"][value="results"] + span');
+      await page.click('#sv-follow button[data-want="pilot"]'); await page.waitForTimeout(300);
+      check(await page.isVisible("#sv-error2"), `${tag}: the pilot asks for a contact first`);
+      await page.click('input[name="lanes"][value="brenner"] + span');
+      await page.fill("#sv-company", "Trasporti Esempio");
       await page.fill("#sv-contact", "ufficio@example.com");
       await page.check("#sv-consent");
-      await page.click('#sv-follow button[type="submit"]'); await page.waitForTimeout(500);
-      check(await page.isVisible("#sv-done"), `${tag}: thank-you step`);
+      await page.click('#sv-follow button[data-want="pilot"]'); await page.waitForTimeout(500);
+      check(await page.isVisible("#sv-done") && await page.isVisible("#sv-done-pilot"), `${tag}: thank-you step says when we write about the pilot`);
       check((await pose()).includes("encourage"), `${tag}: encourage pose on the thank-you step`);
       const mapOk = await page.waitForSelector("#sv-map:not([hidden]) .map-pin", { timeout: 10000 }).then(() => true, () => false);
       check(mapOk, `${tag}: the last screen shows the map with the radar's events`);
       check((await page.$$eval("#sv-map .map-evs li", l => l.length)) > 0 && !!(await page.$("#sv-map .map-play")), `${tag}: the last screen shows the whole radar: every event with its chance and the week player`);
       check(/work in progress|primi lavori/i.test(await page.textContent("#sv-map")), `${tag}: the map is labelled as our first work in progress`);
       check((await page.$$eval("#sv-map .map-ev .map-why .chip", c => c.length)) > 0, `${tag}: each event says why its chance is what it is`);
-      check((await page.$$eval("#sv-now .sv-reads li", l => l.length)) === 8, `${tag}: what the radar reads, live and next`);
+      check((await page.$$eval("#sv-now .sv-reads li", l => l.length)) === 10, `${tag}: what the radar reads, live and next`);
       check((await page.$$eval("#sv-sched-end li", l => l.length)) > 0 && await page.isVisible("#sv-sched-box"), `${tag}: the schedule with chances is on the last screen again`);
       const news = await page.$$eval("#sv-news li", l => l.length);
       check(news === 0 ? await page.isHidden("#sv-news-box") : await page.isVisible("#sv-news-box"), `${tag}: the news summary shows when the radar has news, and hides when it has none`);
@@ -115,12 +121,28 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
         check(a.get("rid") && a.get("rid") === f.get("rid"), `${tag}: same random id links the two`);
         check(a.get("lang") === lang && a.get("src") === src, `${tag}: lang and channel`);
         check(!a.get("contact"), `${tag}: no contact inside the answers`);
+        check(f.get("followup") === "pilot" && f.get("lanes") === "brenner" && f.get("company") === "Trasporti Esempio", `${tag}: the pilot, its crossing and the company are sent`);
       }
       const sideways = await page.evaluate(() => { window.scrollBy(120, 0); const x = window.scrollX; window.scrollTo(0, window.scrollY); return x; });
       check(sideways === 0, `${tag}: page does not scroll sideways`);
       check(errors.length === 0, `${tag}: no script errors (${errors.join(" | ")})`);
       console.log(`${tag}: done`);
       await page.close();
+      // the pilot straight from the welcome scene, without the questions
+      const q = await browser.newPage({ viewport: { width: w, height: h } });
+      const qposts = [], qerr = [];
+      q.on("pageerror", e => qerr.push(e.message));
+      await q.route("**/", r => { if (r.request().method() !== "POST") return r.continue(); qposts.push(new URLSearchParams(r.request().postData())); return r.fulfill({ status: 200, body: "ok" }); });
+      await q.goto(BASE + path, { waitUntil: "networkidle" });
+      check(await q.isVisible(".sv-intro .sv-pilot-pill"), `${tag}: the free pilot is on the welcome scene`);
+      await q.click(".sv-intro .sv-pilot-pill"); await q.waitForTimeout(600);
+      check(await q.isVisible("#sv-follow") && !(await q.isVisible("#survey")) && !(await q.isVisible("#sv-follow-ok")) && !(await q.isVisible("#sv-results")),
+            `${tag}: the pilot opens alone, without the thanks and the results choice`);
+      await q.screenshot({ path: `${OUT}/survey-${tag}-pilot.png` });
+      await q.click("#sv-skip"); await q.waitForTimeout(600);
+      check(await q.isVisible("#survey") && !(await q.isVisible("#sv-follow")), `${tag}: from the pilot back to the questions`);
+      check(qposts.length === 0 && qerr.length === 0, `${tag}: nothing sent, no script errors (${qerr.join(" | ")})`);
+      await q.close();
     }
   }
   await browser.close();
