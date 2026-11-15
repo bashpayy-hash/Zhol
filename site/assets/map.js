@@ -338,7 +338,7 @@ window.ZholMap = function (root, opts) {
     const head = el("div", "map-head");
     head.append(el("h3", null, week ? weekName(week) : T("Where it can hit", "Dove può colpire")),
       el("p", "small muted", live.length
-        ? T("Tap a place to see it on the map. The bigger the point, the more events there.", "Toccate un luogo per vederlo sulla mappa. Più grande è il punto, più eventi ci sono.")
+        ? T("Tap a place to see it on the map. The bigger the point, the more events there; the percentage is the strongest chance among them.", "Toccate un luogo per vederlo sulla mappa. Più grande è il punto, più eventi ci sono; la percentuale è la probabilità più alta tra questi.")
         : week ? T("Nothing in this week.", "Niente in questa settimana.") : T("Nothing on this route in the next eight weeks.", "Niente su questa tratta nelle prossime otto settimane.")));
     const ul = el("ul", "map-places");
     live.forEach(x => {

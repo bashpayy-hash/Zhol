@@ -141,3 +141,16 @@ def test_italian_pages_name_the_passes_in_italian():
     from zhol.radar.outlook import CHOKE_EN_AT, CHOKE_IT
     assert set(CHOKE_IT) == set(catalog.chokepoints()) == set(CHOKE_EN_AT)
     assert all("Strait" not in v[0] and "tunnel" not in v[0] for v in CHOKE_IT.values())
+
+
+def test_an_article_about_another_country_is_not_filed_under_the_querys_country():
+    """User test of 15 Nov 2026: a German article about Greek ferries showed as «Possible closure in Austria», because
+    a German query falls back to Austria when a text names no country. A text that names a country off our corridors
+    gets no fallback; one that names ours keeps it."""
+    from datetime import datetime, timezone
+    greek = {"title": "Urlaubschaos in Griechenland droht: Fähren fahren nicht – Inseln von Außenwelt abgeschnitten", "text": "",
+             "lang": "de", "outlet": "Merkur", "published": datetime(2026, 10, 30, 7, tzinfo=timezone.utc)}
+    assert heuristic_signal(greek, TODAY) is None
+    tirol = {"title": "Lkw-Blockabfertigung: Streik der Fähren, Stau an der Grenze", "text": "", "lang": "de", "outlet": "ORF"}
+    s = heuristic_signal(tirol, TODAY)
+    assert s is None or s.countries == ["AT"]

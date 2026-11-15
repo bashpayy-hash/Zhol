@@ -69,6 +69,15 @@ COUNTRY_WORDS = {
     "BE": r"belgi", "NL": r"olanda|paesi bassi|netherlands|niederlande|pays-bas",
 }
 LANG_COUNTRY = {"it": "IT", "fr": "FR", "de": "AT", "en": None}
+# European countries off our corridors: a German article about Greek ferries is not about Austria (user test of
+# 15 Nov 2026: «Possible closure in Austria» quoted «Urlaubschaos in Griechenland droht: Fähren fahren nicht»). When a
+# text names one of these and none of ours, the language of the query does not stand in for the country.
+ELSEWHERE = re.compile(r"griechen|grecia|greece|grèce|\bgrec|kroatien|croazia|croatia|croatie|großbritannien|gran bretagna|"
+                       r"united kingdom|royaume-uni|inghilterra|england|angleterre|irland|irlanda|ireland|dänemark|danimarca|"
+                       r"denmark|danemark|schweden|svezia|sweden|suède|norweg|norvegia|norway|norvège|finnland|finlandia|"
+                       r"finland|portugal|portogallo|rumänien|romania|roumanie|bulgari|ungarn|ungheria|hungary|hongrie|"
+                       r"tschechien|repubblica ceca|czech|tchèque|slowakei|slovacchia|slovakia|slovaquie|serbi|albani|"
+                       r"malta|zypern|cipro|cyprus|chypre|\bisland\b|islanda|iceland|islande|baltic|baltico|estland|lettland|litauen")
 ACCIDENT = re.compile(r"incident|scontro|tamponament|ribaltat|accident|unfall|crash|collision|carambol", re.I)
 NON_EUROPE = re.compile(r"\b(chile|cile|chili\b|chilen|camioneros|südamerika|lateinamerika|amérique latine|america latina|argentin|brasil|brazil|usa|stati uniti|united states|états-unis|canada|"
                         r"messico|mexico|mexique|india|inde|cina|china|chine|australia|sud ?africa|south africa|"
@@ -140,7 +149,7 @@ def _where(text: str, lang: str) -> tuple[list[str], list[str], list[str]]:
     pts = catalog.chokepoints()
     countries |= {pts[c]["country"] for c in chokes if c in pts}
     countries |= {cc for cc, pat in COUNTRY_WORDS.items() if re.search(pat, low)}
-    if not countries and LANG_COUNTRY.get(lang):
+    if not countries and LANG_COUNTRY.get(lang) and not ELSEWHERE.search(low):
         countries.add(LANG_COUNTRY[lang])
     return sorted(countries), regions, chokes
 

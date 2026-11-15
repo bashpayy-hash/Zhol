@@ -86,7 +86,9 @@
   }
 
   const eur = x => "€" + (IT ? String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : Math.round(x).toLocaleString("en-GB"));
-  const saves = (it, big) => it.group === "official" ? T("avoids ", "evita ") : T("saves ", "risparmia ");
+  // a published calendar is planned for free, so its money is what planning avoids, not what zhol saves; an
+  // unplanned event is what zhol saves (user test of 15 Nov 2026: «avoids» and «saves» side by side, unexplained)
+  const saves = (it, big) => it.group === "official" ? T("calendar: planning avoids ", "calendario: pianificando si evitano ") : T("zhol saves ", "zhol fa risparmiare ");
 
   function days(it) { if (!it.start) return 1; const a = new Date(it.start), b = new Date(it.end || it.start); return Math.min(5, Math.round((b - a) / 864e5) + 1); }
 
@@ -189,7 +191,11 @@
     const top = priced.slice().sort((a, b) => b.impact.saving * b.p - a.impact.saving * a.p)[0];
     const news = items.filter(i => i.group === "news").length, wx = items.filter(i => i.group === "forecast").length;
     const li = (num, rest) => { const l = el("li"); l.append(el("b", null, num), document.createTextNode(" " + rest)); box.append(l); };
-    li(String(items.length), T("events in the next eight weeks" + (route ? " on your route" : ""), "eventi nelle prossime otto settimane" + (route ? " sulla vostra tratta" : "")));
+    // counted as on the home page: events with a date ahead; press reports without a date yet are said apart
+    // (user test of 15 Nov 2026: 25 on the home page, 30 here)
+    const ahead = items.filter(i => i.start && (i.end || i.start) >= data.today).length, undated = items.filter(i => !i.start).length;
+    li(String(ahead), T("events in the next eight weeks" + (route ? " on your route" : ""), "eventi nelle prossime otto settimane" + (route ? " sulla vostra tratta" : "")) +
+      (undated ? T(", and " + undated + " press " + (undated === 1 ? "report" : "reports") + " without a date yet", ", e " + undated + (undated === 1 ? " notizia" : " notizie") + " ancora senza data") : ""));
     if (next) li(fmt(next.start), T("is the next one: ", "è il prossimo: ") + L(next, "title") + " (" + pct(next.p) + ")");
     if (top) li(eur(top.impact.saving), T("per vehicle is the biggest saving on the list: ", "per mezzo è il risparmio più grande in elenco: ") + L(top, "title"));
     li(news + " + " + wx, T("items come from the news and the weather, the rest from official calendars", "voci vengono da notizie e meteo, il resto dai calendari ufficiali"));
@@ -231,6 +237,15 @@
   const sameWhere = (a, b) => { const k = x => (x.places && x.places.length ? x.places : x.regions && x.regions.length ? x.regions : x.countries || []); return k(a).some(v => k(b).includes(v)); };
   // a wire item only shows when it says more than the radar already does: a new event, or one that moved on
   const fresher = (w, items) => !items.some(n => n.group === "news" && (STOP[n.kind] || n.kind) === (STOP[w.kind] || w.kind) && sameWhere(w, n) && (RANK[n.stage] || 0) >= (RANK[w.stage] || 0));
+  // an overnight closure that ended this morning is not "in the next eight weeks" (user test of 15 Nov 2026: last
+  // night's Fréjus closure topped the list the next evening). Rome time; "22:00-02:00" ends on its end day at 02:00.
+  const romeNow = () => { const p = {}; new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Rome", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).forEach(x => { p[x.type] = x.value; }); return { day: p.year + "-" + p.month + "-" + p.day, hm: p.hour + ":" + p.minute }; };
+  const ended = i => {
+    const end = i.end || i.start; if (!end) return false;
+    const n = romeNow(); if (end < n.day) return true;
+    const m = String(i.hours || "").match(/(\d{1,2})[:h.](\d{2})\s*[-–]\s*(\d{1,2})[:h.](\d{2})\s*$/);
+    return !!(m && end === n.day && end > i.start && m[3].padStart(2, "0") + ":" + m[4] <= n.hm);
+  };
   Promise.all([fetch("/data/outlook.json").then(r => r.ok ? r.json() : Promise.reject(r.status)), feed]).then(([d, fd]) => {
     const have = new Set(d.items.map(i => i.id));
     const of = fd.items || [], wire = (fd.wire || []).filter(w => !have.has(w.id) && fresher(w, d.items));
@@ -238,7 +253,7 @@
     const near = (a, b) => !a.start || !b.start || Math.abs(new Date(a.start) - new Date(b.start)) <= 2 * 864e5;
     const docs = wire.filter(w => w.basis === "document");
     d.items = d.items.filter(n => !(n.group === "news" && docs.some(w => (STOP[n.kind] || n.kind) === (STOP[w.kind] || w.kind) && sameWhere(w, n) && near(w, n))));
-    d.items = wire.concat(of, d.items);
+    d.items = wire.concat(of, d.items).filter(i => !ended(i));
     const wireTab = document.querySelector('.rd-tools .seg button[data-f="wire"]');
     if (wireTab) wireTab.hidden = !wire.length;
     data = d;

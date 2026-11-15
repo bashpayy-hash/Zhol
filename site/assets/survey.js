@@ -333,12 +333,21 @@
   const fam = i => STOP[i.kind] || i.kind;
   const spot = x => (x.places && x.places.length ? x.places : x.regions && x.regions.length ? x.regions : x.countries || []);
   const sameWhere = (a, b) => spot(a).some(v => spot(b).includes(v));
+  // an overnight closure that ended this morning is not "in the next eight weeks" (user test of 15 Nov 2026: last
+  // night's Fréjus closure topped the list the next evening). Rome time; "22:00-02:00" ends on its end day at 02:00.
+  const romeNow = () => { const p = {}; new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Rome", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).forEach(x => { p[x.type] = x.value; }); return { day: p.year + "-" + p.month + "-" + p.day, hm: p.hour + ":" + p.minute }; };
+  const ended = i => {
+    const end = i.end || i.start; if (!end) return false;
+    const n = romeNow(); if (end < n.day) return true;
+    const m = String(i.hours || "").match(/(\d{1,2})[:h.](\d{2})\s*[-–]\s*(\d{1,2})[:h.](\d{2})\s*$/);
+    return !!(m && end === n.day && end > i.start && m[3].padStart(2, "0") + ":" + m[4] <= n.hm);
+  };
   function merge(d, fd) {
     const have = new Set(d.items.map(i => i.id));
     const wire = (fd.wire || []).filter(w => !have.has(w.id) && w.stage !== "revoked" && (w.p || 0) >= 0.2 &&
       !d.items.some(n => (n.group === "news" || n.basis === "document") && fam(n) === fam(w) && (n.mode || "road") === (w.mode || "road") &&
                          sameWhere(w, n) && (RANK[n.stage] || 0) >= (RANK[w.stage] || 0)));
-    d.items = wire.concat(fd.items || [], d.items);
+    d.items = wire.concat(fd.items || [], d.items).filter(i => !ended(i));
     d.live = wire.filter(w => !w.start).sort((a, b) => String(b.reported || "").localeCompare(String(a.reported || "")));
     return d;
   }

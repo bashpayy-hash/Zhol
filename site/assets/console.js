@@ -45,12 +45,21 @@
   const fam = i => STOP[i.kind] || i.kind;
   const spot = x => (x.places && x.places.length ? x.places : x.regions && x.regions.length ? x.regions : x.countries || []);
   const sameWhere = (a, b) => spot(a).some(v => spot(b).includes(v));
+  // an overnight closure that ended this morning is not "in the next eight weeks" (user test of 15 Nov 2026: last
+  // night's Fréjus closure topped the list the next evening). Rome time; "22:00-02:00" ends on its end day at 02:00.
+  const romeNow = () => { const p = {}; new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Rome", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).forEach(x => { p[x.type] = x.value; }); return { day: p.year + "-" + p.month + "-" + p.day, hm: p.hour + ":" + p.minute }; };
+  const ended = i => {
+    const end = i.end || i.start; if (!end) return false;
+    const n = romeNow(); if (end < n.day) return true;
+    const m = String(i.hours || "").match(/(\d{1,2})[:h.](\d{2})\s*[-–]\s*(\d{1,2})[:h.](\d{2})\s*$/);
+    return !!(m && end === n.day && end > i.start && m[3].padStart(2, "0") + ":" + m[4] <= n.hm);
+  };
   function merge(d, fd) {
     const have = new Set(d.items.map(i => i.id));
     const wire = (fd.wire || []).filter(w => !have.has(w.id) && w.stage !== "revoked" && (w.p || 0) >= 0.2 &&
       !d.items.some(n => (n.group === "news" || n.basis === "document") && fam(n) === fam(w) && (n.mode || "road") === (w.mode || "road") &&
                          sameWhere(w, n) && (RANK[n.stage] || 0) >= (RANK[w.stage] || 0)));
-    d.items = wire.concat(fd.items || [], d.items);
+    d.items = wire.concat(fd.items || [], d.items).filter(i => !ended(i));
     d.wireAt = fd.wire_at || null;
     return d;
   }
@@ -180,7 +189,7 @@
     mid.append(el("small", null, sub.filter(Boolean).join(" · ")));
     const right = el("span", "rc-r");
     right.append(el("b", "rc-p " + tone(it.p), pct(it.p)));
-    if (it.impact && it.impact.saving > 0) right.append(el("small", null, (it.group === "official" ? T("avoids ", "evita ") : T("saves ", "risparmia ")) + eur(it.impact.saving)));
+    if (it.impact && it.impact.saving > 0) right.append(el("small", null, (it.group === "official" ? T("calendar: planning avoids ", "calendario: pianificando si evitano ") : T("zhol saves ", "zhol fa risparmiare ")) + eur(it.impact.saving)));
     const pm = el("span", "rc-pm"); pm.setAttribute("aria-hidden", "true");
     btn.append(d, mid, right, pm);
     const more = el("div", "rc-more-in"); more.hidden = true;
@@ -258,8 +267,9 @@
     chips(groups);
     const side = $(".rc-side");
     if (side && window.ZholMap && getComputedStyle(side).display !== "none") map = window.ZholMap(side, { mini: true });
-    const fresh = [data.built_at, data.wireAt].filter(Boolean).map(s => Date.parse(s)).sort().pop();
-    $(".rc-status").textContent = T("Live radar · updated ", "Radar in tempo reale · aggiornato ") + hhmm(new Date(fresh).toISOString());
+    // the same two times as the radar page: when it was built, when the news was read again (user test of 15 Nov 2026)
+    $(".rc-status").textContent = T("Live radar · updated ", "Radar in tempo reale · aggiornato ") + hhmm(data.built_at) +
+      (data.wireAt ? T(" · news read at ", " · notizie lette alle ") + hhmm(data.wireAt) : "");
     render();
     liveFacts();
     root.classList.add("ready");
