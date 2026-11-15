@@ -1,8 +1,8 @@
 {
  "date": "2026-11-15",
- "built_at": "2026-11-15T03:29+01:00",
+ "built_at": "2026-11-15T14:18+01:00",
  "reader": "heuristic",
- "articles_read": 625,
+ "articles_read": 591,
  "items": [
   {
    "key": "ban|AT,IT|2026-12-08",
@@ -185,21 +185,6 @@
    "decide_h": 3.9
   },
   {
-   "key": "weather|messina_strait|2026-11-25",
-   "id": "d75f41472c",
-   "group": "forecast",
-   "kind": "weather",
-   "title": "Strong wind on the Strait of Messina",
-   "start": "2026-11-25",
-   "end": "2026-11-27",
-   "p": 0.28,
-   "stage": null,
-   "basis": "forecast",
-   "first_published": null,
-   "outlets": 1,
-   "decide_h": 7.5
-  },
-  {
    "key": "strike|IT|2026-11-20",
    "id": "st-rail-2026-11-20",
    "group": "news",
@@ -372,11 +357,11 @@
    "title": "Closure at the Mont Blanc tunnel",
    "start": "2026-11-20",
    "end": "2026-11-20",
-   "p": 0.831,
+   "p": 0.766,
    "stage": "announced",
    "basis": "news",
-   "first_published": "2026-10-16",
-   "outlets": 3,
+   "first_published": "2026-10-22",
+   "outlets": 1,
    "decide_h": 5.9
   },
   {
@@ -410,21 +395,6 @@
    "decide_h": null
   },
   {
-   "key": "strike|messina_strait|undated",
-   "id": "1ac739dddf",
-   "group": "news",
-   "kind": "strike",
-   "title": "Possible port or ferry strike on the Strait of Messina",
-   "start": null,
-   "end": null,
-   "p": 0.228,
-   "stage": "threat",
-   "basis": "news",
-   "first_published": "2026-10-26",
-   "outlets": 3,
-   "decide_h": null
-  },
-  {
    "key": "strike|fernetti|undated",
    "id": "e9087d56e2",
    "group": "news",
@@ -437,6 +407,21 @@
    "basis": "news",
    "first_published": "2026-10-21",
    "outlets": 1,
+   "decide_h": null
+  },
+  {
+   "key": "strike|messina_strait|undated",
+   "id": "61de54021e",
+   "group": "news",
+   "kind": "strike",
+   "title": "Possible port or ferry strike on the Strait of Messina",
+   "start": null,
+   "end": null,
+   "p": 0.165,
+   "stage": "threat",
+   "basis": "news",
+   "first_published": "2026-10-26",
+   "outlets": 2,
    "decide_h": null
   },
   {
