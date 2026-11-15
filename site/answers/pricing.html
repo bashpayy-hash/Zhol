@@ -14,7 +14,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s54">
+<link rel="stylesheet" href="/assets/zhol.css?v=s55">
 <link rel="alternate" hreflang="en" href="https://zhol.live/answers/pricing">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/risposte/pricing">
 </head>
@@ -51,17 +51,18 @@
       <form class="card" id="calc" onsubmit="return false" aria-label="Savings inputs">
         <span class="kicker">Change any number</span>
         <div class="fields">
-          <div class="field"><label for="c-trucks">Vehicles</label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
-          <div class="field"><label for="c-share">Vehicles on international lanes, %</label><input id="c-share" type="number" min="0" max="100" step="5" value="50"></div>
-          <div class="field"><label for="c-legs">One-way trips per vehicle per month</label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
-          <div class="field"><label for="c-hit">Trips hit by an unplanned disruption, %</label><input id="c-hit" type="number" min="0" max="100" step="0.5" value="4"></div>
-          <div class="field"><label for="c-act">Hits an option can avoid, %</label><input id="c-act" type="number" min="0" max="100" step="5" value="50"></div>
-          <div class="field"><label for="c-hours">Hours saved per avoided hit</label><input id="c-hours" type="number" min="0" step="0.5" value="3"></div>
-          <div class="field"><label for="c-hour">Cost of a vehicle-hour, €</label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
-          <div class="field"><label for="c-disp">Dispatcher minutes a day checking sites</label><input id="c-disp" type="number" min="0" step="5" value="30"></div>
-          <div class="field"><label for="c-big">Blockade or strike days a year</label><input id="c-big" type="number" min="0" step="1" value="4"></div>
+          <div class="field"><label for="c-trucks">Vehicles <small class="asm ex">your office</small></label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
+          <div class="field"><label for="c-share">Vehicles on international lanes, % <small class="asm ex">your office</small></label><input id="c-share" type="number" min="0" max="100" step="5" value="50"></div>
+          <div class="field"><label for="c-legs">One-way trips per vehicle per month <small class="asm ex">your office</small></label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
+          <div class="field"><label for="c-hit">Trips hit by an unplanned disruption, % <small class="asm">assumption</small></label><input id="c-hit" type="number" min="0" max="100" step="0.5" value="4"></div>
+          <div class="field"><label for="c-act">Hits an option can avoid, % <small class="asm">assumption</small></label><input id="c-act" type="number" min="0" max="100" step="5" value="50"></div>
+          <div class="field"><label for="c-hours">Hours saved per avoided hit <small class="asm">assumption</small></label><input id="c-hours" type="number" min="0" step="0.5" value="3"></div>
+          <div class="field"><label for="c-hour">Cost of a vehicle-hour, € <small class="asm law">Italian law</small></label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
+          <div class="field"><label for="c-disp">Dispatcher minutes a day checking sites <small class="asm">assumption</small></label><input id="c-disp" type="number" min="0" step="5" value="30"></div>
+          <div class="field"><label for="c-big">Blockade or strike days a year <small class="asm">assumption</small></label><input id="c-big" type="number" min="0" step="1" value="4"></div>
           <div class="field"><label for="c-price">Price per vehicle per month, €</label><input id="c-price" type="number" min="0" step="1" value="12"></div>
         </div>
+        <p class="small muted asm-note">Measured: only the €100 hour, set by Italian law. The office fields are an example to change. The five marked “assumption” come from our cost model (docs/03) and wait for the pilots; the eight people who know the field in our survey put shipments changed at 2 to over 10 per 100 trips abroad.</p>
       </form>
       <div class="card out" aria-live="polite">
         <span class="kicker">Estimated saving</span>
@@ -94,12 +95,12 @@
 <footer class="site"><div class="wrap">
   <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
   <span>Oyu team · Bocconi University · TEF Ignition 2026</span>
-  <span><a href="/story">Story</a> · <a href="/radar">Radar</a> · <a href="/report">Report</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
+  <span><a href="/story">Story</a> · <a href="/radar">Radar</a> · <a href="/report">Tell the radar</a> · <a href="/beta">Beta</a> · <a href="https://github.com/bashpayy-hash/Zhol">GitHub</a></span>
 </div></footer>
 <script src="/assets/scene.js?v=q2" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
-<script src="/assets/assistant.js?v=5" defer></script>
+<script src="/assets/assistant.js?v=6" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

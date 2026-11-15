@@ -265,6 +265,7 @@ const drop = $("ck-drop");
 ["dragenter", "dragover"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add("over"); }));
 ["dragleave", "drop"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove("over"); }));
 drop.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) readFile(f); });
+document.querySelectorAll("[data-pilot-link]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); $("ck-acc").scrollIntoView({ behavior: "smooth", block: "start" }); }));
 $("ck-sample").addEventListener("click", () => { plan = samplePlan(); sample = true; onLanes = false; render(); $("ck-results").scrollIntoView({ behavior: "smooth", block: "start" }); });
 $("ck-clear").addEventListener("click", () => { plan = []; sample = false; keep(); $("ck-file-note").textContent = ""; render(); });
 
@@ -313,10 +314,12 @@ function drawAccount() {
   placeAccount();
   if (!acct) {
     if (notice) { box.append(el("p", "ck-acc-notice", notice)); notice = ""; }
-    box.append(el("span", "kicker", T("Keep watching this plan", "Continuate a seguire questo piano")),
-      el("h2", null, T("An office account: zhol keeps watching your shipments", "Un account per l’ufficio: zhol continua a seguire le vostre spedizioni")),
-      el("p", "small", T("zhol saves the plan and checks it against the radar every 30 minutes. What changes, a new risk, a risk gone, a chance that moved, shows here; with a WhatsApp number, a person of our team sends it to you as well. Without an account the plan stays only in this browser.",
-                         "zhol salva il piano e lo verifica con il radar ogni 30 minuti. Quello che cambia, un nuovo rischio, un rischio sparito, una probabilità che si è mossa, compare qui; con un numero WhatsApp, una persona del nostro team ve lo manda anche lì. Senza account il piano resta solo in questo browser.")));
+    // the office account is the free pilot (user test of 15 Nov 2026: a dispatcher told about «a free trial» made an
+    // account here and could not tell whether that was it)
+    box.append(el("span", "kicker", T("Free 4-week pilot", "Prova gratuita di 4 settimane")),
+      el("h2", null, T("Start the free pilot on your own shipments", "Iniziate la prova gratuita sulle vostre spedizioni")),
+      el("p", "small", T("Four weeks free, nothing to install. zhol saves your plan and checks it against the radar every 30 minutes; what changes shows here. With a WhatsApp number, a person of our team writes to you when a shipment is at risk, and within two working days to agree your lanes. Afterwards €8 a month per vehicle, only if the saving we agreed on is reached.",
+                         "Quattro settimane gratis, niente da installare. zhol salva il piano e lo verifica con il radar ogni 30 minuti; quello che cambia compare qui. Con un numero WhatsApp, una persona del nostro team vi scrive quando una spedizione è a rischio, ed entro due giorni lavorativi per concordare le tratte. Poi 8 € al mese per mezzo, solo se si raggiunge il risparmio concordato.")));
     const f = el("form", "ck-acc-form");
     const inp = (name, label, attrs) => { const l = el("label", "field"); const i = el("input"); i.name = name; Object.assign(i, attrs || {}); l.append(el("span", "small", label), i); return l; };
     const lang = el("select"); lang.name = "lang"; [["it", "Italiano"], ["en", "English"]].forEach(([v, t]) => { const o = el("option", null, t); o.value = v; lang.append(o); }); lang.value = IT ? "it" : "en";
@@ -326,7 +329,7 @@ function drawAccount() {
                 inp("whatsapp", T("WhatsApp for alerts (optional)", "WhatsApp per gli avvisi (facoltativo)"), { type: "tel", placeholder: "+39 …", autocomplete: "tel" }), ll);
     const ok = el("label", "check"); const cb = el("input"); cb.type = "checkbox"; cb.required = true; cb.name = "consent";
     ok.append(cb, document.createTextNode(T(" zhol keeps this plan in our account until we delete it. Only reference, cities, days, crossing and receiver are kept.", " zhol conserva questo piano nel nostro account finché non lo cancelliamo. Si conservano solo riferimento, città, giorni, valico e destinatario.")));
-    const go = el("button", "btn", T("Create the account and save the plan", "Crea l’account e salva il piano")); go.type = "submit";
+    const go = el("button", "btn", T("Start the free pilot", "Iniziate la prova gratuita")); go.type = "submit";
     const out = el("p", "small");
     f.append(grid, ok, go, out);
     f.addEventListener("submit", async e => {
@@ -340,21 +343,28 @@ function drawAccount() {
       acct = d.office; justMade = d.key;
       if (sample) { plan = []; sample = false; }
       keep(); drawAccount(); render();
+      $("ck-acc").scrollIntoView({ behavior: "smooth", block: "start" });     // the confirmation, not the form, in view
     });
     box.append(f);
     return;
   }
   const head = el("div", "ck-acc-head");
   const t = el("div");
-  t.append(el("span", "kicker", T("Office account", "Account dell’ufficio")), el("h2", null, acct.company));
+  t.append(el("span", "kicker", T("Free pilot · office account", "Prova gratuita · account dell’ufficio")), el("h2", null, acct.company));
   const meta = el("p", "small muted"); meta.id = "ck-acc-saved";
-  meta.textContent = (acct.plan_at ? T("Plan saved ", "Piano salvato ") + ago(acct.plan_at) + " · " + acct.plan.length + (acct.plan.length === 1 ? T(" shipment", " spedizione") : T(" shipments", " spedizioni")) : T("No plan saved yet: load one above.", "Nessun piano salvato: caricatene uno qui sopra.")) +
-    (acct.watched_at ? T(" · watched ", " · seguito ") + ago(acct.watched_at) : T(" · first watch within 30 minutes", " · primo controllo entro 30 minuti")) +
+  meta.textContent = (acct.plan_at && acct.plan.length ? T("Plan saved ", "Piano salvato ") + ago(acct.plan_at) + " · " + acct.plan.length + (acct.plan.length === 1 ? T(" shipment", " spedizione") : T(" shipments", " spedizioni")) +
+    (acct.watched_at ? T(" · watched ", " · seguito ") + ago(acct.watched_at) : T(" · first watch within 30 minutes", " · primo controllo entro 30 minuti"))
+    : T("No trips yet: add them below, from Excel, CSV or one at a time.", "Ancora nessun viaggio: aggiungeteli qui sotto, da Excel, CSV o uno alla volta.")) +
     (acct.whatsapp ? " · WhatsApp " + acct.whatsapp : "");
   t.append(meta);
   head.append(t);
   box.append(head);
   if (justMade) {
+    const ok = el("p", "ck-acc-notice ck-acc-ok");
+    ok.append(el("b", null, T("Your free pilot has started. ", "La vostra prova gratuita è iniziata. ")),
+      document.createTextNode(acct.whatsapp ? T("We write to you on WhatsApp within two working days to agree your lanes. Meanwhile add your trips below.", "Vi scriviamo su WhatsApp entro due giorni lavorativi per concordare le tratte. Intanto aggiungete i viaggi qui sotto.")
+                                            : T("Add your trips below: zhol checks them every 30 minutes and shows here what changes.", "Aggiungete i viaggi qui sotto: zhol li verifica ogni 30 minuti e mostra qui cosa cambia.")));
+    box.append(ok);
     const keepIt = el("div", "ck-acc-link");
     keepIt.append(el("b", null, T("Your private link. Keep it: it opens this account on any device. Share it only inside your office.", "Il vostro link privato. Conservatelo: apre questo account su qualsiasi dispositivo. Condividetelo solo nel vostro ufficio.")),
                   el("code", null, linkOf(justMade)));
@@ -397,5 +407,6 @@ loadRadar().then(async d => {
   const lp = linkLanes.length && !(acct && plan.length) ? lanePlan(d, linkLanes, IT) : [];
   if (lp.length) { plan = lp; sample = onLanes = true; }
   render(); drawSent();
+  if (location.hash === "#pilot") $("ck-acc").scrollIntoView({ block: "start" });
   if (lp.length) { const n = $("ck-lanes-note"), top = n.getBoundingClientRect().top + window.scrollY - (document.querySelector("header.top") || { offsetHeight: 70 }).offsetHeight - 16; window.scrollTo({ top, behavior: "smooth" }); }
 }).catch(() => { $("ck-status").textContent = T("The radar could not be loaded. Try again in a minute.", "Non riesco a caricare il radar. Riprovate tra un minuto."); });

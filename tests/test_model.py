@@ -207,12 +207,33 @@ def test_a_train_strike_is_not_priced_as_a_truck_that_waits_and_official_dates_r
     guess = {"group": "news", "basis": "news", "kind": "strike", "mode": "rail", "countries": ["IT"], "places": [], "start": "2026-11-20"}
     assert covered(guess, [rail]) and not covered(dict(guess, mode="road"), [rail]) and not covered(dict(guess, start="2026-12-20"), [rail])
     doc = {"id": "d-1", "group": "wire", "basis": "document", "kind": "closure", "stage": "announced", "title": "Fréjus closed at night",
-           "places": ["frejus"], "countries": ["FR"], "regions": [], "start": "2026-11-14", "end": "2026-11-15", "hours": "22h00 - 2h00", "p": 0.933}
+           "places": ["frejus"], "countries": ["FR"], "regions": [], "start": "2026-11-18", "end": "2026-11-19", "hours": "22h00 - 2h00", "p": 0.933}
     item = document_items([doc, dict(doc, start="2026-11-01", end="2026-11-02")], date(2026, 11, 14))
     assert len(item) == 1 and item[0]["group"] == "official" and item[0]["basis"] == "document"
     im = impact(item[0])
     assert im["note"] == "Hours from the operator's page." and im["wait_h"] <= 4.1       # one night of four hours, not eight
-    assert covered({"group": "news", "basis": "news", "kind": "closure", "places": ["frejus"], "countries": ["FR"], "start": "2026-11-14"}, item)
+    assert covered({"group": "news", "basis": "news", "kind": "closure", "places": ["frejus"], "countries": ["FR"], "start": "2026-11-18"}, item)
+    # on a Saturday night the truck already stands still for the French weekend ban: the closure costs it nothing more
+    sat = document_items([dict(doc, start="2026-11-14", end="2026-11-15")], date(2026, 11, 14))
+    assert impact(sat[0]) is None
     # the same strike on an operator's page and on the ministry's calendar is one event
     notice = {"group": "news", "basis": "document", "kind": "strike", "mode": "rail", "countries": ["IT"], "places": [], "start": "2026-11-20"}
     assert covered(notice | {"basis": "news"}, [rail])
+
+
+def test_the_plan_for_kufstein_dosing_respects_the_a12_night_ban():
+    """User test of 15 Nov 2026 (de6eling/user-testing-agent): a juror saw the radar say «leave earlier at 03:05» for
+    the dosing at Kufstein, while /story says leaving earlier does not help. The A12 night ban runs to 05:00 and the
+    dosing starts then, so a truck at Kufstein at 04:30 waits for both. Calendar bans now bind every plan
+    (zhol/radar/impact.py _background): the plan crosses the Inn valley before the night ban starts at 20:00."""
+    from zhol.radar.outlook import official_items
+    from zhol.engine import simulate
+    from zhol.radar.impact import _background, _load
+    dosing = next(i for i in official_items(date(2026, 11, 15), 10) if i["kind"] == "dosing" and i["start"] == "2026-11-18")
+    im = impact(dosing)
+    dep = datetime.fromisoformat(im["plan"]["departure"])
+    lane = catalog.lane("MUC-VR-BRENNER")
+    sim = simulate(_load(lane.id, dep), lane, _background(dep, set()), CostModel(), departure=dep)
+    at = next(s.arrive for s in sim.stops if s.waypoint == "Kufstein").astimezone(TZ)
+    assert not (at.hour >= 20 or at.hour < 5), (im["plan"], at)          # not inside the A12 night ban, Mon-Sat 20:00-05:00
+    assert im["plan"]["code"] != "depart_earlier" or dep.date() < date(2026, 11, 18)

@@ -33,7 +33,7 @@ from zoneinfo import ZoneInfo
 from .. import catalog
 from ..engine import _free_flow_arrival, _option, assess, event_touches_waypoint, simulate
 from ..ingest.feeds import load_all_calendars
-from ..models import CostModel, Event, EventScope, Load, Source, Window
+from ..models import CostModel, Event, EventScope, Load, Source, Vehicle, Window
 from ..rules import generate_ban_events
 from . import leadtime
 
@@ -166,9 +166,19 @@ def _target_time(lane_id: str, target: str | None, events: list[Event], item: di
 
 def _load(lane_id: str, departure: datetime, cargo: str = "general") -> Load:
     lane = catalog.lane(lane_id)
+    # most international tractors are certified low-noise (exempt from Austria's general night ban, not from the A12
+    # night ban in transit), as in zhol/replay.py
     return Load(id="R-1", company_id="radar", description="representative load", cargo=cargo,
                 origin=lane.waypoints[0].name, destination=lane.waypoints[-1].name, lane_id=lane_id,
-                departure=departure)
+                departure=departure, vehicle=Vehicle(low_noise=True))
+
+
+def _background(departure: datetime, skip: set[str]) -> list[Event]:
+    """The national calendar bans around the trip (zhol/rules.py). They bind every plan, so the radar never proposes
+    a plan the calendar forbids: at Kufstein the A12 night ban ends at 05:00, when the dosing starts, and leaving
+    earlier does not help (user test of 15 Nov 2026; site/story.html says the same). They are in the trip with and
+    without the event, so the event's own cost does not change."""
+    return [e for e in generate_ban_events(departure.date() - timedelta(days=1), 6) if e.id not in skip]
 
 
 WHO_IT = {"Driver": "Autista", "Customer or receiver": "Cliente o destinatario", "Sender or shipper": "Mittente",
@@ -266,8 +276,9 @@ def impact(item: dict, costs: CostModel | None = None) -> dict | None:
     departure = probe.departure + (meet_at - eta)
     load = _load(lane_id, departure)
     now = departure - timedelta(hours=36)
-    base = assess(load, [], costs, now=now)
-    hit = assess(load, events, costs, now=now)
+    bg = _background(departure, {e.id for e in events})
+    base = assess(load, bg, costs, now=now)
+    hit = assess(load, bg + events, costs, now=now)
     c0 = base.baseline_cost_eur
     wait_h = sum(h.wait_min for h in hit.hits if not h.exempt) / 60
     # a truck can drive about 10 hours a day: a long wait costs at most 10 productive hours per 24 hours
@@ -283,7 +294,7 @@ def impact(item: dict, costs: CostModel | None = None) -> dict | None:
     else:
         # the same plan on a day the event does not happen: detour, waiting or lateness paid for nothing
         alt_lane = catalog.lane(best.lane_id)
-        sim = simulate(load, alt_lane, [], costs, departure=best.departure)
+        sim = simulate(load, alt_lane, bg, costs, departure=best.departure)
         ref = _free_flow_arrival(load, lane, costs) + timedelta(hours=2)
         c_free = max(0.0, round(_option(best.code, "", "", sim, load, costs, lane, alt_lane, ref).cost_eur - c0 + change))
     p = item["p"]
@@ -296,7 +307,7 @@ def impact(item: dict, costs: CostModel | None = None) -> dict | None:
     alt_lane = catalog.lane(best.lane_id).name if best.lane_id != lane_id else None
     # when the warning has to arrive for each plan, and what is still avoidable later (zhol/radar/leadtime.py)
     try:
-        lead = leadtime.lead(load, events, costs, c0, loss, CHANGE_COST_EUR, full=hit)
+        lead = leadtime.lead(load, bg + events, costs, c0, loss, CHANGE_COST_EUR, full=hit)
     except Exception:       # the deadlines are an extra: a bad one must not take the cost figures with it
         lead = None
     return {

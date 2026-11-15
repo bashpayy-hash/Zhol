@@ -29,7 +29,7 @@
 | Forwarding companies represented by CLECAT's national members | > 19,000 | CLECAT (Jan 2025) |
 | Price | **€12 per truck per month**, minimum €99/month | doc 03 |
 
-### TAM — Europe (EU/EEA + CH)
+### TAM — Europe (counted on EU figures)
 
 Two independent methods, which converge:
 

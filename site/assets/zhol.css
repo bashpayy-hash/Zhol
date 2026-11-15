@@ -1285,6 +1285,7 @@ dialog.sheet.asst-sheet { width: min(760px, calc(100vw - 32px)); }
   -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); }   /* the pose is cut at the waist: let it fade into the paper */
 @media (max-width: 560px) { .word .word-media img { max-width: 300px; } }
 /* the chat button in the corner, on every page (owner, 11 Nov 2026: "а где чат помощник?") */
+.has-chat footer.site { padding-bottom: 84px; }
 .asst-bubble { position: fixed; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); z-index: 40;
   display: flex; align-items: center; gap: 10px; background: var(--ink); color: var(--paper); border: 0; border-radius: var(--r-pill);
   padding: 7px 20px 7px 7px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 14px 32px -12px rgba(30, 22, 18, .55);
@@ -1913,6 +1914,12 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 @media (max-width: 560px) { .rd-cover-text { padding: 36px 20px; } .rd-cover-small { font-size: 12.5px; } }
 /* /check: the first screen leads to the value (load, or a sample); a dead private link or a deleted account says so */
 .ck-hero .actions { margin-top: 4px; }
+/* the free pilot from the check page (user test of 15 Nov 2026) */
+.ck-pilot-link { align-self: flex-start; display: inline-flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; min-height: 44px; margin-top: 4px; padding: 8px 16px; border-radius: 16px;
+  background: var(--sage-card); border: 1px solid #c4d2bd; color: var(--ink-2); font-size: 15px; line-height: 1.35; text-decoration: none; }
+.ck-pilot-link b { color: var(--sage-ink); }
+.ck-pilot-link:hover { border-color: var(--sage-ink); }
+.ck-acc-notice.ck-acc-ok { background: #fff; color: var(--ink); border: 1px solid #c4d2bd; }
 .ck-acc-notice { margin: 0 0 4px; padding: 10px 14px; border-radius: 14px; background: #fbf3e4; color: #6b4a14; font-size: 14.5px; line-height: 1.45; }
 /* the TEF answers page: the jury looks for its question, so the question leads each card (and the type scale holds:
    h2 ≥ 1.1 × body, uxaudit accessibility/font-hierarchy) */
@@ -1920,3 +1927,13 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .answers-head + #answers .bento-num { order: 3; margin-top: 8px; }
 .answers-head + #answers .blocks.tiles-mode .block.bento-b .block-line { order: 4; }
 @media (max-width: 560px) { .answers-head + #answers .blocks.tiles-mode .block.bento-b h2 { font-size: 18px; } }
+
+/* the calculator says which inputs are measured and which are assumed (user test of 15 Nov 2026; CLAUDE.md: every
+   number of the model is measured or marked as an assumption) */
+.calc .field label .asm { display: inline-block; margin-left: 4px; padding: 1px 7px; border-radius: 999px; background: #fbf3e4; color: #6b4a14; font-size: 11.5px; font-weight: 600; letter-spacing: .01em; vertical-align: 1px; }
+.calc .field label .asm.ex { background: var(--card); color: var(--muted); border: 1px solid var(--card-line); }
+.calc .field label .asm.law { background: var(--sage-card); color: var(--sage-ink); }
+.asm-note { margin: 12px 0 0; max-width: 640px; }
+/* targets are not results (user test of 15 Nov 2026: «8 interviews» in big red read as done) */
+.tgt { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.big.goal { color: var(--muted); }

@@ -14,7 +14,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s54">
+<link rel="stylesheet" href="/assets/zhol.css?v=s55">
 <link rel="alternate" hreflang="en" href="https://zhol.live/answers/pricing">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/risposte/pricing">
 </head>
@@ -51,17 +51,18 @@
       <form class="card" id="calc" onsubmit="return false" aria-label="Dati per il calcolo del risparmio">
         <span class="kicker">Modifica qualsiasi numero</span>
         <div class="fields">
-          <div class="field"><label for="c-trucks">Mezzi</label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
-          <div class="field"><label for="c-share">Mezzi su tratte internazionali, %</label><input id="c-share" type="number" min="0" max="100" step="5" value="50"></div>
-          <div class="field"><label for="c-legs">Viaggi di sola andata per mezzo al mese</label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
-          <div class="field"><label for="c-hit">Viaggi colpiti da un imprevisto, %</label><input id="c-hit" type="number" min="0" max="100" step="0.5" value="4"></div>
-          <div class="field"><label for="c-act">Casi evitabili con un’alternativa, %</label><input id="c-act" type="number" min="0" max="100" step="5" value="50"></div>
-          <div class="field"><label for="c-hours">Ore risparmiate per caso evitato</label><input id="c-hours" type="number" min="0" step="0.5" value="3"></div>
-          <div class="field"><label for="c-hour">Costo di un’ora di mezzo fermo, €</label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
-          <div class="field"><label for="c-disp">Minuti al giorno del traffichista per controllare i siti</label><input id="c-disp" type="number" min="0" step="5" value="30"></div>
-          <div class="field"><label for="c-big">Giorni di blocco o sciopero all’anno</label><input id="c-big" type="number" min="0" step="1" value="4"></div>
+          <div class="field"><label for="c-trucks">Mezzi <small class="asm ex">il vostro ufficio</small></label><input id="c-trucks" type="number" min="1" step="1" value="20"></div>
+          <div class="field"><label for="c-share">Mezzi su tratte internazionali, % <small class="asm ex">il vostro ufficio</small></label><input id="c-share" type="number" min="0" max="100" step="5" value="50"></div>
+          <div class="field"><label for="c-legs">Viaggi di sola andata per mezzo al mese <small class="asm ex">il vostro ufficio</small></label><input id="c-legs" type="number" min="0" step="1" value="20"></div>
+          <div class="field"><label for="c-hit">Viaggi colpiti da un imprevisto, % <small class="asm">ipotesi</small></label><input id="c-hit" type="number" min="0" max="100" step="0.5" value="4"></div>
+          <div class="field"><label for="c-act">Casi evitabili con un’alternativa, % <small class="asm">ipotesi</small></label><input id="c-act" type="number" min="0" max="100" step="5" value="50"></div>
+          <div class="field"><label for="c-hours">Ore risparmiate per caso evitato <small class="asm">ipotesi</small></label><input id="c-hours" type="number" min="0" step="0.5" value="3"></div>
+          <div class="field"><label for="c-hour">Costo di un’ora di mezzo fermo, € <small class="asm law">legge italiana</small></label><input id="c-hour" type="number" min="0" step="5" value="100"></div>
+          <div class="field"><label for="c-disp">Minuti al giorno del traffichista per controllare i siti <small class="asm">ipotesi</small></label><input id="c-disp" type="number" min="0" step="5" value="30"></div>
+          <div class="field"><label for="c-big">Giorni di blocco o sciopero all’anno <small class="asm">ipotesi</small></label><input id="c-big" type="number" min="0" step="1" value="4"></div>
           <div class="field"><label for="c-price">Prezzo per mezzo al mese, €</label><input id="c-price" type="number" min="0" step="1" value="12"></div>
         </div>
+        <p class="small muted asm-note">Misurata: solo l’ora a €100, fissata dalla legge italiana. I campi dell’ufficio sono un esempio da cambiare. I cinque segnati «ipotesi» vengono dal nostro modello di costo (docs/03) e aspettano le prove; le otto persone del settore del nostro sondaggio indicano da 2 a oltre 10 spedizioni cambiate ogni 100 viaggi all’estero.</p>
       </form>
       <div class="card out" aria-live="polite">
         <span class="kicker">Risparmio stimato</span>
@@ -99,7 +100,7 @@
 <script src="/assets/scene.js?v=q2" defer></script>
 <script src="/assets/site.js?v=vz1" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
-<script src="/assets/assistant.js?v=5" defer></script>
+<script src="/assets/assistant.js?v=6" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

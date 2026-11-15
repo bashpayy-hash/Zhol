@@ -263,22 +263,27 @@
     launch.prepend(btn);
   });
 
-  // and the chat button in the corner. On a phone it waits below the first screen and steps aside while you scroll,
-  // so it never sits on what you are reading
+  // and the chat button in the corner. On a phone it waits below the first screen, steps aside when you scroll down
+  // to read and comes back when you scroll up, so it does not sit on what you are reading (user test of 15 Nov 2026:
+  // at rest it covered the new departure time). The footer leaves room for it at the end of every page.
   if (!document.querySelector("[data-no-chat]")) {
     const bub = el("button", "asst-bubble"); bub.type = "button";
     bub.setAttribute("aria-label", T("Ask Zholdas, the radar assistant", "Chiedi a Zholdas, l’assistente del radar"));
     bub.append(face(), el("span", null, T("Ask Zholdas", "Chiedi a Zholdas")));
     bub.addEventListener("click", openChat);
     document.body.append(bub);
+    document.body.classList.add("has-chat");
     const phone = matchMedia("(max-width: 560px)");
-    let idle = null;
-    const place = moving => {
-      const below = scrollY > innerHeight * 0.6;
-      bub.classList.toggle("away", phone.matches && (!below || moving));
+    let lastY = scrollY;
+    const place = () => {
+      const y = scrollY, below = y > innerHeight * 0.6, down = y > lastY + 2, up = y < lastY - 2;
+      if (!phone.matches) bub.classList.remove("away");
+      else if (!below || down) bub.classList.add("away");
+      else if (up) bub.classList.remove("away");
+      lastY = y;
     };
-    place(false);
-    addEventListener("scroll", () => { place(true); clearTimeout(idle); idle = setTimeout(() => place(false), 700); }, { passive: true });
-    phone.addEventListener("change", () => place(false));
+    bub.classList.toggle("away", phone.matches);
+    addEventListener("scroll", place, { passive: true });
+    phone.addEventListener("change", place);
   }
 })();
