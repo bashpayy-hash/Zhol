@@ -67,3 +67,11 @@ test("Claude is asked only when the page changed, and a failure keeps the last r
   const late = await lookAt(doc, a, R, P, async () => { throw new Error("x"); }, reader, now + 5 * 864e5);
   assert.equal(late.items.length, 0);                                                                           // a past event leaves the wire
 });
+
+test("an operator's weekly table of short closures is read as runs of days, so the reading fits its time", () => {
+  // 16 Nov 2026: the SFTRF closures page lists 45-minute closures day by day for two weeks; read one by one, the agent
+  // ran past its 40 seconds (APIConnectionTimeoutError). The rules now ask for one event per run of equal days.
+  const src = readFileSync(new URL("../../netlify/lib/docs.mts", import.meta.url), "utf8");
+  assert.match(src, /repeats on\s+consecutive days with the same hours and direction is one event/);
+  assert.match(src, /export const AGENT = "5"/);
+});

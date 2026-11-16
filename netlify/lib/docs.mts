@@ -17,7 +17,7 @@ export interface DocState { id: string; hash: string; read_at: string; changed_a
 const MODEL = () => Netlify.env.get("ZHOL_AI_MODEL") || "claude-opus-5-5";
 export const EVERY_H = 3;          // each page is looked at again after this many hours
 const CAP = 9000;                  // characters of the page the agent reads
-export const AGENT = "4";          // bump when the agent's reading changes: every page is then read again
+export const AGENT = "5";          // bump when the agent's reading changes: every page is then read again
 
 /** The page as text, and of a long page only what stands around the words that matter. */
 export function extract(html: string, words: string, cap = CAP): string {
@@ -41,7 +41,9 @@ dosing days, strikes, blockades. Today is {today}; the page is from {issuer} ({u
 - Only what can stop or delay freight: strikes of transport staff, closures of tunnels, passes, motorways, ports and
   of rail lines that carry freight. Skip what touches only local passenger services (one regional line, a branch line,
   replacement buses, a station).
-- One event per separate period: a page that lists five nights gives five events. kind and stage from the lists; a published closure or dosing day is "announced",
+- One event per separate period: a page that lists five separate nights gives five events. A closure that repeats on
+  consecutive days with the same hours and direction is one event, from the first to the last day, with those hours
+  (an operator's weekly table of short closures stays short enough to read in time). kind and stage from the lists; a published closure or dosing day is "announced",
   a strike the page says is called is "announced", one it says is confirmed or under way is "confirmed" or "ongoing",
   one called off is "revoked".
 - title_en and title_it: one short neutral sentence. where_en and where_it: the place in a few words.
