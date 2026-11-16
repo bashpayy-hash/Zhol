@@ -76,8 +76,14 @@ TRADE_FEEDS = [
 # 14 Nov 2026 and gives its dates as plain text. "words": what marks the part of a long page that matters.
 # "places" / "countries": where the page's events are when the agent names no place from the catalog.
 OFFICIAL_DOCS = [
-    {"id": "sftrf-frejus", "issuer": "SFTRF (Fréjus tunnel)", "url": "https://www.sftrf.fr/", "lang": "fr",
+    # the operator's page of scheduled closures, not the banner of its home page (fact check of 16 Nov 2026: the home
+    # page showed November, the closures page also has 1-4 and 10-11 December)
+    {"id": "sftrf-frejus", "issuer": "SFTRF (Fréjus tunnel)", "url": "https://www.sftrf.fr/le-tunnel/fermetures/", "lang": "fr",
      "about": "night closures of the Fréjus road tunnel, by direction", "words": "fermeture|ferm[ée]|travaux", "places": ["frejus"]},
+    # the Mont Blanc operator's own calendar (fact check of 16 Nov 2026: the radar had a press guess for 20 November,
+    # ATMB announces the night of 16 to 17 November, 22:00-06:00)
+    {"id": "atmb-montblanc", "issuer": "ATMB (Mont Blanc tunnel)", "url": "https://www.atmb.com/nos-travaux/travaux-au-tunnel-du-mont-blanc/",
+     "lang": "fr", "about": "night closures of the Mont Blanc road tunnel", "words": "fermeture|ferm[ée]|coupure", "places": ["montblanc"]},
     {"id": "tirol-dosing", "issuer": "Land Tirol", "url": "https://www.tirol.gv.at/verkehr/verkehrs-und-seilbahnrecht/lkw-dosierung/",
      "lang": "de", "about": "truck dosing days at Kufstein towards the south, planned and added at short notice",
      "words": "dosier|blockabfertigung|kufstein", "places": ["kufstein"]},

@@ -422,7 +422,10 @@ def covered(n: dict, officials: list[dict]) -> bool:
             continue
         same_place = bool(set(n.get("places", [])) & set(o.get("places", []))) or \
             (not n.get("places") and not o.get("places") and bool(set(n.get("countries", [])) & set(o.get("countries", []))))
-        near = not n.get("start") or abs((date.fromisoformat(n["start"]) - date.fromisoformat(o["start"])).days) <= 2
+        # an operator that publishes its closures has its whole calendar on the page: a press guess about a closure
+        # of the same tunnel within ten days is that calendar read wrong (Mont Blanc, 16 Nov 2026)
+        days = 10 if o.get("basis") == "document" and n["kind"] == "closure" else 2
+        near = not n.get("start") or abs((date.fromisoformat(n["start"]) - date.fromisoformat(o["start"])).days) <= days
         same_mode = n.get("mode", "road") == o.get("mode", "road") or o.get("mode") == "all"
         if same_place and near and (fam != "action" or same_mode):
             return True

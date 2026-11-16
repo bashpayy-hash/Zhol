@@ -229,7 +229,8 @@
    "Fresh food (fruit/veg, dairy, meat, fish, eggs, bakery...) is exempt from the weekend ban with consignment note; empty return trips for their packaging too.",
    "A12 night ban (km 6.35 Langkampfen - km 90 Zirl): Euro VI exempt only when loading/unloading in the core zone; transit is not exempt.",
    "A12 sectoral ban (listed goods, km 6.35-72) not modelled yet.",
-   "Directional calendars apply when the destination is reached via the named section (e.g. towards Italy over the Brenner)."
+   "Directional calendars apply when the destination is reached via the named section (e.g. towards Italy over the Brenner).",
+   "Perishable and live-animal loads are exempt from the weekend and holiday bans, not from the 22-05 night ban or the A12 night ban (WKO, checked 2026-11-16)."
   ],
   "rules": [
    {
@@ -253,7 +254,8 @@
     "start": "22:00",
     "end": "05:00",
     "exempt_low_noise": true,
-    "title": "Nachtfahrverbot Lkw >7,5t (lärmarme Lkw ausgenommen)"
+    "title": "Nachtfahrverbot Lkw >7,5t (lärmarme Lkw ausgenommen)",
+    "exempt_cargo": []
    },
    {
     "id": "AT-A12-NIGHT-WINTER-WD",
@@ -272,7 +274,8 @@
     "roads": [
      "A12"
     ],
-    "title": "A12 Inntal Nachtfahrverbot (Winter, Mo-Sa ab 20:00)"
+    "title": "A12 Inntal Nachtfahrverbot (Winter, Mo-Sa ab 20:00)",
+    "exempt_cargo": []
    },
    {
     "id": "AT-A12-NIGHT-WINTER-SUN",
@@ -291,7 +294,8 @@
     "roads": [
      "A12"
     ],
-    "title": "A12 Inntal Nachtfahrverbot (Winter, So/Feiertag ab 23:00)"
+    "title": "A12 Inntal Nachtfahrverbot (Winter, So/Feiertag ab 23:00)",
+    "exempt_cargo": []
    },
    {
     "id": "AT-A12-NIGHT-SUMMER",
@@ -310,7 +314,8 @@
     "roads": [
      "A12"
     ],
-    "title": "A12 Inntal Nachtfahrverbot (Mai-Okt, werktags 22-5)"
+    "title": "A12 Inntal Nachtfahrverbot (Mai-Okt, werktags 22-5)",
+    "exempt_cargo": []
    },
    {
     "id": "AT-A12-NIGHT-SUMMER-SUN",
@@ -329,7 +334,8 @@
     "roads": [
      "A12"
     ],
-    "title": "A12 Inntal Nachtfahrverbot (Mai-Okt, So/Feiertag 23-5)"
+    "title": "A12 Inntal Nachtfahrverbot (Mai-Okt, So/Feiertag 23-5)",
+    "exempt_cargo": []
    }
   ],
   "extra_dates": [
@@ -1295,8 +1301,7 @@
   "timezone": "Europe/Berlin",
   "min_weight_t": 7.5,
   "exempt_cargo": [
-   "perishable",
-   "live_animals"
+   "perishable"
   ],
   "source": {
    "name": "StVO §30 Abs. 3 + Ferienreiseverordnung (BGL Infoblatt 2026)",
@@ -1352,7 +1357,7 @@
    "name": "SVG Art. 2 Abs. 2, VRV Art. 91-92 - Nacht- und Sonntagsfahrverbot",
    "url": "https://www.fedlex.admin.ch/eli/cc/1962/1364_1409_1420/de"
   },
-  "verified": "Windows confirmed. Perishables need a permit (Art. 92) - not exempt by default. Cantonal holidays not modelled.",
+  "verified": "Windows confirmed. Perishables need a permit (Art. 92) - not exempt by default. Cantonal holidays not modelled. St Stephen's Day counts only when Christmas is not a Monday or a Friday (VRV Art. 91 Abs. 1, checked 2026-11-16).",
   "rules": [
    {
     "id": "CH-NIGHT",
@@ -1481,24 +1486,35 @@
    "live_animals"
   ],
   "source": {
-   "name": "Rozporządzenie w sprawie ograniczeń ruchu pojazdów >12t (gov.pl)",
-   "url": "https://www.gov.pl/"
+   "name": "Rozporządzenie Ministra Transportu z 31.07.2007 (tekst jednolity Dz.U. 2023 poz. 2423; zm. Dz.U. 2026 poz. 1110), §2",
+   "url": "https://api.sejm.gov.pl/eli/acts/DU/2023/2423"
   },
-  "verified": "draft - not yet checked; summer weekend bans not modelled",
+  "verified": "Checked against the consolidated text on 2026-11-16: 08-22 on 1 Jan, Easter Sunday and Monday, 1 and 3 May, Pentecost, Corpus Christi, 15 Aug, 1 and 11 Nov, 25 and 26 Dec (not 6 Jan, not 24 Dec); 18-22 only the day before Easter, 1 and 3 May, Pentecost, Corpus Christi, 15 Aug, 1 and 11 Nov. Summer weekend bans not modelled.",
   "rules": [
    {
     "id": "PL-EVE-HOL",
     "days": "eve_of_holiday",
     "start": "18:00",
     "end": "22:00",
-    "title": "Zakaz ruchu >12t (dzień przed świętem)"
+    "title": "Zakaz ruchu >12t (dzień przed świętem)",
+    "eve_except_mmdd": [
+     "01-01",
+     "12-24",
+     "12-25",
+     "12-26",
+     "01-06"
+    ]
    },
    {
     "id": "PL-HOL",
     "days": "holiday",
     "start": "08:00",
     "end": "22:00",
-    "title": "Zakaz ruchu >12t (święto)"
+    "title": "Zakaz ruchu >12t (święto)",
+    "except_mmdd": [
+     "12-24",
+     "01-06"
+    ]
    }
   ],
   "extra_dates": []

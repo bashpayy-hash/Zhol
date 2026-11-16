@@ -84,3 +84,29 @@ def test_official_tirol_dosing_calendar_is_loaded():
     days = {e.windows[0].start.date() for e in evs}
     assert len(evs) == 41 and date(2026, 11, 11) in days and date(2027, 3, 15) in days
     assert all(e.status == "approved" and e.scope.direction == "southbound" for e in evs)
+
+
+def test_fact_check_of_16_nov_2026_poland_switzerland_austria():
+    """Official texts read on 16 Nov 2026 (docs/20-site-checks.md). Poland bans 08-22 only on the days of §2 pkt 1 and
+    18-22 only before lit. b-j: not on 24 Dec or 6 Jan, no evening ban before 1 Jan or Christmas. Switzerland: in 2026
+    Christmas is a Friday, so Saturday 26 Dec is open by day. Austria: perishables are exempt from the weekend ban, not
+    from the night ban."""
+    from datetime import date as _d
+    from zhol.rules import generate_ban_events
+
+    def windows(cc, start, days):
+        return sorted((w.start.strftime("%m-%d %H"), w.end.strftime("%m-%d %H"))
+                      for e in generate_ban_events(start, days, countries=[cc]) if e.kind != "night_ban" or cc != "CH"
+                      for w in e.windows)
+    pl = windows("PL", _d(2026, 12, 22), 17)
+    assert ("12-25 08", "12-26 22") in pl or (("12-25 08", "12-25 22") in pl and ("12-26 08", "12-26 22") in pl), pl
+    assert not any(s.startswith(("12-23", "12-24", "12-31", "01-05", "01-06")) for s, _ in pl), pl
+    assert any(s.startswith("01-01 08") for s, _ in pl), pl
+    ch = [e for e in generate_ban_events(_d(2026, 12, 24), 4, countries=["CH"]) if e.kind != "night_ban"]
+    noon26 = datetime(2026, 12, 26, 12, 0, tzinfo=ZoneInfo("Europe/Zurich"))
+    assert ch and not any(w.start <= noon26 < w.end for e in ch for w in e.windows), [(w.start, w.end) for e in ch for w in e.windows]
+    at = generate_ban_events(_d(2026, 11, 18), 1, countries=["AT"])
+    night = [e for e in at if e.kind == "night_ban"]
+    weekend = [e for e in generate_ban_events(_d(2026, 11, 21), 1, countries=["AT"]) if e.kind != "night_ban"]
+    assert night and all("perishable" not in e.applies.exempt_cargo for e in night)
+    assert weekend and all("perishable" in e.applies.exempt_cargo for e in weekend)

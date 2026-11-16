@@ -1937,3 +1937,9 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 /* targets are not results (user test of 15 Nov 2026: «8 interviews» in big red read as done) */
 .tgt { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
 .big.goal { color: var(--muted); }
+.sv-cards:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; border-radius: 18px; }
+/* the questions offices ask before a pilot (market-mirror, 16 Nov 2026) */
+.ck-faq { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.ck-faq details { border-bottom: 1px solid var(--rule); }
+.ck-faq summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; color: var(--ink); }
+.ck-faq details p { margin: 0 0 12px; max-width: 640px; color: var(--ink-2); }

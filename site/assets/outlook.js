@@ -250,7 +250,8 @@
     const have = new Set(d.items.map(i => i.id));
     const of = fd.items || [], wire = (fd.wire || []).filter(w => !have.has(w.id) && fresher(w, d.items));
     // an official page with the dates replaces the weaker guess the radar made from the press about the same event
-    const near = (a, b) => !a.start || !b.start || Math.abs(new Date(a.start) - new Date(b.start)) <= 2 * 864e5;
+    // an operator's calendar of closures covers ten days either side of a press guess about the same tunnel
+    const near = (a, b) => !a.start || !b.start || Math.abs(new Date(a.start) - new Date(b.start)) <= (b.kind === "closure" ? 10 : 2) * 864e5;
     const docs = wire.filter(w => w.basis === "document");
     d.items = d.items.filter(n => !(n.group === "news" && docs.some(w => (STOP[n.kind] || n.kind) === (STOP[w.kind] || w.kind) && sameWhere(w, n) && near(w, n))));
     d.items = wire.concat(of, d.items).filter(i => !ended(i));

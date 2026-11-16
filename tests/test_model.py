@@ -237,3 +237,18 @@ def test_the_plan_for_kufstein_dosing_respects_the_a12_night_ban():
     at = next(s.arrive for s in sim.stops if s.waypoint == "Kufstein").astimezone(TZ)
     assert not (at.hour >= 20 or at.hour < 5), (im["plan"], at)          # not inside the A12 night ban, Mon-Sat 20:00-05:00
     assert im["plan"]["code"] != "depart_earlier" or dep.date() < date(2026, 11, 18)
+
+
+def test_an_operators_calendar_replaces_a_press_guess_about_the_same_tunnel():
+    """Fact check of 16 Nov 2026: a press article put a Mont Blanc closure on 20 November; the operator ATMB announces
+    the night of 16 to 17 November. The operator's page now covers a press guess about a closure of the same tunnel
+    within ten days, and both operators' pages are read (zhol/radar/sources.py OFFICIAL_DOCS)."""
+    from zhol.radar.outlook import covered
+    from zhol.radar.sources import OFFICIAL_DOCS
+    guess = {"group": "news", "basis": "news", "kind": "closure", "places": ["montblanc"], "countries": ["FR", "IT"], "start": "2026-11-20"}
+    atmb = {"group": "official", "basis": "document", "kind": "closure", "places": ["montblanc"], "countries": ["FR", "IT"], "start": "2026-11-16"}
+    assert covered(guess, [atmb]) and not covered(dict(guess, start="2026-12-14"), [atmb])
+    strike = {"group": "news", "basis": "news", "kind": "strike", "places": [], "countries": ["IT"], "start": "2026-11-26", "mode": "road"}
+    assert not covered(strike, [dict(atmb, kind="strike", places=[], countries=["IT"], start="2026-11-20")])  # strikes keep two days
+    urls = {d["id"]: d["url"] for d in OFFICIAL_DOCS}
+    assert urls["sftrf-frejus"].endswith("/le-tunnel/fermetures/") and "atmb.com" in urls["atmb-montblanc"]

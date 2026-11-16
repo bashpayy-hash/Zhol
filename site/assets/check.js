@@ -346,6 +346,27 @@ function drawAccount() {
       $("ck-acc").scrollIntoView({ behavior: "smooth", block: "start" });     // the confirmation, not the form, in view
     });
     box.append(f);
+    // the questions offices ask before a pilot (market-mirror, 16 Nov 2026: ten simulated hauliers and forwarders
+    // raised the same five), answered where the decision is taken
+    const faq = el("div", "ck-faq");
+    faq.append(el("h3", "ck-acc-sub", T("Questions offices ask", "Le domande degli uffici")));
+    [[T("Who measures the saving?", "Chi misura il risparmio?"),
+      T("You and we, on day one: the criterion is written down, for example 3 useful alerts and €500 saved in four weeks, with fewer than 1 wrong alert in 5. Every Friday a report lists each alert, useful or wrong, with its source. If the criterion is not reached, you pay nothing.",
+        "Voi e noi, il primo giorno: il criterio si mette per iscritto, per esempio 3 avvisi utili e €500 risparmiati in quattro settimane, con meno di 1 avviso sbagliato su 5. Ogni venerdì un report elenca ogni avviso, utile o sbagliato, con la sua fonte. Se il criterio non si raggiunge, non pagate nulla.")],
+     [T("Who sees my lanes and my clients?", "Chi vede le mie tratte e i miei clienti?"),
+      T("Only our team. zhol keeps reference, cities, days, crossing and receiver, no driver names, and shows nothing to other offices. You delete the account and the plan with one click.",
+        "Solo il nostro team. zhol conserva riferimento, città, giorni, valico e destinatario, nessun nome di autista, e non mostra nulla agli altri uffici. Cancellate account e piano con un clic.")],
+     [T("Is it more work for the office?", "È lavoro in più per l’ufficio?"),
+      T("It is the plan you already send to the drivers, as Excel or CSV, or one trip at a time. Nothing to install.",
+        "È il piano che già mandate agli autisti, in Excel o CSV, o un viaggio alla volta. Niente da installare.")],
+     [T("How accurate is it?", "Quanto è preciso?"),
+      T("Every event shows its chance and its source, and what a person has not checked yet says so. In the pilot every wrong alert is counted in the Friday report.",
+        "Ogni evento mostra la sua probabilità e la sua fonte, e ciò che una persona non ha ancora controllato lo dice. Nella prova ogni avviso sbagliato si conta nel report del venerdì.")],
+     [T("You are students: will you still be here?", "Siete studenti: ci sarete ancora?"),
+      T("We are a Bocconi team selected for TEF Ignition 2026. The pilot costs nothing and installs nothing, so stopping costs you nothing either.",
+        "Siamo un team Bocconi selezionato per TEF Ignition 2026. La prova non costa nulla e non installa nulla, quindi anche fermarsi non vi costa nulla.")]
+    ].forEach(([q, a]) => { const d = el("details"); d.append(el("summary", null, q), el("p", "small", a)); faq.append(d); });
+    box.append(faq);
     return;
   }
   const head = el("div", "ck-acc-head");

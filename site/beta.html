@@ -7,13 +7,13 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>zhol · Beta</title>
 <script>document.documentElement.classList.add("js")</script>
-<meta name="description" content="Try zhol on real roads: your loads checked in advance against the official truck bans and dosing calendars of seven countries. Join the beta for traffic offices.">
+<meta name="description" content="Try zhol on your own shipments by road, rail and sea: a free 4-week pilot for traffic offices. zhol estimates the risk and cost of bans, closures and strikes, warns in advance and updates in real time.">
 <meta property="og:title" content="zhol · Beta">
 <meta property="og:image" content="/assets/img/og.png">
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s55">
+<link rel="stylesheet" href="/assets/zhol.css?v=s57">
 <link rel="alternate" hreflang="en" href="https://zhol.live/beta">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/beta">
 </head>
@@ -34,7 +34,7 @@
     </div>
     <div class="poster-below">
       <div class="stack" style="gap:18px">
-      <p class="lead"><b>The beta in one sentence:</b> four free weeks of zhol on your own shipments. You send us the plan; zhol estimates which shipments a ban, a closure or a strike would hit and what it would cost, warns you in advance with one WhatsApp message, and writes again if things change.</p>
+      <p class="lead"><b>The pilot in one sentence:</b> four free weeks of zhol on your own shipments. You send us the plan; zhol estimates which shipments a ban, a closure or a strike would hit and what it would cost, warns you in advance with one WhatsApp message, and writes again if things change.</p>
       <div class="actions"><a class="btn" href="/check#pilot">Start the free pilot</a><a href="#join">Or ask us to call you</a><a href="#how">How it works</a></div>
     
       </div>
@@ -49,11 +49,11 @@
 <section class="slide beta-how" id="how">
   <div class="wrap split wide-left">
     <div class="stack" style="gap:16px">
-      <span class="kicker">How the beta works</span>
+      <span class="kicker">How the pilot works</span>
       <h2 class="title">Four weeks, five steps</h2>
       <ol class="beta-steps">
         <li><span class="step-n">1</span><p><b>You send your plan.</b> The shipments of the coming days, as Excel, CSV or a photo of the plan: reference, from–to, departure time, cargo type and vehicle. No driver names.</p></li>
-        <li><span class="step-n">2</span><p><b>zhol estimates every shipment.</b> Will a ban, a dosing day, a tunnel or pass closure, a strike or a blockade hit it, how many hours it would lose and what that costs. As soon as the plan arrives and again whenever something changes; the full check runs every day at 17:30 and 20:00.</p></li>
+        <li><span class="step-n">2</span><p><b>zhol estimates every shipment.</b> Will a ban, a dosing day, a tunnel or pass closure, a strike or a blockade hit it, how many hours it would lose and what that costs. As soon as the plan arrives, and again every 30 minutes against the live radar.</p></li>
         <li><span class="step-n">3</span><p><b>One WhatsApp, only when it matters.</b> If a shipment is at risk, one message with the options (leave earlier, later, by another crossing, or hold) and what each costs. If things change, a strike called off or a pass closed, we write again. If nothing is wrong, we do not write.</p></li>
         <li><span class="step-n">4</span><p><b>A person checks first.</b> Someone in our team checks every event before it reaches you, and every message names its source.</p></li>
         <li><span class="step-n">5</span><p><b>A report every Friday.</b> The alerts sent, which were useful and which were wrong, what we missed, and the saving estimated with the cost figures agreed with you.</p></li>
@@ -86,7 +86,7 @@
       </div>
     </div>
   </div>
-  <div class="wrap"><div class="foot"><span>Rules: WKO (Austria), DM MIT 325/2025 (Italy), StVO and Ferienreiseverordnung (Germany), VRV (Switzerland), Bison Futé (France), Land Tirol dosing calendar</span></div></div>
+  <div class="wrap"><div class="foot"><span>Rules of seven countries: WKO (Austria), DM MIT 325/2025 (Italy), StVO and Ferienreiseverordnung (Germany), VRV (Switzerland), Bison Futé (France), the Slovenian and Polish truck-ban orders, and the Land Tirol dosing calendar</span></div></div>
 </section>
 
 <section data-tile data-tile-kicker="Departure planner" data-tile-line="Every departure hour of the next 14 days, and the one that loses least" class="slide" id="when">
@@ -124,7 +124,7 @@
     <div class="stack">
       <span class="kicker green">Free 4-week pilot · we call you</span>
       <h2 class="title">Four weeks, free, with a weekly savings ledger</h2>
-      <p class="lead">Send us tomorrow’s loads by 16:00 as Excel or CSV. At 17:30 and 20:00 we check every load; if one is at risk you get one WhatsApp message with the options. A person checks every event before it is sent.</p>
+      <p class="lead">Prefer to talk first? Leave your details and we call you within two working days to set up the pilot on your lanes. zhol then checks your plan every 30 minutes; if a load is at risk you get one WhatsApp message with the options. A person checks every alert before it is sent.</p>
       <p class="small muted">We use only what the check needs: reference, route, times, cargo type. EU servers; data deleted 90 days after delivery or on request.</p>
     </div>
     <form class="card" data-steps name="beta-signup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
@@ -140,7 +140,7 @@
         <div class="field" style="grid-column:1/-1"><label for="f-lanes">Main lanes and crossings</label><input id="f-lanes" name="lanes" placeholder="e.g. Verona–München via Brennero, Milano–Lyon via Fréjus"></div>
         <div class="field" style="grid-column:1/-1"><label for="f-msg">The last disruption that cost you a day</label><textarea id="f-msg" name="last_disruption"></textarea></div>
       </div>
-      <label class="check"><input type="checkbox" name="consent" value="yes" required> I agree that zhol stores these details to contact me about the beta.</label>
+      <label class="check"><input type="checkbox" name="consent" value="yes" required> I agree that zhol stores these details to contact me about the pilot.</label>
       <div class="actions"><button class="btn" type="submit">Ask us to call you</button><a href="/check#pilot">Or start it yourself now</a></div>
     </form>
   </div>
@@ -175,7 +175,7 @@
 </div></footer>
 <script src="/assets/beta.js?v=a4" defer></script>
 <script src="/assets/reveal.js?v=t1" defer></script>
-<script src="/assets/steps.js?v=s1" defer></script>
+<script src="/assets/steps.js?v=s2" defer></script>
 <script src="/assets/sheets.js?v=t6" defer></script>
 <script src="/assets/assistant.js?v=6" defer></script>
 <script src="/assets/lang.js?v=l3"></script>

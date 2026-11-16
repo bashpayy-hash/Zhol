@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s55">
+<link rel="stylesheet" href="/assets/zhol.css?v=s57">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
@@ -46,7 +46,7 @@
   <div class="wrap sv-pitch" id="sv-pitch">
     <div class="sv-pitch-head">
       <span class="sv-label">What zhol is building</span>
-      <h2 class="sv-pitch-title">A radar for Europe’s roads, then a network of agents.</h2>
+      <h2 class="sv-pitch-title" id="sv-pitch-h">A radar for Europe’s roads, then a network of agents.</h2>
     </div>
     <article class="sv-card sv-radar" id="sv-c2" hidden>
       <div class="sv-radar-map">
@@ -60,7 +60,7 @@
         <p class="sv-card-foot">zhol reads official calendars, operators’ pages and the press every 30 minutes, and gives each event its chance. <a href="/radar">Open the full radar</a></p>
       </div>
     </article>
-    <div class="sv-cards">
+    <div class="sv-cards" tabindex="0" role="region" aria-labelledby="sv-pitch-h">
       <article class="sv-card" id="sv-c1" hidden>
         <h3>Trouble comes when nobody is at the desk.</h3>
         <div class="sv-card-scene">

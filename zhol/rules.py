@@ -31,19 +31,28 @@ def _parse_hm(s: str) -> tuple[int, int]:
     return int(h), int(m)
 
 
+def _ban_holiday(country: str, d: date) -> bool:
+    """A public holiday that counts for the truck bans. Switzerland: St Stephen's Day counts only when Christmas is
+    not on a Monday or a Friday (VRV Art. 91 Abs. 1; fact check of 16 Nov 2026: in 2026 Christmas is a Friday, so
+    Saturday 26 December is open from 05:00 to 22:00)."""
+    if country == "CH" and (d.month, d.day) == (12, 26) and date(d.year, 12, 25).weekday() in (0, 4):
+        return False
+    return is_holiday(country, d)
+
+
 def _day_matches(selector: str, country: str, d: date) -> bool:
     if selector == "daily":
         return True
     if selector in WEEKDAYS:
         return d.weekday() == WEEKDAYS.index(selector)
     if selector == "holiday":
-        return is_holiday(country, d)
+        return _ban_holiday(country, d)
     if selector == "eve_of_holiday":
-        return is_holiday(country, d + timedelta(days=1)) and not is_holiday(country, d)
+        return _ban_holiday(country, d + timedelta(days=1)) and not _ban_holiday(country, d)
     if selector == "sunday_or_holiday":
-        return d.weekday() == 6 or is_holiday(country, d)
+        return d.weekday() == 6 or _ban_holiday(country, d)
     if selector == "not_sunday_or_holiday":
-        return not (d.weekday() == 6 or is_holiday(country, d))
+        return not (d.weekday() == 6 or _ban_holiday(country, d))
     raise ValueError(f"Unknown day selector '{selector}'")
 
 
@@ -53,6 +62,12 @@ def _in_season(rule: dict, d: date) -> bool:
     if d.year in rule.get("except_years", []):
         return False
     if "months" in rule and d.month not in rule["months"]:
+        return False
+    # a holiday that is not a ban day (Poland: 24 December and 6 January), and an eve rule that only some holidays
+    # have (Poland: 18-22 only before the days in §2 pkt 1 lit. b-j; fact check of 16 Nov 2026)
+    if d.strftime("%m-%d") in rule.get("except_mmdd", []):
+        return False
+    if (d + timedelta(days=1)).strftime("%m-%d") in rule.get("eve_except_mmdd", []):
         return False
     if "date_from" in rule:
         mm_dd = d.strftime("%m-%d")
@@ -102,7 +117,7 @@ def generate_ban_events(start: date, days: int = 3, countries: list[str] | None 
                 if not _in_season(rule, d) or not _day_matches(rule["days"], cc, d):
                     continue
                 key = (rule.get("kind", "calendar_ban"), tuple(rule.get("roads", [])), bool(rule.get("exempt_low_noise")),
-                       rule.get("direction", "both"))
+                       rule.get("direction", "both"), tuple(rule.get("exempt_cargo", spec.get("exempt_cargo", []))))
                 ws, we = _window_for(d, rule["start"], rule["end"], tz)
                 title = rule["title"]
                 hn = holiday_name(cc, d)
@@ -112,10 +127,10 @@ def generate_ban_events(start: date, days: int = 3, countries: list[str] | None 
             for extra in spec.get("extra_dates", []):
                 if extra["date"] == d.isoformat():
                     key = (extra.get("kind", "calendar_ban"), tuple(extra.get("roads", [])), False,
-                           extra.get("direction", "both"))
+                           extra.get("direction", "both"), tuple(spec.get("exempt_cargo", [])))
                     ws, we = _window_for(d, extra["start"], extra["end"], tz)
                     groups.setdefault(key, []).append((ws, we, extra.get("title", "Divieto straordinario")))
-        for (kind, roads, low_noise, direction), wins in groups.items():
+        for (kind, roads, low_noise, direction, cargo), wins in groups.items():
             for ws, we, titles in _merge(wins):
                 digest = hashlib.sha1(f"{cc}|{kind}|{roads}|{direction}|{ws.isoformat()}".encode()).hexdigest()[:10]
                 out.append(Event(
@@ -129,7 +144,7 @@ def generate_ban_events(start: date, days: int = 3, countries: list[str] | None 
                     windows=[Window(start=ws, end=we)],
                     applies=Applicability(
                         min_weight_t=float(spec["min_weight_t"]),
-                        exempt_cargo=spec.get("exempt_cargo", []),
+                        exempt_cargo=list(cargo),
                         exempt_low_noise=low_noise,
                         inbound_start_delay_h=float(spec.get("inbound_start_delay_h", 0)),
                         outbound_end_advance_h=float(spec.get("outbound_end_advance_h", 0)),

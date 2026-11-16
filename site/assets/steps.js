@@ -25,8 +25,9 @@
     const err = el("p", "st-error"); err.setAttribute("role", "alert"); err.hidden = true;
 
     // navigation
-    const back = el("button", "sv-link st-back", T("Back", "Indietro")); back.type = "button";
-    const next = el("button", "btn st-next", T("Next", "Avanti")); next.type = "button";
+    // labels that say what happens (uxaudit, 16 Nov 2026: «Next» and «Back» are vague)
+    const back = el("button", "sv-link st-back", T("Previous question", "Domanda precedente")); back.type = "button";
+    const next = el("button", "btn st-next", T("Next question", "Domanda successiva")); next.type = "button";
     const skip = el("button", "sv-link st-skip", T("Skip", "Salta")); skip.type = "button";
     const hint = el("span", "small muted st-hint", T("or press Enter", "oppure premete Invio"));
     actions.classList.add("st-nav");

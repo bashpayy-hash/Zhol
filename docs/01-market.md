@@ -25,7 +25,7 @@
 | Italian freight forwarders (Fedespedi members) | ~1,600 firms | Fedespedi, Dec 2024 |
 | EU medium + heavy trucks (>3.5 t) | **6.2 million** | ACEA, *Vehicles on European roads 2026* |
 | International share of EU road tonne-km | **24.6%** | Eurostat, road freight statistics 2024 |
-| EU road-freight enterprises (NACE 49.41) | ~592,000, ~90% with fewer than 10 employees | KU Leuven / ETF (Apr 2025); EP briefing |
+| EU road-freight enterprises (NACE 49.4; 49.41 alone: 578,189 in 2024) | ~592,000, about 87% with fewer than 10 employees | KU Leuven / ETF (Apr 2025); EP briefing; Eurostat sbs_ovw_act, checked 16 Nov 2026 |
 | Forwarding companies represented by CLECAT's national members | > 19,000 | CLECAT (Jan 2025) |
 | Price | **€12 per truck per month**, minimum €99/month | doc 03 |
 
@@ -88,7 +88,7 @@ It is reachable with founder-led sales plus two association partnerships (doc 05
 | Driver | Evidence |
 |---|---|
 | Restrictions are growing and becoming less predictable | Kufstein 2025: **57 dosing days, 21 of them outside the published calendar** (Land Tirol; ADAC). 2026: 30 planned, plus 15 unplanned by August; 11 more planned for Q1 2027 (Land Tirol, checked 6 Nov 2026) |
-| The Brenner bottleneck lasts until 2030–31 | Luegbrücke rebuild: single lane each way since 1 Jan 2025; completion end-2030 (ADAC: 2031) |
+| The Brenner bottleneck lasts until end-2027, the works until 2030 | Luegbrücke rebuild: single lane each way since 1 Jan 2025, lane restrictions end end-2027 and the whole project end-2030 (ASFINAG CEO quoted by ADAC, 28 Jan 2026; fact check of 16 Nov 2026) |
 | Real money at stake | Brenner restrictions cost Italy **€544 M a year** (Uniontrasporti; €463 M of it freight, the rest passengers). Southern blockades in Oct 2026: **> €400 M in 8 days** |
 | The law puts a price on waiting | Art. 6-bis D.Lgs. 286/2005 as amended by DL 73/2025 → L. 105/2025: **€100 per hour** beyond 90 minutes of waiting |
 | Strikes and protests in 2026 | Trasportounito 144-hour stoppage, 20–25 Apr 2026; A22 at the Brenner closed by a protest on 30 May 2026 |
