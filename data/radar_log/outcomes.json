@@ -5,5 +5,12 @@
   "resolved_on": "2026-11-15",
   "start": "2026-11-14",
   "title": "Traffic suspended between Attigliano and Orte on the conventional Florence-Rome line for power line checks."
+ },
+ "closure|frejus|2026-11-14": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-16",
+  "start": "2026-11-14",
+  "title": "Night closure of the Fréjus road tunnel in both directions."
  }
 }
