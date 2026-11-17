@@ -1943,3 +1943,63 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .ck-faq details { border-bottom: 1px solid var(--rule); }
 .ck-faq summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; color: var(--ink); }
 .ck-faq details p { margin: 0 0 12px; max-width: 640px; color: var(--ink-2); }
+
+/* ===== the phone with the air of /beta (owner, 17 Nov 2026: «иногда слишком плотная информация в мобильной версии, а на
+   втором скрине то как я бы хотел эту информацию видеть с размерами шрифта и наличием воздуха»). The reference is the
+   pilot block on /beta: heading 30 px, text 18 px at 1.45, 64 px above a section. On a phone nothing a person reads is
+   under 15 px, a card holds one column, and a long title never shares its line with a number. */
+@media (max-width: 560px) {
+  .lead, .landing-hero .lead, .rc-head .lead { font-size: 18px; line-height: 1.45; }
+  .hero-proof { font-size: 14.5px; }
+  .small, p.small, span.small { font-size: 15px; line-height: 1.5; }
+  .price-beta { font-size: 16px; }
+  .block-hint { font-size: 16px; }
+  .block-line { font-size: 17px; line-height: 1.45; }
+  .bull { font-size: 16px; }
+
+  /* the next decision on the home radar */
+  .rc-next { padding: 22px 18px; gap: 16px; }
+  .rc-meta { font-size: 15.5px; line-height: 1.45; }
+  .rc-best, .rc-by { font-size: 16.5px; line-height: 1.5; }
+  .rc-nums span { font-size: 13.5px; }
+  .rc-nums b { font-size: 19px; }
+  .rc-count, .rc-hint { font-size: 16px; line-height: 1.45; }
+
+  /* every other event: date above, the title across the whole row, the chance on the right, the saving underneath */
+  .rc-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto; gap: 4px 18px; padding: 18px 2px; align-items: start; }
+  .rc-d { grid-column: 1; grid-row: 1; font-size: 15px; }
+  .rc-t { grid-column: 1; grid-row: 2; }
+  .rc-t b { font-size: 18px; line-height: 1.3; }
+  .rc-t small { margin-top: 4px; font-size: 15px; }
+  .rc-r { display: contents; }
+  .rc-p { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 24px; }
+  .rc-r small { grid-column: 1 / -1; grid-row: 3; margin-top: 2px; text-align: left; white-space: normal; font-size: 15px; }
+
+  /* tiles: one to a row, with room to read */
+  .tiles, .blocks.tiles-mode { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .tile.wide, .blocks.tiles-mode .block.wide { grid-column: auto !important; }
+  .tile, .blocks.tiles-mode .block { min-height: 0; padding: 24px 22px 62px; border-radius: 24px; }
+  .tile-title, .blocks.tiles-mode .block h2, .tile.wide .tile-title { font-size: 20px; line-height: 1.25; }
+  .tile .kicker, .blocks.tiles-mode .kicker { font-size: 14px; }
+  .tile-num { font-size: 30px; }
+  .tile-line { padding-right: 40px; font-size: 16px; line-height: 1.45; -webkit-line-clamp: 4; }
+  .blocks.tiles-mode .block-line { font-size: 16px; }
+  .blocks.tiles-mode .block-line b { font-size: 19px; }
+
+  /* the radar's cover: the line on how often each source is read lives under the cover, in «Updated…» */
+  .rd-cover-small { display: none; }
+
+  /* the radar's list: the date and the chance on top, then the event across the whole card */
+  .rd-row { grid-template-columns: minmax(0, 1fr) auto; gap: 12px 16px; padding: 20px 18px; }
+  .rd-when { grid-column: 1; grid-row: 1; flex-direction: column; gap: 2px; align-items: flex-start; font-size: 15px; }
+  .rd-chance { grid-column: 2; grid-row: 1; min-width: 96px; }
+  .rd-body { grid-column: 1 / -1; grid-row: 2; gap: 8px; }
+  .rd-body h3 { font-size: 19px; line-height: 1.3; }
+  .rd-head { font-size: 16px; line-height: 1.5; }
+  .legend { font-size: 14.5px; }
+
+  /* the recognition band: one badge to a row is too long, two keep their words readable */
+  .recog .badges li { padding: 14px 14px; }
+  .recog .badges b { font-size: 15.5px; }
+  .recog .badges span { font-size: 14px; }
+}

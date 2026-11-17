@@ -24,13 +24,15 @@
       // siblings that come in together arrive one after another
       const sib = [...el.parentElement.children].filter(x => x.classList.contains("rise"));
       const k = Math.max(0, sib.indexOf(el));
-      el.style.transitionDelay = Math.min(k, 5) * 70 + "ms";
+      el.style.transitionDelay = Math.min(k, 3) * 60 + "ms";
       el.classList.add("in");
       io.unobserve(el);
       // once in, hand the element back to its own styles (hover lifts and the like)
       setTimeout(() => { el.classList.remove("rise", "in"); el.style.transitionDelay = ""; }, 900);
     });
-  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  // a card starts to rise as its first pixel reaches the screen, not after it is well in (owner, 17 Nov 2026:
+  // «анимации начинаются не сразу»: on a phone the bottom of the screen stood empty until the card was 100 px in)
+  }, { rootMargin: "0px 0px 40px 0px", threshold: 0 });
   targets.forEach(el => {
     if (el.getBoundingClientRect().top < vh) return;      // already on screen: leave it be
     el.classList.add("rise");

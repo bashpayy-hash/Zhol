@@ -284,6 +284,6 @@
   if (!("IntersectionObserver" in window)) { band.classList.add("seen"); return; }
   const io = new IntersectionObserver(es => {
     if (es.some(e => e.isIntersecting)) { io.disconnect(); band.classList.add("seen"); }
-  }, { threshold: 0.35 });
+  }, { threshold: 0.12 });          // the band is tall on a phone: start as it comes in (owner, 17 Nov 2026)
   io.observe(band);
 })();

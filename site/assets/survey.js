@@ -360,7 +360,7 @@
   const cards = [...document.querySelectorAll(".sv-card")];
   const io = ("IntersectionObserver" in window) && !reduced ? new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-  }), { threshold: 0.35 }) : null;
+  }), { threshold: 0.12 }) : null;
   const watch = c => io ? io.observe(c) : c.classList.add("in");
   const c3 = $("sv-c3"); if (c3) watch(c3);
   idle(() => radar.then(d => {

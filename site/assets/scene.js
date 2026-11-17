@@ -5,8 +5,10 @@
    A picture and a <video> reach the screen by different paths: the video often goes through a hardware overlay
    that the graphics driver "enhances", so the same scene shows lighter or darker than the picture. A canvas
    goes the picture's way on every card, so the screen always shows either the picture or the canvas, never the
-   video. The video is requested only after the page's load, so it never competes with the picture (LCP stays
-   the picture); it plays only while on screen. Reduced motion, Save-Data, 2G or no JS: the picture only. */
+   video. A scene on the first screen asks for its video at once, beside its picture (owner, 17 Nov 2026:
+   «анимации начинаются не сразу»: waiting for the whole page's load took seconds on 4G); a scene further down asks
+   after the page's load. The picture stays what paints first. It plays only while on screen. Reduced motion,
+   Save-Data, 2G or no JS: the picture only. */
 (function () {
   const V = "?v=2";   // bump when the loops change: /assets is cached for a day
   const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -49,13 +51,17 @@
       shown = true; paint.dataset.shown = ""; start();
     };
     const request = () => {
+      if (node.src) return;
       node.preload = "auto";
       const webm = node.canPlayType('video/webm; codecs="vp9"');      // smaller; H.264 MP4 for Safari
       node.src = node.dataset.scene + "-" + size + (webm ? ".webm" : ".mp4") + V;
     };
     node.addEventListener("loadeddata", reveal);
     node.addEventListener("error", hide);
-    if (document.readyState === "complete") request(); else window.addEventListener("load", request, { once: true });
+    // the first screen's scene asks at once: its picture has fetchpriority high and still paints first
+    const firstScreen = node.getBoundingClientRect().top < window.innerHeight;
+    if (firstScreen || document.readyState === "complete") request();
+    else window.addEventListener("load", request, { once: true });
 
     // off screen: pause on the current frame
     if ("IntersectionObserver" in window) {

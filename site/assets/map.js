@@ -397,7 +397,7 @@ window.ZholMap = function (root, opts) {
   }
   function watchEntry() {
     if (!("IntersectionObserver" in window)) return enter();
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { enter(); io.disconnect(); } }), { threshold: 0.25 });
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { enter(); io.disconnect(); } }), { threshold: 0.1 });
     io.observe(frame);
   }
 
