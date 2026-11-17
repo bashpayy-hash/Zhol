@@ -97,6 +97,9 @@ export function docItems(doc: Doc, events: DocEvent[], R: Reader, P: Places, tod
       // the page is about one place: an event that names none from the catalog is there
       places: named ? raw.places : (doc.places || []), countries: (raw.countries || []).length || named ? raw.countries : (doc.countries || []) }, P);
     if (!ev.start || (ev.end || ev.start) < today || !(ev.places.length || ev.regions.length || ev.countries.length)) continue;
+    // an event needs words that say what it is (17 Nov 2026: the Fréjus page gave an «other» event titled «x», which
+    // reached the radar and the forecast log)
+    if ([ev.title_en, ev.title_it].some(t => String(t || "").replace(/[^\p{L}]/gu, "").length < 6)) continue;
     const key = [ev.kind, ev.places.join(",") || ev.regions.join(",") || ev.countries.join(","), ev.start, ev.end].join("|");
     if (seen.has(key)) continue;
     seen.add(key);

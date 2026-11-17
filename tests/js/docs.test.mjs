@@ -75,3 +75,11 @@ test("an operator's weekly table of short closures is read as runs of days, so t
   assert.match(src, /repeats on\s+consecutive days with the same hours and direction is one event/);
   assert.match(src, /export const AGENT = "5"/);
 });
+
+test("an event without words that say what it is does not reach the radar", () => {
+  // 17 Nov 2026: the Fréjus page gave {kind: "other", title: "x"}, which reached the radar and the forecast log
+  const doc = { id: "sftrf-frejus", issuer: "SFTRF", url: "https://www.sftrf.fr/le-tunnel/fermetures/", lang: "fr", about: "closures", words: "fermeture", places: ["frejus"] };
+  const junk = ev({ kind: "other", title_en: "x", title_it: "x" });
+  assert.deepEqual(docItems(doc, [junk], R, P, "2026-11-14", "x"), []);
+  assert.equal(docItems(doc, [junk, ev()], R, P, "2026-11-14", "x").length, 1);
+});
