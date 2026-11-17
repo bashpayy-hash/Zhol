@@ -127,7 +127,9 @@ export async function lookAt(doc: Doc, prev: DocState | null, R: Reader, P: Plac
   const at = new Date(now).toISOString(), today = new Date(now).toLocaleDateString("sv-SE", { timeZone: "Europe/Rome" });
   const keep = (error: string | null, seen: Partial<DocState> = {}): DocState => ({ id: doc.id, hash: prev?.hash || "", read_at: at, changed_at: prev?.changed_at || null,
     items: (prev?.items || []).filter(i => String(i.end || i.start) >= today), error,
-    chars: prev?.chars, events: prev?.events, peek: prev?.peek, agent: AGENT, ...seen });
+    chars: prev?.chars, events: prev?.events, peek: prev?.peek, agent: AGENT,
+    // what the agent said stays until the page changes (17 Nov 2026: the Fréjus page showed events 1, items 0 and no raw)
+    raw: prev?.raw, ...seen });
   try {
     const text = extract(await get(doc.url), doc.words);
     const seen = { chars: text.length, peek: text.slice(0, 160) };

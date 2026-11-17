@@ -64,6 +64,8 @@ test("Claude is asked only when the page changed, and a failure keeps the last r
   assert.deepEqual([a.events, a.chars > 80], [1, true]);
   const lost = await lookAt(doc, null, R, P, async () => page, async () => [ev({ start: "next week", end: null })], now);
   assert.equal(lost.items.length, 0); assert.match(lost.raw, /next week/);                                    // nothing reached the radar: keep what the agent said
+  const again = await lookAt(doc, lost, R, P, async () => page, reader, now + 36e5);
+  assert.equal(again.events, 1); assert.match(again.raw, /next week/);                                       // the same page next hour: still visible why
   const late = await lookAt(doc, a, R, P, async () => { throw new Error("x"); }, reader, now + 5 * 864e5);
   assert.equal(late.items.length, 0);                                                                           // a past event leaves the wire
 });
