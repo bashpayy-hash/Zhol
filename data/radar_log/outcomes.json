@@ -12,5 +12,12 @@
   "resolved_on": "2026-11-16",
   "start": "2026-11-14",
   "title": "Night closure of the Fréjus road tunnel in both directions."
+ },
+ "other|frejus|2026-11-16": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-17",
+  "start": "2026-11-16",
+  "title": "x"
  }
 }
