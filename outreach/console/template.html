@@ -49,6 +49,8 @@ button { font: inherit; }
 .track i { display: block; height: 100%; transition: width .4s var(--ease); }
 .track .r { background: var(--sage-ink); } .track .s { background: var(--red); }
 .sync { font-size: 13px; color: var(--muted); }
+.rome { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rome.off { color: #9a3412; font-weight: 600; }
 
 /* intro */
 .intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 24px 40px; align-items: end; padding-block: 28px 20px; }
@@ -155,6 +157,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   <span class="count" id="count">0 из 0 отправлено</span>
   <div class="track" aria-hidden="true"><i class="r" id="tr-r"></i><i class="s" id="tr-s"></i></div>
   <span class="sync" id="sync">Подключаемся к общему статусу…</span>
+  <span class="rome" id="rome"></span>
 </div></div>
 
 <div class="wrap">
@@ -163,7 +166,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <span class="kicker">zhol · опрос офисов перевозок</span>
       <h1>Кому написать, что написать и кто уже отправил</h1>
       <p>Каждое письмо устроено одинаково: кто мы (студент Bocconi, AI-платформа zhol, 100 из ~500 в TEF Ignition 2026, грант 2 000 €), проблема и цифры, которые уже есть, «это лишь видимая часть, хотим уменьшить её с помощью ИИ», Италия — начало, цель — вся Европа, для начала измерить, просьба и одна ссылка на опрос. За рубеж — на языке адресата, ниже полный английский текст.</p>
-      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook» или «Написать в WhatsApp»: адрес и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Лучше в рабочие часы, вт–чт с 9 до 11 по Риму; не больше 40 писем в день с одного ящика</li></ul>
+      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook» или «Написать в WhatsApp»: адрес и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Лучше в рабочие часы по Риму (время — в полосе сверху); не больше 40 писем в день с одного ящика, остальное запланировать на завтра</li></ul>
     </div>
     <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
       <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
@@ -211,6 +214,21 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const narrow = matchMedia("(max-width: 900px)");
   // iPadOS Safari introduces itself as a Mac: a Mac with a touch screen is an iPad
   const APPLE_TOUCH = /iPad|iPhone|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+  // the time in Rome: the letters of 10 and 11 Nov 2026 reached Italy between midnight and 04:10, under the
+  // morning's mail. Good hours are working days 9–12 and 14–17 in Rome; otherwise schedule the send in Outlook.
+  function romeClock() {
+    const now = new Date(), f = o => new Intl.DateTimeFormat("ru-RU", Object.assign({ timeZone: "Europe/Rome" }, o)).format(now);
+    const hm = f({ hour: "2-digit", minute: "2-digit" }), wd = f({ weekday: "short" }), h = Number(f({ hour: "2-digit", hourCycle: "h23" }));
+    const workday = !/сб|вс/i.test(wd), good = workday && ((h >= 9 && h < 12) || (h >= 14 && h < 17));
+    const local = new Date(now); const toRome = Number(f({ hour: "2-digit", hourCycle: "h23" })) - local.getHours();
+    const next = workday && h >= 12 && h < 14 ? 14 : 9, mine = ((next - toRome) % 24 + 24) % 24;
+    const box = $("rome"); if (!box) return;
+    box.className = "rome" + (good ? "" : " off");
+    box.textContent = "В Риме " + hm + (good ? " · хорошее время для писем"
+      : " · в офисах не читают почту: в Outlook «Запланировать отправку» на " + next + ":00 по Риму (у вас " + String(mine).padStart(2, "0") + ":00)");
+  }
+  romeClock(); setInterval(romeClock, 60000);
 
   let status = {};            // id -> {state, by, at}
   let db = null, user = null, shared = false, writable = true;
@@ -290,7 +308,10 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const viaWa = s => /whatsapp/i.test((s && s.note) || "");
   const addWorkdays = (iso, n) => { const d = new Date(iso); while (n > 0) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) n--; } return d; };
   const remindFrom = s => s && s.at ? addWorkdays(s.at, viaWa(s) ? 3 : 2) : null;
-  const remindDue = r => { const s = status[r.id]; return !!(r.followup && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
+  // a company already written to gets its own lanes as the reminder, not the survey again (owner, 17 Nov 2026:
+  // «А письмами как можно в будущем? Типа, что нужно сделать?»; scripts/lane_links.py)
+  const followOf = r => (r.call && r.call.reminder) || r.followup;
+  const remindDue = r => { const s = status[r.id]; return !!(followOf(r) && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
   const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
   const place = r => [r.city, r.region].filter(x => x && !/^n\/?a$/i.test(x.trim()) && !/^\[check/i.test(x.trim()))
     .map(x => x.replace(/\s*\[check[^\]]*\]/i, "").trim()).filter((x, k, a) => x && a.indexOf(x) === k).join(" · ");
@@ -342,7 +363,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 
   // the reminder, under the letter of someone already written to
   function reminder(r) {
-    const s = status[r.id], f = r.followup, box = el("div", "field remind-box");
+    const s = status[r.id], f = followOf(r), box = el("div", "field remind-box");
     const lab = el("div", "lab"), from = remindFrom(s), wa = viaWa(s) && r.wa;
     lab.append(el("span", null, s.reminded ? "Напоминание отправлено " + day(s.reminded)
       : from > new Date() ? "Напоминание: можно с " + day(from.toISOString()) + (wa ? " (после WhatsApp ждём три рабочих дня)" : " (два рабочих дня после письма)")
@@ -381,6 +402,10 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       const ul = el("ul", "events");
       k.events.forEach(e => { const li = el("li", null, day(e.date) + " · " + e.what_en + " · "); const a = el("a", null, e.source_ru); a.href = e.url; a.target = "_blank"; a.rel = "noopener"; li.append(a); ul.append(li); });
       box.append(el("div", "small", "События на их направлениях (радар на " + day(k.radar_day) + ", ссылка всегда показывает свежие):"), ul);
+    }
+    if (k.reminder && ["sent", "replied"].includes(stateOf(r.id))) {
+      box.append(el("div", "small", "Им уже писали. После звонка отправьте напоминание ниже: в нём ссылка на их направления и бесплатный пилот."));
+      return box;
     }
     const l2 = el("div", "lab"); l2.append(el("span", null, "После звонка: сообщение со ссылкой (или вместо звонка, если не дозвонились)"));
     const b2 = el("div"); b2.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
@@ -538,7 +563,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (liNote) box.append(liNote);
     // for the team only: what the Italian letter says (never sent)
     if (r.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "Перевод для команды (не отправляется)"), el("pre", "msg", r.message_ru)); mf.append(d); }
-    if (r.followup && stateOf(r.id) === "sent") box.append(reminder(r));
+    if (followOf(r) && stateOf(r.id) === "sent") box.append(reminder(r));
     const acts = el("div", "acts"), st = stateOf(r.id), s = status[r.id];
     [["sent", "Отправлено", ""], ["replied", "Ответили", " ok"], ["skip", "Не писать", ""]].forEach(([k, label, cls]) => {
       const b = el("button", "btn small" + cls + (st === k ? " on" : ""), label); b.type = "button";

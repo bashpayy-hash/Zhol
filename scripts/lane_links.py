@@ -238,7 +238,30 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str) -> 
         + (f"В ближайшие недели на этих направлениях радар видит: {seen_ru}. " if seen_ru else "Серьёзных событий на направлениях пока нет. ")
         + "Ссылка — страница с примерами рейсов на их направлениях, ценой и тем, что делать, у каждого события источник. "
         "Просим 15 минут на этой неделе, чтобы понять, как они справляются сейчас.")
-    return {"call_it": call_it, "call_ru": call_ru, "subject": SUBJECT, "message": message, "message_ru": message_ru}
+    # the one reminder to a company that already had the survey letter (owner, 17 Nov 2026: «А письмами как можно в
+    # будущем? Типа, что нужно сделать?»): it no longer asks for a minute again, it brings their own lanes, and it is the
+    # last message
+    seen = (f"Nelle prossime settimane su queste tratte il radar vede {n_it}, {seen_it}. " if seen_it else
+            "Nelle prossime settimane su queste tratte il radar non vede ancora eventi gravi, e vi avvisa appena ne compare uno. ")
+    reminder = (
+        "Buongiorno,\n\n"
+        "sono Alikhan Bashpay, studente Bocconi, e qualche giorno fa vi ho scritto a proposito di **zhol**, " + WHO_IT + ". "
+        "Io e il mio team siamo tra i 100 progetti selezionati su circa 500 per **TEF Ignition 2026** della Tech Europe "
+        "Foundation, con un grant di 2.000 €. Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
+        "Questa volta non vi chiedo niente, vi mando qualcosa di utile. Se non sbaglio " + where_it + ". " + seen
+        + "Qui trovate alcuni viaggi di esempio sulle vostre tratte, quanto costerebbe lasciarli come sono e cosa conviene "
+        "fare, ogni evento con la sua fonte\n" + link + "\n\n"
+        "Se vi serve, possiamo provarlo **gratis per quattro settimane** sulle vostre spedizioni, senza installare niente. "
+        "Basta rispondere a questa email. È il mio ultimo messaggio, non vi scriverò ancora.\n\n"
+        "Grazie e buona giornata,\n[Nome]")
+    reminder_ru = (
+        "Напоминание тем, кому уже ушло письмо с опросом, одно и последнее. Не просим минуту второй раз, а даём пользу: "
+        "кто мы (стандартная фраза, TEF Ignition 2026, грант 2 000 €, цель — вся Европа), их направления, "
+        + (f"события радара: {seen_ru}; " if seen_ru else "серьёзных событий пока нет; ")
+        + "ссылка на страницу с примерами рейсов, ценой и тем, что делать. Предлагаем бесплатный пилот на четыре недели "
+        "без установки, ответить можно прямо на письмо. Говорим, что больше не напишем.")
+    return {"call_it": call_it, "call_ru": call_ru, "subject": SUBJECT, "message": message, "message_ru": message_ru,
+            "reminder": {"subject": "Re: " + row["subject"], "message": reminder, "message_ru": reminder_ru}}
 
 
 def main() -> None:

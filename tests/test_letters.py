@@ -243,3 +243,29 @@ def test_calls_and_lane_links_follow_the_same_principles():
             enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
             url = "https://outlook.office.com/mail/deeplink/compose?to=" + enc(to) + "&subject=" + enc(k["subject"]) + "&body=" + enc(m)
             assert len(url) <= 4000, (cid, len(url))
+
+
+def test_company_reminder_brings_their_lanes():
+    """The one reminder to a company already written to (owner, 17 Nov 2026: «А письмами как можно в будущем? Типа, что
+    нужно сделать?»): it answers in the thread of the first letter, gives their lanes instead of asking for the survey
+    again, offers the free pilot, says it is the last message, and keeps every rule of a letter."""
+    from urllib.parse import quote
+    from test_positioning import BANNED
+    calls = json.loads((ROOT / "outreach" / "lane_links.json").read_text(encoding="utf-8"))
+    rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
+    enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
+    for cid, k in calls.items():
+        f, r = k["reminder"], rows[cid]
+        m = f["message"]
+        assert f["subject"] == "Re: " + r["subject"], cid
+        assert ":" not in _text(m) and not NAMES.search(m) and not BANNED.search(m), cid
+        for must in ("Bocconi", "TEF Ignition 2026", "2.000 €", "Europa", " AI ", "Io e il mio team", "su rotaia", "via mare",
+                     "in anticipo", "tempo reale", "gratis per quattro settimane", "ultimo messaggio"):
+            assert must in m, (cid, must)
+        assert re.findall(r"https?://\S+", m) == [k["link"]], cid
+        assert m.count("**") // 2 <= 3, cid
+        if r.get("to"):
+            url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc(r["to"]) + "&subject=" + enc(f["subject"])
+                   + "&body=" + enc(m.replace("**", "")))
+            assert len(url) <= 4000, (cid, len(url))
+
