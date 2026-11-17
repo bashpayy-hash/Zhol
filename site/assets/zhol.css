@@ -2002,4 +2002,14 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
   .recog .badges li { padding: 14px 14px; }
   .recog .badges b { font-size: 15.5px; }
   .recog .badges span { font-size: 14px; }
+
+  /* a button and a link never sit side by side on a phone: the button, then the link under it, as in the price card
+     (owner, 17 Nov 2026: «вот эти две кнопки странно расположены») */
+  .actions, .sv-full .actions, .landing-hero .actions { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .actions > a:not(.btn) { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* even air at a change of colour: a section that runs into a coloured one keeps as much room below as the
+     coloured one has above (owner, 17 Nov 2026: «спейсинг questionable»: 32 px under a card, 64 px over the next title) */
+  .slide:has(+ .slide.sage), .slide:has(+ .slide.dark), .slide:has(+ .recog), .slide:has(+ .slide.textured) { padding-bottom: 56px; }
+  .slide.sage, .slide.dark { padding-bottom: 56px; }
 }

@@ -55,8 +55,12 @@
       node.preload = "auto";
       const webm = node.canPlayType('video/webm; codecs="vp9"');      // smaller; H.264 MP4 for Safari
       node.src = node.dataset.scene + "-" + size + (webm ? ".webm" : ".mp4") + V;
+      // Safari on the iPhone may load no data until a video is asked to play (owner, 17 Nov 2026: «теперь всё
+      // застыло»): ask now, muted, so autoplay is allowed. The canvas still shows only once a frame is painted on it.
+      if (visible) { const p = node.play(); if (p && p.catch) p.catch(() => {}); }
     };
     node.addEventListener("loadeddata", reveal);
+    node.addEventListener("playing", reveal);
     node.addEventListener("error", hide);
     // the first screen's scene asks at once: its picture has fetchpriority high and still paints first
     const firstScreen = node.getBoundingClientRect().top < window.innerHeight;

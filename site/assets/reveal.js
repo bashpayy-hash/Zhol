@@ -32,7 +32,7 @@
     });
   // a card starts to rise as its first pixel reaches the screen, not after it is well in (owner, 17 Nov 2026:
   // «анимации начинаются не сразу»: on a phone the bottom of the screen stood empty until the card was 100 px in)
-  }, { rootMargin: "0px 0px 40px 0px", threshold: 0 });
+  }, { rootMargin: "0px", threshold: 0 });
   targets.forEach(el => {
     if (el.getBoundingClientRect().top < vh) return;      // already on screen: leave it be
     el.classList.add("rise");
