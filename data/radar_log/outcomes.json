@@ -1,4 +1,11 @@
 {
+ "closure|FR-Auvergne-Rhône-Alpes|2026-11-16": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-18",
+  "start": "2026-11-16",
+  "title": "A40 closed overnight between Annemasse and Archamps for bridge works."
+ },
  "closure|IT-Lazio|2026-11-14": {
   "happened": true,
   "how": "ongoing",
@@ -13,11 +20,41 @@
   "start": "2026-11-14",
   "title": "Night closure of the Fréjus road tunnel in both directions."
  },
+ "closure|montblanc|2026-11-16": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-18",
+  "start": "2026-11-16",
+  "title": "Mont Blanc tunnel closed overnight for maintenance."
+ },
+ "closure|montblanc|2026-11-17": {
+  "happened": true,
+  "how": "team",
+  "note": "ATMB, TRAFIC LIVE TUNNEL 17/11/2026 20:35: «La circulation est totalement interrompue du 17/11/2026 à partir de 20:00 jusqu'au 18/11/2026 à 06:00»",
+  "resolved_on": "2026-11-18",
+  "source": "https://www.atmb.com/nos-travaux/travaux-au-tunnel-du-mont-blanc/",
+  "start": "2026-11-17",
+  "title": "Mont Blanc tunnel closed overnight for maintenance."
+ },
  "other|frejus|2026-11-16": {
   "happened": null,
   "how": "open",
   "resolved_on": "2026-11-17",
   "start": "2026-11-16",
   "title": "x"
+ },
+ "strike|ES|2026-11-17": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-18",
+  "start": "2026-11-17",
+  "title": "Possible rail strike in Spain"
+ },
+ "strike|FR|2026-11-17": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-18",
+  "start": "2026-11-17",
+  "title": "Possible port or ferry strike in France"
  }
 }
