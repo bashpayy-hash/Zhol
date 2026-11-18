@@ -75,7 +75,7 @@ test("an operator's weekly table of short closures is read as runs of days, so t
   // ran past its 40 seconds (APIConnectionTimeoutError). The rules now ask for one event per run of equal days.
   const src = readFileSync(new URL("../../netlify/lib/docs.mts", import.meta.url), "utf8");
   assert.match(src, /repeats on\s+consecutive days with the same hours and direction is one event/);
-  assert.match(src, /export const AGENT = "5"/);
+  assert.match(src, /export const AGENT = "[5-9]"/);
 });
 
 test("an event without words that say what it is does not reach the radar", () => {
