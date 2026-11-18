@@ -134,7 +134,11 @@
       const acts = el("div", "rc-acts");
       const c = (im.contacts || [])[0];
       if (c) {
-        const b = el("button", "btn small", T("Copy the message for: ", "Copia il messaggio per: ") + ((IT && c.who_it) || c.who).toLowerCase());
+        // «for the driver», not «for: driver» (owner, 18 Nov 2026: «что за недочёты»)
+        const who = ((IT && c.who_it) || c.who).toLowerCase();
+        const IT_ART = { autista: "l’", cliente: "il ", mittente: "il " }[who.split(" ")[0]] || "";
+        const b = el("button", "btn small", IT ? "Copiate il messaggio per " + IT_ART + who
+          : "Copy the message for " + (/^your\b/.test(who) ? "" : "the ") + who);
         b.type = "button";
         b.title = c.msg;
         b.addEventListener("click", () => {
