@@ -17,7 +17,7 @@ export interface DocState { id: string; hash: string; read_at: string; changed_a
 const MODEL = () => Netlify.env.get("ZHOL_AI_MODEL") || "claude-opus-5-5";
 export const EVERY_H = 3;          // each page is looked at again after this many hours
 const CAP = 9000;                  // characters of the page the agent reads
-export const AGENT = "6";          // bump when the agent's reading changes: every page is then read again (6, 18 Nov 2026: keep its answer for a page where nothing reached the radar)
+export const AGENT = "7";          // bump when the agent's reading changes: every page is then read again (7, 19 Nov 2026: an empty placeholder is not counted)
 
 /** The page as text, and of a long page only what stands around the words that matter. */
 export function extract(html: string, words: string, cap = CAP): string {
