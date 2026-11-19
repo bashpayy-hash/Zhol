@@ -137,7 +137,10 @@ export async function lookAt(doc: Doc, prev: DocState | null, R: Reader, P: Plac
     if (!new RegExp(doc.words, "i").test(text)) return keep("page does not mention " + doc.about, seen);    // a consent wall or a block page
     const hash = await hashOf(AGENT + text);
     if (prev && prev.hash === hash && !prev.error) return keep(null, seen);
-    const events = await reader(doc, text);
+    // an answer with no date and no title is no event: the agent's empty placeholder for a quiet page is not counted
+    // (19 Nov 2026: the Fréjus page showed «1 event, 0 on the radar» for an event with every field empty)
+    const filled = (e: DocEvent) => [e.start, e.title_en, e.title_it].some(x => String(x || "").trim());
+    const events = (await reader(doc, text)).filter(filled);
     const items = docItems(doc, events, R, P, today, at);
     const raw = events.length && !items.length ? JSON.stringify(events.slice(0, 2)).slice(0, 500) : undefined;
     return { id: doc.id, hash, read_at: at, changed_at: at, items, error: null, ...seen, events: events.length, agent: AGENT, raw };
