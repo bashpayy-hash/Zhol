@@ -26,6 +26,13 @@
     { key: "stretto", en: "Strait of Messina", it: "Stretto di Messina", test: id => /^(VIT|CT)-/.test(id) },
     { key: "tutte", en: "All routes", it: "Tutte le tratte", test: () => true },
   ];
+  // a place tied to one crossing (site/data/places.json): an event placed only there stays on its corridors, even when
+  // the radar files a strike «in Italy» under every lane (20 Nov 2026: a Messina ferry strike showed on the Brenner)
+  const PLACE = { brenner: ["brennero"], luegbruecke: ["brennero"], kufstein: ["brennero"], inntal_a12: ["brennero", "tauri"],
+                  tarvisio: ["tarvisio"], karawanken: ["tarvisio"], fernetti: ["tarvisio"], tauern: ["tauri"],
+                  gotthard: ["svizzera"], san_bernardino: ["svizzera"], chiasso: ["svizzera"], basel: ["svizzera"], st_margrethen: ["svizzera"],
+                  frejus: ["frejus"], montblanc: ["frejus"], ventimiglia: ["ventimiglia"], messina_strait: ["stretto"], goerlitz: ["tarvisio", "brennero"] };
+  const placed = (i, key) => { const ps = (i.places || []).filter(x => PLACE[x]); return !ps.length || key === "tutte" || ps.some(x => PLACE[x].includes(key)); };
   const ALIAS = { brenner: "brennero", gotthard: "svizzera", switzerland: "svizzera", tauern: "tauri", messina: "stretto", all: "tutte", slovenia: "tarvisio", montblanc: "frejus" };
   const q = new URLSearchParams(location.search);
   const ckey = ALIAS[(q.get("c") || "").toLowerCase()] || (q.get("c") || "").toLowerCase();
@@ -80,7 +87,7 @@
     [...d.items, ...((live && live.items) || [])].forEach(i => { if (i && i.id && !seen.has(i.id)) { seen.add(i.id); items.push(i); } });
     const lanes = (d.lanes || []).map(l => l.id).filter(C.test);
     const mine = items.filter(i => i.stage !== "revoked" && (i.p || 0) >= 0.2 && (i.lanes || []).some(id => lanes.includes(id))
-                                && (i.mode !== "air" || C.key === "tutte"));
+                                && (i.mode !== "air" || C.key === "tutte") && placed(i, C.key));
     const today = d.today, plus = n => { const x = new Date(today + "T12:00:00Z"); x.setUTCDate(x.getUTCDate() + n); return x.toISOString().slice(0, 10); };
     const until14 = plus(14), until56 = plus(56);
     const ends = i => i.end || i.start;
