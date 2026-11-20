@@ -78,6 +78,20 @@
   "start": "2026-11-17",
   "title": "Possible port or ferry strike in France"
  },
+ "weather|messina_strait|2026-11-18": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-20",
+  "start": "2026-11-18",
+  "title": "Strong wind on the Strait of Messina"
+ },
+ "weather|messina_strait|2026-11-19": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-20",
+  "start": "2026-11-19",
+  "title": "Strong wind on the Strait of Messina"
+ },
  "weather|montblanc|2026-11-18": {
   "happened": null,
   "how": "open",
