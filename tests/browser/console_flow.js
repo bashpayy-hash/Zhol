@@ -11,7 +11,8 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   const b = await chromium.launch();
   // two companies already written to on 10 Nov: both have a reminder due
   const status = { "c-farosped": { state: "sent", at: "2026-11-10T23:42:00Z", note: "Outlook" },
-                   "c-aimone-autotrasporti-srl": { state: "sent", at: "2026-11-10T23:06:00Z", note: "Outlook" } };
+                   "c-aimone-autotrasporti-srl": { state: "sent", at: "2026-11-10T23:06:00Z", note: "Outlook" },
+                   "a-alsea": { state: "sent", at: "2026-11-10T22:00:00Z", note: "Outlook" } };
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
   await ctx.addInitScript(s => { try { localStorage.clear(); localStorage.setItem("zhol-status", s); } catch (e) {} }, JSON.stringify(status));
   const p = await ctx.newPage();
@@ -62,7 +63,7 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   ok(await p.$eval("#toast", e => /Отправлено/.test(e.textContent)), "step 3 marks «Отправлено»");
   await p.click("#toast button"); await p.waitForTimeout(200);
   const afterUndo = JSON.parse(await p.evaluate(() => localStorage.getItem("zhol-status")));
-  ok(Object.keys(afterUndo).length === 2 && await p.$eval("#detail h2", e => e.textContent) === freshName,
+  ok(Object.keys(afterUndo).length === Object.keys(status).length && await p.$eval("#detail h2", e => e.textContent) === freshName,
      "and «Отменить» brings the same company back unsent");
 
   // a company already written to, a reminder due: the switch on top, «Пора напомнить», send the reminder, mark it
@@ -110,6 +111,14 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
        tab + ": the letter sent is the personal one, its sentence shown in the card (" + (a && a.lang) + ")");
   }
 
+  // an association written to: its one reminder brings the bulletin of its members' roads (20 Nov 2026)
+  await p.click('#f-type button[data-v="association"]'); await p.waitForTimeout(200);
+  await p.click('#f-state button[data-v="remind"]'); await p.waitForTimeout(250);
+  const ar = await p.evaluate(() => { const d = document.querySelector("#detail"); const pre = d.querySelector(".steps details.peek pre");
+    return { h: d.querySelector("h2").textContent, top: (d.querySelector(".letter-card .lc-top") || {}).textContent || "", text: pre ? pre.textContent : "" }; });
+  ok(ar.h === "ALSEA" && /^Какое напоминание/.test(ar.top) && /zhol\.live\/it\/bollettino\?c=brennero/.test(ar.text) && /ultimo messaggio/.test(ar.text) && !/sondaggio\?src/.test(ar.text),
+     "an association's reminder brings the bulletin of its members' roads, not the survey again");
+  await p.click('#f-state button[data-v="any"]'); await p.waitForTimeout(150);
   ok(errs.length === 0, "no page errors " + errs.join(" | "));
 
   // a phone: no horizontal scroll, buttons in reach, the bar not sticky

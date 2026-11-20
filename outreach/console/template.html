@@ -443,7 +443,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const remindFrom = s => s && s.at ? addWorkdays(s.at, viaWa(s) ? 3 : 2) : null;
   // a company already written to gets its own lanes as the reminder, not the survey again (owner, 17 Nov 2026:
   // «А письмами как можно в будущем? Типа, что нужно сделать?»; scripts/lane_links.py)
-  const followOf = r => (r.call && r.call.reminder) || r.followup;
+  // the one reminder: a company's brings its lanes, an association's the bulletin of its members' roads (20 Nov 2026)
+  const followOf = r => (r.call && r.call.reminder) || (r.personal && r.personal.reminder) || r.followup;
   const remindSubject = r => { const s = status[r.id], f = followOf(r) || {};
     return s && s.letter === "personal" && r.personal && !r.call ? "Re: " + r.personal.subject : f.subject; };
   const remindDue = r => { const s = status[r.id]; return !!(followOf(r) && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
@@ -720,8 +721,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   function letterOf(r, reminder) {
     const k = r.call, pl = r.personal, f = followOf(r) || {};
     if (reminder) {
-      const rem = k && k.reminder;
-      const body = rem ? (rem.message.split("\n\n")[2] || "").replace(/^Questa volta non vi chiedo niente, vi mando qualcosa di utile\. /, "").split(/\s+(?=Qui trovate)/)[0] : "";
+      const rem = (k && k.reminder) || (pl && pl.reminder);
+      const body = rem ? (rem.line || (rem.message.split("\n\n")[2] || "").replace(/^Questa volta non vi chiedo niente, vi mando qualcosa di utile\. /, "").split(/\s+(?=Qui trovate)/)[0]) : "";
       return { subject: remindSubject(r), text: f.message || "", line: body, ru: rem ? rem.message_ru : f.message_ru };
     }
     if (k) return { subject: k.subject, text: k.message, line: (k.message.split("\n\n")[2] || "").split(/\s+(?=Ho preparato)/)[0], ru: k.message_ru };

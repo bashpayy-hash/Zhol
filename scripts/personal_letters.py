@@ -219,6 +219,45 @@ def abroad_letter(r: dict, data: dict) -> dict | None:
             "line_ru": para["ru"], "lang": lang, "kind": r["kind"], "region": r["country"], "events": shown, "radar_day": data["today"]}
 
 
+# the corridor bulletin of the members' roads (site/assets/bulletin.js; owner, 20 Nov 2026: «что станет геймченджером…
+# выиграть TEF»): the reminder brings it instead of asking for the survey again, as the companies' reminder brings their
+# lanes. The association forwards it to its members; its last line asks «was it useful?» and offers the survey.
+CORRIDOR = {"brenner": "brennero", "france": "frejus", "liguria": "ventimiglia", "east": "tarvisio", "sicily": "stretto"}
+BULLETIN_ROADS = {"brennero": "il Brennero", "frejus": "il Fréjus e il Monte Bianco", "ventimiglia": "Ventimiglia",
+                  "tarvisio": "Tarvisio e la Slovenia", "stretto": "lo Stretto di Messina", "tutte": "tutte le tratte verso l'estero"}
+BULLETIN_RU = {"brennero": "Бреннер", "frejus": "Фрежюс и Монблан", "ventimiglia": "Вентимилья", "tarvisio": "Тарвизио и Словения",
+               "stretto": "Мессинский пролив", "tutte": "все направления за границу"}
+
+
+def bulletin_link(r: dict, corridor: str) -> str:
+    from urllib.parse import urlencode
+    return "https://zhol.live/it/bollettino?" + urlencode({"c": corridor, "per": r["name"][:60], "src": "bul-" + r["id"].removeprefix("a-")})
+
+
+def association_reminder(r: dict, region: str) -> dict:
+    """The one reminder: the bulletin of the members' roads, ready to forward, and that this is the last message."""
+    corridor = CORRIDOR.get(region, "tutte")
+    link = bulletin_link(r, corridor)
+    line = (f"Questa volta vi mando qualcosa di utile per i soci. Abbiamo preparato il bollettino delle prossime due settimane per "
+            f"{BULLETIN_ROADS[corridor]}, con ogni divieto, chiusura e sciopero, la sua probabilità, la fonte e per un viaggio tipo "
+            "quando decidere. Si aggiorna ogni giorno e potete inoltrarlo così com'è, anche su WhatsApp.")
+    message = (
+        f"Gentile segreteria di {r['name']},\n"
+        "vi riscrivo a proposito del mio messaggio di questi giorni. Sono Alikhan Bashpay, studente Bocconi. Io e il mio team "
+        "sviluppiamo **zhol**, " + L.WHO_IT + ". Siamo tra i 100 progetti selezionati su circa 500 per **TEF Ignition 2026**, "
+        "con un grant di 2.000 €. Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
+        f"{line}\n{link}\n\n"
+        "In fondo alla pagina un tocco ci dice se è utile. È l'ultimo messaggio che vi mando.\n\n"
+        f"Grazie e buona giornata,\n{SIGN}\n{S.OPTOUT}")
+    message_ru = (f"Напоминание секретариату {r['name']}: кто мы (стандартная фраза, TEF Ignition 2026, грант 2 000 €, цель — вся "
+                  f"Европа). Вместо повторной просьбы об опросе — готовый бюллетень на две недели для членов ассоциации "
+                  f"({BULLETIN_RU[corridor]}): каждый запрет, закрытие и забастовка с вероятностью, источником и сроком решения, "
+                  "обновляется каждый день, можно переслать как есть, в том числе в WhatsApp. Внизу страницы — «полезно?». "
+                  "Это последнее письмо.")
+    return {"subject": "Re: " + r["subject"], "message": message, "message_ru": message_ru, "line": line,
+            "corridor": corridor, "link": link}
+
+
 def association_letter(r: dict, data: dict) -> dict:
     kind = S.assoc_kind(r["name"], r.get("about", ""))
     region = S.assoc_region(r["name"], r.get("city", ""), r.get("region", ""), r.get("about", ""))
@@ -236,7 +275,7 @@ def association_letter(r: dict, data: dict) -> dict:
     message_ru = (f"Короткое письмо секретариату {r['name']}: кто мы (стандартная фраза, TEF Ignition 2026, грант 2 000 €, цель — "
                   f"вся Европа). Личное: {line_ru} Просьба: {ask_ru} анонимный опрос на минуту; ассоциации — сводные результаты.")
     return {"subject": SUBJECT, "message": message, "message_ru": message_ru, "line": line_it, "line_ru": line_ru,
-            "kind": kind, "region": region, "events": hs, "radar_day": data["today"]}
+            "kind": kind, "region": region, "events": hs, "radar_day": data["today"], "reminder": association_reminder(r, region)}
 
 
 def main() -> None:

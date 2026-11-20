@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f3ea">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Bollettino delle tratte</title>
+<script>document.documentElement.classList.add("js")</script>
+<meta name="description" content="Il bollettino settimanale di una tratta, pronto da inoltrare: divieti, chiusure e scioperi delle prossime due settimane su strada, rotaia e mare, ciascuno con probabilità, fonte e quando decidere.">
+<meta property="og:title" content="zhol · Bollettino delle tratte">
+<meta property="og:description" content="Il bollettino settimanale di una tratta, pronto da inoltrare: divieti, chiusure e scioperi delle prossime due settimane su strada, rotaia e mare, ciascuno con probabilità, fonte e quando decidere.">
+<meta property="og:image" content="/assets/img/og.png">
+<link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s62">
+<link rel="alternate" hreflang="en" href="https://zhol.live/bulletin">
+<link rel="alternate" hreflang="it" href="https://zhol.live/it/bollettino">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sezioni"><a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/risposte/">Risposte</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/bulletin" lang="en" hreflang="en">EN</a><a href="/it/bollettino" lang="it" hreflang="it" aria-current="true">IT</a></span>
+</div></header>
+
+<!-- the weekly bulletin of one corridor (owner, 20 Nov 2026: «что станет геймченджером… выиграть TEF»): what an
+     association forwards to its members; built in the browser by /assets/bulletin.js from the radar -->
+<main id="bl" class="bl">
+<section class="slide bl-head">
+  <div class="wrap">
+    <span class="kicker">Bollettino zhol · per chi pianifica spedizioni</span>
+    <h1 class="title" id="bl-title">Carico il radar…</h1>
+    <p class="bl-for" id="bl-for" hidden></p>
+    <p class="lead">Stima il rischio, avvisa in anticipo, aggiorna in tempo reale. Ogni settimana la vostra tratta, pronta da inoltrare a soci e colleghi.</p>
+    <nav class="bl-chips" id="bl-chips" aria-label="Tratta"></nav>
+    <p class="small muted" id="bl-updated"></p>
+    <p class="bl-n" id="bl-n" role="status">Carico il radar…</p>
+    <p class="small muted" id="bl-status"></p>
+  </div>
+</section>
+
+<section class="slide bl-sec">
+  <div class="wrap">
+    <h2 class="bl-h2">Le prossime due settimane</h2>
+    <ol class="bl-list" id="bl-near"></ol>
+    <div id="bl-watch-box" hidden>
+      <h2 class="bl-h2">Da tenere d’occhio, ancora senza data</h2>
+      <ol class="bl-list" id="bl-watch"></ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide bl-sec bl-act">
+  <div class="wrap bl-grid">
+    <div class="bl-box">
+      <h2 class="bl-h2">Inoltratelo</h2>
+      <div class="bl-btns"><a class="btn" id="bl-wa" href="https://wa.me/" target="_blank" rel="noopener">Inoltra su WhatsApp</a><button class="btn ghost" type="button" id="bl-copy">Copia il testo per la circolare</button><button class="btn ghost" type="button" id="bl-print">Stampa o salva in PDF</button></div>
+      <label class="bl-text-l"><span class="sr-only">Il testo per la circolare</span><textarea id="bl-text" rows="10" hidden readonly></textarea></label>
+    </div>
+    <form class="bl-box" id="bl-alerts">
+      <h2 class="bl-h2">Avvisi WhatsApp per questa tratta</h2>
+      <p class="small muted">Un messaggio quando un evento verificato tocca questa tratta. Controlliamo prima di inviare; STOP per smettere.</p>
+      <input type="hidden" id="bl-alert-lanes" value="">
+      <p class="hidden-field"><label>Non compilare questo campo: <input name="website" tabindex="-1" autocomplete="off"></label></p>
+      <label class="bl-field">Numero WhatsApp<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+39 333 123 4567"></label>
+      <label class="bl-check"><input type="checkbox" id="bl-consent"> <span>Accetto di ricevere questi messaggi da zhol su WhatsApp.</span></label>
+      <button class="btn" type="submit">Avvisatemi</button>
+      <p class="small" id="bl-alert-out" role="status"></p>
+    </form>
+    <form class="bl-box" id="bl-fb" name="bulletin-feedback" method="POST" action="/it/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="bulletin-feedback">
+      <input type="hidden" name="corridor" value="">
+      <input type="hidden" name="src" value="">
+      <input type="hidden" name="lang" value="it">
+      <input type="hidden" name="useful" value="">
+      <p class="hidden-field"><label>Non compilare questo campo: <input name="bot-field"></label></p>
+      <h2 class="bl-h2">Vi è stato utile?</h2>
+      <div class="bl-btns bl-fb-row"><button class="btn ghost" type="button" data-v="yes" aria-pressed="false">Sì</button><button class="btn ghost" type="button" data-v="partly" aria-pressed="false">In parte</button><button class="btn ghost" type="button" data-v="no" aria-pressed="false">No</button></div>
+      <div id="bl-fb-more" hidden>
+        <label class="bl-field">Cosa manca? (facoltativo)<textarea name="missing" rows="2" maxlength="500"></textarea></label>
+        <button class="btn ghost" type="submit">Invia</button>
+      </div>
+      <p class="small" id="bl-fb-out" role="status"></p>
+      <p class="small muted bl-survey">Sette domande in un minuto ci aiutano a migliorarlo: <a id="bl-survey" href="/it/sondaggio">il sondaggio anonimo</a>.</p>
+    </form>
+  </div>
+</section>
+<section class="slide bl-sec">
+  <div class="wrap">
+    <h2 class="bl-h2">Più avanti, dalla terza all’ottava settimana</h2>
+    <ol class="bl-list compact" id="bl-later"></ol>
+  </div>
+</section>
+
+<section class="slide bl-sec bl-rec">
+  <div class="wrap">
+    <h2 class="bl-h2">Cosa abbiamo misurato finora</h2>
+    <ul class="bl-record" id="bl-record"></ul>
+    <p class="small muted">Solo numeri misurati. Le probabilità per divieti e dosaggi vengono dai calendari ufficiali; quelle degli scioperi dal calendario del Ministero.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Oyu team · Università Bocconi · TEF Ignition 2026</span>
+  <span><a href="/it/radar">Radar</a> · <a href="/it/risposte/">TEF risposte</a> · <a href="/it/segnala">Segnala</a> · <a href="/it/beta">Beta</a></span>
+</div></footer>
+<script src="/assets/bulletin.js?v=1" defer></script>
+<script src="/assets/lang.js?v=l3"></script>
+</body>
+</html>

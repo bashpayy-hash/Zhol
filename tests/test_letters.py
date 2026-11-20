@@ -347,3 +347,46 @@ def test_every_letter_is_signed_zhol_team():
     assert len(texts) > 1500
     for k, t in texts:
         assert line.search(t) and "[Nome]" not in t and not re.search(r"^Alikhan Bashpay( ·.*)?$", t, re.M), k
+
+
+def test_association_reminder_brings_the_bulletin():
+    """The one reminder to an association (owner, 20 Nov 2026: «что станет геймченджером… выиграть TEF»): instead of
+    asking for the survey again it brings the bulletin of its members' roads, ready to forward (site/assets/bulletin.js),
+    keeps every rule of a letter, says it is the last message, and its one link is that bulletin for that association."""
+    from urllib.parse import quote, urlparse, parse_qs
+    from test_positioning import BANNED
+    pl = json.loads((ROOT / "outreach" / "personal_letters.json").read_text(encoding="utf-8"))
+    rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
+    enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
+    rem = {k: v["reminder"] for k, v in pl.items() if v.get("reminder")}
+    assert len(rem) == sum(1 for r in rows.values() if r["type"] == "association")
+    for aid, f in rem.items():
+        m, r = f["message"], rows[aid]
+        assert f["subject"] == "Re: " + r["subject"], aid
+        assert ":" not in _text(m) and not NAMES.search(m) and not BANNED.search(m), aid
+        for must in ("Bocconi", "TEF Ignition 2026", "2.000 €", "Europa", " AI ", "Io e il mio team", "su rotaia", "via mare",
+                     "in anticipo", "tempo reale", "bollettino", "ultimo messaggio", "\nzhol team\n"):
+            assert must in m, (aid, must)
+        links = re.findall(r"https?://\S+", m)
+        assert links == [f["link"]], (aid, links)
+        u = urlparse(f["link"]); q = parse_qs(u.query)
+        assert u.path == "/it/bollettino" and q["c"] == [f["corridor"]] and q["per"] == [r["name"][:60]] and q["src"][0].startswith("bul-"), aid
+        if r.get("to"):
+            url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc(r["to"]) + "&subject=" + enc(f["subject"])
+                   + "&body=" + enc(m.replace("**", "")))
+            assert len(url) <= 4000, (aid, len(url))
+
+
+def test_the_bulletin_pages_and_their_corridors():
+    """Both bulletin pages carry the Netlify form «bulletin-feedback» with only anonymous fields, and every corridor a
+    reminder links to is one the page knows."""
+    site = ROOT / "site"
+    js = (site / "assets" / "bulletin.js").read_text(encoding="utf-8")
+    known = set(re.findall(r'key: "(\w+)"', js))
+    for page in ("it/bollettino.html", "bulletin.html"):
+        html = (site / page).read_text(encoding="utf-8")
+        form = re.search(r'<form class="bl-box" id="bl-fb" name="bulletin-feedback".*?</form>', html, re.S).group(0)
+        assert 'data-netlify="true"' in form and set(re.findall(r'name="([\w-]+)"', form.split(">", 1)[1])) == {"form-name", "corridor", "src", "lang", "useful", "bot-field", "missing"}, page
+        assert "/assets/bulletin.js" in html, page
+    pl = json.loads((ROOT / "outreach" / "personal_letters.json").read_text(encoding="utf-8"))
+    assert {v["reminder"]["corridor"] for v in pl.values() if v.get("reminder")} <= known

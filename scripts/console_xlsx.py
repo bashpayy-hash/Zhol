@@ -129,7 +129,7 @@ def private_rows() -> list[dict]:
 
 def follow_of(r: dict) -> dict | None:
     """The one reminder: a company already written to gets its own lanes (console.js followOf)."""
-    return (r.get("call") or {}).get("reminder") or r.get("followup")
+    return (r.get("call") or {}).get("reminder") or (r.get("personal") or {}).get("reminder") or r.get("followup")
 
 
 def place(r: dict) -> str:
