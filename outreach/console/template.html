@@ -73,7 +73,8 @@ button { font: inherit; }
 .tabs { display: flex; gap: 4px; flex-wrap: wrap; }
 .tabs button, .chips button { border: 1px solid transparent; background: none; color: var(--muted); border-radius: var(--r-pill); padding: 8px 12px; min-height: 40px; cursor: pointer; transition: background-color .16s, color .16s; }
 .tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.tabs button .n { font-size: 12px; opacity: .7; margin-left: 4px; font-variant-numeric: tabular-nums; }
+.tabs button .n { font-size: 12px; color: var(--muted); margin-left: 4px; font-variant-numeric: tabular-nums; }
+.tabs button[aria-pressed="true"] .n { color: var(--paper); }
 .chips { display: flex; gap: 4px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
 .chips button { white-space: nowrap; }
 .chips button { border-color: var(--line); font-size: 13px; padding: 6px 12px; min-height: 36px; }
@@ -87,7 +88,7 @@ button { font: inherit; }
 .row { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; padding: 12px 14px; border: 1px solid transparent; border-radius: var(--r-box); background: none; color: var(--ink-2); cursor: pointer; transition: background-color .16s, border-color .16s; }
 .row:hover { background: var(--card); }
 .row[aria-current="true"] { background: var(--card); border-color: var(--line); }
-.row .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--rule); }
+.row .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid transparent; }
 .row.sent .dot { background: var(--red); border-color: var(--red); }
 .row.replied .dot { background: var(--sage-ink); border-color: var(--sage-ink); }
 .row.skip { opacity: .7; }
@@ -104,7 +105,7 @@ button { font: inherit; }
 .pill.replied { background: var(--sage); color: var(--sage-ink); }
 .pill.skip { background: var(--line); color: var(--muted); }
 .row.sent b, .row.replied b, .row.skip b { color: var(--ink-2); font-weight: 500; }
-.row .noaddr { color: var(--red); }
+.row .noaddr { color: var(--muted); }
 .btn.li-btn { background: var(--li); border-color: var(--li); color: #fff; }
 .btn.li-btn:hover { background: var(--li-hover); border-color: var(--li-hover); }
 .tabs button .n { font-weight: 500; }
@@ -169,15 +170,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 .row .fit { white-space: nowrap; }
 
 /* the status switch: four states, one tap, at the top of the card */
-.statusbar { position: sticky; top: 58px; z-index: 3; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s3);
   margin: calc(-1 * var(--s2)) calc(-1 * var(--s2)) 0; padding: var(--s2); border-radius: var(--r-box); background: var(--card); box-shadow: 0 6px 16px -14px rgba(53, 43, 40, .45); }
-.seg-status { display: inline-flex; padding: 3px; gap: 2px; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--paper); }
-.seg-status button { border: 0; background: none; color: var(--muted); font-size: 13.5px; font-weight: 600; padding: 7px 14px; min-height: 36px; border-radius: var(--r-pill); cursor: pointer; transition: background-color .16s, color .16s; }
-.seg-status button:hover { color: var(--ink); }
-.seg-status button[aria-checked="true"] { background: var(--ink); color: var(--paper); }
-.seg-status button[data-v="replied"][aria-checked="true"] { background: var(--sage-ink); }
-.seg-status button[data-v="sent"][aria-checked="true"] { background: var(--red); }
-.statusbar .who { font-size: 13px; color: var(--muted); margin-left: auto; }
 
 /* the next step: one sentence on what to do now, coloured by what it is */
 .next { border-radius: var(--r-box); padding: var(--s3) var(--s4); font-size: 15px; line-height: 1.45; color: var(--ink); background: var(--paper); border: 1px solid var(--line); }
@@ -201,10 +194,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   .bar { position: static; }
   .bar .wrap { gap: 4px 12px; padding-block: 10px; }
   .bar .track { order: 3; flex-basis: 100%; }
-  .statusbar { top: 0; margin-inline: -8px; }
-  .statusbar .who { margin-left: 0; width: 100%; }
-  .seg-status { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 3px; border-radius: var(--r-box); }
-  .seg-status button { padding: 6px 8px; font-size: 14px; min-height: 44px; border-radius: var(--r-field); }
 }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 
@@ -238,21 +227,40 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 .more-sec p { margin: 0; color: var(--ink); font-size: 14.5px; }
 .more-sec .events { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
 @media (max-width: 900px) { .step { grid-template-columns: 28px minmax(0, 1fr); } .step-n { width: 28px; height: 28px; font-size: 14px; } .step-acts .btn { flex: 1 1 auto; } }
+
+/* ===== for someone opening it the first time (critique + research + accessibility, 20 Nov 2026: «что за непонятный
+   дизайн, человек который только это открыл ничего не поймет по сути»): what this is and the three moves on top; in
+   the card who it is, what goes out, the path, and the state at the end with only the moves that make sense */
+.purpose { margin: var(--s2) 0 0; max-width: 62ch; font-size: 15.5px; color: var(--ink-2); }
+.how3 { list-style: none; margin: var(--s3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); font-size: 14.5px; color: var(--ink); }
+.how3 li { display: flex; align-items: center; gap: var(--s2); }
+.how3 b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 13px; }
+.who-line { margin: var(--s2) 0 0; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); max-width: 70ch; }
+.what { margin: 0; padding: var(--s3) var(--s4); border-radius: var(--r-box); background: var(--paper); border: 1px solid var(--line); font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+.what b { color: var(--ink); }
+.offhours { padding: 10px 12px; border-radius: var(--r-chip); background: var(--amber-bg); color: var(--amber-ink); font-size: 14px; line-height: 1.4; }
+.statusrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1) var(--s3); padding-top: var(--s3); border-top: 1px solid var(--line); font-size: 14px; }
+.st-now { color: var(--ink); font-weight: 600; margin-right: auto; }
+.btn.ok-btn { border-color: var(--sage-ink); color: var(--sage-ink); }
+.row.sent .dot, .row.replied .dot { border-width: 1.5px; }
+@media (max-width: 900px) { .st-now { width: 100%; } }
 </style>
 
-<div class="bar"><div class="wrap">
+<header class="bar"><div class="wrap">
   <span class="count" id="count">0 из 0 отправлено</span>
   <div class="track" aria-hidden="true"><i class="r" id="tr-r"></i><i class="s" id="tr-s"></i></div>
   <span class="sync" id="sync">Подключаемся к общему статусу…</span>
   <span class="rome" id="rome"></span>
-</div></div>
+</div></header>
 
-<div class="wrap">
+<main class="wrap">
   <header class="intro">
     <div>
       <span class="kicker">zhol · консоль рассылки</span>
-      <h1>Кому написать, что написать и кто уже отправил</h1>
-      <details class="how-box"><summary>Как это устроено</summary>
+      <h1>Пишем офисам перевозок и тем, кто их знает</h1>
+      <p class="purpose">Цель — чтобы они прошли опрос на минуту или попробовали zhol бесплатно. Письмо каждому уже готово: по-итальянски или на языке адресата.</p>
+      <ol class="how3"><li><b>1</b>Выберите адресата в списке</li><li><b>2</b>Откройте письмо и отправьте его</li><li><b>3</b>Вернитесь и нажмите «Отправлено»</li></ol>
+      <details class="how-box"><summary>Подробнее о письмах и правилах</summary>
       <p>Каждое письмо устроено одинаково: кто мы (студент Bocconi, AI-платформа zhol, 100 из ~500 в TEF Ignition 2026, грант 2 000 €), проблема и цифры, которые уже есть, «это лишь видимая часть, хотим уменьшить её с помощью ИИ», Италия — начало, цель — вся Европа, для начала измерить, просьба и одна ссылка на опрос. За рубеж — на языке адресата, ниже полный английский текст.</p>
       <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook» или «Написать в WhatsApp»: адрес и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Лучше в рабочие часы по Риму (время — в полосе сверху); не больше 40 писем в день с одного ящика, остальное запланировать на завтра</li><li><b>↑ ↓</b> листать адресатов с клавиатуры</li></ul>
       <p class="kbd">Ссылки на опрос помечены только каналом (co-form, assoc-…, press-…), а не компанией: ответы остаются анонимными. Факты в письмах взяты из открытых источников, ссылка на источник — в блоке «Почему им». Список собирается командой <code>python scripts/survey_targets.py</code>.</p>
@@ -275,7 +283,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <button type="button" data-v="posts" aria-pressed="false">Посты</button>
     </div>
     <div class="chips" role="group" aria-label="Статус" id="f-state">
-      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Не отправлено<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Отправлено<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button><button type="button" data-v="wa" aria-pressed="false" id="chip-wa" hidden>WhatsApp<span class="n" id="c-wa"></span></button><button type="button" data-v="remind" aria-pressed="false">Пора напомнить<span class="n" id="c-remind"></span></button>
+      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Ещё не писали<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Ждём ответа<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button><button type="button" data-v="remind" aria-pressed="false">Пора напомнить<span class="n" id="c-remind"></span></button>
     </div>
     <input type="search" id="q" placeholder="Название, город или регион" aria-label="Поиск">
   </div>
@@ -286,13 +294,16 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   </div>
   <div class="posts" id="posts" hidden></div>
 
-</div>
+</main>
 
 <script type="application/json" id="data">__DATA__</script>
 <script type="application/json" id="posts-data">__POSTS__</script>
 <script>
 (function () {
   const $ = id => document.getElementById(id);
+  document.documentElement.lang = "ru";
+  const langOf = t => /^\s*(Dear|Hello|Good (morning|afternoon))/.test(t) ? "en" : /^\s*(Sehr|Guten|Hallo)/.test(t) ? "de"
+    : /^\s*(Bonjour|Madame|Monsieur)/.test(t) ? "fr" : /^\s*(Estimad|Buenos|Hola)/.test(t) ? "es" : "it";
   const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
   const ROWS = JSON.parse($("data").textContent);
   const POSTS = JSON.parse($("posts-data").textContent);
@@ -314,14 +325,15 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const next = workday && h >= 12 && h < 14 ? 14 : 9, mine = ((next - toRome) % 24 + 24) % 24;
     const box = $("rome"); if (!box) return;
     box.className = "rome" + (good ? "" : " off");
-    box.textContent = "В Риме " + hm + (good ? " · хорошее время для писем"
-      : " · в офисах не читают почту: в Outlook «Запланировать отправку» на " + next + ":00 по Риму (у вас " + String(mine).padStart(2, "0") + ":00)");
+    box.textContent = "В Риме " + hm + (good ? " · рабочее время" : " · нерабочее время");
+    rome = { off: !good, next, mine: String(mine).padStart(2, "0") };
   }
+  let rome = { off: false };
   romeClock(); setInterval(romeClock, 60000);
 
   let status = {};            // id -> {state, by, at}
   let db = null, user = null, shared = false, writable = true;
-  let fType = store.get("zhol-tab") || "company", fState = store.get("zhol-state") || "any", q = "", pick = null;
+  let fType = store.get("zhol-tab") || "company", fState = (store.get("zhol-state") || "any").replace(/^wa$/, "any"), q = "", pick = null;
 
   const me = $("me-name");
   me.value = store.get("zhol-sign") || "";
@@ -391,7 +403,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   let opened = {}; try { opened = JSON.parse(store.get("zhol-opened") || "{}") || {}; } catch (e) { opened = {}; }
   const hhmm = iso => { try { return new Date(iso).toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
   const ORDER = { "": 0, sent: 1, replied: 2, skip: 3 };
-  const GROUP = { "": "Не отправлено", sent: "Отправлено", replied: "Ответили", skip: "Не писать" };
+  const GROUP = { "": "Ещё не писали", sent: "Ждём ответа", replied: "Ответили", skip: "Не писать" };
+  const MARK = { sent: "Отправлено", replied: "Ответили", skip: "Не писать" };   // the words of a mark, in the toast
   const day = iso => { try { return new Date(iso).toLocaleDateString("ru-RU", { day: "numeric", month: "short" }); } catch (e) { return ""; } };
   // one reminder (owner, 12 Nov 2026: «теперь что дальше»): two working days after a letter, three after a WhatsApp
   const viaWa = s => /whatsapp/i.test((s && s.note) || "");
@@ -402,7 +415,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const followOf = r => (r.call && r.call.reminder) || r.followup;
   const remindDue = r => { const s = status[r.id]; return !!(followOf(r) && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
   const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
-  const place = r => [r.city, r.region].filter(x => x && !/^n\/?a$/i.test(x.trim()) && !/^\[check/i.test(x.trim()))
+  const national = x => /^nazionale$/i.test((x || "").trim()) ? "по всей Италии" : x;
+  const place = r => [national(r.city), national(r.region)].filter(x => x && !/^n\/?a$/i.test(x.trim()) && !/^\[check/i.test(x.trim()))
     .map(x => x.replace(/\s*\[check[^\]]*\]/i, "").trim()).filter((x, k, a) => x && a.indexOf(x) === k).join(" · ");
   function visible(r) {
     if (r.type !== fType) return false;
@@ -449,7 +463,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     }
     if (next) status[r.id] = next; else delete status[r.id];
     render();
-    toast((next ? "«" + GROUP[state] + "»" : "Статус снят") + " · " + r.name, () => restore(r, prev));
+    toast((next ? "«" + MARK[state] + "»" : "Отметка снята") + " · " + r.name, () => restore(r, prev));
     if (shared && writable) {
       const ref = db.collection("status").doc(r.id);
       try { next ? await ref.set(next) : await ref.delete(); }
@@ -476,7 +490,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 
   // the letter, with the part written for this company highlighted
   function letter(r) {
-    const text = sign(r.message), pre = el("pre", "msg");
+    const text = sign(r.message), pre = el("pre", "msg"); pre.lang = langOf(text);
     const i = r.why ? text.indexOf(r.why) : -1;
     if (i < 0) { rich(pre, text); return pre; }
     rich(pre, text.slice(0, i)); pre.append(el("mark", null, r.why)); rich(pre, text.slice(i + r.why.length));
@@ -526,7 +540,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     row.append(cp);
     const show = el("details", "peek"); show.append(el("summary", null, "Показать текст"));
     if (subject && r.type !== "group") show.append(el("div", "subject", subject));
-    if (text === r.message) show.append(letter(r)); else { const pre = el("pre", "msg"); rich(pre, sign(text)); show.append(pre); }
+    if (text === r.message) show.append(letter(r)); else { const pre = el("pre", "msg"); pre.lang = langOf(text); rich(pre, sign(text)); show.append(pre); }
     return [row, ...notes, show];
   }
 
@@ -550,21 +564,9 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     t.append(el("h2", null, r.name), el("div", "meta", [place(r), KIND[r.type]].filter(Boolean).join(" · ")));
     head.append(t);
 
-    // the status switch, at the top and always in reach
-    const bar = el("div", "statusbar"), seg = el("div", "seg-status");
-    seg.setAttribute("role", "radiogroup"); seg.setAttribute("aria-label", "Статус");
-    [["", "Не отправлено"], ["sent", "Отправлено"], ["replied", "Ответили"], ["skip", "Не писать"]].forEach(([v, label]) => {
-      const b = el("button", null, label); b.type = "button"; b.dataset.v = v || "todo";
-      b.setAttribute("role", "radio"); b.setAttribute("aria-checked", String(st === v));
-      b.addEventListener("click", () => { if (st !== v) setState(r, v || st, v === "sent" ? via[r.id] : undefined); });   // «Не отправлено» clears it
-      seg.append(b);
-    });
-    bar.append(seg);
-    if (s) {
-      const who = s.by && ps[s.by] ? (ps[s.by].isMe ? "вы" : (ps[s.by].name || "коллега")) : "";
-      bar.append(el("span", "who", [who, fmt(s.at)].filter(Boolean).join(" · ")));
-    }
-    const parts = [head, bar];
+    // who this is, in a line or two: a newcomer needs it before writing (critique, 20 Nov 2026)
+    if (r.about) t.append(el("p", "who-line", r.about.length > 190 ? r.about.slice(0, 186).replace(/\s+\S*$/, "") + "…" : r.about));
+    const parts = [head];
 
     // the path of the send
     const steps = el("ol", "steps");
@@ -576,23 +578,23 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       const again = opened[r.id] ? el("div", "dup-warn", "Уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ": проверьте «Отправленные», прежде чем отправить снова.") : null;
       // no calls (owner, 20 Nov 2026: «звонки убери»): a company gets the letter with its own lanes, then the mark
       if (k && !noAddr) {
-        steps.append(step(n++, "Отправьте письмо", "С их направлениями и ссылкой на их страницу: кто мы, события с источником, что делать.", [again, ...sendKit(r, k.subject, k.message, box)]));
+        steps.append(step(n++, "Отправьте письмо", null, [again, offNote(), ...sendKit(r, k.subject, k.message, box)]));
       } else if (noAddr) {
         steps.append(step(n++, "Найдите контакт", "Адреса в списке нет: посмотрите на сайте или в Google.",
           [row_(site && ext("btn small", "Сайт", site), r.search && ext("btn small", "Найти в Google", r.search))]));
-        steps.append(step(n++, "Отправьте письмо", null, k ? sendKit(r, k.subject, k.message, box) : sendKit(r, r.subject, r.message, box)));
+        steps.append(step(n++, "Отправьте письмо", null, [offNote(), ...(k ? sendKit(r, k.subject, k.message, box) : sendKit(r, r.subject, r.message, box))]));
       } else {
         const title = r.type === "group" ? "Опубликуйте пост" : r.type === "linkedin" ? "Напишите в LinkedIn" : "Отправьте письмо";
         const hint = r.type === "group" ? "Сначала спросите разрешения у администратора группы." : r.wa && r.to ? "WhatsApp или почта: что удобнее." : null;
-        steps.append(step(n++, title, hint, [again, ...sendKit(r, r.subject, r.message, box)]));
+        steps.append(step(n++, title, hint, [again, r.type === "group" || r.type === "linkedin" ? null : offNote(), ...sendKit(r, r.subject, r.message, box)]));
       }
       steps.append(step(n, "Отметьте «Отправлено»", "Команда увидит, что этому адресату уже написали, а консоль сама подскажет, когда напомнить.",
         [row_(markBtn("Отправлено", () => setState(r, "sent", via[r.id])))]));
-      parts.push(steps);
+      parts.push(whatLine(r, false), steps);
     } else if (remindDue(r)) {
       const f = followOf(r), sentIso = s.sent || s.at;
-      parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. Напоминание одно и последнее."));
-      steps.append(step(1, "Отправьте напоминание", k ? "С их направлениями и бесплатным пилотом." : null, sendKit(r, f.subject, f.message, box)));
+      parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. Напоминание одно и последнее."), whatLine(r, true));
+      steps.append(step(1, "Отправьте напоминание", null, [offNote(), ...sendKit(r, f.subject, f.message, box)]));
       steps.append(step(2, "Отметьте «Напоминание отправлено»", "Больше этому адресату не пишем, ждём ответа.", [row_(markBtn("Напоминание отправлено", () => markReminded(r)))]));
       parts.push(steps);
     } else {
@@ -637,10 +639,40 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (st === "sent" || st === "replied") sec("Первое письмо · отправлено " + (sentIso ? day(sentIso) + " в " + hhmm(sentIso) : ""), [fold("Показать письмо", [el("div", "subject", r.subject), letter(r)])]);
     else if (k && !st) sec("Письмо с опросом (первая волна)", [fold("Показать письмо", [el("div", "subject", r.subject), letter(r)])]);
     if (r.message_ru) sec("Перевод письма для команды", [fold("Показать перевод", [pre_(r.message_ru)])]);
-    parts.push(more);
+    // the state and the moves that make sense from it, at the end of the card: the four-way switch on top read as four
+    // actions (20 Nov 2026: two recipients marked and one unmarked within a minute)
+    const sr = el("div", "statusrow");
+    const whoBy = s && s.by && ps[s.by] ? (ps[s.by].isMe ? "вы" : (ps[s.by].name || "коллега")) : "";
+    const now = st === "sent" ? "отправлено " + (sentIso ? day(sentIso) : "") + (s.reminded ? ", напомнили " + day(s.reminded) : "")
+      : st === "replied" ? "ответили" : st === "skip" ? "не пишем" : "ещё не писали";
+    sr.append(el("span", "st-now", "Статус: " + now + (whoBy && s.at ? " · " + whoBy + ", " + fmt(s.at) : "")));
+    const moves = { "": [["skip", "Не писать этому адресату"]], sent: [["replied", "Ответили"], ["skip", "Не писать"], ["", "Снять отметку"]],
+                    replied: [["sent", "Это ещё не ответ"]], skip: [["", "Вернуть в работу"]] }[st] || [];
+    moves.forEach(([v, label]) => {
+      const b = el("button", v === "replied" ? "btn small ok-btn" : "linkish", label); b.type = "button"; b.dataset.v = v || "clear";
+      b.addEventListener("click", () => setState(r, v || st));             // the same state again clears it
+      sr.append(b);
+    });
+    parts.push(sr, more);
     box.replaceChildren(...parts);
     return box;
   }
+
+  // what goes out, in one line, before the button (critique, 20 Nov 2026: «Отправьте письмо» did not say which)
+  const LANG_RU = { it: "по-итальянски", en: "по-английски", de: "по-немецки", fr: "по-французски", es: "по-испански" };
+  function whatLine(r, reminder) {
+    const k = r.call, f = followOf(r) || {};
+    const lang = LANG_RU[langOf((reminder ? f.message : k ? k.message : r.message) || "")];
+    const text = reminder ? "Напоминание " + lang + ", одно и последнее" + (k ? ": их направления и бесплатный пилот на четыре недели." : ": ссылка на опрос ещё раз.")
+      : r.type === "group" ? "Пост " + lang + ": кто мы и ссылка на опрос."
+      : r.type === "linkedin" ? "Сообщение " + lang + ": кто мы, почему пишем именно этому человеку, ссылка на опрос."
+      : k ? "Письмо " + lang + ": кто мы, события на их направлениях с источником и ссылка на их страницу."
+      : "Письмо " + lang + ": кто мы, почему пишем именно им и просьба пройти опрос на минуту.";
+    const d = el("p", "what"); d.append(el("b", null, "Что отправляем. "), document.createTextNode(text)); return d;
+  }
+  // outside office hours in Italy: schedule the letter instead of sending it into the night
+  const offNote = () => rome.off ? el("div", "offhours", "В Италии сейчас нерабочее время. В Outlook нажмите стрелку рядом с «Отправить», выберите «Отправить позже» и поставьте "
+    + rome.next + ":00 по Риму (у вас " + rome.mine + ":00).") : null;
 
   function nextBox(tone, title, text) {
     const nx = el("div", "next" + (tone ? " " + tone : ""));
@@ -652,7 +684,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   function nextStep(r) {
     const s = status[r.id], st = stateOf(r.id);
     if (st === "replied") return ["ok", "Ответили", "Ответьте им и предложите бесплатный пилот на их направлениях. Разговор запишите в outreach/interview_log.csv."];
-    if (st === "skip") return ["", "Не пишем", "Адресат отмечен «Не писать». Передумали — нажмите «Не отправлено»."];
+    if (st === "skip") return ["", "Не пишем", "Адресат отмечен «Не писать». Передумали — «Вернуть в работу» ниже."];
     if (!followOf(r)) return ["", "Ждём ответа", "Напоминания для этого адресата нет. Ответили — отметьте «Ответили»."];
     if (s.reminded) return ["", "Ждём ответа", "Напоминание отправлено " + day(s.reminded) + ". Больше не пишем. Ответили — отметьте «Ответили»."];
     const from = remindFrom(s);
@@ -666,7 +698,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (e.altKey || e.ctrlKey || e.metaKey || narrow.matches || fType === "posts") return;
     if (!["ArrowDown", "ArrowUp", "j", "k"].includes(e.key)) return;
     const tg = e.target, tag = (tg.tagName || "").toLowerCase();
-    if (tag === "input" || tag === "textarea" || tag === "select" || tg.isContentEditable || (tg.closest && tg.closest(".seg-status, .msg"))) return;
     const ids = listed().map(r => r.id); if (!ids.length) return;
     const at = ids.indexOf(pick), step = e.key === "ArrowDown" || e.key === "j" ? 1 : -1;
     pick = ids[Math.max(0, Math.min(ids.length - 1, at < 0 ? 0 : at + step))];
@@ -700,7 +731,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $("c-sent").textContent = inTab.filter(r => stateOf(r.id) === "sent").length;
     $("c-replied").textContent = inTab.filter(r => stateOf(r.id) === "replied").length;
     // WhatsApp numbers exist only in the privately published copy (outreach/private/whatsapp.csv)
-    $("c-wa").textContent = inTab.filter(r => r.wa).length; $("chip-wa").hidden = !ROWS.some(r => r.wa);
     $("c-remind").textContent = inTab.filter(remindDue).length;
     $("c-remind").parentNode.classList.toggle("hot", inTab.some(remindDue));
 
@@ -731,7 +761,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
                   : st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) + (st.reminded ? " · напомнили" : "") : GROUP[st.state])
                                    : el("span", "fit", r.fit && r.type === "company" ? "★ " + r.fit : "");
       if (r.fit && r.type === "company" && !(st && st.state) && !remindDue(r)) { right.title = "Приоритет " + r.fit + " из 3: насколько компания подходит"; right.setAttribute("aria-label", right.title); }
-      b.append(el("span", "dot"), t, right);
+      const dot = el("span", "dot"); dot.setAttribute("aria-hidden", "true");
+      b.append(dot, t, right);
       b.addEventListener("click", () => { pick = pick === r.id && narrow.matches ? null : r.id; render(); });
       list.append(b);
       if (narrow.matches && r.id === pick) list.append(detail(r, ps));
