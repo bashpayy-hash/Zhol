@@ -2107,3 +2107,31 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .bl-basis { font-size: 13px; color: var(--muted); }
 .bl-basis.warn { color: #8a5a00; }
 .bl-where { font-size: 14px; color: var(--muted); margin-top: -2px; }
+
+/* ===== the pilot's statement on /check (20 Nov 2026): the alerts, the office's verdicts, the criterion, the founding order */
+.ck-st { display: grid; gap: 12px; padding: 18px 20px; border-radius: var(--r-card); background: var(--card); border: 1px solid var(--card-line); }
+.ck-st-bars { display: grid; gap: 8px; }
+.ck-st-bar { display: grid; grid-template-columns: 9.5em 1fr auto; gap: 12px; align-items: center; font-size: 14.5px; }
+.ck-st-label { color: var(--ink-2); }
+.ck-st-track { height: 8px; border-radius: 99px; background: rgba(53, 43, 40, 0.08); overflow: hidden; }
+.ck-st-track i { display: block; height: 100%; background: var(--red-btn); border-radius: inherit; transition: width var(--dur-card) var(--ease); }
+.ck-st-bar.ok .ck-st-track i { background: var(--sage-ink); }
+.ck-st-bar b { font-variant-numeric: tabular-nums; }
+.ck-st-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ck-st-item { display: grid; gap: 6px; padding: 12px 14px; border-radius: var(--r-l); background: var(--paper); border: 1px solid var(--card-line); font-size: 15px; }
+.ck-st-item.useful { border-color: var(--sage-ink); }
+.ck-st-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.ck-st-acts .btn { min-height: 40px; padding: 0 14px; font-size: 14px; }
+.ck-st-acts .btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.ck-st-saved { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; color: var(--muted); }
+.ck-st-saved input, .ck-st-form input:not([type=checkbox]) { font: inherit; font-size: 16px; color: var(--ink); background: var(--card); border: 1px solid var(--card-line); border-radius: var(--r-field); padding: 8px 12px; min-height: 44px; }
+.ck-st-saved input { width: 8em; }
+.ck-st-order { display: grid; gap: 8px; padding: 14px 16px; border-radius: var(--r-l); background: var(--paper); border: 1px dashed var(--card-line); }
+.ck-st-order.met { border: 1.5px solid var(--sage-ink); background: var(--sage-card); }
+.ck-st-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; }
+.ck-st-form label { display: grid; gap: 4px; font-size: 14px; color: var(--muted); }
+.ck-st-form .ck-st-check, .ck-st-form .btn, .ck-st-form p { grid-column: 1 / -1; }
+.ck-st-check { display: flex !important; gap: 10px; align-items: flex-start; color: var(--ink-2) !important; }
+.ck-st-check input { width: 20px; height: 20px; flex: none; margin-top: 2px; }
+.ck-st-form .btn { justify-self: start; min-height: 44px; }
+@media (max-width: 560px) { .ck-st-bar { grid-template-columns: 1fr auto; } .ck-st-track { grid-column: 1 / -1; grid-row: 2; } .ck-st-form { grid-template-columns: 1fr; } .ck-st-form .btn { justify-self: stretch; justify-content: center; } }

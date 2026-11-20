@@ -394,6 +394,7 @@ function drawAccount() {
   const news = acct.news || [];
   box.append(el("h3", "ck-acc-sub", news.length ? T("What changed", "Cosa è cambiato") : T("Nothing has changed yet", "Ancora nessun cambiamento")));
   if (news.length) { const ul = el("ul", "ck-news"); news.slice(0, 12).forEach(n => ul.append(newsLine(n))); box.append(ul); }
+  if (acct.statement) box.append(statementBox());
   const acts = el("div", "ck-acts");
   const copy = el("button", "btn ghost", T("Copy the private link", "Copia il link privato")); copy.type = "button";
   copy.addEventListener("click", () => navigator.clipboard && navigator.clipboard.writeText(linkOf(key())).then(() => { copy.textContent = T("Copied", "Copiato"); }));
@@ -410,6 +411,121 @@ function drawAccount() {
   if (news.length) officeApi({ kind: "seen" }).catch(() => {});
 }
 let justMade = null, notice = "";
+
+// ---- the pilot's statement (owner, 20 Nov 2026: «какую киллер фитчу? если найдем первого платящего клиента сможем
+// выиграть теф?»): every alert of the four free weeks, the office's own verdict and what it saved, against the
+// criterion agreed on day one; when it is met (or earlier, if the office wants), the founding price in one form.
+// The server keeps it (netlify/lib/office.mts statement, setVerdict, makeFounding); nothing is charged on the page.
+let orderOpen = false;
+function statementBox() {
+  const s = acct.statement, c = s.criterion, wrap = el("div", "ck-st"); wrap.id = "ck-st";
+  wrap.append(el("h3", "ck-acc-sub", T("The pilot’s statement", "Il conto della prova")));
+  const dayN = Math.min(c.days, Math.max(1, c.days - s.days_left + 1));
+  wrap.append(el("p", "small muted", T("Day " + dayN + " of " + c.days + ", until " + day(s.end.slice(0, 10)) + ". Agreed on day one: at least " + c.useful + " useful alerts and " + eur(c.saved) + " saved, fewer than 1 wrong alert in 5.",
+                                       "Giorno " + dayN + " di " + c.days + ", fino a " + day(s.end.slice(0, 10)) + ". Concordato il primo giorno: almeno " + c.useful + " avvisi utili e " + eur(c.saved) + " risparmiati, meno di 1 avviso sbagliato su 5.")));
+  const bars = el("div", "ck-st-bars");
+  const bar = (label, value, of, okv, text) => {
+    const b = el("div", "ck-st-bar" + (okv ? " ok" : ""));
+    const track = el("span", "ck-st-track"), fill = el("i"); fill.style.width = Math.min(100, Math.round((of ? value / of : 0) * 100)) + "%";
+    track.append(fill);
+    b.append(el("span", "ck-st-label", label), track, el("b", null, text));
+    return b;
+  };
+  bars.append(bar(T("Useful alerts", "Avvisi utili"), s.useful, c.useful, s.ok.useful, s.useful + " / " + c.useful),
+              bar(T("Saved", "Risparmio"), s.saved, c.saved, s.ok.saved, eur(s.saved) + " / " + eur(c.saved)),
+              bar(T("Wrong alerts", "Avvisi sbagliati"), s.wrong, Math.max(1, s.useful + s.not_needed + s.wrong), s.ok.wrong, String(s.wrong)));
+  wrap.append(bars);
+  if (s.saved) wrap.append(el("p", "small muted", T(eur(s.confirmed) + " as you wrote it, the rest is zhol’s estimate for the shipment until you correct it.",
+                                                    eur(s.confirmed) + " come l’avete scritto voi, il resto è la stima di zhol per la spedizione finché non la correggete.")));
+  const L = acct.ledger || [];
+  if (!L.length) wrap.append(el("p", "small", T("No alert yet. When zhol finds a risk on one of your shipments it lands here, and you say whether it helped.",
+                                                "Ancora nessun avviso. Quando zhol trova un rischio su una vostra spedizione compare qui, e voi dite se è servito.")));
+  else {
+    const ul = el("ul", "ck-st-list");
+    L.slice(0, 20).forEach(e => {
+      const li = el("li", "ck-st-item" + (e.verdict ? " " + e.verdict : ""));
+      const head = el("p");
+      head.append(el("b", null, e.ref), document.createTextNode(" · " + e.route + " · " + (IT ? e.title_it : e.title) + (e.start ? ", " + day(e.start) : "") + ", " + pct(e.p)));
+      li.append(head);
+      if (e.estimate != null) li.append(el("p", "small muted", T("zhol’s estimate for this shipment: ", "Stima di zhol per questa spedizione: ") + eur(e.estimate)));
+      const row = el("div", "ck-st-acts");
+      [["useful", T("It helped", "Ci è servito")], ["not_needed", T("Not needed", "Non serviva")], ["wrong", T("Wrong", "Sbagliato")]].forEach(([v, label]) => {
+        const b = el("button", "btn ghost small", label); b.type = "button"; b.setAttribute("aria-pressed", e.verdict === v ? "true" : "false");
+        b.addEventListener("click", () => verdict(e, e.verdict === v ? null : v));
+        row.append(b);
+      });
+      li.append(row);
+      if (e.verdict === "useful") {
+        const lab = el("label", "ck-st-saved", T("What it saved you, in €", "Quanto vi ha fatto risparmiare, in €"));
+        const inp = el("input"); inp.type = "number"; inp.min = "0"; inp.step = "10"; inp.inputMode = "numeric";
+        inp.placeholder = e.estimate != null ? String(e.estimate) : "0"; if (e.saved != null) inp.value = String(e.saved);
+        inp.addEventListener("change", () => verdict(e, "useful", inp.value === "" ? null : Number(inp.value)));
+        lab.append(inp); li.append(lab);
+      }
+      ul.append(li);
+    });
+    wrap.append(ul);
+  }
+  wrap.append(foundingBox(s));
+  return wrap;
+}
+
+async function verdict(e, v, saved) {
+  const r = await officeApi({ kind: "verdict", id: e.id, verdict: v, saved }).catch(() => null);
+  const d = r && r.ok ? await r.json() : null;
+  if (!d) return;
+  Object.assign(e, d.entry); acct.statement = d.statement;
+  const old = $("ck-st"); if (old) old.replaceWith(statementBox());
+}
+
+function foundingBox(s) {
+  const box = el("div", "ck-st-order" + (s.met ? " met" : "")); box.id = "ck-order";
+  const pr = s.price, f = acct.founding;
+  if (f) {
+    box.append(el("b", null, T("Founding customer: order received ", "Cliente fondatore: ordine ricevuto ") + day(f.at.slice(0, 10)) + "."),
+               el("p", "small", T(f.vehicles + " vehicles × €" + f.price + " = " + eur(f.vehicles * f.price) + " a month for " + f.months + " months. We send the first invoice to " + f.email + "; you can cancel at any time.",
+                                  f.vehicles + " mezzi × " + f.price + " € = " + eur(f.vehicles * f.price) + " al mese per " + f.months + " mesi. Mandiamo la prima fattura a " + f.email + "; potete disdire in qualsiasi momento.")));
+    return box;
+  }
+  box.append(el("b", null, s.met ? T("The criterion is met. Keep zhol at the founding price.", "Il criterio è raggiunto. Tenete zhol al prezzo da cliente fondatore.")
+                                 : T("The founding price, when the criterion is met, or now if you prefer.", "Il prezzo da cliente fondatore, quando il criterio è raggiunto, o già ora se preferite.")),
+             el("p", "small", T("€" + pr.founding + " a month per vehicle for " + pr.months + " months, then €" + pr.later + ". Monthly invoice, cancel at any time.",
+                                pr.founding + " € al mese per mezzo per " + pr.months + " mesi, poi " + pr.later + " €. Fattura mensile, disdetta in qualsiasi momento.")));
+  if (!s.met && !orderOpen) {
+    const open = el("button", "asst-fix", T("Activate it now", "Attivatelo già ora")); open.type = "button";
+    open.addEventListener("click", () => { orderOpen = true; box.replaceWith(foundingBox(s)); });
+    box.append(open);
+    return box;
+  }
+  const f2 = el("form", "ck-st-form");
+  const field = (label, name, attrs) => { const l = el("label", null, label), i = el("input"); i.name = name; Object.assign(i, attrs); l.append(i); return l; };
+  f2.append(field(T("Vehicles", "Mezzi"), "vehicles", { type: "number", min: "1", max: "2000", required: true, inputMode: "numeric" }),
+            field(T("VAT number", "Partita IVA"), "vat", { required: true, autocomplete: "off", placeholder: "IT01234567890" }),
+            field(T("Email for invoices", "Email per le fatture"), "email", { type: "email", required: true, autocomplete: "email" }),
+            field(T("SDI code or PEC (optional)", "Codice SDI o PEC (facoltativo)"), "sdi", { autocomplete: "off" }));
+  const cons = el("label", "ck-st-check"), cb = el("input"); cb.type = "checkbox"; cb.name = "consent";
+  cons.append(cb, el("span", null, T("We order zhol at the founding price above. We pay on the monthly invoice and can cancel at any time.",
+                                     "Ordiniamo zhol al prezzo da cliente fondatore qui sopra. Paghiamo con la fattura mensile e possiamo disdire in qualsiasi momento.")));
+  const total = el("p", "small muted"); total.setAttribute("role", "status");
+  const sum = () => { const n = Number(f2.vehicles.value); total.textContent = n > 0 ? n + T(" vehicles × €", " mezzi × ") + pr.founding + T(" = ", " € = ") + eur(n * pr.founding) + T(" a month", " al mese") : ""; };
+  f2.vehicles.addEventListener("input", sum);
+  const go = el("button", "btn", T("Order at the founding price", "Ordina al prezzo fondatore")); go.type = "submit";
+  const out = el("p", "small"); out.setAttribute("role", "status");
+  f2.append(total, cons, go, out);
+  f2.addEventListener("submit", async ev => {
+    ev.preventDefault();
+    if (!cb.checked) { out.textContent = T("Tick the box to place the order.", "Spuntate la casella per ordinare."); return; }
+    go.disabled = true; out.textContent = T("Sending…", "Invio…");
+    const r = await officeApi({ kind: "founding", vehicles: Number(f2.vehicles.value), vat: f2.vat.value, email: f2.email.value, sdi: f2.sdi.value, consent: true }).catch(() => null);
+    const d = r && r.ok ? await r.json() : null;
+    go.disabled = false;
+    if (!d) { out.textContent = T("Check the vehicles, the VAT number and the email, then try again.", "Controllate mezzi, partita IVA ed email, poi riprovate."); return; }
+    acct = d.office; orderOpen = false;
+    const old = $("ck-st"); if (old) old.replaceWith(statementBox());
+  });
+  box.append(f2);
+  return box;
+}
 
 async function loadAccount() {
   if (!key()) return;

@@ -3,9 +3,11 @@
 // POST {kind: "create", company, whatsapp, lang, consent: true}   → {key}   (shown once; the page keeps it on the device)
 // GET                                                              → {office}
 // POST {kind: "plan", shipments}  ·  {kind: "seen"}  ·  {kind: "settings", company, whatsapp, lang}  ·  {kind: "delete"}
+// POST {kind: "verdict", id, verdict: "useful" | "not_needed" | "wrong" | null, saved?}   the office's word on one alert
+// POST {kind: "founding", vehicles, vat, email, sdi, consent: true}                      the founding customer's order
 import type { Config, Context } from "@netlify/functions";
-import { json, offices, sha } from "../lib/store.mts";
-import { cleanPlan, keyOk, makeOffice, newKey, publicOffice } from "../lib/office.mts";
+import { json, offices, sha, teamStore } from "../lib/store.mts";
+import { cleanPlan, keyOk, makeFounding, makeOffice, newKey, publicOffice, setVerdict, statement } from "../lib/office.mts";
 import type { Office } from "../lib/office.mts";
 import { phone } from "../lib/reports.mts";
 
@@ -52,6 +54,22 @@ export default async (req: Request, context: Context) => {
     if (!company || (raw && !wa)) return json({ error: "bad_request" }, 400);
     o.company = company; o.whatsapp = wa; if (body.lang === "it" || body.lang === "en") o.lang = body.lang;
     await st.setJSON("o/" + hash, o); return json({ ok: true, office: publicOffice(o) });
+  }
+  // the pilot's statement: the office's verdict on an alert, and the founding customer's order (lib/office.mts)
+  if (body.kind === "verdict") {
+    const e = setVerdict(o, body); if (!e) return json({ error: "bad_request" }, 400);
+    await st.setJSON("o/" + hash, o); return json({ ok: true, entry: e, statement: statement(o) });
+  }
+  if (body.kind === "founding") {
+    const f = makeFounding(body); if (!f) return json({ error: "bad_request" }, 400);
+    const first = !o.founding;
+    o.founding = f; await st.setJSON("o/" + hash, o);
+    if (first) {                                   // the team sees it on /team and sends the first invoice
+      const now = new Date(), id = now.toISOString().slice(0, 10).replace(/-/g, "") + "-f" + o.id.slice(0, 6);
+      await teamStore().setJSON("t/" + id, { id, at: now.toISOString(), by: "zhol", owner: "", status: "now", due: null, updated: now.toISOString(),
+        title: `Ordine cliente fondatore: ${o.company}, ${f.vehicles} mezzi × ${f.price} € = ${f.vehicles * f.price} €/mese, P.IVA ${f.vat}, fattura a ${f.email}${f.sdi ? ", SDI/PEC " + f.sdi : ""}` });
+    }
+    return json({ ok: true, office: publicOffice(o) });
   }
   if (body.kind === "delete") { await st.delete("o/" + hash); return json({ ok: true }); }
   return json({ error: "bad_request" }, 400);

@@ -14,7 +14,21 @@ export type Seen = { status: string; event: string | null; p: number };
 export type News = { at: string; ref: string; kind: "risk" | "clear" | "moved"; event_id: string | null; title: string; title_it: string;
                      start: string | null; p: number; p_from: number | null; route: string };
 export type Office = { hash: string; id: string; company: string; whatsapp: string | null; lang: "en" | "it"; created: string;
-                       plan: Ship[]; plan_at: string | null; snapshot: Record<string, Seen>; news: News[]; seen_at: string | null; watched_at: string | null };
+                       plan: Ship[]; plan_at: string | null; snapshot: Record<string, Seen>; news: News[]; seen_at: string | null; watched_at: string | null;
+                       ledger?: Entry[]; founding?: Founding | null };
+
+// ===== the pilot's statement (owner, 20 Nov 2026: «какую киллер фитчу? если найдем первого платящего клиента сможем
+// выиграть теф?»): every alert of the four free weeks, the office's own verdict on it and what it saved, against the
+// criterion written down on day one (outreach/04-pilot-offer.md: at least 3 useful alerts and €500 saved, fewer than
+// 1 wrong alert in 5). When it is met, the founding price is one click away: the step from a pilot to a paying customer.
+export type Verdict = "useful" | "not_needed" | "wrong";
+export type Entry = { id: string; at: string; ref: string; route: string; event_id: string | null; title: string; title_it: string;
+                      start: string | null; p: number; estimate: number | null; verdict: Verdict | null; saved: number | null; verdict_at: string | null };
+export type Founding = { at: string; vehicles: number; vat: string; email: string; sdi: string; price: number; months: number };
+export const PILOT = { days: 28, useful: 3, saved: 500, wrong_share: 0.2 } as const;
+export const FOUNDING = { price: 8, months: 12, later: 12 } as const;   // € per vehicle a month (docs/05-go-to-market.md §5.6)
+export const MAX_LEDGER = 300;
+const VERDICTS: readonly string[] = ["useful", "not_needed", "wrong"];
 
 const line = (v: unknown, max: number) => String(v ?? "").replace(/[\u0000-\u001f\u007f]/g, " ").replace(/\s+/g, " ").trim().slice(0, max);
 
@@ -56,8 +70,69 @@ export function makeOffice(body: any, hash: string, now = new Date()): Office | 
 }
 
 /** What the office sees and the page needs; the number is masked, the hash stays on the server. */
-export const publicOffice = (o: Office) => ({ id: o.id, company: o.company, whatsapp: o.whatsapp ? o.whatsapp.slice(0, 3) + "…" + o.whatsapp.slice(-3) : null,
-  lang: o.lang, created: o.created, plan: o.plan, plan_at: o.plan_at, news: o.news.slice(0, 30), seen_at: o.seen_at, watched_at: o.watched_at });
+export const publicOffice = (o: Office, now = new Date()) => ({ id: o.id, company: o.company, whatsapp: o.whatsapp ? o.whatsapp.slice(0, 3) + "…" + o.whatsapp.slice(-3) : null,
+  lang: o.lang, created: o.created, plan: o.plan, plan_at: o.plan_at, news: o.news.slice(0, 30), seen_at: o.seen_at, watched_at: o.watched_at,
+  ledger: (o.ledger || []).slice(0, 100), statement: statement(o, now), founding: o.founding || null });
+
+/** What one shipment could save by acting on zhol's plan, in euros, as /check shows it (site/assets/shipments.mjs). */
+export function estimateOf(result: any): number | null {
+  const im = result && result.priced && result.priced.impact;
+  if (!im || typeof im.e_keep !== "number") return null;
+  return Math.max(0, Math.round(im.e_keep - Math.min(im.e_now, im.e_alert)));
+}
+
+/** Each new risk the watch found becomes a line of the pilot's statement, waiting for the office's verdict. */
+export function addToLedger(o: Office, news: News[], results: any[]): Entry[] {
+  const byRef = new Map(results.map(r => [r.ship.ref, r]));
+  const fresh = news.filter(n => n.kind === "risk").map(n => {
+    const b = new Uint8Array(6); crypto.getRandomValues(b);
+    return { id: [...b].map(x => x.toString(16).padStart(2, "0")).join(""), at: n.at, ref: n.ref, route: n.route, event_id: n.event_id,
+             title: n.title, title_it: n.title_it, start: n.start, p: n.p, estimate: estimateOf(byRef.get(n.ref)),
+             verdict: null, saved: null, verdict_at: null } as Entry;
+  });
+  o.ledger = fresh.concat(o.ledger || []).slice(0, MAX_LEDGER);
+  return fresh;
+}
+
+/** The office's verdict on one alert, and, if it says so, what it saved in euros (otherwise the estimate counts). */
+export function setVerdict(o: Office, body: any, now = new Date()): Entry | null {
+  const e = (o.ledger || []).find(x => x.id === String(body?.id ?? ""));
+  if (!e) return null;
+  if (body?.verdict === null || body?.verdict === "") { e.verdict = null; e.saved = null; e.verdict_at = null; return e; }
+  if (!VERDICTS.includes(String(body?.verdict))) return null;
+  e.verdict = body.verdict as Verdict;
+  const s = Number(body?.saved);
+  e.saved = e.verdict === "useful" && body?.saved !== undefined && body?.saved !== null && body?.saved !== "" && Number.isFinite(s) && s >= 0 ? Math.min(Math.round(s), 100000) : null;
+  e.verdict_at = now.toISOString();
+  return e;
+}
+
+/** The statement: the four weeks, the alerts and verdicts, the euros saved, and how far the agreed criterion is. */
+export function statement(o: Office, now = new Date()) {
+  const start = new Date(o.created), end = new Date(start.getTime() + PILOT.days * 864e5);
+  const L = o.ledger || [];
+  const useful = L.filter(e => e.verdict === "useful"), wrong = L.filter(e => e.verdict === "wrong").length;
+  const judged = L.filter(e => e.verdict).length;
+  const saved = useful.reduce((a, e) => a + (e.saved ?? e.estimate ?? 0), 0);
+  const confirmed = useful.reduce((a, e) => a + (e.saved ?? 0), 0);
+  const ok = { useful: useful.length >= PILOT.useful, saved: saved >= PILOT.saved, wrong: judged === 0 || wrong / judged < PILOT.wrong_share };
+  return { start: start.toISOString(), end: end.toISOString(), days_left: Math.max(0, Math.ceil((end.getTime() - now.getTime()) / 864e5)),
+           alerts: L.length, useful: useful.length, not_needed: L.filter(e => e.verdict === "not_needed").length, wrong, open: L.length - judged,
+           saved, confirmed, criterion: { ...PILOT }, ok, met: ok.useful && ok.saved && ok.wrong,
+           price: { founding: FOUNDING.price, months: FOUNDING.months, later: FOUNDING.later } };
+}
+
+/** The founding customer's order: the vehicles, the VAT number and where the monthly invoice goes. No payment here:
+ *  the team confirms it and sends the first invoice (a person, as for every alert). */
+export function makeFounding(body: any, now = new Date()): Founding | null {
+  const vehicles = Number(body?.vehicles);
+  const vat = line(body?.vat, 20).toUpperCase().replace(/\s/g, "");
+  const email = line(body?.email, 120);
+  const sdi = line(body?.sdi, 120);
+  if (!Number.isInteger(vehicles) || vehicles < 1 || vehicles > 2000) return null;
+  if (!/^[A-Z]{0,2}[0-9A-Z]{8,14}$/.test(vat) || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || body?.consent !== true) return null;
+  return { at: now.toISOString(), vehicles, vat, email, sdi, price: FOUNDING.price, months: FOUNDING.months };
+}
 
 /** The watch's memory of one check: per shipment, its status, the event on top and its chance. */
 export function snapshotOf(results: any[]): Record<string, Seen> {

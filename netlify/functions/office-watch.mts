@@ -4,7 +4,7 @@
 // A scheduled function: Netlify calls it, nobody else can.
 import type { Config } from "@netlify/functions";
 import { offices, teamStore } from "../lib/store.mts";
-import { MAX_NEWS, diff, snapshotOf } from "../lib/office.mts";
+import { MAX_NEWS, addToLedger, diff, snapshotOf } from "../lib/office.mts";
 import type { Office } from "../lib/office.mts";
 import { check } from "../../site/assets/shipments.mjs";
 
@@ -38,6 +38,7 @@ export default async () => {
       o.watched_at = now.toISOString();
       if (news.length) {
         o.news = news.concat(o.news || []).slice(0, MAX_NEWS);
+        addToLedger(o, news, results);                  // the pilot's statement: each new risk waits for the office's verdict
         if (o.whatsapp) await teamStore().setJSON(`a/${now.toISOString().replace(/[-:.]/g, "")}-${o.id}`,
           { id: `${now.toISOString().replace(/[-:.]/g, "")}-${o.id}`, office: o.id, company: o.company, whatsapp: o.whatsapp, lang: o.lang,
             news, at: now.toISOString(), status: "pending" });
