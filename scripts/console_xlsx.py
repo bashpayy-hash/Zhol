@@ -162,7 +162,7 @@ def build(status_dir: Path, out: Path) -> dict:
     last = n + 1
     for i, r in enumerate(rows, start=2):
         s = status.get(r["id"], {})
-        sent_at, note = rome(s.get("at")), s.get("note", "")
+        sent_at, note = rome(s.get("sent") or s.get("at")), s.get("note", "")   # «Ответили» keeps the sending day in «sent»
         via = "WhatsApp" if re.search("whatsapp", note, re.I) else ("Почта" if s.get("at") else "")
         vals = {
             "A": i - 1, "B": KIND.get(r["type"], r["type"]), "C": r["name"], "D": place(r),

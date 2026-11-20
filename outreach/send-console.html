@@ -11,28 +11,40 @@
   --red: #a2311e; --red-soft: #f4e2da; --sage: #e3ebdd; --sage-ink: #2f5f45;
   --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r: 20px; --ease: cubic-bezier(.22, 1, .36, 1);
+  /* feedback: a warning (already sent), the reminder that is due, a note to read, the hour outside office time */
+  --warn-bg: #fde8e4; --warn-ink: #7a2412; --amber-bg: #fff1d6; --amber-ink: #7a4b00; --note-bg: #fff6dd; --note-ink: #5a4300;
+  --off-ink: #9a3412;
+  /* the channels' own colours, for their buttons only */
+  --wa: #1f9d55; --wa-ink: #1a7f45; --li: #0a66c2; --li-hover: #004182;
+  /* one scale for corners and one for space */
+  --r-card: 24px; --r-box: 16px; --r-field: 14px; --r-chip: 10px; --r-pill: 999px;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --paper: #1f1a17; --card: #2a231f; --line: #3d342e; --rule: #3d342e;
   --ink: #f3ede4; --ink-2: #d6cdc2; --muted: #a99e93;
-  --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0; color-scheme: dark } }
+  --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0;
+  --warn-bg: #4a2620; --warn-ink: #f5c2b5; --amber-bg: #4a3a17; --amber-ink: #f4d58d; --note-bg: #3f3618; --note-ink: #f1dd9c;
+  --off-ink: #f0a27a; --wa-ink: #6fd39b; color-scheme: dark } }
 :root[data-theme="dark"] {
   --paper: #1f1a17; --card: #2a231f; --line: #3d342e; --rule: #3d342e;
   --ink: #f3ede4; --ink-2: #d6cdc2; --muted: #a99e93;
-  --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0; color-scheme: dark }
+  --red: #f09580; --red-soft: #4a2c24; --sage: #2c3a30; --sage-ink: #9fd0b0;
+  --warn-bg: #4a2620; --warn-ink: #f5c2b5; --amber-bg: #4a3a17; --amber-ink: #f4d58d; --note-bg: #3f3618; --note-ink: #f1dd9c;
+  --off-ink: #f0a27a; --wa-ink: #6fd39b; color-scheme: dark }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-.row .wa { color: #1a7f45; font-weight: 600; }
-.btn.wa-btn { background: #1f9d55; border-color: #1f9d55; color: #fff; }
-.dup-warn { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fde8e4; color: #7a2412; font-size: 14px; line-height: 1.4; }
-.pill.remind { background: #fff1d6; color: #7a4b00; }
+.row .wa { color: var(--wa-ink); font-weight: 600; }
+.btn.wa-btn { background: var(--wa); border-color: var(--wa); color: #fff; }
+.dup-warn { margin: 8px 0 4px; padding: 10px 12px; border-radius: var(--r-chip); background: var(--warn-bg); color: var(--warn-ink); font-size: 14px; line-height: 1.4; }
+.pill.remind { background: var(--amber-bg); color: var(--amber-ink); }
 .remind-box { border-top: 1px dashed var(--line); padding-top: 14px; }
 /* a call first, then the link to the company's own lanes (scripts/lane_links.py; owner, 14 Nov 2026) */
-.call-box { background: var(--sage); border-radius: 16px; padding: 14px 16px; display: grid; gap: 10px; }
+.call-box { background: var(--sage); border-radius: var(--r-box); padding: 14px 16px; display: grid; gap: 10px; }
 .call-box .lab > span:first-child { color: var(--sage-ink); font-weight: 600; }
 .call-box .msg { background: var(--card); }
 .call-box .events { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
-.paste-note { margin: 8px 0 4px; padding: 10px 12px; border-radius: 10px; background: #fff6dd; color: #5a4300; font-size: 14px; line-height: 1.4; }
+.paste-note { margin: 8px 0 4px; padding: 10px 12px; border-radius: var(--r-chip); background: var(--note-bg); color: var(--note-ink); font-size: 14px; line-height: 1.4; }
 body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
 .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -50,7 +62,7 @@ button { font: inherit; }
 .track .r { background: var(--sage-ink); } .track .s { background: var(--red); }
 .sync { font-size: 13px; color: var(--muted); }
 .rome { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.rome.off { color: #9a3412; font-weight: 600; }
+.rome.off { color: var(--off-ink); font-weight: 600; }
 
 /* intro */
 .intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 24px 40px; align-items: end; padding-block: 28px 20px; }
@@ -60,12 +72,12 @@ button { font: inherit; }
 .how { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--muted); }
 .how b { color: var(--ink); font-weight: 600; }
 .sign { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
-.sign input { font: inherit; font-size: 15px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 11px 14px; min-height: 44px; }
+.sign input { font: inherit; font-size: 15px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: var(--r-field); padding: 11px 14px; min-height: 44px; }
 
 /* tabs and filters */
 .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding-block: 6px 16px; border-bottom: 1px solid var(--rule); }
 .tabs { display: flex; gap: 4px; flex-wrap: wrap; }
-.tabs button, .chips button { border: 1px solid transparent; background: none; color: var(--muted); border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer; transition: background-color .16s, color .16s; }
+.tabs button, .chips button { border: 1px solid transparent; background: none; color: var(--muted); border-radius: var(--r-pill); padding: 8px 12px; min-height: 40px; cursor: pointer; transition: background-color .16s, color .16s; }
 .tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .tabs button .n { font-size: 12px; opacity: .7; margin-left: 4px; font-variant-numeric: tabular-nums; }
 .chips { display: flex; gap: 4px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
@@ -78,7 +90,7 @@ button { font: inherit; }
 /* the workbench */
 .bench { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 24px; padding-block: 18px 48px; align-items: start; }
 .list { display: flex; flex-direction: column; gap: 6px; max-height: calc(100vh - 140px); overflow-y: auto; padding-right: 4px; position: sticky; top: 70px; }
-.row { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; padding: 12px 14px; border: 1px solid transparent; border-radius: 16px; background: none; color: var(--ink-2); cursor: pointer; transition: background-color .16s, border-color .16s; }
+.row { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; padding: 12px 14px; border: 1px solid transparent; border-radius: var(--r-box); background: none; color: var(--ink-2); cursor: pointer; transition: background-color .16s, border-color .16s; }
 .row:hover { background: var(--card); }
 .row[aria-current="true"] { background: var(--card); border-color: var(--line); }
 .row .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--rule); }
@@ -99,24 +111,24 @@ button { font: inherit; }
 .pill.skip { background: var(--line); color: var(--muted); }
 .row.sent b, .row.replied b, .row.skip b { color: var(--ink-2); font-weight: 500; }
 .row .noaddr { color: var(--red); }
-.btn.li-btn { background: #0a66c2; border-color: #0a66c2; color: #fff; }
-.btn.li-btn:hover { background: #004182; border-color: #004182; }
+.btn.li-btn { background: var(--li); border-color: var(--li); color: #fff; }
+.btn.li-btn:hover { background: var(--li-hover); border-color: var(--li-hover); }
 .tabs button .n { font-weight: 500; }
 
-.detail { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 26px 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 26px 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 .detail .head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
 .detail h2 { font-size: 24px; letter-spacing: -0.02em; line-height: 1.2; }
 .detail .meta { font-size: 14px; color: var(--muted); margin-top: 2px; }
 .kind { font-size: 13px; font-weight: 600; color: var(--sage-ink); background: var(--sage); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
-.why { background: var(--red-soft); border-radius: 16px; padding: 14px 16px; font-size: 14.5px; color: var(--ink); }
+.why { background: var(--red-soft); border-radius: var(--r-box); padding: 14px 16px; font-size: 14.5px; color: var(--ink); }
 .why span { display: block; font-size: 13px; font-weight: 600; color: var(--red); margin-bottom: 4px; }
 .why a { font-size: 13px; }
 .contacts { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; }
-.contacts code { font: 14px/1.4 var(--font); background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 4px 10px; color: var(--ink); user-select: all; }
+.contacts code { font: 14px/1.4 var(--font); background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-chip); padding: 4px 10px; color: var(--ink); user-select: all; }
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field .lab { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: var(--muted); }
 .subject { color: var(--ink); font-weight: 500; }
-.msg { margin: 0; white-space: pre-wrap; font: 15px/1.6 var(--font); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; max-height: 420px; overflow-y: auto; }
+.msg { margin: 0; white-space: pre-wrap; font: 15px/1.6 var(--font); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-box); padding: 16px 18px; max-height: 420px; overflow-y: auto; }
 .msg mark { background: var(--red-soft); color: var(--ink); border-radius: 4px; padding: 0 2px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 1.5px solid var(--ink); background: none; color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color .16s, color .16s, transform .16s var(--ease); }
 .btn:active { transform: scale(.98); }
@@ -125,14 +137,12 @@ a.btn { text-decoration: none; }
 .btn.small { min-height: 34px; padding: 6px 14px; font-size: 13px; border-width: 1px; }
 .btn.on { background: var(--ink); color: var(--paper); }
 .btn.ok.on { background: var(--sage-ink); border-color: var(--sage-ink); color: var(--paper); }
-.acts { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 6px; border-top: 1px solid var(--line); }
-.acts .status { font-size: 13px; color: var(--muted); margin-left: auto; }
 .placeholder { color: var(--muted); padding: 40px 20px; text-align: center; }
 textarea.fallback { width: 100%; min-height: 120px; font: 13px/1.4 var(--font); }
 
 /* posts */
 .posts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding-block: 18px 48px; }
-.post { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+.post { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 22px; display: flex; flex-direction: column; gap: 12px; }
 .post h3 { font-size: 16px; }
 .post .msg { max-height: 260px; }
 .ru { margin-top: 10px; } .ru summary { cursor: pointer; font-size: 14px; color: var(--muted); padding: 4px 0; } .ru .msg { margin-top: 8px; }
@@ -151,6 +161,73 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 .about { margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: var(--ink); max-width: 640px; }
+
+/* ===== daily work first (owner, 20 Nov 2026: «используй /design:design-system для улучшения юзер экспириенса консоли,
+   потому что ей мы будем пользоваться»). Components: the status switch and the next step at the top of a card, what is
+   done folded away, a toast with «Отменить», the reminders that are due counted on every tab. */
+.intro { padding-block: var(--s5) var(--s4); align-items: center; }
+.intro h1 { font-size: clamp(22px, 2.6vw, 28px); }
+.how-box { margin-top: var(--s3); }
+.how-box > summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--red); list-style: none; display: inline-flex; gap: 6px; min-height: 32px; align-items: center; }
+.how-box > summary::-webkit-details-marker { display: none; }
+.how-box > summary::before { content: "+"; width: 1em; }
+.how-box[open] > summary::before { content: "−"; }
+.how-box p { margin: var(--s2) 0 0; max-width: 70ch; }
+
+/* tab badge: reminders due in that tab */
+.tabs .due { display: inline-block; margin-left: 6px; padding: 0 7px; border-radius: var(--r-pill); background: var(--amber-bg); color: var(--amber-ink); font-size: 11.5px; font-weight: 700; line-height: 18px; font-variant-numeric: tabular-nums; }
+.tabs button[aria-pressed="true"] .due { background: var(--amber-ink); color: var(--amber-bg); }
+.chips button.hot { border-color: var(--amber-ink); background: var(--amber-bg); color: var(--amber-ink); font-weight: 600; }
+.chips button.hot .n { color: var(--amber-ink); }
+.row .fit { white-space: nowrap; }
+
+/* the status switch: four states, one tap, at the top of the card */
+.statusbar { position: sticky; top: 58px; z-index: 3; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s3);
+  margin: calc(-1 * var(--s2)) calc(-1 * var(--s2)) 0; padding: var(--s2); border-radius: var(--r-box); background: var(--card); box-shadow: 0 6px 16px -14px rgba(53, 43, 40, .45); }
+.seg-status { display: inline-flex; padding: 3px; gap: 2px; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--paper); }
+.seg-status button { border: 0; background: none; color: var(--muted); font-size: 13.5px; font-weight: 600; padding: 7px 14px; min-height: 36px; border-radius: var(--r-pill); cursor: pointer; transition: background-color .16s, color .16s; }
+.seg-status button:hover { color: var(--ink); }
+.seg-status button[aria-checked="true"] { background: var(--ink); color: var(--paper); }
+.seg-status button[data-v="replied"][aria-checked="true"] { background: var(--sage-ink); }
+.seg-status button[data-v="sent"][aria-checked="true"] { background: var(--red); }
+.statusbar .who { font-size: 13px; color: var(--muted); margin-left: auto; }
+
+/* the next step: one sentence on what to do now, coloured by what it is */
+.next { border-radius: var(--r-box); padding: var(--s3) var(--s4); font-size: 15px; line-height: 1.45; color: var(--ink); background: var(--paper); border: 1px solid var(--line); }
+.next b { display: block; font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+.next.due { background: var(--amber-bg); border-color: transparent; color: var(--amber-ink); }
+.next.due b { color: var(--amber-ink); }
+.next.ok { background: var(--sage); border-color: transparent; color: var(--sage-ink); }
+.next.ok b { color: var(--sage-ink); }
+
+/* what is already done, folded away */
+.done { border: 1px solid var(--line); border-radius: var(--r-box); padding: 0 var(--s4); background: var(--paper); }
+.done > summary { cursor: pointer; list-style: none; padding: var(--s3) 0; font-size: 14px; font-weight: 600; color: var(--ink-2); display: flex; gap: var(--s2); align-items: center; min-height: 44px; }
+.done > summary::-webkit-details-marker { display: none; }
+.done > summary::before { content: "+"; color: var(--muted); width: 1em; }
+.done[open] > summary::before { content: "−"; }
+.done[open] { padding-bottom: var(--s4); }
+.done > .field + .field, .done > .why + .field { margin-top: var(--s4); }
+
+/* the toast: what was just marked, with a way back */
+.toast { position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 16px); opacity: 0; z-index: 20;
+  display: flex; align-items: center; gap: var(--s3); padding: 10px 10px 10px 18px; border-radius: var(--r-pill); background: var(--ink); color: var(--paper);
+  font-size: 14px; box-shadow: 0 12px 28px -12px rgba(0, 0, 0, .45); transition: opacity .2s var(--ease), transform .2s var(--ease); pointer-events: none; max-width: calc(100vw - 32px); }
+.toast.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast button { border: 0; border-radius: var(--r-pill); padding: 6px 14px; min-height: 34px; background: var(--paper); color: var(--ink); font-weight: 600; cursor: pointer; }
+.kbd { font-size: 12px; color: var(--muted); }
+/* a phone: the progress bar scrolls away with the page instead of covering a quarter of the screen; the status
+   switch takes the full width, two by two, and stays at the top of the card */
+@media (max-width: 900px) {
+  .bar { position: static; }
+  .bar .wrap { gap: 4px 12px; padding-block: 10px; }
+  .bar .track { order: 3; flex-basis: 100%; }
+  .statusbar { top: 0; margin-inline: -8px; }
+  .statusbar .who { margin-left: 0; width: 100%; }
+  .seg-status { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 3px; border-radius: var(--r-box); }
+  .seg-status button { padding: 6px 8px; font-size: 14px; min-height: 44px; border-radius: var(--r-field); }
+}
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 </style>
 
 <div class="bar"><div class="wrap">
@@ -163,10 +240,12 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 <div class="wrap">
   <header class="intro">
     <div>
-      <span class="kicker">zhol · опрос офисов перевозок</span>
+      <span class="kicker">zhol · консоль рассылки</span>
       <h1>Кому написать, что написать и кто уже отправил</h1>
+      <details class="how-box"><summary>Как это устроено</summary>
       <p>Каждое письмо устроено одинаково: кто мы (студент Bocconi, AI-платформа zhol, 100 из ~500 в TEF Ignition 2026, грант 2 000 €), проблема и цифры, которые уже есть, «это лишь видимая часть, хотим уменьшить её с помощью ИИ», Италия — начало, цель — вся Европа, для начала измерить, просьба и одна ссылка на опрос. За рубеж — на языке адресата, ниже полный английский текст.</p>
-      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook» или «Написать в WhatsApp»: адрес и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Лучше в рабочие часы по Риму (время — в полосе сверху); не больше 40 писем в день с одного ящика, остальное запланировать на завтра</li></ul>
+      <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook» или «Написать в WhatsApp»: адрес и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Лучше в рабочие часы по Риму (время — в полосе сверху); не больше 40 писем в день с одного ящика, остальное запланировать на завтра</li><li><b>↑ ↓</b> листать адресатов с клавиатуры</li></ul>
+      </details>
     </div>
     <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
       <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
@@ -215,7 +294,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   // iPadOS Safari introduces itself as a Mac: a Mac with a touch screen is an iPad
   const APPLE_TOUCH = /iPad|iPhone|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 
-  // the time in Rome: the letters of 10 and 11 Nov 2026 reached Italy between 01:40 and 04:10 at night, under the
+  // the time in Rome: the letters of 10 and 11 Nov 2026 reached Italy between midnight and 04:10, under the
   // morning's mail. Good hours are working days 9–12 and 14–17 in Rome; otherwise schedule the send in Outlook.
   function romeClock() {
     const now = new Date(), f = o => new Intl.DateTimeFormat("ru-RU", Object.assign({ timeZone: "Europe/Rome" }, o)).format(now);
@@ -232,7 +311,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 
   let status = {};            // id -> {state, by, at}
   let db = null, user = null, shared = false, writable = true;
-  let fType = store.get("zhol-tab") || "bocconi", fState = store.get("zhol-state") || "any", q = "", pick = null;
+  let fType = store.get("zhol-tab") || "company", fState = store.get("zhol-state") || "any", q = "", pick = null;
 
   const me = $("me-name");
   me.value = store.get("zhol-sign") || "";
@@ -326,11 +405,30 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     return !q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q);
   }
 
+  // what was just marked, with a way back (design system audit, 20 Nov 2026: a misclick costs nothing)
+  let toastT = 0;
+  function toast(msg, undo) {
+    let box = $("toast");
+    if (!box) { box = el("div", "toast"); box.id = "toast"; box.setAttribute("role", "status"); box.setAttribute("aria-live", "polite"); document.body.append(box); }
+    box.textContent = ""; box.append(el("span", null, msg));
+    if (undo) { const b = el("button", null, "Отменить"); b.type = "button"; b.addEventListener("click", () => { box.classList.remove("on"); undo(); }); box.append(b); }
+    box.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => box.classList.remove("on"), 6000);
+  }
+  async function restore(r, prev) {
+    if (prev) status[r.id] = prev; else delete status[r.id];
+    pick = r.id; render();
+    if (shared && writable) { try { const ref = db.collection("status").doc(r.id); prev ? await ref.set(prev) : await ref.delete(); } catch (e) { /* the next snapshot shows the truth */ } }
+    else store.set("zhol-status", JSON.stringify(status));
+  }
+
   async function setState(r, state) {
     const prev = status[r.id];
     if (prev && prev.state === state) state = "";          // tapping the active state clears it
     const id = user ? await user.id() : null;
     const next = state ? { state, by: id, at: new Date().toISOString() } : null;
+    // «Ответили» keeps the day the letter went out and the reminder (design system audit, 20 Nov 2026: it was lost)
+    if (next && prev && prev.state === "sent" && state !== "sent") { next.sent = prev.sent || prev.at; if (prev.reminded) next.reminded = prev.reminded; }
+    if (next && prev && prev.sent && state === "sent") next.at = prev.sent;
     // after «Отправлено» or «Не писать» the next one still to write opens by itself
     if (next && (state === "sent" || state === "skip") && !(prev && prev.state)) {
       const queue = ROWS.filter(x => visible(x) && !stateOf(x.id) && x.id !== r.id);
@@ -340,6 +438,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     }
     if (next) status[r.id] = next; else delete status[r.id];
     render();
+    toast((next ? "«" + GROUP[state] + "»" : "Статус снят") + " · " + r.name, () => restore(r, prev));
     if (shared && writable) {
       const ref = db.collection("status").doc(r.id);
       try { next ? await ref.set(next) : await ref.delete(); }
@@ -357,6 +456,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const prev = status[r.id]; if (!prev) return;
     const next = Object.assign({}, prev, { reminded: new Date().toISOString() });
     status[r.id] = next; render();
+    toast("Напоминание отмечено · " + r.name, () => restore(r, prev));
     if (shared && writable) { try { await db.collection("status").doc(r.id).set(next); } catch (e) { status[r.id] = prev; render(); } }
     else store.set("zhol-status", JSON.stringify(status));
   }
@@ -404,7 +504,9 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       box.append(el("div", "small", "События на их направлениях (радар на " + day(k.radar_day) + ", ссылка всегда показывает свежие):"), ul);
     }
     if (k.reminder && ["sent", "replied"].includes(stateOf(r.id))) {
-      box.append(el("div", "small", "Им уже писали. После звонка отправьте напоминание ниже: в нём ссылка на их направления и бесплатный пилот."));
+      box.append(el("div", "small", stateOf(r.id) === "replied"
+        ? "Они ответили. Позвоните, чтобы договориться о бесплатном пилоте на их направлениях."
+        : "Им уже писали. После звонка отправьте напоминание выше: в нём ссылка на их направления и бесплатный пилот."));
       return box;
     }
     const l2 = el("div", "lab"); l2.append(el("span", null, "После звонка: сообщение со ссылкой (или вместо звонка, если не дозвонились)"));
@@ -444,14 +546,13 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (r.about) t.append(el("div", "about", "Кто это: " + r.about));
     const tag = el("div"); tag.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;align-items:center";
     tag.append(el("span", "kind", KIND[r.type] || r.type));
-    const sNow = status[r.id];
-    if (sNow && sNow.state) tag.append(el("span", "pill " + sNow.state, GROUP[sNow.state] + (sNow.at ? " · " + day(sNow.at) : "")));
     head.append(t, tag);
     box.append(head);
+    let whyEl = null;
     if (r.why) {
       const w = el("div", "why"); w.append(el("span", null, r.type === "bocconi" ? "Почему ему или ей" : r.type === "linkedin" ? "Почему пишем именно этому человеку (личный абзац в письме выделен)" : "Почему им (абзац в письме выделен)"), document.createTextNode((r.why_ru || r.why) + " "));
       if (r.why_src) { const a = el("a", null, "Источник"); a.href = r.why_src; a.target = "_blank"; a.rel = "noopener"; w.append(a); }
-      box.append(w);
+      box.append(w); whyEl = w;
     }
     const c = el("div", "contacts");
     if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "btn small", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b);
@@ -466,7 +567,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     else if (r.where && !r.to) c.append(el("span", null, r.where));
     const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
     box.append(c);
-    if (r.call) box.append(callBox(r));
+    const callEl = r.call ? callBox(r) : null;
+    if (callEl) box.append(callEl);
     const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : r.type === "linkedin" ? "Тема сообщения в LinkedIn (InMail)" : "Тема письма"));
     const sb = el("button", "btn small", "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
     if (r.type !== "group") sl.append(sb);
@@ -563,21 +665,74 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (liNote) box.append(liNote);
     // for the team only: what the Italian letter says (never sent)
     if (r.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "Перевод для команды (не отправляется)"), el("pre", "msg", r.message_ru)); mf.append(d); }
-    if (followOf(r) && stateOf(r.id) === "sent") box.append(reminder(r));
-    const acts = el("div", "acts"), st = stateOf(r.id), s = status[r.id];
-    [["sent", "Отправлено", ""], ["replied", "Ответили", " ok"], ["skip", "Не писать", ""]].forEach(([k, label, cls]) => {
-      const b = el("button", "btn small" + cls + (st === k ? " on" : ""), label); b.type = "button";
-      b.setAttribute("aria-pressed", String(st === k));
-      b.addEventListener("click", () => setState(r, k));
-      acts.append(b);
+    const remEl = followOf(r) && stateOf(r.id) === "sent" ? reminder(r) : null;
+    const st = stateOf(r.id), s = status[r.id];
+
+    // the status switch, at the top and always in reach (it was under two or three screens of letter)
+    const bar = el("div", "statusbar"), seg = el("div", "seg-status");
+    seg.setAttribute("role", "radiogroup"); seg.setAttribute("aria-label", "Статус");
+    [["", "Не отправлено"], ["sent", "Отправлено"], ["replied", "Ответили"], ["skip", "Не писать"]].forEach(([k, label]) => {
+      const b = el("button", null, label); b.type = "button"; b.dataset.v = k || "todo";
+      b.setAttribute("role", "radio"); b.setAttribute("aria-checked", String(st === k));
+      b.addEventListener("click", () => { if (st !== k) setState(r, k || st); });   // «Не отправлено» clears the state
+      seg.append(b);
     });
+    bar.append(seg);
     if (s) {
       const who = s.by && ps[s.by] ? (ps[s.by].isMe ? "вы" : (ps[s.by].name || "коллега")) : "";
-      acts.append(el("span", "status", [who, fmt(s.at)].filter(Boolean).join(" · ")));
+      bar.append(el("span", "who", [who, fmt(s.at)].filter(Boolean).join(" · ")));
     }
-    box.append(acts);
+    const [tone, title, text] = nextStep(r), nx = el("div", "next" + (tone ? " " + tone : ""));
+    nx.append(el("b", null, title), document.createTextNode(text));
+
+    // the order follows the work: what to do now first, what is done folded away
+    const sentIso = s && (s.sent || s.at), sentAt = sentIso ? day(sentIso) + " в " + hhmm(sentIso) : "";
+    const fold = (label, nodes) => { const d = el("details", "done"); d.append(el("summary", null, label)); nodes.filter(Boolean).forEach(n => d.append(n)); return d; };
+    const parts = [head, bar, nx];
+    if (st) {
+      parts.push(remEl, c, callEl, fold(st === "sent" || st === "replied" ? "Первое письмо · отправлено " + sentAt : "Письмо и почему им", [whyEl, sf, mf, liNote]));
+    } else if (callEl) {
+      // a company not written to yet: the call and the message with its lanes first; the survey letter of the first wave stays one tap away
+      parts.push(c, callEl, fold("Письмо с опросом (первая волна)", [whyEl, sf, mf, liNote]));
+    } else {
+      parts.push(whyEl, c, sf, mf, liNote);
+    }
+    box.replaceChildren(...parts.filter(Boolean));
     return box;
   }
+
+  // one sentence on what to do now, by the state (design system audit, 20 Nov 2026)
+  function nextStep(r) {
+    const s = status[r.id], st = stateOf(r.id);
+    if (st === "replied") return ["ok", "Ответили", "Запишите разговор в outreach/interview_log.csv. Если это офис перевозок, предложите бесплатный пилот на их направлениях."];
+    if (st === "skip") return ["", "Не пишем", "Адресат отмечен «Не писать». Передумали — нажмите «Не отправлено»."];
+    if (st === "sent") {
+      if (!followOf(r)) return ["", "Ждём ответа", "Напоминания для этого адресата нет. Ответили — отметьте «Ответили»."];
+      if (s.reminded) return ["", "Ждём ответа", "Напоминание отправлено " + day(s.reminded) + ". Больше не пишем."];
+      const from = remindFrom(s);
+      if (from <= new Date()) return ["due", "Пора напомнить", "Одно и последнее напоминание — сразу под этим." + (r.call ? " Можно сначала позвонить: текст звонка ниже." : "") + " Отправили — нажмите «Напоминание отправлено»."];
+      return ["", "Ждём ответа", "Напомнить можно с " + day(from.toISOString()) + (viaWa(s) ? " (после WhatsApp ждём три рабочих дня)." : " (два рабочих дня после письма).")];
+    }
+    if (r.call) return ["", "Следующий шаг", "Позвоните: 30 секунд по-итальянски, текст ниже. Потом отправьте сообщение со ссылкой на их направления и отметьте «Отправлено»."];
+    if (r.type === "group") return ["", "Следующий шаг", "Спросите администратора группы, можно ли опубликовать. Потом опубликуйте и отметьте «Отправлено»."];
+    if (r.type === "linkedin") return ["", "Следующий шаг", "Напишите в LinkedIn кнопкой ниже, потом отметьте «Отправлено»."];
+    return ["", "Следующий шаг", (r.wa ? "Напишите в WhatsApp или откройте письмо в Outlook" : r.to ? "Откройте письмо в Outlook" : "Адреса нет: найдите контакт на сайте или в Google и отправьте письмо") + ", потом отметьте «Отправлено»."];
+  }
+
+  const listed = () => ROWS.filter(visible).sort((a, b) => ORDER[stateOf(a.id)] - ORDER[stateOf(b.id)]);
+
+  // ↑ ↓ (or J K) move through the list on a computer, outside the fields
+  document.addEventListener("keydown", e => {
+    if (e.altKey || e.ctrlKey || e.metaKey || narrow.matches || fType === "posts") return;
+    if (!["ArrowDown", "ArrowUp", "j", "k"].includes(e.key)) return;
+    const tg = e.target, tag = (tg.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || tag === "select" || tg.isContentEditable || (tg.closest && tg.closest(".seg-status, .msg"))) return;
+    const ids = listed().map(r => r.id); if (!ids.length) return;
+    const at = ids.indexOf(pick), step = e.key === "ArrowDown" || e.key === "j" ? 1 : -1;
+    pick = ids[Math.max(0, Math.min(ids.length - 1, at < 0 ? 0 : at + step))];
+    e.preventDefault(); render();
+    const cur = document.querySelector('#list .row[aria-current="true"]'); if (cur) cur.scrollIntoView({ block: "nearest" });
+  });
 
   let seq = 0;
   async function render() {
@@ -593,7 +748,10 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     ["bocconi", "linkedin", "company", "association", "press", "group", "abroad"].forEach(k => {
       const all = ROWS.filter(r => r.type === k), done = all.filter(r => stateOf(r.id) && stateOf(r.id) !== "skip").length;
       $("n-" + k).textContent = done + " из " + all.length;
-      $("n-" + k).parentNode.title = "отправлено " + done + " из " + all.length;
+      const due = all.filter(remindDue).length, tab = $("n-" + k).parentNode;
+      let badge = tab.querySelector(".due"); if (!badge) { badge = el("span", "due"); tab.append(badge); }
+      badge.textContent = due; badge.hidden = !due;
+      tab.title = "отправлено " + done + " из " + all.length + (due ? " · пора напомнить: " + due : "");
     });
     // the status chips count what is in this tab
     const inTab = ROWS.filter(r => r.type === fType && (!q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q)));
@@ -604,13 +762,14 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     // WhatsApp numbers exist only in the privately published copy (outreach/private/whatsapp.csv)
     $("c-wa").textContent = inTab.filter(r => r.wa).length; $("chip-wa").hidden = !ROWS.some(r => r.wa);
     $("c-remind").textContent = inTab.filter(remindDue).length;
+    $("c-remind").parentNode.classList.toggle("hot", inTab.some(remindDue));
 
     const isPosts = fType === "posts";
     $("posts").hidden = !isPosts; $("bench").hidden = isPosts; $("f-state").hidden = isPosts; $("q").hidden = isPosts;
     if (isPosts) return;
 
     const list = $("list"); list.textContent = "";
-    const rows = ROWS.filter(visible).sort((a, b) => ORDER[stateOf(a.id)] - ORDER[stateOf(b.id)]);
+    const rows = listed();
     if (pick && !rows.some(r => r.id === pick)) pick = null;
     if (!pick && rows.length && !narrow.matches) pick = rows[0].id;
     if (!rows.length) list.append(el("div", "empty", fState === "todo" ? "Здесь всё отправлено." : "Ничего не найдено."));
@@ -631,6 +790,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       const right = remindDue(r) ? el("span", "pill remind", "пора напомнить")
                   : st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) + (st.reminded ? " · напомнили" : "") : GROUP[st.state])
                                    : el("span", "fit", r.fit && r.type === "company" ? "★ " + r.fit : "");
+      if (r.fit && r.type === "company" && !(st && st.state) && !remindDue(r)) { right.title = "Приоритет " + r.fit + " из 3: насколько компания подходит"; right.setAttribute("aria-label", right.title); }
       b.append(el("span", "dot"), t, right);
       b.addEventListener("click", () => { pick = pick === r.id && narrow.matches ? null : r.id; render(); });
       list.append(b);
