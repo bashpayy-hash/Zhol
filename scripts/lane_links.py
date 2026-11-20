@@ -27,6 +27,9 @@ from datetime import date, timedelta
 from pathlib import Path
 from urllib.parse import quote
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from signature import SIGN   # noqa: E402  «zhol team» (owner, 20 Nov 2026)
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outreach"
 SITE = "https://zhol.live"
@@ -269,7 +272,7 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         + "Ho preparato una pagina con alcuni viaggi di esempio " + page_it + ", quanto costerebbe lasciarli come sono "
         "e cosa conviene fare, ogni evento con la sua fonte\n" + link + "\n\n"
         "Se vi è utile, vorrei capire in **quindici minuti** come gestite oggi questi casi. Possiamo sentirci questa settimana?\n\n"
-        "Grazie e buona giornata,\n[Nome]")
+        "Grazie e buona giornata,\n" + SIGN)
     message_ru = (
         "Здравствуйте. Я Алихан Башпай, студент Bocconi; мы с командой делаем zhol (стандартная фраза «кто мы»), "
         "в 100 из ~500 TEF Ignition 2026, грант 2 000 €, цель — вся Европа. "
@@ -296,7 +299,7 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         "fare, ogni evento con la sua fonte\n" + link + "\n\n"
         "Se vi serve, possiamo provarlo **gratis per quattro settimane** sulle vostre spedizioni, senza installare niente. "
         "Basta rispondere a questa email. È il mio ultimo messaggio, non vi scriverò ancora.\n\n"
-        "Grazie e buona giornata,\n[Nome]")
+        "Grazie e buona giornata,\n" + SIGN)
     reminder_ru = (
         "Напоминание тем, кому уже ушло письмо с опросом, одно и последнее. Не просим минуту второй раз, а даём пользу: "
         "кто мы (стандартная фраза, TEF Ignition 2026, грант 2 000 €, цель — вся Европа), их направления, "

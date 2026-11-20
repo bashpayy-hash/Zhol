@@ -12,8 +12,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 MEMIT = "https://www.unibocconi.it/sites/default/files/Invito%20Consegna%20Diplomi%20Memit21%20febbraio2025-3_2.pdf"
 
 LINK = {"it": "https://zhol.live/it/sondaggio?src=", "en": "https://zhol.live/survey?src=", "de": "https://zhol.live/de/umfrage?src="}
-SIGN = {"it": "Alikhan Bashpay · Università Bocconi · zhol", "en": "Alikhan Bashpay · Bocconi University · zhol",
-        "de": "Alikhan Bashpay · Universität Bocconi · zhol"}
+from signature import SIGN as _SIGN   # «zhol team» (owner, 20 Nov 2026)
+SIGN = {lang: _SIGN for lang in ("it", "en", "de")}
 HELLO = {"it": "Gentile [Nome],", "en": "Dear [Name],", "de": "Guten Tag [Name],"}
 THANKS = {"it": "Grazie mille,", "en": "Thank you very much,", "de": "Vielen Dank,"}
 ENGLISH_BELOW = {"it": "(La versione inglese è qui sotto.)", "de": "(Die englische Fassung finden Sie unten.)"}

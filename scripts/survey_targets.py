@@ -35,7 +35,7 @@ PRESS = [  # outlet, known address (to verify), note
     ("Rivista TIR", "", ""), ("Vado e Torno", "", ""), ("Trasporti-Italia", "", ""),
 ]
 
-SIGN = "Alikhan Bashpay · Università Bocconi · zhol"
+from signature import SIGN   # «zhol team» (owner, 20 Nov 2026)
 
 # The message, in the owner's order (DESIGN.md, 8 Nov 2026): who we are (TEF, grant, Bocconi), how big the problem
 # is (the most reliable figure), what it means for this company (its lanes, its region, a recent event with a
@@ -740,7 +740,7 @@ def abroad_message(name: str, kind: str, country: str, link: str) -> tuple[str, 
     gift = ("For your pieces our radar can be a free source, zhol.live/radar, with the bans, closures and strikes of the next "
             "eight weeks, the chance of each and the sources, free to use when citing zhol.") if kind == "press" else ABROAD_GIFT
     text = (f"{head}\n\n{why}\n\n{ask}\n{link}\n\n{ABROAD_WHO}\n\n{gift}\n\nThank you,\n"
-            "Alikhan Bashpay · Bocconi University · zhol" + ("\nIf you prefer not to receive further messages, just reply «no»." if kind == "company" else ""))
+            + SIGN + ("\nIf you prefer not to receive further messages, just reply «no»." if kind == "company" else ""))
     return text, why
 
 

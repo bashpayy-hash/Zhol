@@ -24,6 +24,15 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   ok(await p.$eval(".how-box", e => !e.open), "the details are folded away");
   ok(await p.$$eval(".how3 li", ls => ls.length === 3) && await p.$eval(".purpose", e => /опрос/.test(e.textContent)), "the page says what this is and the three moves");
   ok(await p.evaluate(() => document.documentElement.lang === "ru" && !!document.querySelector("main")), "the page has a language and a main area");
+  // signed «zhol team», with «изменить» and a field for a name (owner, 20 Nov 2026)
+  const peekText = () => p.$eval("#detail .steps details.peek pre", e => e.textContent);
+  ok(await p.$eval("#sig-name", e => e.textContent) === "zhol team" && await p.$eval("#sig-form", e => e.hidden)
+     && /^zhol team$/m.test(await peekText()), "letters are signed «zhol team» by default");
+  await p.click("#sig-edit"); await p.fill("#me-name", "Alikhan Bashpay · zhol team"); await p.click("#sig-form button[type=submit]"); await p.waitForTimeout(150);
+  ok(await p.$eval("#sig-name", e => e.textContent) === "Alikhan Bashpay · zhol team" && await p.$eval("#sig-form", e => e.hidden)
+     && /^Alikhan Bashpay · zhol team$/m.test(await peekText()) && !/^zhol team$/m.test(await peekText()), "«изменить» puts the typed name in the signature");
+  await p.click("#sig-edit"); await p.fill("#me-name", ""); await p.keyboard.press("Enter"); await p.waitForTimeout(150);
+  ok(await p.$eval("#sig-name", e => e.textContent) === "zhol team" && /^zhol team$/m.test(await peekText()), "an empty field is «zhol team» again");
 
   // a company not written to yet: the path is the letter with its lanes, then the mark (no calls: owner, 20 Nov 2026);
   // the rest folded under «Подробнее»

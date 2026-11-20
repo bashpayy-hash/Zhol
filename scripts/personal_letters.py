@@ -29,6 +29,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lane_links as L        # noqa: E402  the radar, its events on a set of lanes, Italian dates
 import survey_targets as S    # noqa: E402  who an association is (kind, region) and what we ask of it
+from signature import SIGN     # noqa: E402  «zhol team» (owner, 20 Nov 2026)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outreach" / "personal_letters.json"
@@ -231,7 +232,7 @@ def association_letter(r: dict, data: dict) -> dict:
         "l'obiettivo è tutta l'Europa.\n\n"
         f"{line_it}\n\n"
         f"Vi chiedo {ask_it} il nostro sondaggio anonimo, sette domande in un minuto. {back}\n{r['link']}\n\n"
-        f"Grazie e buona giornata,\n[Nome]\n{S.OPTOUT}")
+        f"Grazie e buona giornata,\n{SIGN}\n{S.OPTOUT}")
     message_ru = (f"Короткое письмо секретариату {r['name']}: кто мы (стандартная фраза, TEF Ignition 2026, грант 2 000 €, цель — "
                   f"вся Европа). Личное: {line_ru} Просьба: {ask_ru} анонимный опрос на минуту; ассоциации — сводные результаты.")
     return {"subject": SUBJECT, "message": message, "message_ru": message_ru, "line": line_it, "line_ru": line_ru,

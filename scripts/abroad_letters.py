@@ -18,9 +18,8 @@ LANG = {  # organisation id -> language of the letter
     **{i: "it" for i in ("ab-hupac", "ab-rhenus", "ab-galliker", "ab-raben", "ab-licaf", "ab-fattorini", "ab-cippa")},
 }
 
-SIGN = {"en": "Alikhan Bashpay · Bocconi University · zhol", "de": "Alikhan Bashpay · Universität Bocconi · zhol",
-        "fr": "Alikhan Bashpay · Université Bocconi · zhol", "es": "Alikhan Bashpay · Universidad Bocconi · zhol",
-        "it": "Alikhan Bashpay · Università Bocconi · zhol"}
+from signature import SIGN as _SIGN   # «zhol team» in every language (owner, 20 Nov 2026)
+SIGN = {lang: _SIGN for lang in ("en", "de", "fr", "es", "it")}
 
 # The owner's principles for every letter (DESIGN.md, 11 Nov 2026), in this order: who we are and the grant, the problem
 # with the figures that already exist, that this is only the visible part and we want to help reduce it with new tools

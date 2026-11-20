@@ -15,9 +15,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PATH_LANG = {"/it/sondaggio": "it", "/de/umfrage": "de", "/fr/enquete": "fr", "/es/encuesta": "es", "/survey": "en"}
-SIGN = {"en": "Alikhan Bashpay · Bocconi University · zhol", "de": "Alikhan Bashpay · Universität Bocconi · zhol",
-        "fr": "Alikhan Bashpay · Université Bocconi · zhol", "es": "Alikhan Bashpay · Universidad Bocconi · zhol",
-        "it": "Alikhan Bashpay · Università Bocconi · zhol"}
+from signature import SIGN as _SIGN   # «zhol team» in every language (owner, 20 Nov 2026)
+SIGN = {lang: _SIGN for lang in ("en", "de", "fr", "es", "it")}
 BELOW = {"de": "(Die englische Fassung finden Sie unten.)", "fr": "(La version anglaise figure plus bas.)",
          "es": "(La versión en inglés está más abajo.)", "it": "(La versione in inglese è più in basso.)"}
 EN_MARK = "— English version —"

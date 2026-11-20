@@ -64,7 +64,7 @@ Ho visto che lavorate da {город} verso {страны}, con circa {N} mezzi.
 {ссылка}
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 Se preferite non ricevere altri messaggi, basta rispondere «no».
 ```
 
@@ -90,7 +90,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Pot
 https://zhol.live/it/sondaggio?src=co-form
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 Se preferite non ricevere altri messaggi, basta rispondere «no».
 ```
 
@@ -106,7 +106,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Pot
 https://zhol.live/it/sondaggio?src=co-form
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 Se preferite non ricevere altri messaggi, basta rispondere «no».
 ```
 
@@ -122,7 +122,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Pot
 https://zhol.live/it/sondaggio?src=co-email
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 Se preferite non ricevere altri messaggi, basta rispondere «no».
 ```
 
@@ -142,7 +142,7 @@ Gentile segreteria di {name},
 {ссылка}
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 ```
 
 **Просьба по типу организации**
@@ -177,7 +177,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Per
 https://zhol.live/it/sondaggio?src=assoc-alsea
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 ```
 
 ### Пример — Юг (FAI Napoli)
@@ -192,7 +192,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Per
 https://zhol.live/it/sondaggio?src=assoc-fai-napoli
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 ```
 
 ### Пример — интерпорт (Interporto Padova)
@@ -207,7 +207,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Per
 https://zhol.live/it/sondaggio?src=assoc-interporto-padova
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 ```
 
 ---
@@ -247,7 +247,7 @@ https://zhol.live/it/sondaggio?src=press-uomini-e-trasporti
 Per i vostri articoli può servire il nostro radar pubblico, zhol.live/it/radar. Due volte al giorno mette in fila divieti, chiusure e scioperi delle prossime otto settimane, con la probabilità e le fonti, e potete usarlo liberamente citando zhol. Se la storia vi interessa, io e il mio team siamo disponibili per qualche domanda.
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 ```
 
 ---
@@ -266,7 +266,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Con
 https://zhol.live/it/sondaggio?src=group-lega-trasporto-marmo
 
 Grazie a chi ci dedica un minuto!
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 ```
 
 ---

@@ -321,3 +321,29 @@ def test_personal_letters_are_short_and_keep_every_rule():
             url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc(r["to"]) + "&subject=" + enc(p["subject"])
                    + "&body=" + enc(m.replace("**", "")))
             assert len(url) <= 4000, (pid, len(url))
+
+
+def test_every_letter_is_signed_zhol_team():
+    """«подписывай zhol team» (owner, 20 Nov 2026): every letter, reminder, lane letter, personal letter and post ends
+    with the signature of scripts/signature.py on a line of its own, which the console swaps for a name typed under
+    «изменить»; no «[Nome]» is left for the sender to fill in. The professors' letters went out before."""
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from signature import SIGN
+    assert SIGN == "zhol team"
+    line = re.compile(r"^" + re.escape(SIGN) + r"$", re.M)
+    rows = (json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))
+            + json.loads((ROOT / "outreach" / "linkedin_send_list.json").read_text(encoding="utf-8")))
+    texts = []
+    for r in rows:
+        if r["type"] != "bocconi":
+            texts += [(r["id"], r.get("message")), (r["id"] + " reminder", (r.get("followup") or {}).get("message"))]
+    for name in ("lane_links", "personal_letters"):
+        for k, v in json.loads((ROOT / "outreach" / f"{name}.json").read_text(encoding="utf-8")).items():
+            texts += [(k, v["message"]), (k + " reminder", (v.get("reminder") or {}).get("message"))]
+    texts += [("post " + p["title"], p["text"]) for p in json.loads((ROOT / "outreach" / "console" / "posts.json").read_text(encoding="utf-8"))
+              if "Alikhan Bashpay" in p["text"].strip().split("\n")[-1] or SIGN in p["text"]]
+    texts = [(k, t) for k, t in texts if t]
+    assert len(texts) > 1500
+    for k, t in texts:
+        assert line.search(t) and "[Nome]" not in t and not re.search(r"^Alikhan Bashpay( ·.*)?$", t, re.M), k

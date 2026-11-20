@@ -65,7 +65,12 @@ button { font: inherit; }
 .intro p { margin: 10px 0 0; max-width: 60ch; }
 .how { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--muted); }
 .how b { color: var(--ink); font-weight: 600; }
-.sign { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+.sign { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); max-width: 520px; }
+.sign[hidden] { display: none; }
+.sig-row { display: flex; gap: var(--s2); align-items: center; }
+.sig-row input { flex: 1; min-width: 0; }
+.sig-row .btn { min-height: 44px; }
+.sig-hint { font-size: 12.5px; color: var(--muted); }
 .sign input { font: inherit; font-size: 15px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: var(--r-field); padding: 11px 14px; min-height: 44px; }
 
 /* tabs and filters */
@@ -278,10 +283,12 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       </details>
     </div>
     <div class="sign-wrap">
-      <p class="sig-show" id="sig-show" hidden>Подпись в письмах: <b id="sig-name"></b> <button type="button" class="linkish" id="sig-edit">изменить</button></p>
-      <label class="sign" for="me-name" id="sig-form">Ваше имя в подписи (вместо [Nome])
-        <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
-      </label>
+      <p class="sig-show" id="sig-show">Подпись в письмах: <b id="sig-name">zhol team</b> <button type="button" class="linkish" id="sig-edit" aria-expanded="false" aria-controls="sig-form">изменить</button></p>
+      <form class="sign" id="sig-form" hidden>
+        <label for="me-name">Подпись в письмах</label>
+        <div class="sig-row"><input id="me-name" placeholder="zhol team" autocomplete="name" maxlength="80" aria-describedby="sig-hint"><button type="submit" class="btn small">Готово</button></div>
+        <span class="sig-hint" id="sig-hint">Например, «Alikhan Bashpay · zhol team». Пустое поле — «zhol team».</span>
+      </form>
     </div>
   </header>
 
@@ -349,15 +356,20 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   let db = null, user = null, shared = false, writable = true;
   let fType = store.get("zhol-tab") || "company", fState = ["any", "remind"].includes(store.get("zhol-state")) ? store.get("zhol-state") : "any", q = "", pick = null;
 
-  const me = $("me-name");
-  me.value = store.get("zhol-sign") || "";
-  me.addEventListener("input", () => { store.set("zhol-sign", me.value.trim()); render(); });
-  // the signature is a line once it is known; the field shows only when it is empty or being changed
-  const sigShow = () => { const v = me.value.trim(); $("sig-name").textContent = v; $("sig-show").hidden = !v; $("sig-form").hidden = !!v; };
-  $("sig-edit").addEventListener("click", () => { $("sig-show").hidden = true; $("sig-form").hidden = false; me.focus(); me.select(); });
-  me.addEventListener("change", sigShow); me.addEventListener("keydown", e => { if (e.key === "Enter") { me.blur(); sigShow(); } });
-  sigShow();
-  const sign = txt => txt.replace("[Nome]", me.value.trim() || "[Nome]");
+  // every letter is signed «zhol team» (owner, 20 Nov 2026: «подписывай zhol team, сделай опцию изменения и его ввод…
+  // изменения имени имеется ввиду»): «изменить» opens the field, the name typed there signs the letters from this
+  // browser, an empty field is «zhol team» again. A new key: names typed before that day give way to «zhol team».
+  const SIGN = "zhol team", me = $("me-name");
+  me.value = store.get("zhol-signature") || "";
+  const signature = () => me.value.trim() || SIGN;
+  const sigShow = open => { $("sig-name").textContent = signature(); $("sig-show").hidden = !!open; $("sig-form").hidden = !open;
+    $("sig-edit").setAttribute("aria-expanded", open ? "true" : "false"); };
+  me.addEventListener("input", () => { store.set("zhol-signature", me.value.trim()); render(); });
+  $("sig-edit").addEventListener("click", () => { sigShow(true); me.focus(); me.select(); });
+  $("sig-form").addEventListener("submit", e => { e.preventDefault(); sigShow(false); $("sig-edit").focus(); });
+  me.addEventListener("keydown", e => { if (e.key === "Escape") { sigShow(false); $("sig-edit").focus(); } });
+  sigShow(false);
+  const sign = txt => txt.replace(/^zhol team$/gm, () => signature());
 
   // letters mark two or three anchors in bold with **…**: shown bold here, copied as real bold (text/html) so Outlook
   // keeps it, and without the stars as plain text

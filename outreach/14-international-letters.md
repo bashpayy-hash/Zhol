@@ -106,7 +106,7 @@
 - **gift_press:** For your articles our radar zhol.live/radar is a free source, with the bans, closures and strikes of the next eight weeks and their sources, when citing zhol.
 - **thanks:** Thank you,
 - **optout:** If you prefer not to receive further messages, just reply «no».
-- **подпись:** Alikhan Bashpay · Bocconi University · zhol
+- **подпись:** zhol team
 
 ### Немецкий
 
@@ -132,7 +132,7 @@
 - **gift_press:** Für Ihre Artikel ist unser Radar zhol.live/radar eine kostenlose Quelle, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und ihren Quellen, mit Hinweis auf zhol.
 - **thanks:** Vielen Dank,
 - **optout:** Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie bitte mit «nein».
-- **подпись:** Alikhan Bashpay · Universität Bocconi · zhol
+- **подпись:** zhol team
 
 ### Французский
 
@@ -156,7 +156,7 @@
 - **gift_press:** Pour vos articles, notre radar zhol.live/radar est une source gratuite, avec les interdictions, fermetures et grèves des huit prochaines semaines et leurs sources, en citant zhol.
 - **thanks:** Merci,
 - **optout:** Pour ne plus recevoir de messages, répondez « non ».
-- **подпись:** Alikhan Bashpay · Université Bocconi · zhol
+- **подпись:** zhol team
 
 ### Испанский
 
@@ -180,7 +180,7 @@
 - **gift_press:** Para sus artículos, nuestro radar zhol.live/radar es una fuente gratuita, con las prohibiciones, cierres y huelgas de las próximas ocho semanas y sus fuentes, citando zhol.
 - **thanks:** Gracias,
 - **optout:** Si prefieren no recibir más mensajes, basta con responder «no».
-- **подпись:** Alikhan Bashpay · Universidad Bocconi · zhol
+- **подпись:** zhol team
 
 ### Итальянский
 
@@ -204,7 +204,7 @@
 - **gift_press:** Per i vostri articoli il nostro radar zhol.live/it/radar è una fonte gratuita, con divieti, chiusure e scioperi delle prossime otto settimane e le fonti, citando zhol.
 - **thanks:** Grazie,
 - **optout:** Se preferite non ricevere altri messaggi, basta rispondere «no».
-- **подпись:** Alikhan Bashpay · Università Bocconi · zhol
+- **подпись:** zhol team
 
 ### IRU
 
@@ -226,7 +226,7 @@ To start, we want to measure what it costs a single traffic office. Could you sh
 https://zhol.live/survey?src=ab-iru
 
 Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 ### Ассоциация ЕС, английский (CLECAT)
@@ -243,7 +243,7 @@ To start, we want to measure what it costs a single traffic office. Could you sh
 https://zhol.live/survey?src=ab-clecat
 
 Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 ### Ассоциация, немецкий + английский (BGL)
@@ -262,7 +262,7 @@ Zunächst wollen wir messen, was das eine einzelne Disposition kostet. Könnten 
 https://zhol.live/de/umfrage?src=ab-bgl
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -293,7 +293,7 @@ Pour commencer, nous voulons mesurer ce que cela coûte à un service d'exploita
 https://zhol.live/fr/enquete?src=ab-fntr
 
 Merci,
-Alikhan Bashpay · Université Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -324,7 +324,7 @@ Para empezar, queremos medir cuánto le cuesta a una sola oficina de tráfico. �
 https://zhol.live/es/encuesta?src=ab-astic
 
 Gracias,
-Alikhan Bashpay · Universidad Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -355,7 +355,7 @@ Per cominciare vogliamo misurare quanto costa a un singolo ufficio traffico. Pot
 https://zhol.live/it/sondaggio?src=ab-hupac
 
 Grazie,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -384,7 +384,7 @@ To start, we want to measure what it costs a single traffic office. Could you gi
 https://zhol.live/survey?src=ab-girteka
 
 Thank you,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 If you prefer not to receive further messages, just reply «no».
 ```
 
@@ -404,7 +404,7 @@ Zunächst wollen wir messen, was das eine einzelne Disposition kostet. Hätten S
 https://zhol.live/de/umfrage?src=ab-bertschi
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 Wenn Sie keine weiteren Nachrichten wünschen, antworten Sie bitte mit «nein».
 
 — English version —
@@ -438,7 +438,7 @@ https://zhol.live/de/umfrage?src=ab-verkehrsrundschau
 Für Ihre Artikel ist unser Radar zhol.live/radar eine kostenlose Quelle, mit den Verboten, Sperrungen und Streiks der nächsten acht Wochen und ihren Quellen, mit Hinweis auf zhol.
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 

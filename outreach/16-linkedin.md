@@ -123,7 +123,7 @@ Il convegno MEMIT della Bocconi su intermodalità e sostenibilità dei trasporti
 https://zhol.live/it/sondaggio?src=li-bocconi
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -140,7 +140,7 @@ Bocconi's MEMIT conference on intermodality and sustainable transport touched ex
 https://zhol.live/survey?src=li-bocconi
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · IT
@@ -151,7 +151,7 @@ Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto A
 https://zhol.live/it/sondaggio?src=li-bocconi
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -160,7 +160,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-bocconi
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Тема сообщения InMail · EN
@@ -191,7 +191,7 @@ Bocconi's MEMIT conference on intermodality and sustainable transport touched ex
 https://zhol.live/survey?src=li-bocconi
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · EN
@@ -202,7 +202,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-bocconi
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 ## Группа 1 · Выпускники Bocconi в перевозках
@@ -249,7 +249,7 @@ Visto che anche lei viene dalla Bocconi e lavora nel settore, potrebbe dedicarci
 https://zhol.live/it/sondaggio?src=li-alumni
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -266,7 +266,7 @@ As you also come from Bocconi and work in the field, could you give us one minut
 https://zhol.live/survey?src=li-alumni
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · IT
@@ -277,7 +277,7 @@ Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto A
 https://zhol.live/it/sondaggio?src=li-alumni
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -286,7 +286,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-alumni
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Тема сообщения InMail · EN
@@ -317,7 +317,7 @@ As you also come from Bocconi and work in the field, could you give us one minut
 https://zhol.live/survey?src=li-alumni
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · EN
@@ -328,7 +328,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-alumni
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 ## Группа 2 · Те, кто планирует отправки на наших маршрутах
@@ -383,7 +383,7 @@ Potrebbe dedicarci un minuto per il nostro sondaggio anonimo sulle vostre linee 
 https://zhol.live/it/sondaggio?src=li-office
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -400,7 +400,7 @@ Could you give us one minute for our anonymous survey about your routes across E
 https://zhol.live/survey?src=li-office
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · IT
@@ -411,7 +411,7 @@ Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto A
 https://zhol.live/it/sondaggio?src=li-office
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -420,7 +420,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-office
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Тема сообщения InMail · DE
@@ -453,7 +453,7 @@ Könnten Sie uns eine Minute für unsere anonyme Umfrage zu Ihren Relationen in 
 https://zhol.live/de/umfrage?src=li-office
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -470,7 +470,7 @@ Could you give us one minute for our anonymous survey about your routes across E
 https://zhol.live/survey?src=li-office
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · DE
@@ -481,7 +481,7 @@ Guten Tag [Name], ich schreibe noch einmal wegen der Ein-Minuten-Umfrage von zho
 https://zhol.live/de/umfrage?src=li-office
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -490,7 +490,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-office
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 ## Группа 3 · Железная дорога, интермодал, порты и паромы
@@ -536,7 +536,7 @@ Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando alle line
 https://zhol.live/it/sondaggio?src=li-rail
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -553,7 +553,7 @@ Could you give us one minute for our anonymous survey, thinking of the rail line
 https://zhol.live/survey?src=li-rail
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · IT
@@ -564,7 +564,7 @@ Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto A
 https://zhol.live/it/sondaggio?src=li-rail
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -573,7 +573,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-rail
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Тема сообщения InMail · EN
@@ -604,7 +604,7 @@ Could you give us one minute for our anonymous survey, thinking of the rail line
 https://zhol.live/survey?src=li-rail
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · EN
@@ -615,7 +615,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-rail
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Тема сообщения InMail · DE
@@ -648,7 +648,7 @@ Könnten Sie uns eine Minute für unsere anonyme Umfrage schenken, mit Blick auf
 https://zhol.live/de/umfrage?src=li-rail
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -665,7 +665,7 @@ Could you give us one minute for our anonymous survey, thinking of the rail line
 https://zhol.live/survey?src=li-rail
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · DE
@@ -676,7 +676,7 @@ Guten Tag [Name], ich schreibe noch einmal wegen der Ein-Minuten-Umfrage von zho
 https://zhol.live/de/umfrage?src=li-rail
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -685,7 +685,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-rail
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 ## Группа 4 · Ведущие направлений у крупных операторов на наших коридорах
@@ -731,7 +731,7 @@ Potrebbe dedicarci un minuto per il nostro sondaggio anonimo, pensando a una sol
 https://zhol.live/it/sondaggio?src=li-large
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -748,7 +748,7 @@ Could you give us one minute for our anonymous survey, thinking of one lane or o
 https://zhol.live/survey?src=li-large
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · IT
@@ -759,7 +759,7 @@ Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto A
 https://zhol.live/it/sondaggio?src=li-large
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -768,7 +768,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-large
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Тема сообщения InMail · DE
@@ -801,7 +801,7 @@ Könnten Sie uns eine Minute für unsere anonyme Umfrage schenken, mit Blick auf
 https://zhol.live/de/umfrage?src=li-large
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -818,7 +818,7 @@ Could you give us one minute for our anonymous survey, thinking of one lane or o
 https://zhol.live/survey?src=li-large
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · DE
@@ -829,7 +829,7 @@ Guten Tag [Name], ich schreibe noch einmal wegen der Ein-Minuten-Umfrage von zho
 https://zhol.live/de/umfrage?src=li-large
 
 Vielen Dank,
-Alikhan Bashpay · Universität Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -838,7 +838,7 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-large
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 ## Группа 5 · Ассоциации и поставщики ПО: кто сведёт с офисами
@@ -882,7 +882,7 @@ Potrebbe dedicarci un minuto per il nostro sondaggio anonimo? Sono sette domande
 https://zhol.live/it/sondaggio?src=li-net
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -899,7 +899,7 @@ Could you give us one minute for our anonymous survey? It has seven questions, t
 https://zhol.live/survey?src=li-net
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
 #### Напоминание через 5 дней, в той же переписке · IT
@@ -910,7 +910,7 @@ Gentile [Nome], le riscrivo per il sondaggio di un minuto di zhol, il progetto A
 https://zhol.live/it/sondaggio?src=li-net
 
 Grazie mille,
-Alikhan Bashpay · Università Bocconi · zhol
+zhol team
 
 — English version —
 
@@ -919,6 +919,6 @@ Dear [Name], I am writing again about the one-minute survey of zhol, the AI proj
 https://zhol.live/survey?src=li-net
 
 Thank you very much,
-Alikhan Bashpay · Bocconi University · zhol
+zhol team
 ```
 
