@@ -26,6 +26,10 @@
   те же вопросы про офисы в целом. Пять языков.
 - **Сводка:** `scripts/survey_summary.py` читает выгрузку `survey-extra` отдельно и выдаёт только агрегаты (офисы и
   эксперты раздельно). Проверки: `tests/test_survey.py` и `tests/browser/survey_flow.js`.
+- **Поправки по правилу «весь транспорт» (8 и 12 ноября), на вопрос «Нужны ли какие-то вот изменения?»:** заголовок
+  «A radar for Europe’s roads» → «A radar for Europe’s freight» (и на IT/DE/FR/ES); вопрос 6 «before your trucks leave» →
+  «before your vehicles leave» («i vostri mezzi», «Ihre Fahrzeuge», «vos véhicules», «sus vehículos»); подпись карты
+  «on Europe’s roads» → «in Europe»: на карте и поезда, и паромы.
 
 ### 20 ноября 2026 · Подпись «zhol team», имя можно вписать
 

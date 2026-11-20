@@ -295,11 +295,11 @@
       return map.update(d.items, d.today);
     }).then(c => {
       if (!c || !c.events) { box.hidden = true; return; }
-      $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places on Europe’s roads in the next eight weeks, each with its chance. Tap a place, or play the weeks.",
-                                      c.events + " eventi in " + c.places + " luoghi sulle strade d’Europa nelle prossime otto settimane, ognuno con la sua probabilità. Toccate un luogo o scorrete le settimane.",
-                                      c.events + " Ereignisse an " + c.places + " Orten auf Europas Straßen in den nächsten acht Wochen, jedes mit seiner Wahrscheinlichkeit.",
-                                      c.events + " événements en " + c.places + " lieux sur les routes d’Europe dans les huit prochaines semaines, chacun avec sa probabilité.",
-                                      c.events + " eventos en " + c.places + " lugares de las carreteras de Europa en las próximas ocho semanas, cada uno con su probabilidad.");
+      $("sv-map-cap").textContent = T(c.events + " events at " + c.places + " places in Europe in the next eight weeks, each with its chance. Tap a place, or play the weeks.",
+                                      c.events + " eventi in " + c.places + " luoghi in Europa nelle prossime otto settimane, ognuno con la sua probabilità. Toccate un luogo o scorrete le settimane.",
+                                      c.events + " Ereignisse an " + c.places + " Orten in Europa in den nächsten acht Wochen, jedes mit seiner Wahrscheinlichkeit.",
+                                      c.events + " événements en " + c.places + " lieux en Europe dans les huit prochaines semaines, chacun avec sa probabilité.",
+                                      c.events + " eventos en " + c.places + " lugares de Europa en las próximas ocho semanas, cada uno con su probabilidad.");
     }).catch(() => { box.hidden = true; });
   }
 
