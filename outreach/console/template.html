@@ -38,12 +38,6 @@
 .btn.wa-btn { background: var(--wa); border-color: var(--wa); color: #fff; }
 .dup-warn { margin: 8px 0 4px; padding: 10px 12px; border-radius: var(--r-chip); background: var(--warn-bg); color: var(--warn-ink); font-size: 14px; line-height: 1.4; }
 .pill.remind { background: var(--amber-bg); color: var(--amber-ink); }
-.remind-box { border-top: 1px dashed var(--line); padding-top: 14px; }
-/* a call first, then the link to the company's own lanes (scripts/lane_links.py; owner, 14 Nov 2026) */
-.call-box { background: var(--sage); border-radius: var(--r-box); padding: 14px 16px; display: grid; gap: 10px; }
-.call-box .lab > span:first-child { color: var(--sage-ink); font-weight: 600; }
-.call-box .msg { background: var(--card); }
-.call-box .events { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
 .paste-note { margin: 8px 0 4px; padding: 10px 12px; border-radius: var(--r-chip); background: var(--note-bg); color: var(--note-ink); font-size: 14px; line-height: 1.4; }
 body { margin: 0; background: var(--paper); color: var(--ink-2); font: 15px/1.5 var(--font); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
@@ -119,14 +113,8 @@ button { font: inherit; }
 .detail .head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
 .detail h2 { font-size: 24px; letter-spacing: -0.02em; line-height: 1.2; }
 .detail .meta { font-size: 14px; color: var(--muted); margin-top: 2px; }
-.kind { font-size: 13px; font-weight: 600; color: var(--sage-ink); background: var(--sage); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
-.why { background: var(--red-soft); border-radius: var(--r-box); padding: 14px 16px; font-size: 14.5px; color: var(--ink); }
-.why span { display: block; font-size: 13px; font-weight: 600; color: var(--red); margin-bottom: 4px; }
-.why a { font-size: 13px; }
 .contacts { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; }
 .contacts code { font: 14px/1.4 var(--font); background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-chip); padding: 4px 10px; color: var(--ink); user-select: all; }
-.field { display: flex; flex-direction: column; gap: 8px; }
-.field .lab { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: var(--muted); }
 .subject { color: var(--ink); font-weight: 500; }
 .msg { margin: 0; white-space: pre-wrap; font: 15px/1.6 var(--font); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-box); padding: 16px 18px; max-height: 420px; overflow-y: auto; }
 .msg mark { background: var(--red-soft); color: var(--ink); border-radius: 4px; padding: 0 2px; }
@@ -160,7 +148,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   .detail { padding: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-.about { margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: var(--ink); max-width: 640px; }
 
 /* ===== daily work first (owner, 20 Nov 2026: «используй /design:design-system для улучшения юзер экспириенса консоли,
    потому что ей мы будем пользоваться»). Components: the status switch and the next step at the top of a card, what is
@@ -200,14 +187,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 .next.ok { background: var(--sage); border-color: transparent; color: var(--sage-ink); }
 .next.ok b { color: var(--sage-ink); }
 
-/* what is already done, folded away */
-.done { border: 1px solid var(--line); border-radius: var(--r-box); padding: 0 var(--s4); background: var(--paper); }
-.done > summary { cursor: pointer; list-style: none; padding: var(--s3) 0; font-size: 14px; font-weight: 600; color: var(--ink-2); display: flex; gap: var(--s2); align-items: center; min-height: 44px; }
-.done > summary::-webkit-details-marker { display: none; }
-.done > summary::before { content: "+"; color: var(--muted); width: 1em; }
-.done[open] > summary::before { content: "−"; }
-.done[open] { padding-bottom: var(--s4); }
-.done > .field + .field, .done > .why + .field { margin-top: var(--s4); }
 
 /* the toast: what was just marked, with a way back */
 .toast { position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 16px); opacity: 0; z-index: 20;
@@ -228,6 +207,37 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   .seg-status button { padding: 6px 8px; font-size: 14px; min-height: 44px; border-radius: var(--r-field); }
 }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+
+/* ===== the path of a send (owner, 20 Nov 2026: «надо разгрузить поток информации, как это все отправляется»): numbered
+   steps with one main button each; the texts behind «Показать текст»; the rest behind one «Подробнее» */
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s4); counter-reset: none; }
+.step { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: var(--s3); align-items: start; }
+.step + .step { padding-top: var(--s4); border-top: 1px solid var(--line); }
+.step-n { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--paper); font-weight: 700; font-size: 15px; }
+.step-body { display: flex; flex-direction: column; gap: var(--s2); min-width: 0; }
+.step-body h3 { font-size: 17px; line-height: 1.3; margin-top: 4px; }
+.step-hint { margin: 0; font-size: 14.5px; color: var(--muted); max-width: 62ch; }
+.step-acts { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); align-items: center; }
+.step-acts:empty { display: none; }
+.btn.mark { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.linkish { border: 0; background: none; padding: 8px 4px; min-height: 40px; color: var(--red); font-weight: 600; font-size: 14px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.peek > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.peek > summary::-webkit-details-marker { display: none; }
+.peek > summary::before { content: "+"; color: var(--muted); width: 1em; }
+.peek[open] > summary::before { content: "−"; }
+.peek[open] > summary { margin-bottom: var(--s2); }
+.peek .subject { margin-bottom: var(--s2); }
+.more { border-top: 1px solid var(--line); padding-top: var(--s2); }
+.more > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: var(--s2); min-height: 44px; font-size: 14.5px; font-weight: 600; color: var(--muted); }
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary::before { content: "+"; width: 1em; }
+.more[open] > summary::before { content: "−"; }
+.more-sec { padding: var(--s3) 0; border-top: 1px dashed var(--line); display: flex; flex-direction: column; gap: var(--s2); }
+.more-sec:first-of-type { border-top: 0; }
+.more-sec h4 { margin: 0; font-size: 13px; font-weight: 600; color: var(--muted); }
+.more-sec p { margin: 0; color: var(--ink); font-size: 14.5px; }
+.more-sec .events { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
+@media (max-width: 900px) { .step { grid-template-columns: 28px minmax(0, 1fr); } .step-n { width: 28px; height: 28px; font-size: 14px; } .step-acts .btn { flex: 1 1 auto; } }
 </style>
 
 <div class="bar"><div class="wrap">
@@ -245,6 +255,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <details class="how-box"><summary>Как это устроено</summary>
       <p>Каждое письмо устроено одинаково: кто мы (студент Bocconi, AI-платформа zhol, 100 из ~500 в TEF Ignition 2026, грант 2 000 €), проблема и цифры, которые уже есть, «это лишь видимая часть, хотим уменьшить её с помощью ИИ», Италия — начало, цель — вся Европа, для начала измерить, просьба и одна ссылка на опрос. За рубеж — на языке адресата, ниже полный английский текст.</p>
       <ul class="how"><li><b>1</b> Выберите адресата: сверху те, кому ещё не писали</li><li><b>2</b> «Открыть в Outlook» или «Написать в WhatsApp»: адрес и текст уже вставлены</li><li><b>3</b> Отправьте и нажмите здесь «Отправлено»: откроется следующий</li><li>Лучше в рабочие часы по Риму (время — в полосе сверху); не больше 40 писем в день с одного ящика, остальное запланировать на завтра</li><li><b>↑ ↓</b> листать адресатов с клавиатуры</li></ul>
+      <p class="kbd">Ссылки на опрос помечены только каналом (co-form, assoc-…, press-…), а не компанией: ответы остаются анонимными. Факты в письмах взяты из открытых источников, ссылка на источник — в блоке «Почему им». Список собирается командой <code>python scripts/survey_targets.py</code>.</p>
       </details>
     </div>
     <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
@@ -275,7 +286,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   </div>
   <div class="posts" id="posts" hidden></div>
 
-  <footer>Ссылки на опрос помечены только каналом (co-form, assoc-…, press-…), а не компанией: ответы остаются анонимными. Факты в письмах взяты из открытых источников, ссылка на источник — в блоке «Почему им». Список собирается командой <code>python scripts/survey_targets.py</code>.</footer>
 </div>
 
 <script type="application/json" id="data">__DATA__</script>
@@ -421,11 +431,12 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     else store.set("zhol-status", JSON.stringify(status));
   }
 
-  async function setState(r, state) {
+  async function setState(r, state, channel) {
     const prev = status[r.id];
     if (prev && prev.state === state) state = "";          // tapping the active state clears it
     const id = user ? await user.id() : null;
     const next = state ? { state, by: id, at: new Date().toISOString() } : null;
+    if (next && channel && state === "sent") next.note = channel;            // «WhatsApp»: the reminder waits three working days
     // «Ответили» keeps the day the letter went out and the reminder (design system audit, 20 Nov 2026: it was lost)
     if (next && prev && prev.state === "sent" && state !== "sent") { next.sent = prev.sent || prev.at; if (prev.reminded) next.reminded = prev.reminded; }
     if (next && prev && prev.sent && state === "sent") next.at = prev.sent;
@@ -461,72 +472,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     else store.set("zhol-status", JSON.stringify(status));
   }
 
-  // the reminder, under the letter of someone already written to
-  function reminder(r) {
-    const s = status[r.id], f = followOf(r), box = el("div", "field remind-box");
-    const lab = el("div", "lab"), from = remindFrom(s), wa = viaWa(s) && r.wa;
-    lab.append(el("span", null, s.reminded ? "Напоминание отправлено " + day(s.reminded)
-      : from > new Date() ? "Напоминание: можно с " + day(from.toISOString()) + (wa ? " (после WhatsApp ждём три рабочих дня)" : " (два рабочих дня после письма)")
-      : "Напоминание: пора, одно и последнее"));
-    const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
-    const body = plain(sign(f.message));
-    if (wa) {
-      const w = el("a", "btn wa-btn small", "Напомнить в WhatsApp"); w.href = "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(body);
-      w.target = "_blank"; w.rel = "noopener"; btns.append(w);
-    } else if (r.to) {
-      const enc = x => encodeURIComponent(x).replace(/%2C/g, ",").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%40/g, "@");
-      const q = "to=" + enc(r.to) + "&subject=" + enc(f.subject) + "&body=" + enc(body);
-      const a = el("a", "btn small", "Напомнить в Outlook");
-      a.href = (APPLE_TOUCH ? "ms-outlook://compose?" : "https://outlook.office.com/mail/deeplink/compose?") + q; a.target = "_blank"; a.rel = "noopener";
-      a.title = "Новое письмо с темой «Re: …» и текстом напоминания. Можно и ответить на своё первое письмо в «Отправленных», вставив этот текст.";
-      btns.append(a);
-    }
-    const c = el("button", "btn small", "Скопировать"); c.type = "button"; c.addEventListener("click", () => copy(body, c, box)); btns.append(c);
-    if (!s.reminded) { const m = el("button", "btn small", "Напоминание отправлено"); m.type = "button"; m.addEventListener("click", () => markReminded(r)); btns.append(m); }
-    lab.append(btns); box.append(lab, el("div", "subject", f.subject), el("pre", "msg", body));
-    if (f.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "О чём напоминание (для команды)"), el("pre", "msg", f.message_ru)); box.append(d); }
-    return box;
-  }
-
-  // a call first, then the message with the link to the company's own lanes: it gives before it asks
-  // (owner, 14 Nov 2026: «что теперь исправить… чтобы выиграть TEF»; scripts/lane_links.py)
-  function callBox(r) {
-    const k = r.call, box = el("div", "call-box");
-    const l1 = el("div", "lab"); l1.append(el("span", null, "Сначала позвонить: 30 секунд по-итальянски, номер на сайте компании"));
-    const b1 = el("div"); b1.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
-    const open = el("a", "btn small", "Открыть их страницу"); open.href = k.link; open.target = "_blank"; open.rel = "noopener";
-    const cl = el("button", "btn small", "Скопировать ссылку"); cl.type = "button"; cl.addEventListener("click", () => copy(k.link, cl, box));
-    b1.append(open, cl); l1.append(b1); box.append(l1, el("pre", "msg", k.call_it));
-    const d1 = el("details", "ru"); d1.append(el("summary", null, "Перевод звонка (для команды)"), el("pre", "msg", k.call_ru)); box.append(d1);
-    if (k.events && k.events.length) {
-      const ul = el("ul", "events");
-      k.events.forEach(e => { const li = el("li", null, day(e.date) + " · " + e.what_en + " · "); const a = el("a", null, e.source_ru); a.href = e.url; a.target = "_blank"; a.rel = "noopener"; li.append(a); ul.append(li); });
-      box.append(el("div", "small", "События на их направлениях (радар на " + day(k.radar_day) + ", ссылка всегда показывает свежие):"), ul);
-    }
-    if (k.reminder && ["sent", "replied"].includes(stateOf(r.id))) {
-      box.append(el("div", "small", stateOf(r.id) === "replied"
-        ? "Они ответили. Позвоните, чтобы договориться о бесплатном пилоте на их направлениях."
-        : "Им уже писали. После звонка отправьте напоминание выше: в нём ссылка на их направления и бесплатный пилот."));
-      return box;
-    }
-    const l2 = el("div", "lab"); l2.append(el("span", null, "После звонка: сообщение со ссылкой (или вместо звонка, если не дозвонились)"));
-    const b2 = el("div"); b2.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
-    const body = plain(sign(k.message));
-    if (r.wa) { const w = el("a", "btn wa-btn small", "Отправить в WhatsApp"); w.href = "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(body); w.target = "_blank"; w.rel = "noopener"; b2.append(w); }
-    if (r.to) {
-      const enc = x => encodeURIComponent(x).replace(/%2C/g, ",").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%40/g, "@");
-      const a = el("a", "btn small", "Открыть в Outlook");
-      a.href = (APPLE_TOUCH ? "ms-outlook://compose?" : "https://outlook.office.com/mail/deeplink/compose?") + "to=" + enc(r.to) + "&subject=" + enc(k.subject) + "&body=" + enc(body);
-      a.target = "_blank"; a.rel = "noopener"; b2.append(a);
-    }
-    const cm = el("button", "btn small", "Скопировать сообщение"); cm.type = "button"; cm.addEventListener("click", () => copy(sign(k.message), cm, box)); b2.append(cm);
-    l2.append(b2); box.append(l2, el("div", "subject", k.subject));
-    const pre = el("pre", "msg"); rich(pre, sign(k.message)); box.append(pre);
-    const d2 = el("details", "ru"); d2.append(el("summary", null, "О чём сообщение (для команды)"), el("pre", "msg", k.message_ru)); box.append(d2);
-    box.append(el("div", "small", "Ответили или поговорили: отметьте внизу «Ответили» и запишите разговор в outreach/interview_log.csv."));
-    return box;
-  }
-
   const fmt = iso => { try { return new Date(iso).toLocaleString("ru-RU", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
 
   // the letter, with the part written for this company highlighted
@@ -538,143 +483,80 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     return pre;
   }
 
-  function detail(r, ps) {
-    const box = el("article", "detail");
-    const head = el("div", "head"), t = el("div");
-    t.append(el("h2", null, r.name), el("div", "meta", place(r)));
-    // who this is (associations) or what they do and how big they are (companies)
-    if (r.about) t.append(el("div", "about", "Кто это: " + r.about));
-    const tag = el("div"); tag.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;align-items:center";
-    tag.append(el("span", "kind", KIND[r.type] || r.type));
-    head.append(t, tag);
-    box.append(head);
-    let whyEl = null;
-    if (r.why) {
-      const w = el("div", "why"); w.append(el("span", null, r.type === "bocconi" ? "Почему ему или ей" : r.type === "linkedin" ? "Почему пишем именно этому человеку (личный абзац в письме выделен)" : "Почему им (абзац в письме выделен)"), document.createTextNode((r.why_ru || r.why) + " "));
-      if (r.why_src) { const a = el("a", null, "Источник"); a.href = r.why_src; a.target = "_blank"; a.rel = "noopener"; w.append(a); }
-      box.append(w); whyEl = w;
-    }
-    const c = el("div", "contacts");
-    if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "btn small", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b);
-      if (r.to_src) { const s = el("a", null, "Где найден адрес"); s.href = r.to_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
-    if (r.wa) { c.append(el("code", null, "WhatsApp +" + r.wa));
-      if (r.wa_src) { const s = el("a", null, "Где найден WhatsApp"); s.href = r.wa_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); } }
-    if (r.type === "linkedin") {
-      const a = el("a", null, r.profile ? "Профиль в LinkedIn" : "Найти в LinkedIn по имени и компании"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a);
-      if (r.why_src) { const s = el("a", null, "Откуда должность"); s.href = r.why_src; s.target = "_blank"; s.rel = "noopener"; c.append(s); }
-    }
-    else if (/^https?:\/\//.test(r.where)) { const a = el("a", null, r.type === "company" ? "Сайт или форма контактов" : "Открыть сайт"); a.href = r.where; a.target = "_blank"; a.rel = "noopener"; c.append(a); }
-    else if (r.where && !r.to) c.append(el("span", null, r.where));
-    const g = el("a", null, "Найти контакты в Google"); g.href = r.search; g.target = "_blank"; g.rel = "noopener"; c.append(g);
-    box.append(c);
-    const callEl = r.call ? callBox(r) : null;
-    if (callEl) box.append(callEl);
-    const sf = el("div", "field"), sl = el("div", "lab"); sl.append(el("span", null, r.type === "group" ? "Перед публикацией" : r.type === "linkedin" ? "Тема сообщения в LinkedIn (InMail)" : "Тема письма"));
-    const sb = el("button", "btn small", "Скопировать тему"); sb.type = "button"; sb.addEventListener("click", () => copy(r.subject, sb, box));
-    if (r.type !== "group") sl.append(sb);
-    sf.append(sl, el("div", "subject", r.subject)); box.append(sf);
-    const mf = el("div", "field"), ml = el("div", "lab"); ml.append(el("span", null, r.type === "linkedin" ? "Сообщение (InMail или после принятия запроса)" : "Письмо"));
-    const mb = el("button", "btn main", "Скопировать письмо"); mb.type = "button"; mb.addEventListener("click", () => copy(sign(r.message), mb, box));
-    // one click to a new letter in Outlook on the web with the address, subject and text already in place (owner, 11 Nov)
-    const btns = el("div"); btns.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end";
-    let note = null, warn = null;
-    if (r.to && r.type !== "group") {
-      // Outlook opened links of up to 4,027 characters with their text (the letters sent on 11 Nov 2026, Primafrio the
-      // longest). Every letter is written to fit (tests keep it at most 4,000); the copy on click and the paste hint stay
-      // as a safety net for anything longer, like the professors' letters (owner, 11 Nov 2026: «сделай так, чтобы
-      // Outlook нормально отправлялся»).
-      const body = plain(sign(r.message));   // plain \n line breaks, as in the links that opened with the text
-      // commas, slashes, question marks and @ are allowed as they are inside a link's query: a shorter link
-      const enc = x => encodeURIComponent(x).replace(/%2C/g, ",").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%40/g, "@");
-      const head = "to=" + enc(r.to) + "&subject=" + enc(r.subject);
-      const full = head + "&body=" + enc(body);
-      const LIMIT = 4027, fits = ("https://outlook.office.com/mail/deeplink/compose?" + full).length <= LIMIT;
-      const q = fits ? full : head;
-      const web = "https://outlook.office.com/mail/deeplink/compose?" + q;
-      const tip = fits ? "Новое письмо в Outlook: адрес, тема и текст уже вставлены. Проверьте и нажмите «Отправить», затем отметьте здесь «Отправлено»."
-                       : "Письмо длинное: Outlook откроется с адресом и темой, а текст уже скопирован. Вставьте его (Ctrl+V или Cmd+V), нажмите «Отправить» и отметьте здесь «Отправлено».";
-      note = el("div", "paste-note", "Текст письма скопирован. В Outlook щёлкните в поле письма и нажмите Ctrl+V (на Mac и iPad Cmd+V или «Вставить»). Если ничего не вставилось, нажмите здесь «Скопировать письмо» и вставьте ещё раз.");
-      note.hidden = true;
-      const link = (label, href, cls) => {
-        const a = el("a", cls, label); a.href = href; a.target = "_blank"; a.rel = "noopener"; a.title = tip;
-        a.addEventListener("click", () => {
-          try { navigator.clipboard.writeText(plain(sign(r.message))).catch(() => {}); } catch (e) {}
-          if (!fits) note.hidden = false;
-          opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened));
-          warn.textContent = "Открыто в Outlook в " + hhmm(opened[r.id]) + ". После отправки нажмите внизу «Отправлено», чтобы не отправить второй раз.";
-          warn.hidden = false;
-        });
-        return a;
-      };
-      // already sent, or already opened in Outlook here: say so, and make the button the quiet one
-      const sentAt = stateOf(r.id) === "sent" && status[r.id] && status[r.id].at;
-      warn = el("div", "dup-warn"); warn.hidden = !(sentAt || opened[r.id]);
-      if (sentAt) warn.textContent = "Уже отправлено " + day(sentAt) + " в " + hhmm(sentAt) + ". Второй раз отправлять не нужно, сначала проверьте «Отправленные» в Outlook.";
-      else if (opened[r.id]) warn.textContent = "Уже открывали в Outlook " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ". Проверьте «Отправленные», прежде чем открыть снова.";
-      const again = !!(sentAt || opened[r.id]), label = again ? "Открыть в Outlook ещё раз" : "Открыть в Outlook";
-      // on an iPad or iPhone the Outlook app opens the new letter itself; the web version stays one tap away (owner, 11 Nov)
-      if (APPLE_TOUCH) btns.append(link(label, "ms-outlook://compose?" + q, again ? "btn small" : "btn"), link("Outlook в браузере", web, "btn small"));
-      else btns.append(link(label, web, again ? "btn small" : "btn"));
-    }
-    // LinkedIn (owner, 13 Nov 2026: «сделай кнопку написать сразу в линкедин»; then «я ради сообщений купил линкедин
-    // премиум»): LinkedIn has no link that opens a message with the text in place, so one click opens the person's
-    // profile (or a search for the name and the company) and copies the message; in LinkedIn: Message, paste the
-    // subject and the text (InMail). The note below is for a connection request instead, when InMail credits run out.
-    let liNote = null;
-    if (r.type === "linkedin") {
-      const sentAt = stateOf(r.id) === "sent" && status[r.id] && status[r.id].at;
-      warn = el("div", "dup-warn"); warn.hidden = !(sentAt || opened[r.id]);
-      if (sentAt) warn.textContent = "Уже отправлено " + day(sentAt) + ". Если человек не ответит, ниже будет одно напоминание.";
-      else if (opened[r.id]) warn.textContent = "LinkedIn уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ". Проверьте переписку, прежде чем писать снова.";
-      const a = el("a", "btn li-btn", r.profile ? "Написать в LinkedIn" : "Найти и написать в LinkedIn");
-      a.href = r.where; a.target = "_blank"; a.rel = "noopener";
-      a.title = "Откроется профиль, сообщение уже скопировано. Нажмите «Сообщение», вставьте текст, тему скопируйте кнопкой «Скопировать тему». Потом отметьте здесь «Отправлено».";
-      a.addEventListener("click", () => {
-        try { navigator.clipboard.writeText(plain(r.message)).catch(() => {}); } catch (e) {}
-        opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened));
-        warn.textContent = "Сообщение скопировано. В LinkedIn нажмите «Сообщение», вставьте текст (Ctrl+V или Cmd+V), тему возьмите кнопкой «Скопировать тему» выше. После отправки отметьте здесь «Отправлено».";
-        warn.hidden = false;
-      });
-      btns.append(a);
-      // without InMail credits: a connection request with the short note, the message after they accept
-      liNote = el("div", "field"); const nl = el("div", "lab");
-      nl.append(el("span", null, "Если без InMail: заметка к запросу «Установить контакт» (" + r.note.length + " из 200 знаков), сообщение — после принятия"));
-      const nb = el("button", "btn small", "Скопировать заметку"); nb.type = "button"; nb.addEventListener("click", () => copy(r.note, nb, box));
-      nl.append(nb); liNote.append(nl, el("div", "subject", r.note));
-    }
-    // WhatsApp the company publishes on its own site: the same letter, opened in WhatsApp (owner, 11 Nov 2026:
-    // «найди ватсапы, я туда им напишу»)
-    if (r.wa) {
-      const w = el("a", "btn wa-btn", "Написать в WhatsApp");
-      w.href = "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(plain(sign(r.message)));
-      w.target = "_blank"; w.rel = "noopener";
-      w.title = "WhatsApp откроется с этим письмом. Проверьте и отправьте, затем отметьте здесь «Отправлено».";
-      w.addEventListener("click", () => {
-        opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened));
-        if (!warn) { warn = el("div", "dup-warn"); mf.insertBefore(warn, mf.children[1] || null); }
-        warn.textContent = "Открыто в WhatsApp в " + hhmm(opened[r.id]) + ". После отправки нажмите внизу «Отправлено».";
-        warn.hidden = false;
-      });
-      btns.prepend(w);
-    }
-    btns.append(mb);
-    ml.append(btns); mf.append(ml);
-    if (warn) mf.append(warn);
-    if (note) mf.append(note);
-    mf.append(letter(r)); box.append(mf);
-    if (liNote) box.append(liNote);
-    // for the team only: what the Italian letter says (never sent)
-    if (r.message_ru) { const d = el("details", "ru"); d.append(el("summary", null, "Перевод для команды (не отправляется)"), el("pre", "msg", r.message_ru)); mf.append(d); }
-    const remEl = followOf(r) && stateOf(r.id) === "sent" ? reminder(r) : null;
-    const st = stateOf(r.id), s = status[r.id];
+  // ===== the card as the path of one send (owner, 20 Nov 2026: «Все еще ощущается такой перегруз информации. Человек,
+  // который все это впервые увидит, он чуть растеряется… надо разгрузить поток информации, как это все отправляется»).
+  // Numbered steps, one main button each, the text one tap away; everything else under one «Подробнее».
+  const via = {};   // id -> the channel opened from here, so «Отправлено» records it (after WhatsApp the reminder waits three days)
+  const enc = x => encodeURIComponent(x).replace(/%2C/g, ",").replace(/%2F/g, "/").replace(/%3F/g, "?").replace(/%40/g, "@");
+  const OUTLOOK = "https://outlook.office.com/mail/deeplink/compose?";
+  const ext = (cls, label, href) => { const a = el("a", cls, label); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
 
-    // the status switch, at the top and always in reach (it was under two or three screens of letter)
+  // the buttons that send one text: the main one by channel, a quiet «Скопировать текст», the text folded
+  function sendKit(r, subject, text, holder) {
+    const body = plain(sign(text)), row = el("div", "step-acts"), notes = [];
+    const opened_ = name => { via[r.id] = name; opened[r.id] = new Date().toISOString(); store.set("zhol-opened", JSON.stringify(opened)); };
+    let main = null;
+    if (r.wa) {
+      main = ext("btn wa-btn", "Написать в WhatsApp", "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(body));
+      main.addEventListener("click", () => opened_("WhatsApp")); row.append(main);
+    }
+    if (r.to && r.type !== "group" && r.type !== "linkedin") {
+      // Outlook opens links of up to about 4,000 characters with the text in place; a longer letter opens with the
+      // address and the subject, and its text is on the clipboard (owner, 11 Nov 2026)
+      const head = "to=" + enc(r.to) + "&subject=" + enc(subject), full = head + "&body=" + enc(body);
+      const fits = (OUTLOOK + full).length <= 4027;
+      const note = el("div", "paste-note", "Текст скопирован: в Outlook щёлкните в поле письма и вставьте его (Ctrl+V, на Mac и iPad Cmd+V).");
+      note.hidden = true; notes.push(note);
+      const a = ext(main ? "btn" : "btn main", "Открыть письмо в Outlook", (APPLE_TOUCH ? "ms-outlook://compose?" : OUTLOOK) + (fits ? full : head));
+      a.title = fits ? "Адрес, тема и текст уже вставлены: проверьте и нажмите «Отправить»" : "Outlook откроется с адресом и темой, текст скопирован";
+      a.addEventListener("click", () => { try { navigator.clipboard.writeText(body).catch(() => {}); } catch (e) {} if (!fits) note.hidden = false; opened_("Outlook"); });
+      row.append(a); main = main || a;
+    }
+    if (r.type === "linkedin") {
+      // LinkedIn has no link that opens a message with the text: the profile opens and the text is copied
+      const note = el("div", "paste-note", "Текст скопирован: в LinkedIn нажмите «Сообщение» и вставьте его; тему возьмите кнопкой «Скопировать тему».");
+      note.hidden = true; notes.push(note);
+      const a = ext("btn li-btn", r.profile ? "Написать в LinkedIn" : "Найти и написать в LinkedIn", r.where);
+      a.addEventListener("click", () => { try { navigator.clipboard.writeText(body).catch(() => {}); } catch (e) {} note.hidden = false; opened_("LinkedIn"); });
+      const ts = el("button", "linkish", "Скопировать тему"); ts.type = "button"; ts.addEventListener("click", () => copy(subject, ts, holder));
+      row.append(a, ts); main = a;
+    }
+    const cp = el("button", main ? "linkish" : "btn main", "Скопировать текст"); cp.type = "button";
+    cp.addEventListener("click", () => { copy(sign(text), cp, holder); if (!via[r.id]) via[r.id] = r.type === "group" ? "пост" : "копия"; });
+    row.append(cp);
+    const show = el("details", "peek"); show.append(el("summary", null, "Показать текст"));
+    if (subject && r.type !== "group") show.append(el("div", "subject", subject));
+    if (text === r.message) show.append(letter(r)); else { const pre = el("pre", "msg"); rich(pre, sign(text)); show.append(pre); }
+    return [row, ...notes, show];
+  }
+
+  function step(n, title, hint, parts) {
+    const li = el("li", "step"), body = el("div", "step-body");
+    li.append(el("span", "step-n", String(n)));
+    body.append(el("h3", null, title));
+    if (hint) body.append(el("p", "step-hint", hint));
+    (parts || []).filter(Boolean).forEach(p => body.append(p));
+    li.append(body);
+    return li;
+  }
+  const row_ = (...xs) => { const d = el("div", "step-acts"); xs.filter(Boolean).forEach(x => d.append(x)); return d; };
+  const fold = (label, nodes) => { const d = el("details", "peek"); d.append(el("summary", null, label)); nodes.filter(Boolean).forEach(n => d.append(n)); return d; };
+  const pre_ = t => el("pre", "msg", t);
+
+  function detail(r, ps) {
+    const box = el("article", "detail"), st = stateOf(r.id), s = status[r.id], k = r.call;
+    // who, in one line
+    const head = el("div", "head"), t = el("div");
+    t.append(el("h2", null, r.name), el("div", "meta", [place(r), KIND[r.type]].filter(Boolean).join(" · ")));
+    head.append(t);
+
+    // the status switch, at the top and always in reach
     const bar = el("div", "statusbar"), seg = el("div", "seg-status");
     seg.setAttribute("role", "radiogroup"); seg.setAttribute("aria-label", "Статус");
-    [["", "Не отправлено"], ["sent", "Отправлено"], ["replied", "Ответили"], ["skip", "Не писать"]].forEach(([k, label]) => {
-      const b = el("button", null, label); b.type = "button"; b.dataset.v = k || "todo";
-      b.setAttribute("role", "radio"); b.setAttribute("aria-checked", String(st === k));
-      b.addEventListener("click", () => { if (st !== k) setState(r, k || st); });   // «Не отправлено» clears the state
+    [["", "Не отправлено"], ["sent", "Отправлено"], ["replied", "Ответили"], ["skip", "Не писать"]].forEach(([v, label]) => {
+      const b = el("button", null, label); b.type = "button"; b.dataset.v = v || "todo";
+      b.setAttribute("role", "radio"); b.setAttribute("aria-checked", String(st === v));
+      b.addEventListener("click", () => { if (st !== v) setState(r, v || st, v === "sent" ? via[r.id] : undefined); });   // «Не отправлено» clears it
       seg.append(b);
     });
     bar.append(seg);
@@ -682,41 +564,101 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       const who = s.by && ps[s.by] ? (ps[s.by].isMe ? "вы" : (ps[s.by].name || "коллега")) : "";
       bar.append(el("span", "who", [who, fmt(s.at)].filter(Boolean).join(" · ")));
     }
-    const [tone, title, text] = nextStep(r), nx = el("div", "next" + (tone ? " " + tone : ""));
-    nx.append(el("b", null, title), document.createTextNode(text));
+    const parts = [head, bar];
 
-    // the order follows the work: what to do now first, what is done folded away
-    const sentIso = s && (s.sent || s.at), sentAt = sentIso ? day(sentIso) + " в " + hhmm(sentIso) : "";
-    const fold = (label, nodes) => { const d = el("details", "done"); d.append(el("summary", null, label)); nodes.filter(Boolean).forEach(n => d.append(n)); return d; };
-    const parts = [head, bar, nx];
-    if (st) {
-      parts.push(remEl, c, callEl, fold(st === "sent" || st === "replied" ? "Первое письмо · отправлено " + sentAt : "Письмо и почему им", [whyEl, sf, mf, liNote]));
-    } else if (callEl) {
-      // a company not written to yet: the call and the message with its lanes first; the survey letter of the first wave stays one tap away
-      parts.push(c, callEl, fold("Письмо с опросом (первая волна)", [whyEl, sf, mf, liNote]));
+    // the path of the send
+    const steps = el("ol", "steps");
+    const markBtn = (label, fn) => { const b = el("button", "btn mark", label); b.type = "button"; b.addEventListener("click", fn); return b; };
+    const site = /^https?:\/\//.test(r.where || "") && r.type !== "linkedin" ? r.where : "";
+    if (!st) {
+      let n = 1;
+      const noAddr = !r.to && !r.wa && r.type !== "linkedin" && r.type !== "group";
+      const again = opened[r.id] ? el("div", "dup-warn", "Уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ": проверьте «Отправленные», прежде чем отправить снова.") : null;
+      if (k) {
+        steps.append(step(n++, "Позвоните", "30 секунд по-итальянски: кто мы и что мы подготовили страницу с их направлениями. Не дозвонились — сразу к шагу 2.",
+          [row_(site && ext("btn small", "Сайт компании: там номер", site)), fold("Текст звонка", [pre_(k.call_it)]), fold("Перевод звонка", [pre_(k.call_ru)])]));
+        steps.append(step(n++, "Отправьте сообщение", "Со ссылкой на их направления: в нём кто мы, события с источником и их страница.", [again, ...sendKit(r, k.subject, k.message, box)]));
+      } else if (noAddr) {
+        steps.append(step(n++, "Найдите контакт", "Адреса в списке нет: посмотрите на сайте или в Google.",
+          [row_(site && ext("btn small", "Сайт", site), r.search && ext("btn small", "Найти в Google", r.search))]));
+        steps.append(step(n++, "Отправьте письмо", null, sendKit(r, r.subject, r.message, box)));
+      } else {
+        const title = r.type === "group" ? "Опубликуйте пост" : r.type === "linkedin" ? "Напишите в LinkedIn" : "Отправьте письмо";
+        const hint = r.type === "group" ? "Сначала спросите разрешения у администратора группы." : r.wa && r.to ? "WhatsApp или почта: что удобнее." : null;
+        steps.append(step(n++, title, hint, [again, ...sendKit(r, r.subject, r.message, box)]));
+      }
+      steps.append(step(n, "Отметьте «Отправлено»", "Команда увидит, что этому адресату уже написали, а консоль сама подскажет, когда напомнить.",
+        [row_(markBtn("Отправлено", () => setState(r, "sent", via[r.id])))]));
+      parts.push(steps);
+    } else if (remindDue(r)) {
+      const f = followOf(r), sentIso = s.sent || s.at;
+      parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. Напоминание одно и последнее."));
+      steps.append(step(1, "Отправьте напоминание", k ? "Можно сначала позвонить: текст звонка — в «Подробнее»." : null, sendKit(r, f.subject, f.message, box)));
+      steps.append(step(2, "Отметьте «Напоминание отправлено»", "Больше этому адресату не пишем, ждём ответа.", [row_(markBtn("Напоминание отправлено", () => markReminded(r)))]));
+      parts.push(steps);
     } else {
-      parts.push(whyEl, c, sf, mf, liNote);
+      const [tone, title, text] = nextStep(r);
+      parts.push(nextBox(tone, title, text));
     }
-    box.replaceChildren(...parts.filter(Boolean));
+
+    // everything else, one tap away
+    const more = el("details", "more"); more.append(el("summary", null, "Подробнее: кто это, почему им, контакты, переводы"));
+    const sec = (title, nodes) => { const d = el("div", "more-sec"); d.append(el("h4", null, title)); nodes.filter(Boolean).forEach(x => d.append(x)); more.append(d); };
+    if (r.about) sec("Кто это", [el("p", null, r.about)]);
+    if (r.why) {
+      const p = el("p", null, (r.why_ru || r.why) + " ");
+      if (r.why_src) p.append(ext("", "Источник", r.why_src));
+      sec(r.type === "bocconi" ? "Почему ему или ей" : r.type === "linkedin" ? "Почему пишем этому человеку" : "Почему им (абзац в письме выделен)", [p]);
+    }
+    const c = el("div", "contacts");
+    if (r.to) { c.append(el("code", null, r.to)); const b = el("button", "linkish", "Скопировать адрес"); b.type = "button"; b.addEventListener("click", () => copy(r.to, b, box)); c.append(b);
+      if (r.to_src) c.append(ext("", "Где найден адрес", r.to_src)); }
+    if (r.wa) { c.append(el("code", null, "WhatsApp +" + r.wa)); if (r.wa_src) c.append(ext("", "Где найден WhatsApp", r.wa_src)); }
+    if (r.type === "linkedin") { c.append(ext("", r.profile ? "Профиль в LinkedIn" : "Найти в LinkedIn", r.where)); if (r.why_src) c.append(ext("", "Откуда должность", r.why_src)); }
+    else if (site) c.append(ext("", r.type === "company" ? "Сайт или форма контактов" : "Сайт", site));
+    else if (r.where && !r.to) c.append(el("span", null, r.where));
+    if (r.search) c.append(ext("", "Найти контакты в Google", r.search));
+    sec("Контакты", [c]);
+    if (k) {
+      if (k.events && k.events.length) {
+        const ul = el("ul", "events");
+        k.events.forEach(e => { const li = el("li", null, day(e.date) + " · " + e.what_en + " · "); li.append(ext("", e.source_ru, e.url)); ul.append(li); });
+        sec("События на их направлениях (радар на " + day(k.radar_day) + ")", [ul, row_(ext("btn small", "Открыть их страницу", k.link))]);
+      }
+      if (st) sec("Звонок", [fold("Текст звонка", [pre_(k.call_it)]), fold("Перевод звонка", [pre_(k.call_ru)])]);
+      if (!st) sec("Сообщение после звонка: о чём оно", [el("p", null, k.message_ru)]);
+    }
+    const f = followOf(r);
+    if (st === "sent" && remindDue(r) && f && f.message_ru) sec("Напоминание: о чём оно", [el("p", null, f.message_ru)]);
+    if (r.type === "linkedin" && r.note) {
+      const nb = el("button", "linkish", "Скопировать заметку"); nb.type = "button"; nb.addEventListener("click", () => copy(r.note, nb, box));
+      sec("Без InMail: заметка к запросу «Установить контакт» (" + r.note.length + " из 200 знаков)", [el("div", "subject", r.note), nb]);
+    }
+    // the letters not on the path: the survey letter of the first wave, or the letter already sent
+    const sentIso = s && (s.sent || s.at);
+    if (st === "sent" || st === "replied") sec("Первое письмо · отправлено " + (sentIso ? day(sentIso) + " в " + hhmm(sentIso) : ""), [fold("Показать письмо", [el("div", "subject", r.subject), letter(r)])]);
+    else if (k && !st) sec("Письмо с опросом (первая волна)", [fold("Показать письмо", [el("div", "subject", r.subject), letter(r)])]);
+    if (r.message_ru) sec("Перевод письма для команды", [fold("Показать перевод", [pre_(r.message_ru)])]);
+    parts.push(more);
+    box.replaceChildren(...parts);
     return box;
   }
 
-  // one sentence on what to do now, by the state (design system audit, 20 Nov 2026)
+  function nextBox(tone, title, text) {
+    const nx = el("div", "next" + (tone ? " " + tone : ""));
+    nx.append(el("b", null, title), document.createTextNode(text));
+    return nx;
+  }
+
+  // one sentence on what is next once the path is walked (design system audit, 20 Nov 2026)
   function nextStep(r) {
     const s = status[r.id], st = stateOf(r.id);
-    if (st === "replied") return ["ok", "Ответили", "Запишите разговор в outreach/interview_log.csv. Если это офис перевозок, предложите бесплатный пилот на их направлениях."];
+    if (st === "replied") return ["ok", "Ответили", r.call ? "Позвоните и предложите бесплатный пилот на их направлениях (текст звонка — в «Подробнее»). Разговор запишите в outreach/interview_log.csv." : "Запишите разговор в outreach/interview_log.csv. Если это офис перевозок, предложите бесплатный пилот на их направлениях."];
     if (st === "skip") return ["", "Не пишем", "Адресат отмечен «Не писать». Передумали — нажмите «Не отправлено»."];
-    if (st === "sent") {
-      if (!followOf(r)) return ["", "Ждём ответа", "Напоминания для этого адресата нет. Ответили — отметьте «Ответили»."];
-      if (s.reminded) return ["", "Ждём ответа", "Напоминание отправлено " + day(s.reminded) + ". Больше не пишем."];
-      const from = remindFrom(s);
-      if (from <= new Date()) return ["due", "Пора напомнить", "Одно и последнее напоминание — сразу под этим." + (r.call ? " Можно сначала позвонить: текст звонка ниже." : "") + " Отправили — нажмите «Напоминание отправлено»."];
-      return ["", "Ждём ответа", "Напомнить можно с " + day(from.toISOString()) + (viaWa(s) ? " (после WhatsApp ждём три рабочих дня)." : " (два рабочих дня после письма).")];
-    }
-    if (r.call) return ["", "Следующий шаг", "Позвоните: 30 секунд по-итальянски, текст ниже. Потом отправьте сообщение со ссылкой на их направления и отметьте «Отправлено»."];
-    if (r.type === "group") return ["", "Следующий шаг", "Спросите администратора группы, можно ли опубликовать. Потом опубликуйте и отметьте «Отправлено»."];
-    if (r.type === "linkedin") return ["", "Следующий шаг", "Напишите в LinkedIn кнопкой ниже, потом отметьте «Отправлено»."];
-    return ["", "Следующий шаг", (r.wa ? "Напишите в WhatsApp или откройте письмо в Outlook" : r.to ? "Откройте письмо в Outlook" : "Адреса нет: найдите контакт на сайте или в Google и отправьте письмо") + ", потом отметьте «Отправлено»."];
+    if (!followOf(r)) return ["", "Ждём ответа", "Напоминания для этого адресата нет. Ответили — отметьте «Ответили»."];
+    if (s.reminded) return ["", "Ждём ответа", "Напоминание отправлено " + day(s.reminded) + ". Больше не пишем. Ответили — отметьте «Ответили»."];
+    const from = remindFrom(s);
+    return ["", "Ждём ответа", "Напомнить можно с " + day(from.toISOString()) + (viaWa(s) ? " (после WhatsApp ждём три рабочих дня)." : " (два рабочих дня после письма).") + " Ответили — отметьте «Ответили»."];
   }
 
   const listed = () => ROWS.filter(visible).sort((a, b) => ORDER[stateOf(a.id)] - ORDER[stateOf(b.id)]);

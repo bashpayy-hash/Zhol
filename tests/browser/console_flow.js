@@ -23,17 +23,36 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   ok(await p.$eval("#c-remind", e => e.parentNode.classList.contains("hot")), "the «Пора напомнить» chip lights up");
   ok(await p.$eval(".how-box", e => !e.open), "the how-to is folded away");
 
-  // a company already written to: switch, next step «Пора напомнить», reminder before the call, first letter folded
+  // a company not written to yet: the path is call, message, mark; the rest folded under «Подробнее»
+  await p.click('#f-state button[data-v="todo"]'); await p.waitForTimeout(200);
+  const fresh = await p.evaluate(() => {
+    const d = document.querySelector("#detail");
+    return { steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent), more: !!d.querySelector("details.more:not([open])"),
+             mains: [...d.querySelectorAll(".steps .step")].map(s => s.querySelectorAll(".btn.main, .btn.wa-btn, .btn.li-btn, .btn.mark").length) };
+  });
+  ok(fresh.steps.join(" / ") === "Позвоните / Отправьте сообщение / Отметьте «Отправлено»", "a new company: call, message, mark (" + fresh.steps.join(" / ") + ")");
+  ok(fresh.mains[1] >= 1 && fresh.mains[2] === 1 && fresh.mains.every(n => n <= 2), "one main button a step");
+  ok(fresh.more, "everything else is folded under «Подробнее»");
+  const freshName = await p.$eval("#detail h2", e => e.textContent);
+  await p.click("#detail .steps .btn.mark"); await p.waitForTimeout(200);
+  ok(await p.$eval("#toast", e => /Отправлено/.test(e.textContent)), "step 3 marks «Отправлено»");
+  await p.click("#toast button"); await p.waitForTimeout(200);
+  const afterUndo = JSON.parse(await p.evaluate(() => localStorage.getItem("zhol-status")));
+  ok(Object.keys(afterUndo).length === 2 && await p.$eval("#detail h2", e => e.textContent) === freshName,
+     "and «Отменить» brings the same company back unsent");
+
+  // a company already written to, a reminder due: the switch on top, «Пора напомнить», send the reminder, mark it
   await p.click('#f-state button[data-v="remind"]'); await p.waitForTimeout(200);
   const card = await p.evaluate(() => {
     const d = document.querySelector("#detail"), kids = [...d.children].map(k => k.className.split(" ")[0]);
     return { kids, checked: d.querySelector('.seg-status [aria-checked="true"]').textContent, next: d.querySelector(".next b").textContent,
-             fold: (d.querySelector("details.done > summary") || {}).textContent || "" };
+             steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent),
+             first: [...d.querySelectorAll(".more .more-sec h4")].map(h => h.textContent).find(x => /^Первое письмо/.test(x)) || "" };
   });
   ok(card.kids[1] === "statusbar" && card.checked === "Отправлено", "the status switch sits at the top and shows «Отправлено»");
   ok(card.next === "Пора напомнить", "the next step says it is time to remind");
-  ok(card.kids.indexOf("field") < card.kids.indexOf("call-box"), "the reminder comes before the call");
-  ok(/^Первое письмо · отправлено/.test(card.fold), "the first letter is folded away");
+  ok(card.steps[0] === "Отправьте напоминание" && card.steps.length === 2, "the path: send the reminder, then mark it");
+  ok(/^Первое письмо · отправлено/.test(card.first), "the first letter waits under «Подробнее»");
 
   // mark «Ответили», then take it back with the toast
   const name = await p.$eval("#detail h2", e => e.textContent);
