@@ -27,7 +27,9 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
 
   // a company not written to yet: the path is the letter with its lanes, then the mark (no calls: owner, 20 Nov 2026);
   // the rest folded under «Подробнее»
-  await p.click('#f-state button[data-v="todo"]'); await p.waitForTimeout(200);
+  // the list opens on those not written to yet (fewer buttons, 20 Nov 2026: one filter, «Пора напомнить», and no more)
+  ok(await p.$$eval("#f-state button:not([hidden])", bs => bs.length === 1 && /Пора напомнить/.test(bs[0].textContent)), "one filter, «Пора напомнить»");
+  ok(await p.$eval("#detail", d => !d.querySelector(".statusrow") && [...d.querySelectorAll(".steps .btn, .steps .linkish")].filter(x => !x.closest("details:not([open])")).length <= 2), "a new card: no state line, two buttons on the path");
   const fresh = await p.evaluate(() => {
     const d = document.querySelector("#detail");
     return { steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent), more: !!d.querySelector("details.more:not([open])"),
@@ -49,7 +51,7 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   await p.click('#f-state button[data-v="remind"]'); await p.waitForTimeout(200);
   const card = await p.evaluate(() => {
     const d = document.querySelector("#detail"), kids = [...d.children].map(k => k.className.split(" ")[0]);
-    return { kids, state: d.querySelector(".statusrow .st-now").textContent, what: !!d.querySelector(".what"), who: !!d.querySelector(".who-line"), next: d.querySelector(".next b").textContent,
+    return { kids, state: d.querySelector(".statusrow .st-now").textContent, what: /Напоминание по-/.test((d.querySelector(".next") || {}).textContent || ""), who: !!d.querySelector(".who-line"), next: d.querySelector(".next b").textContent,
              steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent),
              first: [...d.querySelectorAll(".more .more-sec h4")].map(h => h.textContent).find(x => /^Первое письмо/.test(x)) || "" };
   });

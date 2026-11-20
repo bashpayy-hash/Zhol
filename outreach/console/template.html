@@ -236,7 +236,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 .how3 li { display: flex; align-items: center; gap: var(--s2); }
 .how3 b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 13px; }
 .who-line { margin: var(--s2) 0 0; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); max-width: 70ch; }
-.what { margin: 0; padding: var(--s3) var(--s4); border-radius: var(--r-box); background: var(--paper); border: 1px solid var(--line); font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+.what { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
 .what b { color: var(--ink); }
 .offhours { padding: 10px 12px; border-radius: var(--r-chip); background: var(--amber-bg); color: var(--amber-ink); font-size: 14px; line-height: 1.4; }
 .statusrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1) var(--s3); padding-top: var(--s3); border-top: 1px solid var(--line); font-size: 14px; }
@@ -244,6 +244,12 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 .btn.ok-btn { border-color: var(--sage-ink); color: var(--sage-ink); }
 .row.sent .dot, .row.replied .dot { border-width: 1.5px; }
 @media (max-width: 900px) { .st-now { width: 100%; } }
+.sig-show { margin: 0; font-size: 14px; color: var(--muted); }
+.sig-show b { color: var(--ink); font-weight: 600; }
+.st-more { margin-left: var(--s1); }
+.st-more[open] { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
+.st-more > summary { min-height: 34px; font-size: 13.5px; color: var(--muted); }
+.peek > .linkish { display: inline-block; margin-bottom: var(--s1); }
 </style>
 
 <header class="bar"><div class="wrap">
@@ -256,7 +262,6 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 <main class="wrap">
   <header class="intro">
     <div>
-      <span class="kicker">zhol · консоль рассылки</span>
       <h1>Пишем офисам перевозок и тем, кто их знает</h1>
       <p class="purpose">Цель — чтобы они прошли опрос на минуту или попробовали zhol бесплатно. Письмо каждому уже готово: по-итальянски или на языке адресата.</p>
       <ol class="how3"><li><b>1</b>Выберите адресата в списке</li><li><b>2</b>Откройте письмо и отправьте его</li><li><b>3</b>Вернитесь и нажмите «Отправлено»</li></ol>
@@ -266,9 +271,12 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <p class="kbd">Ссылки на опрос помечены только каналом (co-form, assoc-…, press-…), а не компанией: ответы остаются анонимными. Факты в письмах взяты из открытых источников, ссылка на источник — в блоке «Почему им». Список собирается командой <code>python scripts/survey_targets.py</code>.</p>
       </details>
     </div>
-    <label class="sign" for="me-name">Ваше имя в подписи (вместо [Nome])
-      <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
-    </label>
+    <div class="sign-wrap">
+      <p class="sig-show" id="sig-show" hidden>Подпись в письмах: <b id="sig-name"></b> <button type="button" class="linkish" id="sig-edit">изменить</button></p>
+      <label class="sign" for="me-name" id="sig-form">Ваше имя в подписи (вместо [Nome])
+        <input id="me-name" placeholder="например, Alikhan Bashpay" autocomplete="name">
+      </label>
+    </div>
   </header>
 
   <div class="tools">
@@ -282,8 +290,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <button type="button" data-v="abroad" aria-pressed="false">За рубежом<span class="n" id="n-abroad"></span></button>
       <button type="button" data-v="posts" aria-pressed="false">Посты</button>
     </div>
-    <div class="chips" role="group" aria-label="Статус" id="f-state">
-      <button type="button" data-v="any" aria-pressed="true">Все<span class="n" id="c-any"></span></button><button type="button" data-v="todo" aria-pressed="false">Ещё не писали<span class="n" id="c-todo"></span></button><button type="button" data-v="sent" aria-pressed="false">Ждём ответа<span class="n" id="c-sent"></span></button><button type="button" data-v="replied" aria-pressed="false">Ответили<span class="n" id="c-replied"></span></button><button type="button" data-v="remind" aria-pressed="false">Пора напомнить<span class="n" id="c-remind"></span></button>
+    <div class="chips" role="group" aria-label="Фильтр" id="f-state">
+      <button type="button" data-v="any" aria-pressed="true" hidden>Все</button><button type="button" data-v="remind" aria-pressed="false">Пора напомнить<span class="n" id="c-remind"></span></button>
     </div>
     <input type="search" id="q" placeholder="Название, город или регион" aria-label="Поиск">
   </div>
@@ -333,11 +341,16 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 
   let status = {};            // id -> {state, by, at}
   let db = null, user = null, shared = false, writable = true;
-  let fType = store.get("zhol-tab") || "company", fState = (store.get("zhol-state") || "any").replace(/^wa$/, "any"), q = "", pick = null;
+  let fType = store.get("zhol-tab") || "company", fState = ["any", "remind"].includes(store.get("zhol-state")) ? store.get("zhol-state") : "any", q = "", pick = null;
 
   const me = $("me-name");
   me.value = store.get("zhol-sign") || "";
   me.addEventListener("input", () => { store.set("zhol-sign", me.value.trim()); render(); });
+  // the signature is a line once it is known; the field shows only when it is empty or being changed
+  const sigShow = () => { const v = me.value.trim(); $("sig-name").textContent = v; $("sig-show").hidden = !v; $("sig-form").hidden = !!v; };
+  $("sig-edit").addEventListener("click", () => { $("sig-show").hidden = true; $("sig-form").hidden = false; me.focus(); me.select(); });
+  me.addEventListener("change", sigShow); me.addEventListener("keydown", e => { if (e.key === "Enter") { me.blur(); sigShow(); } });
+  sigShow();
   const sign = txt => txt.replace("[Nome]", me.value.trim() || "[Nome]");
 
   // letters mark two or three anchors in bold with **…**: shown bold here, copied as real bold (text/html) so Outlook
@@ -532,14 +545,18 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       note.hidden = true; notes.push(note);
       const a = ext("btn li-btn", r.profile ? "Написать в LinkedIn" : "Найти и написать в LinkedIn", r.where);
       a.addEventListener("click", () => { try { navigator.clipboard.writeText(body).catch(() => {}); } catch (e) {} note.hidden = false; opened_("LinkedIn"); });
-      const ts = el("button", "linkish", "Скопировать тему"); ts.type = "button"; ts.addEventListener("click", () => copy(subject, ts, holder));
-      row.append(a, ts); main = a;
+      row.append(a); main = a;
     }
     const cp = el("button", main ? "linkish" : "btn main", "Скопировать текст"); cp.type = "button";
     cp.addEventListener("click", () => { copy(sign(text), cp, holder); if (!via[r.id]) via[r.id] = r.type === "group" ? "пост" : "копия"; });
-    row.append(cp);
+    if (!main) row.append(cp);                       // no channel: copying is the main move; otherwise it waits in the text
     const show = el("details", "peek"); show.append(el("summary", null, "Показать текст"));
-    if (subject && r.type !== "group") show.append(el("div", "subject", subject));
+    if (main) show.append(cp);
+    if (subject && r.type !== "group") {
+      const sj = el("div", "subject", subject);
+      if (r.type === "linkedin") { const ts = el("button", "linkish", "Скопировать тему"); ts.type = "button"; ts.addEventListener("click", () => copy(subject, ts, holder)); sj.append(" ", ts); }
+      show.append(sj);
+    }
     if (text === r.message) show.append(letter(r)); else { const pre = el("pre", "msg"); pre.lang = langOf(text); rich(pre, sign(text)); show.append(pre); }
     return [row, ...notes, show];
   }
@@ -588,14 +605,14 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
         const hint = r.type === "group" ? "Сначала спросите разрешения у администратора группы." : r.wa && r.to ? "WhatsApp или почта: что удобнее." : null;
         steps.append(step(n++, title, hint, [again, r.type === "group" || r.type === "linkedin" ? null : offNote(), ...sendKit(r, r.subject, r.message, box)]));
       }
-      steps.append(step(n, "Отметьте «Отправлено»", "Команда увидит, что этому адресату уже написали, а консоль сама подскажет, когда напомнить.",
+      steps.append(step(n, "Отметьте «Отправлено»", null,
         [row_(markBtn("Отправлено", () => setState(r, "sent", via[r.id])))]));
       parts.push(whatLine(r, false), steps);
     } else if (remindDue(r)) {
       const f = followOf(r), sentIso = s.sent || s.at;
-      parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. Напоминание одно и последнее."), whatLine(r, true));
+      parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. " + whatLine(r, true).textContent.replace(/^Что отправляем\. /, "")));
       steps.append(step(1, "Отправьте напоминание", null, [offNote(), ...sendKit(r, f.subject, f.message, box)]));
-      steps.append(step(2, "Отметьте «Напоминание отправлено»", "Больше этому адресату не пишем, ждём ответа.", [row_(markBtn("Напоминание отправлено", () => markReminded(r)))]));
+      steps.append(step(2, "Отметьте «Напоминание отправлено»", null, [row_(markBtn("Напоминание отправлено", () => markReminded(r)))]));
       parts.push(steps);
     } else {
       const [tone, title, text] = nextStep(r);
@@ -603,7 +620,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     }
 
     // everything else, one tap away
-    const more = el("details", "more"); more.append(el("summary", null, "Подробнее: кто это, почему им, контакты, переводы"));
+    const more = el("details", "more"); more.append(el("summary", null, "Подробнее"));
     const sec = (title, nodes) => { const d = el("div", "more-sec"); d.append(el("h4", null, title)); nodes.filter(Boolean).forEach(x => d.append(x)); more.append(d); };
     if (r.about) sec("Кто это", [el("p", null, r.about)]);
     if (r.why) {
@@ -648,12 +665,17 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     sr.append(el("span", "st-now", "Статус: " + now + (whoBy && s.at ? " · " + whoBy + ", " + fmt(s.at) : "")));
     const moves = { "": [["skip", "Не писать этому адресату"]], sent: [["replied", "Ответили"], ["skip", "Не писать"], ["", "Снять отметку"]],
                     replied: [["sent", "Это ещё не ответ"]], skip: [["", "Вернуть в работу"]] }[st] || [];
-    moves.forEach(([v, label]) => {
-      const b = el("button", v === "replied" ? "btn small ok-btn" : "linkish", label); b.type = "button"; b.dataset.v = v || "clear";
-      b.addEventListener("click", () => setState(r, v || st));             // the same state again clears it
-      sr.append(b);
-    });
-    parts.push(sr, more);
+    const moveBtn = ([v, label], cls) => { const b = el("button", cls, label); b.type = "button"; b.dataset.v = v || "clear";
+      b.addEventListener("click", () => setState(r, v || st)); return b; };      // the same state again clears it
+    if (st === "sent") {
+      sr.append(moveBtn(moves[0], "btn small ok-btn"));
+      const more2 = el("details", "peek st-more"); more2.append(el("summary", null, "Ещё"));
+      moves.slice(1).forEach(m => more2.append(moveBtn(m, "linkish")));
+      sr.append(more2);
+    } else moves.forEach(m => sr.append(moveBtn(m, "linkish")));
+    // not written to yet: no state line at all; «Не писать» waits under «Подробнее»
+    if (st) parts.push(sr); else more.insertBefore(moveBtn(moves[0], "linkish"), more.children[1] || null);
+    parts.push(more);
     box.replaceChildren(...parts);
     return box;
   }
@@ -718,7 +740,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     $("tr-s").style.width = ((sent - replied) / ROWS.length * 100) + "%";
     ["bocconi", "linkedin", "company", "association", "press", "group", "abroad"].forEach(k => {
       const all = ROWS.filter(r => r.type === k), done = all.filter(r => stateOf(r.id) && stateOf(r.id) !== "skip").length;
-      $("n-" + k).textContent = done + " из " + all.length;
+      const left = all.filter(r => !stateOf(r.id)).length;
+      $("n-" + k).textContent = left ? String(left) : "";
       const due = all.filter(remindDue).length, tab = $("n-" + k).parentNode;
       let badge = tab.querySelector(".due"); if (!badge) { badge = el("span", "due"); tab.append(badge); }
       badge.textContent = due; badge.hidden = !due;
@@ -726,13 +749,13 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     });
     // the status chips count what is in this tab
     const inTab = ROWS.filter(r => r.type === fType && (!q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q)));
-    $("c-any").textContent = inTab.length;
-    $("c-todo").textContent = inTab.filter(r => !stateOf(r.id)).length;
-    $("c-sent").textContent = inTab.filter(r => stateOf(r.id) === "sent").length;
-    $("c-replied").textContent = inTab.filter(r => stateOf(r.id) === "replied").length;
     // WhatsApp numbers exist only in the privately published copy (outreach/private/whatsapp.csv)
     $("c-remind").textContent = inTab.filter(remindDue).length;
-    $("c-remind").parentNode.classList.toggle("hot", inTab.some(remindDue));
+    // one chip: on when pressed, «Все» comes back as the way out of it; hidden when nobody is due and it is off
+    const dueN = inTab.filter(remindDue).length, chip = $("c-remind").parentNode;
+    chip.classList.toggle("hot", dueN > 0); chip.hidden = !dueN && fState !== "remind";
+    $("f-state").querySelector('[data-v="any"]').hidden = fState !== "remind";
+    $("f-state").querySelector('[data-v="any"]').textContent = "Показать всех";
 
     const isPosts = fType === "posts";
     $("posts").hidden = !isPosts; $("bench").hidden = isPosts; $("f-state").hidden = isPosts; $("q").hidden = isPosts;
@@ -759,8 +782,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       const st = status[r.id];
       const right = remindDue(r) ? el("span", "pill remind", "пора напомнить")
                   : st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) + (st.reminded ? " · напомнили" : "") : GROUP[st.state])
-                                   : el("span", "fit", r.fit && r.type === "company" ? "★ " + r.fit : "");
-      if (r.fit && r.type === "company" && !(st && st.state) && !remindDue(r)) { right.title = "Приоритет " + r.fit + " из 3: насколько компания подходит"; right.setAttribute("aria-label", right.title); }
+                                   : el("span", "fit", "");
       const dot = el("span", "dot"); dot.setAttribute("aria-hidden", "true");
       b.append(dot, t, right);
       b.addEventListener("click", () => { pick = pick === r.id && narrow.matches ? null : r.id; render(); });
@@ -787,7 +809,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       clearTimeout(timer);
       shared = true; status = {};
       snap.docs.forEach(d => { if (d.exists) status[d.id] = d.data(); });
-      $("sync").textContent = writable ? "Общий статус для всей команды" : "Только просмотр: попросите доступ Contributor или Editor";
+      $("sync").textContent = writable ? "" : "Только просмотр: попросите доступ Contributor или Editor";
       render();
     }, () => { clearTimeout(timer); $("sync").textContent = "Общий статус недоступен: отметки сохраняются только в этом браузере"; shared = false; });
   })();
