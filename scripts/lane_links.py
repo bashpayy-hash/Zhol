@@ -189,7 +189,33 @@ def join_it(xs: list[str]) -> str:
     return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " e " + xs[-1]
 
 
-def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str) -> dict:
+# the passes a guessed lane crosses, said the way an office would (owner, 20 Nov 2026: «письма персонализированные, в меру
+# или нет»: 222 of 286 companies name no country abroad on their own pages, so their lanes are only a guess)
+PASS_IT = {"BRENNER": "dal Brennero", "FREJUS": "dal Fréjus", "MONTBLANC": "dal Monte Bianco", "GOTTHARD": "dal Gottardo",
+           "TARVISIO": "da Tarvisio", "SLOVENIA": "dalla Slovenia", "TAUERN": "dai Tauri", "SWISS": "dalla Svizzera",
+           "VENTIMIGLIA": "da Ventimiglia"}
+PASS_RU = {"BRENNER": "Бреннер", "FREJUS": "Фрежюс", "MONTBLANC": "Монблан", "GOTTHARD": "Готтард", "TARVISIO": "Тарвизио",
+           "SLOVENIA": "Словению", "TAUERN": "Тауэрн", "SWISS": "Швейцарию", "VENTIMIGLIA": "Вентимилью"}
+
+
+def passes(ids: list[str], names: dict, strait: str) -> list[str]:
+    out = []
+    for i in ids:
+        tok = i.split("-")[-1]
+        name = names.get(tok) or (strait if i.startswith(("VIT-", "CT-")) else None)
+        if name and name not in out:
+            out.append(name)
+    return out
+
+
+def fact_of(row: dict) -> str:
+    """The one sentence that is about this company and only this one: what its own pages say (the first sentence of the
+    survey letter's paragraph, «Ho visto che lavorate da …», with its source in the send list)."""
+    first = re.split(r"(?<=[.!?])\s+", (row.get("why") or "").strip())[0]
+    return first if first.startswith("Ho visto che") else ""
+
+
+def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids: list[str] | None = None) -> dict:
     if base in ("south", "ct"):
         where_it, where_ru = "dalla Sicilia salite verso il Nord passando lo Stretto", "из Сицилии возят на север через пролив"
     elif dests:
@@ -220,36 +246,53 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str) -> 
         "И если найдётся пятнадцать минут на этой неделе, хочу понять, как вы сейчас справляетесь с такими случаями. "
         "Сегодня ничего не продаю, нам важно понять вашу работу.")
 
+    fact = fact_of(row)
+    known = bool(dests) or base in ("south", "ct")          # the company names its lanes, or it is in Sicily
+    pi, pr = passes(ids or [], PASS_IT, "dallo Stretto di Messina"), passes(ids or [], PASS_RU, "Мессинский пролив")
+    if known:
+        lanes_it = (fact + " " if fact else "Se non sbaglio " + where_it + ". ") + (
+            f"Nelle prossime settimane su queste tratte il radar vede {n_it}, {seen_it}. " if seen_it else
+            "Nelle prossime settimane su queste tratte il radar non vede ancora eventi gravi, e vi avvisa appena ne compare uno. ")
+        page_it = "sulle vostre tratte"
+    else:
+        cond = "Se i vostri mezzi passano " + " o ".join(pi) if pi else "Se fate viaggi verso l'estero"
+        lanes_it = (fact + " " if fact else "") + (
+            f"{cond}, nelle prossime settimane il radar vede {n_it}, {seen_it}. " if seen_it else
+            f"{cond}, nelle prossime settimane il radar non vede ancora eventi gravi e vi avvisa appena ne compare uno. ")
+        page_it = "sulle tratte più frequenti dalla vostra zona"
     message = (
         "Buongiorno,\n\n"
         "sono Alikhan Bashpay, studente Bocconi. Io e il mio team sviluppiamo **zhol**, " + WHO_IT + ". Siamo tra i 100 "
         "progetti selezionati su circa 500 per **TEF Ignition 2026** della Tech Europe Foundation, con un grant di 2.000 €. "
         "Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
-        "Se non sbaglio " + where_it + ". "
-        + (f"Nelle prossime settimane su queste tratte il radar vede {n_it}, {seen_it}. " if seen_it else
-           "Nelle prossime settimane su queste tratte il radar non vede ancora eventi gravi, e vi avvisa appena ne compare uno. ")
-        + "Ho preparato una pagina con alcuni viaggi di esempio sulle vostre tratte, quanto costerebbe lasciarli come sono "
+        + lanes_it
+        + "Ho preparato una pagina con alcuni viaggi di esempio " + page_it + ", quanto costerebbe lasciarli come sono "
         "e cosa conviene fare, ogni evento con la sua fonte\n" + link + "\n\n"
         "Se vi è utile, vorrei capire in **quindici minuti** come gestite oggi questi casi. Possiamo sentirci questa settimana?\n\n"
         "Grazie e buona giornata,\n[Nome]")
     message_ru = (
         "Здравствуйте. Я Алихан Башпай, студент Bocconi; мы с командой делаем zhol (стандартная фраза «кто мы»), "
-        "в 100 из ~500 TEF Ignition 2026, грант 2 000 €, цель — вся Европа. Если не ошибаюсь, вы " + where_ru + ". "
-        + (f"В ближайшие недели на этих направлениях радар видит: {seen_ru}. " if seen_ru else "Серьёзных событий на направлениях пока нет. ")
-        + "Ссылка — страница с примерами рейсов на их направлениях, ценой и тем, что делать, у каждого события источник. "
+        "в 100 из ~500 TEF Ignition 2026, грант 2 000 €, цель — вся Европа. "
+        + ("Факт о компании с её сайта (первая фраза «почему им»). " if fact else "")
+        + (("Если не ошибаюсь, вы " + where_ru + ". ") if known and not fact else "" )
+        + ("" if known else "Страны компания не называет, поэтому условно: если ваши машины ходят через " + (" или ".join(pr) or "границу") + ", ")
+        + (f"в ближайшие недели радар видит: {seen_ru}. " if seen_ru else "серьёзных событий пока нет. ")
+        + "Ссылка — страница с примерами рейсов " + ("на их направлениях" if known else "на частых направлениях из их региона") + ", ценой и тем, что делать, у каждого события источник. "
         "Просим 15 минут на этой неделе, чтобы понять, как они справляются сейчас.")
     # the one reminder to a company that already had the survey letter (owner, 17 Nov 2026: «А письмами как можно в
     # будущем? Типа, что нужно сделать?»): it no longer asks for a minute again, it brings their own lanes, and it is the
     # last message
-    seen = (f"Nelle prossime settimane su queste tratte il radar vede {n_it}, {seen_it}. " if seen_it else
-            "Nelle prossime settimane su queste tratte il radar non vede ancora eventi gravi, e vi avvisa appena ne compare uno. ")
+    # the reminder: the fact was in the first letter already, so only the lanes, said as known or as a condition
+    seen = (("Se non sbaglio " + where_it + ". ") if known else "") + (lanes_it[len(fact) + 1:] if fact and not known else
+            lanes_it if not known else (f"Nelle prossime settimane su queste tratte il radar vede {n_it}, {seen_it}. " if seen_it else
+            "Nelle prossime settimane su queste tratte il radar non vede ancora eventi gravi, e vi avvisa appena ne compare uno. "))
     reminder = (
         "Buongiorno,\n\n"
         "sono Alikhan Bashpay, studente Bocconi, e qualche giorno fa vi ho scritto a proposito di **zhol**, " + WHO_IT + ". "
         "Io e il mio team siamo tra i 100 progetti selezionati su circa 500 per **TEF Ignition 2026** della Tech Europe "
         "Foundation, con un grant di 2.000 €. Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
-        "Questa volta non vi chiedo niente, vi mando qualcosa di utile. Se non sbaglio " + where_it + ". " + seen
-        + "Qui trovate alcuni viaggi di esempio sulle vostre tratte, quanto costerebbe lasciarli come sono e cosa conviene "
+        "Questa volta non vi chiedo niente, vi mando qualcosa di utile. " + seen
+        + "Qui trovate alcuni viaggi di esempio " + page_it + ", quanto costerebbe lasciarli come sono e cosa conviene "
         "fare, ogni evento con la sua fonte\n" + link + "\n\n"
         "Se vi serve, possiamo provarlo **gratis per quattro settimane** sulle vostre spedizioni, senza installare niente. "
         "Basta rispondere a questa email. È il mio ultimo messaggio, non vi scriverò ancora.\n\n"
@@ -281,7 +324,7 @@ def main() -> None:
         link = f"{SITE}/it/verifica#lanes={','.join(ids)}&for={quote(name)}"
         hs = hooks(data, ids)
         out[r["id"]] = {"name": name, "lanes": ids, "countries": dests, "link": link, "events": hs, "radar_day": data["today"],
-                        **texts(r, base, dests, hs, link)}
+                        **texts(r, base, dests, hs, link, ids)}
     (OUT / "lane_links.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     with_events = sum(1 for v in out.values() if v["events"])
     print(f"wrote outreach/lane_links.json: {len(out)} companies, {with_events} with a road event on their lanes "

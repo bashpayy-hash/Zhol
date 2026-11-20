@@ -9,7 +9,7 @@ the WhatsApp numbers the private console carries, so it never enters the reposit
 
 Sheets: «Сводка» (counts by kind and status, all formulas, and how to use the file), «Адресаты» (one row per recipient,
 the status as a drop-down, the reminder date and «пора напомнить» as formulas), «Письма» (subject, letter, reminder),
-«Звонки» (the 30-second call, the events on the company's lanes, its own page), «Посты» (posts for LinkedIn and groups).
+«Направления» (the events on the company's lanes, its own page, the letter with them; no calls since 20 Nov 2026), «Посты» (posts for LinkedIn and groups).
 The file is a copy: the shared status lives in the console; a change made here does not reach it.
 """
 from __future__ import annotations
@@ -253,31 +253,31 @@ def build(status_dir: Path, out: Path) -> dict:
     le.conditional_formatting.add(f"A2:K{last}", FormulaRule(formula=['$C2="Ответили"'], fill=fill(SAGE_CARD)))
     le.conditional_formatting.add(f"A2:K{last}", FormulaRule(formula=['$C2="Отправлено"'], fill=fill(SENT_FILL)))
 
-    # ---------------------------------------------------------------- Звонки
-    ca = wb.create_sheet("Звонки")
+    # ---------------------------------------------------------------- Направления (no calls: owner, 20 Nov 2026)
+    ca = wb.create_sheet("Направления")
     ccols = ["Компания", "Статус", "Направления", "События на их направлениях (с источником)", "Их страница",
-             "Звонок, 30 секунд (по-итальянски)", "Перевод звонка", "Сообщение после звонка", "О чём сообщение", "ID"]
-    cw = [28, 14, 22, 50, 26, 62, 52, 62, 44, 24]
+             "Письмо с их направлениями", "О чём письмо", "ID"]
+    cw = [28, 14, 22, 50, 26, 70, 48, 24]
     header(ca, 1, ccols, cw)
     called = [(i, r) for i, r in enumerate(rows, start=2) if r.get("call")]
     for k, (i, r) in enumerate(called, start=2):
         c = r["call"]
         ev = "\n".join(f"{e.get('date', '')} · {e.get('what_en', '')} · {e.get('source_ru', '')}" for e in c.get("events", []))
-        vals = [r["name"], f"='Адресаты'!E{i}", " · ".join(c.get("lanes", [])), ev, None, c.get("call_it", ""), c.get("call_ru", ""),
+        vals = [r["name"], f"='Адресаты'!E{i}", " · ".join(c.get("lanes", [])), ev, None,
                 plain(c.get("message")), c.get("message_ru", ""), r["id"]]
         for j, v in enumerate(vals, start=1):
             cell = ca.cell(row=k, column=j, value=v)
-            cell.font = font(10, bold=(j == 1), color=MUTED if j == 10 else INK)
+            cell.font = font(10, bold=(j == 1), color=MUTED if j == 8 else INK)
             cell.alignment = TOP
             cell.border = GRID
         link_cell(ca.cell(row=k, column=5), c["link"], "открыть страницу")
         ca.cell(row=k, column=5).border = GRID
     lastc = len(called) + 1
-    fit_rows(ca, 2, lastc, {"D": 50, "F": 62, "G": 52, "H": 62}, line_pt=13, cap=409)
+    fit_rows(ca, 2, lastc, {"D": 50, "F": 70, "G": 48}, line_pt=13, cap=409)
     ca.freeze_panes = "B2"
-    ca.auto_filter.ref = f"A1:J{lastc}"
-    ca.conditional_formatting.add(f"A2:J{lastc}", FormulaRule(formula=['$B2="Ответили"'], fill=fill(SAGE_CARD)))
-    ca.conditional_formatting.add(f"A2:J{lastc}", FormulaRule(formula=['$B2="Отправлено"'], fill=fill(SENT_FILL)))
+    ca.auto_filter.ref = f"A1:H{lastc}"
+    ca.conditional_formatting.add(f"A2:H{lastc}", FormulaRule(formula=['$B2="Ответили"'], fill=fill(SAGE_CARD)))
+    ca.conditional_formatting.add(f"A2:H{lastc}", FormulaRule(formula=['$B2="Отправлено"'], fill=fill(SENT_FILL)))
 
     # ---------------------------------------------------------------- Посты
     po = wb.create_sheet("Посты")
@@ -359,8 +359,7 @@ def build(status_dir: Path, out: Path) -> dict:
                         "«Напоминание отправлено». Напоминание одно и последнее."),
         ("Письма", "Тема, текст и напоминание для каждого адресата — на листе «Письма», в той же строке, что на "
                    "«Адресатах». Вместо [Nome] — ваше имя."),
-        ("Звонки", "Компаниям сначала звоним: 30 секунд по-итальянски, события на их направлениях с источником и "
-                   "ссылка на их страницу. После звонка — сообщение со ссылкой."),
+        ("Направления", "Компаниям пишем письмо с их направлениями: события с источником и ссылка на их страницу."),
         ("Время", "Письма — в рабочие дни с 9 до 12 и с 14 до 17 по Риму. Не больше 40 писем в день с одного ящика."),
     ]
     for t, d in steps:
@@ -374,7 +373,7 @@ def build(status_dir: Path, out: Path) -> dict:
         sv.row_dimensions[k].height = max(18, lines_for(d, 88) * 13.5 + 4)
 
     for ws in wb.worksheets:
-        ws.sheet_properties.tabColor = {"Сводка": RED, "Адресаты": ESPRESSO, "Письма": "A99E93", "Звонки": SAGE_INK, "Посты": "A99E93"}[ws.title]
+        ws.sheet_properties.tabColor = {"Сводка": RED, "Адресаты": ESPRESSO, "Письма": "A99E93", "Направления": SAGE_INK, "Посты": "A99E93"}[ws.title]
     out.parent.mkdir(parents=True, exist_ok=True)
     wb.save(out)
     sent = sum(1 for r in rows if status.get(r["id"], {}).get("state") in ("sent", "replied"))

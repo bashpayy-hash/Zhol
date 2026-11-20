@@ -574,14 +574,13 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       let n = 1;
       const noAddr = !r.to && !r.wa && r.type !== "linkedin" && r.type !== "group";
       const again = opened[r.id] ? el("div", "dup-warn", "Уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ": проверьте «Отправленные», прежде чем отправить снова.") : null;
-      if (k) {
-        steps.append(step(n++, "Позвоните", "30 секунд по-итальянски: кто мы и что мы подготовили страницу с их направлениями. Не дозвонились — сразу к шагу 2.",
-          [row_(site && ext("btn small", "Сайт компании: там номер", site)), fold("Текст звонка", [pre_(k.call_it)]), fold("Перевод звонка", [pre_(k.call_ru)])]));
-        steps.append(step(n++, "Отправьте сообщение", "Со ссылкой на их направления: в нём кто мы, события с источником и их страница.", [again, ...sendKit(r, k.subject, k.message, box)]));
+      // no calls (owner, 20 Nov 2026: «звонки убери»): a company gets the letter with its own lanes, then the mark
+      if (k && !noAddr) {
+        steps.append(step(n++, "Отправьте письмо", "С их направлениями и ссылкой на их страницу: кто мы, события с источником, что делать.", [again, ...sendKit(r, k.subject, k.message, box)]));
       } else if (noAddr) {
         steps.append(step(n++, "Найдите контакт", "Адреса в списке нет: посмотрите на сайте или в Google.",
           [row_(site && ext("btn small", "Сайт", site), r.search && ext("btn small", "Найти в Google", r.search))]));
-        steps.append(step(n++, "Отправьте письмо", null, sendKit(r, r.subject, r.message, box)));
+        steps.append(step(n++, "Отправьте письмо", null, k ? sendKit(r, k.subject, k.message, box) : sendKit(r, r.subject, r.message, box)));
       } else {
         const title = r.type === "group" ? "Опубликуйте пост" : r.type === "linkedin" ? "Напишите в LinkedIn" : "Отправьте письмо";
         const hint = r.type === "group" ? "Сначала спросите разрешения у администратора группы." : r.wa && r.to ? "WhatsApp или почта: что удобнее." : null;
@@ -593,7 +592,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     } else if (remindDue(r)) {
       const f = followOf(r), sentIso = s.sent || s.at;
       parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. Напоминание одно и последнее."));
-      steps.append(step(1, "Отправьте напоминание", k ? "Можно сначала позвонить: текст звонка — в «Подробнее»." : null, sendKit(r, f.subject, f.message, box)));
+      steps.append(step(1, "Отправьте напоминание", k ? "С их направлениями и бесплатным пилотом." : null, sendKit(r, f.subject, f.message, box)));
       steps.append(step(2, "Отметьте «Напоминание отправлено»", "Больше этому адресату не пишем, ждём ответа.", [row_(markBtn("Напоминание отправлено", () => markReminded(r)))]));
       parts.push(steps);
     } else {
@@ -625,8 +624,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
         k.events.forEach(e => { const li = el("li", null, day(e.date) + " · " + e.what_en + " · "); li.append(ext("", e.source_ru, e.url)); ul.append(li); });
         sec("События на их направлениях (радар на " + day(k.radar_day) + ")", [ul, row_(ext("btn small", "Открыть их страницу", k.link))]);
       }
-      if (st) sec("Звонок", [fold("Текст звонка", [pre_(k.call_it)]), fold("Перевод звонка", [pre_(k.call_ru)])]);
-      if (!st) sec("Сообщение после звонка: о чём оно", [el("p", null, k.message_ru)]);
+      if (!st) sec("Письмо: о чём оно", [el("p", null, k.message_ru)]);
     }
     const f = followOf(r);
     if (st === "sent" && remindDue(r) && f && f.message_ru) sec("Напоминание: о чём оно", [el("p", null, f.message_ru)]);
@@ -653,7 +651,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   // one sentence on what is next once the path is walked (design system audit, 20 Nov 2026)
   function nextStep(r) {
     const s = status[r.id], st = stateOf(r.id);
-    if (st === "replied") return ["ok", "Ответили", r.call ? "Позвоните и предложите бесплатный пилот на их направлениях (текст звонка — в «Подробнее»). Разговор запишите в outreach/interview_log.csv." : "Запишите разговор в outreach/interview_log.csv. Если это офис перевозок, предложите бесплатный пилот на их направлениях."];
+    if (st === "replied") return ["ok", "Ответили", "Ответьте им и предложите бесплатный пилот на их направлениях. Разговор запишите в outreach/interview_log.csv."];
     if (st === "skip") return ["", "Не пишем", "Адресат отмечен «Не писать». Передумали — нажмите «Не отправлено»."];
     if (!followOf(r)) return ["", "Ждём ответа", "Напоминания для этого адресата нет. Ответили — отметьте «Ответили»."];
     if (s.reminded) return ["", "Ждём ответа", "Напоминание отправлено " + day(s.reminded) + ". Больше не пишем. Ответили — отметьте «Ответили»."];

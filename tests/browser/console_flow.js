@@ -23,15 +23,17 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   ok(await p.$eval("#c-remind", e => e.parentNode.classList.contains("hot")), "the «Пора напомнить» chip lights up");
   ok(await p.$eval(".how-box", e => !e.open), "the how-to is folded away");
 
-  // a company not written to yet: the path is call, message, mark; the rest folded under «Подробнее»
+  // a company not written to yet: the path is the letter with its lanes, then the mark (no calls: owner, 20 Nov 2026);
+  // the rest folded under «Подробнее»
   await p.click('#f-state button[data-v="todo"]'); await p.waitForTimeout(200);
   const fresh = await p.evaluate(() => {
     const d = document.querySelector("#detail");
     return { steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent), more: !!d.querySelector("details.more:not([open])"),
              mains: [...d.querySelectorAll(".steps .step")].map(s => s.querySelectorAll(".btn.main, .btn.wa-btn, .btn.li-btn, .btn.mark").length) };
   });
-  ok(fresh.steps.join(" / ") === "Позвоните / Отправьте сообщение / Отметьте «Отправлено»", "a new company: call, message, mark (" + fresh.steps.join(" / ") + ")");
-  ok(fresh.mains[1] >= 1 && fresh.mains[2] === 1 && fresh.mains.every(n => n <= 2), "one main button a step");
+  ok(fresh.steps.join(" / ") === "Отправьте письмо / Отметьте «Отправлено»", "a new company: the letter, then the mark (" + fresh.steps.join(" / ") + ")");
+  ok(fresh.mains[0] >= 1 && fresh.mains[1] === 1 && fresh.mains.every(n => n <= 2), "one main button a step");
+  ok(await p.$eval("#detail", d => !/[Пп]озвон|звонк/.test(d.textContent)), "no calls in the card");
   ok(fresh.more, "everything else is folded under «Подробнее»");
   const freshName = await p.$eval("#detail h2", e => e.textContent);
   await p.click("#detail .steps .btn.mark"); await p.waitForTimeout(200);

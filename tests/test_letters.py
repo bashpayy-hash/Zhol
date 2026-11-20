@@ -269,3 +269,21 @@ def test_company_reminder_brings_their_lanes():
                    + "&body=" + enc(m.replace("**", "")))
             assert len(url) <= 4000, (cid, len(url))
 
+
+
+def test_lane_letters_say_only_what_the_company_publishes():
+    """Personalisation in measure (owner, 20 Nov 2026: «письма персонализированные, в меру или нет»): the letter opens
+    with the one fact the company's own pages give («Ho visto che lavorate da …»); it says «se non sbaglio lavorate
+    verso …» only when the company names its countries, and otherwise puts the lanes as a condition («se i vostri mezzi
+    passano dal Brennero»), with a page of the lanes most frequent from its area."""
+    calls = json.loads((ROOT / "outreach" / "lane_links.json").read_text(encoding="utf-8"))
+    rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
+    for cid, k in calls.items():
+        body = k["message"].split("\n\n")[2]
+        fact = re.split(r"(?<=[.!?])\s+", (rows[cid].get("why") or "").strip())[0]
+        if fact.startswith("Ho visto che"):
+            assert body.startswith(fact), cid
+        known = bool(k["countries"]) or k["lanes"][0].startswith(("VIT-", "CT-"))
+        if not known:
+            assert "Se non sbaglio" not in k["message"] and "Se non sbaglio" not in k["reminder"]["message"], cid
+            assert "sulle tratte più frequenti dalla vostra zona" in k["message"], cid
