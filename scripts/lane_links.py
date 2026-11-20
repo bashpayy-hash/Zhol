@@ -141,7 +141,7 @@ def source_of(item: dict) -> tuple[str, str, int]:
 
 ARTICLE = {"dosaggio": "il", "divieto": "il", "divieti": "i", "chiusura": "la", "chiusure": "le", "sciopero": "lo",
            "scioperi": "gli", "vento": "il", "blocco": "il", "lavori": "i", "coda": "la", "code": "le", "protesta": "la",
-           "manifestazione": "la", "neve": "la", "possibile": "un"}
+           "manifestazione": "la", "neve": "la", "possibile": "un", "fermo": "il"}
 
 
 HOLIDAY = {"Immacolata": "dell'Immacolata", "Natale": "di Natale", "Vigilia di Natale": "della Vigilia di Natale",

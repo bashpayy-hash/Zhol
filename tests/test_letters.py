@@ -287,3 +287,37 @@ def test_lane_letters_say_only_what_the_company_publishes():
         if not known:
             assert "Se non sbaglio" not in k["message"] and "Se non sbaglio" not in k["reminder"]["message"], cid
             assert "sulle tratte più frequenti dalla vostra zona" in k["message"], cid
+
+
+def test_personal_letters_are_short_and_keep_every_rule():
+    """Short personal letters for the associations and the organisations abroad (owner, 20 Nov 2026: «старайся
+    персонализировать все письма… очень кратко, но метко»; scripts/personal_letters.py). Every rule of a letter holds;
+    the one sentence that is theirs is in the letter, names the events the radar sees on their roads with a source for
+    each, and says what an organisation abroad drives only as a condition; an association's letter is shorter than the
+    one of the first wave; every letter still fits an Outlook link."""
+    from urllib.parse import quote
+    from test_positioning import BANNED
+    pl = json.loads((ROOT / "outreach" / "personal_letters.json").read_text(encoding="utf-8"))
+    rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
+    enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
+    abroad = [k for k in pl if rows[k]["type"] == "abroad"]
+    assert len(pl) - len(abroad) >= 80 and len(abroad) >= 60
+    for pid, p in pl.items():
+        m, r = p["message"], rows[pid]
+        assert ":" not in _text(m) and ":" not in p["subject"], pid
+        assert not NAMES.search(m) and not BANNED.search(m), pid
+        assert any(g in m for g in ("2.000 €", "2,000", "2 000 €")) and "TEF Ignition 2026" in m and "Europ" in m, pid
+        assert any(a in m for a in (" AI", " IA", "KI")) and "Bocconi" in m, pid
+        assert p["line"] in m and len(p["line"]) < 520, pid
+        assert set(re.findall(r"https?://\S+", m)) == {r["link"]}, pid
+        assert all(e["url"].startswith("https://") and e["source_ru"] and e["date"] >= p["radar_day"] for e in p["events"]), pid
+        if r["type"] == "abroad":
+            assert p["line"].startswith(("If ", "Wenn ", "Si ", "Se ")), pid
+            assert p["subject"] == r["subject"], pid           # the reminder answers in the same thread
+        else:
+            assert len(m) < len(r["message"]), pid
+            assert p["events"] and all(e["source_it"] in p["line"] for e in p["events"]), pid
+        if r.get("to"):
+            url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc(r["to"]) + "&subject=" + enc(p["subject"])
+                   + "&body=" + enc(m.replace("**", "")))
+            assert len(url) <= 4000, (pid, len(url))

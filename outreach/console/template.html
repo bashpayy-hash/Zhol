@@ -250,6 +250,12 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 .st-more[open] { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
 .st-more > summary { min-height: 34px; font-size: 13.5px; color: var(--muted); }
 .peek > .linkish { display: inline-block; margin-bottom: var(--s1); }
+.letter-card { display: flex; flex-direction: column; gap: 6px; padding: var(--s3) var(--s4); border-radius: var(--r-box); background: var(--paper); border: 1px solid var(--line); }
+.lc-top { display: flex; gap: var(--s2); align-items: baseline; font-size: 13px; color: var(--muted); }
+.lc-top b { color: var(--ink); font-size: 13.5px; }
+.lc-subject { font-weight: 600; color: var(--ink); font-size: 14.5px; }
+.lc-line { margin: 0; padding-left: var(--s3); border-left: 3px solid var(--red-soft); font-size: 14.5px; line-height: 1.5; color: var(--ink); }
+.lc-ru { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
 </style>
 
 <header class="bar"><div class="wrap">
@@ -310,8 +316,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
 (function () {
   const $ = id => document.getElementById(id);
   document.documentElement.lang = "ru";
-  const langOf = t => /^\s*(Dear|Hello|Good (morning|afternoon))/.test(t) ? "en" : /^\s*(Sehr|Guten|Hallo)/.test(t) ? "de"
-    : /^\s*(Bonjour|Madame|Monsieur)/.test(t) ? "fr" : /^\s*(Estimad|Buenos|Hola)/.test(t) ? "es" : "it";
+  const langOf = t0 => { const t = t0.replace(/^\s*\([^)]*\)\s*/, ""); return /^\s*(Dear|Hello|Good (morning|afternoon))/.test(t) ? "en" : /^\s*(Sehr|Guten|Hallo)/.test(t) ? "de"
+    : /^\s*(Bonjour|Madame|Monsieur)/.test(t) ? "fr" : /^\s*(Estimad|Buenos|Hola)/.test(t) ? "es" : "it"; };
   const el = (t, c, txt) => { const e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; };
   const ROWS = JSON.parse($("data").textContent);
   const POSTS = JSON.parse($("posts-data").textContent);
@@ -426,6 +432,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   // a company already written to gets its own lanes as the reminder, not the survey again (owner, 17 Nov 2026:
   // «А письмами как можно в будущем? Типа, что нужно сделать?»; scripts/lane_links.py)
   const followOf = r => (r.call && r.call.reminder) || r.followup;
+  const remindSubject = r => { const s = status[r.id], f = followOf(r) || {};
+    return s && s.letter === "personal" && r.personal && !r.call ? "Re: " + r.personal.subject : f.subject; };
   const remindDue = r => { const s = status[r.id]; return !!(followOf(r) && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
   const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
   const national = x => /^nazionale$/i.test((x || "").trim()) ? "по всей Италии" : x;
@@ -464,6 +472,8 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const id = user ? await user.id() : null;
     const next = state ? { state, by: id, at: new Date().toISOString() } : null;
     if (next && channel && state === "sent") next.note = channel;            // «WhatsApp»: the reminder waits three working days
+    if (next && state === "sent" && !(prev && prev.state)) { const w = r.call ? "lanes" : r.personal ? "personal" : ""; if (w) next.letter = w; }
+    if (next && prev && prev.letter) next.letter = prev.letter;
     // «Ответили» keeps the day the letter went out and the reminder (design system audit, 20 Nov 2026: it was lost)
     if (next && prev && prev.state === "sent" && state !== "sent") { next.sent = prev.sent || prev.at; if (prev.reminded) next.reminded = prev.reminded; }
     if (next && prev && prev.sent && state === "sent") next.at = prev.sent;
@@ -599,19 +609,22 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       } else if (noAddr) {
         steps.append(step(n++, "Найдите контакт", "Адреса в списке нет: посмотрите на сайте или в Google.",
           [row_(site && ext("btn small", "Сайт", site), r.search && ext("btn small", "Найти в Google", r.search))]));
-        steps.append(step(n++, "Отправьте письмо", null, [offNote(), ...(k ? sendKit(r, k.subject, k.message, box) : sendKit(r, r.subject, r.message, box))]));
+        const L0 = k || r.personal || r;
+        steps.append(step(n++, "Отправьте письмо", null, [offNote(), ...sendKit(r, L0.subject, L0.message, box)]));
       } else {
         const title = r.type === "group" ? "Опубликуйте пост" : r.type === "linkedin" ? "Напишите в LinkedIn" : "Отправьте письмо";
         const hint = r.type === "group" ? "Сначала спросите разрешения у администратора группы." : r.wa && r.to ? "WhatsApp или почта: что удобнее." : null;
-        steps.append(step(n++, title, hint, [again, r.type === "group" || r.type === "linkedin" ? null : offNote(), ...sendKit(r, r.subject, r.message, box)]));
+        const pl = r.personal;   // an association: the short personal letter (scripts/personal_letters.py)
+        steps.append(step(n++, title, hint, [again, r.type === "group" || r.type === "linkedin" ? null : offNote(),
+          ...sendKit(r, pl ? pl.subject : r.subject, pl ? pl.message : r.message, box)]));
       }
       steps.append(step(n, "Отметьте «Отправлено»", null,
         [row_(markBtn("Отправлено", () => setState(r, "sent", via[r.id])))]));
-      parts.push(whatLine(r, false), steps);
+      parts.push(letterCard(r, false), steps);
     } else if (remindDue(r)) {
       const f = followOf(r), sentIso = s.sent || s.at;
-      parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. " + whatLine(r, true).textContent.replace(/^Что отправляем\. /, "")));
-      steps.append(step(1, "Отправьте напоминание", null, [offNote(), ...sendKit(r, f.subject, f.message, box)]));
+      parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. Напоминание одно и последнее."), letterCard(r, true));
+      steps.append(step(1, "Отправьте напоминание", null, [offNote(), ...sendKit(r, remindSubject(r), f.message, box)]));
       steps.append(step(2, "Отметьте «Напоминание отправлено»", null, [row_(markBtn("Напоминание отправлено", () => markReminded(r)))]));
       parts.push(steps);
     } else {
@@ -645,6 +658,12 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       }
       if (!st) sec("Письмо: о чём оно", [el("p", null, k.message_ru)]);
     }
+    const pl = r.personal;
+    if (pl && !st) {
+      const ul = el("ul", "events");
+      (pl.events || []).forEach(e => { const li = el("li", null, day(e.date) + " · " + e.what_en + " · "); li.append(ext("", e.source_ru, e.url)); ul.append(li); });
+      sec("Письмо: о чём оно (радар на " + day(pl.radar_day) + ")", [el("p", null, pl.message_ru), pl.events && pl.events.length ? ul : null]);
+    }
     const f = followOf(r);
     if (st === "sent" && remindDue(r) && f && f.message_ru) sec("Напоминание: о чём оно", [el("p", null, f.message_ru)]);
     if (r.type === "linkedin" && r.note) {
@@ -653,8 +672,10 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     }
     // the letters not on the path: the survey letter of the first wave, or the letter already sent
     const sentIso = s && (s.sent || s.at);
-    if (st === "sent" || st === "replied") sec("Первое письмо · отправлено " + (sentIso ? day(sentIso) + " в " + hhmm(sentIso) : ""), [fold("Показать письмо", [el("div", "subject", r.subject), letter(r)])]);
-    else if (k && !st) sec("Письмо с опросом (первая волна)", [fold("Показать письмо", [el("div", "subject", r.subject), letter(r)])]);
+    const went = s && s.letter === "lanes" && k ? { message: k.message, subject: k.subject, why: "" }
+      : s && s.letter === "personal" && pl ? { message: pl.message, subject: pl.subject, why: pl.line } : r;
+    if (st === "sent" || st === "replied") sec("Первое письмо · отправлено " + (sentIso ? day(sentIso) + " в " + hhmm(sentIso) : ""), [fold("Показать письмо", [el("div", "subject", went.subject), letter(went)])]);
+    else if ((k || pl) && !st) sec(k ? "Письмо с опросом (первая волна)" : "Длинное письмо первой волны", [fold("Показать письмо", [el("div", "subject", r.subject), letter(r)])]);
     if (r.message_ru) sec("Перевод письма для команды", [fold("Показать перевод", [pre_(r.message_ru)])]);
     // the state and the moves that make sense from it, at the end of the card: the four-way switch on top read as four
     // actions (20 Nov 2026: two recipients marked and one unmarked within a minute)
@@ -680,17 +701,31 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     return box;
   }
 
-  // what goes out, in one line, before the button (critique, 20 Nov 2026: «Отправьте письмо» did not say which)
+  // which letter goes out, before the button: its subject, the sentence that is theirs, and what it says in Russian
+  // (owner, 20 Nov 2026: «добавь то, что вот какое письмо мы им пишем… персонализировать все письма… кратко, но метко»)
   const LANG_RU = { it: "по-итальянски", en: "по-английски", de: "по-немецки", fr: "по-французски", es: "по-испански" };
-  function whatLine(r, reminder) {
-    const k = r.call, f = followOf(r) || {};
-    const lang = LANG_RU[langOf((reminder ? f.message : k ? k.message : r.message) || "")];
-    const text = reminder ? "Напоминание " + lang + ", одно и последнее" + (k ? ": их направления и бесплатный пилот на четыре недели." : ": ссылка на опрос ещё раз.")
-      : r.type === "group" ? "Пост " + lang + ": кто мы и ссылка на опрос."
-      : r.type === "linkedin" ? "Сообщение " + lang + ": кто мы, почему пишем именно этому человеку, ссылка на опрос."
-      : k ? "Письмо " + lang + ": кто мы, события на их направлениях с источником и ссылка на их страницу."
-      : "Письмо " + lang + ": кто мы, почему пишем именно им и просьба пройти опрос на минуту.";
-    const d = el("p", "what"); d.append(el("b", null, "Что отправляем. "), document.createTextNode(text)); return d;
+  const trim = (s, n) => !s ? "" : s.length > n ? s.slice(0, n - 4).replace(/\s+\S*$/, "") + "…" : s;
+  function letterOf(r, reminder) {
+    const k = r.call, pl = r.personal, f = followOf(r) || {};
+    if (reminder) {
+      const rem = k && k.reminder;
+      const body = rem ? (rem.message.split("\n\n")[2] || "").replace(/^Questa volta non vi chiedo niente, vi mando qualcosa di utile\. /, "").split(/\s+(?=Qui trovate)/)[0] : "";
+      return { subject: remindSubject(r), text: f.message || "", line: body, ru: rem ? rem.message_ru : f.message_ru };
+    }
+    if (k) return { subject: k.subject, text: k.message, line: (k.message.split("\n\n")[2] || "").split(/\s+(?=Ho preparato)/)[0], ru: k.message_ru };
+    if (pl) return { subject: pl.subject, text: pl.message, line: pl.line, ru: pl.line_ru, lang: pl.lang };
+    const cyr = /[а-яё]/i.test(r.why || "");
+    return { subject: r.subject, text: r.message, line: cyr ? "" : r.why || "", ru: cyr ? r.why : r.why_ru || "" };
+  }
+  function letterCard(r, reminder) {
+    const L = letterOf(r, reminder), lang = L.lang || langOf(L.text || "");
+    const card = el("div", "letter-card");
+    const top = el("div", "lc-top"); top.append(el("b", null, reminder ? "Какое напоминание" : r.type === "group" ? "Какой пост" : "Какое письмо"), el("span", null, LANG_RU[lang] || ""));
+    card.append(top);
+    if (L.subject && r.type !== "group") card.append(el("div", "lc-subject", L.subject));
+    if (L.line) { const q = el("blockquote", "lc-line"); q.lang = lang; q.textContent = trim(plain(L.line), 420); card.append(q); }
+    if (L.ru) card.append(el("p", "lc-ru", "По-русски: " + trim(L.ru.replace(/^Здравствуйте\.\s*/, ""), 260)));
+    return card;
   }
   // outside office hours in Italy: schedule the letter instead of sending it into the night
   const offNote = () => rome.off ? el("div", "offhours", "В Италии сейчас нерабочее время. В Outlook нажмите стрелку рядом с «Отправить», выберите «Отправить позже» и поставьте "

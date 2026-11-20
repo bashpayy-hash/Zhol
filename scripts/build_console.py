@@ -3,6 +3,7 @@
     python scripts/professor_letters.py   # if the professors' letters changed
     python scripts/survey_targets.py      # refreshes outreach/survey_send_list.json
     python scripts/lane_links.py          # the call and the link to each company's lanes (live radar)
+    python scripts/personal_letters.py    # short personal letters: associations and abroad (live radar)
     python scripts/build_console.py
 
 The page is published as a private claude.ai artifact (https://claude.ai/artifact/9uv2W3txr1GgrJAf6VJh3J), where the
@@ -29,6 +30,12 @@ def rows_all() -> list:
     for r in rows:
         if r["id"] in calls:
             r["call"] = calls[r["id"]]
+    # short personal letters for the associations (scripts/personal_letters.py, owner 20 Nov 2026)
+    personal = OUT / "personal_letters.json"
+    personal = json.loads(personal.read_text(encoding="utf-8")) if personal.exists() else {}
+    for r in rows:
+        if r["id"] in personal:
+            r["personal"] = personal[r["id"]]
     li = OUT / "linkedin_send_list.json"
     return rows + (json.loads(li.read_text(encoding="utf-8")) if li.exists() else [])
 

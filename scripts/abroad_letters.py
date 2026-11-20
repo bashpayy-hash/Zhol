@@ -244,7 +244,7 @@ def _after_greeting(t: str, lang: str) -> str:
 
 
 def _part(t: dict, lang: str, oid: str, name: str, kind: str, country: str, link: str, optout: bool = True,
-          sign: bool = True) -> str:
+          sign: bool = True, para: str | None = None) -> str:
     greet = t["greet"][kind].format(name=name)
     if lang == "fr" and name[:1].upper() in "AEIOUH":                   # French elision, «l'équipe d'OTRE»
         greet = greet.replace(f" de {name}", f" d'{name}")
@@ -253,13 +253,15 @@ def _part(t: dict, lang: str, oid: str, name: str, kind: str, country: str, link
     lead = "" if kind == "press" else t["measure"] + " "
     survey = "" if kind == "press" else " " + t["survey"]
     gift = f"\n\n{t['gift_press']}" if kind == "press" else ""
-    return (f"{greet}\n{_after_greeting(t['who'], lang)}\n\n{t['problem']} {reason} {t['law']} {t['main']}\n\n"
+    # «para»: one sentence that is theirs instead of the figures for the country (scripts/personal_letters.py, 20 Nov 2026)
+    para = para or f"{t['problem']} {reason} {t['law']}"
+    return (f"{greet}\n{_after_greeting(t['who'], lang)}\n\n{para} {t['main']}\n\n"
             f"{lead}{ask}{survey}\n{link}{gift}\n\n"
             + (f"{t['thanks']}\n{SIGN[lang]}" if sign else t["thanks"].rstrip(",") + ".")
             + (f"\n{t['optout']}" if kind == "company" and optout else ""))
 
 
-def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None) -> dict:
+def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None, para: dict | None = None) -> dict:
     """Subject, letter, the highlighted reason, the team's Russian translation, the link and the language. A letter
     in another language says on its first line that the English version is below, and has it in full under a separator
     (owner, 11 Nov 2026: «внизу всё равно прилагай текст на англ, сразу пиши, что снизу текст на англ»)."""
@@ -267,9 +269,11 @@ def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None
     t = T[lang]
     link = survey_link(oid, lang)
     why = f"{t['reason'].get(country) or t['reason']['']} {t['law']}"
-    text = _part(t, lang, oid, name, kind, country, link)
+    para = para or {}
+    text = _part(t, lang, oid, name, kind, country, link, para=para.get(lang))
     if lang != "en":
-        text = f"{BELOW[lang]}\n\n{text}\n\n{EN_MARK}\n\n" + _part(T["en"], "en", oid, name, kind, country, link, optout=False, sign=False)
+        text = f"{BELOW[lang]}\n\n{text}\n\n{EN_MARK}\n\n" + _part(T["en"], "en", oid, name, kind, country, link, optout=False,
+                                                                       sign=False, para=para.get("en"))
     reason_ru = RU["reason"].get(country) or RU["reason"][""]
     ask_ru = BESPOKE.get(oid, {}).get("ask_ru") or RU["ask"][kind]
     lead_ru = "" if kind == "press" else RU["measure"] + " "
@@ -278,7 +282,7 @@ def letter(oid: str, name: str, kind: str, country: str, lang: str | None = None
     gift_ru = f"\n\n{RU['gift_press']}" if kind == "press" else ""
     ru = (f"Письмо на {LANG_NAME_RU[lang]}. Перевод для команды." + (" Ниже в письме идёт полный английский текст."
           if lang != "en" else "") + f"\n\n{RU['greet'][kind].format(name=name)}\n{_after_greeting(RU['who'], 'ru')}\n\n"
-          f"{RU['problem']} {reason_ru} {RU['law']} {RU['main']}\n\n{lead_ru}{ask_ru}{survey_ru}{note_ru}\n{link}{gift_ru}\n\n"
+          f"{para.get('ru') or RU['problem'] + ' ' + reason_ru + ' ' + RU['law']} {RU['main']}\n\n{lead_ru}{ask_ru}{survey_ru}{note_ru}\n{link}{gift_ru}\n\n"
           f"{RU['thanks']}\n{SIGN[lang]}" + (f"\n{RU['optout']}" if kind == "company" else ""))
     out = {"subject": t["subject"], "message": text, "why": why, "message_ru": ru, "link": link, "lang": lang}
     if oid == "ab-iru":

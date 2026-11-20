@@ -239,8 +239,13 @@ def build(status_dir: Path, out: Path) -> dict:
     header(le, 1, lcols, lw)
     for i, r in enumerate(rows, start=2):
         f = follow_of(r) or {}
-        vals = [KIND.get(r["type"], r["type"]), r["name"], f"='Адресаты'!E{i}", plain(r.get("subject")), plain(r.get("message")),
-                r.get("message_ru", ""), f.get("subject", ""), plain(f.get("message")), f.get("message_ru", ""),
+        # not written to yet: the short personal letter (scripts/personal_letters.py, owner 20 Nov 2026); once sent, the
+        # letter that went out (the console records which one)
+        s = status.get(r["id"], {})
+        L = r["personal"] if r.get("personal") and (not s.get("state") or s.get("letter") == "personal") else r
+        rsub = ("Re: " + L["subject"]) if L is not r and f.get("subject") else f.get("subject", "")
+        vals = [KIND.get(r["type"], r["type"]), r["name"], f"='Адресаты'!E{i}", plain(L.get("subject")), plain(L.get("message")),
+                L.get("message_ru", ""), rsub, plain(f.get("message")), f.get("message_ru", ""),
                 r.get("note", "") if r["type"] == "linkedin" else "", r["id"]]
         for j, v in enumerate(vals, start=1):
             c = le.cell(row=i, column=j, value=v)

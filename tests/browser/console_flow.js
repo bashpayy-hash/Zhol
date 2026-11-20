@@ -39,6 +39,15 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   ok(fresh.mains[0] >= 1 && fresh.mains[1] === 1 && fresh.mains.every(n => n <= 2), "one main button a step");
   ok(await p.$eval("#detail", d => !/[Пп]озвон|звонк/.test(d.textContent)), "no calls in the card");
   ok(fresh.more, "everything else is folded under «Подробнее»");
+  // which letter goes out (owner, 20 Nov 2026: «добавь то, что вот какое письмо мы им пишем»), before the path
+  const lc = await p.evaluate(() => {
+    const d = document.querySelector("#detail"), c = d.querySelector(".letter-card"), q = c && c.querySelector(".lc-line");
+    return c && { head: c.querySelector(".lc-top").textContent, subject: (c.querySelector(".lc-subject") || {}).textContent || "",
+                  line: q ? q.textContent : "", lang: q ? q.lang : "", ru: (c.querySelector(".lc-ru") || {}).textContent || "",
+                  before: !!(c.compareDocumentPosition(d.querySelector(".steps")) & Node.DOCUMENT_POSITION_FOLLOWING) };
+  });
+  ok(lc && /^Какое письмо/.test(lc.head) && lc.subject && lc.line.length > 40 && lc.lang === "it" && /^По-русски/.test(lc.ru) && lc.before,
+     "the card shows which letter goes out, its subject, the sentence that is theirs and its gist in Russian");
   const freshName = await p.$eval("#detail h2", e => e.textContent);
   await p.click("#detail .steps .btn.mark"); await p.waitForTimeout(200);
   ok(await p.$eval("#toast", e => /Отправлено/.test(e.textContent)), "step 3 marks «Отправлено»");
@@ -51,7 +60,7 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   await p.click('#f-state button[data-v="remind"]'); await p.waitForTimeout(200);
   const card = await p.evaluate(() => {
     const d = document.querySelector("#detail"), kids = [...d.children].map(k => k.className.split(" ")[0]);
-    return { kids, state: d.querySelector(".statusrow .st-now").textContent, what: /Напоминание по-/.test((d.querySelector(".next") || {}).textContent || ""), who: !!d.querySelector(".who-line"), next: d.querySelector(".next b").textContent,
+    return { kids, state: d.querySelector(".statusrow .st-now").textContent, what: /^Какое напоминание/.test((d.querySelector(".letter-card .lc-top") || {}).textContent || ""), who: !!d.querySelector(".who-line"), next: d.querySelector(".next b").textContent,
              steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent),
              first: [...d.querySelectorAll(".more .more-sec h4")].map(h => h.textContent).find(x => /^Первое письмо/.test(x)) || "" };
   });
@@ -80,6 +89,18 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   await p.keyboard.press("ArrowDown"); await p.waitForTimeout(150);
   const second = await p.$eval('#list .row[aria-current="true"] b', e => e.textContent);
   ok(first !== second, "↓ moves to the next recipient");
+  // an association not written to yet gets its short personal letter, and the one abroad its own in its language
+  for (const [tab, want] of [["association", "it"], ["abroad", null]]) {
+    await p.click('#f-type button[data-v="' + tab + '"]'); await p.waitForTimeout(250);
+    const a = await p.evaluate(() => {
+      const d = document.querySelector("#detail"), c = d.querySelector(".letter-card"), pre = d.querySelector(".steps details.peek pre");
+      return c && { head: c.querySelector(".lc-top").textContent, line: (c.querySelector(".lc-line") || {}).textContent || "",
+                    lang: (c.querySelector(".lc-line") || {}).lang || "", text: pre ? pre.textContent : "" };
+    });
+    ok(a && a.line.length > 40 && a.text.includes(a.line.replace(/…$/, "").slice(0, 60)) && (!want || a.lang === want),
+       tab + ": the letter sent is the personal one, its sentence shown in the card (" + (a && a.lang) + ")");
+  }
+
   ok(errs.length === 0, "no page errors " + errs.join(" | "));
 
   // a phone: no horizontal scroll, buttons in reach, the bar not sticky
