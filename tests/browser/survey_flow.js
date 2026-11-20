@@ -78,7 +78,21 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
         await pick(...ANSWERS[i]);
         if (i === 3) await shot("after-step4");
       }
-      check(await page.isVisible("#sv-follow"), `${tag}: the free pilot after the last answer`);
+      // two optional questions once the seven are sent (owner, 20 Nov 2026): how early, and where they hear first
+      check(await page.isVisible("#sv-extra") && await page.isVisible("#sv-extra-ok"), `${tag}: two optional questions after the seven are sent`);
+      check(posts.length === 1, `${tag}: the seven answers are sent before the optional questions`);
+      check(await page.$$eval("#sv-extra fieldset.q:not([hidden])", f => f.length === 1 && f[0].dataset.path) === (who === "office" ? "op" : "ex"),
+            `${tag}: the optional questions follow the path (office or someone who knows the field)`);
+      await shot("extra");
+      if (who === "office") {
+        check((await pose()).includes("watch"), `${tag}: the watch pose for «how early»`);
+        await pick("lead", "6-12h");
+        check((await pose()).includes("radio"), `${tag}: the radio pose for «where you hear first»`);
+        await pick("first_source", "chats");
+      } else {
+        await page.click("#sv-extra-skip"); await page.waitForTimeout(400);
+      }
+      check(await page.isVisible("#sv-follow"), `${tag}: the free pilot after the optional questions`);
       check((await pose()).includes("celebrate"), `${tag}: celebrate pose after sending`);
       // the pilot card (owner, 15 Nov 2026): four steps, the crossings as chips, one main button, the results as a second choice
       check((await page.$$eval(".sv-pilot-steps li", l => l.length)) === 4 && await page.isVisible("#sv-follow-ok") && await page.isVisible("#sv-results"),
@@ -110,10 +124,17 @@ const check = (ok, what) => { if (!ok) { failed++; console.log("  FAIL", what); 
       await page.waitForTimeout(2600);                   // the small map comes in behind its sweep
       await shot("done");
 
-      check(posts.length === 2, `${tag}: two posts (answers, contact)`);
+      const nPosts = who === "office" ? 3 : 2;                     // the optional answers only when given
+      check(posts.length === nPosts, `${tag}: ${nPosts} posts (answers${who === "office" ? ", optional answers" : ""}, contact)`);
       check(!(await page.$('input[name="followup"][value="analysis"]')), `${tag}: no free analysis offered`);
-      if (posts.length === 2) {
-        const [a, f] = posts;
+      if (posts.length === nPosts) {
+        const a = posts[0], f = posts[posts.length - 1];
+        if (who === "office") {
+          const x = posts[1];
+          check(x.get("form-name") === "survey-extra" && x.get("lead") === "6-12h" && x.get("first_source") === "chats" && x.get("path") === "op",
+                `${tag}: the optional answers are sent on their own`);
+          check(x.get("rid") === a.get("rid") && x.get("lang") === lang && !x.get("contact"), `${tag}: linked only by the random id, no contact`);
+        }
         check(a.get("form-name") === "survey" && f.get("form-name") === "survey-followup", `${tag}: form names`);
         check(ANSWERS.every(([k, v]) => a.get(k) === v), `${tag}: the role and all seven answers sent`);
         const other = who === "office" ? "x_minutes" : "fleet";

@@ -13,7 +13,7 @@
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s60">
+<link rel="stylesheet" href="/assets/zhol.css?v=s61">
 <link rel="alternate" hreflang="en" href="https://zhol.live/survey">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/sondaggio">
 <link rel="alternate" hreflang="de" href="https://zhol.live/de/umfrage">
@@ -258,6 +258,60 @@
           <div class="sv-nav"><button class="sv-link" type="button" id="sv-back" hidden>Back</button><button class="btn" type="button" id="sv-next" hidden>Next</button><button class="btn" type="submit" id="sv-send">Send my answers</button></div>
         </form>
 
+        <!-- two optional questions once the seven are sent (owner, 20 Nov 2026: «по опросу мы можем что то новое
+             добавить?»): how early an office must know to change a shipment, and where it hears first today. Their own
+             form, linked to the answers only by the same random id; the letters' «seven questions» stay true. -->
+        <form class="survey sv-extra stepping" id="sv-extra" name="survey-extra" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
+          <input type="hidden" name="form-name" value="survey-extra">
+          <input type="hidden" name="lang" value="en">
+          <input type="hidden" name="rid" value="">
+          <input type="hidden" name="path" value="">
+          <p class="hidden-field"><label>Leave this field empty: <input name="bot-field"></label></p>
+          <p class="sv-extra-top"><span class="sv-label ok" id="sv-extra-ok">Answers sent, thank you! Two more, only if you have ten seconds.</span> <button class="sv-link" type="button" id="sv-extra-skip">Skip</button></p>
+          <fieldset class="q" data-img="watch" data-path="op"><legend><span class="n">Optional · 1 of 2</span>How early do you need to know about a ban, a closure or a strike to change a shipment without losing money?</legend>
+            <p class="sv-why">This tells us how early the radar has to warn.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="lead" value="lt6h"><span>Less than 6 hours</span></label>
+              <label><input type="radio" name="lead" value="6-12h"><span>6–12 hours</span></label>
+              <label><input type="radio" name="lead" value="12-24h"><span>12–24 hours</span></label>
+              <label><input type="radio" name="lead" value="1-2d"><span>1–2 days</span></label>
+              <label><input type="radio" name="lead" value="3d+"><span>3 days or more</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="radio" data-path="op"><legend><span class="n">Optional · 2 of 2</span>Today, where do you usually hear about it first?</legend>
+            <p class="sv-why">So we know who the radar has to beat.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="first_source" value="news"><span>Official sites and news</span></label>
+              <label><input type="radio" name="first_source" value="chats"><span>WhatsApp or Telegram groups</span></label>
+              <label><input type="radio" name="first_source" value="drivers"><span>From the drivers</span></label>
+              <label><input type="radio" name="first_source" value="network"><span>From the association, customers or colleagues</span></label>
+              <label><input type="radio" name="first_source" value="apps"><span>Satnav or traffic apps</span></label>
+              <label><input type="radio" name="first_source" value="when"><span>Often only when it happens</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="watch" data-path="ex"><legend><span class="n">Optional · 1 of 2</span>From your experience, how early does a traffic office need to know about a ban, a closure or a strike to change a shipment without losing money?</legend>
+            <p class="sv-why">This tells us how early the radar has to warn.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="lead" value="lt6h"><span>Less than 6 hours</span></label>
+              <label><input type="radio" name="lead" value="6-12h"><span>6–12 hours</span></label>
+              <label><input type="radio" name="lead" value="12-24h"><span>12–24 hours</span></label>
+              <label><input type="radio" name="lead" value="1-2d"><span>1–2 days</span></label>
+              <label><input type="radio" name="lead" value="3d+"><span>3 days or more</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q" data-img="radio" data-path="ex"><legend><span class="n">Optional · 2 of 2</span>Where do traffic offices usually hear about it first today?</legend>
+            <p class="sv-why">So we know who the radar has to beat.</p>
+            <div class="opts tall">
+              <label><input type="radio" name="first_source" value="news"><span>Official sites and news</span></label>
+              <label><input type="radio" name="first_source" value="chats"><span>WhatsApp or Telegram groups</span></label>
+              <label><input type="radio" name="first_source" value="drivers"><span>From the drivers</span></label>
+              <label><input type="radio" name="first_source" value="network"><span>From the association, customers or colleagues</span></label>
+              <label><input type="radio" name="first_source" value="apps"><span>Satnav or traffic apps</span></label>
+              <label><input type="radio" name="first_source" value="when"><span>Often only when it happens</span></label>
+            </div>
+          </fieldset>
+        </form>
+
         <form class="survey sv-follow sv-pilot" id="sv-follow" name="survey-followup" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" hidden>
           <input type="hidden" name="form-name" value="survey-followup">
           <input type="hidden" name="lang" value="en">
@@ -384,7 +438,7 @@
 </div></footer>
 <script src="/assets/scene.js?v=c3" defer></script>
 <script src="/assets/map.js?v=b4" defer></script>
-<script src="/assets/survey.js?v=q26" defer></script>
+<script src="/assets/survey.js?v=q27" defer></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

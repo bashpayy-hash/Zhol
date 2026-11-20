@@ -152,3 +152,46 @@ def test_every_survey_page_offers_the_free_pilot():
         assert 'name="followup" value="pilot"' in f and 'data-want="pilot"' in f and 'data-want="results"' in f, page
         assert re.search(r"8 €|€8", f) and not re.search(r"per truck|per camion|pro LKW|par camion|por camión", f, re.I), page
         assert html.count("data-pilot") == 2 and 'class="sv-pilot-pill"' in html and 'id="sv-done-pilot"' in html, page
+
+
+def test_the_two_optional_questions_are_summarised_apart(tmp_path):
+    """Two optional questions after the seven (owner, 20 Nov 2026: «по опросу мы можем что то новое добавить?»): how
+    early an office must know to change a shipment and where it hears first. Their own export («survey-extra»), read
+    apart from the answers and the follow-ups, offices and people who know the field reported apart, aggregates only."""
+    ans = _write(tmp_path, "survey.csv", ANSWER_FIELDS, [_office(rid=f"r{i}") for i in range(6)])
+    x = _write(tmp_path, "survey-extra.csv", ["Created At", "lead", "first_source", "path", "lang", "rid"],
+               [{"lead": l, "first_source": s, "path": "op", "rid": f"r{i}"} for i, (l, s) in
+                enumerate([("6-12h", "chats"), ("12-24h", "drivers"), ("6-12h", "chats"), ("1-2d", "news"), ("6-12h", "when")])]
+               + [{"lead": "12-24h", "first_source": "network", "path": "ex", "rid": "e1"}])
+    answers, follow = ss.read([ans, x])
+    assert len(answers) == 6 and follow == []                     # the optional answers are neither answers nor follow-ups
+    extra = ss.read_extra([ans, x])
+    s = ss.summarise(answers, follow, extra)
+    assert s["extra"]["n_office"] == 5 and s["extra"]["n_expert"] == 1
+    assert s["extra"]["Notice needed to change a shipment, offices"]["6–12 hours"] == 3
+    assert s["extra"]["Where offices hear first today"]["WhatsApp or Telegram groups"] == 2
+    lead = next(c for c in s["checks"] if c["measure"].startswith("Notice an office needs"))
+    assert lead["result"] == "6–12 hours" and lead["status"] == "for information"
+    md = ss.markdown(s)
+    assert "## Two optional questions after the seven (5 offices, 1 people who know the field)" in md and "@" not in md
+
+
+def test_every_survey_page_has_the_two_optional_questions():
+    """In all five languages: their own Netlify form, after the seven, the same values everywhere, both paths, no
+    contact field, and the letters' «seven questions» untouched (the main form still counts to 7)."""
+    import re
+    from pathlib import Path
+    root = Path(__file__).parents[1] / "site" / "q"
+    for page in ("index.html", "it/index.html", "de/index.html", "fr/index.html", "es/index.html"):
+        html = (root / page).read_text(encoding="utf-8")
+        m = re.search(r'<form class="survey sv-extra stepping" id="sv-extra" name="survey-extra".*?</form>', html, re.S)
+        assert m and 'data-netlify="true"' in m.group(0), page
+        f = m.group(0)
+        assert html.index('id="sv-extra"') > html.index('id="survey"') and html.index('id="sv-extra"') < html.index('id="sv-follow"'), page
+        for path in ("op", "ex"):
+            assert len(re.findall(rf'<fieldset class="q" data-img="\w+" data-path="{path}">', f)) == 2, (page, path)
+        assert re.findall(r'name="lead" value="([^"]+)"', f) == ["lt6h", "6-12h", "12-24h", "1-2d", "3d+"] * 2, page
+        assert re.findall(r'name="first_source" value="([^"]+)"', f) == ["news", "chats", "drivers", "network", "apps", "when"] * 2, page
+        assert 'name="contact"' not in f and 'name="rid"' in f and 'id="sv-extra-skip"' in f, page
+        main = re.search(r'<form class="survey" id="survey".*?</form>', html, re.S).group(0)
+        assert re.search(r"7\D{0,6}</span>", main) and not re.search(r"\b[89] (of|di|von|sur|de) ", main), page

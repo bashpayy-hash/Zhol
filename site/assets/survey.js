@@ -12,8 +12,9 @@
   // who is answering comes first: traffic offices get the questions about their own desk (data-path="op"),
   // people who know the field (teachers, researchers, consultants, former staff) the same topics from experience ("ex")
   const all = [...form.querySelectorAll("fieldset.q")];
-  let steps = all;
+  let steps = all, path = "op";
   function setPath(p) {
+    path = p;
     all.forEach(s => { if (s.dataset.path) s.querySelectorAll("input").forEach(i => { i.disabled = s.dataset.path !== p; }); });
     steps = all.filter(s => !s.dataset.path || s.dataset.path === p);
   }
@@ -32,6 +33,8 @@
   catch (e) { rid = String(Date.now()) + Math.random().toString(16).slice(2, 8); }
   form.elements.rid.value = rid;
   follow.elements.rid.value = rid;
+  const extra = $("sv-extra");
+  if (extra) extra.elements.rid.value = rid;
 
   // where the link came from (?src=cna-verona), to count answers by channel
   try {
@@ -171,12 +174,54 @@
     road.style.transform = "scaleX(1)";
     if (scene) scene.style.setProperty("--p", "1.15");
     post(form).then(() => {
-      // the last screens are short: Zholdas stops following the scroll and sits in the middle of the card
-      openPilot(true);
+      // two optional questions first, then the pilot; the last screens are short: Zholdas sits in the middle of the card
+      openExtra();
       live.textContent = T("Answers sent. Thank you.", "Risposte inviate. Grazie.", "Antworten gesendet. Vielen Dank.", "Réponses envoyées. Merci.", "Respuestas enviadas. Gracias.");
     }).catch(() => { form.noValidate = false; HTMLFormElement.prototype.submit.call(form); });
   }
   form.addEventListener("submit", e => { e.preventDefault(); submit(); });
+
+  // two optional questions once the seven are sent (owner, 20 Nov 2026: «по опросу мы можем что то новое добавить?»):
+  // how early an office must know to change a shipment, and where it hears first today. One tap each moves on; «Skip»
+  // sends what was answered, if anything, and goes to the pilot. Their own form, linked only by the random id.
+  let xSteps = [], xAt = 0, xSent = false;
+  function openExtra() {
+    if (!extra) return openPilot(true);
+    const mine = [...extra.querySelectorAll("fieldset.q")];
+    mine.forEach(s => s.querySelectorAll("input").forEach(i => { i.disabled = s.dataset.path !== path; }));
+    xSteps = mine.filter(s => s.dataset.path === path);
+    if (!xSteps.length) return openPilot(true);
+    extra.elements.path.value = path;
+    extra.elements.lang.value = LG;
+    form.hidden = true;
+    extra.hidden = false;
+    const stage = document.querySelector(".sv-stage"); if (stage) stage.classList.add("end");
+    xShow(0);
+  }
+  function xShow(i) {
+    xAt = i;
+    extra.querySelectorAll("fieldset.q").forEach(s => { s.hidden = s !== xSteps[i]; });
+    setPose(xSteps[i].dataset.img);
+    const n = xSteps[i].querySelector(".n"); live.textContent = n ? n.textContent : "";
+    focusStep(xSteps[i]);
+  }
+  function xDone() {
+    if (xSent) return;
+    xSent = true;
+    extra.hidden = true;
+    const answered = xSteps.some(s => s.querySelector("input:checked"));
+    if (answered) post(extra).catch(() => {});        // the pilot does not wait for these
+    openPilot(true);
+  }
+  if (extra) {
+    extra.noValidate = true;
+    extra.addEventListener("change", e => {
+      if (e.target.type !== "radio") return;
+      setTimeout(() => { if (xAt < xSteps.length - 1) xShow(xAt + 1); else xDone(); }, reduced ? 0 : 260);
+    });
+    extra.addEventListener("submit", e => { e.preventDefault(); xDone(); });
+    $("sv-extra-skip").addEventListener("click", xDone);
+  }
 
   // the pilot, or only the results: the button pressed says which; a contact and the consent either way
   const contact = follow.elements.contact, consent = $("sv-consent");

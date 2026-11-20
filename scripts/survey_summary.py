@@ -123,6 +123,26 @@ def read(paths: list[Path]) -> tuple[list[dict], list[dict]]:
     return answers, follow
 
 
+# the two optional questions after the seven (form «survey-extra», owner 20 Nov 2026): how early an office must know
+# to change a shipment without losing money (the model's «decide by», docs/18-model.md §3), and where it hears first
+LEAD = [("lt6h", "less than 6 hours"), ("6-12h", "6–12 hours"), ("12-24h", "12–24 hours"), ("1-2d", "1–2 days"), ("3d+", "3 days or more")]
+FIRST = [("news", "official sites and news"), ("chats", "WhatsApp or Telegram groups"), ("drivers", "the drivers"),
+         ("network", "the association, customers or colleagues"), ("apps", "satnav or traffic apps"), ("when", "often only when it happens")]
+
+
+def read_extra(paths: list[Path]) -> list[dict]:
+    """The optional answers, from the 'survey-extra' export: rows with «lead» or «first_source» and nothing else."""
+    out = []
+    for p in paths:
+        with open(p, newline="", encoding="utf-8-sig") as f:
+            sample = f.read(4096)
+            f.seek(0)
+            dialect = csv.Sniffer().sniff(sample, delimiters=",;") if sample else csv.excel
+            out += [r for r in map(_norm, csv.DictReader(f, dialect=dialect))
+                    if (r.get("lead") or r.get("first_source")) and not r.get("fleet") and not r.get("contact")]
+    return out
+
+
 def multi(v: str) -> list[str]:
     return [x.strip() for x in (v or "").replace(",", ";").split(";") if x.strip()]
 
@@ -145,7 +165,7 @@ def is_expert(r: dict) -> bool:
     return (r.get("role") or "office") != "office"
 
 
-def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
+def summarise(answers: list[dict], follow: list[dict] | None = None, extra: list[dict] | None = None) -> dict:
     experts = [r for r in answers if is_expert(r)]
     answers = [r for r in answers if not is_expert(r)]
     core = [r for r in answers if r.get("fleet") in BEACHHEAD_FLEET and r.get("trips_abroad") not in ("", "0")]
@@ -173,6 +193,11 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
     check("Would share what their drivers see (shared watch, docs/15)", f"{v:.0%}" if v is not None else None, n, False, "–", judged=False)
 
     dist = lambda field, scale, rows: {label: sum(r.get(field) == k for r in rows) for k, label in scale}
+    xo = [r for r in (extra or []) if (r.get("path") or "op") == "op"]
+    xe = [r for r in (extra or []) if r.get("path") == "ex"]
+    i, n = median_bucket([r.get("lead", "") for r in xo], LEAD)
+    check("Notice an office needs to change a shipment, median (model 4–12 h, docs/18 §3)", LEAD[i][1] if i is not None else None,
+          n, False, "–", judged=False)
     return {
         "n_all": len(answers), "n_core": len(core), "checks": checks,
         "fleet": dist("fleet", FLEET, answers), "trips": dist("trips_abroad", TRIPS, answers),
@@ -183,6 +208,11 @@ def summarise(answers: list[dict], follow: list[dict] | None = None) -> dict:
         "channels": Counter(r.get("src") or "direct" for r in answers + experts),
         "lang": Counter(r.get("lang") or "?" for r in answers + experts),
         "n_expert": len(experts),
+        "extra": {"n_office": len(xo), "n_expert": len(xe),
+                  "Notice needed to change a shipment, offices": dist("lead", LEAD, xo),
+                  "Where offices hear first today": dist("first_source", FIRST, xo),
+                  "Notice needed, people who know the field": dist("lead", LEAD, xe),
+                  "Where offices hear first, people who know the field": dist("first_source", FIRST, xe)},
         "experts": {
             "Who they are": dist("role", ROLE[1:], experts),
             "The part of transport they know best": dist("scope", SCOPE, experts),
@@ -216,6 +246,13 @@ def markdown(s: dict) -> str:
                 "they do not count towards the thresholds above."]
         for title, d in s["experts"].items():
             out += ["", f"### {title}", "", "| Answer | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in d.items()]
+    x = s.get("extra") or {}
+    if x.get("n_office") or x.get("n_expert"):
+        out += ["", f"## Two optional questions after the seven ({x['n_office']} offices, {x['n_expert']} people who know the field)", "",
+                "Asked once the seven answers are sent, linked to them only by the random id. Self-reported."]
+        for title, d in x.items():
+            if isinstance(d, dict) and any(d.values()):
+                out += ["", f"### {title}", "", "| Answer | Count |", "|---|---|"] + [f"| {k} | {v} |" for k, v in d.items()]
     if s["followup"] or s["contacts"]:
         out += ["", "## What they asked for", ""] + [f"- {k}: {v}" for k, v in s["followup"].most_common()] + \
                [f"- contacts left: {s['contacts']} (in the follow-up export only)"]
@@ -227,20 +264,22 @@ def markdown(s: dict) -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("csv", nargs="+", type=Path, help="CSV exports of the 'survey' and 'survey-followup' forms")
+    ap.add_argument("csv", nargs="+", type=Path, help="CSV exports of the 'survey', 'survey-followup' and 'survey-extra' forms")
     ap.add_argument("--out", type=Path, help="write Markdown here instead of printing it")
     ap.add_argument("--since", help="keep answers from this UTC time on, e.g. 2026-11-09T17:00 (drops the team's own tests)")
     args = ap.parse_args()
     answers, follow = read(args.csv)
+    extra = read_extra(args.csv)
     # the team's own test runs, listed by response id next to the exports (outreach/private/excluded.txt, git-ignored)
     skip_path = args.csv[0].parent / "excluded.txt"
     skip = {l.strip() for l in skip_path.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")} if skip_path.exists() else set()
     left_out = sum(1 for r in answers if r.get("rid") in skip)
     answers, follow = [r for r in answers if r.get("rid") not in skip], [r for r in follow if r.get("rid") not in skip]
+    extra = [r for r in extra if r.get("rid") not in skip]
     if args.since:
         keep = lambda r: (r.get("created_at") or "") >= args.since
-        answers, follow = [r for r in answers if keep(r)], [r for r in follow if keep(r)]
-    text = markdown(summarise(answers, follow))
+        answers, follow, extra = [r for r in answers if keep(r)], [r for r in follow if keep(r)], [r for r in extra if keep(r)]
+    text = markdown(summarise(answers, follow, extra))
     if args.since:
         text = text.replace("\n\n", f"\n\nAnswers from {args.since} UTC on (the outreach began then; earlier rows were the team's own tests)"
                             + (f"; {left_out} later test runs by the team left out" if left_out else "") + ".\n\n", 1)
