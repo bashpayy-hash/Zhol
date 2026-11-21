@@ -241,7 +241,8 @@
       const dlg = el("dialog", "sheet asst-sheet"); dlg.setAttribute("aria-labelledby", "asst-title");
       const bar = el("div", "sheet-bar"), head = el("div", "sheet-head");
       head.append(el("span", "kicker", T("Zholdas, the zhol assistant", "Zholdas, l’assistente di zhol")), Object.assign(el("h2", "sheet-title", T("Ask the radar, or tell it", "Chiedete al radar, o raccontategli")), { id: "asst-title" }));
-      const x = el("button", "sheet-x"); x.type = "button"; x.setAttribute("aria-label", T("Close", "Chiudi")); x.innerHTML = '<span aria-hidden="true">×</span>';
+      const x = el("button", "sheet-x"); x.type = "button"; x.setAttribute("aria-label", T("Close", "Chiudi"));
+      x.innerHTML = '<svg viewBox="0 0 14 14" width="14" height="14" aria-hidden="true" focusable="false"><path d="M2.5 2.5l9 9M11.5 2.5l-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
       bar.append(head, x);
       const body = el("div", "sheet-body"); const box = el("div"); body.append(box);
       dlg.append(bar, body); document.body.append(dlg);

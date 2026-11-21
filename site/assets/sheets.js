@@ -17,8 +17,12 @@
   const bar = el("div", "sheet-bar");
   const head = el("div", "sheet-head");
   const kick = el("span", "kicker"), title = el("h2", "sheet-title"); title.id = "sheet-title";
+  // the sheet opens on its title, not on the close button: a ring around «×» the moment it opens read as an alarm
+  // (owner, 21 Nov 2026, iPad: «кнопка, она такая не очень, ее надо перепродумывать»). Tab still reaches «×»
+  title.tabIndex = -1; title.setAttribute("autofocus", "");
   head.append(kick, title);
-  const x = el("button", "sheet-x"); x.type = "button"; x.setAttribute("aria-label", T("Close", "Chiudi")); x.innerHTML = '<span aria-hidden="true">×</span>';
+  const x = el("button", "sheet-x"); x.type = "button"; x.setAttribute("aria-label", T("Close", "Chiudi"));
+  x.innerHTML = '<svg viewBox="0 0 14 14" width="14" height="14" aria-hidden="true" focusable="false"><path d="M2.5 2.5l9 9M11.5 2.5l-9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   bar.append(head, x);
   const body = el("div", "sheet-body");
   sheet.append(bar, body);
@@ -38,7 +42,7 @@
     document.documentElement.classList.add("sheet-open");
     sheet.showModal();
     body.scrollTop = 0;
-    x.focus({ preventScroll: true });
+    title.focus({ preventScroll: true });
   }
   function close(now) {
     if (!sheet.open) return;
@@ -56,6 +60,36 @@
   }
   let opener = null;
   x.addEventListener("click", () => close());
+
+  // ---- a phone: the sheet comes up from the bottom, so it also goes down with a swipe on its header, as on iOS
+  // (the grabber says so). Any open sheet of the page, the assistant's too: a long enough pull presses its «×»
+  const phone = matchMedia("(max-width: 560px)");
+  let drag = null;
+  document.addEventListener("pointerdown", e => {
+    const bar = e.target.closest("dialog.sheet[open] .sheet-bar");
+    if (!bar || !phone.matches || e.pointerType === "mouse" || e.target.closest("button, a, input, textarea")) return;
+    drag = { dlg: bar.closest("dialog"), y: e.clientY, t: performance.now(), dy: 0, id: e.pointerId };
+    drag.dlg.style.transition = "none";
+  });
+  document.addEventListener("pointermove", e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    drag.dy = Math.max(0, e.clientY - drag.y);
+    drag.dlg.style.transform = drag.dy ? "translateY(" + drag.dy + "px)" : "";
+  });
+  const release = e => {
+    if (!drag || (e && e.pointerId !== drag.id)) return;
+    const { dlg, dy, t } = drag, fast = dy / Math.max(1, performance.now() - t) > 0.6;
+    drag = null;
+    if (dy > 90 || (fast && dy > 24)) {                                   // let go far enough, or flicked: it closes
+      const xb = dlg.querySelector(".sheet-x"); if (xb) xb.click();
+    } else {                                                              // otherwise it settles back
+      dlg.style.transition = reduce ? "none" : "transform 220ms cubic-bezier(.22, 1, .36, 1)";
+      dlg.style.transform = "";
+    }
+  };
+  document.addEventListener("pointerup", release);
+  document.addEventListener("pointercancel", release);
+  document.addEventListener("close", e => { if (e.target.matches && e.target.matches("dialog.sheet")) { e.target.style.transform = ""; e.target.style.transition = ""; } }, true);
   sheet.addEventListener("cancel", e => { e.preventDefault(); close(); });
   sheet.addEventListener("click", e => { if (e.target === sheet) close(); });   // a tap outside the card
 

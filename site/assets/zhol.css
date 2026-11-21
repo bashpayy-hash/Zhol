@@ -871,11 +871,20 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
 @keyframes sheet-in { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: none; } }
 @keyframes sheet-out { to { opacity: 0; transform: translateY(16px) scale(.98); } }
 @keyframes sheet-fade { from { opacity: 0; } to { opacity: 1; } }
-.sheet-bar { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 22px 24px 16px 28px; border-bottom: 1px solid var(--rule); background: var(--paper); }
+.sheet-bar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 18px 16px 28px; border-bottom: 1px solid var(--rule); background: var(--paper); }
 .sheet-head { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .sheet-title { font-size: 22px; line-height: 1.2; font-weight: 650; letter-spacing: -0.02em; }
-.sheet-x { flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(53, 43, 40, .08); color: var(--ink); font: inherit; font-size: 24px; line-height: 1; cursor: pointer; transition: background-color var(--dur) var(--ease-color); }
-.sheet-x:hover { background: rgba(53, 43, 40, .16); }
+.sheet-title:focus { outline: none; }                          /* focused only so the sheet opens on it, never shown */
+/* the close button (owner, 21 Nov 2026: «кнопка, она такая не очень, ее надо перепродумывать»): a quiet 32 px disc with
+   a drawn cross inside a 44 px target, centred on the header; no brand red, which on this site means risk */
+.sheet-x { position: relative; flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: none;
+  color: var(--ink-2); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.sheet-x::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: rgba(53, 43, 40, .07); transition: background-color var(--dur) var(--ease-color), transform var(--dur) var(--ease); }
+.sheet-x svg { position: relative; display: block; }
+.sheet-x:hover::before { background: rgba(53, 43, 40, .13); }
+.sheet-x:active::before { transform: scale(.92); background: rgba(53, 43, 40, .16); }
+.sheet-x:focus { outline: none; }
+.sheet-x:focus-visible::before { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
 .sheet-body { overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .sheet-body > div { padding: 24px 28px 32px; display: flex; flex-direction: column; gap: 14px; }
 .sheet-body > section.slide { padding-block: 28px 36px; min-height: 0; }
@@ -885,7 +894,9 @@ dialog.sheet.closing::backdrop { animation: sheet-fade 200ms var(--ease-color) r
   dialog.sheet { width: 100vw; max-height: 92vh; margin: auto 0 0; border-radius: 24px 24px 0 0; }
   @keyframes sheet-in { from { transform: translateY(100%); } to { transform: none; } }
   @keyframes sheet-out { to { transform: translateY(100%); } }
-  .sheet-bar { padding: 16px 16px 12px 20px; }
+  .sheet-bar { padding: 22px 10px 12px 20px; touch-action: none; }
+  /* the grabber: the sheet goes down with a swipe on its header (site/assets/sheets.js) */
+  .sheet-bar::before { content: ""; position: absolute; top: 8px; left: 50%; width: 36px; height: 5px; margin-left: -18px; border-radius: 3px; background: rgba(53, 43, 40, .2); }
   .sheet-title { font-size: 18px; }
   .sheet-body > div { padding: 18px 20px 28px; }
   .sheet-body > section.slide > .wrap { padding-inline: 16px; }
