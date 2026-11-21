@@ -99,3 +99,23 @@ test("a personal link: example trips on the office's own lanes, timed to reach e
   assert.deepEqual(r.map(x => x.status), ["risk", "risk", "clear"]);
   assert.deepEqual(lanePlan({ lanes, items: more, today: "2026-11-14" }, ["NOPE"]), []);
 });
+
+// ---- the company's own risk report (owner, 21 Nov 2026)
+import { report } from "../../site/assets/shipments.mjs";
+
+test("a company's report: its events for four weeks, priced where the radar priced the lane, no air, nothing from another crossing", () => {
+  const more = { ...data, items: data.items.concat([
+    { id: "air", title: "Air transport strike in Italy", start: "2026-11-20", p: 0.6, mode: "air", lanes: ["MIL-LYO-FREJUS"] },
+    { id: "ferry", title: "Ferry strike on the Strait", start: "2026-11-20", p: 0.9, mode: "sea", places: ["messina_strait"], lanes: ["MIL-LYO-FREJUS"] },
+    { id: "far", title: "Holiday truck bans", start: "2027-01-06", p: 0.97, lanes: ["MIL-LYO-FREJUS"] },
+  ]) };
+  const r = report(more, ["MIL-LYO-FREJUS"], true, 28, new Date("2026-11-14T08:00:00Z"));
+  const ids = r.events.map(e => e.item.id);
+  assert.ok(ids.includes("frejus") && !ids.includes("air") && !ids.includes("ferry") && !ids.includes("far"), ids.join(","));
+  assert.ok(ids.every(id => more.items.find(i => i.id === id).lanes.includes("MIL-LYO-FREJUS")));
+  const fr = r.events.find(e => e.item.id === "frejus");
+  assert.ok(fr.impact && fr.impact.e_keep > 0, "the Fréjus closure is priced on the Fréjus lane");
+  assert.equal(r.lanes.length, 1);
+  assert.ok(r.plan.length >= 2 && r.totals.keep >= fr.impact.e_keep && r.totals.saves > 0);
+  assert.deepEqual(report(more, ["NOPE"], true).events, []);
+});

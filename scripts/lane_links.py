@@ -218,6 +218,17 @@ def fact_of(row: dict) -> str:
     return first if first.startswith("Ho visto che") else ""
 
 
+def subject_for(hs: list[dict], known: bool) -> str:
+    """A subject that names what is coming and from when: «Le vostre tratte, due eventi da lunedì 23 novembre» (owner,
+    21 Nov 2026: «что им сразу предложить, чтобы они нажали на ссылку»). «Le vostre tratte» only when the company names
+    its lanes; otherwise the roads abroad. No events on the radar: the plain subject."""
+    if not hs:
+        return SUBJECT
+    where = "Le vostre tratte" if known else "Strade verso l'estero"
+    first = day_it(min(h["date"] for h in hs))
+    return f"{where}, un evento {first}" if len(hs) == 1 else f"{where}, due eventi da {first}"
+
+
 def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids: list[str] | None = None) -> dict:
     if base in ("south", "ct"):
         where_it, where_ru = "dalla Sicilia salite verso il Nord passando lo Stretto", "из Сицилии возят на север через пролив"
@@ -269,9 +280,14 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         "progetti selezionati su circa 500 per **TEF Ignition 2026** della Tech Europe Foundation, con un grant di 2.000 €. "
         "Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
         + lanes_it
-        + "Ho preparato una pagina con alcuni viaggi di esempio " + page_it + ", quanto costerebbe lasciarli come sono "
-        "e cosa conviene fare, ogni evento con la sua fonte\n" + link + "\n\n"
-        "Se vi è utile, vorrei capire in **quindici minuti** come gestite oggi questi casi. Possiamo sentirci questa settimana?\n\n"
+        # the link is the company's own risk report (site/assets/rapporto.js; owner, 21 Nov 2026: «PDF-файл бюллетень… с
+        # рисками, с эстимейшенами… под конкретную компанию… потом предложить пройти опрос»): the letter gives first, the
+        # one-minute survey waits at the end of the report
+        + "Ho preparato per voi un rapporto " + page_it + " per le prossime quattro settimane, con la probabilità di ogni "
+        "evento, il costo stimato di un viaggio tipo e quando decidere, ogni evento con la sua fonte. Si apre anche dal "
+        "telefono e si salva in PDF\n" + link + "\n\n"
+        "In fondo al rapporto trovate un sondaggio anonimo di **un minuto**, che ci dice quanto costano davvero questi "
+        "fermi a un ufficio come il vostro. Se preferite parlarne, mi bastano quindici minuti.\n\n"
         "Grazie e buona giornata,\n" + SIGN)
     message_ru = (
         "Здравствуйте. Я Алихан Башпай, студент Bocconi; мы с командой делаем zhol (стандартная фраза «кто мы»), "
@@ -280,8 +296,8 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         + (("Если не ошибаюсь, вы " + where_ru + ". ") if known and not fact else "" )
         + ("" if known else "Страны компания не называет, поэтому условно: если ваши машины ходят через " + (" или ".join(pr) or "границу") + ", ")
         + (f"в ближайшие недели радар видит: {seen_ru}. " if seen_ru else "серьёзных событий пока нет. ")
-        + "Ссылка — страница с примерами рейсов " + ("на их направлениях" if known else "на частых направлениях из их региона") + ", ценой и тем, что делать, у каждого события источник. "
-        "Просим 15 минут на этой неделе, чтобы понять, как они справляются сейчас.")
+        + "Ссылка — личный отчёт о рисках на четыре недели " + ("по их направлениям" if known else "по частым направлениям из их региона") + ": вероятность каждого события, оценка цены типового рейса, срок решения, источники; открывается с телефона, сохраняется в PDF. "
+        "В конце отчёта — анонимный опрос на минуту; если удобнее поговорить, хватит 15 минут.")
     # the one reminder to a company that already had the survey letter (owner, 17 Nov 2026: «А письмами как можно в
     # будущем? Типа, что нужно сделать?»): it no longer asks for a minute again, it brings their own lanes, and it is the
     # last message
@@ -295,8 +311,8 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         "Io e il mio team siamo tra i 100 progetti selezionati su circa 500 per **TEF Ignition 2026** della Tech Europe "
         "Foundation, con un grant di 2.000 €. Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
         "Questa volta non vi chiedo niente, vi mando qualcosa di utile. " + seen
-        + "Qui trovate alcuni viaggi di esempio " + page_it + ", quanto costerebbe lasciarli come sono e cosa conviene "
-        "fare, ogni evento con la sua fonte\n" + link + "\n\n"
+        + "Qui trovate il vostro rapporto " + page_it + " per le prossime quattro settimane, con la probabilità di ogni "
+        "evento, il costo stimato di un viaggio tipo e quando decidere, ogni evento con la sua fonte\n" + link + "\n\n"
         "Se vi serve, possiamo provarlo **gratis per quattro settimane** sulle vostre spedizioni, senza installare niente. "
         "Basta rispondere a questa email. È il mio ultimo messaggio, non vi scriverò ancora.\n\n"
         "Grazie e buona giornata,\n" + SIGN)
@@ -304,9 +320,9 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         "Напоминание тем, кому уже ушло письмо с опросом, одно и последнее. Не просим минуту второй раз, а даём пользу: "
         "кто мы (стандартная фраза, TEF Ignition 2026, грант 2 000 €, цель — вся Европа), их направления, "
         + (f"события радара: {seen_ru}; " if seen_ru else "серьёзных событий пока нет; ")
-        + "ссылка на страницу с примерами рейсов, ценой и тем, что делать. Предлагаем бесплатный пилот на четыре недели "
+        + "ссылка на их личный отчёт о рисках на четыре недели (вероятности, оценка цены, срок решения, источники). Предлагаем бесплатный пилот на четыре недели "
         "без установки, ответить можно прямо на письмо. Говорим, что больше не напишем.")
-    return {"call_it": call_it, "call_ru": call_ru, "subject": SUBJECT, "message": message, "message_ru": message_ru,
+    return {"call_it": call_it, "call_ru": call_ru, "subject": subject_for(hs, known), "message": message, "message_ru": message_ru,
             "reminder": {"subject": "Re: " + row["subject"], "message": reminder, "message_ru": reminder_ru}}
 
 
@@ -324,7 +340,7 @@ def main() -> None:
         if not ids:
             continue
         name = short_name(r["name"])
-        link = f"{SITE}/it/verifica#lanes={','.join(ids)}&for={quote(name)}"
+        link = f"{SITE}/it/rapporto#lanes={','.join(ids)}&for={quote(name)}"
         hs = hooks(data, ids)
         out[r["id"]] = {"name": name, "lanes": ids, "countries": dests, "link": link, "events": hs, "radar_day": data["today"],
                         **texts(r, base, dests, hs, link, ids)}

@@ -446,7 +446,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   // the one reminder: a company's brings its lanes, an association's the bulletin of its members' roads (20 Nov 2026)
   const followOf = r => (r.call && r.call.reminder) || (r.personal && r.personal.reminder) || r.followup;
   const remindSubject = r => { const s = status[r.id], f = followOf(r) || {};
-    return s && s.letter === "personal" && r.personal && !r.call ? "Re: " + r.personal.subject : f.subject; };
+    return s && s.subject ? "Re: " + s.subject : s && s.letter === "personal" && r.personal && !r.call ? "Re: " + r.personal.subject : f.subject; };
   const remindDue = r => { const s = status[r.id]; return !!(followOf(r) && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
   const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
   const national = x => /^nazionale$/i.test((x || "").trim()) ? "по всей Италии" : x;
@@ -485,8 +485,10 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const id = user ? await user.id() : null;
     const next = state ? { state, by: id, at: new Date().toISOString() } : null;
     if (next && channel && state === "sent") next.note = channel;            // «WhatsApp»: the reminder waits three working days
-    if (next && state === "sent" && !(prev && prev.state)) { const w = r.call ? "lanes" : r.personal ? "personal" : ""; if (w) next.letter = w; }
-    if (next && prev && prev.letter) next.letter = prev.letter;
+    // which letter went out and under which subject: the subject of a company's letter names the nearest event and
+    // changes with the radar, and the one reminder must answer in the same thread (21 Nov 2026)
+    if (next && state === "sent" && !(prev && prev.state)) { const w = r.call ? "lanes" : r.personal ? "personal" : ""; if (w) { next.letter = w; next.subject = String((r.call || r.personal).subject || "").slice(0, 200); } }
+    if (next && prev && prev.letter) { next.letter = prev.letter; if (prev.subject) next.subject = prev.subject; }
     // «Ответили» keeps the day the letter went out and the reminder (design system audit, 20 Nov 2026: it was lost)
     if (next && prev && prev.state === "sent" && state !== "sent") { next.sent = prev.sent || prev.at; if (prev.reminded) next.reminded = prev.reminded; }
     if (next && prev && prev.sent && state === "sent") next.at = prev.sent;
@@ -667,7 +669,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       if (k.events && k.events.length) {
         const ul = el("ul", "events");
         k.events.forEach(e => { const li = el("li", null, day(e.date) + " · " + e.what_en + " · "); li.append(ext("", e.source_ru, e.url)); ul.append(li); });
-        sec("События на их направлениях (радар на " + day(k.radar_day) + ")", [ul, row_(ext("btn small", "Открыть их страницу", k.link))]);
+        sec("События на их направлениях (радар на " + day(k.radar_day) + ")", [ul, row_(ext("btn small", "Открыть их отчёт", k.link))]);
       }
       if (!st) sec("Письмо: о чём оно", [el("p", null, k.message_ru)]);
     }

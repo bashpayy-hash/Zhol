@@ -2,7 +2,7 @@
    through zhol (owner, 14 Nov 2026). The plan never leaves the browser: it is read and matched here
    (assets/shipments.mjs) and kept only on this device. Only a proposal the office decides to send goes to the server
    (/api/offer), with the reference, the route, the times and the event, nothing else. */
-import { check, cities, fromRows, lanePlan, lanesFor, parseCSV, parseWhen, totals } from "/assets/shipments.mjs?v=2";
+import { check, cities, fromRows, lanePlan, lanesFor, parseCSV, parseWhen, totals } from "/assets/shipments.mjs?v=3";
 
 const IT = document.documentElement.lang === "it";
 const T = (en, it) => IT ? it : en;

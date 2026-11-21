@@ -208,3 +208,32 @@ export function totals(results) {
            clear: results.filter(r => r.status === "clear").length, unknown: results.filter(r => r.status === "unknown").length,
            keep: Math.round(keep), zhol: Math.round(zhol), saves: Math.round(keep - zhol) };
 }
+
+// ---- a company's own risk report (/it/rapporto, /risk-report; owner, 21 Nov 2026: «PDF-файл бюллетень… с рисками, с
+// эстимейшенами, с иллюстрациями под конкретную компанию… потом предложить пройти опрос»)
+// a place tied to one crossing: an event placed only there concerns the lanes over that crossing, even when the radar
+// files a strike «in Italy» under every lane
+const PLACE_LANES = { brenner: /BRENNER$/, luegbruecke: /BRENNER$/, kufstein: /BRENNER$/, inntal_a12: /(BRENNER|TAUERN)$/,
+  tarvisio: /(TARVISIO|SLOVENIA)$/, karawanken: /(TARVISIO|SLOVENIA)$/, fernetti: /(TARVISIO|SLOVENIA)$/, tauern: /TAUERN$/,
+  gotthard: /(GOTTHARD|SWISS)$/, san_bernardino: /(GOTTHARD|SWISS)$/, chiasso: /(GOTTHARD|SWISS)$/, basel: /(GOTTHARD|SWISS)$/,
+  st_margrethen: /(GOTTHARD|SWISS)$/, frejus: /FREJUS$/, montblanc: /MONTBLANC$/, ventimiglia: /VENTIMIGLIA$/,
+  messina_strait: /^(VIT|CT)-/, goerlitz: /^MIL-WAW/ };
+
+/** The report for an office's lanes: every event of the next four weeks that concerns them (no air cargo, nothing
+ *  placed at another crossing), the radar's price for a typical trip where it priced that lane, the totals over example
+ *  trips that meet those events (lanePlan, check, totals above), and the first time to decide by that is still ahead. */
+export function report(data, ids, it = false, days = 28, now = new Date()) {
+  const lanes = (data.lanes || []).filter(l => ids.includes(l.id));
+  const until = addDays(data.today, days);
+  const here = i => { const ps = (i.places || []).filter(p => PLACE_LANES[p]); return !ps.length || ps.some(p => lanes.some(l => PLACE_LANES[p].test(l.id))); };
+  const items = (data.items || [])
+    .filter(i => i.start && (i.end || i.start) >= data.today && i.start <= until && i.stage !== "revoked" && (i.p || 0) >= 0.2
+              && i.mode !== "air" && (i.lanes || []).some(id => ids.includes(id)) && here(i))
+    .sort((a, b) => a.start.localeCompare(b.start) || b.p - a.p);
+  const shown = { ...data, items };                      // the example trips meet these events and no others
+  const plan = lanes.length ? lanePlan(shown, lanes.map(l => l.id), it, days) : [];
+  const results = check(plan, shown);
+  const events = items.map(i => ({ item: i, impact: i.impact && lanes.some(l => sameLane(l.name, i.impact.lane)) ? i.impact : null }));
+  const ahead = events.map(e => e.impact && e.impact.lead && e.impact.lead.decide_by).filter(d => d && new Date(d) > now).sort();
+  return { lanes, until, events, plan, results, totals: totals(results), decide: ahead[0] || null };
+}

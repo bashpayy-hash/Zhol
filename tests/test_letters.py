@@ -235,7 +235,12 @@ def test_calls_and_lane_links_follow_the_same_principles():
                      "stima", "in anticipo", "tempo reale"):
             assert must in m, (cid, must)
         links = re.findall(r"https?://\S+", m)
-        assert links == [k["link"]] and k["link"].startswith("https://zhol.live/it/verifica#lanes="), (cid, links)
+        # the link is the company's own risk report (site/assets/rapporto.js; owner, 21 Nov 2026), and the survey waits
+        # at its end: the letter itself asks for nothing but a look
+        assert links == [k["link"]] and k["link"].startswith("https://zhol.live/it/rapporto#lanes="), (cid, links)
+        assert "Ho preparato per voi un rapporto" in m and "sondaggio anonimo di **un minuto**" in m and "PDF" in m, cid
+        assert k["subject"].startswith(("Le vostre tratte, ", "Strade verso l'estero, ")) or k["subject"] == "Le vostre tratte nelle prossime settimane, progetto Bocconi", cid
+        assert k["subject"].startswith("Le vostre tratte") == (bool(k["countries"]) or k["lanes"][0].startswith(("VIT-", "CT-"))), cid
         assert m.count("**") // 2 <= 3 and not re.search(r"per truck|per camion", m, re.I), cid
         assert k["events"] and all(e["url"].startswith("https://") and e["source_it"] for e in k["events"]), cid
         to = rows[cid].get("to")

@@ -1,0 +1,16 @@
+{
+ "what": "Covers of the company risk report (/it/rapporto, /risk-report; owner, 21 Nov 2026: «PDF-файл бюллетень… с рисками, с эстимейшенами, с иллюстрациями под конкретную компанию»). One scene for each kind of crossing, chosen by the first lane of the link (site/assets/rapporto.js, cover). In each Zholdas measures something: estimating is the report's subject. New scene types, used nowhere else: a surveyor's level by an Alpine motorway, a lantern at a tunnel portal, an anemometer on a ferry quay. He looks at his instrument, not at the viewer. The world fills the frame and runs out through every edge.",
+ "references": ["2a20bb83-5d2d-4aa3-be59-3efd48133274", "619e25b1-eeb6-4f66-831e-99b84ccde4b5"],
+ "settings": {"model": "gpt_image_2_6", "quality": "high", "resolution": "2k", "aspect_ratio": "16:9", "background": "opaque", "medias": "both references as image_references"},
+ "processing": "2688x1520 PNG resized to 1600 and 900 wide, WebP q82; og.jpg is the Alpine cover at 1200 wide, cropped to 1200x630, JPEG q84, no text on it",
+ "covers": {
+  "alpi": {"for": "Brenner, Tauern, Tarvisio, Slovenia and any other lane", "higgsfield_image_job": "522f43e7-c8a6-4164-956b-976b5925e92d", "files": ["alpi-1600.webp", "alpi-900.webp", "og.jpg"],
+           "scene": "a felt Alpine valley, a motorway on a viaduct with two trucks, a freight train beside it; Zholdas looks through a brass surveyor's level on a tripod, a rolled paper under his arm"},
+  "tunnel": {"for": "Fréjus, Mont Blanc, Gotthard, Switzerland", "higgsfield_image_job": "f2a8f1b2-cf35-4778-8563-4a1e43bd89fa", "files": ["tunnel-1600.webp", "tunnel-900.webp"],
+             "scene": "a snowy tunnel portal with an amber signal lamp, a truck waiting; Zholdas holds up a brass lantern and a folded plan, looking at the portal"},
+  "mare": {"for": "Strait of Messina, Ventimiglia", "higgsfield_image_job": "b6c94c30-2b45-40f0-bbd2-51452b05f23d", "files": ["mare-1600.webp", "mare-900.webp"],
+           "scene": "a ferry harbour on a strait, a truck boarding over the bow ramp, a stretched wind sock; Zholdas holds up a brass cup anemometer and looks at it",
+           "alternatives_not_used": {"852e1d1c-f4b4-4f69-8a6d-f59368fc4ba8": "the same scene, but the vest had three stripes instead of two"}}
+ },
+ "prompt_start": "The exact same handmade plush toy character as in the reference images (Zholdas), with exactly the same proportions as the references … A wide three-dimensional handmade felt toy world that fills the whole frame from edge to edge … The land, the road and the rails are cut off by the frame edges and continue beyond them; no island, no border, no vignette. A calm pale cream-blue sky fills the upper left third of the frame … No helmet, no text, no letters, no numbers, no logos, no license plates, no flags, no other characters. (Full prompts are stored with the jobs in Higgsfield.)"
+}

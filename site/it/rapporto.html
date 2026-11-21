@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#f6f3ea">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>zhol · Rapporto rischi per le vostre tratte</title>
+<script>document.documentElement.classList.add("js")</script>
+<meta name="description" content="Divieti, chiusure e scioperi delle prossime quattro settimane sulle vostre tratte, su strada, rotaia e mare: probabilità, fonte, costo stimato e quando decidere.">
+<meta property="og:title" content="zhol · Rapporto rischi per le vostre tratte">
+<meta property="og:description" content="Divieti, chiusure e scioperi delle prossime quattro settimane sulle vostre tratte, su strada, rotaia e mare: probabilità, fonte, costo stimato e quando decidere.">
+<meta property="og:image" content="https://zhol.live/assets/img/rapporto/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
+<link rel="stylesheet" href="/assets/zhol.css?v=s64">
+<link rel="alternate" hreflang="en" href="https://zhol.live/risk-report">
+<link rel="alternate" hreflang="it" href="https://zhol.live/it/rapporto">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="/it/" aria-label="zhol, pagina iniziale"><img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169"></a>
+  <nav class="tabs" aria-label="Sezioni"><a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/risposte/">Risposte</a></nav><span class="lang-switch" role="group" aria-label="Language · Lingua"><i aria-hidden="true"></i><a href="/risk-report" lang="en" hreflang="en">EN</a><a href="/it/rapporto" lang="it" hreflang="it" aria-current="true">IT</a></span>
+</div></header>
+
+<!-- a company's own risk report (owner, 21 Nov 2026): the link of its letter opens it; built in the browser by
+     /assets/rapporto.js from the radar and from what the link carries after «#» (lanes, the company's name) -->
+<main id="rp" class="rp">
+<section class="slide rp-head">
+  <div class="wrap">
+    <figure class="rp-cover"><img id="rp-cover" src="/assets/img/rapporto/alpi-900.webp" alt="" width="1600" height="905" decoding="async"></figure>
+    <span class="kicker" id="rp-period">Rapporto rischi zhol</span>
+    <h1 class="title" id="rp-title">Le prossime quattro settimane sulle vostre tratte</h1>
+    <p class="rp-sub" id="rp-sub" hidden></p>
+    <p class="rp-lanes" id="rp-lanes"></p>
+    <nav class="bl-chips" id="rp-chips" aria-label="Tratta" hidden></nav>
+    <div class="rp-tiles" id="rp-tiles" aria-live="polite"></div>
+    <p class="small muted rp-est" id="rp-est"></p>
+    <p class="small muted" id="rp-updated"></p>
+    <p class="small muted" id="rp-status" role="status"></p>
+  </div>
+</section>
+
+<section class="slide rp-sec">
+  <div class="wrap">
+    <h2 class="bl-h2">Cosa può fermare i vostri mezzi</h2>
+    <ol class="bl-list" id="rp-events"><li class="bl-none">Carico il radar…</li></ol>
+    <button class="asst-fix rp-more" type="button" id="rp-more" hidden>Mostra tutti gli eventi</button>
+    <div id="rp-other-box" hidden>
+      <h2 class="bl-h2">Sulle stesse tratte, per ferrovia e mare</h2>
+      <ol class="bl-list compact" id="rp-other"></ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide rp-sec rp-next">
+  <div class="wrap">
+    <div class="rp-cta">
+      <h2>Questi sono viaggi tipo. Con i vostri viaggi veri il conto è vostro.</h2>
+      <p>Caricate il piano della settimana, da Excel, CSV o a mano. zhol verifica ogni spedizione, avvisa in anticipo e aggiorna in tempo reale quando la situazione cambia. Gratis per quattro settimane, niente da installare.</p>
+      <div class="bl-btns"><a class="btn" id="rp-check" href="/it/">Verificate i vostri viaggi, gratis</a><a class="btn ghost" id="rp-survey" href="/it/">Sette domande in un minuto</a></div>
+      <p class="small muted">Il sondaggio è anonimo: ci dice quanto costano davvero questi fermi a un ufficio come il vostro.</p>
+      <div class="rp-share"><button class="asst-fix" type="button" id="rp-pdf">Scarica il PDF</button><a class="asst-fix" id="rp-wa" href="https://wa.me/" target="_blank" rel="noopener">Inoltra su WhatsApp</a></div>
+    </div>
+    <p class="small muted rp-by">Preparato da zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Università Bocconi, tra i 100 progetti di TEF Ignition 2026.</p>
+    <p class="small rp-print-url">La versione aggiornata di questo rapporto: <span id="rp-foot-url"></span></p>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="/assets/img/zhol-logo.png" alt="zhol" width="505" height="169">
+  <span>Oyu team · Università Bocconi · TEF Ignition 2026</span>
+  <span><a href="/it/radar">Radar</a> · <a href="/it/bollettino">Bollettino</a> · <a href="/it/verifica">Verifica</a> · <a href="/it/beta">Beta</a></span>
+</div></footer>
+<script type="module" src="/assets/rapporto.js?v=1"></script>
+<script src="/assets/lang.js?v=l3"></script>
+</body>
+</html>
