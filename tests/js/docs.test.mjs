@@ -89,3 +89,28 @@ test("an event without words that say what it is does not reach the radar", () =
   assert.deepEqual(docItems(doc, [junk], R, P, "2026-11-14", "x"), []);
   assert.equal(docItems(doc, [junk, ev()], R, P, "2026-11-14", "x").length, 1);
 });
+
+test("a reading of placeholders only is read once more, and never replaces a good reading", async () => {
+  // 21 Nov 2026: the Fréjus page listed six closures; the agent answered one event titled «x» and they left the radar
+  const hollow = ev({ title_en: "x", title_it: "x", where_en: "x", where_it: "x", quote: "", end: null, hours: null });
+  let calls = 0;
+  const flaky = async () => (++calls === 1 ? [hollow] : [ev()]);
+  const a = await lookAt(doc, null, R, P, async () => page, flaky, now);
+  assert.equal(calls, 2, "read once more");
+  assert.equal(a.items.length, 1); assert.equal(a.error, null); assert.equal(a.events, 1);
+
+  const good = await lookAt(doc, null, R, P, async () => page, async () => [ev()], now);
+  let again = 0;
+  const changed = page.replace("22h00", "23h00");
+  const b = await lookAt(doc, good, R, P, async () => changed, async () => { again++; return [hollow]; }, now + 3 * 36e5);
+  assert.equal(again, 2);
+  assert.equal(b.items.length, 1, "the last good reading stays");
+  assert.match(b.error, /no readable event/); assert.match(b.raw, /"title_en":"x"/);
+  assert.equal(b.hash, good.hash, "so the next look reads the page again");
+  let third = 0;
+  const c = await lookAt(doc, b, R, P, async () => changed, async () => { third++; return [ev({ hours: "23:00-02:00" })]; }, now + 6 * 36e5);
+  assert.equal(third, 1); assert.equal(c.error, null); assert.equal(c.items[0].hours, "23:00-02:00");
+  // a quiet page is still a quiet page: no events at all, or an entry with every field empty
+  const quiet = await lookAt(doc, good, R, P, async () => changed, async () => [], now + 3 * 36e5);
+  assert.equal(quiet.items.length, 0); assert.equal(quiet.error, null);
+});

@@ -17,7 +17,7 @@ export interface DocState { id: string; hash: string; read_at: string; changed_a
 const MODEL = () => Netlify.env.get("ZHOL_AI_MODEL") || "claude-opus-5-5";
 export const EVERY_H = 3;          // each page is looked at again after this many hours
 const CAP = 9000;                  // characters of the page the agent reads
-export const AGENT = "7";          // bump when the agent's reading changes: every page is then read again (7, 19 Nov 2026: an empty placeholder is not counted)
+export const AGENT = "8";          // bump when the agent's reading changes: every page is then read again (8, 21 Nov 2026: a reading of placeholders only is read once more and never replaces a good one)
 
 /** The page as text, and of a long page only what stands around the words that matter. */
 export function extract(html: string, words: string, cap = CAP): string {
@@ -140,7 +140,16 @@ export async function lookAt(doc: Doc, prev: DocState | null, R: Reader, P: Plac
     // an answer with no date and no title is no event: the agent's empty placeholder for a quiet page is not counted
     // (19 Nov 2026: the Fréjus page showed «1 event, 0 on the radar» for an event with every field empty)
     const filled = (e: DocEvent) => [e.start, e.title_en, e.title_it].some(x => String(x || "").trim());
-    const events = (await reader(doc, text)).filter(filled);
+    // a reading where no event has words that say what it is («x» with a date) is the agent failing, not a quiet
+    // page (21 Nov 2026: the Fréjus page listed six closures, the agent answered one event titled «x», and the closures
+    // left the radar until the page changed). Read once more; if it fails again, keep the last good reading and say so:
+    // the next look tries again
+    const wordy = (e: DocEvent) => [e.title_en, e.title_it].every(x => String(x || "").replace(/[^\p{L}]/gu, "").length >= 6);
+    const hollow = (list: DocEvent[]) => list.some(filled) && !list.filter(filled).some(wordy);
+    let got = await reader(doc, text);
+    if (hollow(got)) got = await reader(doc, text);
+    if (hollow(got)) return keep("the agent returned no readable event", { ...seen, raw: JSON.stringify(got.slice(0, 2)).slice(0, 500) });
+    const events = got.filter(filled);
     const items = docItems(doc, events, R, P, today, at);
     const raw = events.length && !items.length ? JSON.stringify(events.slice(0, 2)).slice(0, 500) : undefined;
     return { id: doc.id, hash, read_at: at, changed_at: at, items, error: null, ...seen, events: events.length, agent: AGENT, raw };
