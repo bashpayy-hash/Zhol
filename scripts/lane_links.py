@@ -230,6 +230,7 @@ def subject_for(hs: list[dict], known: bool) -> str:
 
 
 def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids: list[str] | None = None) -> dict:
+    survey = row.get("link") or "https://zhol.live/it/sondaggio?src=co-report"     # the channel only, never the company
     if base in ("south", "ct"):
         where_it, where_ru = "dalla Sicilia salite verso il Nord passando lo Stretto", "из Сицилии возят на север через пролив"
     elif dests:
@@ -286,8 +287,11 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         + "Ho preparato per voi un rapporto " + page_it + " per le prossime quattro settimane, con la probabilità di ogni "
         "evento, il costo stimato di un viaggio tipo e quando decidere, ogni evento con la sua fonte. Si apre anche dal "
         "telefono e si salva in PDF\n" + link + "\n\n"
-        "In fondo al rapporto trovate un sondaggio anonimo di **un minuto**, che ci dice quanto costano davvero questi "
-        "fermi a un ufficio come il vostro. Se preferite parlarne, mi bastano quindici minuti.\n\n"
+        # the survey is still the ask (owner, 21 Nov 2026: «оставь в сообщении то, что вот опрос, все еще его нужно
+        # проходить»): said plainly, with its own link, after the report
+        "E vi chiedo un favore, il nostro **sondaggio anonimo**, sette domande in un minuto. Ci dice quanto costano "
+        "davvero questi fermi a un ufficio come il vostro, e ci serve per rendere zhol utile a chi pianifica i viaggi\n"
+        + survey + "\n\n"
         "Grazie e buona giornata,\n" + SIGN)
     message_ru = (
         "Здравствуйте. Я Алихан Башпай, студент Bocconi; мы с командой делаем zhol (стандартная фраза «кто мы»), "
@@ -296,8 +300,8 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         + (("Если не ошибаюсь, вы " + where_ru + ". ") if known and not fact else "" )
         + ("" if known else "Страны компания не называет, поэтому условно: если ваши машины ходят через " + (" или ".join(pr) or "границу") + ", ")
         + (f"в ближайшие недели радар видит: {seen_ru}. " if seen_ru else "серьёзных событий пока нет. ")
-        + "Ссылка — личный отчёт о рисках на четыре недели " + ("по их направлениям" if known else "по частым направлениям из их региона") + ": вероятность каждого события, оценка цены типового рейса, срок решения, источники; открывается с телефона, сохраняется в PDF. "
-        "В конце отчёта — анонимный опрос на минуту; если удобнее поговорить, хватит 15 минут.")
+        + "Первая ссылка — личный отчёт о рисках на четыре недели " + ("по их направлениям" if known else "по частым направлениям из их региона") + ": вероятность каждого события, оценка цены типового рейса, срок решения, источники; открывается с телефона, сохраняется в PDF. "
+        "Вторая — просьба пройти анонимный опрос: семь вопросов за минуту, чтобы понять, во что такие простои обходятся офису.")
     # the one reminder to a company that already had the survey letter (owner, 17 Nov 2026: «А письмами как можно в
     # будущем? Типа, что нужно сделать?»): it no longer asks for a minute again, it brings their own lanes, and it is the
     # last message
@@ -310,17 +314,19 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         "sono Alikhan Bashpay, studente Bocconi, e qualche giorno fa vi ho scritto a proposito di **zhol**, " + WHO_IT + ". "
         "Io e il mio team siamo tra i 100 progetti selezionati su circa 500 per **TEF Ignition 2026** della Tech Europe "
         "Foundation, con un grant di 2.000 €. Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
-        "Questa volta non vi chiedo niente, vi mando qualcosa di utile. " + seen
-        + "Qui trovate il vostro rapporto " + page_it + " per le prossime quattro settimane, con la probabilità di ogni "
+        "Questa volta vi mando prima qualcosa di utile. " + seen
+        + "Qui trovate un rapporto " + page_it + " per le prossime quattro settimane, con la probabilità di ogni "
         "evento, il costo stimato di un viaggio tipo e quando decidere, ogni evento con la sua fonte\n" + link + "\n\n"
-        "Se vi serve, possiamo provarlo **gratis per quattro settimane** sulle vostre spedizioni, senza installare niente. "
+        "Se non l'avete ancora fatto, il nostro **sondaggio anonimo** di sette domande richiede un minuto e ci aiuta "
+        "molto\n" + survey + "\n\n"
+        "Se vi serve, possiamo provarlo gratis per quattro settimane sulle vostre spedizioni, senza installare niente. "
         "Basta rispondere a questa email. È il mio ultimo messaggio, non vi scriverò ancora.\n\n"
         "Grazie e buona giornata,\n" + SIGN)
     reminder_ru = (
         "Напоминание тем, кому уже ушло письмо с опросом, одно и последнее. Не просим минуту второй раз, а даём пользу: "
         "кто мы (стандартная фраза, TEF Ignition 2026, грант 2 000 €, цель — вся Европа), их направления, "
         + (f"события радара: {seen_ru}; " if seen_ru else "серьёзных событий пока нет; ")
-        + "ссылка на их личный отчёт о рисках на четыре недели (вероятности, оценка цены, срок решения, источники). Предлагаем бесплатный пилот на четыре недели "
+        + "ссылка на их личный отчёт о рисках на четыре недели (вероятности, оценка цены, срок решения, источники); ещё раз просим пройти опрос на минуту, если не прошли. Предлагаем бесплатный пилот на четыре недели "
         "без установки, ответить можно прямо на письмо. Говорим, что больше не напишем.")
     return {"call_it": call_it, "call_ru": call_ru, "subject": subject_for(hs, known), "message": message, "message_ru": message_ru,
             "reminder": {"subject": "Re: " + row["subject"], "message": reminder, "message_ru": reminder_ru}}

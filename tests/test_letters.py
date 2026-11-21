@@ -235,10 +235,12 @@ def test_calls_and_lane_links_follow_the_same_principles():
                      "stima", "in anticipo", "tempo reale"):
             assert must in m, (cid, must)
         links = re.findall(r"https?://\S+", m)
-        # the link is the company's own risk report (site/assets/rapporto.js; owner, 21 Nov 2026), and the survey waits
-        # at its end: the letter itself asks for nothing but a look
-        assert links == [k["link"]] and k["link"].startswith("https://zhol.live/it/rapporto#lanes="), (cid, links)
-        assert "Ho preparato per voi un rapporto" in m and "sondaggio anonimo di **un minuto**" in m and "PDF" in m, cid
+        # the company's own risk report first (site/assets/rapporto.js; owner, 21 Nov 2026), then the survey, still asked
+        # for in the letter with its own link (owner, 21 Nov 2026: «оставь в сообщении то, что вот опрос, все еще его
+        # нужно проходить»), marked by channel only
+        assert links == [k["link"], rows[cid]["link"]] and k["link"].startswith("https://zhol.live/it/rapporto#lanes="), (cid, links)
+        assert re.match(r"https://zhol\.live/it/sondaggio\?src=co-[a-z]+$", rows[cid]["link"]), cid
+        assert "Ho preparato per voi un rapporto" in m and "**sondaggio anonimo**, sette domande in un minuto" in m and "PDF" in m, cid
         assert k["subject"].startswith(("Le vostre tratte, ", "Strade verso l'estero, ")) or k["subject"] == "Le vostre tratte nelle prossime settimane, progetto Bocconi", cid
         assert k["subject"].startswith("Le vostre tratte") == (bool(k["countries"]) or k["lanes"][0].startswith(("VIT-", "CT-"))), cid
         assert m.count("**") // 2 <= 3 and not re.search(r"per truck|per camion", m, re.I), cid
@@ -267,7 +269,8 @@ def test_company_reminder_brings_their_lanes():
         for must in ("Bocconi", "TEF Ignition 2026", "2.000 €", "Europa", " AI ", "Io e il mio team", "su rotaia", "via mare",
                      "in anticipo", "tempo reale", "gratis per quattro settimane", "ultimo messaggio"):
             assert must in m, (cid, must)
-        assert re.findall(r"https?://\S+", m) == [k["link"]], cid
+        assert re.findall(r"https?://\S+", m) == [k["link"], r["link"]], cid       # the report, then the survey once more
+        assert "Se non l'avete ancora fatto, il nostro **sondaggio anonimo**" in m, cid
         assert m.count("**") // 2 <= 3, cid
         if r.get("to"):
             url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc(r["to"]) + "&subject=" + enc(f["subject"])
