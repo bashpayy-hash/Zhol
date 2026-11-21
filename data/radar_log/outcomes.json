@@ -20,6 +20,13 @@
   "start": "2026-11-14",
   "title": "Traffic suspended between Attigliano and Orte on the conventional Florence-Rome line for power line checks."
  },
+ "closure|IT|2026-11-15": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-21",
+  "start": "2026-11-15",
+  "title": "Possible closure in Italy"
+ },
  "closure|frejus|2026-11-14": {
   "happened": null,
   "how": "open",
@@ -42,6 +49,20 @@
   "source": "https://www.atmb.com/nos-travaux/travaux-au-tunnel-du-mont-blanc/",
   "start": "2026-11-17",
   "title": "Mont Blanc tunnel closed overnight for maintenance."
+ },
+ "closure|montblanc|2026-11-18": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-21",
+  "start": "2026-11-18",
+  "title": "Mont Blanc tunnel closed at night for maintenance."
+ },
+ "closure|montblanc|2026-11-20": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-21",
+  "start": "2026-11-20",
+  "title": "Closure at the Mont Blanc tunnel"
  },
  "dosing|kufstein|2026-11-18": {
   "happened": null,
@@ -77,6 +98,13 @@
   "resolved_on": "2026-11-18",
   "start": "2026-11-17",
   "title": "Possible port or ferry strike in France"
+ },
+ "strike|messina_strait|2026-11-20": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-21",
+  "start": "2026-11-20",
+  "title": "Port or ferry strike on the Strait of Messina"
  },
  "weather|messina_strait|2026-11-18": {
   "happened": null,
