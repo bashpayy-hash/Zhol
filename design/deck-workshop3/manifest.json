@@ -54,5 +54,11 @@
   "file": "qr-zhol-live.png",
   "value": "https://zhol.live",
   "how": "ReportLab qrencoder, version 2, error correction M, quiet zone 4 modules"
+ },
+ "radar": {
+  "slide": "the radar at work",
+  "video": "radar-live.mp4",
+  "still": "radar-still.jpg (the PDF and the fallback: the Mont Blanc closure card, cropped)",
+  "how": "radar-record.js: opens zhol.live/radar on 22 Nov 2026 at 19:14, records the screen as frames (Chrome screencast), map in, Alps up close, the Mont Blanc tunnel pin, then its closure card; ffmpeg joins the frames by their own timing into a 12.8 s H.264 loop, 1440x900, fade from and to paper"
  }
 }
