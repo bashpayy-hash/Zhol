@@ -57,8 +57,8 @@
  },
  "radar": {
   "slide": "the radar at work",
-  "video": "radar-live.mp4",
-  "still": "radar-still.jpg (the PDF and the fallback: the Mont Blanc closure card, cropped)",
-  "how": "radar-record.js: opens zhol.live/radar on 22 Nov 2026 at 19:14, records the screen as frames (Chrome screencast), map in, Alps up close, the Mont Blanc tunnel pin, then its closure card; ffmpeg joins the frames by their own timing into a 12.8 s H.264 loop, 1440x900, fade from and to paper"
+  "video": "radar-map.mp4",
+  "still": "radar-map.jpg (the PDF and the fallback: this week, 22–28 Nov)",
+  "how": "radar-map-record.js: opens zhol.live/radar on 22 Nov 2026 at 19:20 at double size (2560x1600, page zoom 2), records the screen as frames (Chrome screencast): the map section only, the points come in, Play the weeks, then Alps up close; ffmpeg crops the map and its list, joins the frames by their own timing into a 17.6 s H.264 loop, 1600x1000, fade from and to paper"
  }
 }

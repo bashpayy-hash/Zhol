@@ -1,0 +1,45 @@
+// Records only the map of zhol.live/radar: pins come in, the weeks play, then the Alps up close.
+const { chromium } = require('playwright');
+const fs = require('fs');
+const OUT = __dirname + '/mframes';
+fs.rmSync(OUT, { recursive: true, force: true }); fs.mkdirSync(OUT);
+(async () => {
+  const proxy = process.env.HTTPS_PROXY ? { server: process.env.HTTPS_PROXY } : undefined;
+  const b = await chromium.launch({ proxy });
+  const ctx = await b.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 2, ignoreHTTPSErrors: true });
+  const ctx2 = await b.newContext({ viewport: { width: 2560, height: 1600 }, deviceScaleFactor: 1, ignoreHTTPSErrors: true });
+  const p = await ctx.newPage();
+  const hide = '.asst-bubble, .asst-panel { display: none !important }';
+  await p.goto('https://zhol.live/radar?nc=' + Date.now(), { waitUntil: 'load', timeout: 90000 });
+  await p.waitForTimeout(2500); await p.addStyleTag({ content: hide });
+  const frameTop = () => p.evaluate(() => document.querySelector('.map-frame').getBoundingClientRect().top + scrollY);
+  let y = (await frameTop()) - 150;
+  // the still: the Europe map, settled
+  await p.evaluate(v => scrollTo(0, v), y); await p.waitForTimeout(5000);
+  await p.locator('.map-frame').screenshot({ path: __dirname + '/map-still.png' });
+  const p2 = await ctx2.newPage();
+  await p2.goto('https://zhol.live/radar?nc=' + Date.now(), { waitUntil: 'load', timeout: 90000 });
+  await p2.waitForTimeout(2500); await p2.addStyleTag({ content: hide + ' html { zoom: 2 }' }); await p2.waitForTimeout(600);
+  const geo = await p2.evaluate(() => { const r = document.querySelector('.map-frame').getBoundingClientRect(); return { top: r.top, sy: scrollY, ih: innerHeight }; });
+  console.log('geo', JSON.stringify(geo));
+  const cdp = await ctx2.newCDPSession(p2);
+  const frames = [];
+  cdp.on('Page.screencastFrame', async f => { frames.push(f.metadata.timestamp); fs.writeFileSync(`${OUT}/${String(frames.length).padStart(5, '0')}.jpg`, Buffer.from(f.data, 'base64')); try { await cdp.send('Page.screencastFrameAck', { sessionId: f.sessionId }); } catch (e) {} });
+  const t0 = Date.now(); const mark = []; const at = s => mark.push([s, (Date.now() - t0) / 1000]);
+  await p2.evaluate(() => { const e = document.querySelector('.map-frame'); const r = e.getBoundingClientRect(); scrollTo(0, scrollY + r.top - 1400); });
+  await p2.waitForTimeout(500);
+  await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 90, maxWidth: 2560, maxHeight: 1600, everyNthFrame: 1 });
+  await p2.waitForTimeout(400);
+  await p2.evaluate(() => { const e = document.querySelector('.map-frame'); e.scrollIntoView({ behavior: 'smooth', block: 'center' }); }); at('scroll');
+  await p2.waitForTimeout(3400);
+  await p2.click('.map-play'); at('play');
+  await p2.waitForTimeout(9000);
+  await p2.getByText('Alps up close', { exact: true }).first().click(); at('alps');
+  await p2.waitForTimeout(3600);
+  await cdp.send('Page.stopScreencast'); await p2.waitForTimeout(300);
+  await p2.screenshot({ path: __dirname + '/zoom-last.png' });
+  const box = await p2.evaluate(() => { const r = document.querySelector('.map-frame').getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; });
+  fs.writeFileSync(__dirname + '/mtimes.json', JSON.stringify({ frames, mark, box }));
+  console.log('frames', frames.length, JSON.stringify(mark), box);
+  await b.close();
+})();
