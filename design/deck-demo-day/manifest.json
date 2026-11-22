@@ -1,0 +1,33 @@
+{
+ "what": "Scenes of the Demo Day deck (artifact https://claude.ai/artifact/Un6kuB2TQxna7rDpiqruFQ; owner, 22 Nov 2026: «проект сильный… нормально оформить все»). New scene types, used nowhere else: an intermodal crane on a harbour quay, a railway lever frame at a junction, a lighthouse on a coastal headland. Zholdas looks at the viewer only on the cover and the last slide; in the middle he works the lever and looks at the points. Each world runs out through the right and bottom edges; the calm left side holds the text.",
+ "references": [
+  "2a20bb83-5d2d-4aa3-be59-3efd48133274",
+  "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
+ ],
+ "settings": {
+  "model": "gpt_image_2_6",
+  "quality": "high",
+  "resolution": "2k",
+  "aspect_ratio": "16:9",
+  "background": "opaque",
+  "medias": "both references as image_references"
+ },
+ "processing": "2688x1520 PNG resized to 1920x1080 WebP q84. The junction scene was outpainted to 21:9 (job 723dd22c-8531-40b5-85a1-a74a3a0f640b) and its left 16:9 window kept, so Zholdas stands right of centre and the text has room.",
+ "scenes": {
+  "cover-port.webp": {
+   "slide": "1, cover",
+   "higgsfield_image_job": "b906ca50-2c74-4149-b6c2-1383fe34ca88",
+   "scene": "a brick-red gantry crane lifts a sage container from a freight train onto a truck on a harbour quay, a ferry at sea; Zholdas with a clipboard says hello to the viewer"
+  },
+  "what-switch.webp": {
+   "slide": "3, what zhol does",
+   "higgsfield_image_job": "d3243128-0c25-4ade-87fd-4435a10f1a3b",
+   "scene": "a railway junction in a felt valley, a signal box, a road bridge with a truck, a container train coming; Zholdas pulls a brass lever and watches the points move"
+  },
+  "close-lighthouse.webp": {
+   "slide": "12, thank you",
+   "higgsfield_image_job": "b7979d03-b39f-458c-9b2a-6670b8587e49",
+   "scene": "a striped lighthouse on a headland, a coastal road with a truck, a freight train along the shore, a ferry sailing out; Zholdas waves to the viewer with a rolled map"
+  }
+ }
+}

@@ -1,6 +1,7 @@
 // /api/pay: pay the founding order on Stripe Checkout (lib/pay.mts; owner, 22 Nov 2026).
 // GET                         → {live}   whether Stripe is set up (the key is in Netlify's environment)
-// POST (header x-zhol-office)  → {url}    a Checkout page for the office's order; 409 without an order, 503 without Stripe
+// POST (header x-zhol-office)  → {url}    a Checkout page for the office's order; 409 without an order or when it is
+//                                         already paid, 503 without Stripe
 import type { Config } from "@netlify/functions";
 import { json, offices, sha } from "../lib/store.mts";
 import { keyOk } from "../lib/office.mts";
@@ -19,6 +20,8 @@ export default async (req: Request) => {
   const o = await offices().get("o/" + await sha(key), { type: "json" }) as Office | null;
   if (!o) return json({ error: "key" }, 401);
   if (!o.founding) return json({ error: "no_order" }, 409);
+  // a paid order is not paid twice: a second Checkout would open a second subscription
+  if (o.founding.paid && /^(active|trialing|paid)$/.test(o.founding.paid.status)) return json({ error: "already_paid" }, 409);
   const r = await fetch("https://api.stripe.com/v1/checkout/sessions", {
     method: "POST",
     headers: { authorization: "Bearer " + env("STRIPE_SECRET_KEY"), "content-type": "application/x-www-form-urlencoded", "idempotency-key": o.id + "-" + o.founding.at },
