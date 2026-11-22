@@ -1,0 +1,14 @@
+{
+ "what": "Cover scene of the Workshop 3 progress deck (https://claude.ai/artifact/8o2ZFe8tHr5Z4yojpAoNvC), 22 Nov 2026. New scene type: a roadside milestone; Zholdas plants a small red pennant and looks at the viewer (the cover).",
+ "higgsfield_image_job": "cd6c16db-42b5-42b5-85ad-acf112810e49",
+ "references": [
+  "2a20bb83-5d2d-4aa3-be59-3efd48133274",
+  "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
+ ],
+ "settings": {
+  "model": "gpt_image_2_6",
+  "quality": "high",
+  "resolution": "2k",
+  "aspect_ratio": "16:9"
+ }
+}
