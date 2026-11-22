@@ -20,7 +20,8 @@
   "letters-postbox.jpg": {
    "slide": "4, validation, the Bocconi outreach card",
    "higgsfield_image_job": "f7efa391-13c3-4081-a70f-fa6eee4d8115",
-   "scene": "a red postbox by a country road; Zholdas slips a stack of letters into it, looking at the slot"
+   "scene": "a red postbox by a country road; Zholdas slips a stack of letters into it, looking at the slot",
+   "status": "replaced on 22 Nov by postbox-corner.webp: the owner did not want the scene boxed inside a card"
   },
   "paint-lane-corner.webp": {
    "slide": "3, the three actions, bottom-right corner",
@@ -48,6 +49,12 @@
    "higgsfield_image_job": "82cc4026-79a3-4205-9c83-62dd1d99e6fe",
    "first_version_job": "2959c045-b7e9-4ef9-a8a8-d48f7acd60ff",
    "scene": "a fork in a country road with a blank signpost: Zholdas, seen from behind, looks up at the arrows with a map, scratching his cap; one road to a town with a rail yard, the other to an Alpine valley with trucks. The question slide: which way to reach companies."
+  },
+  "postbox-corner.webp": {
+   "slide": "validation, bottom-right corner under the Bocconi outreach card",
+   "higgsfield_image_job": "949cdc92-6fc8-407a-825d-e91e4fd28492",
+   "scene": "transparent everywhere except the bottom-right: a grassy verge and a country road grow from the right and bottom edges; Zholdas on tiptoe slips letters into a red postbox, looking at the slot; bundles at his feet; a small van leaves through the right edge. The verge ends in a soft hill line, no straight cut.",
+   "how": "gpt_image_2_6, background transparent, 16:9, 2k; WebP 2000x1131 for the deck, 1100x622 for the PDF"
   }
  },
  "qr": {
