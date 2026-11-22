@@ -26,6 +26,21 @@
    "slide": "3, the three actions, bottom-right corner",
    "higgsfield_image_job": "7fa32c82-97fc-435c-91aa-258547dc492d",
    "scene": "a road growing from the right and bottom edges, transparent elsewhere, the left edge feathered; Zholdas paints a fresh white lane line (work in progress)"
+  },
+  "before-after-band.jpg": {
+   "slide": "2, project overview, across the top",
+   "higgsfield_image_job": "90c9bfdb-b3f3-483c-87ad-ff3659d80051",
+   "scene": "one continuous valley, 21:9: on the left Zholdas squints into fog with an old phone; on the right, in sun, Zholdas reads a radar screen; train and ferry in view. Neither looks at the viewer."
+  },
+  "empty-mailbox.jpg": {
+   "slide": "6, what is not working yet",
+   "higgsfield_image_job": "0bd26764-af80-44e6-84fb-e57edee6988f",
+   "scene": "the gate of a trucking yard; Zholdas peers into an empty mailbox, scratching his cap, his own letters at his feet"
   }
+ },
+ "qr": {
+  "file": "qr-zhol-live.png",
+  "value": "https://zhol.live",
+  "how": "ReportLab qrencoder, version 2, error correction M, quiet zone 4 modules"
  }
 }
