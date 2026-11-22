@@ -1,0 +1,36 @@
+{
+ "what": "Scenes of the survey results page (/results, /it/risultati) and its PDFs (owner, 22 Nov 2026: «Добавь иллюстрации»). New scene types, used nowhere else: a notice board at a motorway service area, an air cargo apron. On the board, at the top of the page, Zholdas looks at the viewer; on the apron, in the answers, he counts crates.",
+ "references": [
+  "2a20bb83-5d2d-4aa3-be59-3efd48133274",
+  "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
+ ],
+ "settings": {
+  "model": "gpt_image_2_6",
+  "quality": "high",
+  "resolution": "2k",
+  "aspect_ratio": "16:9",
+  "background": "opaque",
+  "medias": "both references as image_references"
+ },
+ "processing": "2688x1520 PNG resized to 1600 and 900 wide, WebP q82",
+ "scenes": {
+  "board": {
+   "where": "top of the page, above the title",
+   "higgsfield_image_job": "c8ff0180-8f9d-4195-aef9-67c8f15da707",
+   "files": [
+    "board-1600.webp",
+    "board-900.webp"
+   ],
+   "scene": "a motorway service area in the Po valley, trucks on the motorway and a freight train behind; Zholdas pins a sheet with a bar chart (no text or numbers) to a notice board, envelopes under his arm, looking at the viewer"
+  },
+  "cargo": {
+   "where": "the sixth cell of the answers grid",
+   "higgsfield_image_job": "93fb1c89-c3ef-4d7d-ada8-ca392fc2e1bb",
+   "files": [
+    "cargo-1600.webp",
+    "cargo-900.webp"
+   ],
+   "scene": "an air cargo apron, a felt cargo plane with its nose door open, a loader lifting a pallet of crates; Zholdas with a clipboard counts the crates"
+  }
+ }
+}

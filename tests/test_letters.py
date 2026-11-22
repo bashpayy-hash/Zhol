@@ -450,6 +450,10 @@ def test_survey_results_pages_count_only():
         h = (ROOT / path).read_text(encoding="utf-8")
         assert 'class="rp-tiles"' in h and 'class="rs-bars"' in h and "/d/zhol-tef-ignition-2026.pdf" in h and deck in h
         assert "TEF Ignition 2026" in h and ("€2,000" in h or "2.000 €" in h) and "Europ" in h
+        # two scenes with Zholdas (owner, 22 Nov 2026: «Добавь иллюстрации»), each described for a screen reader
+        for scene in ("board", "cargo"):
+            m = re.search(r'<img src="/assets/img/results/' + scene + r'-900\.webp"[^>]*alt="([^"]+)"', h)
+            assert m and "Zholdas" in m.group(1) and (ROOT / "site" / "assets" / "img" / "results" / (scene + "-1600.webp")).exists(), (path, scene)
         assert not re.search(r"[\w.+-]+@[\w-]+\.[\w.]+", h), path
         private = ROOT / "outreach" / "private" / "survey.csv"
         if private.exists():   # no response id from the private export reaches the page

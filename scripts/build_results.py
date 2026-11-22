@@ -111,6 +111,8 @@ T = {
         foot="Oyu team · Bocconi University · TEF Ignition 2026",
         foot_links='<a href="/radar">Radar</a> · <a href="/bulletin">Bulletin</a> · <a href="/check">Check</a> · <a href="/survey">Survey</a>',
         bars_label="Answers, count",
+        alt_board="Zholdas, our plush mascot, pins a sheet with a bar chart to a notice board at a motorway service area, trucks on the motorway and a freight train behind.",
+        alt_cargo="Zholdas counts crates on an air cargo apron while a loader lifts a pallet into a cargo plane.",
     ),
     "it": dict(
         path="it/risultati.html", home="/it/", lang_attr="it", title="zhol · Risultati del sondaggio, novembre 2026",
@@ -167,6 +169,8 @@ T = {
         foot="Oyu team · Università Bocconi · TEF Ignition 2026",
         foot_links='<a href="/it/radar">Radar</a> · <a href="/it/bollettino">Bollettino</a> · <a href="/it/verifica">Verifica</a> · <a href="/it/sondaggio">Sondaggio</a>',
         bars_label="Risposte, numero",
+        alt_board="Zholdas, la nostra mascotte di peluche, appende un foglio con un grafico a barre alla bacheca di un'area di servizio, con camion in autostrada e un treno merci dietro.",
+        alt_cargo="Zholdas conta le casse su un piazzale cargo mentre un elevatore carica un pallet su un aereo merci.",
     ),
 }
 
@@ -200,6 +204,7 @@ PAGE = """<!doctype html>
 <main class="rs">
 <section class="slide rs-head">
   <div class="wrap">
+    <figure class="rp-cover rs-cover"><img src="/assets/img/results/board-900.webp" srcset="/assets/img/results/board-900.webp 900w, /assets/img/results/board-1600.webp 1600w" sizes="(max-width: 1200px) 100vw, 1160px" alt="{alt_board}" width="1600" height="900" decoding="async"></figure>
     <span class="kicker">{kicker}</span>
     <h1 class="title">{h1}</h1>
     <p class="lead">{lead}</p>
@@ -210,7 +215,7 @@ PAGE = """<!doctype html>
 <section class="slide rs-sec">
   <div class="wrap">
     <h2 class="bl-h2">{h_detail}</h2>
-    <div class="rs-grid">{details}</div>
+    <div class="rs-grid">{details}<figure class="rs-card rs-pic"><img src="/assets/img/results/cargo-900.webp" srcset="/assets/img/results/cargo-900.webp 900w, /assets/img/results/cargo-1600.webp 1600w" sizes="(max-width: 920px) 100vw, 560px" alt="{alt_cargo}" width="1600" height="900"  decoding="async"></figure></div>
   </div>
 </section>
 
