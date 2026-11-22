@@ -25,7 +25,7 @@ import survey_summary as ss  # noqa: E402
 
 SINCE = "2026-11-09T17:00"
 DECK = "/d/zhol-tef-ignition-2026.pdf"
-PDFS = {"en": "zhol-survey-results-2026-11.pdf", "it": "zhol-risultati-sondaggio-2026-11.pdf"}   # printed from the pages
+PDFS = {"en": "zhol-survey-results-2026-11.pdf", "it": "zhol-risultati-sondaggio-2026-11.pdf"}   # designed by scripts/results_print.py
 MONTHS = {"en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                  "November", "December"],
           "it": ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre",
