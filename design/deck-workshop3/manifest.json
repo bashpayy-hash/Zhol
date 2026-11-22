@@ -57,8 +57,7 @@
  },
  "radar": {
   "slide": "the radar at work",
-  "video": "radar-map.mp4",
-  "still": "radar-map.jpg (the PDF and the fallback: this week, 22–28 Nov)",
-  "how": "radar-map-record.js: opens zhol.live/radar on 22 Nov 2026 at 19:20 at double size (2560x1600, page zoom 2), records the screen as frames (Chrome screencast): the map section only, the points come in, Play the weeks, then Alps up close; ffmpeg crops the map and its list, joins the frames by their own timing into a 17.6 s H.264 loop, 1600x1000, fade from and to paper"
+  "still": "radar-map.jpg: the live map of zhol.live/radar, this week 22–28 Nov 2026, screenshot taken on 22 Nov at 19:20 (page at double size, map and its list cropped)",
+  "video": "none: the owner asked for the screenshot only"
  }
 }
