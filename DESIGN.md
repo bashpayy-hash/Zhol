@@ -60,6 +60,17 @@ Documents.
   - бумажное зерно, как на сайте и в ранних колодах, на светлых слайдах.
 - **Третья правка владельца** («напиши only 2 replied»): вместо «No one has replied yet» — «Only 2 companies replied»
   на слайдах 4, 6 и 8 и в заметках к ним. Эти двое — два небольших перевозчика из опроса.
+- **Четвёртая правка владельца** («нужны connections through someone… spend the grant is actually questionable… this is
+  our actual hinder on the way to find our first clients… people with vast experience… said that they are willing to
+  pay… maybe we're gonna mail the profs more… сделай в конце последний прощальный слайд… с прикольной иллюстрацией»):
+  - слайд 9 теперь «Our blocker: reaching the first companies». Сверху светлая полоса «Why we keep going»: 9 экспертов,
+    5 из них преподают, считают, что офисы заплатят; 7 назвали цену, никто не сказал «ничего» (средний ответ €5–10).
+    Пишем «think offices would pay», а не «they will pay»: эксперты — не покупатели;
+  - три вопроса вместо четырёх: первый контакт (холодные письма дали 2 компании), знакомства на альпийских маршрутах,
+    стоит ли тратить грант на поездки без знакомства; ниже «What we do now: ask each Bocconi professor again»;
+  - на слайде 8 строка о деньгах: как тратить грант — открытый вопрос;
+  - слайд 12, прощальный: «That's all from us. Thank you. See you on the road.» Жолдас в конце рельсов сидит на упоре и
+    снимает кепку (финал, поэтому смотрит в камеру). Слайд идёт последним, после приложения.
 
 ### 22 ноября 2026 · PDF результатов опроса — свой макет, а не печать страницы
 
