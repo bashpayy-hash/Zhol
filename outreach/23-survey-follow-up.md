@@ -2,7 +2,7 @@
 
 Owner, 22 Nov 2026: «подлизываться, наверное, слишком… server results, like follow-up… более broad, потому что
 персонально это будет подозрительно… просто вот это выслать и написать письмо, что вот такие пироги, и не хотели бы вы
-нам как-то помочь». So the brief is general (no names), works for any professor, and the letter is short and plain. Then (same day): «добавьте, будем очень благодарны, если можете переслать кому-то… с сайтом [пилотом] повременим… вот опрос, свяжите нас с другими компаниями или перешлите». The brief asks for an introduction, a forward or advice; it no longer promises a report the same day or a pilot.
+нам как-то помочь». So the brief is general (no names), works for any professor, and the letter is short and plain. Then (same day): «добавьте, будем очень благодарны, если можете переслать кому-то… с сайтом [пилотом] повременим… вот опрос, свяжите нас с другими компаниями или перешлите». The brief asks for an introduction, a forward or advice; it no longer promises a report the same day or a pilot. Later: «убрать пока что с сайта… QR-код на последнем слайде на сайт… там еще есть сырая функция с пилотом… не можете ли вы переслать это сообщение кому-то, или дать контакты каких-то людей, сказать, откуда» — so the brief has no QR and no link to zhol.live, and the letter asks to forward the message or share a contact.
 
 Attach `outreach/private/briefs/zhol-survey-follow-up-2026-11.pdf` (6 pages). First for Professor Alberto Grando
 (Bocconi address book: "Grando"); for another professor, change only the name.
@@ -21,8 +21,8 @@ In short, 8 of 9 people who know the field see shipments abroad change often, a 
 €300–1,000, and €5–10 a vehicle a month is a fair price. Our radar already caught real events this month, but reaching
 the companies themselves is hard: only 2 replied to our letters.
 
-If you know anyone in the field who might be open to a short conversation, or have any advice, we would be grateful.
-And if you could forward the brief to anyone it might interest, that would already help us a lot.
+If you know anyone in the field, could you forward this message to them, or share the contact of someone we could
+write to? We would of course tell them how we found them. Any advice is welcome too.
 
 Kind regards,
 zhol team
@@ -40,8 +40,8 @@ In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le sped
 vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Il nostro radar ha già colto eventi reali questo
 mese, ma raggiungere le aziende stesse è difficile: solo 2 hanno risposto alle nostre lettere.
 
-Se conosce qualcuno nel settore disposto a una breve conversazione, o ha un consiglio da darci, gliene saremmo grati.
-E se potesse inoltrare la sintesi a chi potrebbe interessare, ci aiuterebbe già molto.
+Se conosce qualcuno nel settore, potrebbe inoltrargli questo messaggio, o darci il contatto di una persona a cui
+scrivere? Naturalmente le diremmo come abbiamo avuto il suo contatto. Anche un consiglio ci sarebbe prezioso.
 
 Cordiali saluti,
 zhol team
