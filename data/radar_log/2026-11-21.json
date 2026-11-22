@@ -215,7 +215,7 @@
    "decide_h": 7.5
   },
   {
-   "key": "strike|IT|2026-11-20",
+   "key": "strike|IT|2026-11-20|rail",
    "id": "st-rail-2026-11-20",
    "group": "news",
    "kind": "strike",
@@ -230,7 +230,7 @@
    "decide_h": null
   },
   {
-   "key": "strike|IT|2026-11-21",
+   "key": "strike|IT|2026-11-21|rail",
    "id": "st-rail-2026-11-21",
    "group": "news",
    "kind": "strike",
@@ -245,7 +245,7 @@
    "decide_h": null
   },
   {
-   "key": "strike|IT|2026-11-22",
+   "key": "strike|IT|2026-11-22|air",
    "id": "st-air-2026-11-22",
    "group": "news",
    "kind": "strike",
@@ -260,7 +260,7 @@
    "decide_h": null
   },
   {
-   "key": "strike|IT|2026-12-04",
+   "key": "strike|IT|2026-12-04|all",
    "id": "st-all-2026-12-04",
    "group": "news",
    "kind": "strike",
@@ -275,7 +275,7 @@
    "decide_h": null
   },
   {
-   "key": "strike|IT|2026-12-14",
+   "key": "strike|IT|2026-12-14|air",
    "id": "st-air-2026-12-14",
    "group": "news",
    "kind": "strike",
@@ -290,7 +290,7 @@
    "decide_h": null
   },
   {
-   "key": "strike|IT|2026-12-18",
+   "key": "strike|IT|2026-12-18|road",
    "id": "st-road-2026-12-18",
    "group": "news",
    "kind": "strike",

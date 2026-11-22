@@ -29,10 +29,20 @@ ESTIMATED = ("news", "forecast", "report")     # groups the radar has to estimat
 MIN_SCORED = 30                                # below this many resolved items a score is only a first reading
 
 
+def _strike_mode(item: dict) -> str | None:
+    """The mode of a strike from the ministry's calendar, from its id «st-rail-2026-11-20» (zhol/radar/strikes.py)."""
+    i = str(item.get("id") or "")
+    return i.split("-")[1] if i.startswith("st-") and i.count("-") >= 4 else None
+
+
 def key(item: dict) -> str:
-    """The same event on two days has the same key, even if its title or its chance changes."""
+    """The same event on two days has the same key, even if its title or its chance changes. Two strikes of the
+    ministry's calendar on the same day are two events (a rail strike and a general strike on 20 Nov 2026 shared one
+    key until 22 Nov 2026): their key carries the mode."""
     where = (item.get("places") or item.get("regions") or item.get("countries") or ["?"])
-    return "|".join([item.get("kind", "?"), ",".join(sorted(where)), item.get("start") or "undated"])
+    k = "|".join([item.get("kind", "?"), ",".join(sorted(where)), item.get("start") or "undated"])
+    mode = _strike_mode(item)
+    return k + "|" + mode if mode and not k.endswith("|" + mode) else k
 
 
 def _first_published(item: dict) -> str | None:
@@ -74,33 +84,45 @@ def load_outcomes(folder: Path = LOG) -> dict:
 
 
 def tracks(log: list[dict]) -> dict[str, list[dict]]:
-    """Every event with its forecasts in date order: [{date, p, stage, ...}, ...]."""
+    """Every event with its forecasts in date order: [{date, p, stage, ...}, ...]. The snapshots are read as they were
+    written (never rewritten); a strike of the ministry's calendar is told apart by its mode when it is read."""
     out: dict[str, list[dict]] = {}
     for snap in log:
         for it in snap["items"]:
-            out.setdefault(it["key"], []).append(it | {"date": snap["date"]})
+            k, mode = it["key"], _strike_mode(it)
+            if mode and not k.endswith("|" + mode):
+                k += "|" + mode                     # written before 22 Nov 2026: the stored key had no mode
+            out.setdefault(k, []).append(it | {"date": snap["date"]})
     return out
 
 
-def auto_outcomes(log: list[dict], today: date, outcomes: dict | None = None) -> dict:
+def auto_outcomes(log: list[dict], today: date, outcomes: dict | None = None, strike_rows: list[dict] | None = None) -> dict:
     """Record what the log itself can settle; everything else waits for a person.
 
     law        a ban in force by law on its date: happened
     calendar   a day on a published calendar: counted as happened, marked "assumed" (the authority can cancel)
     ongoing    the press reported it under way on a day inside its dates: happened
     revoked    the last reading before the date says it was called off: did not happen
+    ministry   a strike of the ministry's calendar (zhol/radar/strikes.py): the calendar marks it carried out or
+               revoked once it is over; until it does, «ministry_pending», which needs no person, only time
     open       its dates passed with neither: a person checks the sources and writes the outcome
     """
+    from . import strikes
     out = dict(outcomes or {})
     for k, fc in tracks(log).items():
         last = fc[-1]
-        if not last.get("start") or (k in out and out[k].get("how") != "open"):
+        if not last.get("start") or (k in out and out[k].get("how") not in ("open", "ministry_pending")):
             continue
         start, end = date.fromisoformat(last["start"]), date.fromisoformat(last["end"] or last["start"])
         if today <= end:
             continue
         rec = None
-        if last.get("basis") in ("law", "law_generic"):
+        mode = _strike_mode(last)
+        if mode and strike_rows is not None:
+            said = strikes.outcome(strike_rows, mode, start)
+            rec = ({"happened": said, "how": "ministry", "source": strikes.OFFICIAL} if said is not None
+                   else {"happened": None, "how": "ministry_pending"})
+        elif last.get("basis") in ("law", "law_generic"):
             rec = {"happened": True, "how": "law"}
         elif last.get("basis") == "official_calendar":
             rec = {"happened": True, "how": "calendar", "assumed": True}

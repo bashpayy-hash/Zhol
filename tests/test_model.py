@@ -252,3 +252,32 @@ def test_an_operators_calendar_replaces_a_press_guess_about_the_same_tunnel():
     assert not covered(strike, [dict(atmb, kind="strike", places=[], countries=["IT"], start="2026-11-20")])  # strikes keep two days
     urls = {d["id"]: d["url"] for d in OFFICIAL_DOCS}
     assert urls["sftrf-frejus"].endswith("/le-tunnel/fermetures/") and "atmb.com" in urls["atmb-montblanc"]
+
+
+def test_the_ministry_calendar_settles_its_own_strikes_and_two_strikes_on_one_day_are_two_events():
+    """Strikes of the ministry's calendar (zhol/radar/strikes.py) are settled by the calendar itself once it marks them
+    carried out or revoked (22 Nov 2026); a rail and a general strike on the same day are two events, also in snapshots
+    written before their key carried the mode (they are read, never rewritten)."""
+    from zhol.radar import strikes
+    def it(mode, p):
+        return {"key": "strike|IT|2026-11-20", "id": f"st-{mode}-2026-11-20", "group": "news", "kind": "strike", "title": mode,
+                "start": "2026-11-20", "end": "2026-11-20", "p": p, "stage": "announced", "basis": "official strikes", "countries": ["IT"]}
+    log = [{"date": d, "items": [it("rail", 0.94), it("all", 0.75)]} for d in ("2026-11-14", "2026-11-18")]
+    tr = verify.tracks(log)
+    assert set(tr) == {"strike|IT|2026-11-20|rail", "strike|IT|2026-11-20|all"} and all(len(v) == 2 for v in tr.values())
+    assert verify.key(it("air", 0.5)) == "strike|IT|2026-11-20|air" and verify.key({"kind": "ban", "countries": ["IT"], "start": "2026-12-08"}) == "ban|IT|2026-12-08"
+    row = lambda mode, state, nat=True: {"mode": mode, "start": date(2026, 11, 20), "state": state, "national": nat, "reach": "Nazionale" if nat else "Locale"}
+    rows = [row("all", "done"), row("rail", "scheduled"), row("rail", "scheduled")]
+    out = verify.auto_outcomes(log, date(2026, 11, 22), {}, rows)
+    assert out["strike|IT|2026-11-20|all"]["happened"] is True and out["strike|IT|2026-11-20|all"]["how"] == "ministry"
+    assert out["strike|IT|2026-11-20|all"]["source"] == strikes.OFFICIAL
+    assert out["strike|IT|2026-11-20|rail"] == out["strike|IT|2026-11-20|rail"] | {"happened": None, "how": "ministry_pending"}
+    rows[1]["state"] = rows[2]["state"] = "revoked"                     # the calendar is updated a few days later
+    out = verify.auto_outcomes(log, date(2026, 11, 25), out, rows)
+    assert out["strike|IT|2026-11-20|rail"]["happened"] is False and out["strike|IT|2026-11-20|rail"]["how"] == "ministry"
+    assert strikes.outcome(rows + [row("rail", "done", nat=False)], "rail", date(2026, 11, 20)) is False   # a local notice does not count
+    assert strikes.outcome([], "air", date(2026, 11, 20)) is None
+    out2 = verify.auto_outcomes(log, date(2026, 11, 22), {}, None)      # without the calendar: as before, a person reads
+    assert out2["strike|IT|2026-11-20|rail"]["how"] == "open"
+    ps = verify.pairs(log, out, lead_days=1)
+    assert sorted(ps) == [(0.75, 1), (0.94, 0)]                         # both are forecasts and both are scored

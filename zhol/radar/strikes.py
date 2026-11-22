@@ -154,6 +154,18 @@ def items(rows: list[dict], today: date, horizon: int = 60) -> list[dict]:
     return out
 
 
+def outcome(rows: list[dict], mode: str, start: date) -> bool | None:
+    """Did the strike of this mode starting on this day take place, as the ministry's calendar says once it is over:
+    True if any of its notices was carried out, False if every one was revoked, suspended or deferred, None while the
+    calendar still shows it scheduled (it is updated some days later) or does not list it (the forecast log, 22 Nov 2026)."""
+    g = [r for r in rows if r["mode"] == mode and r["start"] == start and keep(r)]
+    if any(r["state"] == "done" for r in g):
+        return True
+    if g and all(r["state"] == "revoked" for r in g):
+        return False
+    return None
+
+
 def summary(rows: list[dict]) -> dict:
     """What the calendar measures, for the model page: how often strikes take place and how far ahead they are called."""
     rates = base_rates(rows)

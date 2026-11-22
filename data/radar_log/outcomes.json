@@ -99,6 +99,21 @@
   "start": "2026-11-17",
   "title": "Possible port or ferry strike in France"
  },
+ "strike|IT|2026-11-20": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-21",
+  "start": "2026-11-20",
+  "title": "Possible strike in Italy"
+ },
+ "strike|IT|2026-11-20|all": {
+  "happened": true,
+  "how": "ministry",
+  "resolved_on": "2026-11-21",
+  "source": "https://scioperi.mit.gov.it/mit2/public/scioperi",
+  "start": "2026-11-20",
+  "title": "General strike in Italy"
+ },
  "strike|messina_strait|2026-11-20": {
   "happened": null,
   "how": "open",
