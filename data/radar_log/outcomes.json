@@ -34,6 +34,13 @@
   "start": "2026-11-14",
   "title": "Night closure of the Fréjus road tunnel in both directions."
  },
+ "closure|frejus|2026-11-20": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-22",
+  "start": "2026-11-20",
+  "title": "Night closure of the Fréjus road tunnel towards Italy."
+ },
  "closure|montblanc|2026-11-16": {
   "happened": null,
   "how": "open",
@@ -113,6 +120,29 @@
   "source": "https://scioperi.mit.gov.it/mit2/public/scioperi",
   "start": "2026-11-20",
   "title": "General strike in Italy"
+ },
+ "strike|IT|2026-11-20|rail": {
+  "happened": true,
+  "how": "ministry",
+  "resolved_on": "2026-11-22",
+  "source": "https://scioperi.mit.gov.it/mit2/public/scioperi",
+  "start": "2026-11-20",
+  "title": "Rail strike in Italy"
+ },
+ "strike|IT|2026-11-21|rail": {
+  "happened": true,
+  "how": "ministry",
+  "resolved_on": "2026-11-22",
+  "source": "https://scioperi.mit.gov.it/mit2/public/scioperi",
+  "start": "2026-11-21",
+  "title": "Rail strike in Italy"
+ },
+ "strike|brenner|2026-11-20": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-22",
+  "start": "2026-11-20",
+  "title": "Strike of SAD rail staff in South Tyrol."
  },
  "strike|messina_strait|2026-11-20": {
   "happened": null,
