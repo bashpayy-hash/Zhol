@@ -32,6 +32,14 @@ const ok = (c, m) => { if (!c) { failed++; console.log("  FAIL", m); } else cons
       if (body.kind === "founding") { const f = makeFounding(body); if (f) o.founding = f; return r.fulfill({ status: f ? 200 : 400, contentType: "application/json", body: JSON.stringify({ ok: !!f, office: publicOffice(o) }) }); }
       return r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, office: publicOffice(o) }) });
     });
+    // Stripe set up (owner, 22 Nov 2026): GET says live, POST gives a Checkout address; Stripe's page itself is mocked
+    const pays = [];
+    await p.route("**/api/pay", r => {
+      if (r.request().method() === "GET") return r.fulfill({ status: 200, contentType: "application/json", body: '{"live":true,"test":true}' });
+      pays.push(r.request().headers()["x-zhol-office"]);
+      return r.fulfill({ status: 200, contentType: "application/json", body: '{"url":"https://checkout.stripe.com/c/pay/cs_test_zhol"}' });
+    });
+    await p.route("https://checkout.stripe.com/**", r => r.fulfill({ status: 200, contentType: "text/html", body: "<title>Stripe Checkout</title><p>stripe</p>" }));
     await p.goto(BASE + "/it/verifica.html", { waitUntil: "networkidle" });
     await p.waitForSelector("#ck-st", { timeout: 10000 });
     if (name === "desk") {
@@ -55,6 +63,14 @@ const ok = (c, m) => { if (!c) { failed++; console.log("  FAIL", m); } else cons
       const f = posts.find(x => x.kind === "founding");
       ok(f && f.vehicles === 20 && f.vat === "IT01234567890" && f.consent === true, "the order: vehicles, VAT number, invoice email, the yes");
       ok(/Cliente fondatore: ordine ricevuto/.test(await p.textContent("#ck-order")) && /€160 al mese per 12 mesi/.test(await p.textContent("#ck-order")), "then the receipt in place of the form");
+      ok(await p.isVisible("#ck-pay") && /carta o addebito SEPA su Stripe, oppure aspettate la nostra fattura/.test(await p.textContent("#ck-order")), "with Stripe set up: pay now, or wait for the invoice");
+      await Promise.all([p.waitForURL(/checkout\.stripe\.com/), p.click("#ck-pay")]);
+      ok(pays.length === 1 && pays[0] === "c".repeat(64), "«Paga su Stripe» asks the server for a Checkout page with the office's key, then opens it");
+      // back from Stripe, paid: the webhook has marked the order (here by hand), the page says so
+      o.founding.paid = { at: new Date().toISOString(), status: "active", subscription: "sub_test", customer: "cus_test", session: "cs_test_zhol", amount: 160 };
+      await p.goto(BASE + "/it/verifica.html?paid=1", { waitUntil: "networkidle" }); await p.waitForSelector("#ck-st");
+      ok(/Grazie\. Stripe conferma il pagamento/.test(await p.textContent("#ck-acc")) && !/paid=/.test(p.url()), "back from Stripe: a thank-you, and a clean address");
+      ok(/Cliente fondatore: pagato su Stripe dal/.test(await p.textContent("#ck-order")) && !(await p.$("#ck-pay")), "a paid order says so, with no pay button");
       if (OUT) await (await p.$("#ck-st")).screenshot({ path: OUT + "/statement-desk.png" });
       const AXE = require("fs").existsSync(OUT + "/axe.min.js") ? require("fs").readFileSync(OUT + "/axe.min.js", "utf8") : "";
       if (AXE) { await p.addScriptTag({ content: AXE }); const v = await p.evaluate(async () => (await axe.run(document.getElementById("ck-st"))).violations.map(x => x.id)); ok(v.length === 0, "axe on the statement: " + (v.join(", ") || "clean")); }

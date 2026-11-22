@@ -56,3 +56,40 @@
   уходят от команды вручную.
 - **Нужен способ получить деньги.** Выставить счёт студенческой команде может быть непросто. Нужен юридический ответ:
   через кого выставлять, сразу или после финала. Решает владелец.
+
+## Оплата через Stripe (22 ноября 2026)
+
+> «В целом подключить страйп тоже норм мне кажется»
+
+Широко: офис, оформивший заказ по цене основателя, может сразу оплатить его на Stripe картой или SEPA-дебетом.
+Пока в Netlify нет ключей Stripe, всё работает как раньше: заказ уходит команде, команда выставляет счёт.
+
+- **Что видит офис:** в «Il conto della prova» под заказом кнопка «Paga su Stripe». Открывается Stripe Checkout:
+  ежемесячная подписка, по одной единице на машину, 8 € за машину, Partita IVA собирает Stripe. После оплаты офис
+  возвращается на /check и видит «Cliente fondatore: pagato su Stripe dal …».
+- **Как мы узнаём об оплате:** Stripe вызывает `/api/stripe-webhook` с подписью, мы её проверяем. Учётная запись офиса
+  отмечается оплаченной, на /team появляется задача «Pagato su Stripe: …». Отмена подписки тоже приходит туда.
+- **Код:** `netlify/lib/pay.mts`, `netlify/functions/pay.mts`, `netlify/functions/stripe-webhook.mts`, кнопка — в
+  `site/assets/check.js`. Тесты: `tests/js/pay.test.mjs`, `tests/browser/statement_flow.js`.
+
+### Что сделать владельцу (15 минут)
+
+1. **Аккаунт.** Зарегистрироваться на stripe.com. Тестовый режим работает сразу, для живых платежей Stripe попросит
+   документ и IBAN.
+2. **Ключ.** Developers → API keys → Secret key (сначала `sk_test_…`). В Netlify: Site configuration → Environment
+   variables → `STRIPE_SECRET_KEY` = этот ключ.
+3. **Вебхук.** Developers → Webhooks → Add endpoint → `https://zhol.live/api/stripe-webhook`, события
+   `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`. Signing secret
+   (`whsec_…`) положить в Netlify как `STRIPE_WEBHOOK_SECRET`.
+4. **Способы оплаты.** Settings → Payment methods: включить Card и SEPA Direct Debit.
+5. **Выкладка.** Новые переменные Netlify подхватывает при следующей выкладке (плановая — дважды в день).
+6. **Проверка.** Тестовая карта 4242 4242 4242 4242: заказ на /check → «Paga su Stripe» → оплата → на /check
+   «pagato su Stripe». Потом заменить ключи на `sk_live_…` и живой вебхук.
+
+### Честно о том, чего Stripe не решает
+
+- **Электронный счёт (SDI).** Квитанция Stripe — не итальянская fattura elettronica. Если получатель денег
+  зарегистрирован как плательщик НДС, счёт через SDI нужен отдельно: бухгалтер или сервис e-fattura.
+- **Кто получает деньги.** Аккаунт Stripe открывается на человека или компанию, которые за это отвечают по налогам.
+  Решает владелец.
+- **Через 12 месяцев цена 12 €.** Подписка этого сама не меняет: команда переводит её на новую цену в Stripe.

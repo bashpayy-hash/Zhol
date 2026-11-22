@@ -380,6 +380,11 @@ function drawAccount() {
   t.append(meta);
   head.append(t);
   box.append(head);
+  if (notice) { box.append(el("p", "ck-acc-notice", notice)); notice = ""; }      // back from Stripe
+  if (back === "1" && acct.founding && !acct.founding.paid && !drawAccount.polled) {    // the webhook may land a moment later
+    drawAccount.polled = true;
+    setTimeout(async () => { const r = await officeApi().catch(() => null); if (r && r.ok) { acct = (await r.json()).office; drawAccount(); } }, 4000);
+  }
   if (justMade) {
     const ok = el("p", "ck-acc-notice ck-acc-ok");
     ok.append(el("b", null, T("Your free pilot has started. ", "La vostra prova gratuita è iniziata. ")),
@@ -482,9 +487,31 @@ function foundingBox(s) {
   const box = el("div", "ck-st-order" + (s.met ? " met" : "")); box.id = "ck-order";
   const pr = s.price, f = acct.founding;
   if (f) {
-    box.append(el("b", null, T("Founding customer: order received ", "Cliente fondatore: ordine ricevuto ") + day(f.at.slice(0, 10)) + "."),
-               el("p", "small", T(f.vehicles + " vehicles × €" + f.price + " = " + eur(f.vehicles * f.price) + " a month for " + f.months + " months. We send the first invoice to " + f.email + "; you can cancel at any time.",
-                                  f.vehicles + " mezzi × " + f.price + " € = " + eur(f.vehicles * f.price) + " al mese per " + f.months + " mesi. Mandiamo la prima fattura a " + f.email + "; potete disdire in qualsiasi momento.")));
+    const month = f.vehicles + T(" vehicles × €" + f.price + " = ", " mezzi × " + f.price + " € = ") + eur(f.vehicles * f.price) + T(" a month for " + f.months + " months", " al mese per " + f.months + " mesi");
+    const paid = f.paid && f.paid.status !== "canceled";
+    if (paid) {                                          // the signed webhook said so (netlify/lib/pay.mts)
+      box.classList.add("met");
+      box.append(el("b", null, T("Founding customer: paid on Stripe since ", "Cliente fondatore: pagato su Stripe dal ") + day(f.paid.at.slice(0, 10)) + "."),
+                 el("p", "small", month + T(". Receipts come from Stripe to " + f.email + "; you can cancel at any time.", ". Le ricevute arrivano da Stripe a " + f.email + "; potete disdire in qualsiasi momento.") +
+                    (f.paid.status !== "active" ? T(" The debit is still clearing.", " L’addebito è ancora in corso.") : "")));
+      return box;
+    }
+    box.append(el("b", null, T("Founding customer: order received ", "Cliente fondatore: ordine ricevuto ") + day(f.at.slice(0, 10)) + "."));
+    // pay now on Stripe (owner, 22 Nov 2026: «подключить страйп тоже норм»), or wait for the team's invoice as before
+    if (payLive) {
+      box.append(el("p", "small", month + T(". Pay now by card or SEPA debit on Stripe, or wait for our invoice to " + f.email + ". Cancel at any time.",
+                                            ". Pagate ora con carta o addebito SEPA su Stripe, oppure aspettate la nostra fattura a " + f.email + ". Disdetta in qualsiasi momento.")));
+      const go = el("button", "btn", T("Pay on Stripe", "Paga su Stripe")); go.type = "button"; go.id = "ck-pay";
+      const out = el("p", "small"); out.setAttribute("role", "status");
+      go.addEventListener("click", async () => {
+        go.disabled = true; out.textContent = T("Opening Stripe…", "Apro Stripe…");
+        const r = await fetch("/api/pay", { method: "POST", headers: { "x-zhol-office": key() } }).catch(() => null);
+        const d = r && r.ok ? await r.json().catch(() => null) : null;
+        if (d && d.url) { location.href = d.url; return; }
+        go.disabled = false; out.textContent = T("Stripe did not answer. Try again in a minute, or wait for our invoice.", "Stripe non ha risposto. Riprovate tra un minuto, oppure aspettate la nostra fattura.");
+      });
+      box.append(go, out);
+    } else box.append(el("p", "small", month + T(". We send the first invoice to " + f.email + "; you can cancel at any time.", ". Mandiamo la prima fattura a " + f.email + "; potete disdire in qualsiasi momento.")));
     return box;
   }
   box.append(el("b", null, s.met ? T("The criterion is met. Keep zhol at the founding price.", "Il criterio è raggiunto. Tenete zhol al prezzo da cliente fondatore.")
@@ -527,14 +554,23 @@ function foundingBox(s) {
   return box;
 }
 
+// Stripe is set up (GET /api/pay): the order can be paid at once (netlify/lib/pay.mts)
+let payLive = false;
 async function loadAccount() {
   if (!key()) return;
+  payLive = await fetch("/api/pay", { cache: "no-store" }).then(r => r.ok ? r.json() : {}).then(d => !!d.live).catch(() => false);
   const r = await officeApi().catch(() => null);
   if (!r || !r.ok) { if (r && r.status === 401) { try { localStorage.removeItem(KEY); } catch (e) { /* private mode */ } notice = T("This private link no longer opens an account: it was deleted or copied incompletely. You can create a new one below.", "Questo link privato non apre più un account: è stato cancellato o copiato a metà. Potete crearne uno nuovo qui sotto."); } return; }
   acct = (await r.json()).office;
   plan = acct.plan;
 }
 
+const back = new URLSearchParams(location.search).get("paid");
+if (back === "1" || back === "0") {
+  notice = back === "1" ? T("Thank you. Stripe confirms the payment in a few seconds; this page shows it once it does.", "Grazie. Stripe conferma il pagamento in pochi secondi; questa pagina lo mostra appena arriva.")
+                        : T("The payment was not completed. You can pay later, or wait for our invoice.", "Il pagamento non è stato completato. Potete pagare più tardi, oppure aspettare la nostra fattura.");
+  history.replaceState(null, "", location.pathname + location.hash);
+}
 const acctReady = loadAccount().then(drawAccount, drawAccount);      // the account box does not wait for the radar
 loadRadar().then(async d => {
   await acctReady;

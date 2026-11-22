@@ -24,7 +24,9 @@ export type Office = { hash: string; id: string; company: string; whatsapp: stri
 export type Verdict = "useful" | "not_needed" | "wrong";
 export type Entry = { id: string; at: string; ref: string; route: string; event_id: string | null; title: string; title_it: string;
                       start: string | null; p: number; estimate: number | null; verdict: Verdict | null; saved: number | null; verdict_at: string | null };
-export type Founding = { at: string; vehicles: number; vat: string; email: string; sdi: string; price: number; months: number };
+export type Founding = { at: string; vehicles: number; vat: string; email: string; sdi: string; price: number; months: number;
+                         // paid on Stripe (lib/pay.mts, 22 Nov 2026): set by the signed webhook only
+                         paid?: { at: string; status: string; subscription: string | null; customer: string | null; session: string | null; amount: number | null } };
 export const PILOT = { days: 28, useful: 3, saved: 500, wrong_share: 0.2 } as const;
 export const FOUNDING = { price: 8, months: 12, later: 12 } as const;   // € per vehicle a month (docs/05-go-to-market.md §5.6)
 export const MAX_LEDGER = 300;

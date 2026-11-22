@@ -63,7 +63,8 @@ export default async (req: Request, context: Context) => {
   if (body.kind === "founding") {
     const f = makeFounding(body); if (!f) return json({ error: "bad_request" }, 400);
     const first = !o.founding;
-    o.founding = f; await st.setJSON("o/" + hash, o);
+    o.founding = o.founding?.paid ? { ...f, paid: o.founding.paid } : f;      // a payment stays with the account
+    await st.setJSON("o/" + hash, o);
     if (first) {                                   // the team sees it on /team and sends the first invoice
       const now = new Date(), id = now.toISOString().slice(0, 10).replace(/-/g, "") + "-f" + o.id.slice(0, 6);
       await teamStore().setJSON("t/" + id, { id, at: now.toISOString(), by: "zhol", owner: "", status: "now", due: null, updated: now.toISOString(),
