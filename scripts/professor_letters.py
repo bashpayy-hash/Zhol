@@ -318,6 +318,104 @@ def facts_for_letters() -> dict:
         return json.loads(NEXT_JSON.read_text(encoding="utf-8"))["_facts"]
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# New Bocconi contacts, written to for the first time (owner, 22 Nov 2026: «у кого же среди профессоров боккони можно
+# спросить через аутлук»). Their public profiles were checked the same day. The first letter is the results letter: who
+# we are, what the survey found, the results and the deck on one page, one introduction asked. Addresses come from the
+# Bocconi address book in Outlook (type the surname), never guessed.
+NEW_JSON = MD.parents[0] / "professor_new.json"
+NEW_SUBJECT = "Bocconi student project, freight survey results and one request"
+NEW_PROFS = [
+    dict(name="Giuseppe Stabilini", tag="stabilini", dear="Dear Professor Stabilini,", gentile="Gentile Professor Stabilini,",
+         role="Associate Professor of Practice, Procurement & Supply Management, SDA; teaches in the MEMIT master (transport, logistics, infrastructure); scientific director of the Procurement Lab",
+         src="https://www.sdabocconi.it/en/faculty/giuseppe-stabilini",
+         hook_en="You teach operations and supply chain management in the MEMIT master, where many of the people who will run transport and logistics in Italy study.",
+         hook_it="Insegna operations e supply chain management nel master MEMIT, dove studiano molti di coloro che gestiranno trasporti e logistica in Italia.",
+         ask_en="Among the companies you know through MEMIT or the Procurement Lab, could you introduce us to the person who plans shipments across the Alps every week?",
+         ask_it="Tra le aziende che conosce tramite il MEMIT o il Procurement Lab, potrebbe presentarci a chi pianifica le spedizioni oltre le Alpi ogni settimana?",
+         why_ru="Преподаёт операции и цепочки поставок в магистратуре MEMIT (транспорт, логистика, инфраструктура), научный руководитель Procurement Lab: знает компании и выпускников."),
+    dict(name="Gabriele Grea", tag="grea", dear="Dear Dr Grea,", gentile="Gentile Dottor Grea,",
+         role="Researcher in transport and territorial economics, GREEN; lecturer in the MEMIT master; EU projects since 2002, Marco Polo among them",
+         src="https://green.unibocconi.eu/people/fellows/gabriele-grea",
+         hook_en="Your work at GREEN on transport economics, and EU projects such as Marco Polo, are close to the problem we study.",
+         hook_it="Il suo lavoro al GREEN sull'economia dei trasporti, e progetti europei come Marco Polo, sono vicini al problema che studiamo.",
+         ask_en="Among the operators you met in those projects or through MEMIT, could you introduce us to a haulier or forwarder with lanes over the Alps?",
+         ask_it="Tra gli operatori conosciuti in quei progetti o tramite il MEMIT, potrebbe presentarci a un autotrasportatore o uno spedizioniere con tratte oltre le Alpi?",
+         why_ru="Исследователь транспорта в GREEN, преподаёт в MEMIT, с 2002 года в проектах ЕС, среди них Marco Polo (перевод грузов с дорог): знает операторов."),
+    dict(name="Behzad Maleki Vishkaei", tag="maleki", dear="Dear Professor Maleki Vishkaei,", gentile="Gentile Professor Maleki Vishkaei,",
+         role="Assistant Professor of Practice, SDA; teaches and researches logistics and transportation, sustainable supply chains, AI in operations",
+         src="https://www.sdabocconi.it/en/faculty-research/faculty-knowledge/behzad-maleki-vishkaei/",
+         hook_en="Logistics and transportation, and AI in operations, are among the areas you teach and research at SDA.",
+         hook_it="Logistica e trasporti, e l'AI nelle operations, sono tra i temi che insegna e studia in SDA.",
+         ask_en="Among the companies you know from your executive programmes and projects, could you introduce us to the person who plans shipments abroad every week?",
+         ask_it="Tra le aziende che conosce dai suoi programmi executive e progetti, potrebbe presentarci a chi pianifica le spedizioni all'estero ogni settimana?",
+         why_ru="Преподаёт и исследует логистику и перевозки, а также AI в операциях; ведёт программы для компаний в SDA."),
+]
+
+
+def first_letter(p: dict, facts: dict) -> str:
+    """The first letter to a new contact: who we are and why them, what the survey found, the page, one introduction."""
+    found_en = (f"With the help of several Bocconi professors we surveyed people who know the field. {facts['ge2']} of {facts['n_x']} "
+                f"see shipments abroad change often, one stop costs the carrier {facts['cost_en']}, and {facts['price_en']} a "
+                "vehicle a month is a fair price. What is missing are the traffic offices themselves.")
+    found_it = (f"Con l'aiuto di alcuni professori della Bocconi abbiamo fatto un sondaggio tra chi conosce il settore. {facts['ge2']} su "
+                f"{facts['n_x']} vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore {facts['cost_it']} e "
+                f"{facts['price_it']} al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi.")
+    ask2_en = "Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes."
+    ask2_it = "Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte."
+    return f"""{NOTE}
+
+{p['dear']}
+
+{p['hook_en']} My name is Alikhan Bashpay, a Bocconi student. {WHO_SHORT_EN}
+
+{found_en}
+
+**Survey results and our deck for TEF**
+https://zhol.live/results
+
+That is why I ask for one introduction. {p['ask_en']} {ask2_en}
+
+Thank you,
+zhol team
+
+— Versione italiana —
+
+{p['gentile']}
+
+{p['hook_it']} Sono Alikhan Bashpay, studente Bocconi. {WHO_SHORT_IT}
+
+{found_it}
+
+**Risultati del sondaggio e la nostra presentazione per TEF**
+https://zhol.live/it/risultati
+
+Per questo le chiedo una presentazione. {p['ask_it']} {ask2_it}
+
+Grazie,
+zhol team"""
+
+
+def write_new() -> None:
+    facts = facts_for_letters()
+    rows = []
+    for i, p in enumerate(NEW_PROFS):
+        rows.append({"id": "u-" + re.sub(r"[^a-z]+", "-", p["name"].lower()).strip("-"), "type": "bocconi", "name": p["name"],
+                     "city": "Università Bocconi", "region": p["role"], "to": "",
+                     "where": "Outlook → Кому → наберите фамилию (адресная книга Bocconi)",
+                     "search": "https://www.google.com/search?q=" + p["name"].replace(" ", "+") + "+Bocconi",
+                     "subject": NEW_SUBJECT, "message": first_letter(p, facts), "link": "https://zhol.live/results",
+                     "fit": str(9 - i), "why": p["why_ru"], "why_src": p["src"], "first_results": True})
+    NEW_JSON.write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    md = NEXT_MD.read_text(encoding="utf-8").split("\n# New contacts")[0].rstrip() + "\n\n"
+    md += "\n".join(["# New contacts: the first letter brings the results (22 Nov 2026)", "",
+                     "Not written to before. Address from the Bocconi address book in Outlook (type the surname). Source of each",
+                     "background in `professor_new.json` (`why_src`).", ""]
+                    + sum([[f"## {r['id']} · {r['name']}", "", f"**Subject:** {r['subject']}", "", r["message"], "", "---", ""] for r in rows], []))
+    NEXT_MD.write_text(md, encoding="utf-8")
+    print(f"wrote {len(rows)} first letters to new Bocconi contacts in {NEW_JSON.relative_to(MD.parents[1])}")
+
+
 def write_next() -> None:
     n = answers_by_link()
     facts = facts_for_letters()
@@ -341,6 +439,8 @@ if __name__ == "__main__":
     import sys
     if "--next" in sys.argv:
         write_next()
+        write_new()
     else:
         main()
         write_next()
+        write_new()

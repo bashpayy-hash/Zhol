@@ -452,7 +452,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   // «надо уже профессоров спрашивать, могут ли они уже коннектнуть. Сначала им нужно выслать результаты опроса»)
   const nextDue = r => { const s = status[r.id]; return !!(r.next && s && (s.state === "sent" || s.state === "replied") && !s.next_sent); };
   const actDue = r => remindDue(r) || nextDue(r);
-  const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
+  const hasAddr = r => !!r.to || r.type === "bocconi" || /^https?:\/\//.test(r.where || "");
   const national = x => /^nazionale$/i.test((x || "").trim()) ? "по всей Италии" : x;
   const place = r => [national(r.city), national(r.region)].filter(x => x && !/^n\/?a$/i.test(x.trim()) && !/^\[check/i.test(x.trim()))
     .map(x => x.replace(/\s*\[check[^\]]*\]/i, "").trim()).filter((x, k, a) => x && a.indexOf(x) === k).join(" · ");
@@ -565,10 +565,14 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       main = ext("btn wa-btn", "Написать в WhatsApp", "https://wa.me/" + r.wa + "?text=" + encodeURIComponent(body));
       main.addEventListener("click", () => opened_("WhatsApp")); row.append(main);
     }
-    if (r.to && r.type !== "group" && r.type !== "linkedin") {
+    // a Bocconi professor without a public address: Outlook opens with the subject and the text, and the address comes
+    // from the Bocconi address book as the surname is typed (owner, 22 Nov 2026: «спросить через аутлук»)
+    const book = !r.to && r.type === "bocconi";
+    if (book) notes.push(el("div", "paste-note", "Адреса в списке нет: в Outlook в поле «Кому» начните вводить фамилию — " + r.name.split(" ").slice(-1)[0] + " — и выберите адрес из адресной книги Bocconi."));
+    if ((r.to || book) && r.type !== "group" && r.type !== "linkedin") {
       // Outlook opens links of up to about 4,000 characters with the text in place; a longer letter opens with the
       // address and the subject, and its text is on the clipboard (owner, 11 Nov 2026)
-      const head = "to=" + enc(r.to) + "&subject=" + enc(subject), full = head + "&body=" + enc(body);
+      const head = "to=" + enc(r.to || "") + "&subject=" + enc(subject), full = head + "&body=" + enc(body);
       const fits = (OUTLOOK + full).length <= 4027;
       const note = el("div", "paste-note", "Текст скопирован: в Outlook щёлкните в поле письма и вставьте его (Ctrl+V, на Mac и iPad Cmd+V).");
       note.hidden = true; notes.push(note);
@@ -629,7 +633,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     const site = /^https?:\/\//.test(r.where || "") && r.type !== "linkedin" ? r.where : "";
     if (!st) {
       let n = 1;
-      const noAddr = !r.to && !r.wa && r.type !== "linkedin" && r.type !== "group";
+      const noAddr = !r.to && !r.wa && r.type !== "linkedin" && r.type !== "group" && r.type !== "bocconi";
       const again = opened[r.id] ? el("div", "dup-warn", "Уже открывали " + day(opened[r.id]) + " в " + hhmm(opened[r.id]) + ": проверьте «Отправленные», прежде чем отправить снова.") : null;
       // no calls (owner, 20 Nov 2026: «звонки убери»): a company gets the letter with its own lanes, then the mark
       if (k && !noAddr) {

@@ -423,7 +423,8 @@ def test_professors_next_letter_brings_results_and_asks_one_introduction():
     rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
     enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
     letters = {k: v for k, v in nxt.items() if not k.startswith("_")}
-    assert set(letters) == {k for k, r in rows.items() if r["type"] == "bocconi"}
+    new = {r["id"] for r in json.loads((ROOT / "outreach" / "professor_new.json").read_text(encoding="utf-8"))}
+    assert set(letters) == {k for k, r in rows.items() if r["type"] == "bocconi"} - new
     for k, v in letters.items():
         m, r = v["message"], rows[k]
         assert v["subject"] == "Re: " + r["subject"], k
@@ -456,3 +457,32 @@ def test_survey_results_pages_count_only():
             rids = {r.get("rid") for r in csv.DictReader(open(private, encoding="utf-8")) if r.get("rid")}
             assert not any(x in h for x in rids), path
     assert (ROOT / "site" / "d" / "zhol-tef-ignition-2026.pdf").stat().st_size < 3_000_000
+    for f in ("zhol-survey-results-2026-11.pdf", "zhol-risultati-sondaggio-2026-11.pdf"):   # the results to attach
+        assert 20_000 < (ROOT / "site" / "d" / f).stat().st_size < 1_000_000, f
+
+
+def test_new_bocconi_contacts_get_the_results_and_one_request():
+    """New Bocconi contacts (owner, 22 Nov 2026: «у кого же среди профессоров боккони можно спросить через аутлук»): a
+    first letter with the same principles, the results page in English and Italian as the only links, one introduction
+    asked, a public profile as the source, no guessed address (Outlook's Bocconi address book), short enough for Outlook."""
+    import sys
+    from urllib.parse import quote
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from signature import SIGN
+    new = json.loads((ROOT / "outreach" / "professor_new.json").read_text(encoding="utf-8"))
+    rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
+    enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
+    assert len(new) >= 3
+    for r in new:
+        m = r["message"]
+        assert rows[r["id"]] == r and r["type"] == "bocconi" and r["to"] == "" and "Outlook" in r["where"], r["id"]
+        assert r["why_src"].startswith("https://") and len(r["subject"].split()) <= 10 and ":" not in r["subject"], r["id"]
+        assert re.findall(r"https://\S+", m) == ["https://zhol.live/results", "https://zhol.live/it/risultati"], r["id"]
+        for must in ("TEF Ignition 2026", "€2,000", "2.000 €", "AI platform", "piattaforma AI", "Europe", "Europa",
+                     "my team and I", "io e il mio team", "introduction", "presentazione", "road, rail or sea", "how much they could save"):
+            assert must in m, (r["id"], must)
+        assert ":" not in _text(m) and not NAMES.search(m) and m.count("**") <= 6, r["id"]
+        assert len(re.findall(r"^" + re.escape(SIGN) + r"$", m, re.M)) == 2, r["id"]
+        url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc("nome.cognome@unibocconi.it") + "&subject=" + enc(r["subject"])
+               + "&body=" + enc(m.replace("**", "")))
+        assert len(url) <= 4000, (r["id"], len(url))

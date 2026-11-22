@@ -144,6 +144,13 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   const ns = JSON.parse(await pp.evaluate(() => localStorage.getItem("zhol-status")))["u-oliviero-baccelli"];
   ok(ns && ns.state === "replied" && /^20\d\d-/.test(ns.next_sent || "") && /Следующее письмо ушло/.test(await pp.$eval("#detail .next b", e => e.textContent)),
      "«Письмо отправлено» keeps the state and records when the next letter went out");
+  // a new Bocconi contact, not written to yet: the first letter brings the results, and Outlook opens without an address,
+  // which the Bocconi address book fills in as the surname is typed (owner, 22 Nov 2026: «спросить через аутлук»)
+  await pp.click('#list .row:has-text("Giuseppe Stabilini")'); await pp.waitForTimeout(200);
+  const np = await pp.evaluate(() => { const d = document.querySelector("#detail"), a = [...d.querySelectorAll(".steps a.btn")].find(x => /Outlook/.test(x.textContent));
+    return { href: a ? a.href : "", note: [...d.querySelectorAll(".paste-note")].map(x => x.textContent).join(" "), steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent) }; });
+  ok(/subject=Bocconi%20student%20project/.test(np.href) && /to=&/.test(np.href) && /zhol\.live%2Fresults|zhol\.live\/results/.test(decodeURIComponent(np.href)) && /Stabilini/.test(np.note) && np.steps[0] === "Отправьте письмо",
+     "a new Bocconi contact: Outlook opens with the results letter, the address from the Bocconi address book");
   ok(errs.length === 0, "no page errors " + errs.join(" | "));
 
   // a phone: no horizontal scroll, buttons in reach, the bar not sticky

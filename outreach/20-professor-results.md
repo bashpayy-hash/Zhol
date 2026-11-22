@@ -345,3 +345,122 @@ Con stima,
 zhol team
 
 ---
+
+# New contacts: the first letter brings the results (22 Nov 2026)
+
+Not written to before. Address from the Bocconi address book in Outlook (type the surname). Source of each
+background in `professor_new.json` (`why_src`).
+
+## u-giuseppe-stabilini · Giuseppe Stabilini
+
+**Subject:** Bocconi student project, freight survey results and one request
+
+English version first, Italian version below. · Versione inglese prima, italiana più sotto.
+
+Dear Professor Stabilini,
+
+You teach operations and supply chain management in the MEMIT master, where many of the people who will run transport and logistics in Italy study. My name is Alikhan Bashpay, a Bocconi student. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
+
+With the help of several Bocconi professors we surveyed people who know the field. 8 of 9 see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves.
+
+**Survey results and our deck for TEF**
+https://zhol.live/results
+
+That is why I ask for one introduction. Among the companies you know through MEMIT or the Procurement Lab, could you introduce us to the person who plans shipments across the Alps every week? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
+
+Thank you,
+zhol team
+
+— Versione italiana —
+
+Gentile Professor Stabilini,
+
+Insegna operations e supply chain management nel master MEMIT, dove studiano molti di coloro che gestiranno trasporti e logistica in Italia. Sono Alikhan Bashpay, studente Bocconi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
+
+Con l'aiuto di alcuni professori della Bocconi abbiamo fatto un sondaggio tra chi conosce il settore. 8 su 9 vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi.
+
+**Risultati del sondaggio e la nostra presentazione per TEF**
+https://zhol.live/it/risultati
+
+Per questo le chiedo una presentazione. Tra le aziende che conosce tramite il MEMIT o il Procurement Lab, potrebbe presentarci a chi pianifica le spedizioni oltre le Alpi ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
+
+Grazie,
+zhol team
+
+---
+
+## u-gabriele-grea · Gabriele Grea
+
+**Subject:** Bocconi student project, freight survey results and one request
+
+English version first, Italian version below. · Versione inglese prima, italiana più sotto.
+
+Dear Dr Grea,
+
+Your work at GREEN on transport economics, and EU projects such as Marco Polo, are close to the problem we study. My name is Alikhan Bashpay, a Bocconi student. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
+
+With the help of several Bocconi professors we surveyed people who know the field. 8 of 9 see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves.
+
+**Survey results and our deck for TEF**
+https://zhol.live/results
+
+That is why I ask for one introduction. Among the operators you met in those projects or through MEMIT, could you introduce us to a haulier or forwarder with lanes over the Alps? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
+
+Thank you,
+zhol team
+
+— Versione italiana —
+
+Gentile Dottor Grea,
+
+Il suo lavoro al GREEN sull'economia dei trasporti, e progetti europei come Marco Polo, sono vicini al problema che studiamo. Sono Alikhan Bashpay, studente Bocconi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
+
+Con l'aiuto di alcuni professori della Bocconi abbiamo fatto un sondaggio tra chi conosce il settore. 8 su 9 vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi.
+
+**Risultati del sondaggio e la nostra presentazione per TEF**
+https://zhol.live/it/risultati
+
+Per questo le chiedo una presentazione. Tra gli operatori conosciuti in quei progetti o tramite il MEMIT, potrebbe presentarci a un autotrasportatore o uno spedizioniere con tratte oltre le Alpi? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
+
+Grazie,
+zhol team
+
+---
+
+## u-behzad-maleki-vishkaei · Behzad Maleki Vishkaei
+
+**Subject:** Bocconi student project, freight survey results and one request
+
+English version first, Italian version below. · Versione inglese prima, italiana più sotto.
+
+Dear Professor Maleki Vishkaei,
+
+Logistics and transportation, and AI in operations, are among the areas you teach and research at SDA. My name is Alikhan Bashpay, a Bocconi student. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
+
+With the help of several Bocconi professors we surveyed people who know the field. 8 of 9 see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves.
+
+**Survey results and our deck for TEF**
+https://zhol.live/results
+
+That is why I ask for one introduction. Among the companies you know from your executive programmes and projects, could you introduce us to the person who plans shipments abroad every week? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
+
+Thank you,
+zhol team
+
+— Versione italiana —
+
+Gentile Professor Maleki Vishkaei,
+
+Logistica e trasporti, e l'AI nelle operations, sono tra i temi che insegna e studia in SDA. Sono Alikhan Bashpay, studente Bocconi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
+
+Con l'aiuto di alcuni professori della Bocconi abbiamo fatto un sondaggio tra chi conosce il settore. 8 su 9 vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi.
+
+**Risultati del sondaggio e la nostra presentazione per TEF**
+https://zhol.live/it/risultati
+
+Per questo le chiedo una presentazione. Tra le aziende che conosce dai suoi programmi executive e progetti, potrebbe presentarci a chi pianifica le spedizioni all'estero ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
+
+Grazie,
+zhol team
+
+---

@@ -596,6 +596,10 @@ def bocconi() -> list[dict]:
                      "where": "" if email else "Outlook → Кому → наберите фамилию (адресная книга Bocconi)" + (": " + to if "CV" in to else ""),
                      "search": google(name + " Bocconi"), "subject": subject, "message": text, "link": link, "fit": str(20 - len(rows)),
                      "why": info.get("why", ""), "why_src": info.get("src", "")})
+    # new Bocconi contacts whose first letter brings the survey's results (scripts/professor_letters.py, 22 Nov 2026)
+    new = OUT / "professor_new.json"
+    if new.exists():
+        rows += json.loads(new.read_text(encoding="utf-8"))
     return rows
 
 

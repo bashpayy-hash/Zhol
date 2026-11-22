@@ -25,6 +25,7 @@ import survey_summary as ss  # noqa: E402
 
 SINCE = "2026-11-09T17:00"
 DECK = "/d/zhol-tef-ignition-2026.pdf"
+PDFS = {"en": "zhol-survey-results-2026-11.pdf", "it": "zhol-risultati-sondaggio-2026-11.pdf"}   # printed from the pages
 MONTHS = {"en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
                  "November", "December"],
           "it": ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre",
@@ -105,6 +106,8 @@ T = {
         deck_btn="Download the deck (PDF)", check_btn="Try it on your trips",
         survey_p="Not answered yet? The survey still takes a minute.", survey_a="Take the survey",
         survey_href="/survey?src=results", check_href="/check",
+        pdf_href="/d/zhol-survey-results-2026-11.pdf", pdf_a="These results as a PDF, to forward",
+        print_url="zhol.live/results · deck zhol.live/d/zhol-tef-ignition-2026.pdf",
         foot="Oyu team · Bocconi University · TEF Ignition 2026",
         foot_links='<a href="/radar">Radar</a> · <a href="/bulletin">Bulletin</a> · <a href="/check">Check</a> · <a href="/survey">Survey</a>',
         bars_label="Answers, count",
@@ -159,6 +162,8 @@ T = {
         deck_btn="Scarica la presentazione (PDF, in inglese)", check_btn="Provatelo sui vostri viaggi",
         survey_p="Non avete ancora risposto? Il sondaggio richiede ancora un minuto.", survey_a="Rispondi al sondaggio",
         survey_href="/it/sondaggio?src=results", check_href="/it/verifica",
+        pdf_href="/d/zhol-risultati-sondaggio-2026-11.pdf", pdf_a="Questi risultati in PDF, da inoltrare",
+        print_url="zhol.live/it/risultati · presentazione zhol.live/d/zhol-tef-ignition-2026.pdf",
         foot="Oyu team · Università Bocconi · TEF Ignition 2026",
         foot_links='<a href="/it/radar">Radar</a> · <a href="/it/bollettino">Bollettino</a> · <a href="/it/verifica">Verifica</a> · <a href="/it/sondaggio">Sondaggio</a>',
         bars_label="Risposte, numero",
@@ -223,7 +228,8 @@ PAGE = """<!doctype html>
       <h2>{deck_h}</h2>
       <p>{deck_p}</p>
       <div class="bl-btns"><a class="btn" href="{deck}" download>{deck_btn}</a><a class="btn ghost" href="{check_href}">{check_btn}</a></div>
-      <p class="small muted">{survey_p} <a href="{survey_href}">{survey_a}</a></p>
+      <p class="small muted">{survey_p} <a href="{survey_href}">{survey_a}</a> · <a href="{pdf_href}" download>{pdf_a}</a></p>
+      <p class="small rs-print-url">{print_url}</p>
     </div>
   </div>
 </section>

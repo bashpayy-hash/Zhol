@@ -2245,3 +2245,23 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 .rs-p { line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
 @media (max-width: 920px) { .rs-grid, .rs-two { grid-template-columns: minmax(0, 1fr); } .rs-two { gap: 8px; } }
 @media (max-width: 560px) { .rs-card { padding: 18px; border-radius: 18px; } .rs-bars li { grid-template-columns: minmax(0, 9em) minmax(0, 1fr) 2ch; gap: 10px; } }
+.rs-print-url { display: none; }
+@media print {   /* the results as a two-page PDF to attach to a letter (owner, 22 Nov 2026) */
+  .rs-print-url { display: block; font-weight: 600; }
+  .rs { font-size: 9.5pt; }
+  .rs .slide { padding-block: 4px; }
+  .rs h1.title { font-size: 24pt; }
+  .rs .rs-head .lead { font-size: 10.5pt; margin-top: 6px; }
+  .rs .rp-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+  .rs .rp-tile { padding: 8px 10px; border-radius: 8px; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .rs .rp-tile b { font-size: 15pt; } .rs .rp-tile span { font-size: 8pt; }
+  .rs .bl-h2 { font-size: 12.5pt; margin: 10px 0 6px; }
+  .rs-grid, .rs-two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; }
+  .rs-card { padding: 9px 11px; gap: 6px; border-radius: 8px; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .rs-card > p { font-size: 8.8pt; line-height: 1.35; }
+  .rs-bars { gap: 3px; } .rs-bars li { font-size: 8pt; grid-template-columns: minmax(0, 10em) minmax(0, 1fr) 2ch; gap: 8px; }
+  .rs-b { height: 6px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .rs-list { gap: 4px; font-size: 8.8pt; line-height: 1.4; } .rs-p { font-size: 8.8pt; }
+  .rs .rp-cta { padding: 8px 0 0; border: 0; gap: 4px; } .rs .rp-cta h2 { font-size: 12pt; } .rs .rp-cta p { font-size: 8.8pt; }
+  .rs .rp-cta .bl-btns { display: none; }
+}
