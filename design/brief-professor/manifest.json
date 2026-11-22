@@ -1,0 +1,8 @@
+{
+ "what": "A six-page brief for Professor Alberto Grando (22 Nov 2026): the survey he shared, what zhol is, the radar at work, one ask for introductions, thank you. Built from the Workshop 3 deck (deck/ holds its slides and CSS; /_blob ids are the deck's assets, rendered by the deck's PDF script). The PDF itself is personal and lives in outreach/private/briefs/ (git-ignored).",
+ "pages": ["bcover: the milestone cover scene, addressed to him", "overview: from fog to a clear view of the project", "results: the survey's four findings, who answered, what holds an office back", "radar: the live map and what it predicted", "ask: could you connect us, the fork-in-the-road scene", "farewell: thank you, QR to zhol.live"],
+ "scenes": {
+  "envelope-stacks.webp": {"page": "results, bottom-right corner", "higgsfield_image_job": "54603366-44f4-4ac7-a1b0-fb0730752a76", "scene": "transparent except the bottom-right: a warehouse loading dock grows from the right and bottom edges; five stacks of envelopes of different heights stand like a bar chart; Zholdas kneels and adds one more, looking at the stack; a mailbag beside him; the back of a truck trailer at the right edge. New scene type: answers as a bar chart of envelopes.", "how": "gpt_image_2_6, background transparent, 16:9, 2k; WebP 2000x1131"}
+ },
+ "reused": "cover, overview band, radar map, fork and farewell scenes from design/deck-workshop3 (the brief is an excerpt of that deck)"
+}
