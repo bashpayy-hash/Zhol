@@ -398,3 +398,51 @@ def test_the_bulletin_pages_and_their_corridors():
         assert "/assets/bulletin.js" in html, page
     pl = json.loads((ROOT / "outreach" / "personal_letters.json").read_text(encoding="utf-8"))
     assert {v["reminder"]["corridor"] for v in pl.values() if v.get("reminder")} <= known
+
+
+def test_professors_next_letter_brings_results_and_asks_one_introduction():
+    """«надо уже профессоров спрашивать, могут ли они уже коннектнуть. Сначала им нужно выслать результаты опроса»
+    (owner, 22 Nov 2026): a reply in the survey letter's thread, the same principles as every letter (who we are, the
+    grant, TEF, AI, Europe, no colons, at most three bold anchors, signed zhol team), one link a language to the results
+    page that carries the deck, one introduction asked, and short enough for an Outlook link."""
+    import sys
+    from urllib.parse import quote
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from signature import SIGN
+    nxt = json.loads((ROOT / "outreach" / "professor_next.json").read_text(encoding="utf-8"))
+    rows = {r["id"]: r for r in json.loads((ROOT / "outreach" / "survey_send_list.json").read_text(encoding="utf-8"))}
+    enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")
+    letters = {k: v for k, v in nxt.items() if not k.startswith("_")}
+    assert set(letters) == {k for k, r in rows.items() if r["type"] == "bocconi"}
+    for k, v in letters.items():
+        m, r = v["message"], rows[k]
+        assert v["subject"] == "Re: " + r["subject"], k
+        assert re.findall(r"https://\S+", m) == ["https://zhol.live/results", "https://zhol.live/it/risultati"], k
+        for must in ("TEF Ignition 2026", "€2,000", "2.000 €", "AI platform", "piattaforma AI", "Europe", "Europa",
+                     "my team and I", "io e il mio team", "introduction", "presentazione", "road, rail or sea"):
+            assert must in m, (k, must)
+        assert ":" not in _text(m) and not NAMES.search(m), k
+        assert m.count("**") <= 6, k
+        assert len(re.findall(r"^" + re.escape(SIGN) + r"$", m, re.M)) == 2, k
+        assert not re.search(r"evening before|night before|sera prima|tonight|stasera", m, re.I), k
+        assert ("Your link brought" in m) == (v["answers"] > 0), k
+        to = r["to"] if "@" in r["to"] else "nome.cognome@unibocconi.it"
+        url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc(to) + "&subject=" + enc(v["subject"])
+               + "&body=" + enc(m.replace("**", "")))
+        assert len(url) <= 4000, (k, len(url))
+
+
+def test_survey_results_pages_count_only():
+    """The results page (scripts/build_results.py): English and Italian, broad first, the deck to download, and counts
+    only, never a contact, an address or a response id."""
+    for path, deck in (("site/results.html", "Download the deck"), ("site/it/risultati.html", "Scarica la presentazione")):
+        h = (ROOT / path).read_text(encoding="utf-8")
+        assert 'class="rp-tiles"' in h and 'class="rs-bars"' in h and "/d/zhol-tef-ignition-2026.pdf" in h and deck in h
+        assert "TEF Ignition 2026" in h and ("€2,000" in h or "2.000 €" in h) and "Europ" in h
+        assert not re.search(r"[\w.+-]+@[\w-]+\.[\w.]+", h), path
+        private = ROOT / "outreach" / "private" / "survey.csv"
+        if private.exists():   # no response id from the private export reaches the page
+            import csv
+            rids = {r.get("rid") for r in csv.DictReader(open(private, encoding="utf-8")) if r.get("rid")}
+            assert not any(x in h for x in rids), path
+    assert (ROOT / "site" / "d" / "zhol-tef-ignition-2026.pdf").stat().st_size < 3_000_000

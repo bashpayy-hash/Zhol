@@ -11,7 +11,12 @@ English first, Italian below. Run it, then scripts/survey_targets.py to refresh 
 """
 from __future__ import annotations
 
+import json
+import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 MD = Path(__file__).resolve().parents[1] / "outreach" / "12-bocconi-professors.md"
 
@@ -178,5 +183,164 @@ def main() -> None:
     print(f"wrote {len(PROFS)} letters to {MD.relative_to(MD.parents[1])}")
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# The next letter, a reply in the same thread (owner, 22 Nov 2026: «надо уже профессоров спрашивать, могут ли они уже
+# коннектнуть. Сначала им нужно выслать результаты опроса… модифицированное демо-дэй»). Thanks with what their own link
+# brought, the results and our deck on one page (/results, built by scripts/build_results.py), then one introduction.
+# The asks come from outreach/15-professor-intros.md: a named company where we know one, otherwise their own network.
+NEXT_JSON = MD.parents[0] / "professor_next.json"
+NEXT_MD = MD.parents[0] / "20-professor-results.md"
+INTRO = {
+    "baccelli": ("Through the Freight Leaders Council, could you introduce us to the person who plans the trucks at FERCAM, or at another haulier that crosses the Brenner every day?",
+                 "Tramite il Freight Leaders Council, potrebbe presentarci a chi pianifica i camion in FERCAM, o in un altro autotrasportatore che attraversa il Brennero ogni giorno?",
+                 "FERCAM через Freight Leaders Council или другой перевозчик через Бреннер"),
+    "grando": ("Among the companies around the SOSC Monitor, could you introduce us to one logistics manager whose shipments cross the Alps every week?",
+               "Tra le aziende attorno al SOSC Monitor, potrebbe presentarci a un responsabile logistico le cui spedizioni attraversano le Alpi ogni settimana?",
+               "логист из компаний вокруг SOSC Monitor"),
+    "degiovanni": ("Could you introduce us to one of the people you shared the survey with, if their company ships across the Alps every week?",
+                   "Potrebbe presentarci a una delle persone a cui ha inoltrato il sondaggio, se la loro azienda spedisce oltre le Alpi ogni settimana?",
+                   "один из тех, кому он переслал опрос"),
+    "veronesi": ("Could you introduce us to the person who plans the trucks at Zeroquattro Logistica?",
+                 "Potrebbe presentarci a chi pianifica i camion in Zeroquattro Logistica?",
+                 "тот, кто планирует рейсы в Zeroquattro Logistica"),
+    "gallmann": ("Among the managers of the academies you designed, could you introduce us to one who runs shipments abroad every week?",
+                 "Tra i responsabili delle academy che ha progettato, potrebbe presentarci a uno che gestisce spedizioni all'estero ogni settimana?",
+                 "менеджер из его академий с рейсами за границу"),
+    "zamboni": ("Among the logistics managers from your projects with companies, could you introduce us to one who ships across the Alps every week?",
+                "Tra i responsabili logistici dei suoi progetti con le aziende, potrebbe presentarci a uno che spedisce oltre le Alpi ogni settimana?",
+                "логист из её проектов с компаниями"),
+    "damato": ("Among the logistics and transport managers you know in food & beverage or fashion, could you introduce us to one who ships abroad every week?",
+               "Tra i responsabili logistici e dei trasporti che conosce nel food & beverage o nella moda, potrebbe presentarci a uno che spedisce all'estero ogni settimana?",
+               "логист из food & beverage или моды"),
+    "percoco": ("Among the operators you work with, who would you suggest we talk to, a haulier or forwarder with lanes over the Alps? Even a name would help.",
+                "Tra gli operatori con cui lavora, con chi ci suggerirebbe di parlare, un autotrasportatore o uno spedizioniere con tratte oltre le Alpi? Anche solo un nome ci aiuterebbe.",
+                "имя перевозчика или экспедитора с рейсами через Альпы"),
+    "senn": ("Could you introduce us to one or two graduates of the transport master who now plan shipments to Germany, Austria or Switzerland?",
+             "Potrebbe presentarci a uno o due diplomati del master in trasporti che oggi pianificano spedizioni verso Germania, Austria o Svizzera?",
+             "один-два выпускника транспортного мастера, которые планируют рейсы в Германию, Австрию или Швейцарию"),
+}
+NUM_EN = {1: "one answer", 2: "two answers", 3: "three answers"}
+NUM_IT = {1: "una risposta", 2: "due risposte", 3: "tre risposte"}
+WHO_SHORT_EN = ("zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures "
+                "and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the "
+                "start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 "
+                "projects selected out of about 500, with a €2,000 grant.")
+WHO_SHORT_IT = ("zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e "
+                "scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia "
+                "è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 "
+                "progetti selezionati su circa 500, con un grant di 2.000 €.")
+
+
+def answers_by_link() -> dict[str, int]:
+    """How many survey answers each professor's link brought (counts only, from the private exports)."""
+    try:
+        import build_results
+        answers, _ = build_results.load([MD.parents[1] / "outreach/private/survey.csv", MD.parents[1] / "outreach/private/survey-followup.csv"])
+    except (ImportError, FileNotFoundError):
+        old = json.loads(NEXT_JSON.read_text(encoding="utf-8")) if NEXT_JSON.exists() else {}
+        return {v["tag"]: v["answers"] for v in old.values()}
+    out: dict[str, int] = {}
+    for r in answers:
+        src = r.get("src") or ""
+        if src.startswith("prof-"):
+            out[src[5:]] = out.get(src[5:], 0) + 1
+    return out
+
+
+def next_letter(p: dict, n: int, facts: dict) -> dict:
+    tag = p["tag"]
+    ask_en, ask_it, ask_ru = INTRO[tag]
+    thanks_en = (f"thank you again for sharing our survey. Your link brought {NUM_EN.get(n, str(n) + ' answers')}, and here are the results, with what we built since."
+                 if n else "thank you for your reply to our survey. Here are its results, with what we built since.")
+    thanks_it = (f"grazie ancora per aver condiviso il nostro sondaggio. Il suo link ha portato {NUM_IT.get(n, str(n) + ' risposte')}, ed ecco i risultati, con quello che abbiamo costruito da allora."
+                 if n else "grazie per la sua risposta al nostro sondaggio. Ecco i risultati, con quello che abbiamo costruito da allora.")
+    short_en = (f"In short, {facts['ge2']} of {facts['n_x']} people who know the field see shipments abroad change often, one stop "
+                f"costs the carrier {facts['cost_en']}, and {facts['price_en']} a vehicle a month is a fair price. What is missing are "
+                "the traffic offices themselves.")
+    short_it = (f"In breve, {facts['ge2']} su {facts['n_x']} persone che conoscono il settore vedono cambiare spesso le spedizioni "
+                f"all'estero, un fermo costa al vettore {facts['cost_it']} e {facts['price_it']} al mese per mezzo è un prezzo giusto. "
+                "Mancano gli uffici traffico stessi.")
+    ask2_en = "Twenty minutes would be enough, and we would bring their own risk report for the next four weeks."
+    ask2_it = "Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane."
+    message = f"""{NOTE}
+
+{p['dear']}
+
+{thanks_en}
+
+**Survey results and our deck for TEF**
+https://zhol.live/results
+
+{short_en} {WHO_SHORT_EN}
+
+That is why I ask for one introduction. {ask_en} {ask2_en}
+
+{p.get('close_en', 'Thank you,')}
+zhol team
+
+— Versione italiana —
+
+{p['gentile']}
+
+{thanks_it}
+
+**Risultati del sondaggio e la nostra presentazione per TEF**
+https://zhol.live/it/risultati
+
+{short_it} {WHO_SHORT_IT}
+
+Per questo le chiedo una presentazione. {ask_it} {ask2_it}
+
+{p.get('close_it', 'Grazie,')}
+zhol team"""
+    ru_thanks = (f"Спасибо, что переслали опрос: по вашей ссылке пришло {n} " + ("ответ" if n == 1 else "ответа") + ". Вот результаты и наша колода для TEF."
+                 if n else "Спасибо за ответ. Вот результаты опроса и наша колода для TEF.")
+    return {
+        "tag": tag, "answers": n, "lang": "en",
+        "subject": "Re: " + SUBJECT,
+        "message": message,
+        "line": f"{thanks_en[0].upper() + thanks_en[1:]} … That is why I ask for one introduction. {ask_en}",
+        "line_ru": f"{ru_thanks} Просим одно знакомство: {ask_ru}. Двадцать минут, принесём их отчёт о рисках.",
+        "why_ru": ("Ответ в той же переписке, где был опрос: спасибо, результаты и колода по одной ссылке (zhol.live/results), "
+                   "затем одна просьба о знакомстве. До выступления на TEF 25 ноября знакомство с офисом — главное доказательство."),
+    }
+
+
+def facts_for_letters() -> dict:
+    try:
+        import build_results
+        f = build_results.facts(build_results.load([MD.parents[1] / "outreach/private/survey.csv",
+                                                    MD.parents[1] / "outreach/private/survey-followup.csv"])[0])
+        w = build_results.L
+        return {"ge2": f["ge2"], "n_x": f["n_x"], "cost_en": w["x_cost"]["en"][f["cost_med"]], "cost_it": w["x_cost"]["it"][f["cost_med"]],
+                "price_en": w["x_price"]["en"][f["price_med"]], "price_it": w["x_price"]["it"][f["price_med"]]}
+    except (ImportError, FileNotFoundError):
+        return json.loads(NEXT_JSON.read_text(encoding="utf-8"))["_facts"]
+
+
+def write_next() -> None:
+    n = answers_by_link()
+    facts = facts_for_letters()
+    out = {"_facts": facts}
+    for p in PROFS:
+        out["u-" + re.sub(r"[^a-z]+", "-", p["name"].lower().replace("'", "-")).strip("-")] = next_letter(p, n.get(p["tag"], 0), facts)
+    NEXT_JSON.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    md = ["# 20. Professors: the survey's results and one introduction (22 Nov 2026)", "",
+          "A reply in the thread of the survey letter, sent from the console (step «Следующее письмо» for professors marked",
+          "sent or replied). One page carries the results and the deck, https://zhol.live/results. Built by",
+          "`python scripts/professor_letters.py`.", ""]
+    for k, v in out.items():
+        if k.startswith("_"):
+            continue
+        md += [f"## {k}", "", f"**Subject:** {v['subject']}", "", v["message"], "", "---", ""]
+    NEXT_MD.write_text("\n".join(md), encoding="utf-8")
+    print(f"wrote {len(out) - 1} next letters to {NEXT_JSON.relative_to(MD.parents[1])} and {NEXT_MD.relative_to(MD.parents[1])}")
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--next" in sys.argv:
+        write_next()
+    else:
+        main()
+        write_next()

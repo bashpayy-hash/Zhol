@@ -38,7 +38,7 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   // a company not written to yet: the path is the letter with its lanes, then the mark (no calls: owner, 20 Nov 2026);
   // the rest folded under «Подробнее»
   // the list opens on those not written to yet (fewer buttons, 20 Nov 2026: one filter, «Пора напомнить», and no more)
-  ok(await p.$$eval("#f-state button:not([hidden])", bs => bs.length === 1 && /Пора напомнить/.test(bs[0].textContent)), "one filter, «Пора напомнить»");
+  ok(await p.$$eval("#f-state button:not([hidden])", bs => bs.length === 1 && /Пора написать/.test(bs[0].textContent)), "one filter, «Пора написать» (reminders and next letters)");
   ok(await p.$eval("#detail", d => !d.querySelector(".statusrow") && [...d.querySelectorAll(".steps .btn, .steps .linkish")].filter(x => !x.closest("details:not([open])")).length <= 2), "a new card: no state line, two buttons on the path");
   const fresh = await p.evaluate(() => {
     const d = document.querySelector("#detail");
@@ -119,6 +119,31 @@ const ok = (c, m) => { if (!c) { console.error("FAIL: " + m); process.exitCode =
   ok(ar.h === "ALSEA" && /^Какое напоминание/.test(ar.top) && /zhol\.live\/it\/bollettino\?c=brennero/.test(ar.text) && /ultimo messaggio/.test(ar.text) && !/sondaggio\?src/.test(ar.text),
      "an association's reminder brings the bulletin of its members' roads, not the survey again");
   await p.click('#f-state button[data-v="any"]'); await p.waitForTimeout(150);
+
+  // a professor who answered: the next letter brings the survey's results and asks one introduction (owner, 22 Nov 2026:
+  // «надо уже профессоров спрашивать, могут ли они уже коннектнуть. Сначала им нужно выслать результаты опроса»)
+  const pc = await b.newContext({ viewport: { width: 1440, height: 900 } });
+  await pc.addInitScript(s => { try { localStorage.clear(); localStorage.setItem("zhol-status", s); } catch (e) {} },
+    JSON.stringify({ "u-oliviero-baccelli": { state: "replied", sent: "2026-11-09T17:31:00Z", at: "2026-11-20T15:35:47Z" } }));
+  const pp = await pc.newPage(); pp.on("pageerror", e => errs.push(e.message));
+  await pp.goto(FILE); await pp.waitForTimeout(400);
+  await pp.click('#f-type button[data-v="bocconi"]'); await pp.waitForTimeout(200);
+  ok((await pp.$eval('#f-type button[data-v="bocconi"] .due', e => e.textContent)) === "1", "the Bocconi tab counts the next letter due");
+  await pp.click('#f-state button[data-v="remind"]'); await pp.waitForTimeout(250);
+  const pr = await pp.evaluate(() => { const d = document.querySelector("#detail"); const pre = d.querySelector(".steps details.peek pre");
+    return { h: d.querySelector("h2").textContent, next: (d.querySelector(".next b") || {}).textContent || "", top: (d.querySelector(".letter-card .lc-top") || {}).textContent || "",
+             subject: (d.querySelector(".letter-card .lc-subject") || {}).textContent || "", text: pre ? pre.textContent : "",
+             steps: [...d.querySelectorAll(".steps .step h3")].map(h => h.textContent) }; });
+  ok(pr.h === "Oliviero Baccelli" && pr.next === "Следующее письмо" && /^Какое письмо теперь/.test(pr.top) && /^Re: Logistics survey/.test(pr.subject),
+     "a professor who answered: «Следующее письмо», a reply in the survey's thread");
+  ok(/zhol\.live\/results/.test(pr.text) && /zhol\.live\/it\/risultati/.test(pr.text) && /FERCAM/.test(pr.text) && !/survey\?src=/.test(pr.text),
+     "the letter carries the results and the deck, and asks one introduction (FERCAM through the Freight Leaders Council)");
+  await pp.click('#detail .steps button.mark'); await pp.waitForTimeout(200);
+  await pp.click('#f-state button[data-v="any"]'); await pp.waitForTimeout(150);
+  if (await pp.$eval("#detail h2", e => e.textContent).catch(() => "") !== "Oliviero Baccelli") { await pp.click('#list .row:has-text("Oliviero Baccelli")'); await pp.waitForTimeout(150); }
+  const ns = JSON.parse(await pp.evaluate(() => localStorage.getItem("zhol-status")))["u-oliviero-baccelli"];
+  ok(ns && ns.state === "replied" && /^20\d\d-/.test(ns.next_sent || "") && /Следующее письмо ушло/.test(await pp.$eval("#detail .next b", e => e.textContent)),
+     "«Письмо отправлено» keeps the state and records when the next letter went out");
   ok(errs.length === 0, "no page errors " + errs.join(" | "));
 
   // a phone: no horizontal scroll, buttons in reach, the bar not sticky

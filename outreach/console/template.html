@@ -304,7 +304,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       <button type="button" data-v="posts" aria-pressed="false">Посты</button>
     </div>
     <div class="chips" role="group" aria-label="Фильтр" id="f-state">
-      <button type="button" data-v="any" aria-pressed="true" hidden>Все</button><button type="button" data-v="remind" aria-pressed="false">Пора напомнить<span class="n" id="c-remind"></span></button>
+      <button type="button" data-v="any" aria-pressed="true" hidden>Все</button><button type="button" data-v="remind" aria-pressed="false">Пора написать<span class="n" id="c-remind"></span></button>
     </div>
     <input type="search" id="q" placeholder="Название, город или регион" aria-label="Поиск">
   </div>
@@ -448,6 +448,10 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const remindSubject = r => { const s = status[r.id], f = followOf(r) || {};
     return s && s.subject ? "Re: " + s.subject : s && s.letter === "personal" && r.personal && !r.call ? "Re: " + r.personal.subject : f.subject; };
   const remindDue = r => { const s = status[r.id]; return !!(followOf(r) && s && s.state === "sent" && !s.reminded && remindFrom(s) <= new Date()); };
+  // the next letter after the first one went out, e.g. the professors' results and one introduction (owner, 22 Nov 2026:
+  // «надо уже профессоров спрашивать, могут ли они уже коннектнуть. Сначала им нужно выслать результаты опроса»)
+  const nextDue = r => { const s = status[r.id]; return !!(r.next && s && (s.state === "sent" || s.state === "replied") && !s.next_sent); };
+  const actDue = r => remindDue(r) || nextDue(r);
   const hasAddr = r => !!r.to || /^https?:\/\//.test(r.where || "");
   const national = x => /^nazionale$/i.test((x || "").trim()) ? "по всей Италии" : x;
   const place = r => [national(r.city), national(r.region)].filter(x => x && !/^n\/?a$/i.test(x.trim()) && !/^\[check/i.test(x.trim()))
@@ -459,7 +463,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     if (fState === "sent" && s !== "sent") return false;
     if (fState === "replied" && s !== "replied") return false;
     if (fState === "wa" && !r.wa) return false;
-    if (fState === "remind" && !remindDue(r)) return false;
+    if (fState === "remind" && !actDue(r)) return false;
     return !q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q);
   }
 
@@ -513,6 +517,15 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
     } else {
       store.set("zhol-status", JSON.stringify(status));
     }
+  }
+
+  async function markNext(r) {
+    const prev = status[r.id]; if (!prev) return;
+    const next = Object.assign({}, prev, { next_sent: new Date().toISOString() });
+    status[r.id] = next; render();
+    toast("Следующее письмо отмечено · " + r.name, () => restore(r, prev));
+    if (shared && writable) { try { await db.collection("status").doc(r.id).set(next); } catch (e) { status[r.id] = prev; render(); } }
+    else store.set("zhol-status", JSON.stringify(status));
   }
 
   async function markReminded(r) {
@@ -636,6 +649,11 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       steps.append(step(n, "Отметьте «Отправлено»", null,
         [row_(markBtn("Отправлено", () => setState(r, "sent", via[r.id])))]));
       parts.push(letterCard(r, false), steps);
+    } else if (nextDue(r)) {
+      parts.push(nextBox("due", "Следующее письмо", r.next.why_ru || ""), letterCard(r, "next"));
+      steps.append(step(1, "Отправьте письмо", null, [offNote(), ...sendKit(r, r.next.subject, r.next.message, box)]));
+      steps.append(step(2, "Отметьте «Письмо отправлено»", null, [row_(markBtn("Письмо отправлено", () => markNext(r)))]));
+      parts.push(steps);
     } else if (remindDue(r)) {
       const f = followOf(r), sentIso = s.sent || s.at;
       parts.push(nextBox("due", "Пора напомнить", "Письмо ушло " + day(sentIso) + ", ответа нет. Напоминание одно и последнее."), letterCard(r, true));
@@ -722,6 +740,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   const trim = (s, n) => !s ? "" : s.length > n ? s.slice(0, n - 4).replace(/\s+\S*$/, "") + "…" : s;
   function letterOf(r, reminder) {
     const k = r.call, pl = r.personal, f = followOf(r) || {};
+    if (reminder === "next") return { subject: r.next.subject, text: r.next.message, line: r.next.line, ru: r.next.line_ru, lang: r.next.lang };
     if (reminder) {
       const rem = (k && k.reminder) || (pl && pl.reminder);
       const body = rem ? (rem.line || (rem.message.split("\n\n")[2] || "").replace(/^Questa volta non vi chiedo niente, vi mando qualcosa di utile\. /, "").split(/\s+(?=Qui trovate)/)[0]) : "";
@@ -735,7 +754,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   function letterCard(r, reminder) {
     const L = letterOf(r, reminder), lang = L.lang || langOf(L.text || "");
     const card = el("div", "letter-card");
-    const top = el("div", "lc-top"); top.append(el("b", null, reminder ? "Какое напоминание" : r.type === "group" ? "Какой пост" : "Какое письмо"), el("span", null, LANG_RU[lang] || ""));
+    const top = el("div", "lc-top"); top.append(el("b", null, reminder === "next" ? "Какое письмо теперь" : reminder ? "Какое напоминание" : r.type === "group" ? "Какой пост" : "Какое письмо"), el("span", null, LANG_RU[lang] || ""));
     card.append(top);
     if (L.subject && r.type !== "group") card.append(el("div", "lc-subject", L.subject));
     if (L.line) { const q = el("blockquote", "lc-line"); q.lang = lang; q.textContent = trim(plain(L.line), 420); card.append(q); }
@@ -755,6 +774,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
   // one sentence on what is next once the path is walked (design system audit, 20 Nov 2026)
   function nextStep(r) {
     const s = status[r.id], st = stateOf(r.id);
+    if (s && s.next_sent) return ["ok", "Следующее письмо ушло " + day(s.next_sent), "Ответят со знакомством — напишите этому человеку в тот же день и запишите разговор в outreach/interview_log.csv."];
     if (st === "replied") return ["ok", "Ответили", "Ответьте им и предложите бесплатный пилот на их направлениях. Разговор запишите в outreach/interview_log.csv."];
     if (st === "skip") return ["", "Не пишем", "Адресат отмечен «Не писать». Передумали — «Вернуть в работу» ниже."];
     if (!followOf(r)) return ["", "Ждём ответа", "Напоминания для этого адресата нет. Ответили — отметьте «Ответили»."];
@@ -792,17 +812,17 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       const all = ROWS.filter(r => r.type === k), done = all.filter(r => stateOf(r.id) && stateOf(r.id) !== "skip").length;
       const left = all.filter(r => !stateOf(r.id)).length;
       $("n-" + k).textContent = left ? String(left) : "";
-      const due = all.filter(remindDue).length, tab = $("n-" + k).parentNode;
+      const due = all.filter(actDue).length, tab = $("n-" + k).parentNode;
       let badge = tab.querySelector(".due"); if (!badge) { badge = el("span", "due"); tab.append(badge); }
       badge.textContent = due; badge.hidden = !due;
-      tab.title = "отправлено " + done + " из " + all.length + (due ? " · пора напомнить: " + due : "");
+      tab.title = "отправлено " + done + " из " + all.length + (due ? " · пора написать: " + due : "");
     });
     // the status chips count what is in this tab
     const inTab = ROWS.filter(r => r.type === fType && (!q || (r.name + " " + r.city + " " + (r.region || "")).toLowerCase().includes(q)));
     // WhatsApp numbers exist only in the privately published copy (outreach/private/whatsapp.csv)
-    $("c-remind").textContent = inTab.filter(remindDue).length;
+    $("c-remind").textContent = inTab.filter(actDue).length;
     // one chip: on when pressed, «Все» comes back as the way out of it; hidden when nobody is due and it is off
-    const dueN = inTab.filter(remindDue).length, chip = $("c-remind").parentNode;
+    const dueN = inTab.filter(actDue).length, chip = $("c-remind").parentNode;
     chip.classList.toggle("hot", dueN > 0); chip.hidden = !dueN && fState !== "remind";
     $("f-state").querySelector('[data-v="any"]').hidden = fState !== "remind";
     $("f-state").querySelector('[data-v="any"]').textContent = "Показать всех";
@@ -830,7 +850,7 @@ footer { font-size: 13px; color: var(--muted); padding-block: 0 40px; }
       if (r.wa) { sm.append(" · "); sm.append(el("span", "wa", "WhatsApp")); }
       const t = el("span"); t.append(el("b", null, r.name), sm);
       const st = status[r.id];
-      const right = remindDue(r) ? el("span", "pill remind", "пора напомнить")
+      const right = nextDue(r) ? el("span", "pill remind", "следующее письмо") : remindDue(r) ? el("span", "pill remind", "пора напомнить")
                   : st && st.state ? el("span", "pill " + st.state, st.state === "sent" && st.at ? day(st.at) + (st.reminded ? " · напомнили" : "") : GROUP[st.state])
                                    : el("span", "fit", "");
       const dot = el("span", "dot"); dot.setAttribute("aria-hidden", "true");

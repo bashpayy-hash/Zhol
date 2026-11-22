@@ -1,6 +1,6 @@
 """Build the send console (outreach/send-console.html) from its template, the send list and the posts.
 
-    python scripts/professor_letters.py   # if the professors' letters changed
+    python scripts/professor_letters.py   # if the professors' letters changed (--next: only the results letters)
     python scripts/survey_targets.py      # refreshes outreach/survey_send_list.json
     python scripts/lane_links.py          # the call and the link to each company's lanes (live radar)
     python scripts/personal_letters.py    # short personal letters: associations and abroad (live radar)
@@ -36,6 +36,13 @@ def rows_all() -> list:
     for r in rows:
         if r["id"] in personal:
             r["personal"] = personal[r["id"]]
+    # the next letter once the first went out: the professors' results and one introduction (owner, 22 Nov 2026;
+    # scripts/professor_letters.py --next)
+    nxt = OUT / "professor_next.json"
+    nxt = json.loads(nxt.read_text(encoding="utf-8")) if nxt.exists() else {}
+    for r in rows:
+        if r["id"] in nxt:
+            r["next"] = nxt[r["id"]]
     li = OUT / "linkedin_send_list.json"
     return rows + (json.loads(li.read_text(encoding="utf-8")) if li.exists() else [])
 
