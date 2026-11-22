@@ -35,6 +35,13 @@ const ok = (c, m) => { if (!c) { failed++; console.log("  FAIL", m); } else cons
   const tiles = await p.$$eval(".rp-tile", l => l.map(t => t.textContent));
   ok(tiles.length >= 1 && /su strada sulle vostre tratte/.test(tiles[0]), "the numbers first (" + tiles.length + " tiles)");
   ok(/viaggi tipo|non ha ancora stimato/.test(await p.textContent("#rp-est")), "the estimates say what they are: typical trips, not the company's own");
+  // the saving first and big (owner, 22 Nov 2026: «покажи, сколько они бы могли сэкономить, а на этом heavy emphasis»)
+  const sv = await p.evaluate(() => { const s = document.getElementById("rp-save"); return { hidden: s.hidden, big: (s.querySelector(".rp-save-big") || {}).textContent || "",
+    lead: (s.querySelector(".rp-save-lead") || {}).textContent || "", cells: s.querySelectorAll(".rp-save-row div").length, pills: [...document.querySelectorAll("#rp-events .rp-ev-save")].map(x => x.textContent),
+    above: s.getBoundingClientRect().top < document.getElementById("rp-tiles").getBoundingClientRect().top && s.getBoundingClientRect().top < document.getElementById("rp-events").getBoundingClientRect().top }; });
+  ok(!sv.hidden && /^€\d/.test(sv.big) && /nelle prossime quattro settimane, su \d+ viagg/.test(sv.lead) && sv.cells === 3 && sv.above,
+     "the saving comes first and big: " + sv.big + ", with what is lost if nothing changes, the cost with zhol and the average per trip");
+  ok(sv.pills.length > 0 && sv.pills.every(x => /^Con zhol risparmiate circa €\d/.test(x)), "each priced event says what zhol saves on that trip (" + sv.pills.length + ")");
   const evs = await p.$$eval("#rp-events .bl-ev, #rp-other .bl-ev", l => l.map(e => ({ date: e.querySelector(".bl-date").textContent, mode: e.querySelector(".bl-mode").textContent,
     p: e.querySelector(".bl-p").textContent, basis: e.querySelector(".bl-basis").textContent, other: !!e.closest("#rp-other") })));
   ok(evs.length > 0 && evs.every(e => e.date && e.mode && /^\d{1,3}% · /.test(e.p)), "every event: date, mode and chance (" + evs.length + ")");

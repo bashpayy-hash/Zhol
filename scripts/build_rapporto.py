@@ -61,7 +61,7 @@ PAGE = """<!doctype html>
 <link rel="icon" href="/assets/img/favicon.png?v=3" sizes="64x64"><link rel="icon" href="/assets/img/favicon-32.png?v=3" sizes="32x32"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700&display=swap">
-<link rel="stylesheet" href="/assets/zhol.css?v=s64">
+<link rel="stylesheet" href="/assets/zhol.css?v=s66">
 <link rel="alternate" hreflang="en" href="https://zhol.live/risk-report">
 <link rel="alternate" hreflang="it" href="https://zhol.live/it/rapporto">
 </head>
@@ -82,6 +82,7 @@ PAGE = """<!doctype html>
     <p class="rp-sub" id="rp-sub" hidden></p>
     <p class="rp-lanes" id="rp-lanes"></p>
     <nav class="bl-chips" id="rp-chips" aria-label="{chips}" hidden></nav>
+    <div class="rp-save" id="rp-save" aria-live="polite" hidden></div>
     <div class="rp-tiles" id="rp-tiles" aria-live="polite"></div>
     <p class="small muted rp-est" id="rp-est"></p>
     <p class="small muted" id="rp-updated"></p>
@@ -121,7 +122,7 @@ PAGE = """<!doctype html>
   <span>{foot}</span>
   <span>{foot_links}</span>
 </div></footer>
-<script type="module" src="/assets/rapporto.js?v=1"></script>
+<script type="module" src="/assets/rapporto.js?v=2"></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

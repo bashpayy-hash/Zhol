@@ -19,7 +19,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Through the Freight Leaders Council, could you introduce us to the person who plans the trucks at FERCAM, or at another haulier that crosses the Brenner every day? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Through the Freight Leaders Council, could you introduce us to the person who plans the trucks at FERCAM, or at another haulier that crosses the Brenner every day? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -35,7 +35,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Tramite il Freight Leaders Council, potrebbe presentarci a chi pianifica i camion in FERCAM, o in un altro autotrasportatore che attraversa il Brennero ogni giorno? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Tramite il Freight Leaders Council, potrebbe presentarci a chi pianifica i camion in FERCAM, o in un altro autotrasportatore che attraversa il Brennero ogni giorno? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -57,7 +57,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Among the companies around the SOSC Monitor, could you introduce us to one logistics manager whose shipments cross the Alps every week? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Among the companies around the SOSC Monitor, could you introduce us to one logistics manager whose shipments cross the Alps every week? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -73,7 +73,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Tra le aziende attorno al SOSC Monitor, potrebbe presentarci a un responsabile logistico le cui spedizioni attraversano le Alpi ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Tra le aziende attorno al SOSC Monitor, potrebbe presentarci a un responsabile logistico le cui spedizioni attraversano le Alpi ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -95,7 +95,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Could you introduce us to one of the people you shared the survey with, if their company ships across the Alps every week? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Could you introduce us to one of the people you shared the survey with, if their company ships across the Alps every week? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -111,7 +111,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Potrebbe presentarci a una delle persone a cui ha inoltrato il sondaggio, se la loro azienda spedisce oltre le Alpi ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Potrebbe presentarci a una delle persone a cui ha inoltrato il sondaggio, se la loro azienda spedisce oltre le Alpi ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -133,7 +133,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Could you introduce us to the person who plans the trucks at Zeroquattro Logistica? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Could you introduce us to the person who plans the trucks at Zeroquattro Logistica? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -149,7 +149,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Potrebbe presentarci a chi pianifica i camion in Zeroquattro Logistica? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Potrebbe presentarci a chi pianifica i camion in Zeroquattro Logistica? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -171,7 +171,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Among the managers of the academies you designed, could you introduce us to one who runs shipments abroad every week? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Among the managers of the academies you designed, could you introduce us to one who runs shipments abroad every week? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -187,7 +187,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Tra i responsabili delle academy che ha progettato, potrebbe presentarci a uno che gestisce spedizioni all'estero ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Tra i responsabili delle academy che ha progettato, potrebbe presentarci a uno che gestisce spedizioni all'estero ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -209,7 +209,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Among the logistics managers from your projects with companies, could you introduce us to one who ships across the Alps every week? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Among the logistics managers from your projects with companies, could you introduce us to one who ships across the Alps every week? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -225,7 +225,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Tra i responsabili logistici dei suoi progetti con le aziende, potrebbe presentarci a uno che spedisce oltre le Alpi ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Tra i responsabili logistici dei suoi progetti con le aziende, potrebbe presentarci a uno che spedisce oltre le Alpi ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -247,7 +247,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Among the logistics and transport managers you know in food & beverage or fashion, could you introduce us to one who ships abroad every week? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Among the logistics and transport managers you know in food & beverage or fashion, could you introduce us to one who ships abroad every week? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -263,7 +263,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Tra i responsabili logistici e dei trasporti che conosce nel food & beverage o nella moda, potrebbe presentarci a uno che spedisce all'estero ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Tra i responsabili logistici e dei trasporti che conosce nel food & beverage o nella moda, potrebbe presentarci a uno che spedisce all'estero ogni settimana? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -285,7 +285,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Among the operators you work with, who would you suggest we talk to, a haulier or forwarder with lanes over the Alps? Even a name would help. Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Among the operators you work with, who would you suggest we talk to, a haulier or forwarder with lanes over the Alps? Even a name would help. Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Thank you,
 zhol team
@@ -301,7 +301,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Tra gli operatori con cui lavora, con chi ci suggerirebbe di parlare, un autotrasportatore o uno spedizioniere con tratte oltre le Alpi? Anche solo un nome ci aiuterebbe. Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Tra gli operatori con cui lavora, con chi ci suggerirebbe di parlare, un autotrasportatore o uno spedizioniere con tratte oltre le Alpi? Anche solo un nome ci aiuterebbe. Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Grazie,
 zhol team
@@ -323,7 +323,7 @@ https://zhol.live/results
 
 In short, 8 of 9 people who know the field see shipments abroad change often, one stop costs the carrier €300–1,000, and €5–10 a vehicle a month is a fair price. What is missing are the traffic offices themselves. zhol, which my team and I are building, is an AI platform that estimates the risk and cost of bans, closures and strikes for each shipment by road, rail or sea, warns in advance and updates in real time. Italy is the start, the goal is all of Europe. On 25 November we present it at TEF Ignition 2026, where it is one of 100 projects selected out of about 500, with a €2,000 grant.
 
-That is why I ask for one introduction. Could you introduce us to one or two graduates of the transport master who now plan shipments to Germany, Austria or Switzerland? Twenty minutes would be enough, and we would bring their own risk report for the next four weeks.
+That is why I ask for one introduction. Could you introduce us to one or two graduates of the transport master who now plan shipments to Germany, Austria or Switzerland? Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes.
 
 Kind regards,
 zhol team
@@ -339,7 +339,7 @@ https://zhol.live/it/risultati
 
 In breve, 8 su 9 persone che conoscono il settore vedono cambiare spesso le spedizioni all'estero, un fermo costa al vettore 300–1.000 € e 5–10 € al mese per mezzo è un prezzo giusto. Mancano gli uffici traffico stessi. zhol, che io e il mio team sviluppiamo, è una piattaforma AI che stima rischio e costo di divieti, chiusure e scioperi per ogni spedizione su strada, rotaia o mare, avvisa in anticipo e aggiorna in tempo reale. L'Italia è l'inizio, l'obiettivo è tutta l'Europa. Il 25 novembre lo presentiamo a TEF Ignition 2026, dove è uno dei 100 progetti selezionati su circa 500, con un grant di 2.000 €.
 
-Per questo le chiedo una presentazione. Potrebbe presentarci a uno o due diplomati del master in trasporti che oggi pianificano spedizioni verso Germania, Austria o Svizzera? Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane.
+Per questo le chiedo una presentazione. Potrebbe presentarci a uno o due diplomati del master in trasporti che oggi pianificano spedizioni verso Germania, Austria o Svizzera? Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte.
 
 Con stima,
 zhol team

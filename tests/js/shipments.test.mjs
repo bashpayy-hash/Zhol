@@ -1,7 +1,7 @@
 // Checking an office's own shipments against the radar (site/assets/shipments.mjs), all in the browser.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { check, cities, fromRows, lanePlan, lanesFor, parseCSV, parseWhen, totals } from "../../site/assets/shipments.mjs";
+import { check, cities, fromRows, lanePlan, lanesFor, parseCSV, parseWhen, savingOf, totals } from "../../site/assets/shipments.mjs";
 
 const lanes = [
   { id: "MIL-LYO-FREJUS", name: "Milano – Lyon via Fréjus", name_it: "Milano – Lione via Fréjus" },
@@ -118,4 +118,11 @@ test("a company's report: its events for four weeks, priced where the radar pric
   assert.equal(r.lanes.length, 1);
   assert.ok(r.plan.length >= 2 && r.totals.keep >= fr.impact.e_keep && r.totals.saves > 0);
   assert.deepEqual(report(more, ["NOPE"], true).events, []);
+});
+
+test("savingOf: what zhol saves on one trip, never below zero (owner, 22 Nov 2026: savings first)", () => {
+  assert.equal(savingOf({ e_keep: 2735, e_now: 40, e_alert: 37 }), 2698);
+  assert.equal(savingOf({ e_keep: 100, e_now: 150, e_alert: 120 }), 0);
+  assert.equal(savingOf({ e_keep: 0, e_now: 0, e_alert: 0 }), 0);
+  assert.equal(savingOf(null), 0);
 });

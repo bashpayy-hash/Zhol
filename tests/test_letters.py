@@ -245,6 +245,16 @@ def test_calls_and_lane_links_follow_the_same_principles():
         assert k["subject"].startswith("Le vostre tratte") == (bool(k["countries"]) or k["lanes"][0].startswith(("VIT-", "CT-"))), cid
         assert m.count("**") // 2 <= 3 and not re.search(r"per truck|per camion", m, re.I), cid
         assert k["events"] and all(e["url"].startswith("https://") and e["source_it"] for e in k["events"]), cid
+        # the saving the report shows leads the letter, called an estimate (owner, 22 Nov 2026: «покажи, сколько они бы
+        # могли сэкономить, а на этом heavy emphasis»)
+        sv = k["saving"]["saves"]
+        if sv >= 100:
+            assert re.search(r", circa [\d.]+ € risparmiabili, nostra stima$", k["subject"]), (cid, k["subject"])
+            assert re.search(r"Secondo la nostra stima, decidendo per tempo risparmiereste circa [\d.]+ € in quattro settimane su \d+ viagg", m), cid
+            shown = int(re.search(r"circa ([\d.]+) €", k["subject"]).group(1).replace(".", ""))
+            assert abs(shown - sv) <= (5 if sv < 1000 else 50), (cid, shown, sv)
+        else:
+            assert "risparmiereste" not in m, cid
         to = rows[cid].get("to")
         if to:
             enc = lambda s: quote(s, safe="-_.!~*'()").replace("%2C", ",").replace("%2F", "/").replace("%3F", "?").replace("%40", "@")

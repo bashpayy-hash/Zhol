@@ -6,7 +6,7 @@
    decide by), three numbers on top, then one step: check your real trips for free, the one-minute survey, the PDF.
    Everything after «#» stays in the browser: no server learns which company opened its report. One opening is counted
    by channel only (/api/bulletin, src «co-report»). The numbers are the radar's (site/assets/shipments.mjs, report). */
-import { report } from "/assets/shipments.mjs?v=3";
+import { report, savingOf } from "/assets/shipments.mjs?v=4";
 
 const root = document.getElementById("rp");
 const IT = document.documentElement.lang === "it";
@@ -61,6 +61,9 @@ function card(e) {
   li.append(head, el("h3", "bl-what", title(i)));
   if (where(i)) li.append(el("p", "bl-where", where(i)));
   const why = (IT && i.detail_it) || i.detail; if (why) li.append(el("p", "bl-why", why));
+  // what zhol saves on this trip comes first (owner, 22 Nov 2026: «покажи, сколько они бы могли сэкономить, а на этом heavy emphasis»)
+  const sv = savingOf(im);
+  if (im && im.plan && sv > 0) li.append(el("p", "rp-ev-save", T("zhol saves about " + eur(sv) + " on this trip", "Con zhol risparmiate circa " + eur(sv) + " su questo viaggio")));
   if (im && im.plan) {
     const p = el("p", "bl-plan"), lane = ((IT && im.lane_it) || im.lane || "").replace(/\s*->\s*/g, " – "), dec = im.lead && im.lead.decide_by;
     p.append(el("b", null, T("A typical trip " + lane + ". ", "Un viaggio tipo " + lane + ". ")),
@@ -102,12 +105,26 @@ function draw(d) {
   // what stops a vehicle on the road first; rail and sea on the same lanes after it (an event has its mode, CLAUDE.md)
   const onRoad = e => !e.item.mode || e.item.mode === "road" || e.item.mode === "all" || !!e.impact;
   const road = r.events.filter(onRoad), other = r.events.filter(e => !onRoad(e));
+  // the saving first, big (owner, 22 Nov 2026: «после этих отчетов покажи, сколько они бы могли сэкономить, а на этом heavy emphasis»)
+  const save = $("rp-save"), shows = t.keep > 0 && t.saves > 0;
+  save.hidden = !shows;
+  if (shows) {
+    const per = t.priced ? Math.round(t.saves / t.priced) : 0, cell = (b, s, c) => { const d = el("div", c || ""); d.append(el("b", null, b), el("span", null, s)); return d; };
+    const row = el("div", "rp-save-row");
+    row.append(cell(eur(t.keep), T("lost to waits and detours if nothing changes", "persi in attese e deviazioni se non cambia nulla")),
+               cell(eur(t.zhol), T("with zhol’s plans, decided in time", "con i piani di zhol, decisi per tempo")),
+               cell(eur(per), T("saved on each of these trips, on average", "risparmiati in media su ciascuno di questi viaggi"), "avg"));
+    save.replaceChildren(el("span", "kicker green", T("What zhol would save you", "Quanto vi farebbe risparmiare zhol")),
+      el("p", "rp-save-big", eur(t.saves)),
+      el("p", "rp-save-lead", T("in the next four weeks, on " + t.priced + (t.priced === 1 ? " typical trip" : " typical trips") + " on your lanes that meet these events, by deciding in time",
+                                "nelle prossime quattro settimane, su " + t.priced + (t.priced === 1 ? " viaggio tipo" : " viaggi tipo") + " sulle vostre tratte che incontrano questi eventi, decidendo per tempo")),
+      row);
+  }
   const tiles = $("rp-tiles"); tiles.replaceChildren(
     tile(String(road.length), (road.length === 1 ? T("road event on your lanes", "evento su strada sulle vostre tratte") : T("road events on your lanes", "eventi su strada sulle vostre tratte"))
       + (other.length ? T(", plus " + other.length + " by rail or sea", ", più " + other.length + " su ferrovia o mare") : "")));
-  if (t.keep > 0) tiles.append(tile(eur(t.keep), T("expected cost if nothing changes, over " + r.plan.length + " typical trips", "costo atteso se non cambia nulla, su " + r.plan.length + " viaggi tipo")),
-                               tile(eur(t.saves), T("saved with zhol’s plans, by our estimate", "risparmiati con i piani di zhol, secondo la nostra stima"), "save"));
   if (r.decide) tiles.append(tile(day(r.decide, true), T("the first decision to take", "la prima decisione da prendere"), "when"));
+  tiles.classList.toggle("few", tiles.children.length < 3);
   $("rp-est").textContent = t.keep > 0
     ? T("Estimates for typical trips that meet these events, not your real trips: €100 for each hour a vehicle waits (the rate of Italian law), chances from the official calendars and from the Ministry’s strike record. With your own plan the figures are yours.",
         "Stime per viaggi tipo che incontrano questi eventi, non i vostri viaggi veri: 100 € per ogni ora di fermo di un mezzo (la tariffa della norma italiana), probabilità dai calendari ufficiali e dallo storico scioperi del Ministero. Con il vostro piano i conti sono i vostri.")

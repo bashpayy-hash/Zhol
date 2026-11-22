@@ -218,19 +218,47 @@ def fact_of(row: dict) -> str:
     return first if first.startswith("Ho visto che") else ""
 
 
-def subject_for(hs: list[dict], known: bool) -> str:
+def euro_it(x: float) -> str:
+    """«circa 1.700 €»: tens under a thousand, hundreds above, Italian thousands."""
+    n = int(round(x, -1 if x < 1000 else -2))
+    return f"{n:,}".replace(",", ".") + " €"
+
+
+def savings(data: dict, companies: dict[str, list[str]]) -> dict[str, dict]:
+    """The saving each company's report shows (scripts/report_savings.mjs runs the report page's own computation)."""
+    import subprocess
+    import tempfile
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
+        json.dump({"data": data, "companies": companies}, f)
+    try:
+        r = subprocess.run(["node", str(ROOT / "scripts" / "report_savings.mjs"), f.name], capture_output=True, text=True, timeout=120, check=True)
+        return json.loads(r.stdout)
+    except (OSError, subprocess.SubprocessError, json.JSONDecodeError):
+        return {}
+    finally:
+        Path(f.name).unlink(missing_ok=True)
+
+
+MIN_SAVING = 100          # below this the letter does not lead with a figure
+
+
+def subject_for(hs: list[dict], known: bool, save: dict | None = None) -> str:
     """A subject that names what is coming and from when: «Le vostre tratte, due eventi da lunedì 23 novembre» (owner,
     21 Nov 2026: «что им сразу предложить, чтобы они нажали на ссылку»). «Le vostre tratte» only when the company names
     its lanes; otherwise the roads abroad. No events on the radar: the plain subject."""
     if not hs:
         return SUBJECT
     where = "Le vostre tratte" if known else "Strade verso l'estero"
+    # the saving first when the report has one (owner, 22 Nov 2026: «на этом heavy emphasis»), called an estimate
+    if save and save.get("saves", 0) >= MIN_SAVING:
+        return f"{where}, circa {euro_it(save['saves'])} risparmiabili, nostra stima"
     first = day_it(min(h["date"] for h in hs))
     return f"{where}, un evento {first}" if len(hs) == 1 else f"{where}, due eventi da {first}"
 
 
-def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids: list[str] | None = None) -> dict:
+def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids: list[str] | None = None, save: dict | None = None) -> dict:
     survey = row.get("link") or "https://zhol.live/it/sondaggio?src=co-report"     # the channel only, never the company
+    big = bool(save and save.get("saves", 0) >= MIN_SAVING)
     if base in ("south", "ct"):
         where_it, where_ru = "dalla Sicilia salite verso il Nord passando lo Stretto", "из Сицилии возят на север через пролив"
     elif dests:
@@ -285,8 +313,12 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         # рисками, с эстимейшенами… под конкретную компанию… потом предложить пройти опрос»): the letter gives first, the
         # one-minute survey waits at the end of the report
         + "Ho preparato per voi un rapporto " + page_it + " per le prossime quattro settimane, con la probabilità di ogni "
-        "evento, il costo stimato di un viaggio tipo e quando decidere, ogni evento con la sua fonte. Si apre anche dal "
-        "telefono e si salva in PDF\n" + link + "\n\n"
+        "evento, il costo stimato di un viaggio tipo e quando decidere, ogni evento con la sua fonte. "
+        # the saving, plainly and as an estimate (owner, 22 Nov 2026: «покажи, сколько они бы могли сэкономить»)
+        + (f"Secondo la nostra stima, decidendo per tempo risparmiereste circa {euro_it(save['saves'])} in quattro "
+           f"settimane su {save['priced']} {'viaggio tipo' if save['priced'] == 1 else 'viaggi tipo'} che incontrano questi eventi, "
+           "e nel rapporto c'è il conto evento per evento. " if big else "")
+        + "Si apre anche dal telefono e si salva in PDF\n" + link + "\n\n"
         # the survey is still the ask (owner, 21 Nov 2026: «оставь в сообщении то, что вот опрос, все еще его нужно
         # проходить»): said plainly, with its own link, after the report
         "E vi chiedo un favore, il nostro **sondaggio anonimo**, sette domande in un minuto. Ci dice quanto costano "
@@ -300,6 +332,7 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         + (("Если не ошибаюсь, вы " + where_ru + ". ") if known and not fact else "" )
         + ("" if known else "Страны компания не называет, поэтому условно: если ваши машины ходят через " + (" или ".join(pr) or "границу") + ", ")
         + (f"в ближайшие недели радар видит: {seen_ru}. " if seen_ru else "серьёзных событий пока нет. ")
+        + (f"Наша оценка экономии — около {euro_it(save['saves'])} за четыре недели на типовых рейсах ({save['priced']}), в отчёте — по каждому событию. " if big else "")
         + "Первая ссылка — личный отчёт о рисках на четыре недели " + ("по их направлениям" if known else "по частым направлениям из их региона") + ": вероятность каждого события, оценка цены типового рейса, срок решения, источники; открывается с телефона, сохраняется в PDF. "
         "Вторая — просьба пройти анонимный опрос: семь вопросов за минуту, чтобы понять, во что такие простои обходятся офису.")
     # the one reminder to a company that already had the survey letter (owner, 17 Nov 2026: «А письмами как можно в
@@ -315,6 +348,7 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         "Io e il mio team siamo tra i 100 progetti selezionati su circa 500 per **TEF Ignition 2026** della Tech Europe "
         "Foundation, con un grant di 2.000 €. Partiamo dall'Italia, l'obiettivo è tutta l'Europa.\n\n"
         "Questa volta vi mando prima qualcosa di utile. " + seen
+        + (f"Secondo la nostra stima, decidendo per tempo risparmiereste circa {euro_it(save['saves'])} in quattro settimane. " if big else "")
         + "Qui trovate un rapporto " + page_it + " per le prossime quattro settimane, con la probabilità di ogni "
         "evento, il costo stimato di un viaggio tipo e quando decidere, ogni evento con la sua fonte\n" + link + "\n\n"
         "Se non l'avete ancora fatto, il nostro **sondaggio anonimo** di sette domande richiede un minuto e ci aiuta "
@@ -328,7 +362,7 @@ def texts(row: dict, base: str, dests: list[str], hs: list[dict], link: str, ids
         + (f"события радара: {seen_ru}; " if seen_ru else "серьёзных событий пока нет; ")
         + "ссылка на их личный отчёт о рисках на четыре недели (вероятности, оценка цены, срок решения, источники); ещё раз просим пройти опрос на минуту, если не прошли. Предлагаем бесплатный пилот на четыре недели "
         "без установки, ответить можно прямо на письмо. Говорим, что больше не напишем.")
-    return {"call_it": call_it, "call_ru": call_ru, "subject": subject_for(hs, known), "message": message, "message_ru": message_ru,
+    return {"call_it": call_it, "call_ru": call_ru, "subject": subject_for(hs, known, save), "message": message, "message_ru": message_ru,
             "reminder": {"subject": "Re: " + row["subject"], "message": reminder, "message_ru": reminder_ru}}
 
 
@@ -349,11 +383,17 @@ def main() -> None:
         link = f"{SITE}/it/rapporto#lanes={','.join(ids)}&for={quote(name)}"
         hs = hooks(data, ids)
         out[r["id"]] = {"name": name, "lanes": ids, "countries": dests, "link": link, "events": hs, "radar_day": data["today"],
-                        **texts(r, base, dests, hs, link, ids)}
+                        "_args": (r, base, dests, hs, link, ids)}
+    # the saving each report shows, computed as the report page computes it (owner, 22 Nov 2026)
+    saves = savings(data, {k: v["lanes"] for k, v in out.items()})
+    for k, v in out.items():
+        v["saving"] = saves.get(k) or {"saves": 0, "keep": 0, "priced": 0}
+        v.update(texts(*v.pop("_args"), save=v["saving"]))
     (OUT / "lane_links.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     with_events = sum(1 for v in out.values() if v["events"])
-    print(f"wrote outreach/lane_links.json: {len(out)} companies, {with_events} with a road event on their lanes "
-          f"(radar of {data['today']})")
+    with_saving = sum(1 for v in out.values() if v["saving"]["saves"] >= MIN_SAVING)
+    print(f"wrote outreach/lane_links.json: {len(out)} companies, {with_events} with a road event on their lanes, "
+          f"{with_saving} with a saving of at least {MIN_SAVING} € (radar of {data['today']})")
 
 
 if __name__ == "__main__":

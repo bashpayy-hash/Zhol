@@ -260,8 +260,8 @@ def next_letter(p: dict, n: int, facts: dict) -> dict:
     short_it = (f"In breve, {facts['ge2']} su {facts['n_x']} persone che conoscono il settore vedono cambiare spesso le spedizioni "
                 f"all'estero, un fermo costa al vettore {facts['cost_it']} e {facts['price_it']} al mese per mezzo è un prezzo giusto. "
                 "Mancano gli uffici traffico stessi.")
-    ask2_en = "Twenty minutes would be enough, and we would bring their own risk report for the next four weeks."
-    ask2_it = "Bastano venti minuti, e porteremmo il loro rapporto rischi per le prossime quattro settimane."
+    ask2_en = "Twenty minutes would be enough, and we would bring their own report for the next four weeks, with how much they could save on their lanes."
+    ask2_it = "Bastano venti minuti, e porteremmo il loro rapporto per le prossime quattro settimane, con quanto potrebbero risparmiare sulle loro tratte."
     message = f"""{NOTE}
 
 {p['dear']}
@@ -300,7 +300,7 @@ zhol team"""
         "subject": "Re: " + SUBJECT,
         "message": message,
         "line": f"{thanks_en[0].upper() + thanks_en[1:]} … That is why I ask for one introduction. {ask_en}",
-        "line_ru": f"{ru_thanks} Просим одно знакомство: {ask_ru}. Двадцать минут, принесём их отчёт о рисках.",
+        "line_ru": f"{ru_thanks} Просим одно знакомство: {ask_ru}. Двадцать минут, принесём их отчёт: риски на 4 недели и сколько они сэкономят.",
         "why_ru": ("Ответ в той же переписке, где был опрос: спасибо, результаты и колода по одной ссылке (zhol.live/results), "
                    "затем одна просьба о знакомстве. До выступления на TEF 25 ноября знакомство с офисом — главное доказательство."),
     }

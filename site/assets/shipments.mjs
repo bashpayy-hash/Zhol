@@ -200,13 +200,20 @@ export function check(shipments, data) {
 }
 
 /** The totals for the top of the page: how many at risk, what keeping every plan would cost, what zhol's plans cost. */
+/** What zhol saves on one priced trip: the expected cost if nothing changes, less the better of acting now or on the
+ *  alert (owner, 22 Nov 2026: «покажи, сколько они бы могли сэкономить, а на этом heavy emphasis»). */
+export function savingOf(impact) {
+  if (!impact || !(impact.e_keep > 0)) return 0;
+  return Math.max(0, Math.round(impact.e_keep - Math.min(impact.e_now ?? impact.e_keep, impact.e_alert ?? impact.e_keep)));
+}
+
 export function totals(results) {
   const priced = results.filter(r => r.priced);
   const keep = priced.reduce((a, r) => a + r.priced.impact.e_keep, 0);
   const zhol = priced.reduce((a, r) => a + Math.min(r.priced.impact.e_now, r.priced.impact.e_alert), 0);
   return { n: results.length, risk: results.filter(r => r.status === "risk").length, watch: results.filter(r => r.status === "watch").length,
            clear: results.filter(r => r.status === "clear").length, unknown: results.filter(r => r.status === "unknown").length,
-           keep: Math.round(keep), zhol: Math.round(zhol), saves: Math.round(keep - zhol) };
+           keep: Math.round(keep), zhol: Math.round(zhol), saves: Math.round(keep - zhol), priced: priced.length };
 }
 
 // ---- a company's own risk report (/it/rapporto, /risk-report; owner, 21 Nov 2026: «PDF-файл бюллетень… с рисками, с
