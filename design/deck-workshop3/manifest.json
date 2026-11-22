@@ -10,5 +10,22 @@
   "quality": "high",
   "resolution": "2k",
   "aspect_ratio": "16:9"
+ },
+ "scenes": {
+  "cover-milestone.jpg": {
+   "slide": "1, cover",
+   "higgsfield_image_job": "cd6c16db-42b5-42b5-85ad-acf112810e49",
+   "scene": "a roadside milestone on an Alpine hillside; Zholdas plants a red pennant and looks at the viewer"
+  },
+  "letters-postbox.jpg": {
+   "slide": "4, validation, the Bocconi outreach card",
+   "higgsfield_image_job": "f7efa391-13c3-4081-a70f-fa6eee4d8115",
+   "scene": "a red postbox by a country road; Zholdas slips a stack of letters into it, looking at the slot"
+  },
+  "paint-lane-corner.webp": {
+   "slide": "3, the three actions, bottom-right corner",
+   "higgsfield_image_job": "7fa32c82-97fc-435c-91aa-258547dc492d",
+   "scene": "a road growing from the right and bottom edges, transparent elsewhere, the left edge feathered; Zholdas paints a fresh white lane line (work in progress)"
+  }
  }
 }
