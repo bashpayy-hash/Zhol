@@ -134,6 +134,9 @@ Documents.
   - Gallmann — Lean Study Tours в Японии в мировом топ-10 (L’Expansion, 2009), SDA Innovation Award 2008 и 2009;
   - Zamboni — ведёт 7 курсов Bocconi (подсчёт по кодам на её странице), PhD 2011 с MIT-Zaragoza, награда EFMD 2013.
   Ошибки в наших заметках (Senn, роль Grando, MEMIT) вынесены в отдельную задачу на правку скриптов писем.
+- **Четырнадцатая правка владельца** («убери Грандо. Ректор TEF»): Grando — делегат ректора по TEF, поэтому на слайде
+  экспертов его нет. Шестая клетка — «7 of 11 survey answers came through Bocconi faculty links like these»; подпись над
+  карточками — «Reached through Bocconi faculty, among them» (список не полный, 7 ответов — по ссылкам всех профессоров).
 
 ### 22 ноября 2026 · PDF результатов опроса — свой макет, а не печать страницы
 
