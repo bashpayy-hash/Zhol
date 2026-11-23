@@ -11,6 +11,7 @@ Answers from 2026-11-09T17:00 UTC on (the outreach began then; earlier rows were
 | Fair price per vehicle a month, median | – | 0 | €5–10 or more (founding price €8) | too few answers |
 | Shipments changed ≥ 2 per 100 trips abroad (approx.) | – | 0 | ≥ 5 of 8 (63%) | too few answers |
 | Would share what their drivers see (shared watch, docs/15) | – | 0 | – | too few answers |
+| Notice an office needs to change a shipment, median (model 4–12 h, docs/18 §3) | – | 0 | – | too few answers |
 
 ## Time spent checking, beachhead
 
