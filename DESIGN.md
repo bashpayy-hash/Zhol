@@ -175,6 +175,10 @@ Documents.
     компании — «Beta on the way» или «See the radar»; генераторы (build_results.py, build_rapporto.py) правлены так же,
     кнопка отчёта ведёт на бету (rapporto.js?v=3);
   - анкета опроса с пилотом осталась: это просьба оставить контакт, автоматических сообщений там нет.
+  - колоды сказаны так же: в Workshop 3 «Also live: the corridor bulletin and the survey results. The beta for traffic
+    offices is on the way»; в питч-деке «A live product: the radar twice a day, company reports and corridor bulletins;
+    the beta for offices is on the way», проверка своих грузов помечена «In the beta, on the way», ссылки /check убраны.
+    PDF питча на сайте обновлён.
 
 ### 22 ноября 2026 · PDF результатов опроса — свой макет, а не печать страницы
 
