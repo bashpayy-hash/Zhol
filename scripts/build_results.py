@@ -103,9 +103,9 @@ T = {
                 "strike and what it would cost, warns the people who plan it in advance and updates them in real time as "
                 "things change. One of 100 projects selected out of about 500 for TEF Ignition 2026, with a €2,000 grant. "
                 "Italy is the start; the goal is all of Europe."),
-        deck_btn="Download the deck (PDF)", check_btn="Try it on your trips",
+        deck_btn="Download the deck (PDF)", check_btn="See the radar",
         survey_p="Not answered yet? The survey still takes a minute.", survey_a="Take the survey",
-        survey_href="/survey?src=results", check_href="/check",
+        survey_href="/survey?src=results", check_href="/radar",
         pdf_href="/d/zhol-survey-results-2026-11.pdf", pdf_a="These results as a PDF, to forward",
         print_url="zhol.live/results · deck zhol.live/d/zhol-tef-ignition-2026.pdf",
         foot="Oyu team · Bocconi University · TEF Ignition 2026",
@@ -161,9 +161,9 @@ T = {
                 "una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo "
                 "reale quando la situazione cambia. Uno dei 100 progetti selezionati su circa 500 per TEF Ignition 2026, con "
                 "un grant di 2.000 €. L’Italia è l’inizio, l’obiettivo è tutta l’Europa."),
-        deck_btn="Scarica la presentazione (PDF, in inglese)", check_btn="Provatelo sui vostri viaggi",
+        deck_btn="Scarica la presentazione (PDF, in inglese)", check_btn="Guardate il radar",
         survey_p="Non avete ancora risposto? Il sondaggio richiede ancora un minuto.", survey_a="Rispondi al sondaggio",
-        survey_href="/it/sondaggio?src=results", check_href="/it/verifica",
+        survey_href="/it/sondaggio?src=results", check_href="/it/radar",
         pdf_href="/d/zhol-risultati-sondaggio-2026-11.pdf", pdf_a="Questi risultati in PDF, da inoltrare",
         print_url="zhol.live/it/risultati · presentazione zhol.live/d/zhol-tef-ignition-2026.pdf",
         foot="Oyu team · Università Bocconi · TEF Ignition 2026",

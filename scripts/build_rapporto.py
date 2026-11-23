@@ -18,7 +18,7 @@ S = {
                events="Cosa può fermare i vostri mezzi", all="Mostra tutti gli eventi", other="Sulle stesse tratte, per ferrovia e mare",
                next_h="Questi sono viaggi tipo. Con i vostri viaggi veri il conto è vostro.",
                next_p="Caricate il piano della settimana, da Excel, CSV o a mano. zhol verifica ogni spedizione, avvisa in anticipo e aggiorna in tempo reale quando la situazione cambia. Gratis per quattro settimane, niente da installare.",
-               check="Verificate i vostri viaggi, gratis", survey="Sette domande in un minuto",
+               check="Beta in arrivo", survey="Sette domande in un minuto",
                survey_p="Il sondaggio è anonimo: ci dice quanto costano davvero questi fermi a un ufficio come il vostro.",
                pdf="Scarica il PDF", wa="Inoltra su WhatsApp",
                by="Preparato da zhol, una piattaforma AI che stima se una spedizione, su strada, su rotaia o via mare, rischia un divieto, una chiusura o uno sciopero e quanto costerebbe, avvisa in anticipo chi la pianifica e lo aggiorna in tempo reale quando la situazione cambia. Università Bocconi, tra i 100 progetti di TEF Ignition 2026.",
@@ -34,7 +34,7 @@ S = {
                events="What can stop your vehicles", all="Show every event", other="On the same lanes, by rail and sea",
                next_h="These are typical trips. With your real trips the figures are yours.",
                next_p="Load the week’s plan, from Excel, CSV or by hand. zhol checks every shipment, warns in advance and updates in real time as things change. Free for four weeks, nothing to install.",
-               check="Check your trips, free", survey="Seven questions in a minute",
+               check="Beta on the way", survey="Seven questions in a minute",
                survey_p="The survey is anonymous: it tells us what these stops really cost an office like yours.",
                pdf="Download the PDF", wa="Forward on WhatsApp",
                by="Prepared by zhol, an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change. Bocconi University, one of the 100 projects of TEF Ignition 2026.",
@@ -122,7 +122,7 @@ PAGE = """<!doctype html>
   <span>{foot}</span>
   <span>{foot_links}</span>
 </div></footer>
-<script type="module" src="/assets/rapporto.js?v=2"></script>
+<script type="module" src="/assets/rapporto.js?v=3"></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>

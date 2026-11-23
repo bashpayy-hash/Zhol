@@ -142,7 +142,7 @@ function draw(d) {
 
   // one step next: the real trips (the free pilot), the survey, the PDF, forward it
   const tail = "#lanes=" + ids.join(",") + (who ? "&for=" + encodeURIComponent(who) : "");
-  $("rp-check").href = (IT ? "/it/verifica" : "/check") + tail;
+  $("rp-check").href = IT ? "/it/beta" : "/beta"; // the beta is hidden for now (owner, 23 Nov 2026)
   $("rp-survey").href = (IT ? "/it/sondaggio" : "/survey") + "?src=co-report";
   const me = location.origin + location.pathname + tail;
   const top = r.events.filter(e => !unchecked(e.item)).slice(0, 4).map(e => "• " + day(e.item.start) + " · " + title(e.item) + " · " + pct(e.item.p)).join("\n");

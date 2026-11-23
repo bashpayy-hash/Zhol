@@ -31,6 +31,39 @@
     X-Frame-Options = "DENY"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
 
+# the beta is hidden for now (owner, 23 Nov 2026: «пока что сделай просто бету скрытной, недоступной всем… beta
+# upcoming, on the way»): the pages of the pilot, the founding order and the shipment proposal lead to "beta on the way"
+[[redirects]]
+  from = "/check"
+  to = "/beta"
+  status = 302
+  force = true
+[[redirects]]
+  from = "/check.html"
+  to = "/beta"
+  status = 302
+  force = true
+[[redirects]]
+  from = "/offer"
+  to = "/beta"
+  status = 302
+  force = true
+[[redirects]]
+  from = "/offer.html"
+  to = "/beta"
+  status = 302
+  force = true
+[[redirects]]
+  from = "/it/verifica"
+  to = "/it/beta"
+  status = 302
+  force = true
+[[redirects]]
+  from = "/it/verifica.html"
+  to = "/it/beta"
+  status = 302
+  force = true
+
 # the radar's old address (it was first called "outlook"): old links and bookmarks still arrive (owner, 9 Nov 2026)
 [[redirects]]
   from = "/outlook"
