@@ -41,6 +41,13 @@
   "start": "2026-11-20",
   "title": "Night closure of the Fréjus road tunnel towards Italy."
  },
+ "closure|frejus|2026-11-21": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-23",
+  "start": "2026-11-21",
+  "title": "Night closure of the Fréjus tunnel towards Italy."
+ },
  "closure|montblanc|2026-11-16": {
   "happened": null,
   "how": "open",
@@ -77,6 +84,13 @@
   "resolved_on": "2026-11-19",
   "start": "2026-11-18",
   "title": "Truck dosing at Kufstein, southbound"
+ },
+ "other|IT-Lombardia,IT-Veneto|2026-11-22": {
+  "happened": true,
+  "how": "ongoing",
+  "resolved_on": "2026-11-23",
+  "start": "2026-11-22",
+  "title": "Rail traffic slowed by a technical fault between Brescia and Sommacampagna."
  },
  "other|frejus|2026-11-16": {
   "happened": null,
@@ -136,6 +150,14 @@
   "source": "https://scioperi.mit.gov.it/mit2/public/scioperi",
   "start": "2026-11-21",
   "title": "Rail strike in Italy"
+ },
+ "strike|IT|2026-11-22|air": {
+  "happened": true,
+  "how": "ministry",
+  "resolved_on": "2026-11-23",
+  "source": "https://scioperi.mit.gov.it/mit2/public/scioperi",
+  "start": "2026-11-22",
+  "title": "Air transport strike in Italy"
  },
  "strike|brenner|2026-11-20": {
   "happened": null,
