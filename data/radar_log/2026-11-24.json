@@ -1,8 +1,8 @@
 {
  "date": "2026-11-24",
- "built_at": "2026-11-24T05:19+01:00",
+ "built_at": "2026-11-24T14:18+01:00",
  "reader": "heuristic",
- "articles_read": 689,
+ "articles_read": 792,
  "items": [
   {
    "key": "ban|AT,IT|2026-12-08",
@@ -177,12 +177,27 @@
    "title": "Snow at the San Bernardino tunnel",
    "start": "2026-11-25",
    "end": "2026-11-25",
-   "p": 0.567,
+   "p": 0.243,
    "stage": null,
    "basis": "forecast",
    "first_published": null,
    "outlets": 1,
    "decide_h": 8.5
+  },
+  {
+   "key": "weather|tarvisio|2026-11-26",
+   "id": "dbf5cfdf7b",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Snow at Tarvisio",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
+   "p": 0.313,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": 5.8
   },
   {
    "key": "weather|messina_strait|2026-11-25",
@@ -192,7 +207,7 @@
    "title": "Strong wind on the Strait of Messina",
    "start": "2026-11-25",
    "end": "2026-11-26",
-   "p": 0.577,
+   "p": 0.607,
    "stage": null,
    "basis": "forecast",
    "first_published": null,
@@ -255,24 +270,9 @@
    "p": 0.933,
    "stage": "announced",
    "basis": "document",
-   "first_published": "2026-11-23",
+   "first_published": "2026-11-24",
    "outlets": 1,
    "decide_h": 5.9
-  },
-  {
-   "key": "closure|FR-Auvergne-Rhône-Alpes|2026-11-23",
-   "id": "d-atmb-montblanc-closure-fr-auvergne-rh-ne-alpes-2026-11-23-2026-11-24",
-   "group": "official",
-   "kind": "closure",
-   "title": "A40 closed overnight towards Chamonix for bridge renovation.",
-   "start": "2026-11-23",
-   "end": "2026-11-24",
-   "p": 0.933,
-   "stage": "announced",
-   "basis": "document",
-   "first_published": "2026-11-23",
-   "outlets": 1,
-   "decide_h": null
   },
   {
    "key": "closure|frejus|2026-11-23",
@@ -301,7 +301,7 @@
    "stage": "threat",
    "basis": "news",
    "first_published": "2026-10-27",
-   "outlets": 4,
+   "outlets": 5,
    "decide_h": null
   },
   {
@@ -321,7 +321,7 @@
   },
   {
    "key": "strike|FR|undated",
-   "id": "07adfa4322",
+   "id": "732bc761d2",
    "group": "news",
    "kind": "strike",
    "title": "Possible strike in France",
@@ -330,7 +330,7 @@
    "p": 0.361,
    "stage": "threat",
    "basis": "news",
-   "first_published": "2026-11-05",
+   "first_published": "2026-11-23",
    "outlets": 5,
    "decide_h": null
   },
