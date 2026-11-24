@@ -1,4 +1,11 @@
 {
+ "accident|IT-Lazio|2026-11-23": {
+  "happened": true,
+  "how": "ongoing",
+  "resolved_on": "2026-11-24",
+  "start": "2026-11-23",
+  "title": "Rail traffic suspended between Cisterna and Campoleone on the Rome-Naples via Formia line after a person was hit."
+ },
  "closure|FR-Auvergne-Rhône-Alpes|2026-11-16": {
   "happened": null,
   "how": "open",
@@ -92,6 +99,13 @@
   "start": "2026-11-22",
   "title": "Rail traffic slowed by a technical fault between Brescia and Sommacampagna."
  },
+ "other|IT|2026-11-23": {
+  "happened": true,
+  "how": "ongoing",
+  "resolved_on": "2026-11-24",
+  "start": "2026-11-23",
+  "title": "Rail traffic suspended between Bari and Bitetto on the Bari-Taranto line due to a technical fault."
+ },
  "other|frejus|2026-11-16": {
   "happened": null,
   "how": "open",
@@ -173,6 +187,13 @@
   "start": "2026-11-20",
   "title": "Port or ferry strike on the Strait of Messina"
  },
+ "weather|frejus|2026-11-23": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-24",
+  "start": "2026-11-23",
+  "title": "Snow at the Fréjus road tunnel"
+ },
  "weather|messina_strait|2026-11-18": {
   "happened": null,
   "how": "open",
@@ -187,11 +208,39 @@
   "start": "2026-11-19",
   "title": "Strong wind on the Strait of Messina"
  },
+ "weather|messina_strait|2026-11-22": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-24",
+  "start": "2026-11-22",
+  "title": "Strong wind on the Strait of Messina"
+ },
+ "weather|messina_strait|2026-11-23": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-24",
+  "start": "2026-11-23",
+  "title": "Strong wind on the Strait of Messina"
+ },
  "weather|montblanc|2026-11-18": {
   "happened": null,
   "how": "open",
   "resolved_on": "2026-11-19",
   "start": "2026-11-18",
+  "title": "Snow at the Mont Blanc tunnel"
+ },
+ "weather|montblanc|2026-11-22": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-24",
+  "start": "2026-11-22",
+  "title": "Snow at the Mont Blanc tunnel"
+ },
+ "weather|montblanc|2026-11-23": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-24",
+  "start": "2026-11-23",
   "title": "Snow at the Mont Blanc tunnel"
  }
 }
