@@ -20,6 +20,13 @@
   "start": "2026-11-17",
   "title": "A40 closed overnight between Archamps and Annemasse towards Chamonix."
  },
+ "closure|FR-Auvergne-Rhône-Alpes|2026-11-23": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-25",
+  "start": "2026-11-23",
+  "title": "A40 closed overnight towards Chamonix between Archamps and Annemasse."
+ },
  "closure|IT-Lazio|2026-11-14": {
   "happened": true,
   "how": "ongoing",
@@ -54,6 +61,13 @@
   "resolved_on": "2026-11-23",
   "start": "2026-11-21",
   "title": "Night closure of the Fréjus tunnel towards Italy."
+ },
+ "closure|frejus|2026-11-23": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-25",
+  "start": "2026-11-23",
+  "title": "Fréjus road tunnel closed overnight in both directions."
  },
  "closure|montblanc|2026-11-16": {
   "happened": null,
@@ -242,5 +256,12 @@
   "resolved_on": "2026-11-24",
   "start": "2026-11-23",
   "title": "Snow at the Mont Blanc tunnel"
+ },
+ "weather|tauern|2026-11-24": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-25",
+  "start": "2026-11-24",
+  "title": "Snow at the Tauern tunnel"
  }
 }
