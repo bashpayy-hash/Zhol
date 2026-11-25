@@ -1,8 +1,8 @@
 {
  "date": "2026-11-25",
- "built_at": "2026-11-25T05:18+01:00",
+ "built_at": "2026-11-25T14:18+01:00",
  "reader": "heuristic",
- "articles_read": 693,
+ "articles_read": 762,
  "items": [
   {
    "key": "ban|AT,IT|2026-12-08",
@@ -170,6 +170,36 @@
    "decide_h": null
   },
   {
+   "key": "weather|brenner|2026-11-26",
+   "id": "d411700b46",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Snow at the Brenner Pass",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
+   "p": 0.338,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": 14.5
+  },
+  {
+   "key": "weather|brenner|2026-12-08",
+   "id": "6348d4516d",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Snow at the Brenner Pass",
+   "start": "2026-12-08",
+   "end": "2026-12-08",
+   "p": 0.23,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": null
+  },
+  {
    "key": "weather|san_bernardino|2026-11-25",
    "id": "3716561d94",
    "group": "forecast",
@@ -177,12 +207,27 @@
    "title": "Snow at the San Bernardino tunnel",
    "start": "2026-11-25",
    "end": "2026-11-25",
-   "p": 0.314,
+   "p": 0.401,
    "stage": null,
    "basis": "forecast",
    "first_published": null,
    "outlets": 1,
    "decide_h": 8.5
+  },
+  {
+   "key": "weather|tauern|2026-12-08",
+   "id": "b219c5c98f",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Snow at the Tauern tunnel",
+   "start": "2026-12-08",
+   "end": "2026-12-08",
+   "p": 0.287,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": null
   },
   {
    "key": "weather|tarvisio|2026-11-26",
@@ -192,7 +237,7 @@
    "title": "Snow at Tarvisio",
    "start": "2026-11-26",
    "end": "2026-11-26",
-   "p": 0.358,
+   "p": 0.911,
    "stage": null,
    "basis": "forecast",
    "first_published": null,
@@ -207,7 +252,7 @@
    "title": "Strong wind on the Strait of Messina",
    "start": "2026-11-25",
    "end": "2026-11-26",
-   "p": 0.772,
+   "p": 0.694,
    "stage": null,
    "basis": "forecast",
    "first_published": null,
@@ -273,21 +318,6 @@
    "first_published": "2026-11-17",
    "outlets": 2,
    "decide_h": 7.5
-  },
-  {
-   "key": "closure|montblanc|2026-11-24",
-   "id": "d-atmb-montblanc-closure-montblanc-2026-11-24-2026-11-25",
-   "group": "official",
-   "kind": "closure",
-   "title": "Mont Blanc tunnel closed overnight for maintenance.",
-   "start": "2026-11-24",
-   "end": "2026-11-25",
-   "p": 0.995,
-   "stage": "ongoing",
-   "basis": "document",
-   "first_published": "2026-11-24",
-   "outlets": 1,
-   "decide_h": 5.9
   },
   {
    "key": "closure|frejus|2026-11-27",
@@ -366,7 +396,7 @@
   },
   {
    "key": "closure|IT|undated",
-   "id": "e7a96c11ef",
+   "id": "446b2c7f04",
    "group": "news",
    "kind": "closure",
    "title": "Possible closure in Italy",
@@ -376,15 +406,15 @@
    "stage": "threat",
    "basis": "news",
    "first_published": "2026-10-27",
-   "outlets": 3,
+   "outlets": 5,
    "decide_h": null
   },
   {
-   "key": "blockade|FR|undated",
-   "id": "e4c562261d",
+   "key": "strike|FR|undated",
+   "id": "0c5bd28431",
    "group": "news",
-   "kind": "blockade",
-   "title": "Possible blockade in France",
+   "kind": "strike",
+   "title": "Possible strike in France",
    "start": null,
    "end": null,
    "p": 0.361,
@@ -407,6 +437,21 @@
    "basis": "news",
    "first_published": "2026-10-30",
    "outlets": 5,
+   "decide_h": null
+  },
+  {
+   "key": "strike|ES|2026-12-20",
+   "id": "8a1c8e6ebb",
+   "group": "news",
+   "kind": "strike",
+   "title": "Possible strike in Spain",
+   "start": "2026-12-20",
+   "end": "2026-12-24",
+   "p": 0.113,
+   "stage": "tension",
+   "basis": "news",
+   "first_published": "2026-11-24",
+   "outlets": 1,
    "decide_h": null
   }
  ]
