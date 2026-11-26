@@ -99,11 +99,25 @@
   "start": "2026-11-20",
   "title": "Closure at the Mont Blanc tunnel"
  },
+ "closure|montblanc|2026-11-24": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-26",
+  "start": "2026-11-24",
+  "title": "Mont Blanc tunnel fully closed overnight for maintenance."
+ },
  "dosing|kufstein|2026-11-18": {
   "happened": null,
   "how": "open",
   "resolved_on": "2026-11-19",
   "start": "2026-11-18",
+  "title": "Truck dosing at Kufstein, southbound"
+ },
+ "dosing|kufstein|2026-11-25": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-26",
+  "start": "2026-11-25",
   "title": "Truck dosing at Kufstein, southbound"
  },
  "other|IT-Lombardia,IT-Veneto|2026-11-22": {
@@ -256,6 +270,13 @@
   "resolved_on": "2026-11-24",
   "start": "2026-11-23",
   "title": "Snow at the Mont Blanc tunnel"
+ },
+ "weather|san_bernardino|2026-11-25": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-26",
+  "start": "2026-11-25",
+  "title": "Snow at the San Bernardino tunnel"
  },
  "weather|tauern|2026-11-24": {
   "happened": null,
