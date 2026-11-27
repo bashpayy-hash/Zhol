@@ -1,5 +1,5 @@
 {
- "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide.",
+ "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides.",
  "references": [
   "2a20bb83-5d2d-4aa3-be59-3efd48133274",
   "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
@@ -13,15 +13,10 @@
  "scenes": {
   "cover-tunnel.jpg": {
    "slide": "1, cover",
-   "higgsfield_image_job": "00252425-5ff9-4214-996c-b719b598daa3",
+   "higgsfield_image_job": "fb432bd8-18ab-4914-a628-66244894e8cf",
    "scene": "an Alpine road running into a stone tunnel portal, trucks and a freight train beside it; Zholdas on a roadside rock holds an open pocket watch (in advance) and looks at the viewer",
-   "processing": "21:9 (2688x1152), a 16:9 window from x=380 so he stands right of centre; 1920x1080 JPEG q84"
-  },
-  "network-mast.png": {
-   "slide": "5, the network",
-   "higgsfield_image_job": "d90f3236-98fa-441c-bb0b-017aee10c97c",
-   "scene": "a hilltop with a small radio mast; Zholdas talks into a walkie-talkie and looks down at a truck yard, a rail siding and a ferry pier, each with its own antenna",
-   "processing": "transparent, cropped to 2290x1440 so the hill runs out through the right and bottom edges; 1000 px PNG, placed in the bottom-right corner"
+   "processing": "21:9 (2688x1152), a 16:9 window from x=380 so he stands right of centre; 1920x1080 JPEG q84",
+   "first_try": "00252425-5ff9-4214-996c-b719b598daa3 (a truck drove across the middle of the road; redrawn with every truck in its lane)"
   },
   "close-vineyard.jpg": {
    "slide": "14, thank you",
@@ -41,18 +36,23 @@
    "scene": "a panorama of road, rail and sea: trucks on an Alpine road, a freight train on a stone bridge, a ferry leaving harbour; Zholdas holds up a lantern and looks along the road",
    "processing": "21:9 centre cut to 1920x600, the band across the top as on Workshop 3's overview"
   },
-  "market-map.png": {
-   "slide": "7, market",
-   "higgsfield_image_job": "6ddf630a-90fa-4a03-985c-e444a99334e6",
-   "first_try": "b89abd32-f76b-4931-a3d7-7ee79d69f505 (he looked at the viewer, redrawn in profile)",
-   "scene": "a gravel yard with an easel and a felt map of Europe; Zholdas, in profile, pushes a red pin into the map, toy trucks and a train on a crate",
-   "processing": "transparent, cropped to 2260x1620 so the gravel runs out through the right and bottom edges"
-  },
   "gtm-door.png": {
    "slide": "10, go-to-market",
    "higgsfield_image_job": "3393d4fe-a798-4db1-9008-ccb7986132c0",
    "scene": "the yard of a small haulage company; Zholdas knocks on the office door with a folder under his arm, two trucks parked",
    "processing": "transparent, the yard already meets the right and bottom edges; 1000 px PNG in the corner"
+  },
+  "network-strip.png": {
+   "slide": "5, the network",
+   "higgsfield_image_job": "a76e6606-7358-44a2-a837-79c3314f3136",
+   "scene": "no mascot: a felt landscape along the bottom edge, a truck yard, a road with a truck, a station with a freight train and a small harbour with a ferry, each building with the same little antenna",
+   "processing": "transparent 21:9, cropped to the band (rows 664-1152), 1920 wide, shown 300 px high along the bottom"
+  },
+  "europe-map.png": {
+   "slide": "7, market",
+   "higgsfield_image_job": "c78f0fd3-b2e7-4c45-a89c-fd357d16a881",
+   "scene": "no mascot: a felt relief map of Europe from the corner, the Alps raised, roads, railways and ferry routes stitched in, toy trucks, a train and a ferry, a cluster of red pins in Northern Italy",
+   "processing": "transparent, 1000 px PNG in the bottom-right corner"
   }
  }
 }
