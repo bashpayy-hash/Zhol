@@ -1,8 +1,8 @@
 {
  "date": "2026-11-27",
- "built_at": "2026-11-27T05:17+01:00",
+ "built_at": "2026-11-27T14:17+01:00",
  "reader": "heuristic",
- "articles_read": 695,
+ "articles_read": 799,
  "items": [
   {
    "key": "ban|AT,IT|2026-12-08",
@@ -170,6 +170,21 @@
    "decide_h": null
   },
   {
+   "key": "weather|messina_strait|2026-12-09",
+   "id": "3d1e11ec3e",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Strong wind on the Strait of Messina",
+   "start": "2026-12-09",
+   "end": "2026-12-10",
+   "p": 0.23,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": null
+  },
+  {
    "key": "strike|IT|2026-12-04|all",
    "id": "st-all-2026-12-04",
    "group": "news",
@@ -228,21 +243,6 @@
    "first_published": "2026-11-17",
    "outlets": 2,
    "decide_h": 7.5
-  },
-  {
-   "key": "closure|FR-Auvergne-Rhône-Alpes|2026-11-26",
-   "id": "d-atmb-montblanc-closure-fr-auvergne-rh-ne-alpes-2026-11-26-2026-11-27",
-   "group": "official",
-   "kind": "closure",
-   "title": "A40 motorway closed overnight between Archamps and Annemasse for bridge works.",
-   "start": "2026-11-26",
-   "end": "2026-11-27",
-   "p": 0.933,
-   "stage": "announced",
-   "basis": "document",
-   "first_published": "2026-11-26",
-   "outlets": 1,
-   "decide_h": null
   },
   {
    "key": "closure|frejus|2026-11-27",
@@ -305,17 +305,17 @@
    "decide_h": 6.2
   },
   {
-   "key": "other|IT|2026-08-31",
-   "id": "d-trenitalia-info-other-it-2026-08-31-2026-12-12",
+   "key": "strike|NL|2026-12-04",
+   "id": "7754747c9f",
    "group": "news",
-   "kind": "other",
-   "title": "Works change rail services on the Pescara-Ancona line.",
-   "start": "2026-08-31",
-   "end": "2026-12-12",
-   "p": 0.995,
-   "stage": "ongoing",
-   "basis": "document",
-   "first_published": "2026-11-27",
+   "kind": "strike",
+   "title": "Strike in Netherlands",
+   "start": "2026-12-04",
+   "end": "2026-12-04",
+   "p": 0.824,
+   "stage": "announced",
+   "basis": "news",
+   "first_published": "2026-11-26",
    "outlets": 1,
    "decide_h": null
   },
@@ -336,7 +336,7 @@
   },
   {
    "key": "blockade|FR|undated",
-   "id": "6a641679f2",
+   "id": "02e637a7aa",
    "group": "news",
    "kind": "blockade",
    "title": "Possible blockade in France",
@@ -345,7 +345,7 @@
    "p": 0.253,
    "stage": "threat",
    "basis": "news",
-   "first_published": "2026-11-25",
+   "first_published": "2026-11-26",
    "outlets": 5,
    "decide_h": null
   },
@@ -362,6 +362,21 @@
    "basis": "news",
    "first_published": "2026-11-04",
    "outlets": 4,
+   "decide_h": null
+  },
+  {
+   "key": "strike|ES|2026-12-20",
+   "id": "8a1c8e6ebb",
+   "group": "news",
+   "kind": "strike",
+   "title": "Possible strike in Spain",
+   "start": "2026-12-20",
+   "end": "2026-12-24",
+   "p": 0.113,
+   "stage": "tension",
+   "basis": "news",
+   "first_published": "2026-11-24",
+   "outlets": 1,
    "decide_h": null
   }
  ]
