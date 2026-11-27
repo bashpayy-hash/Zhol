@@ -1,5 +1,5 @@
 {
- "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market). Owner, 27 Nov 2026: «ты боишься… ставишься в правый угол… разнообразь… третий воркшоп… фундаментальный» — scenes now take different sides: cover right, problem left (mirrored), what across the top, network along the bottom, proof as a full-bleed night scene with Zholdas on the left, market map in the right corner, go-to-market from the left corner (mirrored), team in the right corner, close on the left (mirrored). Owner, 27 Nov 2026, on the cover: «лицевая иллюстрация, где он просто так plainly показывает часы… странноватые» — the cover is redrawn: Zholdas rides in the cab as the companion (what his name means) and points at the road ahead; he no longer poses with an object. The cover scene is on the left now, so the problem slide went back to the right.",
+ "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market). Owner, 27 Nov 2026: «ты боишься… ставишься в правый угол… разнообразь… третий воркшоп… фундаментальный» — scenes now take different sides: cover right, problem left (mirrored), what across the top, network along the bottom, proof as a full-bleed night scene with Zholdas on the left, market map in the right corner, go-to-market from the left corner (mirrored), team in the right corner, close on the left (mirrored). Owner, 27 Nov 2026, on the cover: «лицевая иллюстрация, где он просто так plainly показывает часы… странноватые» — the cover is redrawn: Zholdas rides in the cab as the companion (what his name means) and points at the road ahead; he no longer poses with an object. The cover scene is on the left now, so the problem slide went back to the right. Owner, 27 Nov 2026, on the truck-cab cover: «Это тоже мне не нравится, как-то странно выглядит» — back to what worked on the Workshop 3 cover: Zholdas large, full body, in the landscape, with one simple action. He is a lookout now: one mitten shades his eyes and he looks ahead along the road.",
  "references": [
   "2a20bb83-5d2d-4aa3-be59-3efd48133274",
   "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
@@ -88,11 +88,27 @@
    "processing": "grows from the bottom-left corner, 800 px wide; the funnel moved to the right"
   },
   "cover-ride.jpg": {
-   "slide": "1, cover",
+   "slide": "not used (the owner found the truck-cab cover strange)",
    "higgsfield_image_job": "b988b844-bcbd-44a3-b923-5066c21fa764",
    "scene": "a felt freight truck on an Alpine road in three-quarter front view; Zholdas leans out of the passenger window and points at the road ahead; a freight train in the valley, a ferry on the bay",
    "processing": "2688x1520 mirrored (as generated the truck drove on the left and he sat on the driver’s side), centre crop to 1920x1080 JPEG q88; text on the right under a paper veil that fades out towards the bottom",
    "other_variant": "15561e5f-e651-43af-a300-7c9b37f948e3"
+  },
+  "cover-lookout.jpg": {
+   "slide": "1, cover",
+   "higgsfield_image_job": "8f1b6e4c-130e-4a64-a94c-1beded81bced",
+   "scene": "Zholdas stands on a grassy bank above an Alpine road, one mitten shading his eyes, the other on his hip, looking far ahead along the road; a truck climbs toward the pass in its lane, a freight train in the valley, a ferry on the bay",
+   "processing": "2688x1520 centre crop to 1920x1080 JPEG q88; scene on the left, text on the right under a paper veil that fades out towards the bottom"
+  },
+  "cover-lookout-alt.jpg": {
+   "slide": "not used, kept as an option",
+   "higgsfield_image_job": "da04dc2a-d2ac-4e45-82d1-e1079c278fbc",
+   "scene": "the same lookout, a little smaller in the frame"
+  },
+  "cover-walk-alt.jpg": {
+   "slide": "not used, kept as an option",
+   "higgsfield_image_job": "0bb79693-420e-4a81-8c8a-aa1893695a57",
+   "scene": "Zholdas walks along the road shoulder with a canvas satchel, a fellow traveller, looking at the viewer"
   }
  }
 }
