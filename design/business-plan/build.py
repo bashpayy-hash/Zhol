@@ -21,25 +21,28 @@ h2 { max-width: 1500px; }
 .stats.paper .stat { border-top-color: var(--red); }
 .stats.paper .big { color: var(--ink); }
 .stats .big.s { font-size: 80px; letter-spacing: -2px; white-space: nowrap; }
-section > svg { flex: none; display: block; }
-.sm { font-size: 24px; line-height: 1.4; margin: 0; }
+section svg { flex: none; display: block; }
+.body { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: safe center; gap: 40px; }
+.sm { font-size: 27px; line-height: 1.4; margin: 0; }
 .sm b { color: var(--ink); font-weight: 600; }
 section.dark .sm b { color: var(--on-dark); }
 .cards.three { grid-template-columns: repeat(3, 1fr); }
 .cards.five { grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.cards.five .sm { font-size: 25px; }
 .card h3 { font-size: 32px; }
 section.dark .card h3 { color: var(--on-dark); }
 .tag { display: inline-block; align-self: flex-start; font-size: 20px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 999px; padding: 6px 16px; background: var(--sage); color: var(--sage-ink); margin: 0; }
 .tag.soon { background: #efe2d6; color: var(--red); }
-table.t { width: 100%; border-collapse: collapse; font-size: 25px; line-height: 1.32; color: var(--ink2); }
+table.t { width: 100%; border-collapse: collapse; font-size: 27px; line-height: 1.32; color: var(--ink2); }
 table.t th { font-size: 20px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); text-align: left; padding: 0 20px 14px 0; border-bottom: 2px solid var(--ink); }
 table.t td { padding: 15px 20px 15px 0; border-bottom: 2px solid var(--line); vertical-align: top; }
 table.t td:first-child { color: var(--ink); font-weight: 600; }
 table.t td.num, table.t th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 table.t tr.hl td { background: var(--sage); }
-table.t tr.hl td:first-child { padding-left: 14px; }
+table.t th:first-child, table.t td:first-child { padding-left: 16px; }
+table.t th:last-child, table.t td:last-child { padding-right: 16px; }
 table.t.tight td { padding-top: 11px; padding-bottom: 11px; }
-table.t.small { font-size: 23px; }
+table.t.small { font-size: 25px; }
 section.dark table.t { color: var(--on-dark2); }
 section.dark table.t th { color: var(--red-on-dark); border-bottom-color: var(--on-dark2); }
 section.dark table.t td { border-bottom-color: var(--esp2); }
@@ -54,7 +57,7 @@ section.dark .panel { background: var(--esp2); border-color: var(--esp2); }
 .mid.sage { color: var(--sage-ink); }
 .bar-row { display: grid; grid-template-columns: 360px 1fr; gap: 28px; align-items: center; }
 .bar-track { position: relative; height: 40px; }
-.bar { height: 40px; border-radius: 10px; background: #d7cfbf; }
+.bar { height: 40px; border-radius: 10px; background: #948774; }
 .bar.on { background: var(--red); }
 .bar-n { position: absolute; top: 2px; font-size: 30px; font-weight: 700; color: var(--ink); }
 .go-on { font-size: 20px; line-height: 1; color: var(--muted); margin: -8px 0 -8px 388px; }
@@ -67,7 +70,7 @@ section.dark .panel { background: var(--esp2); border-color: var(--esp2); }
 .chain { display: flex; flex-direction: row; gap: 14px; align-items: stretch; }
 .chain .panel { flex: 1; padding: 24px 26px; gap: 10px; }
 .chain .n { font-size: 32px; }
-ul.l { margin: 0; padding: 0 0 0 28px; display: flex; flex-direction: column; gap: 10px; font-size: 24px; line-height: 1.38; }
+ul.l { margin: 0; padding: 0 0 0 28px; display: flex; flex-direction: column; gap: 10px; font-size: 26px; line-height: 1.38; }
 ul.l li::marker { color: var(--red); }
 .src { columns: 3; column-gap: 56px; }
 .src .panel { break-inside: avoid; margin-bottom: 24px; }
@@ -79,6 +82,10 @@ def esc(s):
 
 
 def page(cls, inner, sid):
+    cut = inner.find('</h2></div>')
+    if cut >= 0:
+        cut += len('</h2></div>')
+        inner = inner[:cut] + '\n<div class="body">' + inner[cut:] + '</div>'
     return f'<section id="{sid}" class="{cls}">\n{inner}\n</section>'
 
 
@@ -100,8 +107,8 @@ pages.append(page("", """
 <img class="logo" src="zhol-logo.png" alt="zhol">
 <p class="lead">Estimates the risk, warns in advance, updates in real time.</p>
 <p class="txt">For every shipment by road, rail and sea, starting in Italy, built for all of Europe.</p>
+<p class="note">zhol.live · Oyu team, Bocconi University, Milan · 27 November 2026</p>
 </div>
-<p class="foot">zhol.live · Oyu team, Bocconi University, Milan · 27 November 2026</p>
 """, "cover"))
 
 # 2 summary
@@ -119,7 +126,7 @@ pages.append(page("dark", f"""
 
 # 3 problem
 pages.append(page("", f"""
-{head("The problem", "Europe stops freight in many ways, and the warnings are scattered.")}
+{head("The problem", "Freight stops in many ways; warnings are scattered.")}
 <div class="cards five">
 <div class="card"><p class="k">Truck bans</p><p class="sm">Weekends, holidays and nights, with different rules in each of 7 countries.</p></div>
 <div class="card"><p class="k">Tyrol dosing</p><p class="sm">Kufstein lets trucks through in batches. In 2025, 21 of 57 dosing days came outside the published calendar.</p></div>
@@ -162,7 +169,7 @@ pages.append(page("", f"""
 
 # 6 evidence: survey and outreach
 pages.append(page("", f"""
-{head("Evidence · survey and outreach, measured", "People in the field say the problem is real and costly.")}
+{head("Evidence · survey and outreach, measured", "People in the field: the problem is real and costly.")}
 <div class="stats four paper">
 <div class="stat"><p class="mid">8 of 9</p><p class="sm">see at least 2 in 100 shipments abroad change in a typical month; 3 of them see more than 10</p></div>
 <div class="stat"><p class="mid">€300–1,000</p><p class="sm">what one stopped shipment costs the carrier</p></div>
@@ -190,8 +197,8 @@ pages.append(page("dark", f"""
 
 # 8 competition
 pages.append(page("", f"""
-{head("Competition", "Others cover part of the job. None checks an office’s own shipments ahead.")}
-<table class="t">
+{head("Competition", "Others cover part of the job, not the shipment.")}
+<table class="t tight small">
 <tr><th>Category</th><th>Examples</th><th>Price</th><th>What it misses</th></tr>
 <tr><td>Fleet telematics</td><td>Webfleet, Samsara, Geotab, Targa / Viasat</td><td>€10–35 a vehicle a month</td><td>Where vehicles are now, not what will hit tomorrow’s plan</td></tr>
 <tr><td>Freight exchanges</td><td>TIMOCOM, Trans.eu, Teleroute</td><td>€120–200 a user a month (est.)</td><td>A free ban calendar; nothing per shipment, no strikes</td></tr>
@@ -200,7 +207,7 @@ pages.append(page("", f"""
 <tr><td>Real-time visibility</td><td>Shippeo, project44, FourKites</td><td>Enterprise, paid by shippers</td><td>Reacts once a shipment is already late</td></tr>
 <tr><td>Supply-chain risk</td><td>Everstream, Prewave, Dataminr</td><td>$20k+ a year</td><td>Watches suppliers, not roads; far too costly for 20 vehicles</td></tr>
 </table>
-<p class="foot">Desk research on public price pages, November 2026 (docs/02-competitors.md)</p>
+<p class="note">None checks an office’s own planned shipments against unplanned events ahead of time. Source: public price pages, November 2026.</p>
 """, "competition"))
 
 # 9 threat
@@ -229,7 +236,7 @@ pages.append(page("", f"""
 <tr><td>API, later</td><td>€3–5 a vehicle a month, wholesale</td><td>Software vendors</td></tr>
 </table>
 </div>
-<div class="panel sage" style="width:560px;flex:none">
+<div class="panel sage" style="width:620px;flex:none">
 <p class="k">Why an office pays · assumption</p>
 <p class="mid sage">€1,740</p>
 <p class="sm">saved a month by an office of 20 vehicles, against <b>€240</b> for zhol:</p>
@@ -312,7 +319,7 @@ pages.append(page("", f"""
 
 # 14 operations
 pages.append(page("", f"""
-{head("Operations and technology", "AI does the reading. A person approves before anything reaches a customer.")}
+{head("Operations and technology", "AI reads; a person approves every alert.")}
 <div class="steps4">
 <div class="card"><p class="n">1</p><h3>Watch</h3><p class="sm">News in Italian, French, German and English, trade and official feeds, strike calendars, mountain weather. Agents read operators’ own pages every hour.</p></div>
 <div class="card"><p class="n">2</p><h3>Check</h3><p class="sm">AI pulls out place, date, mode of transport and chance. Anything found by the radar or an agent stays “not checked by a person” until someone looks.</p></div>
@@ -355,7 +362,7 @@ def fin_svg():
     rows = [{k: (v if k == "month" else float(v)) for k, v in r.items()} for r in FIN]
     n = len(rows)
     ink, ink2, muted, line, red, sage = "#352b28", "#554b45", "#675e57", "#e2dbcc", "#a2311e", "#2f5f45"
-    grey = "#b9ad9b"
+    grey = "#948774"
     out = [f'<svg viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Inter, Arial, sans-serif">']
     # panel A
     ax0, ax1, ay0, ay1 = 110, 840, 70, 520
@@ -417,7 +424,7 @@ pages.append(page("", f"""
 
 # 17 years and funding, with the weighing scene in the corner
 pages.append(page("", f"""
-<img class="scene-corner" src="funding-scale-corner.png" alt="" style="width:600px">
+<img class="scene-corner" src="funding-scale-corner.png" alt="" style="width:700px">
 {head("Financial plan · by year and funding", "We plan to raise €155k: the lowest cash point plus a 25% reserve.")}
 <div style="width:1100px">
 <table class="t tight">
@@ -462,8 +469,9 @@ pages.append(page("", f"""
 <tr><td>ChatGPT</td><td>Research and checks</td><td class="num">€103.00</td></tr>
 <tr><td>Higgsfield</td><td>Zholdas illustrations and scenes</td><td class="num">$258.00</td></tr>
 <tr><td>Netlify</td><td>Site and radar hosting</td><td class="num">$77.98</td></tr>
-<tr class="hl"><td>Total</td><td>depending on the dollar rate</td><td class="num">≈ €520–540</td></tr>
+<tr class="hl"><td>Total</td><td>three months of software</td><td class="num">≈ €520–540</td></tr>
 </table>
+<p class="note" style="margin-top:16px">The euro total depends on the dollar rate on each payment day.</p>
 </div>
 <div class="panel" style="width:520px;flex:none"><p class="k">No other costs</p><p class="sm">No salaries, no office, no paid advertising.</p><p class="k" style="margin-top:12px">Gaps in the receipts</p><p class="sm">Netlify invoices 1, 3 and 9 and the first Higgsfield invoice are missing; two Higgsfield documents are invoices, not receipts. A March Claude receipt from another account is left out.</p></div>
 </div>
@@ -471,7 +479,7 @@ pages.append(page("", f"""
 
 # 20 risks
 pages.append(page("", f"""
-{head("Risks", "The two biggest are the price and how hard companies are to reach.")}
+{head("Risks", "Two big risks: the price, and reaching companies.")}
 <table class="t tight small">
 <tr><th>Risk</th><th>Early sign</th><th>What we do</th></tr>
 <tr class="hl"><td>Price is wrong</td><td>€12 called too much, or €8 too little to matter</td><td>Four-price questions in every interview; founding price; a plan that charges only for verified savings</td></tr>
@@ -499,10 +507,10 @@ def timeline_svg():
     from datetime import date
     d = lambda s: date.fromisoformat(s).toordinal()
     lo, hi = d("2026-12-01"), d("2028-01-01")
-    W, H = 1664, 610
-    x0, x1 = 700, 1560
+    W, H = 1664, 640
+    x0, x1 = 760, 1600
     X = lambda s: x0 + (d(s) - lo) / (hi - lo) * (x1 - x0)
-    ink, muted, line, red, bar = "#352b28", "#675e57", "#e2dbcc", "#a2311e", "#c9bfae"
+    ink, muted, line, red, bar = "#352b28", "#675e57", "#e2dbcc", "#a2311e", "#948774"
     out = [f'<svg viewBox="0 -24 {W} {H}" width="{W}" height="{H}" font-family="Inter, Arial, sans-serif">']
     months = []
     y, m = 2026, 12
@@ -521,22 +529,22 @@ def timeline_svg():
         lab = names[mm - 1]
         out.append(f'<text x="{X(s) + 6}" y="28" font-size="20" fill="{muted}">{lab}</text>')
     for i, (nm, sub, a, b, goal) in enumerate(items):
-        yc = 80 + i * 66
-        out.append(f'<text x="0" y="{yc - 2}" font-size="26" font-weight="600" fill="{ink}">{esc(nm)}</text>')
-        out.append(f'<text x="0" y="{yc + 28}" font-size="20" fill="{muted}">{esc(sub)}</text>')
+        yc = 84 + i * 70
+        out.append(f'<text x="0" y="{yc - 2}" font-size="28" font-weight="600" fill="{ink}">{esc(nm)}</text>')
+        out.append(f'<text x="0" y="{yc + 28}" font-size="21" fill="{muted}">{esc(sub)}</text>')
         c = red if goal else bar
         if a == b:
             xa = X(a)
             out.append(f'<path d="M{xa} {yc - 16} l16 16 l-16 16 l-16 -16z" fill="{c}"/>')
             out.append(f'<text x="{xa + (-26 if goal else 26)}" y="{yc + 8}" font-size="22" font-weight="{600 if goal else 400}" text-anchor="{"end" if goal else "start"}" fill="{red if goal else muted}">{"by " if a != "2026-12-01" else ""}{names[int(a[5:7]) - 1]} {int(a[8:])}</text>')
         else:
-            out.append(f'<rect x="{X(a)}" y="{yc - 14}" width="{X(b) - X(a)}" height="28" rx="14" fill="{c}"/>')
+            out.append(f'<rect x="{X(a)}" y="{yc - 16}" width="{X(b) - X(a)}" height="32" rx="16" fill="{c}"/>')
     out.append("</svg>")
     return "".join(out)
 
 
 pages.append(page("", f"""
-{head("Milestones · next 12 months", "Open the beta, prove the savings, reach 15 paying offices by the end of 2027.")}
+{head("Milestones · next 12 months", "Pilots first, then 15 paying offices in 2027.")}
 {timeline_svg()}
 """, "milestones"))
 

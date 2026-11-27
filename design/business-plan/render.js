@@ -29,6 +29,9 @@ const [, , htmlFile, outPdf, shotDir] = process.argv;
             bad.push(e.tagName + '.' + e.className + ' bottom=' + Math.round(q.bottom - r.top) + ' right=' + Math.round(q.right - r.left));
           }
         });
+        const h = s.querySelector('.head'), bd = s.querySelector('.body');
+        if (h && bd && bd.getBoundingClientRect().top < h.getBoundingClientRect().bottom) bad.push('BODY OVER HEAD');
+        if (bd && bd.scrollHeight > bd.clientHeight + 2) bad.push('BODY OVERFLOW');
         if (bad.length) res.push([i + 1, s.id, bad.slice(0, 4)]);
       });
       return res;
