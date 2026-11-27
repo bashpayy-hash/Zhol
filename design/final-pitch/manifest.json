@@ -1,5 +1,5 @@
 {
- "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market). Owner, 27 Nov 2026: «ты боишься… ставишься в правый угол… разнообразь… третий воркшоп… фундаментальный» — scenes now take different sides: cover right, problem left (mirrored), what across the top, network along the bottom, proof as a full-bleed night scene with Zholdas on the left, market map in the right corner, go-to-market from the left corner (mirrored), team in the right corner, close on the left (mirrored).",
+ "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market). Owner, 27 Nov 2026: «ты боишься… ставишься в правый угол… разнообразь… третий воркшоп… фундаментальный» — scenes now take different sides: cover right, problem left (mirrored), what across the top, network along the bottom, proof as a full-bleed night scene with Zholdas on the left, market map in the right corner, go-to-market from the left corner (mirrored), team in the right corner, close on the left (mirrored). Owner, 27 Nov 2026, on the cover: «лицевая иллюстрация, где он просто так plainly показывает часы… странноватые» — the cover is redrawn: Zholdas rides in the cab as the companion (what his name means) and points at the road ahead; he no longer poses with an object. The cover scene is on the left now, so the problem slide went back to the right.",
  "references": [
   "2a20bb83-5d2d-4aa3-be59-3efd48133274",
   "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
@@ -12,7 +12,7 @@
  },
  "scenes": {
   "cover-tunnel.jpg": {
-   "slide": "1, cover",
+   "slide": "not used since 27 Nov 2026 (replaced by cover-ride.jpg: he only posed with a pocket watch)",
    "higgsfield_image_job": "fb432bd8-18ab-4914-a628-66244894e8cf",
    "scene": "an Alpine road running into a stone tunnel portal, trucks and a freight train beside it; Zholdas on a roadside rock holds an open pocket watch (in advance) and looks at the viewer",
    "processing": "21:9 (2688x1152), a 16:9 window from x=380 so he stands right of centre; 1920x1080 JPEG q84",
@@ -73,7 +73,7 @@
    "processing": "16:9 2688x1520, centre crop to 1920x1080 JPEG q86; full-bleed, a dark veil on the right under the text"
   },
   "problem-quay-left.jpg": {
-   "slide": "2, the problem",
+   "slide": "not used since the new cover (the problem slide uses problem-quay.jpg, scene on the right)",
    "from": "problem-quay.jpg mirrored",
    "processing": "the scene on the left, the paper veil and the text column on the right"
   },
@@ -86,6 +86,13 @@
    "slide": "10, go-to-market",
    "from": "gtm-door.png mirrored",
    "processing": "grows from the bottom-left corner, 800 px wide; the funnel moved to the right"
+  },
+  "cover-ride.jpg": {
+   "slide": "1, cover",
+   "higgsfield_image_job": "b988b844-bcbd-44a3-b923-5066c21fa764",
+   "scene": "a felt freight truck on an Alpine road in three-quarter front view; Zholdas leans out of the passenger window and points at the road ahead; a freight train in the valley, a ferry on the bay",
+   "processing": "2688x1520 mirrored (as generated the truck drove on the left and he sat on the driver’s side), centre crop to 1920x1080 JPEG q88; text on the right under a paper veil that fades out towards the bottom",
+   "other_variant": "15561e5f-e651-43af-a300-7c9b37f948e3"
   }
  }
 }
