@@ -1,5 +1,5 @@
 {
- "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides.",
+ "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market).",
  "references": [
   "2a20bb83-5d2d-4aa3-be59-3efd48133274",
   "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
@@ -52,6 +52,18 @@
    "slide": "7, market",
    "higgsfield_image_job": "c78f0fd3-b2e7-4c45-a89c-fd357d16a881",
    "scene": "no mascot: a felt relief map of Europe from the corner, the Alps raised, roads, railways and ferry routes stitched in, toy trucks, a train and a ferry, a cluster of red pins in Northern Italy",
+   "processing": "transparent, 1000 px PNG in the bottom-right corner"
+  },
+  "proof-board.png": {
+   "slide": "6, proof so far",
+   "higgsfield_image_job": "d353eab8-ad0e-481c-9b65-c8027c3882e1",
+   "scene": "an old railway platform; Zholdas adds one more chalk check mark to rows of ticks on a small blackboard (we keep score of our own forecasts), looking at the board",
+   "processing": "transparent, 1000 px PNG in the bottom-right corner of the dark slide"
+  },
+  "team-bench.png": {
+   "slide": "12, team and the next 12 months",
+   "higgsfield_image_job": "b10c3729-3604-4e21-9961-6570288146c5",
+   "scene": "a small open workshop; Zholdas fits a wheel back onto a half-built toy truck at a workbench (building fast), tools on a pegboard",
    "processing": "transparent, 1000 px PNG in the bottom-right corner"
   }
  }
