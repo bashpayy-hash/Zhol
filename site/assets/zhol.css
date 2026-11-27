@@ -2048,12 +2048,12 @@ dialog.ex.closing::backdrop { animation: sheet-fade 300ms var(--ease-color) reve
 }
 /* the menu: in the middle of the free room between the logo and EN | IT, with air between the words */
 @media (min-width: 386px) and (max-width: 560px) {
-  .top .wrap > .tabs { flex: 1 1 auto; margin-left: 0; justify-content: center; gap: 26px; }
+  .top .wrap > .tabs { flex: 1 1 auto; margin-left: 0; justify-content: center; gap: 18px; }   /* 18, not 26: “Routes” and “Tratte” are longer than “Beta” (27 Nov 2026) */
   .tabs a { font-size: 15px; }
 }
 /* the narrower iPhones (360–385 px): the same menu, a little closer, still without the fade */
 @media (min-width: 360px) and (max-width: 385px) {
-  .top .wrap > .tabs { flex: 1 1 auto; margin-left: 0; justify-content: center; gap: 18px; padding-right: 0; -webkit-mask-image: none; mask-image: none; }
+  .top .wrap > .tabs { flex: 1 1 auto; margin-left: 0; justify-content: center; gap: 8px; padding-right: 0; -webkit-mask-image: none; mask-image: none; }
   .tabs a { font-size: 14px; }
 }
 

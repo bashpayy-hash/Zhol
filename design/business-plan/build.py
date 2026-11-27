@@ -157,12 +157,12 @@ pages.append(page("", f"""
 
 # 5 market
 pages.append(page("", f"""
-{head("Market · TAM, SAM, SOM", "≈ €2bn a year worldwide, ≈ €230M in Europe.")}
+{head("Market", "≈ €2bn a year worldwide, ≈ €230M in Europe.")}
 <div class="stats four paper">
 <div class="stat"><p class="k">World · TAM, estimate</p><p class="mid">≈ €2bn</p><p class="sm">Europe ≈ €230M: 6.2M EU trucks × 24.6% on international work × €144 a year. That is 16% of Europe’s transport software spend; the same share of ≈ €13.5bn worldwide gives €1.6–2.6bn</p></div>
 <div class="stat"><p class="k">From Italy · SAM</p><p class="mid">€18.6M</p><p class="sm">26,260 hauliers with 6–100 vehicles (national register, March 2025) × 1 in 5 with weekly lanes abroad, plus ≈800 forwarders: 6,050 offices × €3,080</p></div>
 <div class="stat"><p class="k">Beachhead</p><p class="mid">≈ 2,350</p><p class="sm">offices in Lombardy, Veneto, Emilia-Romagna, Piemonte and Trentino-Alto Adige; range 1,170–3,500 at 10–30%</p></div>
-<div class="stat"><p class="k">Year 3 · SOM</p><p class="mid mid red">€0.77M</p><p class="sm">250 paying offices, 220 of them in Italy: 3.6% of what we can serve</p></div>
+<div class="stat"><p class="k">First 12 months · target</p><p class="mid mid red">15 offices</p><p class="sm">paying by the end of 2027, about €35k a year: 1 in 400 of the offices we can serve</p></div>
 </div>
 <div class="panel sage"><p class="txt"><b>The weakest number is ours:</b> that 1 in 5 small firms has weekly lanes abroad. Interviews test it first. Europe’s transport software market is about €1.4bn (Berg Insight, 2025); the world figure assumes carriers elsewhere spend the same share on this layer.</p></div>
 """, "market"))
@@ -252,18 +252,13 @@ pages.append(page("", f"""
 
 # 11 unit economics
 pages.append(page("dark", f"""
-{head("Unit economics · assumptions", "Most of the cost is shared: every customer watches the same roads.")}
+{head("Unit economics · assumptions", "One check of an event serves every office on that road.")}
 <div class="stats">
-<div class="stat"><p class="big">€257</p><p class="txt">revenue per office a month; variable cost €11</p></div>
-<div class="stat"><p class="big">2.4 mo</p><p class="txt">to pay back the €600 it costs to win an office</p></div>
-<div class="stat"><p class="big">16.4×</p><p class="txt">lifetime value of €9,827 over the cost to win, at 2.5% monthly churn</p></div>
+<div class="stat"><p class="big">€257</p><p class="txt">an office pays a month: about 20 vehicles at €12</p></div>
+<div class="stat"><p class="big">€600</p><p class="txt">to win an office: visits, calls and association events</p></div>
+<div class="stat"><p class="big">2.4 mo</p><p class="txt">for an office to pay back what it cost to win</p></div>
 </div>
-<table class="t">
-<tr><th>A month</th><th class="num">At 10 offices</th><th class="num">At 100 offices</th></tr>
-<tr><td>Cost to serve: AI reading, a person’s check, WhatsApp, hosting</td><td class="num">€1,230</td><td class="num">€1,985</td></tr>
-<tr><td>Revenue</td><td class="num">€2,570</td><td class="num">€25,700</td></tr>
-<tr><td>Gross margin</td><td class="num">52%</td><td class="num">92%</td></tr>
-</table>
+<div class="box"><p class="txt"><b>Why the price can stay low.</b> A closure is read once, checked once by a person and then matched against the shipments of every office that uses that road. Serving the first 10 offices costs about €1,230 a month: AI reading €160, a person’s check €1,000, WhatsApp and hosting €70.</p></div>
 """, "unit"))
 
 # 12 go-to-market funnel
@@ -341,122 +336,110 @@ pages.append(page("", f"""
 <div class="panel sage"><p class="k">Who opened doors</p><p class="sm">Bocconi faculty in transport and supply chains, among them Oliviero Baccelli, Pietro De Giovanni, Lanfranco Senn, Francesco Gallmann and Silvia Zamboni. Their links brought 7 of 11 survey answers.</p></div>
 </div>
 <div style="width:820px;flex:none">
-<p class="k" style="margin-bottom:16px">Hiring plan · assumptions from the model</p>
+<p class="k" style="margin-bottom:16px">People in the first 12 months · assumptions</p>
 <table class="t tight small">
 <tr><th>When</th><th>Who</th><th class="num">A month</th></tr>
 <tr><td>2027</td><td>Part-time reviewer of events, ≈1 h a day</td><td class="num">in €900</td></tr>
 <tr><td>From Jul 2027</td><td>Founders’ stipends, each</td><td class="num">€1,000</td></tr>
-<tr><td>Jan, Jul 2028</td><td>Two Italian sales people, each</td><td class="num">€3,200</td></tr>
-<tr><td>Jan 2029</td><td>First engineer</td><td class="num">€4,500</td></tr>
-<tr><td>Apr 2029</td><td>Operations</td><td class="num">€2,800</td></tr>
+<tr><td>After the first 15 offices</td><td>Two Italian sales people, then an engineer</td><td class="num">after the pilots</td></tr>
 </table>
-<p class="sm" style="margin-top:14px;color:var(--muted)">Stipends rise to €2,500 in 2028 and €3,500 in 2029.</p>
+<p class="sm" style="margin-top:14px;color:var(--muted)">We plan one year at a time: later hires are sized from what the pilots measure.</p>
 </div>
 </div>
 """, "team"))
 
 
-# 16 financial chart (two panels, from docs/finplan.csv)
+# 16 financial chart (two panels, the first 12 months of docs/finplan.csv)
 def fin_svg():
     W, H = 1664, 600
-    rows = [{k: (v if k == "month" else float(v)) for k, v in r.items()} for r in FIN]
+    rows = [{k: (v if k == "month" else float(v)) for k, v in r.items()} for r in FIN][:12]
     n = len(rows)
     ink, ink2, muted, line, red, sage = "#352b28", "#554b45", "#675e57", "#e2dbcc", "#a2311e", "#2f5f45"
     grey = "#948774"
+    mon = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     out = [f'<svg viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Inter, Arial, sans-serif">']
-    # panel A
-    ax0, ax1, ay0, ay1 = 110, 840, 70, 520
-    maxA = 80000
     X = lambda i, a, b: a + i * (b - a) / (n - 1)
+    # panel A
+    ax0, ax1, ay0, ay1 = 110, 780, 70, 520
+    maxA = 6000
     YA = lambda v: ay1 - v / maxA * (ay1 - ay0)
     out.append(f'<text x="0" y="24" font-size="26" font-weight="600" fill="{ink}">Revenue and costs, a month</text>')
-    for v in range(0, maxA + 1, 20000):
-        out.append(f'<line x1="{ax0}" x2="{ax1}" y1="{YA(v)}" y2="{YA(v)}" stroke="{line if v else ink2}" stroke-width="{2 if v else 2}"/>')
+    for v in range(0, maxA + 1, 2000):
+        out.append(f'<line x1="{ax0}" x2="{ax1}" y1="{YA(v)}" y2="{YA(v)}" stroke="{line if v else ink2}" stroke-width="2"/>')
         out.append(f'<text x="{ax0 - 14}" y="{YA(v) + 8}" font-size="22" text-anchor="end" fill="{muted}">{"0" if not v else f"€{v // 1000}k"}</text>')
-    for i, r in enumerate(rows):
-        if r["month"].endswith("-01"):
-            x = X(i, ax0, ax1)
-            out.append(f'<line x1="{x}" x2="{x}" y1="{ay0}" y2="{ay1}" stroke="{line}" stroke-width="2"/>')
-            out.append(f'<text x="{x + 8}" y="{ay1 + 34}" font-size="22" fill="{muted}">{r["month"][:4]}</text>')
+    for i in range(0, n, 3):
+        x = X(i, ax0, ax1)
+        out.append(f'<line x1="{x}" x2="{x}" y1="{ay0}" y2="{ay1}" stroke="{line}" stroke-width="2"/>')
+        out.append(f'<text x="{x + 8}" y="{ay1 + 34}" font-size="22" fill="{muted}">{mon[i]}</text>')
     cost = lambda r: r["cogs"] + r["opex"]
     pc = "M" + " L".join(f'{X(i, ax0, ax1):.1f} {YA(cost(r)):.1f}' for i, r in enumerate(rows))
     pr = "M" + " L".join(f'{X(i, ax0, ax1):.1f} {YA(r["mrr"]):.1f}' for i, r in enumerate(rows))
     out.append(f'<path d="{pc}" fill="none" stroke="{grey}" stroke-width="5" stroke-linejoin="round"/>')
     out.append(f'<path d="{pr}" fill="none" stroke="{red}" stroke-width="5" stroke-linejoin="round"/>')
-    be = next(i for i in range(n) if all(rows[j]["ebitda"] >= 0 for j in range(i, n)))
-    xb = X(be, ax0, ax1)
-    out.append(f'<line x1="{xb}" x2="{xb}" y1="{ay0 + 10}" y2="{ay1}" stroke="{ink2}" stroke-width="2" stroke-dasharray="8 8"/>')
-    m = rows[be]["month"]
-    out.append(f'<text x="{xb - 12}" y="{ay0 + 34}" font-size="22" font-weight="600" text-anchor="end" fill="{ink}">Break-even, May {m[:4]}</text>')
-    out.append(f'<text x="{ax1 - 6}" y="{YA(rows[-1]["mrr"]) - 16}" font-size="22" font-weight="600" text-anchor="end" fill="{red}">Revenue</text>')
-    out.append(f'<text x="{ax1 - 6}" y="{YA(cost(rows[-1])) + 36}" font-size="22" text-anchor="end" fill="{muted}">Costs</text>')
+    out.append(f'<text x="{ax1 - 6}" y="{YA(rows[-1]["mrr"]) - 18}" font-size="22" font-weight="600" text-anchor="end" fill="{red}">Revenue, €2.9k in December</text>')
+    out.append(f'<text x="{ax1 - 6}" y="{YA(cost(rows[-1])) - 18}" font-size="22" text-anchor="end" fill="{muted}">Costs, stipends from July</text>')
     # panel B
-    bx0, bx1, by0, by1 = 1010, 1650, 70, 520
-    lowB = -160000
+    bx0, bx1, by0, by1 = 1000, 1650, 70, 520
+    lowB = -40000
     YB = lambda v: by0 + v / lowB * (by1 - by0)
     out.append(f'<text x="{bx0 - 110}" y="24" font-size="26" font-weight="600" fill="{ink}">Cash before any funding</text>')
-    for v in range(0, lowB - 1, -40000):
+    for v in range(0, lowB - 1, -10000):
         out.append(f'<line x1="{bx0}" x2="{bx1}" y1="{YB(v)}" y2="{YB(v)}" stroke="{line if v else ink2}" stroke-width="2"/>')
         out.append(f'<text x="{bx0 - 14}" y="{YB(v) + 8}" font-size="22" text-anchor="end" fill="{muted}">{"0" if not v else f"−€{-v // 1000}k"}</text>')
-    for i, r in enumerate(rows):
-        if r["month"].endswith("-01"):
-            x = X(i, bx0, bx1)
-            out.append(f'<line x1="{x}" x2="{x}" y1="{by0}" y2="{by1}" stroke="{line}" stroke-width="2"/>')
-            out.append(f'<text x="{x + 8}" y="{by1 + 34}" font-size="22" fill="{muted}">{r["month"][:4]}</text>')
-    raise_ = 155000
-    out.append(f'<line x1="{bx0}" x2="{bx1}" y1="{YB(-raise_)}" y2="{YB(-raise_)}" stroke="{sage}" stroke-width="3" stroke-dasharray="10 8"/>')
-    out.append(f'<text x="{bx0 + 10}" y="{YB(-raise_) - 14}" font-size="22" font-weight="600" fill="{sage}">The model would need ≈ €155k · nothing raised yet</text>')
+    for i in range(0, n, 3):
+        x = X(i, bx0, bx1)
+        out.append(f'<line x1="{x}" x2="{x}" y1="{by0}" y2="{by1}" stroke="{line}" stroke-width="2"/>')
+        out.append(f'<text x="{x + 8}" y="{by1 + 34}" font-size="22" fill="{muted}">{mon[i]}</text>')
     pcash = "M" + " L".join(f'{X(i, bx0, bx1):.1f} {YB(r["cash"]):.1f}' for i, r in enumerate(rows))
     out.append(f'<path d="{pcash}" fill="none" stroke="{ink2}" stroke-width="5" stroke-linejoin="round"/>')
-    il = min(range(n), key=lambda i: rows[i]["cash"])
-    lx, ly = X(il, bx0, bx1), YB(rows[il]["cash"])
+    lx, ly = X(n - 1, bx0, bx1), YB(rows[-1]["cash"])
     out.append(f'<circle cx="{lx}" cy="{ly}" r="10" fill="{red}"/>')
-    out.append(f'<text x="{lx - 18}" y="{ly + 8}" font-size="22" font-weight="600" text-anchor="end" fill="{ink}">−€{round(-rows[il]["cash"] / 1000)}k, Apr {rows[il]["month"][:4]}</text>')
+    out.append(f'<text x="{lx - 18}" y="{ly + 40}" font-size="22" font-weight="600" text-anchor="end" fill="{ink}">−€{round(-rows[-1]["cash"] / 1000)}k in December · nothing raised yet</text>')
     out.append("</svg>")
     return "".join(out)
 
 
 pages.append(page("", f"""
-{head("Financial plan 2027–2029 · a model, every figure assumed", "In our model revenue passes costs in May 2029; cash bottoms at −€124k.")}
+{head("Financial plan · the first 12 months, a model", "In our model the first year brings in about €18k and costs about €49k.")}
 {fin_svg()}
-<p class="foot">Model: scripts/finplan.py, monthly table docs/finplan.csv. Every figure is an assumption, to be replaced with pilot data.</p>
+<p class="foot">Model: scripts/finplan.py, monthly table docs/finplan.csv. Every figure is an assumption, to be replaced with pilot data. We plan one year at a time.</p>
 """, "finchart"))
 
 # 17 years and funding, with the weighing scene in the corner
 pages.append(page("", f"""
 <img class="scene-corner" src="funding-scale-corner.png" alt="" style="width:700px">
-{head("Financial plan · by year and funding", "We have not raised yet. When we do, the money goes to four things.")}
+{head("Financial plan · by quarter and funding", "We have not raised yet. When we do, the money goes to four things.")}
 <div style="width:1100px">
 <table class="t tight">
-<tr><th>Year</th><th class="num">Offices, end</th><th class="num">ARR, end</th><th class="num">Revenue</th><th class="num">Gross margin</th><th class="num">EBITDA</th></tr>
-<tr><td>2027</td><td class="num">15</td><td class="num">€34.6k</td><td class="num">€17.7k</td><td class="num">18%</td><td class="num">−€31.2k</td></tr>
-<tr><td>2028</td><td class="num">80</td><td class="num">€246.7k</td><td class="num">€155.4k</td><td class="num">87%</td><td class="num">−€69.6k</td></tr>
-<tr class="hl"><td>2029</td><td class="num">250</td><td class="num">€771.0k</td><td class="num">€543.9k</td><td class="num">93%</td><td class="num">+€75.3k</td></tr>
+<tr><th>2027</th><th class="num">Offices, end</th><th class="num">Revenue</th><th class="num">Costs</th><th class="num">Cash, end</th></tr>
+<tr><td>Jan–Mar</td><td class="num">4</td><td class="num">€1.4k</td><td class="num">€9.4k</td><td class="num">−€6.1k</td></tr>
+<tr><td>Apr–Jun</td><td class="num">8</td><td class="num">€3.3k</td><td class="num">€7.0k</td><td class="num">−€9.9k</td></tr>
+<tr><td>Jul–Sep</td><td class="num">12</td><td class="num">€5.2k</td><td class="num">€16.2k</td><td class="num">−€20.8k</td></tr>
+<tr class="hl"><td>Oct–Dec</td><td class="num">15</td><td class="num">€7.8k</td><td class="num">€16.3k</td><td class="num">−€29.2k</td></tr>
 </table>
 </div>
 <div class="row" style="width:1180px">
 <div class="tile grow"><p class="k">1 · Carriers</p><p class="sm">Visits, associations and trade fairs to win the first offices.</p></div>
-<div class="tile grow"><p class="k">2 · Native sales</p><p class="sm">Italians whom carriers trust, speaking their language.</p></div>
-<div class="tile grow"><p class="k">3 · Service</p><p class="sm">The radar, a person’s check of every alert, WhatsApp, hosting.</p></div>
-<div class="tile grow"><p class="k">4 · Security</p><p class="sm">Specialists keep what carriers share safe and anonymous.</p></div>
+<div class="tile grow"><p class="k">2 · Native sales</p><p class="sm">Italians whom carriers trust, in their language.</p></div>
+<div class="tile grow"><p class="k">3 · Service</p><p class="sm">The radar, a person’s check of alerts, hosting.</p></div>
+<div class="tile grow"><p class="k">4 · Security</p><p class="sm">Specialists keep carriers’ shared data safe.</p></div>
 </div>
-<p class="note" style="width:1100px"><b>How much:</b> the model would need about €155k, the lowest cash point plus a 25% reserve; the real round is sized after the pilots. The 2027 margin is low because a person’s check costs the same for 3 offices as for 15.</p>
+<p class="note" style="width:1100px"><b>How much:</b> in the model, year one costs about €30k more than it earns. The real round is sized after the pilots.</p>
 """, "funding"))
 
 # 18 sensitivity
 pages.append(page("", f"""
-{head("Financial plan · what if we are wrong", "Price and the cost to win an office matter most.")}
+{head("Financial plan · what if we are wrong", "In year one, offices won and the cost to win them matter most.")}
 <table class="t tight">
-<tr><th>Scenario</th><th class="num">Break-even</th><th class="num">Money needed</th><th class="num">ARR, end 2029</th><th class="num">EBITDA 2029</th></tr>
-<tr class="hl"><td>Base case</td><td class="num">May 2029</td><td class="num">€155k</td><td class="num">€771k</td><td class="num">+€75k</td></tr>
-<tr><td>Price −33%, €8 a vehicle</td><td class="num">Nov 2029</td><td class="num">€325k</td><td class="num">€514k</td><td class="num">−€104k</td></tr>
-<tr><td>Price +25%, €15 a vehicle</td><td class="num">Mar 2029</td><td class="num">€95k</td><td class="num">€964k</td><td class="num">+€210k</td></tr>
-<tr><td>Churn 4% a month</td><td class="num">May 2029</td><td class="num">€165k</td><td class="num">€771k</td><td class="num">+€65k</td></tr>
-<tr><td>Churn 1.5% a month</td><td class="num">May 2029</td><td class="num">€150k</td><td class="num">€771k</td><td class="num">+€82k</td></tr>
-<tr><td>30% fewer offices</td><td class="num">Sep 2029</td><td class="num">€250k</td><td class="num">€540k</td><td class="num">−€41k</td></tr>
-<tr><td>€1,200 to win an office</td><td class="num">Aug 2029</td><td class="num">€310k</td><td class="num">€771k</td><td class="num">−€56k</td></tr>
+<tr><th>Scenario, first 12 months</th><th class="num">Offices, end</th><th class="num">A year of revenue, end</th><th class="num">Costs</th><th class="num">Cash, end</th></tr>
+<tr class="hl"><td>Base case</td><td class="num">15</td><td class="num">€34.6k</td><td class="num">€48.9k</td><td class="num">−€29.2k</td></tr>
+<tr><td>Price −33%, €8 a vehicle</td><td class="num">15</td><td class="num">€29.5k</td><td class="num">€48.9k</td><td class="num">−€30.4k</td></tr>
+<tr><td>Price +25%, €15 a vehicle</td><td class="num">15</td><td class="num">€38.5k</td><td class="num">€48.9k</td><td class="num">−€28.4k</td></tr>
+<tr><td>Churn 4% a month</td><td class="num">15</td><td class="num">€34.6k</td><td class="num">€49.8k</td><td class="num">−€29.6k</td></tr>
+<tr><td>30% fewer offices</td><td class="num">10</td><td class="num">€19.2k</td><td class="num">€45.1k</td><td class="num">−€32.2k</td></tr>
+<tr><td>€1,200 to win an office</td><td class="num">15</td><td class="num">€34.6k</td><td class="num">€59.2k</td><td class="num">−€39.6k</td></tr>
 </table>
-<p class="txt">At €8 a vehicle or €1,200 per office the model would need <b>2–2.5 times the money</b>. So interviews test the price first, and associations, which make an office cheaper to win, come early.</p>
+<p class="txt">Winning fewer offices nearly halves the revenue; a doubled cost to win one adds <b>about €10k</b> to the year. So introductions and associations, which make an office cheaper to win, come first, and interviews test the price.</p>
 """, "sensitivity"))
 
 # 19 spent so far
@@ -567,7 +550,7 @@ pages.append(page("", f"""
 <div class="card"><p class="k">Our models</p><ul class="l">
 <li>docs/18-model.md: the forecast model</li>
 <li>docs/03-business-model.md: savings and unit economics</li>
-<li>docs/13-financial-plan.md and scripts/finplan.py: the 36-month plan</li>
+<li>docs/13-financial-plan.md and scripts/finplan.py: the financial model</li>
 <li>docs/02-competitors.md: prices of the others</li></ul></div>
 </div>
 """, "sources"))

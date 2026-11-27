@@ -71,3 +71,15 @@ def test_who_we_are_names_estimate_advance_and_real_time():
     for r in rows:
         m = r["message"]
         assert any(all(w in m for w in ws) for ws in three.values()), r["id"]
+
+
+def test_site_shows_one_year_and_no_margin():
+    """Owner, 27 Nov 2026: «убери gross margin… компаниям не нужно знать»; «3 года… это ж много… давай потихоньку».
+    The public site shows the price and the first 12 months; margins and the three-year model stay in docs/."""
+    banned = re.compile(r"gross margin|margine lordo|bruttomarge|year 3\b|terzo anno|36-month|36 mesi|three-year plan", re.I)
+    files = [*sorted((ROOT / "site").rglob("*.html")), *sorted((ROOT / "site" / "assets").glob("*.js")),
+             *sorted((ROOT / "site" / "data").glob("*.json"))]
+    bad = {str(f.relative_to(ROOT)): sorted({m.group(0).lower() for m in banned.finditer(f.read_text(encoding="utf-8"))})
+           for f in files if banned.search(f.read_text(encoding="utf-8"))}
+    assert not bad, f"margin or a three-year horizon is back on the public site: {bad}"
+    assert not (ROOT / "site" / "data" / "finplan.json").exists(), "the financial model belongs in docs/, not on the public site"

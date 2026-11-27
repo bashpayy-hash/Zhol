@@ -59,7 +59,7 @@ T = {
     "en": dict(
         path="results.html", home="/", lang_attr="en", title="zhol · Survey results, November 2026",
         desc="What 11 people who know European freight told us about shipments that stop, what one stop costs and a fair price, with what we changed because of it.",
-        nav='<a href="/radar">Radar</a><a href="/beta">Beta</a><a href="/answers/">Answers</a>',
+        nav='<a href="/radar">Radar</a><a href="/risk-report">Routes</a><a href="/answers/">Answers</a>',
         sw='<a href="/results" lang="en" hreflang="en" aria-current="true">EN</a><a href="/it/risultati" lang="it" hreflang="it">IT</a>',
         logo="zhol, home page", sections="Sections",
         kicker="Survey results · {range}",
@@ -117,7 +117,7 @@ T = {
     "it": dict(
         path="it/risultati.html", home="/it/", lang_attr="it", title="zhol · Risultati del sondaggio, novembre 2026",
         desc="Cosa ci hanno detto 11 persone che conoscono il trasporto merci in Europa su spedizioni che si fermano, quanto costa un fermo e un prezzo giusto, e cosa abbiamo cambiato.",
-        nav='<a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/risposte/">Risposte</a>',
+        nav='<a href="/it/radar">Radar</a><a href="/it/rapporto">Tratte</a><a href="/it/risposte/">Risposte</a>',
         sw='<a href="/results" lang="en" hreflang="en">EN</a><a href="/it/risultati" lang="it" hreflang="it" aria-current="true">IT</a>',
         logo="zhol, pagina iniziale", sections="Sezioni",
         kicker="Risultati del sondaggio · {range}",

@@ -1,5 +1,5 @@
 {
- "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market).",
+ "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market). Owner, 27 Nov 2026: «ты боишься… ставишься в правый угол… разнообразь… третий воркшоп… фундаментальный» — scenes now take different sides: cover right, problem left (mirrored), what across the top, network along the bottom, proof as a full-bleed night scene with Zholdas on the left, market map in the right corner, go-to-market from the left corner (mirrored), team in the right corner, close on the left (mirrored).",
  "references": [
   "2a20bb83-5d2d-4aa3-be59-3efd48133274",
   "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
@@ -55,7 +55,7 @@
    "processing": "transparent, 1000 px PNG in the bottom-right corner"
   },
   "proof-board.png": {
-   "slide": "6, proof so far",
+   "slide": "not used since 27 Nov 2026 (replaced by proof-night.jpg)",
    "higgsfield_image_job": "d353eab8-ad0e-481c-9b65-c8027c3882e1",
    "scene": "an old railway platform; Zholdas adds one more chalk check mark to rows of ticks on a small blackboard (we keep score of our own forecasts), looking at the board",
    "processing": "transparent, 1000 px PNG in the bottom-right corner of the dark slide"
@@ -65,6 +65,27 @@
    "higgsfield_image_job": "b10c3729-3604-4e21-9961-6570288146c5",
    "scene": "a small open workshop; Zholdas fits a wheel back onto a half-built toy truck at a workbench (building fast), tools on a pegboard",
    "processing": "transparent, 1000 px PNG in the bottom-right corner"
+  },
+  "proof-night.jpg": {
+   "slide": "6, proof so far",
+   "higgsfield_image_job": "e00f85dc-bd50-4a9c-9387-8179d5abc88a",
+   "scene": "a station platform at night under one warm lamp; Zholdas, seen from behind in three-quarter view, chalks one more tally stroke on a blackboard, a freight train waits behind him; the right two thirds are dark and calm for the numbers",
+   "processing": "16:9 2688x1520, centre crop to 1920x1080 JPEG q86; full-bleed, a dark veil on the right under the text"
+  },
+  "problem-quay-left.jpg": {
+   "slide": "2, the problem",
+   "from": "problem-quay.jpg mirrored",
+   "processing": "the scene on the left, the paper veil and the text column on the right"
+  },
+  "close-vineyard-left.jpg": {
+   "slide": "13, our ask",
+   "from": "close-vineyard.jpg mirrored",
+   "processing": "Zholdas on the left, the ask and the QR on the right: the mirror of the cover"
+  },
+  "gtm-door-left.png": {
+   "slide": "10, go-to-market",
+   "from": "gtm-door.png mirrored",
+   "processing": "grows from the bottom-left corner, 800 px wide; the funnel moved to the right"
   }
  }
 }

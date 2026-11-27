@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1] / "site"
 S = {
     "it": dict(path="it/rapporto.html", home="/it/", title="zhol · Rapporto rischi per le vostre tratte",
                desc="Divieti, chiusure e scioperi delle prossime quattro settimane sulle vostre tratte, su strada, rotaia e mare: probabilità, fonte, costo stimato e quando decidere.",
-               nav='<a href="/it/radar">Radar</a><a href="/it/beta">Beta</a><a href="/it/risposte/">Risposte</a>',
+               nav='<a href="/it/radar">Radar</a><a href="/it/rapporto" aria-current="page">Tratte</a><a href="/it/risposte/">Risposte</a>',
                sw='<a href="/risk-report" lang="en" hreflang="en">EN</a><a href="/it/rapporto" lang="it" hreflang="it" aria-current="true">IT</a>',
                logo="zhol, pagina iniziale", sections="Sezioni", chips="Tratta",
                kicker="Rapporto rischi zhol", h1="Le prossime quattro settimane sulle vostre tratte", loading="Carico il radar…",
@@ -27,7 +27,7 @@ S = {
                foot_links='<a href="/it/radar">Radar</a> · <a href="/it/bollettino">Bollettino</a> · <a href="/it/verifica">Verifica</a> · <a href="/it/beta">Beta</a>'),
     "en": dict(path="risk-report.html", home="/", title="zhol · Risk report for your lanes",
                desc="The bans, closures and strikes of the next four weeks on your lanes, by road, rail and sea: the chance, the source, the estimated cost and when to decide.",
-               nav='<a href="/radar">Radar</a><a href="/beta">Beta</a><a href="/answers/">Answers</a>',
+               nav='<a href="/radar">Radar</a><a href="/risk-report" aria-current="page">Routes</a><a href="/answers/">Answers</a>',
                sw='<a href="/risk-report" lang="en" hreflang="en" aria-current="true">EN</a><a href="/it/rapporto" lang="it" hreflang="it">IT</a>',
                logo="zhol, home page", sections="Sections", chips="Corridor",
                kicker="zhol risk report", h1="The next four weeks on your lanes", loading="Loading the radar…",

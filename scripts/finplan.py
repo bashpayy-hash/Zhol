@@ -1,9 +1,12 @@
 """36-month financial plan for zhol: revenue, costs, margins, break-even, funding need.
 
-    python scripts/finplan.py            writes docs/finplan.csv, site/data/finplan.json, site/assets/finplan.svg
+    python scripts/finplan.py            writes docs/finplan.csv, docs/finplan.json, docs/finplan.svg
 
 Every number is an assumption, listed in ASSUMPTIONS and in docs/13-financial-plan.md. The interviews and
 pilots replace them (price, churn, cost of review, acquisition cost); then this script is run again.
+
+The outputs stay in docs/, off the public site (owner, 27 Nov 2026): the site, the pitch and the business plan
+show the price and the first 12 months only, without margins or a three-year horizon.
 """
 from __future__ import annotations
 
@@ -196,8 +199,8 @@ def main() -> None:
                                                          "assumptions": {k: v for k, v in ASSUMPTIONS.items() if k not in ("founder_pay", "hires")},
                                                          "hires": [{"from": d.isoformat(), "role": n, "cost": c} for d, n, c in ASSUMPTIONS["hires"]],
                                                          "founder_pay": [{"from": d.isoformat(), "each": v} for d, v in ASSUMPTIONS["founder_pay"]]}
-    (ROOT / "site" / "data" / "finplan.json").write_text(json.dumps(out, ensure_ascii=False, default=str), encoding="utf-8")
-    (ROOT / "site" / "assets" / "finplan.svg").write_text(chart(r), encoding="utf-8")
+    (ROOT / "docs" / "finplan.json").write_text(json.dumps(out, ensure_ascii=False, default=str), encoding="utf-8")
+    (ROOT / "docs" / "finplan.svg").write_text(chart(r), encoding="utf-8")
     print(json.dumps({k: out[k] for k in ("break_even", "cash_low", "cash_low_month", "funding_need", "tranches", "unit", "new_per_month")}, indent=1))
     for y, v in r["years"].items():
         print(y, v)
