@@ -1,0 +1,26 @@
+{
+ "what": "The zhol business plan as a PDF in the style of the TEF pitch deck (owner, 27 Nov 2026: «это все должно быть в PDF формате, еще в стиле презентации питча»). 23 pages of 1920x1080, Inter, the pitch deck colours (deck.css). Text source: the Claude Docs business plan https://claude.ai/artifact/XLk1YGkmD8Bb2YrKakXgdk. Output: docs/zhol-business-plan-2026-11.pdf. Build: python3 build.py, then node render.js bizplan.html out.pdf [shots-dir].",
+ "references": ["2a20bb83-5d2d-4aa3-be59-3efd48133274", "619e25b1-eeb6-4f66-831e-99b84ccde4b5"],
+ "settings": {"model": "gpt_image_2_6", "quality": "high", "resolution": "2k", "medias": "both references as image_references"},
+ "scenes": {
+  "cover-viaduct.jpg": {
+   "page": "1, cover",
+   "higgsfield_image_job": "434629c5-96c8-4aa9-9a2e-f0a5e890e3bf",
+   "outpaint_job": "08a3e7d6-148f-424b-a896-c8d3f9d8ea17",
+   "scene": "a stone railway viaduct over a felt valley with a container train, a winding road with a truck below; Zholdas on a grassy knoll by a surveyor's tripod, a rolled plan under his arm, looks at the viewer",
+   "processing": "outpainted to 21:9 (3168x1344), the left 16:9 window kept (2389x1344) so he stands right of centre and the text has the calm left; 1920x1080 JPEG q84"
+  },
+  "funding-scale-corner.png": {
+   "page": "17, funding",
+   "higgsfield_image_job": "b2419604-b156-4c22-a8c2-843af93799e7",
+   "scene": "a cobbled warehouse yard growing from the right and bottom edges, transparent elsewhere; Zholdas slides the brass weight of an old platform scale with a freight crate on it",
+   "processing": "cropped to 2100x1560 so the cobbles run out through the right and bottom edges, 900 px wide PNG"
+  },
+  "close-ferry-deck.jpg": {
+   "page": "23, thank you",
+   "higgsfield_image_job": "c2ed6ead-9ca1-4c79-9006-df4d0c8ef03d",
+   "scene": "the open deck of a cargo ferry on a calm strait in morning light, trucks on deck, a harbour town and a coastal freight train across the water; Zholdas leans on the railing and waves to the viewer",
+   "processing": "2688x1520 resized to 1920x1080 JPEG q84"
+  }
+ }
+}
