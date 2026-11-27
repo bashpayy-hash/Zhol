@@ -215,12 +215,33 @@
   "start": "2026-11-20",
   "title": "Port or ferry strike on the Strait of Messina"
  },
+ "weather|IT-Calabria|2026-11-26": {
+  "happened": true,
+  "how": "ongoing",
+  "resolved_on": "2026-11-27",
+  "start": "2026-11-26",
+  "title": "Rail traffic slowed by severe weather near Bagnara on the Tyrrhenian line."
+ },
+ "weather|brenner|2026-11-26": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-27",
+  "start": "2026-11-26",
+  "title": "Snow at the Brenner Pass"
+ },
  "weather|frejus|2026-11-23": {
   "happened": null,
   "how": "open",
   "resolved_on": "2026-11-24",
   "start": "2026-11-23",
   "title": "Snow at the Fréjus road tunnel"
+ },
+ "weather|karawanken|2026-11-26": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-27",
+  "start": "2026-11-26",
+  "title": "Snow at the Karawanken tunnel"
  },
  "weather|messina_strait|2026-11-18": {
   "happened": null,
@@ -250,6 +271,20 @@
   "start": "2026-11-23",
   "title": "Strong wind on the Strait of Messina"
  },
+ "weather|messina_strait|2026-11-25": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-27",
+  "start": "2026-11-25",
+  "title": "Strong wind on the Strait of Messina"
+ },
+ "weather|messina_strait|2026-11-26": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-27",
+  "start": "2026-11-26",
+  "title": "Strong wind on the Strait of Messina"
+ },
  "weather|montblanc|2026-11-18": {
   "happened": null,
   "how": "open",
@@ -277,6 +312,20 @@
   "resolved_on": "2026-11-26",
   "start": "2026-11-25",
   "title": "Snow at the San Bernardino tunnel"
+ },
+ "weather|san_bernardino|2026-11-26": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-27",
+  "start": "2026-11-26",
+  "title": "Snow at the San Bernardino tunnel"
+ },
+ "weather|tarvisio|2026-11-26": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-27",
+  "start": "2026-11-26",
+  "title": "Snow at Tarvisio"
  },
  "weather|tauern|2026-11-24": {
   "happened": null,
