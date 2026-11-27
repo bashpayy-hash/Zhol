@@ -40,6 +40,21 @@ Two independent methods, which converge:
 
 **TAM ≈ €230 M per year.**
 
+### TAM — worldwide (estimate, added 27 Nov 2026)
+
+The owner asked for the market worldwide, with Europe named beside it. A reliable count of trucks in use worldwide was not
+found (published figures are sales or production, or compilations without a primary source), so the world is scaled from
+Europe with the transport-software market, where estimates exist for both:
+
+| Step | Value | Source |
+|---|---|---|
+| Our European TAM as a share of European TMS spend | €230 M ÷ €1.4 bn ≈ **16%** | Berg Insight (Aug 2025), §1.3 below |
+| Global TMS market, 2025 | **$11.8–18.7 bn**, most estimates $15–16 bn ≈ **€13.5 bn** (at about €0.87 to the dollar) | IMARC, Global Market Insights, TechSci, Research and Markets, Fortune Business Insights (2025 reports) |
+| Same share worldwide | 16% × €10.3–16.3 bn | **≈ €2 bn a year (range €1.6–2.6 bn)** |
+
+This is an estimate that assumes carriers elsewhere spend on this layer in the same proportion to their transport software
+as in Europe. In the pitch it reads «≈ €2bn a year worldwide; Europe alone ≈ €230M».
+
 ### SAM — Italy, the segment we can serve today
 
 | Step | Value |
