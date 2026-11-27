@@ -113,12 +113,12 @@ pages.append(page("", """
 
 # 2 summary
 pages.append(page("dark", f"""
-{head("The plan on one page", "Start with Northern Italy’s traffic offices, break even in May 2029.")}
+{head("The plan on one page", "Start with Northern Italy’s traffic offices, then grow across Europe.")}
 <div class="stats four">
-<div class="stat"><p class="big s">≈2,350</p><p class="txt">traffic offices in our first market, Northern Italy</p></div>
+<div class="stat"><p class="big s">≈ €2bn</p><p class="txt">a year worldwide, our estimate; Europe alone is about €230M</p></div>
+<div class="stat"><p class="big s">≈ 2,350</p><p class="txt">traffic offices in our first market, Northern Italy</p></div>
 <div class="stat"><p class="big s">€12</p><p class="txt">a vehicle a month, about 14% of what an office saves</p></div>
-<div class="stat"><p class="big s">May 2029</p><p class="txt">monthly revenue passes costs, in our model</p></div>
-<div class="stat"><p class="big s">€155k</p><p class="txt">to raise in two tranches, 2027 and early 2028</p></div>
+<div class="stat"><p class="big s">€0</p><p class="txt">raised so far; the first round is sized after the pilots</p></div>
 </div>
 <div class="box"><p class="txt"><b>zhol</b> is an AI platform that estimates whether a shipment, by road, rail or sea, risks a ban, a closure or a strike and what it would cost, warns the people who plan it in advance and updates them in real time as things change.</p></div>
 <p class="note"><b style="color:var(--on-dark)">Measured:</b> survey answers, the forecast log, letters sent and answered, money spent. <b style="color:var(--on-dark)">Assumed:</b> market shares, price, costs and growth, to be tested in pilots.</p>
@@ -157,14 +157,14 @@ pages.append(page("", f"""
 
 # 5 market
 pages.append(page("", f"""
-{head("Market", "About €230M a year in Europe. We start with what we can serve from Italy.")}
+{head("Market · TAM, SAM, SOM", "≈ €2bn a year worldwide, ≈ €230M in Europe.")}
 <div class="stats four paper">
-<div class="stat"><p class="k">Europe · TAM</p><p class="mid">≈ €230M</p><p class="sm">6.2M EU trucks × 24.6% on international work × €144 a year ≈ €220M; about 78,000 traffic offices × ≈€3,000 ≈ €235M</p></div>
+<div class="stat"><p class="k">World · TAM, estimate</p><p class="mid">≈ €2bn</p><p class="sm">Europe ≈ €230M: 6.2M EU trucks × 24.6% on international work × €144 a year. That is 16% of Europe’s transport software spend; the same share of ≈ €13.5bn worldwide gives €1.6–2.6bn</p></div>
 <div class="stat"><p class="k">From Italy · SAM</p><p class="mid">€18.6M</p><p class="sm">26,260 hauliers with 6–100 vehicles (national register, March 2025) × 1 in 5 with weekly lanes abroad, plus ≈800 forwarders: 6,050 offices × €3,080</p></div>
 <div class="stat"><p class="k">Beachhead</p><p class="mid">≈ 2,350</p><p class="sm">offices in Lombardy, Veneto, Emilia-Romagna, Piemonte and Trentino-Alto Adige; range 1,170–3,500 at 10–30%</p></div>
 <div class="stat"><p class="k">Year 3 · SOM</p><p class="mid mid red">€0.77M</p><p class="sm">250 paying offices, 220 of them in Italy: 3.6% of what we can serve</p></div>
 </div>
-<div class="panel sage"><p class="txt"><b>The weakest number is ours:</b> that 1 in 5 small firms has weekly lanes abroad. Interviews test it first. Cross-check: Europe’s transport software market is about €1.4bn (Berg Insight, 2025); zhol is an add-on worth about 16% of it.</p></div>
+<div class="panel sage"><p class="txt"><b>The weakest number is ours:</b> that 1 in 5 small firms has weekly lanes abroad. Interviews test it first. Europe’s transport software market is about €1.4bn (Berg Insight, 2025); the world figure assumes carriers elsewhere spend the same share on this layer.</p></div>
 """, "market"))
 
 # 6 evidence: survey and outreach
@@ -178,7 +178,7 @@ pages.append(page("", f"""
 </div>
 <div class="row">
 <div class="panel grow"><p class="k">What stops them</p><p class="txt">Software they already use <b>3</b> · habits <b>3</b> · trust <b>2</b> · price <b>1</b></p></div>
-<div class="panel sage grow"><p class="k">Reaching them</p><p class="txt"><b>66 letters</b> to companies, <b>2 replies</b>. <b>8 of 9</b> professors replied, and their links brought <b>7 of 11</b> answers.</p></div>
+<div class="panel sage grow"><p class="k">Reaching them</p><p class="txt"><b>66 letters</b> to companies, <b>2 replies</b>. <b>8 of 9</b> professors replied; their links brought <b>7 of 11</b> answers, from experts, not offices.</p></div>
 </div>
 <p class="note">11 answers since 9 November 2026: 2 from companies, 9 from people who know the field. Not yet proven: no paying customer, no pilot on real loads, no answer from an office in our beachhead. Source: zhol.live/results.</p>
 """, "survey"))
@@ -187,12 +187,12 @@ pages.append(page("", f"""
 pages.append(page("dark", f"""
 {head("Evidence · forecast log, measured", "We keep score of our own forecasts.")}
 <div class="stats">
-<div class="stat"><p class="big">86</p><p class="txt">events tracked in 14 days, one snapshot a day, never edited after the fact</p></div>
-<div class="stat"><p class="big">25 days</p><p class="txt">median notice before a strike began (16 strikes)</p></div>
-<div class="stat"><p class="big">4 days</p><p class="txt">median notice for storms and snow (23 events)</p></div>
+<div class="stat"><p class="big">88</p><p class="txt">events tracked in 15 days, one snapshot a day, never edited after the fact</p></div>
+<div class="stat"><p class="big">24 days</p><p class="txt">median notice before a strike began (17 strikes)</p></div>
+<div class="stat"><p class="big">4.5 days</p><p class="txt">median notice for storms and snow (24 events)</p></div>
 </div>
 <div class="box"><p class="txt"><b>First scored forecasts.</b> Italy’s strikes of 20–22 November were forecast at 94%, 75%, 64% and 59%, and all four happened: Brier score 0.09, where 0.25 is a coin toss. Four is too few: we call the radar calibrated after 30.</p></div>
-<p class="foot">Source: zhol forecast log, 13–26 November 2026 (data/radar_log, scored by zhol/radar/verify.py)</p>
+<p class="foot">Source: zhol forecast log, 13–27 November 2026 (data/radar_log, scored by zhol/radar/verify.py)</p>
 """, "radar"))
 
 # 8 competition
@@ -312,7 +312,7 @@ pages.append(page("", f"""
 {crow}
 </table>
 <div class="row">
-<div class="panel sage grow"><p class="k">Learned this month</p><p class="sm">66 letters, 2 replies; 7 of 11 answers through professors. Next: warm introductions through faculty, TEF and associations, and visits in person.</p></div>
+<div class="panel sage grow"><p class="k">Learned this month</p><p class="sm">66 letters, 2 replies; professors brought experts, not offices. Next: introductions by people who work with carriers, then TEF and associations, and visits in person.</p></div>
 <div class="panel grow"><p class="k">Expansion path</p><p class="sm"><b>1</b> Italy, Alpine lanes → <b>2</b> Italy South–North, blockades and ferries → <b>3</b> Austrian, German, Slovenian hauliers → <b>4</b> forwarders, per shipment → <b>5</b> an API across Europe</p></div>
 </div>
 """, "channels"))
@@ -405,7 +405,7 @@ def fin_svg():
             out.append(f'<text x="{x + 8}" y="{by1 + 34}" font-size="22" fill="{muted}">{r["month"][:4]}</text>')
     raise_ = 155000
     out.append(f'<line x1="{bx0}" x2="{bx1}" y1="{YB(-raise_)}" y2="{YB(-raise_)}" stroke="{sage}" stroke-width="3" stroke-dasharray="10 8"/>')
-    out.append(f'<text x="{bx0 + 10}" y="{YB(-raise_) - 14}" font-size="22" font-weight="600" fill="{sage}">Planned funding €155k</text>')
+    out.append(f'<text x="{bx0 + 10}" y="{YB(-raise_) - 14}" font-size="22" font-weight="600" fill="{sage}">The model would need ≈ €155k · nothing raised yet</text>')
     pcash = "M" + " L".join(f'{X(i, bx0, bx1):.1f} {YB(r["cash"]):.1f}' for i, r in enumerate(rows))
     out.append(f'<path d="{pcash}" fill="none" stroke="{ink2}" stroke-width="5" stroke-linejoin="round"/>')
     il = min(range(n), key=lambda i: rows[i]["cash"])
@@ -417,7 +417,7 @@ def fin_svg():
 
 
 pages.append(page("", f"""
-{head("Financial plan 2027–2029 · assumptions", "Revenue passes costs in May 2029; cash bottoms at −€124k.")}
+{head("Financial plan 2027–2029 · a model, every figure assumed", "In our model revenue passes costs in May 2029; cash bottoms at −€124k.")}
 {fin_svg()}
 <p class="foot">Model: scripts/finplan.py, monthly table docs/finplan.csv. Every figure is an assumption, to be replaced with pilot data.</p>
 """, "finchart"))
@@ -425,7 +425,7 @@ pages.append(page("", f"""
 # 17 years and funding, with the weighing scene in the corner
 pages.append(page("", f"""
 <img class="scene-corner" src="funding-scale-corner.png" alt="" style="width:700px">
-{head("Financial plan · by year and funding", "We plan to raise €155k: the lowest cash point plus a 25% reserve.")}
+{head("Financial plan · by year and funding", "We have not raised yet. When we do, the money goes to four things.")}
 <div style="width:1100px">
 <table class="t tight">
 <tr><th>Year</th><th class="num">Offices, end</th><th class="num">ARR, end</th><th class="num">Revenue</th><th class="num">Gross margin</th><th class="num">EBITDA</th></tr>
@@ -435,11 +435,12 @@ pages.append(page("", f"""
 </table>
 </div>
 <div class="row" style="width:1180px">
-<div class="tile grow"><p class="k">2027 · €40k</p><p class="sm">Pilots, the first 15 offices, founders’ stipends from July.</p></div>
-<div class="tile grow"><p class="k">Early 2028 · €115k</p><p class="sm">Two Italian sales hires and the first engineer.</p></div>
-<div class="tile grow"><p class="k">Where from</p><p class="sm">Bocconi’s accelerator and Italian start-up programmes once incorporated, then pre-seed after 10 paying offices.</p></div>
+<div class="tile grow"><p class="k">1 · Carriers</p><p class="sm">Visits, associations and trade fairs to win the first offices.</p></div>
+<div class="tile grow"><p class="k">2 · Native sales</p><p class="sm">Italians whom carriers trust, speaking their language.</p></div>
+<div class="tile grow"><p class="k">3 · Service</p><p class="sm">The radar, a person’s check of every alert, WhatsApp, hosting.</p></div>
+<div class="tile grow"><p class="k">4 · Security</p><p class="sm">Specialists keep what carriers share safe and anonymous.</p></div>
 </div>
-<p class="note" style="width:1100px">The 2027 margin is low because a person’s check costs about the same for 3 offices as for 15; with more offices on the same roads it rises to 87% and 93%.</p>
+<p class="note" style="width:1100px"><b>How much:</b> the model would need about €155k, the lowest cash point plus a 25% reserve; the real round is sized after the pilots. The 2027 margin is low because a person’s check costs the same for 3 offices as for 15.</p>
 """, "funding"))
 
 # 18 sensitivity
@@ -455,7 +456,7 @@ pages.append(page("", f"""
 <tr><td>30% fewer offices</td><td class="num">Sep 2029</td><td class="num">€250k</td><td class="num">€540k</td><td class="num">−€41k</td></tr>
 <tr><td>€1,200 to win an office</td><td class="num">Aug 2029</td><td class="num">€310k</td><td class="num">€771k</td><td class="num">−€56k</td></tr>
 </table>
-<p class="txt">At €8 a vehicle or €1,200 per office we would need <b>2–2.5 times the money</b>. So interviews test the price first, and associations, which make an office cheaper to win, come early.</p>
+<p class="txt">At €8 a vehicle or €1,200 per office the model would need <b>2–2.5 times the money</b>. So interviews test the price first, and associations, which make an office cheaper to win, come early.</p>
 """, "sensitivity"))
 
 # 19 spent so far
@@ -483,7 +484,7 @@ pages.append(page("", f"""
 <table class="t tight small">
 <tr><th>Risk</th><th>Early sign</th><th>What we do</th></tr>
 <tr class="hl"><td>Price is wrong</td><td>€12 called too much, or €8 too little to matter</td><td>Four-price questions in every interview; founding price; a plan that charges only for verified savings</td></tr>
-<tr class="hl"><td>Companies are hard to reach</td><td>Already seen: 2 replies from 66 letters</td><td>Warm introductions through faculty, TEF and associations; visits; the free weekly digest</td></tr>
+<tr class="hl"><td>Companies are hard to reach</td><td>Already seen: 2 replies from 66 letters</td><td>Introductions by people who work with carriers, then TEF and associations; visits; the free weekly digest</td></tr>
 <tr><td>Software vendors add alerts</td><td>Qargo or a telematics vendor ships them</td><td>Start with offices on Excel and WhatsApp; sell our checked events to vendors as an API</td></tr>
 <tr><td>A wrong alert costs trust</td><td>Pilots mark alerts as useless</td><td>A person checks every alert; the forecast log is public; false alerts are counted</td></tr>
 <tr><td>Offices won’t share plans</td><td>Pilots stall at the upload</td><td>Excel or a photo, only the fields we need, EU hosting</td></tr>
@@ -499,9 +500,9 @@ def timeline_svg():
     items = [("Final TEF pitch", "the video, due 1 December", "2026-12-01", "2026-12-01", False),
              ("Alerts go out; beta opens", "WhatsApp line and email work on their own", "2026-12-01", "2027-01-31", False),
              ("8 interviews and replays", "2 offices share a past month; we show what we’d flag", "2026-12-07", "2027-01-31", False),
-             ("Raise the first €40k", "pilots and the first 15 offices covered", "2027-01-01", "2027-04-30", False),
              ("2 live pilots", "≥80% of alerts useful; a check under 90 s an event", "2027-02-01", "2027-03-31", False),
              ("First 2 paying offices", "founding price, case study, reference call", "2027-03-31", "2027-03-31", False),
+             ("First funding", "sized after the pilots; none raised so far", "2027-04-01", "2027-06-30", False),
              ("South–North and ferries", "blockades, ferries, the Strait of Messina", "2027-07-01", "2027-09-30", False),
              ("15 paying offices", "the model’s target for 2027", "2027-12-31", "2027-12-31", True)]
     from datetime import date
@@ -554,7 +555,7 @@ pages.append(page("", f"""
 <div class="cards three">
 <div class="card"><p class="k">Measured by us</p><ul class="l">
 <li>Survey of traffic offices and people in the field, 9–26 Nov 2026: zhol.live/results</li>
-<li>Forecast log, 13–26 Nov 2026: data/radar_log, scored by zhol/radar/verify.py</li>
+<li>Forecast log, 13–27 Nov 2026: data/radar_log, scored by zhol/radar/verify.py</li>
 <li>Outreach log: letters, replies, introductions (private)</li>
 <li>Software receipts, Sep–Nov 2026</li></ul></div>
 <div class="card"><p class="k">Public data</p><ul class="l">

@@ -490,3 +490,31 @@ def test_new_bocconi_contacts_get_the_results_and_one_request():
         url = ("https://outlook.office.com/mail/deeplink/compose?to=" + enc("nome.cognome@unibocconi.it") + "&subject=" + enc(r["subject"])
                + "&body=" + enc(m.replace("**", "")))
         assert len(url) <= 4000, (r["id"], len(url))
+
+
+def test_connector_messages_follow_the_letter_rules():
+    """Messages for people who introduce us to carriers and for the companies they name (owner, 27 Nov 2026:
+    «У нас есть… Карло и Франческо, у которого есть такие компании… а вот конкретно через профессоров сложно»).
+    The same rules as every letter: no colons, no team names, no «evening before», every mode of transport named
+    where zhol is described, and links only to the company's own report, tagged by who passed it on."""
+    from test_positioning import BANNED
+    md = (ROOT / "outreach" / "24-connectors.md").read_text(encoding="utf-8")
+    quoted = [ln[1:].strip() for ln in md.split("\n") if ln.startswith(">")]
+    text = "\n".join(quoted)
+    assert len([q for q in quoted if q]) >= 30
+    assert ":" not in _text(text), [q for q in quoted if ":" in _text(q)][:3]
+    assert not NAMES.search(text) and not BANNED.search(text)
+    assert not re.search(r"per truck|per camion", text, re.I)
+    for must in ("my team and i", "il mio team", "by road, rail or sea", "su strada, rotaia o mare", "warns in advance",
+                 "avvisa in anticipo", "updates in real time", "aggiorna in tempo reale"):
+        assert must in text.lower(), must
+    links = re.findall(r"https?://\S+", text)
+    assert links and all(re.match(r"https://zhol\.live/it/rapporto\?src=via-[a-z]+(#lanes=[A-Z,-]+&for=\w+)?$", u) for u in links), links
+    # the tag the links carry is the one the report page counts openings by (site/assets/rapporto.js)
+    js = (ROOT / "site" / "assets" / "rapporto.js").read_text(encoding="utf-8")
+    assert "/^via-[a-z0-9-]{1,20}$/" in js and 'src: via || (personal ? "co-report" : "report")' in js
+    # every lane code offered for a link is a real lane
+    lanes = json.loads((ROOT / "zhol" / "data" / "lanes.json").read_text(encoding="utf-8"))
+    known = {x["id"] for x in (lanes if isinstance(lanes, list) else lanes.get("lanes", lanes.values()))}
+    codes = set(re.findall(r"`([A-Z]{2,4}(?:-[A-Z]{2,12}){1,3})`", md))
+    assert len(codes) == 19 and codes <= known, codes - known

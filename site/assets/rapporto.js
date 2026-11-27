@@ -28,6 +28,9 @@ const CORRIDORS = [["Brennero", "Brenner", /BRENNER$/], ["Fréjus e Monte Bianco
                    ["Tarvisio e Slovenia", "Tarvisio and Slovenia", /(TARVISIO|SLOVENIA)$/], ["Gottardo e Svizzera", "Gotthard and Switzerland", /(GOTTHARD|SWISS)$/],
                    ["Tauri", "Tauern", /TAUERN$/], ["Stretto di Messina", "Strait of Messina", /^(VIT|CT)-/]];
 const H = new URLSearchParams(location.hash.slice(1));
+// who passed the link on (owner, 27 Nov 2026: introductions through people who work with carriers): /it/rapporto?src=via-carlo
+// counts openings by that channel only, never by company
+const via = (m => m ? m[0] : "")(/^via-[a-z0-9-]{1,20}$/.exec((new URLSearchParams(location.search).get("src") || "").toLowerCase()));
 const idOk = x => /^[A-Z]{2,4}(-[A-Z]{2,12}){1,3}$/.test(x);
 let ids = (H.get("lanes") || "").split(",").filter(idOk).slice(0, 6);
 const who = (H.get("for") || "").replace(/[<>]/g, "").trim().slice(0, 60);
@@ -143,8 +146,8 @@ function draw(d) {
   // one step next: the real trips (the free pilot), the survey, the PDF, forward it
   const tail = "#lanes=" + ids.join(",") + (who ? "&for=" + encodeURIComponent(who) : "");
   $("rp-check").href = IT ? "/it/beta" : "/beta"; // the beta is hidden for now (owner, 23 Nov 2026)
-  $("rp-survey").href = (IT ? "/it/sondaggio" : "/survey") + "?src=co-report";
-  const me = location.origin + location.pathname + tail;
+  $("rp-survey").href = (IT ? "/it/sondaggio" : "/survey") + "?src=" + (via || "co-report");
+  const me = location.origin + location.pathname + (via ? "?src=" + via : "") + tail;
   const top = r.events.filter(e => !unchecked(e.item)).slice(0, 4).map(e => "• " + day(e.item.start) + " · " + title(e.item) + " · " + pct(e.item.p)).join("\n");
   $("rp-wa").href = "https://wa.me/?text=" + encodeURIComponent(T("zhol risk report", "Rapporto rischi zhol") + (who ? " · " + who : "") + "\n" + top + "\n" + me);
   $("rp-foot-url").textContent = me.replace(/^https?:\/\//, "");
@@ -162,7 +165,7 @@ fetch("/data/outlook.json", { cache: "no-cache" }).then(r => r.json()).then(asyn
   try {                                                  // one opening per visit, by channel only
     if (!sessionStorage.getItem("zhol-rp")) {
       sessionStorage.setItem("zhol-rp", "1");
-      const body = JSON.stringify({ c: "tutte", src: personal ? "co-report" : "report" });
+      const body = JSON.stringify({ c: "tutte", src: via || (personal ? "co-report" : "report") });
       if (!(navigator.sendBeacon && navigator.sendBeacon("/api/bulletin", body))) fetch("/api/bulletin", { method: "POST", body, keepalive: true }).catch(() => {});
     }
   } catch (e) { /* private mode: not counted */ }

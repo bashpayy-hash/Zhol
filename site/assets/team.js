@@ -10,7 +10,7 @@
   const m = location.hash.match(/t=([\w-]+)/);
   if (m) { ss.set(KEY, m[1]); history.replaceState(null, "", location.pathname); }
   let token = ss.get(KEY), me = ls.get(ME), tab = "now";
-  let team = null, radar = null, live = null, busy = false;
+  let team = null, radar = null, live = null, opens = null, busy = false;
 
   const safeUrl = u => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : null; } catch (e) { return null; } };
   const pct = p => Math.round((p || 0) * 100) + "%";
@@ -45,9 +45,11 @@
     team = await r.json();
     $("tm-login").hidden = true;
     const t = Date.now();
-    [radar, live] = await Promise.all([
+    [radar, live, opens] = await Promise.all([
       fetch("/data/outlook.json?t=" + t, { cache: "no-store" }).then(x => x.ok ? x.json() : null).catch(() => null),
-      fetch("/api/reports?t=" + t, { cache: "no-store" }).then(x => x.ok ? x.json() : null).catch(() => null)]);
+      fetch("/api/reports?t=" + t, { cache: "no-store" }).then(x => x.ok ? x.json() : null).catch(() => null),
+      // how often the report and the bulletin were opened, by the channel that carried the link (never by company)
+      fetch("/api/bulletin?t=" + t, { cache: "no-store", headers: { "x-zhol-review": token } }).then(x => x.ok ? x.json() : null).catch(() => null)]);
     if (!me || !team.team.includes(me)) return askWho(team.team);
     show();
   }
@@ -103,6 +105,13 @@
     const due = (team.office_alerts || []).filter(a => a.status === "pending").length;
     const waitTile = tile("Ждут проверки", String(w.open.length + due + (team.reports_waiting || 0)), ["Новости и агент: " + w.open.length, "Предупреждения офисам: " + due, rv, w.open.length + due ? go : null], w.open.length + due ? "act" : "");
     g.append(waitTile);
+    // which channel gets the report opened (owner, 27 Nov 2026: introductions through people who work with carriers;
+    // their links carry ?src=via-name). Introducers first, then the rest by count.
+    const ch = Object.entries((opens && opens.channels) || {}).sort((a, b) => (b[0].startsWith("via-") - a[0].startsWith("via-")) || b[1] - a[1]).slice(0, 8);
+    const cl = el("ul", "tm-docs");
+    ch.forEach(([k, n]) => { const li = el("li"); li.append(el("b", null, k), el("span", null, String(n))); cl.append(li); });
+    g.append(tile("Открытия ссылок", opens ? opens.total + " за 4 недели" : "нет данных",
+      [ch.length ? cl : "Пока никто не открывал.", "via-… — ссылку переслал связной"]));
     v.append(g);
 
     const two = el("div", "tm-two");

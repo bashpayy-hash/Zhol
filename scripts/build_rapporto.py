@@ -122,7 +122,7 @@ PAGE = """<!doctype html>
   <span>{foot}</span>
   <span>{foot_links}</span>
 </div></footer>
-<script type="module" src="/assets/rapporto.js?v=3"></script>
+<script type="module" src="/assets/rapporto.js?v=4"></script>
 <script src="/assets/lang.js?v=l3"></script>
 </body>
 </html>
