@@ -1,5 +1,5 @@
 {
- "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market). Owner, 27 Nov 2026: «ты боишься… ставишься в правый угол… разнообразь… третий воркшоп… фундаментальный» — scenes now take different sides: cover right, problem left (mirrored), what across the top, network along the bottom, proof as a full-bleed night scene with Zholdas on the left, market map in the right corner, go-to-market from the left corner (mirrored), team in the right corner, close on the left (mirrored). Owner, 27 Nov 2026, on the cover: «лицевая иллюстрация, где он просто так plainly показывает часы… странноватые» — the cover is redrawn: Zholdas rides in the cab as the companion (what his name means) and points at the road ahead; he no longer poses with an object. The cover scene is on the left now, so the problem slide went back to the right. Owner, 27 Nov 2026, on the truck-cab cover: «Это тоже мне не нравится, как-то странно выглядит» — back to what worked on the Workshop 3 cover: Zholdas large, full body, in the landscape, with one simple action. He is a lookout now: one mitten shades his eyes and he looks ahead along the road.",
+ "what": "Scenes of the final pitch deck (artifact https://claude.ai/artifact/5hk8Ph1ZJNdYL2wFUEye26, PDF docs/zhol-final-pitch-2026-11.pdf; owner, 27 Nov 2026: «final pitch на все элементы бизнес-плана… чем это все отличается от Google Maps… solution именно заранее, именно для керриеров… мы хотим сделать network»). New scene types, used nowhere else: a mountain road tunnel portal, a hilltop radio mast above depots, a vineyard road. Zholdas looks at the viewer only on the cover and the last slide; on the network slide he talks into a walkie-talkie and looks at the depots. Owner, 27 Nov 2026, on the illustrations: «чё так по иллюстрациям слабо на третий воркшоп? … эталон был по иллюстрациям. Давай подстраивайся» — four more scenes and the Workshop 3 paper grain on every light slide. Owner, 27 Nov 2026: «не обязательно прям везде [Жолдас]… по-другому креативить… играть с пространством» — two scenes without the mascot (the network strip, the felt map), Zholdas on 5 of 13 slides. Owner, 27 Nov 2026: «Сделай, чтобы он был на 7 из 13» — Zholdas on 7 slides (cover, problem, what, proof, go-to-market, team, close), the world alone on 2 (network, market). Owner, 27 Nov 2026: «ты боишься… ставишься в правый угол… разнообразь… третий воркшоп… фундаментальный» — scenes now take different sides: cover right, problem left (mirrored), what across the top, network along the bottom, proof as a full-bleed night scene with Zholdas on the left, market map in the right corner, go-to-market from the left corner (mirrored), team in the right corner, close on the left (mirrored). Owner, 27 Nov 2026, on the cover: «лицевая иллюстрация, где он просто так plainly показывает часы… странноватые» — the cover is redrawn: Zholdas rides in the cab as the companion (what his name means) and points at the road ahead; he no longer poses with an object. The cover scene is on the left now, so the problem slide went back to the right. Owner, 27 Nov 2026, on the truck-cab cover: «Это тоже мне не нравится, как-то странно выглядит» — back to what worked on the Workshop 3 cover: Zholdas large, full body, in the landscape, with one simple action. He is a lookout now: one mitten shades his eyes and he looks ahead along the road. Owner, 28 Nov 2026: «иллюстрация с Жолдасом, который с лампой что-то там указывает… нуждается в переработке… мини-иллюстрация карты Европы выглядит максимально… ИИ слопно… функции… слишком как-то серо показаны, это должно бросаться в глаза» — the lantern band is replaced by a freight yard where Zholdas ties a red tag to a shipment; the generated felt map is replaced by a map drawn from data (build_map.py); the three functions are three loud colour tiles, and bold red verbs on the cover.",
  "references": [
   "2a20bb83-5d2d-4aa3-be59-3efd48133274",
   "619e25b1-eeb6-4f66-831e-99b84ccde4b5"
@@ -31,7 +31,7 @@
    "processing": "2688x1520 to 1920x1080 JPEG, full-bleed with the paper veil on the left"
   },
   "what-band.jpg": {
-   "slide": "3, what zhol does",
+   "slide": "not used since 28 Nov 2026 (the owner: the lantern scene needs a rework)",
    "higgsfield_image_job": "a01a6508-51ac-4417-99ea-bd45e58c6f9b",
    "scene": "a panorama of road, rail and sea: trucks on an Alpine road, a freight train on a stone bridge, a ferry leaving harbour; Zholdas holds up a lantern and looks along the road",
    "processing": "21:9 centre cut to 1920x600, the band across the top as on Workshop 3's overview"
@@ -49,7 +49,7 @@
    "processing": "transparent 21:9, cropped to the band (rows 664-1152), 1920 wide, shown 300 px high along the bottom"
   },
   "europe-map.png": {
-   "slide": "7, market",
+   "slide": "not used since 28 Nov 2026 (the owner: looks like AI slop)",
    "higgsfield_image_job": "c78f0fd3-b2e7-4c45-a89c-fd357d16a881",
    "scene": "no mascot: a felt relief map of Europe from the corner, the Alps raised, roads, railways and ferry routes stitched in, toy trucks, a train and a ferry, a cluster of red pins in Northern Italy",
    "processing": "transparent, 1000 px PNG in the bottom-right corner"
@@ -109,6 +109,19 @@
    "slide": "not used, kept as an option",
    "higgsfield_image_job": "0bb79693-420e-4a81-8c8a-aa1893695a57",
    "scene": "Zholdas walks along the road shoulder with a canvas satchel, a fellow traveller, looking at the viewer"
+  },
+  "what-yard.jpg": {
+   "slide": "3, what zhol does",
+   "higgsfield_image_job": "9b936856-502a-46ef-a57f-7fe8dd9a9aa0",
+   "scene": "a freight yard where road, rail and sea meet: a truck with crates, a loading platform, two rail wagons, a ferry at the quay; Zholdas ties a red tag to one crate, the other shipments carry green tags (risk for each shipment)",
+   "processing": "21:9 2688x1152, the strip y=345..1045 resized to 1920x500 JPEG q88; the band across the top",
+   "other_variant": "c0565d63-fc98-4443-ac64-8fb54d760386"
+  },
+  "europe-lanes.png": {
+   "slide": "7, market",
+   "generated": false,
+   "scene": "not an illustration: a map drawn from data. Country outlines from Natural Earth (site/data/europe-map.json), the 19 lanes of zhol/data/lanes.json dotted in red, the crossings the radar watches as dots, Italy tinted",
+   "processing": "python design/final-pitch/build_map.py, then node design/final-pitch/render_map.js: 725x810 slide px at 2x, the top and left edges fade out"
   }
  }
 }
