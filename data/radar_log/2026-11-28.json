@@ -1,8 +1,8 @@
 {
  "date": "2026-11-28",
- "built_at": "2026-11-28T05:25+01:00",
+ "built_at": "2026-11-28T14:17+01:00",
  "reader": "heuristic",
- "articles_read": 779,
+ "articles_read": 741,
  "items": [
   {
    "key": "ban|AT,IT|2026-12-08",
@@ -170,6 +170,51 @@
    "decide_h": null
   },
   {
+   "key": "weather|montblanc|2026-12-09",
+   "id": "a185de25a2",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Snow at the Mont Blanc tunnel",
+   "start": "2026-12-09",
+   "end": "2026-12-09",
+   "p": 0.339,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": 5.9
+  },
+  {
+   "key": "weather|gotthard|2026-12-09",
+   "id": "f2c3d355fa",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Snow at the Gotthard road tunnel",
+   "start": "2026-12-09",
+   "end": "2026-12-09",
+   "p": 0.341,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": 1.5
+  },
+  {
+   "key": "weather|tauern|2026-12-09",
+   "id": "bafef14ec9",
+   "group": "forecast",
+   "kind": "weather",
+   "title": "Snow at the Tauern tunnel",
+   "start": "2026-12-09",
+   "end": "2026-12-09",
+   "p": 0.276,
+   "stage": null,
+   "basis": "forecast",
+   "first_published": null,
+   "outlets": 1,
+   "decide_h": null
+  },
+  {
    "key": "strike|IT|2026-12-04|all",
    "id": "st-all-2026-12-04",
    "group": "news",
@@ -305,18 +350,18 @@
    "decide_h": 6.2
   },
   {
-   "key": "strike|NL|2026-12-04",
-   "id": "7754747c9f",
+   "key": "strike|FR|undated",
+   "id": "f50d15b7e1",
    "group": "news",
    "kind": "strike",
-   "title": "Strike in Netherlands",
-   "start": "2026-12-04",
-   "end": "2026-12-04",
-   "p": 0.824,
-   "stage": "announced",
+   "title": "Possible port or ferry strike in France",
+   "start": null,
+   "end": null,
+   "p": 0.283,
+   "stage": "threat",
    "basis": "news",
-   "first_published": "2026-11-26",
-   "outlets": 1,
+   "first_published": "2026-10-30",
+   "outlets": 5,
    "decide_h": null
   },
   {
@@ -350,21 +395,6 @@
    "decide_h": null
   },
   {
-   "key": "strike|FR|undated",
-   "id": "f50d15b7e1",
-   "group": "news",
-   "kind": "strike",
-   "title": "Possible port or ferry strike in France",
-   "start": null,
-   "end": null,
-   "p": 0.192,
-   "stage": "threat",
-   "basis": "news",
-   "first_published": "2026-10-30",
-   "outlets": 5,
-   "decide_h": null
-  },
-  {
    "key": "strike|ES|2026-12-20",
    "id": "8a1c8e6ebb",
    "group": "news",
@@ -376,6 +406,21 @@
    "stage": "tension",
    "basis": "news",
    "first_published": "2026-11-24",
+   "outlets": 1,
+   "decide_h": null
+  },
+  {
+   "key": "strike|IT|2026-12-20",
+   "id": "76f4ec0970",
+   "group": "news",
+   "kind": "strike",
+   "title": "Possible rail strike in Italy",
+   "start": "2026-12-20",
+   "end": "2026-12-20",
+   "p": 0.113,
+   "stage": "tension",
+   "basis": "news",
+   "first_published": "2026-11-28",
    "outlets": 1,
    "decide_h": null
   }
