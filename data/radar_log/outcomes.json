@@ -27,6 +27,13 @@
   "start": "2026-11-23",
   "title": "A40 closed overnight towards Chamonix between Archamps and Annemasse."
  },
+ "closure|FR-Auvergne-Rhône-Alpes|2026-11-26": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-28",
+  "start": "2026-11-26",
+  "title": "A40 motorway closed overnight between Archamps and Annemasse for bridge works."
+ },
  "closure|IT-Lazio|2026-11-14": {
   "happened": true,
   "how": "ongoing",
@@ -68,6 +75,13 @@
   "resolved_on": "2026-11-25",
   "start": "2026-11-23",
   "title": "Fréjus road tunnel closed overnight in both directions."
+ },
+ "closure|frejus|2026-11-27": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-28",
+  "start": "2026-11-27",
+  "title": "Fréjus road tunnel closed France to Italy for 45 minutes."
  },
  "closure|montblanc|2026-11-16": {
   "happened": null,
@@ -201,6 +215,14 @@
   "start": "2026-11-22",
   "title": "Air transport strike in Italy"
  },
+ "strike|IT|2026-11-27|air": {
+  "happened": false,
+  "how": "ministry",
+  "resolved_on": "2026-11-28",
+  "source": "https://scioperi.mit.gov.it/mit2/public/scioperi",
+  "start": "2026-11-27",
+  "title": "Air transport strike in Italy"
+ },
  "strike|brenner|2026-11-20": {
   "happened": null,
   "how": "open",
@@ -283,6 +305,13 @@
   "how": "open",
   "resolved_on": "2026-11-27",
   "start": "2026-11-26",
+  "title": "Strong wind on the Strait of Messina"
+ },
+ "weather|messina_strait|2026-11-27": {
+  "happened": null,
+  "how": "open",
+  "resolved_on": "2026-11-28",
+  "start": "2026-11-27",
   "title": "Strong wind on the Strait of Messina"
  },
  "weather|montblanc|2026-11-18": {
